@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Saira+Semi+Condensed:wght@400;500;600;700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Venus Rising';src:url('uploads/Venus Rising Rg.otf') format('opentype');font-weight:400;font-display:swap}
+*{box-sizing:border-box}
+:root{--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--ink:#e6eae7;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#b9cfd8;--or:#e0674a;--grn:#2f6b4a}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Venus Rising','Saira Semi Condensed',sans-serif;font-variant-numeric:tabular-nums;font-size:12px;line-height:1.55;-webkit-font-smoothing:antialiased}
+p,button,a{font-family:'Chakra Petch',sans-serif}
+h2,h3,h4{font-family:'Venus Rising','Chakra Petch',sans-serif;letter-spacing:.1em}
+h1{font-family:'Venus Rising','Chakra Petch',sans-serif;font-weight:400;letter-spacing:.14em;line-height:1.24}
+a{color:var(--cy);text-decoration:none}a:hover{color:#fff}
+input,textarea,button,select{font-family:'Chakra Petch',sans-serif;border:none;outline:none}
+::selection{background:var(--or);color:#0a0d0b}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:999px}
+@keyframes sPulse{0%,100%{opacity:.35}50%{opacity:1}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:40;background:rgba(10,13,11,.94);backdrop-filter:blur(12px);padding:15px 30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+  <span style="display:flex;align-items:center;gap:11px">
+    <span style="width:24px;height:24px;border-radius:8px;background:var(--or);display:flex;align-items:center;justify-content:center"><span style="width:7px;height:7px;border-radius:2px;background:#160b07"></span></span>
+    <span>
+      <span style="display:block;font-family:'Chakra Petch',sans-serif;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Série NL</span>
+      <span style="display:block;font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.22em;color:var(--ink3);text-transform:uppercase">Verdant · rev 5.0</span>
+    </span>
+  </span>
+  <div style="flex:1;min-width:16px"></div>
+  <span style="display:flex;align-items:center;gap:9px;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase"><span style="width:6px;height:6px;border-radius:50%;background:var(--or);animation:sPulse 1.6s infinite"></span>Dispatch 0849</span>
+  <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:19px;letter-spacing:.04em;color:var(--cy)">{{ clock }}</span>
+</header>
+
+<main style="max-width:1280px;margin:0 auto;padding:26px 30px 90px;display:flex;flex-direction:column;gap:40px">
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1.6fr));gap:10px;align-items:stretch">
+    <div style="min-width:0;border-radius:18px;background:var(--panel);padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:18px">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.24em;color:var(--or);text-transform:uppercase">00_console</span>
+      <h1 style="margin:0;font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:clamp(23px,3.1vw,34px);font-weight:700;line-height:1.24;letter-spacing:.03em;text-transform:uppercase">Neuf instruments,<br>une seule interface</h1>
+      <p style="margin:0;font-family:'Chakra Petch',sans-serif;font-size:13.5px;line-height:1.6;color:var(--ink2);max-width:54ch;text-wrap:pretty">Blocs pleins, filets fins, chiffres larges. Deux familles de couleur — corail et vert profond — sur fond presque noir. Chaque outil s'ouvre depuis cette console.</p>
+    </div>
+    <div style="border-radius:18px;background:var(--or);color:#170c08;padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;position:relative;overflow:hidden;min-height:200px">
+      <span style="position:absolute;right:-8px;top:0;bottom:0;width:130px;background-image:radial-gradient(rgba(23,12,8,.3) 1px,transparent 1.1px);background-size:7px 7px"></span>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase">Kits publiés</span>
+      <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:78px;font-weight:700;line-height:.9;letter-spacing:.02em">09</span>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;position:relative">+ 2 logiciels · node 490</span>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:baseline;gap:12px">
+      <h2 style="margin:0;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)">Logiciels</h2>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--or)">A</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px">
+      <sc-for list="{{ apps }}" as="ap" hint-placeholder-count="3">
+        <a href="{{ ap.href }}" style="position:relative;display:flex;align-items:center;gap:16px;border-radius:14px;background:{{ ap.bg }};padding:18px 22px;min-height:84px;color:{{ ap.ink }};overflow:hidden;transition:transform .16s,filter .16s" style-hover="transform:translateX(5px);filter:brightness(1.07)">
+          <span style="position:absolute;right:16px;top:0;bottom:0;width:130px;background-image:radial-gradient({{ ap.dot }} 1px,transparent 1.1px);background-size:7px 7px"></span>
+          <span style="display:flex;align-items:center;justify-content:center;width:26px;flex:none">
+            <svg viewBox="0 0 24 24" style="width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round"><path d="{{ ap.icon }}"></path></svg>
+          </span>
+          <span style="min-width:0;flex:1;position:relative">
+            <span style="display:flex;align-items:baseline;gap:11px">
+              <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.18em">{{ ap.ref }}</span>
+              <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:27px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ap.name }}</span>
+            </span>
+            <span style="display:block;font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.1em;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ap.sub }}</span>
+          </span>
+          <span style="font-family:'Chakra Petch',sans-serif;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;flex:none;position:relative">Ouvrir</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:baseline;gap:12px">
+      <h2 style="margin:0;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)">Kits d'interface</h2>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--or)">B</span>
+      <span style="margin-left:auto;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ kitCount }} modules</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:8px">
+      <sc-for list="{{ kits }}" as="kt" hint-placeholder-count="9">
+        <a href="{{ kt.href }}" style="position:relative;border-radius:14px;background:{{ kt.bg }};padding:16px 18px;min-height:132px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;color:{{ kt.ink }};overflow:hidden;transition:transform .15s,filter .15s" style-hover="transform:translateY(-4px);filter:brightness(1.08)">
+          <span style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em">{{ kt.ref }}</span>
+            <span style="width:6px;height:6px;border-radius:50%;background:{{ kt.dot }}"></span>
+          </span>
+          <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:21px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1.1">{{ kt.name }}</span>
+          <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.08em;line-height:1.5">{{ kt.sub }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px">
+    <div style="border-radius:16px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:168px">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Palette</span>
+      <div style="display:flex;gap:4px;flex-wrap:wrap">
+        <sc-for list="{{ swatches }}" as="sw" hint-placeholder-count="9">
+          <span style="width:30px;height:30px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(198,213,220,.16);background:{{ sw.hex }}"></span>
+        </sc-for>
+      </div>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink2);text-transform:uppercase">Corail · vert profond · encre claire</span>
+    </div>
+    <div style="border-radius:16px;box-shadow:inset 0 0 0 1px rgba(224,103,74,.8);padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:168px">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Typographie</span>
+      <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:27px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1">Vecteur 0849</span>
+      <div style="display:flex;flex-direction:column;gap:3px;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink2);text-transform:uppercase">
+        <span>Grands titres, noms &amp; chiffres — Venus Rising</span>
+        <span>Texte — Chakra Petch · étiquettes — Azeret Mono</span>
+      </div>
+    </div>
+    <div style="border-radius:16px;background:var(--panel);padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;min-height:168px">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Système</span>
+      <div style="display:flex;gap:3px;align-items:flex-end;height:44px">
+        <sc-for list="{{ bars }}" as="br" hint-placeholder-count="14">
+          <span style="flex:1;height:{{ br.h }};border-radius:2px;background:{{ br.c }};transition:height .2s"></span>
+        </sc-for>
+      </div>
+      <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:19px;color:var(--cy)">{{ mem }}</span>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:baseline;gap:12px">
+      <h2 style="margin:0;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)">Archives</h2>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--or)">C</span>
+    </div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap">
+      <sc-for list="{{ archives }}" as="ar" hint-placeholder-count="7">
+        <a href="{{ ar.href }}" style="border-radius:999px;box-shadow:inset 0 0 0 1px rgba(198,213,220,.14);padding:8px 16px;font-family:'Chakra Petch',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)" style-hover="box-shadow:inset 0 0 0 1px var(--or);color:var(--or)">{{ ar.label }}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">
+    <span>Série NL · Nirvalab · Rev 5.0 Verdant</span>
+    <span>{{ dateLabel }}</span>
+  </footer>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  state={ now:new Date(), bars:null };
+  componentDidMount(){
+    this.t=setInterval(()=>this.setState({
+      now:new Date(),
+      bars:Array.from({length:14},(_,i)=>18+(Math.sin(Date.now()/700+i*.8)*.5+.5)*70)
+    }),1000);
+  }
+  componentWillUnmount(){ clearInterval(this.t) }
+
+  renderVals(){
+    const S=this.state, OR='#e0674a', p2=(n)=>String(n).padStart(2,'0'), d=S.now;
+
+    const appDefs=[
+      ['NL—00','Kit système','240 composants · rotatifs, cadran, blocs, tuiles','Kit UI Systeme Verdant.dc.html','#f0b49b','#241109','M4 6h16M4 12h16M4 18h10'],
+      ['NL—16','Station rack','Synthé modulaire, câblage, zoom sémantique','Station NL Rack Verdant.dc.html','#d47a5c','#1d0c06','M6 4v16M12 4v16M18 4v16M3 9h18M3 15h18'],
+      ['NL—24','Banc montage','Moniteurs, étalonnage, timeline 5 pistes','Banc NL Montage Verdant.dc.html','#a3502f','#fdf3ee','M3 6h18v9H3zM8 19h8M12 15v4']
+    ];
+    const apps=appDefs.map(([ref,name,sub,href,bg,ink,icon])=>({
+      ref,name,sub,href,bg,ink,icon,
+      dot: ink==='#fdf3ee' ? 'rgba(253,243,238,.3)' : 'rgba(36,17,9,.3)'
+    }));
+
+    const g=['#2f6b4a','#2a6143','#24543b','#1f4a34','#1a3f2c'];
+    const kitDefs=[
+      ['NL—10','Découpage','Dépouillement · prompts · régie','Kit UI Decoupage Verdant.dc.html',0],
+      ['NL—12','Image','Calques · étalonnage · comparateur','Kit Image Verdant.dc.html',1],
+      ['NL—18','Storyboard','Cases · bulles · transitions','Kit Storyboard Verdant.dc.html',2],
+      ['NL—16','Musique','Séquenceur · rack · console','Kit Musique Verdant.dc.html',0],
+      ['NL—24','Montage','Moniteur · molette · timeline','Kit Montage Verdant.dc.html',1],
+      ['NL—36','3D','Gizmos · outliner · exposition','Kit 3D Verdant.dc.html',2],
+      ['NL—44','Canvas','Artboard · graphe · notes','Kit Canvas Verdant.dc.html',3],
+      ['NL—28','Voix','Prises · casting · rythmo','Kit Voix Verdant.dc.html',1],
+      ['NL—02','Admin','Comptes · crédits · chrome','Kit Admin Verdant.dc.html',4]
+    ];
+    const kits=kitDefs.map(([ref,name,sub,href,gi])=>({
+      ref,name,sub,href, bg:g[gi], ink:'#eaf3ec',
+      dot: gi<2 ? OR : 'rgba(224,103,74,.55)'
+    }));
+
+    const swatches=['#f0b49b','#e59578','#d47a5c','#a3502f','#7a3a22','#2f6b4a','#24543b','#b9cfd8','#0a0d0b'].map(hex=>({hex}));
+    const bars=(S.bars||Array.from({length:14},(_,i)=>20+i*3)).map((v,i)=>({
+      h:v.toFixed(0)+'%', c: i<9 ? OR : 'rgba(224,103,74,.28)'
+    }));
+
+    const archives=[['Découpage v1','Kit Decoupage v1.dc.html'],['Montage v1','Kit Montage v1.dc.html'],['Image v1','Kit Image v1.dc.html'],['Storyboard v1','Kit Storyboard v1.dc.html'],['3D v1','Kit 3D v1.dc.html'],['Canvas v1','Kit Canvas v1.dc.html']]
+      .map(([label,href])=>({label,href}));
+
+    return {
+      apps, kits, swatches, bars, archives,
+      kitCount:9,
+      clock:p2(d.getHours())+':'+p2(d.getMinutes())+':'+p2(d.getSeconds()),
+      dateLabel:['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'][d.getDay()]+' '+d.getDate()+' septembre',
+      mem:'397 / 3802 Mo'
+    };
+  }
+}
+</script>
+</body>
+</html>

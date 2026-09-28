@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Saira+Semi+Condensed:wght@400;500;600&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Venus Rising';src:url('uploads/Venus Rising Rg.otf') format('opentype');font-weight:400;font-display:swap}
+*{box-sizing:border-box}
+:root{--bg:#090b0a;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--well:#070908;--ink:#e6eae7;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#c6d5dc;--cy2:#76878e;--or:#d9634a;--sand:#d9a486;--grn:#2b7050;--hair2:rgba(198,213,220,.1)}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Venus Rising','Saira Semi Condensed',sans-serif;font-variant-numeric:tabular-nums;font-size:12px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden}
+p,button,a{font-family:'Chakra Petch',sans-serif}
+h2,h3,h4{font-family:'Venus Rising','Chakra Petch',sans-serif;letter-spacing:.1em}
+h1{font-family:'Venus Rising','Chakra Petch',sans-serif;font-weight:400;letter-spacing:.14em;line-height:1.24}
+a{color:var(--cy);text-decoration:none}a:hover{color:#fff}
+input,textarea,button,select{font-family:'Chakra Petch',sans-serif;border:none;outline:none}
+::selection{background:var(--or);color:#0d1210}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:999px}
+</style>
+</helmet>
+
+<div style="height:100vh;display:flex;flex-direction:column">
+  <header style="flex:none;padding:13px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <a href="kit-ui-sommaire.html" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--panel2);padding:8px 15px;font-size:11px;color:var(--ink2)" style-hover="background:var(--panel3);color:var(--ink)">
+      <svg viewBox="0 0 20 12" style="width:11px;height:7px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:round"><path d="M13 1L7 6L13 11"></path></svg>Sommaire</a>
+    <div style="display:flex;align-items:baseline;gap:11px;min-width:0">
+      <span style="font-size:13px;font-weight:600;color:var(--or);flex:none">NL—36</span>
+      <h1 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-.015em;white-space:nowrap">Pupitre · 3D</h1>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase;white-space:nowrap">{{ sceneName }}</span>
+    </div>
+    <div style="flex:1;min-width:16px"></div>
+    <div style="display:flex;gap:7px">
+      <sc-for list="{{ gizmos }}" as="g" hint-placeholder-count="4">
+        <button onClick="{{ g.pick }}" title="{{ g.name }}" style="width:38px;height:34px;border-radius:11px;background:{{ g.bg }};color:{{ g.fg }};display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .14s">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ g.path }}"></path></svg>
+        </button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:7px">
+      <sc-for list="{{ shadeModes }}" as="s" hint-placeholder-count="3">
+        <span onClick="{{ s.pick }}" style="border-radius:999px;background:{{ s.bg }};color:{{ s.fg }};padding:8px 15px;font-size:11.5px;font-family:'Chakra Petch',sans-serif;cursor:pointer;transition:background .14s">{{ s.label }}</span>
+      </sc-for>
+    </div>
+  </header>
+
+  <div style="flex:1;min-height:0;display:grid;grid-template-columns:246px minmax(0,1fr) 286px;gap:12px;padding:0 22px 18px">
+
+    <div style="display:flex;flex-direction:column;gap:12px;min-height:0;overflow-y:auto;overflow-x:hidden">
+      <div style="border-radius:18px;background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+          <h2 style="margin:0;font-size:14px;font-weight:600">Scène</h2>
+          <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase">{{ objCount }} objets</span>
+        </div>
+        <sc-for list="{{ outliner }}" as="o" hint-placeholder-count="7">
+          <div onClick="{{ o.pick }}" style="display:flex;align-items:center;gap:9px;border-radius:11px;background:{{ o.bg }};padding:8px 11px;padding-left:{{ o.indent }};cursor:pointer;transition:background .14s">
+            <span style="width:7px;height:7px;border-radius:2px;background:{{ o.dot }};flex:none"></span>
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:12px;color:{{ o.ink }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1">{{ o.name }}</span>
+            <span onClick="{{ o.toggle }}" style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.1em;color:{{ o.visInk }};text-transform:uppercase;cursor:pointer;flex:none">{{ o.vis }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="border-radius:18px;background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:12px">
+        <h2 style="margin:0;font-size:14px;font-weight:600">Matériaux</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <sc-for list="{{ materials }}" as="m" hint-placeholder-count="4">
+            <div onClick="{{ m.pick }}" style="border-radius:12px;background:{{ m.bg }};padding:10px;display:flex;flex-direction:column;gap:7px;cursor:pointer;transition:background .14s">
+              <span style="height:30px;border-radius:8px;background:{{ m.swatch }}"></span>
+              <span style="font-family:'Chakra Petch',sans-serif;font-size:11.5px;color:{{ m.ink }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-radius:18px;background:var(--panel);padding:16px;display:flex;flex-direction:column;gap:12px;min-height:0">
+      <div onPointerDown="{{ orbitGrab }}" onWheel="{{ viewWheel }}" style="position:relative;flex:1;min-height:0;border-radius:12px;background:var(--well);overflow:hidden;cursor:grab;touch-action:none">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(198,213,220,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(198,213,220,.055) 1px,transparent 1px);background-size:{{ gridPx }} {{ gridPx }};background-position:center"></div>
+        <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) perspective(900px) rotateX({{ rotX }}) rotateY({{ rotY }}) scale({{ scale }});transform-style:preserve-3d">
+          <div style="position:relative;width:180px;height:180px;transform-style:preserve-3d">
+            <sc-for list="{{ faces }}" as="f" hint-placeholder-count="6">
+              <div style="position:absolute;inset:0;background:{{ f.bg }};box-shadow:inset 0 0 0 1px rgba(198,213,220,.22);transform:{{ f.tf }}"></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="position:absolute;left:14px;bottom:12px;display:flex;gap:7px">
+          <sc-for list="{{ axes }}" as="a" hint-placeholder-count="3">
+            <span style="border-radius:999px;background:rgba(9,11,10,.78);padding:4px 11px;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:{{ a.c }};text-transform:uppercase">{{ a.label }}</span>
+          </sc-for>
+        </div>
+        <span style="position:absolute;right:14px;top:12px;border-radius:999px;background:rgba(9,11,10,.78);padding:4px 12px;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink2);text-transform:uppercase">{{ viewInfo }}</span>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase">{{ stats }}</span>
+        <div style="flex:1;min-width:10px"></div>
+        <button onClick="{{ resetView }}" style="border-radius:999px;background:var(--panel2);color:var(--ink2);padding:7px 15px;font-size:11.5px;cursor:pointer" style-hover="background:var(--panel3);color:var(--ink)">Vue par défaut</button>
+        <button onClick="{{ addKey }}" style="border-radius:999px;background:var(--or);color:#0d1210;padding:7px 15px;font-size:11.5px;font-weight:600;cursor:pointer">Poser une clé</button>
+      </div>
+
+      <div style="flex:none;border-radius:12px;background:var(--panel2);padding:12px 14px;display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase">Animation</span>
+          <span style="font-size:12px;font-weight:600;color:var(--cy)">{{ frameDisp }}</span>
+        </div>
+        <div onPointerDown="{{ scrubFrame }}" style="position:relative;height:26px;border-radius:9px;background:var(--well);cursor:ew-resize;touch-action:none;overflow:hidden">
+          <sc-for list="{{ keys }}" as="k" hint-placeholder-count="4">
+            <span style="position:absolute;top:50%;left:{{ k.x }};width:9px;height:9px;border-radius:2px;background:{{ k.c }};transform:translate(-50%,-50%) rotate(45deg)"></span>
+          </sc-for>
+          <div style="position:absolute;top:0;bottom:0;width:2px;background:var(--or);left:{{ framePct }}"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;min-height:0;overflow-y:auto;overflow-x:hidden;padding-right:2px">
+      <div style="border-radius:18px;background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+          <h2 style="margin:0;font-size:14px;font-weight:600">{{ selName }}</h2>
+          <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase">{{ selType }}</span>
+        </div>
+        <sc-for list="{{ transform }}" as="t" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase">{{ t.label }}</span>
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px">
+              <sc-for list="{{ t.fields }}" as="f" hint-placeholder-count="3">
+                <div onPointerDown="{{ f.grab }}" style="border-radius:10px;background:var(--panel2);padding:8px 10px;display:flex;align-items:baseline;justify-content:space-between;gap:6px;cursor:ns-resize;touch-action:none">
+                  <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;color:{{ f.axisC }};text-transform:uppercase">{{ f.axis }}</span>
+                  <span style="font-size:12px;font-weight:600">{{ f.disp }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="border-radius:18px;background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:14px">
+        <h2 style="margin:0;font-size:14px;font-weight:600">Exposition</h2>
+        <sc-for list="{{ lightParams }}" as="p" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:minmax(0,84px) minmax(0,1fr) 36px;gap:10px;align-items:center">
+            <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.label }}</span>
+            <div onPointerDown="{{ p.grab }}" style="height:20px;display:flex;align-items:center;cursor:ew-resize;touch-action:none">
+              <div style="position:relative;width:100%;height:5px;border-radius:999px;background:var(--panel3)">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:{{ p.pct }};border-radius:999px;background:{{ p.color }}"></div>
+                <div style="position:absolute;top:50%;left:{{ p.pct }};width:11px;height:11px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%)"></div>
+              </div>
+            </div>
+            <span style="font-size:11.5px;font-weight:600;text-align:right">{{ p.disp }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="border-radius:18px;background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:12px">
+        <h2 style="margin:0;font-size:14px;font-weight:600">Rendu</h2>
+        <div style="display:flex;align-items:flex-end;gap:12px">
+          <span style="font-size:36px;font-weight:600;line-height:.95;color:var(--cy)">{{ samples }}</span>
+          <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;padding-bottom:6px">échantillons</span>
+        </div>
+        <div style="height:6px;border-radius:999px;background:var(--panel3);overflow:hidden"><div style="height:100%;width:{{ renderPct }};border-radius:999px;background:var(--or);transition:width .3s"></div></div>
+        <button onClick="{{ startRender }}" style="border-radius:999px;background:var(--or);color:#0d1210;padding:11px 18px;font-size:12px;font-weight:600;cursor:pointer">Lancer le rendu</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state={
+    gizmo:0, shade:1, sel:2, mat:0, rx:-22, ry:32, sc:1, frame:18,
+    pos:[0,0,0], rot:[0,32,0], scl:[100,100,100],
+    light:[68,42,55], render:0, rendering:false,
+    keys:[6,18,34,52],
+    vis:{}
+  };
+  componentDidMount(){
+    this.t=setInterval(()=>{
+      if(this.state.rendering){
+        const n=Math.min(100,this.state.render+5);
+        this.setState({render:n, rendering:n<100});
+      }
+    },200);
+  }
+  componentWillUnmount(){ clearInterval(this.t) }
+
+  slide(e,set){
+    e.preventDefault();
+    const r=e.currentTarget.getBoundingClientRect();
+    const go=(cx)=>set(Math.max(0,Math.min(100,(cx-r.left)/r.width*100)));
+    go(e.clientX);
+    const mv=(ev)=>go(ev.clientX);
+    const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+    window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up);
+  }
+  dragY(e,get,set,k){
+    e.preventDefault(); e.stopPropagation();
+    const y0=e.clientY, v0=get();
+    const mv=(ev)=>set(v0+(y0-ev.clientY)*k);
+    const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+    window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up);
+  }
+
+  renderVals(){
+    const S=this.state, OR='#d9634a', CY='#c6d5dc', SAND='#d9a486';
+    const gizmoDefs=[['Déplacer','M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3'],['Tourner','M4 12a8 8 0 1 0 8-8M4 12l-1-4M4 12l4-1'],['Redimensionner','M4 20V9M4 20h11M20 4l-8 8M20 4h-6M20 4v6'],['Univers','M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 4 3 14 0 18']];
+    const gizmos=gizmoDefs.map(([name,path],i)=>({name,path,
+      bg:S.gizmo===i?OR:'var(--panel2)', fg:S.gizmo===i?'#0d1210':'#9ca8a2',
+      pick:()=>this.setState({gizmo:i})}));
+
+    const shadeDefs=['Fil de fer','Solide','Rendu'];
+    const shadeModes=shadeDefs.map((label,i)=>({label,
+      bg:S.shade===i?'var(--panel3)':'var(--panel2)', fg:S.shade===i?'#e6eae7':'#9ca8a2',
+      pick:()=>this.setState({shade:i})}));
+
+    const outDefs=[['Scène',0,CY,'group'],['Coque',1,OR,'mesh'],['Nacelle',1,CY,'mesh'],['Aileron',2,'#76878e','mesh'],['Lumière clé',1,SAND,'light'],['Lumière de bord',1,SAND,'light'],['Caméra A',1,'#2b7050','camera']];
+    const outliner=outDefs.map(([name,depth,dot,type],i)=>({
+      name, dot, indent:(11+depth*14)+'px',
+      bg:S.sel===i?'var(--panel3)':'transparent',
+      ink:(S.vis[i]===false)?'#7c8884':(S.sel===i?'#e6eae7':'#9ca8a2'),
+      vis:(S.vis[i]===false)?'Masqué':'Visible',
+      visInk:(S.vis[i]===false)?'#7c8884':'#9ca8a2',
+      pick:()=>this.setState({sel:i}),
+      toggle:(e)=>{e.stopPropagation();this.setState({vis:{...S.vis,[i]:S.vis[i]===false}})}
+    }));
+
+    const matDefs=[['Acier brossé','linear-gradient(130deg,#9ca8a2,#3a4a42)'],['Peinture terre','linear-gradient(130deg,#d9634a,#6b3524)'],['Verre teinté','linear-gradient(130deg,#c6d5dc,#1b211e)'],['Caoutchouc','linear-gradient(130deg,#2b7050,#0d1210)']];
+    const materials=matDefs.map(([name,swatch],i)=>({name,swatch,
+      bg:S.mat===i?'var(--panel3)':'var(--panel2)', ink:S.mat===i?'#e6eae7':'#9ca8a2',
+      pick:()=>this.setState({mat:i})}));
+
+    const faceTint=['#a34430','#7d3524','#8b9ba3','#5d6b72','#a37a5e','#2b5f47'];
+    const wire = S.shade===0;
+    const solidFill=['#242e29','#1a221e','#2b352f','#1e2723','#33403a','#141a17'];
+    const faces=[
+      'translateZ(90px)','rotateY(180deg) translateZ(90px)','rotateY(90deg) translateZ(90px)',
+      'rotateY(-90deg) translateZ(90px)','rotateX(90deg) translateZ(90px)','rotateX(-90deg) translateZ(90px)'
+    ].map((tf,i)=>({tf, bg: wire ? 'transparent' : (S.shade===2 ? faceTint[i] : solidFill[i])}));
+
+    const axisNames=['x','y','z'];
+    const axisColors=[OR,'#5fa47e',CY];
+    const mkFields=(arr,key,k,unit)=>arr.map((v,i)=>({
+      axis:axisNames[i], axisC:axisColors[i],
+      disp: (key==='scl'? Math.round(v)+' %' : (Math.round(v*10)/10).toFixed(1)),
+      grab:(e)=>this.dragY(e,()=>this.state[key][i],(nv)=>{
+        this.setState({[key]:this.state[key].map((p,j)=>j===i?nv:p)});
+      },k)
+    }));
+    const transform=[
+      {label:'Position', fields:mkFields(S.pos,'pos',.06)},
+      {label:'Rotation', fields:mkFields(S.rot,'rot',.5)},
+      {label:'Échelle', fields:mkFields(S.scl,'scl',.6)}
+    ];
+
+    const lightDefs=[['Intensité',SAND],['Douceur',CY],['Ambiance','#2b7050']];
+    const lightParams=lightDefs.map(([label,color],i)=>({
+      label,color,pct:S.light[i].toFixed(0)+'%',disp:Math.round(S.light[i]),
+      grab:(e)=>this.slide(e,(v)=>this.setState({light:S.light.map((l,j)=>j===i?v:l)}))
+    }));
+
+    const keys=S.keys.map(f=>({x:(f/60*100).toFixed(1)+'%', c: Math.abs(f-S.frame)<1?OR:'#9ca8a2'}));
+
+    return {
+      sceneName:'Scène — vaisseau Verdant',
+      gizmos, shadeModes, outliner, materials, faces, transform, lightParams, keys,
+      objCount:outDefs.length,
+      rotX:S.rx+'deg', rotY:(S.ry+S.rot[1]*0.4)+'deg', scale:S.sc.toFixed(2),
+      gridPx:(38*S.sc).toFixed(1)+'px',
+      axes:[{label:'x',c:OR},{label:'y',c:'#5fa47e'},{label:'z',c:CY}],
+      viewInfo:'Persp · 35 mm',
+      stats:'124 k triangles · 3 lumières',
+      selName:outDefs[S.sel][0], selType:outDefs[S.sel][3],
+      frameDisp:'Image '+String(S.frame).padStart(3,'0')+' / 060',
+      framePct:(S.frame/60*100).toFixed(1)+'%',
+      samples: S.render>0 ? Math.round(S.render*5.12) : 0,
+      renderPct:S.render+'%',
+      orbitGrab:(e)=>{
+        e.preventDefault();
+        const x0=e.clientX,y0=e.clientY,rx=S.rx,ry=S.ry;
+        const mv=(ev)=>this.setState({rx:Math.max(-85,Math.min(85,rx-(ev.clientY-y0)*.4)), ry:ry+(ev.clientX-x0)*.4});
+        const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+        window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up);
+      },
+      viewWheel:(e)=>{ e.preventDefault(); this.setState({sc:Math.max(.4,Math.min(2.4,+(S.sc*(e.deltaY<0?1.1:0.91)).toFixed(3)))}) },
+      resetView:()=>this.setState({rx:-22,ry:32,sc:1}),
+      addKey:()=>this.setState({keys:S.keys.includes(Math.round(S.frame))?S.keys:[...S.keys,Math.round(S.frame)].sort((a,b)=>a-b)}),
+      scrubFrame:(e)=>this.slide(e,(v)=>this.setState({frame:Math.round(v/100*60)})),
+      startRender:()=>this.setState({render:0,rendering:true})
+    };
+  }
+}
+</script>
+</body>
+</html>

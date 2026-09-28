@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Venus Rising';src:url('uploads/Venus Rising Rg.otf') format('opentype');font-display:swap}
+*{box-sizing:border-box}
+:root{--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--well:#070908;--ink:#e6eae7;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#b9cfd8;--or:#e0674a;--grn:#2f6b4a;--sand:#d9a486}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:12px;line-height:1.5;-webkit-font-smoothing:antialiased}
+p,button,a{font-family:'Chakra Petch',sans-serif}
+a{color:var(--cy);text-decoration:none}
+input,textarea,button,select{font-family:'Chakra Petch',sans-serif;border:none;outline:none}
+::selection{background:var(--or);color:#0a0d0b}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:999px}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(10,13,11,.94);backdrop-filter:blur(12px);padding:14px 26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+  <a href="kit-ui-sommaire.html" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);padding:8px 15px;font-size:11px;color:var(--ink2)"><svg viewBox="0 0 20 12" style="width:11px;height:7px;fill:none;stroke:currentColor;stroke-width:1.2"><path d="M13 1L7 6L13 11"></path></svg>Sommaire</a>
+  <span style="display:flex;align-items:baseline;gap:10px">
+    <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.22em;color:var(--or);text-transform:uppercase">10_console</span>
+    <span style="font-size:15px;letter-spacing:.1em;text-transform:uppercase">Découpage</span>
+    <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ projectName }}</span>
+  </span>
+  <div style="flex:1;min-width:10px"></div>
+  <button onClick="{{ addScene }}" style="border-radius:999px;background:var(--or);color:#170c08;padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">+ Plan</button>
+  <div style="display:flex;align-items:center;gap:14px;border-radius:12px;background:var(--panel);padding:6px 16px">
+    <span><span style="display:block;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;color:var(--ink3);text-transform:uppercase">Total</span><span style="font-size:18px;line-height:1.1;color:var(--cy)">{{ totalDur }}</span></span>
+    <span style="width:1px;align-self:stretch;background:rgba(185,207,216,.12)"></span>
+    <span><span style="display:block;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;color:var(--ink3);text-transform:uppercase">Décors</span><span style="font-size:18px;line-height:1.1">{{ setCount }}</span></span>
+  </div>
+</header>
+
+<main style="max-width:1440px;margin:0 auto;padding:22px 26px 70px;display:flex;flex-direction:column;gap:22px">
+
+  <section style="display:flex;flex-direction:column;gap:6px">
+    <sc-for list="{{ blocks }}" as="bk" hint-placeholder-count="4">
+      <div onClick="{{ bk.pick }}" style="position:relative;border-radius:14px;background:{{ bk.bg }};padding:16px 20px;min-height:76px;display:flex;align-items:center;gap:16px;cursor:pointer;overflow:hidden;transition:transform .16s" style-hover="transform:translateX(4px)">
+        <span style="position:absolute;right:16px;top:0;bottom:0;width:120px;background-image:radial-gradient({{ bk.dot }} 1px,transparent 1.1px);background-size:7px 7px"></span>
+        <span style="min-width:0;flex:1;position:relative">
+          <span style="display:flex;align-items:baseline;gap:10px">
+            <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.18em;color:{{ bk.sub }}">{{ bk.no }}</span>
+            <span style="font-size:24px;letter-spacing:.06em;text-transform:uppercase;line-height:1;color:{{ bk.ink }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ bk.name }}</span>
+          </span>
+          <span style="display:block;font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:{{ bk.sub }};margin-top:4px">{{ bk.sub2 }}</span>
+        </span>
+        <span style="font-size:17px;color:{{ bk.ink }};flex:none;position:relative">{{ bk.value }}</span>
+      </div>
+    </sc-for>
+  </section>
+
+  <section style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:10px;align-items:start">
+    <div style="border-radius:16px;background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px"><span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Dépouillement</span><span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ sceneCount }} plans</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <sc-for list="{{ scenes }}" as="sc" hint-placeholder-count="8">
+          <div onClick="{{ sc.pick }}" style="display:grid;grid-template-columns:38px minmax(0,1fr) auto auto;gap:12px;align-items:center;border-radius:10px;background:{{ sc.bg }};padding:9px 12px;cursor:pointer">
+            <span style="font-size:13px;color:{{ sc.noInk }}">{{ sc.no }}</span>
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:13px;color:{{ sc.ink }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sc.slug }}</span>
+            <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.12em;color:{{ sc.statusInk }};text-transform:uppercase">{{ sc.status }}</span>
+            <span style="font-size:12px;color:var(--cy)">{{ sc.dur }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-radius:16px;box-shadow:inset 0 0 0 1px rgba(224,103,74,.75);padding:18px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Plan {{ selNo }}</span><span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--or);text-transform:uppercase">{{ selSet }}</span></div>
+        <input value="{{ selSlug }}" onChange="{{ setSlug }}" style="border-radius:10px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.8);color:var(--ink);font-size:13px;padding:9px 12px" style-focus="box-shadow:inset 0 0 0 1px var(--or)">
+        <textarea value="{{ selPrompt }}" onChange="{{ setPrompt }}" rows="4" style="border-radius:10px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.8);color:var(--ink2);font-size:12px;line-height:1.55;padding:9px 12px;resize:vertical"></textarea>
+        <div style="display:flex;gap:5px;flex-wrap:wrap"><sc-for list="{{ statuses }}" as="st" hint-placeholder-count="3"><span onClick="{{ st.pick }}" style="border-radius:999px;box-shadow:{{ st.ring }};padding:5px 12px;font-family:'Chakra Petch',sans-serif;font-size:11px;color:{{ st.ink }};cursor:pointer">{{ st.label }}</span></sc-for></div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap"><sc-for list="{{ sets }}" as="se" hint-placeholder-count="4"><span onClick="{{ se.pick }}" style="border-radius:999px;box-shadow:{{ se.ring }};padding:5px 12px;font-family:'Chakra Petch',sans-serif;font-size:11px;color:{{ se.ink }};cursor:pointer">{{ se.label }}</span></sc-for></div>
+      </div>
+
+      <div style="border-radius:16px;background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Charge machine</span>
+        <sc-for list="{{ loads }}" as="ld" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;justify-content:space-between;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase"><span>{{ ld.label }}</span><span style="color:{{ ld.c }}">{{ ld.disp }}</span></div>
+            <div style="height:7px;border-radius:999px;background:var(--panel3);overflow:hidden"><div style="height:100%;border-radius:999px;background:{{ ld.c }};transition:width .3s;width:{{ ld.pct }}"></div></div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="border-radius:16px;background:var(--grn);color:#eaf3ec;padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;position:relative;overflow:hidden">
+        <span style="position:absolute;right:-8px;top:0;bottom:0;width:120px;background-image:radial-gradient(rgba(234,243,236,.22) 1px,transparent 1.1px);background-size:7px 7px"></span>
+        <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase">Prêt au tournage</span>
+        <span style="font-size:52px;line-height:.9">{{ readyPct }}</span>
+        <span style="font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;position:relative">{{ readyCount }} plans validés</span>
+      </div>
+    </div>
+  </section>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:940}}">
+class Component extends DCLogic {
+  state={ sel:1, nextId:9,
+    scenes:[
+      {id:1,slug:'Ext. crête — aube',set:0,status:2,dur:6,prompt:'Lumière rasante, brume au sol, cadre large sur la ligne de crête.'},
+      {id:2,slug:'Ext. crête — Mara',set:0,status:1,dur:4,prompt:'Portrait à la longue focale, vent dans la capuche.'},
+      {id:3,slug:'Int. abri — radio',set:1,status:0,dur:3,prompt:'Lumière verte de l\'émetteur, gros plan sur les mains.'},
+      {id:4,slug:'Int. abri — Ivo',set:1,status:1,dur:2,prompt:'Contre-champ court, visage moitié dans l\'ombre.'},
+      {id:5,slug:'Ext. passe — descente',set:2,status:0,dur:5,prompt:'Caméra portée, marche dans la neige profonde.'},
+      {id:6,slug:'Ext. passe — traces',set:2,status:2,dur:7,prompt:'Plan d\'ensemble en grue, les traces disparaissent.'},
+      {id:7,slug:'Int. véhicule — retour',set:3,status:0,dur:4,prompt:'Reflets de phares sur le pare-brise.'},
+      {id:8,slug:'Ext. vallée — nuit',set:2,status:1,dur:8,prompt:'Nuit américaine, une seule source chaude au loin.'}
+    ] };
+  renderVals(){
+    const S=this.state,OR='#e0674a',CY='#b9cfd8',G='#3f9a6a',SAND='#d9a486';
+    const ring=(on)=>on?'inset 0 0 0 1px '+OR:'inset 0 0 0 1px rgba(47,107,74,.7)', ink=(on)=>on?OR:'#9ca8a2';
+    const setDefs=['Crête','Abri','Passe','Véhicule'];
+    const statusDefs=[['À écrire','#7c8884'],['En cours',SAND],['Validé',G]];
+    const ramp=['#f0b49b','#e59578','#d47a5c','#a3502f'];
+    const blockDefs=[
+      ['01','Dépouillement','Plans, décors, accessoires'],
+      ['02','Prompts','Consignes image par plan'],
+      ['03','Régie','Matériel et équipe'],
+      ['04','Planning','Ordre de tournage']
+    ];
+    const blocks=blockDefs.map(([no,name,sub2],i)=>({no,name,sub2,
+      bg:ramp[i], ink:i>2?'#fdf3ee':'#241109',
+      sub:i>2?'rgba(253,243,238,.82)':'rgba(36,17,9,.78)',
+      dot:i>2?'rgba(253,243,238,.3)':'rgba(36,17,9,.3)',
+      value:[S.scenes.length+' plans','8 prompts','12 postes','4 jours'][i],
+      pick:()=>this.setState({block:i})}));
+    const scenes=S.scenes.map((s,i)=>({
+      no:String(i+1).padStart(2,'0'), slug:s.slug, dur:s.dur+' s',
+      status:statusDefs[s.status][0], statusInk:statusDefs[s.status][1],
+      bg:S.sel===s.id?'var(--panel3)':'var(--panel2)',
+      ink:S.sel===s.id?'#e6eae7':'#9ca8a2', noInk:S.sel===s.id?OR:'#7c8884',
+      pick:()=>this.setState({sel:s.id})}));
+    const sel=S.scenes.find(s=>s.id===S.sel)||S.scenes[0];
+    const upd=(fn)=>this.setState({scenes:this.state.scenes.map(s=>s.id!==sel.id?s:fn(s))});
+    const statuses=statusDefs.map(([label],i)=>({label,ring:ring(sel.status===i),ink:ink(sel.status===i),pick:()=>upd(s=>({...s,status:i}))}));
+    const sets=setDefs.map((label,i)=>({label,ring:ring(sel.set===i),ink:ink(sel.set===i),pick:()=>upd(s=>({...s,set:i}))}));
+    const loadDefs=[['Rendu',72,OR],['Stockage',43,CY],['Réseau',28,G],['File d\'attente',61,SAND]];
+    const loads=loadDefs.map(([label,v,c])=>({label,c,pct:v+'%',disp:v+' %'}));
+    const total=S.scenes.reduce((a,s)=>a+s.dur,0);
+    const ready=S.scenes.filter(s=>s.status===2).length;
+    return { projectName:'Épisode 04 — Verdant', blocks, scenes, statuses, sets, loads,
+      sceneCount:S.scenes.length, setCount:new Set(S.scenes.map(s=>s.set)).size,
+      totalDur:Math.floor(total/60)+':'+String(total%60).padStart(2,'0'),
+      selNo:String(S.scenes.findIndex(s=>s.id===sel.id)+1).padStart(2,'0'),
+      selSlug:sel.slug, selPrompt:sel.prompt, selSet:setDefs[sel.set],
+      readyPct:Math.round(ready/S.scenes.length*100)+' %', readyCount:ready,
+      setSlug:(e)=>upd(s=>({...s,slug:e.target.value})),
+      setPrompt:(e)=>upd(s=>({...s,prompt:e.target.value})),
+      addScene:()=>{const id=S.nextId;this.setState({nextId:id+1,sel:id,scenes:[...S.scenes,{id,slug:'Nouveau plan',set:0,status:0,dur:4,prompt:''}]})} };
+  }
+}
+</script>
+</body>
+</html>

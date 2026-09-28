@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Venus Rising';src:url('uploads/Venus Rising Rg.otf') format('opentype');font-display:swap}
+*{box-sizing:border-box}
+:root{--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--well:#070908;--ink:#e6eae7;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#b9cfd8;--or:#e0674a;--grn:#2f6b4a;--grn2:#3f9a6a;--sand:#d9a486}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:12px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden}
+p,button,a{font-family:'Chakra Petch',sans-serif}
+a{color:var(--cy);text-decoration:none}
+input,textarea,button,select{font-family:'Chakra Petch',sans-serif;border:none;outline:none}
+::selection{background:var(--or);color:#0a0d0b}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:999px}
+</style>
+</helmet>
+
+<div style="height:100vh;display:flex;flex-direction:column;gap:10px;padding:12px 16px 14px">
+  <header style="flex:none;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+    <a href="kit-ui-sommaire.html" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);padding:8px 15px;font-size:11px;color:var(--ink2)"><svg viewBox="0 0 20 12" style="width:11px;height:7px;fill:none;stroke:currentColor;stroke-width:1.2"><path d="M13 1L7 6L13 11"></path></svg>Sommaire</a>
+    <span style="display:flex;align-items:baseline;gap:10px">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.22em;color:var(--or);text-transform:uppercase">44_table</span>
+      <span style="font-size:15px;letter-spacing:.1em;text-transform:uppercase">Canvas</span>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ boardName }}</span>
+    </span>
+    <div style="flex:1;min-width:10px"></div>
+    <div style="display:flex;gap:5px">
+      <sc-for list="{{ tools }}" as="tl" hint-placeholder-count="5">
+        <button onClick="{{ tl.pick }}" title="{{ tl.name }}" style="width:34px;height:32px;border-radius:10px;background:transparent;box-shadow:{{ tl.ring }};display:flex;align-items:center;justify-content:center;cursor:pointer">
+          <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:none;stroke:{{ tl.ink }};stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ tl.path }}"></path></svg>
+        </button>
+      </sc-for>
+    </div>
+    <button onClick="{{ openLib }}" style="border-radius:999px;background:var(--or);color:#170c08;padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Bibliothèque</button>
+    <div style="display:flex;align-items:center;gap:4px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);padding:3px 5px">
+      <span onClick="{{ zoomOut }}" style="width:24px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--ink2);cursor:pointer">−</span>
+      <span style="min-width:44px;text-align:center;font-size:11px">{{ zoomDisp }}</span>
+      <span onClick="{{ zoomIn }}" style="width:24px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--ink2);cursor:pointer">+</span>
+      <span onClick="{{ fit }}" style="border-radius:999px;background:var(--panel3);padding:4px 11px;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--ink2);text-transform:uppercase;cursor:pointer">Ajuster</span>
+    </div>
+  </header>
+
+  <div style="flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 278px;gap:10px">
+
+    <div onPointerDown="{{ bgDown }}" onWheel="{{ wheel }}" onPointerMove="{{ canvasMove }}" onPointerUp="{{ canvasUp }}" onContextMenu="{{ noMenu }}" style="position:relative;border-radius:14px;background:var(--well);overflow:hidden;overscroll-behavior:contain;cursor:{{ cursor }};touch-action:none">
+      <span style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(185,207,216,.11) 1px,transparent 1.2px);background-size:{{ gridSize }};background-position:{{ gridPos }}"></span>
+
+      <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible">
+        <sc-for list="{{ edges }}" as="ed" hint-placeholder-count="4">
+          <path d="{{ ed.d }}" fill="none" stroke="{{ ed.c }}" stroke-width="1.5" stroke-linecap="round"></path>
+        </sc-for>
+        <sc-if value="{{ linking }}" hint-placeholder-val="{{ false }}"><path d="{{ linkPath }}" fill="none" stroke="#e0674a" stroke-width="1.5" stroke-dasharray="5 4"></path></sc-if>
+      </svg>
+
+      <sc-for list="{{ nodes }}" as="nd" hint-placeholder-count="6">
+        <div onPointerDown="{{ nd.grab }}" style="position:absolute;border-radius:{{ nd.radius }};background:{{ nd.bg }};cursor:grab;left:{{ nd.x }};top:{{ nd.y }};width:{{ nd.w }};height:{{ nd.h }}">
+          <span style="position:absolute;inset:0;border-radius:{{ nd.radius }};box-shadow:{{ nd.ring }};pointer-events:none"></span>
+          <span style="position:absolute;inset:0;overflow:hidden;border-radius:{{ nd.radius }};display:block;padding:{{ nd.pad }}">
+            <span style="display:flex;align-items:center;gap:7px">
+              <svg viewBox="0 0 24 24" style="flex:none;width:{{ nd.iconSize }};height:{{ nd.iconSize }};fill:none;stroke:{{ nd.ink }};stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><path d="{{ nd.icon }}"></path></svg>
+              <span style="font-family:'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:{{ nd.sub }};font-size:{{ nd.metaSize }}">{{ nd.kind }}</span>
+              <span style="margin-left:auto;font-family:'Azeret Mono',monospace;letter-spacing:.14em;color:{{ nd.sub }};font-size:{{ nd.metaSize }}">{{ nd.no }}</span>
+            </span>
+            <span style="display:block;font-family:'Venus Rising','Chakra Petch',sans-serif;letter-spacing:.05em;text-transform:uppercase;line-height:1.12;margin-top:6px;color:{{ nd.ink }};font-size:{{ nd.titleSize }}">{{ nd.title }}</span>
+            <sc-if value="{{ nd.showBody }}" hint-placeholder-val="{{ true }}">
+              <span style="display:block;font-family:'Chakra Petch',sans-serif;font-size:11.5px;line-height:1.5;margin-top:7px;color:{{ nd.bodyInk }}">{{ nd.body }}</span>
+            </sc-if>
+            <sc-if value="{{ nd.showTags }}" hint-placeholder-val="{{ true }}">
+              <span style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
+                <sc-for list="{{ nd.tags }}" as="tg" hint-placeholder-count="2"><span style="border-radius:999px;box-shadow:inset 0 0 0 1px {{ tg.ring }};padding:3px 9px;font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:{{ tg.ink }}">{{ tg.label }}</span></sc-for>
+              </span>
+            </sc-if>
+          </span>
+          <span onPointerUp="{{ nd.dropLink }}" title="Entrée" style="position:absolute;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#070908;box-shadow:inset 0 0 0 2px {{ nd.portRing }};cursor:crosshair;transition:transform .12s,background .12s;left:0;width:{{ nd.portSize }};height:{{ nd.portSize }}" style-hover="transform:translate(-50%,-50%) scale(1.35);background:{{ nd.portRing }}"></span>
+          <span onPointerDown="{{ nd.startLink }}" title="Sortie · tire un fil" style="position:absolute;top:50%;transform:translate(50%,-50%);border-radius:50%;background:#070908;box-shadow:inset 0 0 0 2px {{ nd.portRing }};cursor:crosshair;transition:transform .12s,background .12s;right:0;width:{{ nd.portSize }};height:{{ nd.portSize }}" style-hover="transform:translate(50%,-50%) scale(1.35);background:{{ nd.portRing }}"></span>
+        </div>
+      </sc-for>
+
+      <sc-if value="{{ marquee }}" hint-placeholder-val="{{ false }}">
+        <span style="position:absolute;border-radius:12px;box-shadow:inset 0 0 0 1.5px rgba(224,103,74,.9);background:rgba(224,103,74,.08);pointer-events:none;left:{{ mqX }};top:{{ mqY }};width:{{ mqW }};height:{{ mqH }}"></span>
+      </sc-if>
+
+      <sc-if value="{{ libOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;z-index:8;width:308px;border-radius:14px;background:var(--panel);box-shadow:0 18px 40px rgba(0,0,0,.55),inset 0 0 0 1px rgba(224,103,74,.7);padding:13px;display:flex;flex-direction:column;gap:9px;left:{{ libX }};top:{{ libY }}">
+          <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Bibliothèque de nœuds</span><span onClick="{{ closeLib }}" style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.12em;color:var(--or);text-transform:uppercase;cursor:pointer">Fermer</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;max-height:268px;overflow-y:auto">
+            <sc-for list="{{ library }}" as="lb" hint-placeholder-count="12">
+              <div onClick="{{ lb.create }}" style="display:flex;align-items:center;gap:8px;border-radius:10px;background:var(--panel2);padding:8px 9px;cursor:pointer" style-hover="background:var(--panel3)">
+                <span style="width:22px;height:22px;border-radius:7px;flex:none;display:flex;align-items:center;justify-content:center;background:{{ lb.c }}"><svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:none;stroke:{{ lb.ink }};stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round"><path d="{{ lb.icon }}"></path></svg></span>
+                <span style="font-family:'Chakra Petch',sans-serif;font-size:11px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ lb.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <span style="position:absolute;left:12px;bottom:10px;pointer-events:none;border-radius:999px;background:rgba(10,13,11,.8);padding:5px 12px;font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ hint }}</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;min-height:0;overflow-y:auto;overflow-x:hidden">
+      <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ true }}">
+        <div style="border-radius:14px;box-shadow:inset 0 0 0 1px rgba(224,103,74,.75);padding:14px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Nœud</span><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--or);text-transform:uppercase">{{ selKind }}</span></div>
+          <input value="{{ selTitle }}" onChange="{{ setTitle }}" style="border-radius:10px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.8);color:var(--ink);font-size:13px;padding:9px 12px" style-focus="box-shadow:inset 0 0 0 1px var(--or)">
+          <textarea value="{{ selBody }}" onChange="{{ setBody }}" rows="4" style="border-radius:10px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.8);color:var(--ink2);font-size:11.5px;line-height:1.55;padding:9px 12px;resize:vertical"></textarea>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <sc-for list="{{ palette }}" as="pl" hint-placeholder-count="6"><span onClick="{{ pl.pick }}" style="width:26px;height:26px;border-radius:8px;cursor:pointer;background:{{ pl.hex }};box-shadow:{{ pl.ring }}"></span></sc-for>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button onClick="{{ duplicate }}" style="flex:1;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);color:var(--ink2);padding:8px 10px;font-size:11px;cursor:pointer">Dupliquer</button>
+            <button onClick="{{ remove }}" style="flex:1;border-radius:999px;background:rgba(224,103,74,.16);color:var(--or);padding:8px 10px;font-size:11px;cursor:pointer">Retirer</button>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ noSel }}" hint-placeholder-val="{{ false }}">
+        <div style="border-radius:14px;box-shadow:inset 0 0 0 1px rgba(185,207,216,.12);padding:18px;font-family:'Chakra Petch',sans-serif;font-size:12px;color:var(--ink3);text-align:center">Aucun nœud sélectionné — trace un cadre sur le fond pour en créer un.</div>
+      </sc-if>
+
+      <div style="border-radius:14px;background:var(--panel);padding:14px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Plan</span><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--ink3)">{{ nodeCount }} nœuds · {{ edgeCount }} liens</span></div>
+        <sc-for list="{{ outline }}" as="ol" hint-placeholder-count="6">
+          <div onClick="{{ ol.pick }}" style="display:flex;align-items:center;gap:9px;border-radius:9px;background:{{ ol.bg }};padding:7px 10px;cursor:pointer">
+            <span style="width:7px;height:7px;border-radius:2px;background:{{ ol.dot }};flex:none"></span>
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:11.5px;color:{{ ol.ink }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1">{{ ol.title }}</span>
+            <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--ink3);flex:none">{{ ol.kind }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="border-radius:14px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.7);padding:14px;display:flex;flex-direction:column;gap:8px">
+        <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Liens</span>
+        <sc-for list="{{ edgeList }}" as="el" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:9px;border-radius:9px;background:var(--panel2);padding:7px 10px">
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:11px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ el.label }}</span>
+            <span onClick="{{ el.cut }}" style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--or);text-transform:uppercase;cursor:pointer;flex:none">Couper</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const KINDS=[
+  ['Séquence','#e0674a','M4 6h16M4 12h16M4 18h10'],
+  ['Idée','#2f6b4a','M12 3a6 6 0 0 0-3 11v3h6v-3a6 6 0 0 0-3-11zM10 21h4'],
+  ['Note','#d9a486','M5 4h11l4 4v12H5zM16 4v4h4'],
+  ['Personnage','#b9cfd8','M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0'],
+  ['Décor','#3f9a6a','M3 20l6-9 4 5 3-4 5 8zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'],
+  ['Dialogue','#d47a5c','M4 5h16v11H9l-5 4z'],
+  ['Musique','#a3502f','M9 18V6l10-2v12M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM19 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z'],
+  ['Effet','#7a3a22','M13 2L5 14h6l-1 8 8-12h-6z'],
+  ['Plan','#9ab0b8','M3 5h18v14H3zM3 10h18M9 5v14'],
+  ['Repère','#e59578','M6 3v18M6 3l12 4-12 4'],
+  ['Décision','#78b08f','M12 3l9 9-9 9-9-9z'],
+  ['Ressource','#76878e','M4 7l8-4 8 4-8 4zM4 12l8 4 8-4M4 17l8 4 8-4'],
+  ['Tâche','#f0b49b','M4 12l5 5L20 6'],
+  ['Risque','#c2462f','M12 3l10 18H2zM12 9v5M12 17h.01']
+];
+class Component extends DCLogic {
+  state={ z:1,px:70,py:50,sel:2,tool:0,link:null,linkPos:null,mode:null,nextId:8,
+    lib:null, mq:null,
+    nodes:[
+      {id:1,kind:'Séquence',title:'Ouverture',body:'Plan large sur la crête, lumière rasante.',c:'#e0674a',x:40,y:40,tags:['Acte I','2 min']},
+      {id:2,kind:'Idée',title:'Signal perdu',body:'Le relais cesse d\'émettre au milieu de la scène.',c:'#2f6b4a',x:340,y:120,tags:['Tension']},
+      {id:3,kind:'Note',title:'Palette',body:'Corail sur vert profond, pas de bleu franc.',c:'#d9a486',x:70,y:280,tags:['DA']},
+      {id:4,kind:'Personnage',title:'Mara',body:'Ne dit jamais ce qu\'elle a vu en bas.',c:'#b9cfd8',x:640,y:210,tags:['Principal']},
+      {id:5,kind:'Dialogue',title:'Fin ouverte',body:'« On repart à l\'aube, sans les caisses. »',c:'#d47a5c',x:400,y:380,tags:['Acte III']},
+      {id:6,kind:'Musique',title:'Thème du vent',body:'Nappe basse, pas de percussion avant la passe.',c:'#a3502f',x:780,y:60,tags:['Son']},
+      {id:7,kind:'Décor',title:'La passe',body:'Neige profonde, visibilité dix mètres.',c:'#3f9a6a',x:760,y:390,tags:['Extérieur']}
+    ],
+    edges:[{a:1,b:2},{a:2,b:4},{a:4,b:5},{a:7,b:5}] };
+  W(){return 212}
+  detail(){const z=this.state.z;return z>=.95?2:(z>=.58?1:0)}
+  H(n){ const d=this.detail();
+    let h=26+14+6+Math.max(1,Math.ceil(n.title.length/11))*21;
+    if(d>=1&&n.body) h+= 7 + Math.max(1,Math.ceil(n.body.length/26))*17;
+    if(d>=2&&n.tags.length) h+= 8+22;
+    return Math.max(68,h) }
+  scr(x,y){const S=this.state;return [x*S.z+S.px,y*S.z+S.py]}
+  renderVals(){
+    const S=this.state,OR='#e0674a',z=S.z,W=this.W(),d=this.detail();
+    const ring=(on)=>on?'inset 0 0 0 1px '+OR:'inset 0 0 0 1px rgba(47,107,74,.7)', ink=(on)=>on?OR:'#9ca8a2';
+    const byId=(id)=>S.nodes.find(n=>n.id===id);
+    const iconOf=(kind)=>(KINDS.find(k=>k[0]===kind)||KINDS[0])[2];
+    const toolDefs=[['Sélection','M4 3l14 8-6 2-2 6z'],['Main','M7 11V6a1.5 1.5 0 0 1 3 0v5V4a1.5 1.5 0 0 1 3 0v7V6a1.5 1.5 0 0 1 3 0v9a5 5 0 0 1-5 5H9l-4-5'],['Lien','M9 15l6-6M7 17a3 3 0 0 1 0-4l2-2M17 7a3 3 0 0 1 0 4l-2 2'],['Texte','M5 6h14M12 6v12'],['Zoom','M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4']];
+    const tools=toolDefs.map(([name,path],i)=>({name,path,ring:ring(S.tool===i),ink:ink(S.tool===i),pick:()=>this.setState({tool:i})}));
+
+    const nodes=S.nodes.map((n,i)=>{
+      const [sx,sy]=this.scr(n.x,n.y), selN=S.sel===n.id, H=this.H(n);
+      const rgb=[1,3,5].map(k=>parseInt(n.c.substr(k,2),16));
+      const light=(0.2126*rgb[0]+0.7152*rgb[1]+0.0722*rgb[2])/255>0.36;
+      return { x:sx.toFixed(1)+'px', y:sy.toFixed(1)+'px', w:(W*z).toFixed(1)+'px', h:(H*z).toFixed(1)+'px',
+        radius:(13*z).toFixed(1)+'px', pad:(13*z).toFixed(1)+'px',
+        bg:n.c, ring:selN?'inset 0 0 0 2px #fdf3ee':'inset 0 0 0 1px rgba(10,13,11,.35)',
+        ink:light?'#170c08':'#fdf3ee', sub:light?'#2e1a10':'#f2e7e1', bodyInk:light?'#221208':'#f6ece7',
+        portRing:n.c, portSize:(14*Math.max(.7,Math.min(1.1,z))).toFixed(1)+'px',
+        icon:iconOf(n.kind), iconSize:(13*z).toFixed(1)+'px',
+        kind:n.kind, no:String(i+1).padStart(2,'0'), title:n.title, body:n.body,
+        titleSize:(18*z).toFixed(1)+'px', metaSize:(8*z).toFixed(1)+'px',
+        showBody:d>=1&&!!n.body, showTags:d>=2&&n.tags.length>0,
+        tags:n.tags.map(label=>({label,ring:light?'rgba(23,12,8,.5)':'rgba(253,243,238,.55)',ink:light?'#170c08':'#fdf3ee'})),
+        grab:(e)=>{ if(e.button!==0)return; e.preventDefault(); e.stopPropagation(); this.setState({sel:n.id,lib:null});
+          const x0=e.clientX,y0=e.clientY,nx=n.x,ny=n.y;
+          const mv=(ev)=>this.setState({nodes:this.state.nodes.map(m=>m.id!==n.id?m:{...m,x:nx+(ev.clientX-x0)/this.state.z,y:ny+(ev.clientY-y0)/this.state.z})});
+          const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+          window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) },
+        startLink:(e)=>{ e.preventDefault(); e.stopPropagation(); this.setState({link:n.id,linkPos:null,sel:n.id,lib:null}) },
+        dropLink:(e)=>{ e.stopPropagation(); const a=this.state.link;
+          if(a&&a!==n.id&&!this.state.edges.some(c=>c.a===a&&c.b===n.id)) this.setState({edges:[...this.state.edges,{a,b:n.id}]});
+          this.setState({link:null,linkPos:null}) } };
+    });
+
+    const pOut=(n)=>{const [sx,sy]=this.scr(n.x,n.y);return [sx+W*z, sy+this.H(n)*z/2]};
+    const pIn=(n)=>{const [sx,sy]=this.scr(n.x,n.y);return [sx, sy+this.H(n)*z/2]};
+    const curve=(x1,y1,x2,y2)=>{const dx=Math.max(46,Math.abs(x2-x1)*.48);return `M${x1.toFixed(1)} ${y1.toFixed(1)} C${(x1+dx).toFixed(1)} ${y1.toFixed(1)}, ${(x2-dx).toFixed(1)} ${y2.toFixed(1)}, ${x2.toFixed(1)} ${y2.toFixed(1)}`};
+    const edges=S.edges.map(e=>{const A=byId(e.a),B=byId(e.b);if(!A||!B)return{d:'',c:'transparent'};const[x1,y1]=pOut(A),[x2,y2]=pIn(B);return{d:curve(x1,y1,x2,y2),c:A.c}});
+    const edgeList=S.edges.map((e,i)=>({label:((byId(e.a)||{}).title||'?')+' → '+((byId(e.b)||{}).title||'?'),cut:()=>this.setState({edges:S.edges.filter((_,j)=>j!==i)})}));
+    let linkPath='';
+    if(S.link&&S.linkPos){const A=byId(S.link);if(A){const[x1,y1]=pOut(A);linkPath=curve(x1,y1,S.linkPos[0],S.linkPos[1])}}
+
+    const sel=byId(S.sel);
+    const outline=S.nodes.map(n=>({title:n.title,kind:n.kind,dot:n.c,bg:S.sel===n.id?'var(--panel3)':'transparent',ink:S.sel===n.id?'#e6eae7':'#9ca8a2',pick:()=>this.setState({sel:n.id})}));
+    const palette=['#e0674a','#d47a5c','#a3502f','#2f6b4a','#b9cfd8','#d9a486'].map(hex=>({hex,ring:sel&&sel.c===hex?'inset 0 0 0 2px #fdf3ee':'inset 0 0 0 1px rgba(185,207,216,.2)',
+      pick:()=>sel&&this.setState({nodes:S.nodes.map(n=>n.id!==sel.id?n:{...n,c:hex})})}));
+
+    const mkNode=(kind,c,wx,wy)=>{ const id=S.nextId;
+      this.setState({nextId:id+1,sel:id,lib:null,mq:null,nodes:[...this.state.nodes,{id,kind,title:kind,body:'',c,x:wx,y:wy,tags:[]}]}) };
+    const lib=S.lib;
+    const library=KINDS.map(([label,c,icon])=>{
+      const rgb=[1,3,5].map(k=>parseInt(c.substr(k,2),16));
+      const light=(0.2126*rgb[0]+0.7152*rgb[1]+0.0722*rgb[2])/255>0.36;
+      return {label,c,icon,ink:light?'#170c08':'#fdf3ee',
+        create:()=>{ const wx=lib?(lib.cx-S.px)/z:( -S.px+260)/z, wy=lib?(lib.cy-S.py)/z:(-S.py+160)/z; mkNode(label,c,wx,wy) }};
+    });
+
+    const setZoom=(nz,cx,cy)=>this.setState({z:nz,px:cx-(cx-this.state.px)*(nz/this.state.z),py:cy-(cy-this.state.py)*(nz/this.state.z)});
+    const mq=S.mq;
+    return {
+      boardName:'Table — Verdant 03', tools, nodes, edges, edgeList, linkPath, outline, palette, library,
+      linking:!!(S.link&&S.linkPos), hasSel:!!sel, noSel:!sel,
+      libOpen:!!lib, libX:lib?Math.min(lib.cx,520)+'px':'0px', libY:lib?Math.min(lib.cy,240)+'px':'0px',
+      marquee:!!mq, mqX:mq?Math.min(mq.x0,mq.x1)+'px':'0px', mqY:mq?Math.min(mq.y0,mq.y1)+'px':'0px',
+      mqW:mq?Math.abs(mq.x1-mq.x0)+'px':'0px', mqH:mq?Math.abs(mq.y1-mq.y0)+'px':'0px',
+      selKind:sel?sel.kind:'', selTitle:sel?sel.title:'', selBody:sel?sel.body:'',
+      nodeCount:S.nodes.length, edgeCount:S.edges.length,
+      zoomDisp:Math.round(z*100)+'%', gridSize:(26*z).toFixed(1)+'px '+(26*z).toFixed(1)+'px', gridPos:S.px.toFixed(0)+'px '+S.py.toFixed(0)+'px',
+      cursor:S.link?'crosshair':(S.mode==='pan'?'grabbing':'crosshair'),
+      hint:S.link?'Relâche sur la pastille gauche d\'une carte':'Molette : zoom · bouton milieu : déplacer · glisser : nouveau nœud',
+      noMenu:(e)=>e.preventDefault(),
+      setTitle:(e)=>sel&&this.setState({nodes:S.nodes.map(n=>n.id!==sel.id?n:{...n,title:e.target.value})}),
+      setBody:(e)=>sel&&this.setState({nodes:S.nodes.map(n=>n.id!==sel.id?n:{...n,body:e.target.value})}),
+      duplicate:()=>{if(!sel)return;const id=S.nextId;this.setState({nextId:id+1,sel:id,nodes:[...S.nodes,{...sel,id,x:sel.x+40,y:sel.y+40}]})},
+      remove:()=>{if(!sel)return;this.setState({sel:null,nodes:S.nodes.filter(n=>n.id!==sel.id),edges:S.edges.filter(e=>e.a!==sel.id&&e.b!==sel.id)})},
+      zoomIn:()=>setZoom(Math.min(2,+(z+.15).toFixed(2)),420,300), zoomOut:()=>setZoom(Math.max(.35,+(z-.15).toFixed(2)),420,300),
+      openLib:()=>this.setState({lib:{cx:180,cy:80}}), closeLib:()=>this.setState({lib:null}),
+      fit:()=>{const xs=S.nodes.map(n=>n.x),ys=S.nodes.map(n=>n.y);const minX=Math.min(...xs)-40,minY=Math.min(...ys)-40;
+        const maxX=Math.max(...xs)+W+40,maxY=Math.max(...S.nodes.map(n=>n.y+this.H(n)))+40;
+        const nz=Math.max(.35,Math.min(1.2,Math.min(760/(maxX-minX),480/(maxY-minY))));
+        this.setState({z:nz,px:-minX*nz+20,py:-minY*nz+20})},
+      bgDown:(e)=>{ if(S.link){this.setState({link:null,linkPos:null});return}
+        const r=e.currentTarget.getBoundingClientRect();
+        if(e.button===1||e.button===2||S.tool===1){ e.preventDefault(); this.setState({mode:'pan',lib:null});
+          const x0=e.clientX,y0=e.clientY,px=S.px,py=S.py;
+          const mv=(ev)=>this.setState({px:px+(ev.clientX-x0),py:py+(ev.clientY-y0)});
+          const up=()=>{this.setState({mode:null});window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+          window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up); return }
+        if(e.button!==0) return;
+        this.setState({sel:null,lib:null,mode:'mq',mq:{x0:e.clientX-r.left,y0:e.clientY-r.top,x1:e.clientX-r.left,y1:e.clientY-r.top}}) },
+      canvasMove:(e)=>{ const r=e.currentTarget.getBoundingClientRect();
+        if(this.state.link){ this.setState({linkPos:[e.clientX-r.left,e.clientY-r.top]}); return }
+        if(this.state.mode==='mq'&&this.state.mq) this.setState({mq:{...this.state.mq,x1:e.clientX-r.left,y1:e.clientY-r.top}}) },
+      canvasUp:(e)=>{ if(this.state.link){ this.setState({link:null,linkPos:null}); return }
+        if(this.state.mode==='mq'){ const m=this.state.mq;
+          const big=m&&Math.abs(m.x1-m.x0)>26&&Math.abs(m.y1-m.y0)>18;
+          this.setState({mode:null,mq:null,lib:big?{cx:Math.min(m.x0,m.x1),cy:Math.min(m.y0,m.y1)}:null}) } },
+      wheel:(e)=>{ e.preventDefault(); e.stopPropagation(); const r=e.currentTarget.getBoundingClientRect();
+        const nz=Math.max(.35,Math.min(2,+(z*(e.deltaY<0?1.12:.89)).toFixed(3))); setZoom(nz,e.clientX-r.left,e.clientY-r.top) }
+    };
+  }
+}
+</script>
+</body>
+</html>

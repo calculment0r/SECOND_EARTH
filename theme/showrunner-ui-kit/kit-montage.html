@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Saira+Semi+Condensed:wght@400;500;600&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+@font-face{font-family:'Venus Rising';src:url('uploads/Venus Rising Rg.otf') format('opentype');font-display:swap}
+*{box-sizing:border-box}
+:root{--bg:#090b0a;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--ink:#e6eae7;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#c6d5dc;--cy2:#76878e;--cy3:#1a201d;--or:#d9634a;--or2:#e08a6e;--grn:#2b7050;--sand:#d9a486;--good:#2b7050;--hair:rgba(198,213,220,.19);--hair2:rgba(198,213,220,.1)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Venus Rising','Saira Semi Condensed',sans-serif;font-variant-numeric:tabular-nums;font-size:12px;line-height:1.6;letter-spacing:0;-webkit-font-smoothing:antialiased}
+p,button,a{font-family:'Chakra Petch',sans-serif}
+h2,h3,h4{font-family:'Venus Rising','Chakra Petch',sans-serif;letter-spacing:.1em}
+h1{font-family:'Venus Rising','Chakra Petch',sans-serif;font-weight:400;letter-spacing:.14em;line-height:1.24}
+input,textarea,button,select{border:none;outline:none}
+a{color:var(--cy);text-decoration:none}a:hover{color:#fff}
+::selection{background:var(--or);color:#000}
+@keyframes nlBlink{50%{opacity:.2}}
+</style>
+</helmet>
+
+<header style="background:var(--panel2);display:grid;grid-template-columns:auto auto 1fr auto;gap:22px;align-items:center;padding:12px 30px">
+  <a href="kit-ui-sommaire.html" style="font-size:8.5px;letter-spacing:.1em;border-radius:16px;background:var(--panel);padding:6px 12px;color:var(--ink2)" style-hover="border-color:var(--hair);color:#fff"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 20 12" style="width:10px;height:7px;display:block;fill:none;stroke:currentColor;stroke-width:1;stroke-linejoin:round"><path d="M13 1L7 6L13 11"></path></svg>Sommaire</span></a>
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <span style="font-family:'Venus Rising','Saira Semi Condensed',sans-serif;font-variant-numeric:tabular-nums;font-size:13px;font-weight:500;color:var(--cy)">NL—24</span>
+    <span style="font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.2em">Montage</span>
+    <span style="font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">Banc</span>
+  </div>
+  <div style="height:1px;background:var(--hair2)"></div>
+  <div style="font-family:'Venus Rising','Saira Semi Condensed',sans-serif;font-variant-numeric:tabular-nums;font-size:14px;font-weight:500;color:var(--cy);letter-spacing:.1em;border-radius:16px;background:var(--panel);padding:4px 10px">{{ tc }}</div>
+</header>
+
+<main style="max-width:1560px;margin:0 auto;padding:30px 40px 70px;display:flex;flex-direction:column;gap:14px">
+  <div style="display:grid;grid-template-columns:1fr 300px;gap:14px;align-items:stretch">
+    <div style="border-radius:16px;background:var(--panel);padding:14px;position:relative">
+      <div style="display:flex;justify-content:space-between;font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase;margin-bottom:10px">
+        <span style="color:var(--cy)">.Programme — live feed</span><span>Port A · 885X camera</span>
+      </div>
+      <div style="position:relative;aspect-ratio:16/9;background:var(--panel3);border-radius:12px;overflow:hidden">
+        <div style="position:absolute;inset:5%;border:1px dashed rgba(198,213,220,.22)"></div>
+        <div style="position:absolute;inset:11%;border:1px dashed rgba(198,213,220,.12)"></div>
+        <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:14px;height:1px;background:var(--or)"></div>
+        <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:1px;height:14px;background:var(--or)"></div>
+        <div style="position:absolute;left:10px;bottom:8px;font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">Plan {{ selName }}</div>
+        <div style="position:absolute;right:10px;top:8px;font-family:'Venus Rising','Saira Semi Condensed',sans-serif;font-variant-numeric:tabular-nums;font-size:9px;color:var(--cy)">F5.6 · ROT 90°</div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:14px">
+        <sc-for list="{{ transport }}" as="t" hint-placeholder-count="5">
+          <button onClick="{{ t.act }}" style="background:{{ t.bg }};border-radius:12px;background:var(--panel2);width:44px;height:28px;padding:0;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(198,213,220,.12)"><svg viewBox="0 0 20 12" style="width:18px;height:11px;display:block;fill:none;stroke:{{ t.fg }};stroke-width:1;stroke-linejoin:round"><path d="{{ t.g }}"></path></svg></button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="border-radius:16px;background:var(--panel);padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">Molette · jog</div>
+        <div style="width:110px;height:110px;border:3px dotted var(--cy2);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative" style-before="content:'';position:absolute;inset:14px;border:1px solid var(--hair2);border-radius:50%">
+          <div style="position:absolute;left:50%;top:4px;width:2px;height:12px;background:var(--or);transform-origin:50% 51px;transform:translateX(-50%) rotate({{ jogDeg }}deg)"></div>
+          <span style="font-family:'Venus Rising','Saira Semi Condensed',sans-serif;font-variant-numeric:tabular-nums;font-size:13px;color:var(--cy)">{{ frame }}</span>
+        </div>
+        <input type="range" min="0" max="359" value="{{ jogDeg }}" onChange="{{ setJog }}" style="appearance:none;width:100%;height:1px;background:var(--hair);outline:none;accentColor:#d9634a;border-radius:12px">
+      </div>
+      <div style="border-radius:16px;background:var(--panel);padding:22px 18px;display:flex;flex-direction:column;gap:9px">
+        <div style="font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">Scopes</div>
+        <sc-for list="{{ scopes }}" as="m" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center">
+            <span style="font-size:8px;letter-spacing:.1em;color:var(--ink2)">{{ m.label }}</span>
+            <span style="display:flex;gap:2px"><sc-for list="{{ m.cells }}" as="c" hint-placeholder-count="20"><span style="width:5px;height:8px;background:{{ c }}"></span></sc-for></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-radius:16px;background:var(--panel)">
+    <div style="background:var(--panel2);display:flex;justify-content:space-between;padding:10px 18px">
+      <span style="font-family:'Chakra Petch',sans-serif;font-size:10px;letter-spacing:.1em">Timeline</span>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">Séquence EP.04 — cut 07 · <span style="color:var(--or)">{{ selName }}</span></span>
+    </div>
+    <div style="position:relative;padding:0 18px 14px">
+      <div style="display:flex;justify-content:space-between;font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase;padding:8px 0 6px">
+        <span>00:00</span><span>00:30</span><span>01:00</span><span>01:30</span><span>02:00</span><span>02:30</span>
+      </div>
+      <div style="position:relative">
+        <sc-for list="{{ trackRows }}" as="tr" hint-placeholder-count="3">
+          <div style="position:relative;height:34px;margin-bottom:4px;background:rgba(198,213,220,.02)">
+            <span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ tr.name }}</span>
+            <sc-for list="{{ tr.clips }}" as="c" hint-placeholder-count="4">
+              <div onClick="{{ c.pick }}" style="border-radius:12px;box-shadow:inset 0 0 0 1px {{ c.bc }};position:absolute;top:3px;bottom:3px;left:{{ c.l }}%;width:{{ c.w }}%;background:{{ c.bg }};cursor:grab;display:flex;align-items:center;padding:0 8px;overflow:hidden" style-before="content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:{{ c.bc }};cursor:ew-resize" style-after="content:'';position:absolute;right:0;top:0;bottom:0;width:4px;background:{{ c.bc }};cursor:ew-resize">
+                <span style="font-size:7px;letter-spacing:.1em;color:var(--ink2);white-space:nowrap">{{ c.name }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="position:absolute;top:-6px;bottom:0;left:{{ playPct }}%;width:1px;background:var(--or);z-index:2" style-before="content:'';position:absolute;top:0;left:-3px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--or)"></div>
+      </div>
+      <input type="range" min="0" max="100" value="{{ playPct }}" onChange="{{ setPlay }}" style="appearance:none;width:100%;height:1px;background:var(--hair);outline:none;accentColor:#d9634a;margin-top:10px;border-radius:12px">
+    </div>
+  </div>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sel:'V1—02', play:34, jog:120 };
+  renderVals(){
+    const CY='#c6d5dc', CY3='#1a201d';
+    const clip=(track,name,l,w)=>({name,l,w,
+      pick:()=>this.setState({sel:name}),
+      bc:this.state.sel===name?'var(--or)':'#76878e',
+      bg:this.state.sel===name?'rgba(217,99,74,.1)':'rgba(198,213,220,.06)'});
+    const trackRows=[
+      {name:'V2',clips:[clip('V2','V2—FX A',30,12),clip('V2','V2—FX B',66,9)]},
+      {name:'V1',clips:[clip('V1','V1—01',6,16),clip('V1','V1—02',23,20),clip('V1','V1—03',44,15),clip('V1','V1—04',60,24)]},
+      {name:'A1',clips:[clip('A1','A1—AMB',6,42),clip('A1','A1—SCORE',50,38)]}
+    ];
+    const meter=(n,t=20)=>Array.from({length:t},(_,i)=>i<n?CY:CY3);
+    const fr=Math.round(this.state.jog/15);
+    return {
+      trackRows,
+      selName:this.state.sel,
+      tc:'01:0'+Math.floor(this.state.play/42)+':'+String(Math.round(this.state.play*0.59)).padStart(2,'0')+':12',
+      playPct:this.state.play, setPlay:(e)=>this.setState({play:+e.target.value}),
+      jogDeg:this.state.jog, setJog:(e)=>this.setState({jog:+e.target.value}),
+      frame:'+'+fr+'F',
+      transport:[
+        {g:'M10 1L1 6L10 11Z M19 1L10 6L19 11Z',fg:'var(--ink2)',bg:'transparent',act:()=>this.setState({play:0})},
+        {g:'M14 1L5 6L14 11Z',fg:'var(--ink2)',bg:'transparent',act:()=>this.setState(s=>({play:Math.max(0,s.play-5)}))},
+        {g:'M5 1L16 6L5 11Z',fg:'#000',bg:'var(--or)',act:()=>this.setState(s=>({play:Math.min(100,s.play+2)}))},
+        {g:'M6 1L15 6L6 11Z',fg:'var(--ink2)',bg:'transparent',act:()=>this.setState(s=>({play:Math.min(100,s.play+5)}))},
+        {g:'M1 1L10 6L1 11Z M10 1L19 6L10 11Z',fg:'var(--ink2)',bg:'transparent',act:()=>this.setState({play:100})}
+      ],
+      scopes:[
+        {label:'Luma',cells:meter(13)},
+        {label:'Chroma',cells:meter(9)},
+        {label:'Audio',cells:Array.from({length:20},(_,i)=>i<16?(i>=14?'var(--or)':CY):CY3)}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

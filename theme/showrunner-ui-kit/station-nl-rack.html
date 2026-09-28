@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Saira+Semi+Condensed:wght@400;500;600&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Venus Rising';src:url('uploads/Venus Rising Rg.otf') format('opentype');font-weight:400;font-display:swap}
+*{box-sizing:border-box}
+:root{--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--well:#070908;--ink:#e6eae7;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#b9cfd8;--cy2:#76878e;--or:#e0674a;--sand:#d9a486;--grn:#2f6b4a;--hair2:rgba(198,213,220,.1)}
+html,body{min-height:100%}
+body{margin:0;overflow-y:auto;background:var(--bg);color:var(--ink);font-family:'Venus Rising','Saira Semi Condensed',sans-serif;font-variant-numeric:tabular-nums;font-size:12px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+p,button,a{font-family:'Chakra Petch',sans-serif}
+h2,h3,h4{font-family:'Venus Rising','Chakra Petch',sans-serif;letter-spacing:.1em}
+h1{font-family:'Venus Rising','Chakra Petch',sans-serif;font-weight:400;letter-spacing:.14em;line-height:1.24}
+a{color:var(--cy);text-decoration:none}a:hover{color:#fff}
+input,textarea,button,select{font-family:'Chakra Petch',sans-serif;border:none;outline:none}
+::selection{background:var(--or);color:#0d1210}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:999px}
+@keyframes rPulse{0%,100%{opacity:.35}50%{opacity:1}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg)">
+
+  <header style="flex:none;padding:13px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--bg)">
+    <a href="kit-ui-sommaire.html" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--panel2);padding:8px 15px;font-size:11px;color:var(--ink2)" style-hover="background:var(--panel3);color:var(--ink)">
+      <svg viewBox="0 0 20 12" style="width:11px;height:7px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:round"><path d="M13 1L7 6L13 11"></path></svg>Sommaire</a>
+    <div style="display:flex;align-items:baseline;gap:11px;min-width:0">
+      <span style="font-size:13px;font-weight:600;color:var(--or);flex:none">NL—16</span>
+      <h1 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-.015em;white-space:nowrap">Station · Rack</h1>
+    </div>
+    <div style="flex:1;min-width:16px"></div>
+    <button onClick="{{ togglePlay }}" style="border-radius:999px;background:{{ playBg }};color:{{ playFg }};padding:9px 20px;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s">{{ playLabel }}</button>
+    <div style="display:flex;align-items:center;gap:16px;border-radius:14px;background:var(--panel);padding:7px 16px">
+      <div style="text-align:right"><div style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">Tempo</div><div onPointerDown="{{ bpmGrab }}" style="font-size:17px;font-weight:600;line-height:1.1;cursor:ns-resize;user-select:none">{{ bpm }}</div></div>
+      <div style="width:1px;align-self:stretch;background:var(--hair2)"></div>
+      <div style="text-align:right"><div style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">CPU</div><div style="font-size:17px;font-weight:600;line-height:1.1;color:var(--cy)">{{ cpu }}</div></div>
+    </div>
+  </header>
+
+  <div style="height:72vh;min-height:520px;display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:12px;padding:0 22px 14px">
+
+    <div style="position:relative;border-radius:18px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column">
+
+      <div style="flex:none;display:flex;align-items:center;gap:8px;padding:12px 14px;flex-wrap:wrap">
+        <button onClick="{{ openLib }}" style="border-radius:999px;background:var(--or);color:#170c08;padding:8px 18px;font-size:11.5px;font-weight:700;letter-spacing:.06em;cursor:pointer">Bibliothèque de modules</button>
+        <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ moduleCount }} modules · {{ cableCount }} câbles</span>
+        <div style="flex:1;min-width:10px"></div>
+        <div style="display:flex;align-items:center;gap:6px;border-radius:999px;background:var(--panel2);padding:5px 6px">
+          <span onClick="{{ zoomOut }}" style="width:26px;height:24px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:var(--ink2);cursor:pointer;font-size:15px" style-hover="background:var(--panel3);color:var(--ink)">−</span>
+          <span style="min-width:44px;text-align:center;font-size:12px;font-weight:600;color:var(--ink)">{{ zoomDisp }}</span>
+          <span onClick="{{ zoomIn }}" style="width:26px;height:24px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:var(--ink2);cursor:pointer;font-size:15px" style-hover="background:var(--panel3);color:var(--ink)">+</span>
+          <span onClick="{{ recenter }}" style="border-radius:999px;background:var(--panel3);color:var(--ink2);padding:4px 12px;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer" style-hover="color:var(--ink)">Ajuster</span>
+        </div>
+      </div>
+
+      <div data-rack-canvas="1" onPointerDown="{{ canvasDown }}" onWheel="{{ canvasWheel }}" onPointerMove="{{ canvasMove }}" onPointerUp="{{ canvasUp }}" style="position:relative;flex:1;min-height:0;background:var(--well);cursor:{{ canvasCursor }};touch-action:none;overflow:hidden">
+
+        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(198,213,220,.1) 1px,transparent 1.2px);background-size:{{ gridSize }};background-position:{{ gridPos }}"></div>
+
+        <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible">
+          <sc-for list="{{ cables }}" as="c" hint-placeholder-count="3">
+            <path d="{{ c.d }}" fill="none" stroke="{{ c.color }}" stroke-width="1.5" stroke-linecap="round" opacity="{{ c.op }}"></path>
+          </sc-for>
+          <sc-if value="{{ linking }}" hint-placeholder-val="{{ false }}">
+            <path d="{{ linkPath }}" fill="none" stroke="var(--or)" stroke-width="1.5" stroke-dasharray="4 4" stroke-linecap="round"></path>
+          </sc-if>
+        </svg>
+
+        <sc-for list="{{ modules }}" as="m" hint-placeholder-count="4">
+          <div ref="{{ m.ref }}" style="position:absolute;left:{{ m.sx }};top:{{ m.sy }};width:{{ m.sw }};border-radius:{{ m.radius }};background:{{ m.bg }};box-shadow:{{ m.ring }};transition:box-shadow .12s">
+            <span onPointerUp="{{ m.dropIn }}" onPointerDown="{{ m.startLinkIn }}" title="Entrée" style="position:absolute;left:0;top:50%;transform:translate(-50%,-50%);width:{{ m.portSize }};height:{{ m.portSize }};border-radius:50%;background:#070908;box-shadow:inset 0 0 0 2px #76878e;cursor:crosshair;z-index:3;transition:transform .12s,background .12s" style-hover="transform:translate(-50%,-50%) scale(1.5);background:#76878e"></span>
+            <span onPointerDown="{{ m.startLink }}" onPointerUp="{{ m.dropIn }}" title="Sortie" style="position:absolute;right:0;top:50%;transform:translate(50%,-50%);width:{{ m.portSize }};height:{{ m.portSize }};border-radius:50%;background:#070908;box-shadow:inset 0 0 0 2px {{ m.accent }};cursor:crosshair;z-index:3;transition:transform .12s,background .12s" style-hover="transform:translate(50%,-50%) scale(1.5);background:{{ m.accent }}"></span>
+            <div onPointerDown="{{ m.grab }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:{{ m.headPad }};cursor:grab;background:{{ m.headBg }}">
+              <span style="display:flex;align-items:center;gap:7px;min-width:0">
+                <span style="width:{{ m.dotSize }};height:{{ m.dotSize }};border-radius:50%;background:{{ m.accent }};flex:none"></span>
+                <span style="font-family:'Chakra Petch',sans-serif;font-size:{{ m.titleSize }};font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</span>
+              </span>
+              <sc-if value="{{ m.showKind }}" hint-placeholder-val="{{ true }}">
+                <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;white-space:nowrap;flex:none">{{ m.kind }}</span>
+              </sc-if>
+            </div>
+
+            <sc-if value="{{ m.showBody }}" hint-placeholder-val="{{ true }}">
+              <div style="padding:{{ m.uiPad }}">
+                <sc-if value="{{ m.uiKeys }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:flex;align-items:flex-start;gap:1px;justify-content:center;background:#080b09;border-radius:4px;padding:3px 4px">
+                    <sc-for list="{{ m.uiKeyList }}" as="kk" hint-placeholder-count="15"><span onPointerDown="{{ kk.pick }}" style="border-radius:0 0 2px 2px;cursor:pointer;width:{{ kk.w }};height:{{ kk.h }};background:{{ kk.bg }}"></span></sc-for>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiPads }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px">
+                    <sc-for list="{{ m.uiPadList }}" as="pp" hint-placeholder-count="16"><span onPointerDown="{{ pp.tog }}" style="border-radius:3px;cursor:pointer;height:{{ pp.size }};background:{{ pp.bg }}"></span></sc-for>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiSteps }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:flex;align-items:flex-end;gap:2px;height:{{ m.uiH }}">
+                    <sc-for list="{{ m.uiStepList }}" as="ss" hint-placeholder-count="16"><span onPointerDown="{{ ss.tog }}" style="flex:1;border-radius:1.5px;cursor:pointer;height:{{ ss.h }};background:{{ ss.bg }}"></span></sc-for>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiWave }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:block;border-radius:5px;background:#080b09;overflow:hidden;height:{{ m.uiH }}">
+                    <svg viewBox="0 0 160 52" preserveAspectRatio="none" style="width:100%;height:100%"><path d="{{ m.uiWavePath }}" fill="none" stroke="{{ m.accent }}" stroke-width="2"></path></svg>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiEnv }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:block;border-radius:5px;background:#080b09;overflow:hidden;height:{{ m.uiH }}">
+                    <svg viewBox="0 0 160 52" preserveAspectRatio="none" style="width:100%;height:100%"><path d="{{ m.uiEnvPath }}" fill="none" stroke="{{ m.accent }}" stroke-width="2"></path></svg>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiCurve }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:block;border-radius:5px;background:#080b09;overflow:hidden;height:{{ m.uiH }}">
+                    <svg viewBox="0 0 160 52" preserveAspectRatio="none" style="width:100%;height:100%"><path d="{{ m.uiCurvePath }}" fill="none" stroke="{{ m.accent }}" stroke-width="2"></path></svg>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiBands }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:flex;align-items:flex-end;gap:2px;height:{{ m.uiH }}">
+                    <sc-for list="{{ m.uiBandList }}" as="bb" hint-placeholder-count="14"><span style="flex:1;border-radius:1.5px;height:{{ bb.h }};background:{{ bb.bg }}"></span></sc-for>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiRnd }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:flex;align-items:flex-end;gap:3px;height:{{ m.uiH }}">
+                    <sc-for list="{{ m.uiRndList }}" as="rr" hint-placeholder-count="9"><span style="flex:1;border-radius:1.5px;height:{{ rr.h }};background:{{ rr.bg }}"></span></sc-for>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiScale }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:flex;gap:2px">
+                    <sc-for list="{{ m.uiScaleList }}" as="qq" hint-placeholder-count="12"><span onPointerDown="{{ qq.tog }}" style="flex:1;border-radius:2px;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(198,213,220,.2);height:{{ qq.size }};background:{{ qq.bg }}"></span></sc-for>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiTaps }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:relative;display:block;border-radius:5px;background:#080b09;height:{{ m.uiH }}">
+                    <sc-for list="{{ m.uiTapList }}" as="tt" hint-placeholder-count="6"><span style="position:absolute;bottom:4px;width:2px;border-radius:1px;left:{{ tt.left }};height:{{ tt.h }};background:{{ tt.bg }}"></span></sc-for>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiPan }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:relative;display:block;border-radius:999px;background:#080b09;height:{{ m.uiH }}">
+                    <span style="position:absolute;top:50%;width:14%;height:36%;border-radius:999px;transform:translateY(-50%);left:{{ m.uiPanPos }};background:{{ m.accent }}"></span>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiDigits }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:flex;align-items:baseline;gap:6px;justify-content:center">
+                    <span style="font-family:'Venus Rising',sans-serif;color:{{ m.accent }};font-size:{{ m.uiH }}">{{ m.uiDigits }}</span>
+                    <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--ink3)">BPM</span>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ m.uiFaders }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:flex;gap:8px;justify-content:center;align-items:flex-end">
+                    <sc-for list="{{ m.uiFaderList }}" as="ff" hint-placeholder-count="3">
+                      <span onPointerDown="{{ ff.grab }}" style="position:relative;width:12px;border-radius:5px;background:#080b09;cursor:ns-resize;touch-action:none;display:block;overflow:hidden;height:{{ m.uiH }}">
+                        <span style="position:absolute;left:1px;right:1px;height:6px;border-radius:2px;bottom:{{ ff.pct }};background:{{ ff.color }}"></span>
+                      </span>
+                    </sc-for>
+                  </span>
+                </sc-if>
+              </div>
+              <div style="padding:{{ m.bodyPad }};display:flex;flex-wrap:wrap;gap:{{ m.knobGap }}">
+                <sc-for list="{{ m.knobs }}" as="k" hint-placeholder-count="3">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;width:{{ m.knobBox }}">
+                    <div onPointerDown="{{ k.grab }}" style="position:relative;width:{{ m.knobSize }};height:{{ m.knobSize }};border-radius:50%;background:var(--panel3);cursor:ns-resize;touch-action:none">
+                      <svg viewBox="0 0 40 40" style="position:absolute;inset:0;width:100%;height:100%">
+                        <circle cx="20" cy="20" r="16" fill="none" stroke="rgba(198,213,220,.14)" stroke-width="3"></circle>
+                        <circle cx="20" cy="20" r="16" fill="none" stroke="{{ k.color }}" stroke-width="3" stroke-linecap="round" stroke-dasharray="{{ k.dash }}" transform="rotate(135 20 20)"></circle>
+                      </svg>
+                      <span style="position:absolute;left:50%;top:50%;width:2px;height:{{ m.pointer }};border-radius:999px;background:{{ k.color }};transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ k.angle }})"></span>
+                    </div>
+                    <sc-if value="{{ m.showValues }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-size:11px;font-weight:600;color:var(--ink)">{{ k.disp }}</span>
+                    </sc-if>
+                    <sc-if value="{{ m.showLabels }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase;text-align:center;line-height:1.3">{{ k.label }}</span>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ m.showMeter }}" hint-placeholder-val="{{ true }}">
+              <div style="padding:{{ m.meterPad }};display:flex;align-items:center;gap:8px">
+                <div style="flex:1;height:5px;border-radius:999px;background:var(--well);overflow:hidden"><div style="height:100%;width:{{ m.level }};border-radius:999px;background:{{ m.accent }}"></div></div>
+                <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.1em;color:var(--ink3)">{{ m.levelDisp }}</span>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ m.showPortLabels }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;justify-content:space-between;padding:{{ m.portPad }}">
+                <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase">In</span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.1em;color:{{ m.accent }};text-transform:uppercase">Out</span>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+
+        <sc-if value="{{ marquee }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute;border-radius:12px;box-shadow:inset 0 0 0 1.5px rgba(224,103,74,.9);background:rgba(224,103,74,.08);pointer-events:none;left:{{ mqX }};top:{{ mqY }};width:{{ mqW }};height:{{ mqH }}"></span>
+        </sc-if>
+
+        <sc-if value="{{ libOpen }}" hint-placeholder-val="{{ false }}">
+          <div data-lib="1" onPointerDown="{{ stopEvt }}" onPointerUp="{{ stopEvt }}" style="position:absolute;z-index:9;width:320px;border-radius:16px;background:var(--panel);box-shadow:0 20px 44px rgba(0,0,0,.6),inset 0 0 0 1px rgba(224,103,74,.7);padding:14px;display:flex;flex-direction:column;gap:10px;left:{{ libX }};top:{{ libY }}">
+            <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Modules</span><span onClick="{{ closeLib }}" style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.12em;color:var(--or);text-transform:uppercase;cursor:pointer">Fermer</span></div>
+            <sc-if value="{{ libFrom }}" hint-placeholder-val="{{ false }}">
+              <span style="border-radius:8px;background:rgba(224,103,74,.14);box-shadow:inset 0 0 0 1px rgba(224,103,74,.5);padding:6px 10px;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--or);text-transform:uppercase;display:block">{{ libFromLabel }}</span>
+            </sc-if>
+            <div style="display:flex;flex-direction:column;gap:4px;max-height:300px;overflow-y:auto;overflow-x:hidden">
+              <sc-for list="{{ library }}" as="lb" hint-placeholder-count="12">
+                <div onClick="{{ lb.create }}" style="display:flex;align-items:flex-start;gap:9px;border-radius:10px;background:var(--panel2);padding:8px 10px;cursor:pointer" style-hover="background:var(--panel3)">
+                  <span style="width:9px;height:9px;border-radius:3px;flex:none;margin-top:3px;background:{{ lb.c }}"></span>
+                  <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                    <span style="display:flex;align-items:baseline;gap:7px">
+                      <span style="font-family:'Chakra Petch',sans-serif;font-size:11.5px;color:var(--ink)">{{ lb.label }}</span>
+                      <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase">{{ lb.kind }}</span>
+                    </span>
+                    <span style="font-family:'Chakra Petch',sans-serif;font-size:10px;line-height:1.35;color:var(--ink2);text-wrap:pretty">{{ lb.desc }}</span>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="position:absolute;left:14px;bottom:12px;display:flex;gap:8px;align-items:center;font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase">
+          <span style="border-radius:999px;background:rgba(9,11,10,.8);padding:5px 12px">{{ hint }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;min-height:0;overflow-y:auto;overflow-x:hidden;padding-right:2px">
+
+      <div style="border-radius:18px;background:var(--panel);padding:20px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+          <h2 style="margin:0;font-size:14px;font-weight:600">{{ selName }}</h2>
+          <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase">{{ selKind }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ selParams }}" as="p" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:minmax(0,74px) minmax(0,1fr) 34px;gap:10px;align-items:center">
+              <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.label }}</span>
+              <div onPointerDown="{{ p.grab }}" style="height:22px;display:flex;align-items:center;cursor:ew-resize;touch-action:none">
+                <div style="width:100%;height:5px;border-radius:999px;background:var(--panel3);position:relative">
+                  <div style="position:absolute;left:0;top:0;bottom:0;width:{{ p.pct }};border-radius:999px;background:{{ p.color }}"></div>
+                  <div style="position:absolute;top:50%;left:{{ p.pct }};width:11px;height:11px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%)"></div>
+                </div>
+              </div>
+              <span style="font-size:11.5px;font-weight:600;text-align:right">{{ p.disp }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button onClick="{{ duplicateSel }}" style="flex:1;border-radius:999px;background:var(--panel2);color:var(--ink2);padding:8px 10px;font-size:11.5px;cursor:pointer" style-hover="background:var(--panel3);color:var(--ink)">Dupliquer</button>
+          <button onClick="{{ removeSel }}" style="flex:1;border-radius:999px;background:rgba(217,99,74,.16);color:var(--or);padding:8px 10px;font-size:11.5px;cursor:pointer" style-hover="background:var(--or);color:#0d1210">Retirer</button>
+        </div>
+      </div>
+
+      <div style="border-radius:18px;background:var(--panel);padding:20px;display:flex;flex-direction:column;gap:12px">
+        <h2 style="margin:0;font-size:14px;font-weight:600">Liaisons</h2>
+        <sc-for list="{{ cableList }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:12px;background:var(--panel2);padding:9px 12px">
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:12px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.label }}</span>
+            <span onClick="{{ c.cut }}" style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--or);text-transform:uppercase;cursor:pointer;flex:none">Couper</span>
+          </div>
+        </sc-for>
+        <sc-if value="{{ noCables }}" hint-placeholder-val="{{ false }}">
+          <div style="border-radius:12px;background:var(--panel2);padding:14px;font-family:'Chakra Petch',sans-serif;font-size:12px;color:var(--ink3);text-align:center">Tire depuis une sortie vers une entrée</div>
+        </sc-if>
+      </div>
+
+      <div style="border-radius:18px;background:var(--panel);padding:20px;display:flex;flex-direction:column;gap:14px">
+        <h2 style="margin:0;font-size:14px;font-weight:600">Sortie</h2>
+        <div style="display:flex;align-items:flex-end;gap:14px">
+          <span style="font-size:38px;font-weight:600;line-height:.95;color:var(--cy)">{{ outLevel }}</span>
+          <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;padding-bottom:6px">dB crête</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:2px;height:52px;border-radius:12px;background:var(--panel3);padding:8px">
+          <sc-for list="{{ scope }}" as="b" hint-placeholder-count="22">
+            <span style="flex:1;height:{{ b.h }};border-radius:2px 2px 0 0;background:{{ b.c }};transition:height .16s"></span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding:0 22px 26px;display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--or);text-transform:uppercase">Modules</span>
+      <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:15px;letter-spacing:.1em;text-transform:uppercase">Instruments</span>
+    </div>
+
+    <div style="border-radius:16px;background:#121714;box-shadow:inset 0 0 0 1px rgba(185,207,216,.12);padding:14px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.2em;color:#8fa39b">01</span>
+        <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:21px;letter-spacing:.08em;text-transform:uppercase;color:#fdf3ee">DR-9</span>
+        <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;color:#8fa39b;text-transform:uppercase">Concepteur de rythme</span>
+        <span style="border-radius:6px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:4px 12px;font-family:'Chakra Petch',sans-serif;font-size:11px;color:#e0674a">prerogative</span>
+        <div style="flex:1;min-width:8px"></div>
+        <span style="display:flex;gap:2px;align-items:flex-end;height:18px">
+          <sc-for list="{{ kongMeter }}" as="kmt" hint-placeholder-count="12"><span style="width:5px;height:100%;border-radius:1px;background:{{ kmt.c }}"></span></sc-for>
+        </span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:172px minmax(0,1fr) 186px;gap:9px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 11px;display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Pad s&#233;lectionn&#233;</span>
+            <span style="display:flex;align-items:baseline;gap:8px">
+              <span style="font-family:'Venus Rising',sans-serif;font-size:26px;color:#e0674a">{{ kongPadNo }}</span>
+              <span style="font-family:'Chakra Petch',sans-serif;font-size:12px;color:#fdf3ee">{{ kongPadName }}</span>
+            </span>
+            <span style="display:flex;gap:4px">
+              <sc-for list="{{ kongHits }}" as="kht" hint-placeholder-count="4"><span onClick="{{ kht.pick }}" style="flex:1;text-align:center;border-radius:5px;background:{{ kht.bg }};color:{{ kht.ink }};box-shadow:inset 0 0 0 1px {{ kht.ring }};font-family:'Azeret Mono',monospace;font-size:8px;padding:4px 0;cursor:pointer">{{ kht.label }}</span></sc-for>
+            </span>
+          </div>
+          <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 11px;display:flex;flex-direction:column;align-items:center;gap:6px">
+            <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase;align-self:flex-start">Niveau master</span>
+            <span onPointerDown="{{ kongLevel.grab }}" style="position:relative;width:60px;height:60px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.25);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+              <span style="position:absolute;left:50%;top:50%;width:3px;height:22px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ kongLevel.angle }})"></span>
+            </span>
+            <span style="font-family:'Venus Rising',sans-serif;font-size:15px;color:#fdf3ee">{{ kongLevel.disp }}</span>
+          </div>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:11px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px">
+          <sc-for list="{{ kongPads }}" as="kpd" hint-placeholder-count="16">
+            <span onClick="{{ kpd.pick }}" style="border-radius:8px;background:{{ kpd.bg }};box-shadow:inset 0 0 0 1px {{ kpd.ring }};padding:9px 9px 7px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;min-height:56px;transition:background .12s">
+              <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.14em;color:{{ kpd.sub }}">{{ kpd.no }}</span>
+              <span style="font-family:'Chakra Petch',sans-serif;font-size:10.5px;color:{{ kpd.ink }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ kpd.name }}</span>
+            </span>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 11px;display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Groupe de pads</span>
+            <span style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px">
+              <sc-for list="{{ kongGroups }}" as="kgr" hint-placeholder-count="9"><span onClick="{{ kgr.tog }}" style="text-align:center;border-radius:5px;background:{{ kgr.bg }};color:{{ kgr.ink }};box-shadow:inset 0 0 0 1px rgba(185,207,216,.18);font-family:'Azeret Mono',monospace;font-size:8.5px;padding:5px 0;cursor:pointer">{{ kgr.label }}</span></sc-for>
+            </span>
+          </div>
+          <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 11px;display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Assignation</span>
+            <span style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px">
+              <sc-for list="{{ kongAssign }}" as="kas" hint-placeholder-count="16"><span onClick="{{ kas.pick }}" style="text-align:center;border-radius:4px;background:{{ kas.bg }};color:{{ kas.ink }};box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);font-family:'Venus Rising',sans-serif;font-size:10px;padding:4px 0;cursor:pointer">{{ kas.label }}</span></sc-for>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:9px;align-items:stretch;flex-wrap:wrap">
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(224,103,74,.35);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:1;min-width:300px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#e0674a;text-transform:uppercase">Module de frappe &#183; Bass drum</span>
+          <span style="display:flex;gap:11px;flex-wrap:wrap">
+            <sc-for list="{{ kongDrum }}" as="kdr" hint-placeholder-count="8">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;width:40px;flex:none">
+                <span onPointerDown="{{ kdr.grab }}" style="position:relative;width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:11px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ kdr.angle }})"></span>
+                </span>
+                <span style="font-family:'Venus Rising',sans-serif;font-size:10px;color:#fdf3ee">{{ kdr.disp }}</span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase;text-align:center;line-height:1.2">{{ kdr.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">FX 1 &#183; Rattler</span>
+          <span style="display:flex;gap:10px">
+            <sc-for list="{{ kongFx1 }}" as="kf1" hint-placeholder-count="4">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;width:40px;flex:none">
+                <span onPointerDown="{{ kf1.grab }}" style="position:relative;width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:10px;border-radius:999px;background:#e59578;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ kf1.angle }})"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase;text-align:center;line-height:1.2">{{ kf1.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">FX 2 &#183; Compresseur</span>
+          <span style="display:flex;gap:10px">
+            <sc-for list="{{ kongFx2 }}" as="kf2" hint-placeholder-count="4">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;width:40px;flex:none">
+                <span onPointerDown="{{ kf2.grab }}" style="position:relative;width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:10px;border-radius:999px;background:#e59578;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ kf2.angle }})"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase;text-align:center;line-height:1.2">{{ kf2.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+        <div style="border-radius:11px;background:#16241c;box-shadow:inset 0 0 0 1px rgba(63,154,106,.4);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#78b08f;text-transform:uppercase">Bus FX &#183; Drum room</span>
+          <span style="display:flex;gap:10px">
+            <sc-for list="{{ kongBus }}" as="kbu" hint-placeholder-count="4">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;width:40px;flex:none">
+                <span onPointerDown="{{ kbu.grab }}" style="position:relative;width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(120,176,143,.35);background:#0d150f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:10px;border-radius:999px;background:#78b08f;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ kbu.angle }})"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase;text-align:center;line-height:1.2">{{ kbu.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Master FX</span>
+          <span style="display:flex;gap:10px;align-items:flex-start">
+            <sc-for list="{{ kongMaster }}" as="kma" hint-placeholder-count="4">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;width:40px;flex:none">
+                <span onPointerDown="{{ kma.grab }}" style="position:relative;width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:10px;border-radius:999px;background:#b9cfd8;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ kma.angle }})"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase;text-align:center;line-height:1.2">{{ kma.label }}</span>
+              </span>
+            </sc-for>
+            <span style="display:flex;flex-direction:column;gap:3px">
+              <sc-for list="{{ kongModes }}" as="kmo" hint-placeholder-count="3"><span onClick="{{ kmo.pick }}" style="border-radius:4px;background:{{ kmo.bg }};color:{{ kmo.ink }};box-shadow:inset 0 0 0 1px {{ kmo.ring }};font-family:'Azeret Mono',monospace;font-size:7.5px;padding:3px 7px;cursor:pointer;text-align:center">{{ kmo.label }}</span></sc-for>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-radius:16px;background:#121714;box-shadow:inset 0 0 0 1px rgba(185,207,216,.12);padding:14px;display:flex;flex-direction:column;gap:9px">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.2em;color:#8fa39b">02</span>
+        <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:21px;letter-spacing:.08em;text-transform:uppercase;color:#fdf3ee">Spectra</span>
+        <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;color:#8fa39b;text-transform:uppercase">Synth&#233; spectral</span>
+        <span style="border-radius:6px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:4px 12px;font-family:'Chakra Petch',sans-serif;font-size:11px;color:#e0674a">Two Bridges</span>
+      </div>
+
+      <div style="display:flex;gap:9px;align-items:stretch;flex-wrap:wrap">
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Moteur</span>
+          <span style="display:flex;gap:9px">
+            <span style="display:flex;flex-direction:column;gap:4px">
+              <sc-for list="{{ euEngine }}" as="een" hint-placeholder-count="3"><span onClick="{{ een.pick }}" style="border-radius:5px;background:{{ een.bg }};color:{{ een.ink }};box-shadow:inset 0 0 0 1px {{ een.ring }};font-family:'Azeret Mono',monospace;font-size:8.5px;padding:5px 10px;cursor:pointer;text-align:center">{{ een.label }}</span></sc-for>
+            </span>
+            <span style="display:grid;grid-template-columns:repeat(2,40px);gap:7px">
+              <sc-for list="{{ euOsc }}" as="eos" hint-placeholder-count="4">
+                <span style="display:flex;flex-direction:column;align-items:center;gap:2px">
+                  <span onPointerDown="{{ eos.grab }}" style="position:relative;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                    <span style="position:absolute;left:50%;top:50%;width:2px;height:9px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ eos.angle }})"></span>
+                  </span>
+                  <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ eos.label }}</span>
+                </span>
+              </sc-for>
+            </span>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:1;min-width:190px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Onde</span>
+          <span style="display:flex;gap:10px;align-items:center">
+            <span style="flex:1;min-width:0;height:52px;border-radius:7px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.12);display:block;overflow:hidden">
+              <svg viewBox="0 0 160 52" preserveAspectRatio="none" style="width:100%;height:100%"><path d="M0 26 C10 4 20 48 30 26 C40 6 50 46 60 26 C70 8 80 44 90 26 C100 10 110 42 120 26 C130 12 140 40 150 26 L160 26" fill="none" stroke="#e0674a" stroke-width="1.4"></path></svg>
+            </span>
+            <span style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:none">
+              <span onPointerDown="{{ euShape.grab }}" style="position:relative;width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.25);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                <span style="position:absolute;left:50%;top:50%;width:3px;height:16px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ euShape.angle }})"></span>
+              </span>
+              <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ euShape.label }}</span>
+            </span>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:7px;flex:none;width:168px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Modificateurs</span>
+          <span onClick="{{ euMod1.next }}" style="border-radius:5px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:4px 8px;font-family:'Chakra Petch',sans-serif;font-size:10.5px;color:#fdf3ee;cursor:pointer;display:block">{{ euMod1.val }}</span>
+          <span onClick="{{ euMod2.next }}" style="border-radius:5px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:4px 8px;font-family:'Chakra Petch',sans-serif;font-size:10.5px;color:#fdf3ee;cursor:pointer;display:block">{{ euMod2.val }}</span>
+          <span style="display:flex;gap:12px;justify-content:center">
+            <sc-for list="{{ euModK }}" as="emk" hint-placeholder-count="2">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:2px">
+                <span onPointerDown="{{ emk.grab }}" style="position:relative;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:9px;border-radius:999px;background:#e59578;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ emk.angle }})"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ emk.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:1;min-width:210px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Filtre spectral</span>
+          <span style="display:flex;gap:10px;align-items:flex-end">
+            <span style="flex:1;min-width:0;height:52px;display:flex;align-items:flex-end;gap:2px">
+              <sc-for list="{{ euSpec }}" as="esp" hint-placeholder-count="24"><span style="flex:1;border-radius:1px;background:{{ esp.c }};height:{{ esp.h }}"></span></sc-for>
+            </span>
+            <span style="display:flex;gap:9px;flex:none">
+              <sc-for list="{{ euSpecF }}" as="esf" hint-placeholder-count="2">
+                <span style="display:flex;flex-direction:column;align-items:center;gap:2px">
+                  <span onPointerDown="{{ esf.grab }}" style="position:relative;width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.25);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                    <span style="position:absolute;left:50%;top:50%;width:2px;height:12px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ esf.angle }})"></span>
+                  </span>
+                  <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ esf.label }}</span>
+                </span>
+              </sc-for>
+            </span>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Harmoniques</span>
+          <span style="display:flex;gap:10px">
+            <sc-for list="{{ euHarm }}" as="ehm" hint-placeholder-count="2">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:2px">
+                <span onPointerDown="{{ ehm.grab }}" style="position:relative;width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:11px;border-radius:999px;background:#e59578;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ ehm.angle }})"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ ehm.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#16241c;box-shadow:inset 0 0 0 1px rgba(63,154,106,.4);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#78b08f;text-transform:uppercase">Unisson</span>
+          <span style="display:grid;grid-template-columns:repeat(2,40px);gap:7px">
+            <sc-for list="{{ euUni }}" as="euu" hint-placeholder-count="4">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:2px">
+                <span onPointerDown="{{ euu.grab }}" style="position:relative;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(120,176,143,.35);background:#0d150f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:9px;border-radius:999px;background:#78b08f;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ euu.angle }})"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ euu.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:9px;align-items:stretch;flex-wrap:wrap">
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none;min-width:210px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Filtre</span>
+          <span onClick="{{ euFilterType.next }}" style="border-radius:5px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:4px 8px;font-family:'Chakra Petch',sans-serif;font-size:10.5px;color:#fdf3ee;cursor:pointer;display:block">{{ euFilterType.val }}</span>
+          <span style="display:flex;gap:12px;justify-content:center">
+            <sc-for list="{{ euFilter }}" as="efl" hint-placeholder-count="3">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:2px">
+                <span onPointerDown="{{ efl.grab }}" style="position:relative;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.25);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:50%;top:50%;width:2px;height:13px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ efl.angle }})"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ efl.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Niveaux osc</span>
+          <span style="display:flex;gap:10px;align-items:flex-end">
+            <sc-for list="{{ euLevels }}" as="elv" hint-placeholder-count="3">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                <span onPointerDown="{{ elv.grab }}" style="position:relative;width:13px;height:52px;border-radius:5px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);cursor:ns-resize;touch-action:none;display:block;overflow:hidden">
+                  <span style="position:absolute;left:1px;right:1px;height:8px;border-radius:2px;background:#e0674a;bottom:{{ elv.pct }}"></span>
+                </span>
+                <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:#8fa39b">{{ elv.label }}</span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:1;min-width:280px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Ampli</span>
+          <span style="display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap">
+            <span style="display:flex;gap:9px;align-items:flex-end">
+              <sc-for list="{{ euAmp }}" as="eam" hint-placeholder-count="4">
+                <span style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                  <span onPointerDown="{{ eam.grab }}" style="position:relative;width:13px;height:52px;border-radius:5px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);cursor:ns-resize;touch-action:none;display:block;overflow:hidden">
+                    <span style="position:absolute;left:1px;right:1px;height:8px;border-radius:2px;background:#b9cfd8;bottom:{{ eam.pct }}"></span>
+                  </span>
+                  <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:#8fa39b">{{ eam.label }}</span>
+                </span>
+              </sc-for>
+            </span>
+            <span style="display:flex;gap:10px">
+              <sc-for list="{{ euAmpK }}" as="eak" hint-placeholder-count="3">
+                <span style="display:flex;flex-direction:column;align-items:center;gap:2px">
+                  <span onPointerDown="{{ eak.grab }}" style="position:relative;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                    <span style="position:absolute;left:50%;top:50%;width:2px;height:9px;border-radius:999px;background:#b9cfd8;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ eak.angle }})"></span>
+                  </span>
+                  <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ eak.label }}</span>
+                </span>
+              </sc-for>
+            </span>
+            <span style="display:flex;flex-direction:column;align-items:center;gap:3px">
+              <span onPointerDown="{{ euMaster.grab }}" style="position:relative;width:46px;height:46px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(224,103,74,.45);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                <span style="position:absolute;left:50%;top:50%;width:3px;height:17px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ euMaster.angle }})"></span>
+              </span>
+              <span style="font-family:'Venus Rising',sans-serif;font-size:13px;color:#fdf3ee">{{ euMaster.disp }}</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:9px;align-items:stretch;flex-wrap:wrap">
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:7px;flex:1;min-width:230px">
+          <span style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Enveloppes</span>
+            <span style="display:flex;gap:3px">
+              <sc-for list="{{ euEnvTabs }}" as="etb" hint-placeholder-count="4"><span onClick="{{ etb.pick }}" style="border-radius:4px;background:{{ etb.bg }};color:{{ etb.ink }};box-shadow:inset 0 0 0 1px {{ etb.ring }};font-family:'Azeret Mono',monospace;font-size:7.5px;padding:2px 7px;cursor:pointer">{{ etb.label }}</span></sc-for>
+            </span>
+          </span>
+          <span style="display:block;height:64px;border-radius:7px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.12);overflow:hidden">
+            <svg viewBox="0 0 168 60" preserveAspectRatio="none" style="width:100%;height:100%"><path d="{{ euEnvPath }}" fill="none" stroke="#e0674a" stroke-width="1.6"></path></svg>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:none;width:126px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">LFO</span>
+          <span style="display:flex;gap:3px">
+            <sc-for list="{{ euLfo }}" as="elf" hint-placeholder-count="4"><span onClick="{{ elf.pick }}" style="flex:1;text-align:center;border-radius:4px;background:{{ elf.bg }};color:{{ elf.ink }};box-shadow:inset 0 0 0 1px {{ elf.ring }};font-size:10px;padding:3px 0;cursor:pointer">{{ elf.label }}</span></sc-for>
+          </span>
+          <span style="display:flex;align-items:center;gap:9px">
+            <span onPointerDown="{{ euLfoRate.grab }}" style="position:relative;width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.25);background:#11170f;cursor:ns-resize;touch-action:none;display:block;flex:none">
+              <span style="position:absolute;left:50%;top:50%;width:2px;height:12px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ euLfoRate.angle }})"></span>
+            </span>
+            <span style="font-family:'Venus Rising',sans-serif;font-size:13px;color:#fdf3ee">{{ euLfoRate.disp }}</span>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:5px;flex:1;min-width:330px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Matrice de modulation</span>
+          <sc-for list="{{ euMatrix }}" as="emx" hint-placeholder-count="4">
+            <span style="display:flex;align-items:center;gap:6px">
+              <span onClick="{{ emx.nextSrc }}" style="border-radius:4px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:3px 7px;font-family:'Chakra Petch',sans-serif;font-size:10px;color:#fdf3ee;cursor:pointer;width:62px;flex:none;white-space:nowrap;overflow:hidden">{{ emx.src }}</span>
+              <span onPointerDown="{{ emx.g1 }}" style="flex:1;min-width:24px;height:9px;border-radius:3px;background:#11170f;cursor:ns-resize;touch-action:none;display:block;overflow:hidden;position:relative">
+                <span style="position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:#e0674a;width:{{ emx.w1 }}"></span>
+              </span>
+              <span onClick="{{ emx.nextD1 }}" style="border-radius:4px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:3px 7px;font-family:'Chakra Petch',sans-serif;font-size:10px;color:#fdf3ee;cursor:pointer;width:64px;flex:none;white-space:nowrap;overflow:hidden">{{ emx.dst1 }}</span>
+              <span onPointerDown="{{ emx.g2 }}" style="flex:1;min-width:24px;height:9px;border-radius:3px;background:#11170f;cursor:ns-resize;touch-action:none;display:block;overflow:hidden;position:relative">
+                <span style="position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:#78b08f;width:{{ emx.w2 }}"></span>
+              </span>
+              <span onClick="{{ emx.nextD2 }}" style="border-radius:4px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:3px 7px;font-family:'Chakra Petch',sans-serif;font-size:10px;color:#fdf3ee;cursor:pointer;width:64px;flex:none;white-space:nowrap;overflow:hidden">{{ emx.dst2 }}</span>
+            </span>
+          </sc-for>
+          <span style="display:flex;gap:4px;flex-wrap:wrap;padding-top:2px">
+            <sc-for list="{{ euFx }}" as="efx" hint-placeholder-count="6"><span onClick="{{ efx.tog }}" style="border-radius:999px;background:{{ efx.bg }};color:{{ efx.ink }};box-shadow:inset 0 0 0 1px {{ efx.ring }};font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;cursor:pointer">{{ efx.label }}</span></sc-for>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-radius:16px;background:#121714;box-shadow:inset 0 0 0 1px rgba(185,207,216,.12);padding:14px;display:flex;flex-direction:column;gap:9px">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.2em;color:#8fa39b">03</span>
+        <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:21px;letter-spacing:.08em;text-transform:uppercase;color:#fdf3ee">Polynome</span>
+        <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;color:#8fa39b;text-transform:uppercase">Synth&#233; modulaire</span>
+      </div>
+
+      <div style="display:flex;gap:9px;align-items:stretch;flex-wrap:wrap">
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:7px;flex:1;min-width:330px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Emplacements d&#39;oscillateur</span>
+          <sc-for list="{{ poSlots }}" as="pos" hint-placeholder-count="3">
+            <span style="display:flex;align-items:center;gap:9px">
+              <span onClick="{{ pos.tog }}" style="width:9px;height:9px;border-radius:50%;background:{{ pos.dot }};cursor:pointer;flex:none"></span>
+              <span onClick="{{ pos.next }}" style="border-radius:5px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:4px 9px;font-family:'Chakra Petch',sans-serif;font-size:10.5px;color:#fdf3ee;cursor:pointer;width:126px;flex:none;white-space:nowrap;overflow:hidden">{{ pos.type }}</span>
+              <span style="display:flex;gap:11px">
+                <sc-for list="{{ pos.knobs }}" as="pok" hint-placeholder-count="3">
+                  <span style="display:flex;align-items:center;gap:5px">
+                    <span onPointerDown="{{ pok.grab }}" style="position:relative;width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(185,207,216,.22);background:#11170f;cursor:ns-resize;touch-action:none;display:block">
+                      <span style="position:absolute;left:50%;top:50%;width:2px;height:9px;border-radius:999px;background:#e0674a;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ pok.angle }})"></span>
+                    </span>
+                    <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ pok.label }}</span>
+                  </span>
+                </sc-for>
+              </span>
+            </span>
+          </sc-for>
+        </div>
+
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:7px;flex:1;min-width:300px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">Filtres</span>
+          <sc-for list="{{ poFilters }}" as="pof" hint-placeholder-count="2">
+            <span style="display:flex;align-items:center;gap:9px">
+              <span onClick="{{ pof.next }}" style="border-radius:5px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:4px 9px;font-family:'Chakra Petch',sans-serif;font-size:10.5px;color:#fdf3ee;cursor:pointer;width:120px;flex:none;white-space:nowrap;overflow:hidden">{{ pof.name }}</span>
+              <span style="display:flex;gap:11px">
+                <sc-for list="{{ pof.knobs }}" as="pfk" hint-placeholder-count="3">
+                  <span style="display:flex;align-items:center;gap:5px">
+                    <span onPointerDown="{{ pfk.grab }}" style="position:relative;width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(120,176,143,.32);background:#0d150f;cursor:ns-resize;touch-action:none;display:block">
+                      <span style="position:absolute;left:50%;top:50%;width:2px;height:9px;border-radius:999px;background:#78b08f;transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ pfk.angle }})"></span>
+                    </span>
+                    <span style="font-family:'Azeret Mono',monospace;font-size:6.8px;letter-spacing:.1em;color:#8fa39b;text-transform:uppercase">{{ pfk.label }}</span>
+                  </span>
+                </sc-for>
+              </span>
+            </span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:9px;align-items:stretch;flex-wrap:wrap">
+        <div style="border-radius:11px;background:#0b0f0d;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14);padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:1;min-width:360px">
+          <span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:#8fa39b;text-transform:uppercase">S&#233;quenceur de pas</span>
+            <span style="display:flex;gap:5px">
+              <sc-for list="{{ poSeqFields }}" as="psf" hint-placeholder-count="3"><span onClick="{{ psf.next }}" style="border-radius:4px;background:#11170f;box-shadow:inset 0 0 0 1px rgba(185,207,216,.16);padding:3px 8px;font-family:'Chakra Petch',sans-serif;font-size:10px;color:#fdf3ee;cursor:pointer">{{ psf.val }}</span></sc-for>
+            </span>
+          </span>
+          <span style="display:flex;gap:4px;align-items:flex-end">
+            <sc-for list="{{ poSteps }}" as="pst" hint-placeholder-count="16">
+              <span onClick="{{ pst.tog }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer">
+                <span style="width:100%;height:52px;border-radius:4px;background:#11170f;position:relative;display:block;overflow:hidden">
+                  <span style="position:absolute;left:0;right:0;bottom:0;background:{{ pst.bg }};height:{{ pst.h }}"></span>
+                </span>
+                <span style="width:5px;height:5px;border-radius:50%;background:{{ pst.dot }}"></span>
+              </span>
+            </sc-for>
+          </span>
+        </div>
+
+        <div style="border-radius:11px;background:#16241c;box-shadow:inset 0 0 0 1px rgba(63,154,106,.4);padding:10px 12px;display:flex;gap:12px;flex:none">
+          <sc-for list="{{ poGroove }}" as="pgv" hint-placeholder-count="4">
+            <span style="display:flex;flex-direction:column;align-items:center;gap:6px">
+              <span onClick="{{ pgv.tog }}" style="border-radius:4px;background:{{ pgv.bg }};color:{{ pgv.ink }};box-shadow:inset 0 0 0 1px rgba(120,176,143,.32);font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;cursor:pointer;white-space:nowrap">{{ pgv.name }}</span>
+              <span style="display:flex;gap:7px;align-items:flex-end">
+                <span onPointerDown="{{ pgv.slide.grab }}" style="position:relative;width:11px;height:46px;border-radius:4px;background:#0d150f;cursor:ns-resize;touch-action:none;display:block;overflow:hidden">
+                  <span style="position:absolute;left:1px;right:1px;height:7px;border-radius:2px;background:#78b08f;bottom:{{ pgv.slide.pct }}"></span>
+                </span>
+                <span onPointerDown="{{ pgv.shuffle.grab }}" style="position:relative;width:11px;height:46px;border-radius:4px;background:#0d150f;cursor:ns-resize;touch-action:none;display:block;overflow:hidden">
+                  <span style="position:absolute;left:1px;right:1px;height:7px;border-radius:2px;background:#e0674a;bottom:{{ pgv.shuffle.pct }}"></span>
+                </span>
+              </span>
+            </span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div onClick="{{ bayToggle }}" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;cursor:pointer;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.55);padding:11px 15px">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--or);text-transform:uppercase">Rack</span>
+      <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:15px;letter-spacing:.1em;text-transform:uppercase">Baie 19 pouces</span>
+      <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.16em;color:var(--ink2);text-transform:uppercase">{{ bayCount }}</span>
+      <div style="flex:1;min-width:10px"></div>
+      <span style="width:24px;height:24px;border-radius:7px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.7);display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:13px">{{ bayCaret }}</span>
+    </div>
+
+    <sc-if value="{{ bayOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end"><sc-for list="{{ rackAdd }}" as="ra" hint-placeholder-count="12"><span onClick="{{ ra.add }}" style="border-radius:999px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);padding:6px 13px;font-family:'Chakra Petch',sans-serif;font-size:10.5px;color:var(--ink2);cursor:pointer;white-space:nowrap;flex:none" style-hover="box-shadow:inset 0 0 0 1px var(--or);color:var(--ink)">+ {{ ra.label }}</span></sc-for></span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <sc-for list="{{ rackUnits }}" as="ru" hint-placeholder-count="4">
+        <div style="position:relative;border-radius:16px;background:{{ ru.bg }};overflow:hidden;display:grid;grid-template-columns:44px minmax(0,1fr)">
+          <span style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:12px 0;background:{{ ru.railBg }}">
+            <span style="width:9px;height:9px;border-radius:50%;background:rgba(10,13,11,.5);box-shadow:inset 0 1px 0 rgba(253,243,238,.3)"></span>
+            <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.28em;color:{{ ru.sub }};text-transform:uppercase;white-space:nowrap;overflow:hidden">{{ ru.kind }}</span>
+            <span style="width:9px;height:9px;border-radius:50%;background:rgba(10,13,11,.5);box-shadow:inset 0 1px 0 rgba(253,243,238,.3)"></span>
+          </span>
+          <span style="display:flex;flex-direction:column;gap:9px;padding:12px 14px 13px;min-width:0">
+            <span style="display:flex;align-items:center;gap:10px;min-width:0">
+              <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.2em;color:{{ ru.sub }};flex:none">{{ ru.no }}</span>
+              <span style="font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:19px;letter-spacing:.07em;text-transform:uppercase;color:{{ ru.ink }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ru.name }}</span>
+              <span style="flex:1;min-width:6px;height:1px;background:{{ ru.hair }}"></span>
+              <span onClick="{{ ru.toggle }}" style="border-radius:999px;background:{{ ru.pillBg }};box-shadow:inset 0 0 0 1px {{ ru.pillRing }};padding:5px 13px;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.14em;color:{{ ru.pillInk }};text-transform:uppercase;cursor:pointer;flex:none">{{ ru.state }}</span>
+              <span style="display:flex;gap:4px;flex:none">
+                <span onClick="{{ ru.up }}" style="width:23px;height:23px;border-radius:7px;box-shadow:inset 0 0 0 1px {{ ru.hair }};display:flex;align-items:center;justify-content:center;color:{{ ru.ink }};cursor:pointer;font-size:11px">↑</span>
+                <span onClick="{{ ru.down }}" style="width:23px;height:23px;border-radius:7px;box-shadow:inset 0 0 0 1px {{ ru.hair }};display:flex;align-items:center;justify-content:center;color:{{ ru.ink }};cursor:pointer;font-size:11px">↓</span>
+                <span onClick="{{ ru.remove }}" style="width:23px;height:23px;border-radius:7px;box-shadow:inset 0 0 0 1px {{ ru.hair }};display:flex;align-items:center;justify-content:center;color:{{ ru.ink }};cursor:pointer;font-size:11px">×</span>
+              </span>
+            </span>
+
+            <span style="display:flex;gap:8px;align-items:stretch;min-width:0">
+              <sc-if value="{{ ru.hasPads }}" hint-placeholder-val="{{ false }}">
+                <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 10px;flex:none">
+                  <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Pads · 16</span>
+                  <span style="display:grid;grid-template-columns:repeat(8,20px);grid-auto-rows:20px;gap:4px">
+                    <sc-for list="{{ ru.pads }}" as="rp" hint-placeholder-count="16">
+                      <span onClick="{{ rp.hit }}" style="border-radius:5px;box-shadow:inset 0 0 0 1px {{ rp.ring }};background:{{ rp.bg }};cursor:pointer;transition:background .1s"></span>
+                    </sc-for>
+                  </span>
+                </span>
+              </sc-if>
+              <sc-if value="{{ ru.hasEnv }}" hint-placeholder-val="{{ false }}">
+                <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:none">
+                  <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Enveloppe</span>
+                  <span style="display:flex;gap:8px;align-items:flex-end">
+                    <sc-for list="{{ ru.env }}" as="re" hint-placeholder-count="4">
+                      <span style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                        <span onPointerDown="{{ re.grab }}" style="position:relative;width:13px;height:48px;border-radius:5px;background:rgba(10,13,11,.45);cursor:ns-resize;touch-action:none;display:block">
+                          <span style="position:absolute;left:2px;right:2px;height:8px;border-radius:999px;background:{{ re.cap }};bottom:{{ re.pct }}"></span>
+                        </span>
+                        <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.1em;color:{{ ru.sub }};text-transform:uppercase">{{ re.label }}</span>
+                      </span>
+                    </sc-for>
+                  </span>
+                </span>
+              </sc-if>
+              <sc-if value="{{ ru.hasSteps }}" hint-placeholder-val="{{ false }}">
+                <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:none">
+                  <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Pas · 8</span>
+                  <span style="display:flex;gap:4px">
+                    <sc-for list="{{ ru.steps }}" as="rs" hint-placeholder-count="8">
+                      <span onClick="{{ rs.toggle }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer">
+                        <span style="width:15px;height:34px;border-radius:5px;background:rgba(10,13,11,.45);display:block;position:relative;overflow:hidden">
+                          <span style="position:absolute;left:0;right:0;bottom:0;background:{{ rs.fill }};height:{{ rs.h }}"></span>
+                        </span>
+                        <span style="width:5px;height:5px;border-radius:50%;background:{{ rs.dot }}"></span>
+                      </span>
+                    </sc-for>
+                  </span>
+                </span>
+              </sc-if>
+              <sc-if value="{{ ru.hasXY }}" hint-placeholder-val="{{ false }}">
+                <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:none">
+                  <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Pavé X/Y</span>
+                  <span onPointerDown="{{ ru.xyGrab }}" style="position:relative;width:78px;height:52px;border-radius:8px;background:rgba(10,13,11,.45);cursor:crosshair;touch-action:none;display:block;overflow:hidden">
+                    <span style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(253,243,238,.16)"></span>
+                    <span style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(253,243,238,.16)"></span>
+                    <span style="position:absolute;width:11px;height:11px;border-radius:50%;background:#070908;box-shadow:inset 0 0 0 2px {{ ru.ink }};transform:translate(-50%,50%);left:{{ ru.xyX }};bottom:{{ ru.xyY }}"></span>
+                  </span>
+                </span>
+              </sc-if>
+              <sc-if value="{{ ru.hasWave }}" hint-placeholder-val="{{ false }}">
+                <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:none;width:126px">
+                  <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Oscillateur</span>
+                  <span style="display:block;height:36px;border-radius:7px;background:rgba(10,13,11,.5);overflow:hidden">
+                    <svg viewBox="0 0 120 38" preserveAspectRatio="none" style="width:100%;height:100%"><path d="{{ ru.wavePath }}" fill="none" stroke="{{ ru.ink }}" stroke-width="1.4"></path></svg>
+                  </span>
+                  <span style="display:flex;gap:3px">
+                    <sc-for list="{{ ru.waveModes }}" as="rw" hint-placeholder-count="4"><span onClick="{{ rw.pick }}" style="flex:1;text-align:center;border-radius:5px;background:{{ rw.bg }};color:{{ rw.ink }};font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.06em;padding:3px 0;cursor:pointer;text-transform:uppercase">{{ rw.label }}</span></sc-for>
+                  </span>
+                </span>
+              </sc-if>
+
+              <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 12px;flex:1;min-width:0">
+                <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Réglages</span>
+                <span style="display:flex;gap:13px;flex-wrap:wrap">
+                  <sc-for list="{{ ru.knobs }}" as="rk" hint-placeholder-count="4">
+                    <span style="display:flex;flex-direction:column;align-items:center;gap:3px;width:42px;flex:none">
+                      <span onPointerDown="{{ rk.grab }}" style="position:relative;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(10,13,11,.55);background:rgba(10,13,11,.4);cursor:ns-resize;touch-action:none;display:block">
+                        <span style="position:absolute;left:50%;top:50%;width:2px;height:12px;border-radius:999px;background:{{ rk.ink }};transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ rk.angle }})"></span>
+                      </span>
+                      <span style="font-family:'Venus Rising',sans-serif;font-size:11px;color:{{ rk.ink }}">{{ rk.disp }}</span>
+                      <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:{{ ru.sub }};text-transform:uppercase;text-align:center;line-height:1.2">{{ rk.label }}</span>
+                    </span>
+                  </sc-for>
+                </span>
+              </span>
+
+              <span style="display:flex;flex-direction:column;justify-content:space-between;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:none">
+                <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Sortie</span>
+                <span style="display:flex;gap:2px;align-items:flex-end;height:24px">
+                  <sc-for list="{{ ru.leds }}" as="rl" hint-placeholder-count="8"><span style="width:4px;border-radius:1px;background:{{ rl.c }};height:{{ rl.h }}"></span></sc-for>
+                </span>
+                <span style="display:flex;gap:6px;align-items:center">
+                  <sc-for list="{{ ru.jacks }}" as="rj" hint-placeholder-count="2"><span title="{{ rj.label }}" style="width:16px;height:16px;border-radius:50%;background:#070908;box-shadow:inset 0 0 0 2px {{ rj.c }};cursor:crosshair;transition:transform .12s,background .12s" style-hover="transform:scale(1.25);background:{{ rj.c }}"></span></sc-for>
+                  <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.12em;color:{{ ru.sub }};text-transform:uppercase">In · Out</span>
+                </span>
+              </span>
+            </span>
+
+            <span style="display:flex;gap:8px;align-items:stretch;min-width:0;flex-wrap:wrap">
+              <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:none">
+                <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Molettes</span>
+                <span style="display:flex;gap:9px;align-items:flex-end">
+                  <sc-for list="{{ ru.wheels }}" as="rwh" hint-placeholder-count="2">
+                    <span style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                      <span onPointerDown="{{ rwh.grab }}" style="position:relative;width:17px;height:52px;border-radius:6px;background:rgba(10,13,11,.45);cursor:ns-resize;touch-action:none;display:block;overflow:hidden">
+                        <span style="position:absolute;left:2px;right:2px;height:11px;border-radius:3px;background:{{ rwh.cap }};bottom:{{ rwh.pct }}"></span>
+                      </span>
+                      <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:{{ ru.sub }};text-transform:uppercase">{{ rwh.label }}</span>
+                    </span>
+                  </sc-for>
+                </span>
+              </span>
+
+              <span style="display:flex;flex-direction:column;gap:5px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:1;min-width:150px">
+                <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Routage</span>
+                <sc-for list="{{ ru.sels }}" as="rsel" hint-placeholder-count="4">
+                  <span onClick="{{ rsel.next }}" style="display:flex;align-items:center;gap:8px;cursor:pointer">
+                    <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.14em;color:{{ ru.sub }};text-transform:uppercase;width:40px;flex:none">{{ rsel.label }}</span>
+                    <span style="flex:1;min-width:0;border-radius:5px;background:rgba(10,13,11,.45);padding:3px 7px;display:flex;align-items:center;justify-content:space-between;gap:6px">
+                      <span style="font-family:'Chakra Petch',sans-serif;font-size:10.5px;color:{{ ru.ink }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ rsel.val }}</span>
+                      <span style="font-size:8px;color:{{ ru.sub }};flex:none">▾</span>
+                    </span>
+                  </span>
+                </sc-for>
+              </span>
+
+              <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:none">
+                <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Niveaux</span>
+                <span style="display:flex;gap:8px;align-items:flex-end">
+                  <sc-for list="{{ ru.slid }}" as="rsl" hint-placeholder-count="4">
+                    <span style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                      <span onPointerDown="{{ rsl.grab }}" style="position:relative;width:12px;height:52px;border-radius:5px;background:rgba(10,13,11,.45);cursor:ns-resize;touch-action:none;display:block;overflow:hidden">
+                        <span style="position:absolute;left:1px;right:1px;height:7px;border-radius:2px;background:{{ rsl.cap }};bottom:{{ rsl.pct }}"></span>
+                      </span>
+                      <span style="font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.1em;color:{{ ru.sub }};text-transform:uppercase">{{ rsl.label }}</span>
+                    </span>
+                  </sc-for>
+                </span>
+              </span>
+
+              <span style="display:flex;flex-direction:column;gap:6px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:none;width:104px">
+                <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">LFO</span>
+                <span style="display:flex;gap:3px">
+                  <sc-for list="{{ ru.lfoShapes }}" as="rlf" hint-placeholder-count="4"><span onClick="{{ rlf.pick }}" style="flex:1;text-align:center;border-radius:5px;background:{{ rlf.bg }};color:{{ rlf.ink }};font-size:10px;line-height:1;padding:4px 0;cursor:pointer">{{ rlf.label }}</span></sc-for>
+                </span>
+                <span style="display:flex;align-items:center;gap:8px">
+                  <span onPointerDown="{{ ru.lfoGrab }}" style="position:relative;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(10,13,11,.55);background:rgba(10,13,11,.4);cursor:ns-resize;touch-action:none;display:block;flex:none">
+                    <span style="position:absolute;left:50%;top:50%;width:2px;height:10px;border-radius:999px;background:{{ ru.ink }};transform-origin:50% 100%;transform:translate(-50%,-100%) rotate({{ ru.lfoAngle }})"></span>
+                  </span>
+                  <span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                    <span style="font-family:'Venus Rising',sans-serif;font-size:10.5px;color:{{ ru.ink }};white-space:nowrap">{{ ru.lfoRateDisp }}</span>
+                    <span onClick="{{ ru.lfoSync }}" style="border-radius:4px;box-shadow:inset 0 0 0 1px rgba(10,13,11,.45);background:{{ ru.lfoSyncBg }};padding:2px 6px;font-family:'Azeret Mono',monospace;font-size:7px;letter-spacing:.12em;color:{{ ru.sub }};text-transform:uppercase;cursor:pointer;text-align:center">Sync</span>
+                  </span>
+                </span>
+              </span>
+
+              <span style="display:flex;flex-direction:column;gap:5px;border-radius:11px;background:rgba(10,13,11,.22);padding:9px 11px;flex:1;min-width:210px">
+                <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.18em;color:{{ ru.sub }};text-transform:uppercase">Matrice de modulation</span>
+                <sc-for list="{{ ru.mtx }}" as="rmx" hint-placeholder-count="3">
+                  <span style="display:flex;align-items:center;gap:6px">
+                    <span onClick="{{ rmx.nextSrc }}" style="border-radius:5px;background:rgba(10,13,11,.45);padding:3px 7px;font-family:'Chakra Petch',sans-serif;font-size:10px;color:{{ ru.ink }};cursor:pointer;width:60px;flex:none;white-space:nowrap;overflow:hidden">{{ rmx.src }}</span>
+                    <span style="font-size:9px;color:{{ ru.sub }};flex:none">→</span>
+                    <span onClick="{{ rmx.nextDst }}" style="border-radius:5px;background:rgba(10,13,11,.45);padding:3px 7px;font-family:'Chakra Petch',sans-serif;font-size:10px;color:{{ ru.ink }};cursor:pointer;width:62px;flex:none;white-space:nowrap;overflow:hidden">{{ rmx.dst }}</span>
+                    <span onPointerDown="{{ rmx.grab }}" style="flex:1;min-width:30px;height:10px;border-radius:3px;background:rgba(10,13,11,.45);cursor:ew-resize;touch-action:none;display:block;overflow:hidden;position:relative">
+                      <span style="position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:{{ rmx.cap }};width:{{ rmx.w }}"></span>
+                    </span>
+                    <span style="font-family:'Venus Rising',sans-serif;font-size:10px;color:{{ ru.ink }};width:20px;text-align:right;flex:none">{{ rmx.amt }}</span>
+                  </span>
+                </sc-for>
+              </span>
+            </span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+    </div>
+    </sc-if>
+
+    <div style="display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:10px;align-items:start">
+      <div style="border-radius:16px;background:var(--panel);padding:16px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Séquenceur · {{ barDisp }}</span>
+          <div style="flex:1;min-width:10px"></div>
+          <span onClick="{{ toggleSeq }}" style="border-radius:999px;background:{{ seqBg }};box-shadow:inset 0 0 0 1px var(--or);color:{{ seqInk }};padding:6px 15px;font-family:'Chakra Petch',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">{{ seqLabel }}</span>
+        </div>
+        <div onPointerDown="{{ cueDown }}" style="position:relative;border-radius:12px;background:var(--well);padding:22px 10px 10px;cursor:ew-resize;touch-action:none">
+          <span style="position:absolute;left:10px;right:10px;top:0;height:18px;display:block">
+            <sc-for list="{{ cueTicks }}" as="ct" hint-placeholder-count="8"><span style="position:absolute;top:2px;font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.1em;color:var(--ink3);left:{{ ct.x }}">{{ ct.label }}</span></sc-for>
+          </span>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <sc-for list="{{ seqLanes }}" as="sl" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:minmax(0,58px) minmax(0,1fr);gap:9px;align-items:center">
+                <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.12em;color:{{ sl.ink }};text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sl.name }}</span>
+                <span style="display:grid;grid-template-columns:repeat(16,minmax(0,1fr));gap:3px">
+                  <sc-for list="{{ sl.steps }}" as="ss" hint-placeholder-count="16">
+                    <span onClick="{{ ss.toggle }}" style="aspect-ratio:1;border-radius:4px;background:{{ ss.bg }};cursor:pointer"></span>
+                  </sc-for>
+                </span>
+              </div>
+            </sc-for>
+          </div>
+          <span style="position:absolute;top:18px;bottom:8px;width:2px;background:var(--or);pointer-events:none;left:{{ cueX }}"></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <sc-for list="{{ tracks }}" as="tr" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:minmax(0,58px) minmax(0,1fr);gap:9px;align-items:center">
+              <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ tr.name }}</span>
+              <div onPointerDown="{{ tr.laneDown }}" style="position:relative;height:30px;border-radius:9px;background:var(--panel3);overflow:hidden;touch-action:none">
+                <sc-for list="{{ tr.blocks }}" as="tb" hint-placeholder-count="2">
+                  <span onPointerDown="{{ tb.grab }}" style="position:absolute;top:4px;bottom:4px;border-radius:7px;background:{{ tb.bg }};cursor:grab;left:{{ tb.x }};width:{{ tb.w }}"></span>
+                </sc-for>
+                <span style="position:absolute;top:0;bottom:0;width:2px;background:var(--or);pointer-events:none;left:{{ cueX }}"></span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="border-radius:16px;background:var(--panel);padding:16px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Mixeur</span>
+        <div style="display:flex;gap:8px;align-items:flex-end">
+          <sc-for list="{{ strips }}" as="st" hint-placeholder-count="5">
+            <div style="flex:1;min-width:46px;display:flex;flex-direction:column;align-items:center;gap:8px;border-radius:12px;background:{{ st.bg }};padding:12px 6px">
+              <span style="font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.1em;color:{{ st.nameInk }};text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">{{ st.name }}</span>
+              <span style="display:flex;gap:5px;align-items:flex-end">
+                <span style="width:5px;height:90px;border-radius:999px;background:var(--well);overflow:hidden;display:flex;align-items:flex-end"><span style="width:100%;border-radius:999px;background:{{ st.meterC }};height:{{ st.meter }}"></span></span>
+                <span onPointerDown="{{ st.grab }}" style="position:relative;width:20px;height:90px;border-radius:6px;background:var(--panel3);cursor:ns-resize;touch-action:none;display:block">
+                  <span style="position:absolute;left:3px;right:3px;height:11px;border-radius:999px;background:{{ st.capBg }};bottom:{{ st.capBottom }}"></span>
+                </span>
+              </span>
+              <span style="font-family:'Venus Rising',sans-serif;font-size:11px;color:{{ st.valueInk }}">{{ st.disp }}</span>
+              <span onClick="{{ st.mute }}" style="width:100%;text-align:center;border-radius:6px;background:{{ st.muteBg }};color:{{ st.muteInk }};font-family:'Azeret Mono',monospace;font-size:7.5px;letter-spacing:.1em;padding:3px 0;cursor:pointer;text-transform:uppercase">{{ st.muteLabel }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = {
+    z:1, px:60, py:40, playing:false, bpm:118, sel:1, spec:null,
+    drag:null, link:null, linkPos:null, nextId:5,
+    modules:[
+      {id:1,name:'Oscillateur',kind:'Source',x:40,y:40,accent:'#d9634a',knobs:[['Accord',62],['Forme',38],['Détune',24]]},
+      {id:2,name:'Filtre',kind:'Passe-bas',x:300,y:120,accent:'#c6d5dc',knobs:[['Coupure',74],['Résonance',46],['Suivi',30]]},
+      {id:3,name:'Enveloppe',kind:'ADSR',x:60,y:260,accent:'#d9a486',knobs:[['Attaque',18],['Déclin',54],['Tenue',66],['Chute',42]]},
+      {id:4,name:'Sortie',kind:'Master',x:560,y:220,accent:'#2b7050',knobs:[['Volume',80],['Largeur',52]]}
+    ],
+    cables:[{a:1,b:2},{a:2,b:4}],
+    cue:0, seqOn:false, nextRack:12,
+    rack:[
+      {id:1,name:'Subtractor',kind:'Synthé',ui:'wave',accent:'#e0674a',on:true,knobs:[['Osc',62],['Filtre',74],['Env',38],['Mix',55]]},
+      {id:2,name:'Malström',kind:'Synthé à grain',ui:'xy',accent:'#e59578',on:true,knobs:[['Grain',54],['Indice',38],['Forme',62],['Mix',58]]},
+      {id:3,name:'Redrum',kind:'Boîte à rythmes',ui:'pads',accent:'#d47a5c',on:true,knobs:[['Pitch',48],['Décroiss.',60],['Ton',42],['Niveau',70]]},
+      {id:4,name:'NN-XT',kind:'Échantillonneur',ui:'pads',accent:'#a3502f',on:true,knobs:[['Départ',18],['Boucle',52],['Pitch',50],['Niveau',64]]},
+      {id:5,name:'Matrix',kind:'Séquenceur de pas',ui:'steps',accent:'#78b08f',on:true,knobs:[['Tempo',52],['Swing',28],['Portée',46]]},
+      {id:6,name:'RPG-8',kind:'Arpégiateur',ui:'steps',accent:'#3f9a6a',on:false,knobs:[['Motif',42],['Octaves',34],['Gate',56]]},
+      {id:7,name:'ECF-42',kind:'Filtre modulé',ui:'xy',accent:'#b9cfd8',on:true,knobs:[['Coupure',66],['Résonance',44],['Env',38]]},
+      {id:8,name:'Scream 4',kind:'Distorsion',ui:'env',accent:'#7a3a22',on:false,knobs:[['Damage',30],['P1',55],['P2',44],['Master',66]]},
+      {id:9,name:'Comp-01',kind:'Compresseur',ui:'env',accent:'#c2462f',on:true,knobs:[['Seuil',44],['Ratio',52],['Reprise',38]]},
+      {id:10,name:'DDL-1',kind:'Écho à bande',ui:'env',accent:'#d9a486',on:true,knobs:[['Temps',48],['Retour',36],['Mix',44]]},
+      {id:11,name:'RV-7',kind:'Réverbe',ui:'env',accent:'#76878e',on:true,knobs:[['Taille',58],['Amorti',36],['Mix',40]]}
+    ],
+    rsel:{}, rsld:{}, rlfo:{}, rmtx:{}, rwhl:{}, mod:{}, mk:{},
+    mq:null, lib:null, xy:{}, pads:{}, envs:{1:[22,58,70,40],3:[30,50,60,45],8:[18,44,66,52],9:[12,38,72,30],10:[36,54,50,44],11:[40,62,48,36]}, waveMode:{1:0},
+    seq:[[1,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0],[0,0,1,0,0,0,1,0,0,0,1,0,0,1,1,0],[1,0,1,1,0,1,0,0,1,0,1,0,0,1,0,1],[0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0]],
+    tracks:[[{id:1,x:0,w:160},{id:2,x:200,w:120}],[{id:3,x:60,w:200}],[{id:4,x:120,w:240}]],
+    faders:[78,64,71,58,82], mixMutes:[false,false,false,false,false]
+  };
+  fitView(tries){
+    const S=this.state, W=this.W?this.W():230;
+    if(!S.modules.length) return;
+    const host=document.querySelector('[data-rack-canvas]');
+    const aw=(host?host.clientWidth:0)-40, ah=(host?host.clientHeight:0)-40;
+    if(aw<80||ah<80){ if((tries||0)<40) requestAnimationFrame(()=>this.fitView((tries||0)+1)); return }
+    const xs=S.modules.map(m=>m.x), ys=S.modules.map(m=>m.y);
+    const minX=Math.min(...xs)-30, minY=Math.min(...ys)-30;
+    const maxX=Math.max(...xs)+W+30, maxY=Math.max(...S.modules.map(m=>m.y+this.H(m)))+30;
+    const nz=Math.max(.35,Math.min(1,Math.min(aw/(maxX-minX),ah/(maxY-minY))*.94));
+    this.setState({z:nz,
+      px:20+(aw-(maxX-minX)*nz)/2-minX*nz,
+      py:20+(ah-(maxY-minY)*nz)/2-minY*nz});
+  }
+  componentDidMount(){
+    requestAnimationFrame(()=>this.fitView(0));
+    this.onResize=()=>this.fitView();
+    window.addEventListener('resize',this.onResize);
+    this.tick=setInterval(()=>{
+      if(this.state.seqOn) this.setState({cue:(this.state.cue+1.6)%100});
+      this.setState({spec:Array.from({length:22},(_,i)=>{
+        const g=this.state.playing?1:.3;
+        return 8+(Math.sin(Date.now()/230+i*.8)*.5+.5)*(84-i*2.6)*g;
+      })});
+    },170);
+  }
+  componentWillUnmount(){ clearInterval(this.tick) }
+
+  W(){ return 210 }
+  H(m){ return 52 + (m.knobs.length>3?2:1)*70 }
+  scr(x,y){ const S=this.state; return [x*S.z+S.px, y*S.z+S.py] }
+
+  dragValue(e, get, set, scale){
+    e.preventDefault(); e.stopPropagation();
+    const y0=e.clientY, v0=get();
+    const mv=(ev)=>set(Math.max(0,Math.min(100, v0+(y0-ev.clientY)*scale)));
+    const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+    window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up);
+  }
+
+  renderVals(){
+    const S=this.state, z=S.z, OR='#d9634a', CY='#c6d5dc';
+    const detail = z>=0.95 ? 2 : (z>=0.6 ? 1 : 0);
+    const W=this.W();
+
+    const setKnob=(mid,ki,v)=>this.setState({modules:S.modules.map(m=>m.id!==mid?m:{...m,knobs:m.knobs.map((k,i)=>i===ki?[k[0],v]:k)})});
+
+    const UIT={'Clavier':'keys','Pads':'pads','Molettes':'faders','Séquenceur':'steps','Boîte à rythmes':'pads','Arpégiateur':'steps','Horloge maître':'digits','Diviseur':'digits',
+      'Oscillateur':'wave','Sous-oscillateur':'wave','Table d’ondes':'wave','Chorus':'wave','Bruit':'bands','Granulaire':'grain','Échantillonneur':'grain',
+      'Enveloppe':'env','Suiveur':'env','LFO':'wave','Sample & hold':'rnd','Aléatoire':'rnd','Quantificateur':'scale',
+      'Filtre':'curve','Formant':'curve','Filtre en peigne':'curve','Distorsion':'curve','Phaser':'curve','Vocodeur':'bands','Réverbe':'bands',
+      'Écho':'taps','Mélangeur':'faders','VCA':'meter','Compresseur':'meter','Panoramique':'pan','Sortie':'meter'};
+    const KEYP=[0,1,0,1,0,0,1,0,1,0,1,0,0,1,0];
+    const uiGet=(key,id,i,d)=>{ const t=(S[key]||{})[id]; const v=t?t[i]:undefined; return v===undefined?d:v };
+    const uiSet=(key,id,i,v)=>this.setState({[key]:{...(this.state[key]||{}),[id]:{...((this.state[key]||{})[id]||{}),[i]:v}}});
+
+    const modules = S.modules.map(m=>{
+      const [sx,sy]=this.scr(m.x,m.y);
+      const ut=UIT[m.name]||'meter';
+      const kv=(i,d)=>m.knobs[i]?m.knobs[i][1]:d;
+      const sw=W*z;
+      return {
+        id:m.id, name:m.name, kind:m.kind, accent:m.accent,
+        sx:sx.toFixed(1)+'px', sy:sy.toFixed(1)+'px', sw:sw.toFixed(1)+'px',
+        radius:(14*z).toFixed(1)+'px',
+        bg: S.sel===m.id ? '#1b211e' : '#151a18',
+        ring: S.sel===m.id ? '0 0 0 1.5px '+m.accent : '0 0 0 1px rgba(198,213,220,.07)',
+        headBg: 'transparent',
+        headPad:(10*z).toFixed(1)+'px '+(12*z).toFixed(1)+'px',
+        bodyPad:'0 '+(12*z).toFixed(1)+'px '+(8*z).toFixed(1)+'px',
+        meterPad:'0 '+(12*z).toFixed(1)+'px '+(8*z).toFixed(1)+'px',
+        portPad:(6*z).toFixed(1)+'px '+(12*z).toFixed(1)+'px '+(10*z).toFixed(1)+'px',
+        titleSize:(13*z).toFixed(1)+'px',
+        dotSize:(7*z).toFixed(1)+'px',
+        portSize:(9*z).toFixed(1)+'px',
+        knobSize:(38*z).toFixed(1)+'px',
+        knobBox:(54*z).toFixed(1)+'px',
+        knobGap:(10*z).toFixed(1)+'px',
+        pointer:(11*z).toFixed(1)+'px',
+        showKind: detail>=1, showBody: detail>=1, showValues: detail>=1, showLabels: detail>=2,
+        showPortLabels: detail>=2, showMeter: detail>=2,
+        level: (m.knobs[0][1]).toFixed(0)+'%',
+        levelDisp: Math.round(m.knobs[0][1]),
+        inColor: '#76878e', outColor: m.accent,
+        ut,
+        uiKeys:ut==='keys'&&detail>=1, uiPads:ut==='pads'&&detail>=1, uiSteps:ut==='steps'&&detail>=1,
+        uiWave:ut==='wave'&&detail>=1, uiEnv:ut==='env'&&detail>=1, uiCurve:ut==='curve'&&detail>=1,
+        uiBands:(ut==='bands'||ut==='grain')&&detail>=1, uiRnd:ut==='rnd'&&detail>=1, uiScale:ut==='scale'&&detail>=1,
+        uiFaders:ut==='faders'&&detail>=1, uiDigits:ut==='digits'&&detail>=1, uiTaps:ut==='taps'&&detail>=1, uiPan:ut==='pan'&&detail>=1,
+        uiH:(34*z).toFixed(1)+'px', uiPad:'0 '+(12*z).toFixed(1)+'px '+(6*z).toFixed(1)+'px',
+        uiKeyList:KEYP.map((b,i)=>({w:((b?5:8)*z).toFixed(1)+'px', h:((b?18:30)*z).toFixed(1)+'px',
+          bg:uiGet('uiK',m.id,0,-1)===i?m.accent:(b?'#0a0e0c':'#c6d2cd'),
+          pick:(e)=>{e.stopPropagation(); uiSet('uiK',m.id,0,i)} })),
+        uiStepList:Array.from({length:16},(_,i)=>{ const on=uiGet('uiS',m.id,i,(i*5)%7<2);
+          return {h:((on?8+((i*7)%16):3)*z).toFixed(1)+'px', bg:on?m.accent:'rgba(198,213,220,.18)',
+            tog:(e)=>{e.stopPropagation(); uiSet('uiS',m.id,i,!on)} } }),
+        uiPadList:Array.from({length:16},(_,i)=>{ const on=uiGet('uiP',m.id,i,i%5===0);
+          return {bg:on?m.accent:'rgba(198,213,220,.09)', size:(11*z).toFixed(1)+'px',
+            tog:(e)=>{e.stopPropagation(); uiSet('uiP',m.id,i,!on)} } }),
+        uiScaleList:Array.from({length:12},(_,i)=>{ const on=uiGet('uiQ',m.id,i,[1,0,1,0,1,1,0,1,0,1,0,1][i]===1);
+          return {bg:on?m.accent:'transparent', ink:on?'#0c100e':'#7c8884', size:(13*z).toFixed(1)+'px',
+            tog:(e)=>{e.stopPropagation(); uiSet('uiQ',m.id,i,!on)} } }),
+        uiBandList:Array.from({length:14},(_,i)=>{ const c=kv(0,50)/100, w=kv(1,50)/100;
+          const v=Math.max(.08,Math.exp(-Math.pow((i/13-c)*(3.4-w*2),2)*5));
+          return {h:(v*100).toFixed(0)+'%', bg:i/13<c?m.accent:'rgba(198,213,220,.22)'} }),
+        uiRndList:Array.from({length:9},(_,i)=>({h:(18+((i*37+Math.round(kv(0,45)))%70)).toFixed(0)+'%',
+          bg:i%3===0?m.accent:'rgba(198,213,220,.25)'})),
+        uiTapList:Array.from({length:6},(_,i)=>({h:(90*Math.pow(kv(1,35)/100+.35,i)).toFixed(0)+'%',
+          left:(8+i*(6+kv(0,50)/9)).toFixed(1)+'%', bg:m.accent})),
+        uiFaderList:m.knobs.map(([label,v],ki)=>({pct:(v*.8).toFixed(0)+'%', label,
+          color:ki===0?m.accent:CY, grab:(e)=>this.dragValue(e,()=>m.knobs[ki][1],(nv)=>setKnob(m.id,ki,nv),.8)})),
+        uiWavePath:(()=>{ const sh=kv(1,40)/100, amp=20;
+          let d='M0 26'; for(let x=0;x<=160;x+=4){ const p=x/160*Math.PI*4;
+            const y=26-amp*((1-sh)*Math.sin(p)+sh*(Math.sin(p)>0?1:-1)*.9); d+=' L'+x+' '+y.toFixed(1) } return d })(),
+        uiEnvPath:(()=>{ const a=kv(0,20)/100,dc=kv(1,55)/100,su=kv(2,70)/100,re=kv(3,40)/100;
+          const x1=4+a*40, x2=x1+8+dc*44, ys=48-su*42, x3=140-re*36;
+          return 'M4 48 L'+x1.toFixed(1)+' 6 L'+x2.toFixed(1)+' '+ys.toFixed(1)+' L'+x3.toFixed(1)+' '+ys.toFixed(1)+' L156 48' })(),
+        uiCurvePath:(()=>{ const c=4+kv(0,70)/100*120, q=kv(1,40)/100;
+          return 'M4 20 L'+(c-26).toFixed(1)+' 20 Q'+(c-4).toFixed(1)+' '+(20-q*17).toFixed(1)+' '+c.toFixed(1)+' '+(16+q*6).toFixed(1)+' T156 46' })(),
+        uiPanPos:(6+kv(0,50)*.88).toFixed(1)+'%',
+        uiDigits:String(Math.round(60+kv(0,56)*1.4)),
+        knobs: m.knobs.map(([label,v],ki)=>({
+          label, disp:Math.round(v),
+          angle:(-135+v*2.7).toFixed(1)+'deg',
+          dash:((v/100)*(2*Math.PI*16*.75)).toFixed(1)+' 999',
+          color: ki===0 ? m.accent : CY,
+          grab:(e)=>this.dragValue(e,()=>m.knobs[ki][1],(nv)=>setKnob(m.id,ki,nv),.8)
+        })),
+        ref:(el)=>{ if(!el) return; const h=el.offsetHeight/this.state.z; const cur=(this.state.hm||{})[m.id];
+          if(!cur||Math.abs(cur-h)>.6){ this._hmPend={...(this._hmPend||this.state.hm||{}),[m.id]:h};
+            clearTimeout(this._hmT); this._hmT=setTimeout(()=>this.setState({hm:this._hmPend}),16) } },
+        grab:(e)=>{
+          e.preventDefault(); e.stopPropagation();
+          this.setState({sel:m.id});
+          const x0=e.clientX,y0=e.clientY,mx=m.x,my=m.y;
+          const mv=(ev)=>this.setState({modules:this.state.modules.map(mm=>mm.id!==m.id?mm:{...mm,x:mx+(ev.clientX-x0)/this.state.z,y:my+(ev.clientY-y0)/this.state.z})});
+          const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+          window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up);
+        },
+        startLink:(e)=>{ e.preventDefault(); e.stopPropagation(); this.setState({link:{id:m.id,dir:'out'}, linkPos:null, sel:m.id}) },
+        startLinkIn:(e)=>{ e.preventDefault(); e.stopPropagation(); this.setState({link:{id:m.id,dir:'in'}, linkPos:null, sel:m.id}) },
+        dropIn:(e)=>{
+          e.stopPropagation();
+          const L=this.state.link;
+          if(L && L.id!==m.id){
+            const a=L.dir==='out'?L.id:m.id, b=L.dir==='out'?m.id:L.id;
+            if(!this.state.cables.some(c=>c.a===a&&c.b===b)) this.setState({cables:[...this.state.cables,{a,b}]});
+          }
+          this.setState({link:null,linkPos:null});
+        }
+      };
+    });
+
+    const nodeH=(m)=>((S.hm||{})[m.id])||this.H(m);
+    const portOut=(m)=>{ const [sx,sy]=this.scr(m.x,m.y); return [sx+W*z, sy+nodeH(m)*z/2] };
+    const portIn=(m)=>{ const [sx,sy]=this.scr(m.x,m.y); return [sx, sy+nodeH(m)*z/2] };
+    const byId=(id)=>S.modules.find(m=>m.id===id);
+    const curve=(x1,y1,x2,y2)=>{ const dx=Math.max(40,Math.abs(x2-x1)*.55); return `M${x1.toFixed(1)} ${y1.toFixed(1)} C${(x1+dx).toFixed(1)} ${y1.toFixed(1)}, ${(x2-dx).toFixed(1)} ${y2.toFixed(1)}, ${x2.toFixed(1)} ${y2.toFixed(1)}` };
+
+    const cables = S.cables.map((c,i)=>{
+      const A=byId(c.a), B=byId(c.b);
+      if(!A||!B) return {d:'',color:'transparent',op:0};
+      const [x1,y1]=portOut(A), [x2,y2]=portIn(B);
+      return {d:curve(x1,y1,x2,y2), color:A.accent, op:S.playing?0.95:0.6};
+    });
+    const cableList = S.cables.map((c,i)=>({
+      label:(byId(c.a)?.name||'?')+' → '+(byId(c.b)?.name||'?'),
+      cut:()=>this.setState({cables:S.cables.filter((_,j)=>j!==i)})
+    }));
+
+    let linkPath='';
+    if(S.link && S.linkPos){ const A=byId(S.link.id); if(A){
+      if(S.link.dir==='out'){ const [x1,y1]=portOut(A); linkPath=curve(x1,y1,S.linkPos[0],S.linkPos[1]) }
+      else { const [x2,y2]=portIn(A); linkPath=curve(S.linkPos[0],S.linkPos[1],x2,y2) } } }
+
+    const sel = byId(S.sel) || S.modules[0];
+    const selParams = sel ? sel.knobs.map(([label,v],ki)=>({
+      label, disp:Math.round(v), pct:v.toFixed(0)+'%',
+      color: ki===0 ? sel.accent : CY,
+      grab:(e)=>{
+        e.preventDefault();
+        const el=e.currentTarget.getBoundingClientRect();
+        const set=(cx)=>setKnob(sel.id,ki,Math.max(0,Math.min(100,(cx-el.left)/el.width*100)));
+        set(e.clientX);
+        const mv=(ev)=>set(ev.clientX);
+        const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+        window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up);
+      }
+    })) : [];
+
+    const paletteDefs=[
+      ['Oscillateur','Source','#e0674a',[['Accord',60],['Forme',40],['Détune',20]],'Oscillateur analogique virtuel : sinus, dent de scie, carré, triangle. Point de départ de la plupart des patchs.'],
+      ['Sous-oscillateur','Source','#d47a5c',[['Octave',35],['Niveau',55]],'Oscillateur suiveur une ou deux octaves sous la source, pour épaissir les basses.'],
+      ['Bruit','Source','#a3502f',[['Couleur',50],['Niveau',30]],'Générateur de bruit blanc à rose, utilisé pour les percussions et les transitoires.'],
+      ['Échantillonneur','Source','#e59578',[['Départ',20],['Boucle',50],['Pitch',50]],'Lecture d’un fichier audio avec point de départ, boucle et transposition.'],
+      ['Table d’ondes','Source','#f0b49b',[['Position',40],['Table',25],['Accord',50]],'Balayage d’une table d’ondes : la position se module comme un timbre continu.'],
+      ['Granulaire','Source','#c8724f',[['Grain',45],['Densité',60],['Dispersion',30]],'Moteur à grains : découpe l’échantillon en micro-fragments répartis dans le temps.'],
+      ['Clavier','Contrôle','#b9cfd8',[['Octave',50],['Glissando',15],['Vélocité',70]],'Entrée clavier : sort la hauteur, la porte et la vélocité vers les modules connectés.'],
+      ['Pads','Contrôle','#9ab0b8',[['Sensibilité',60],['Choke',30]],'Seize pads de déclenchement, un canal par pad, avec groupes d’extinction.'],
+      ['Molettes','Contrôle','#8fa39b',[['Pitch',50],['Modulation',35]],'Molettes de hauteur et de modulation, à router librement dans la matrice.'],
+      ['Séquenceur','Horloge','#78b08f',[['Pas',50],['Swing',30],['Division',40]],'Séquenceur à pas : hauteur, porte et accents sur seize positions.'],
+      ['Boîte à rythmes','Horloge','#5f9a78',[['Motif',40],['Swing',35],['Remplissage',25]],'Grille de percussions multi-pistes synchronisée à l’horloge maître.'],
+      ['Arpégiateur','Horloge','#4f8c68',[['Vitesse',50],['Étendue',35],['Motif',20]],'Arpège l’accord tenu : montant, descendant, alterné ou aléatoire.'],
+      ['Horloge maître','Horloge','#3f9a6a',[['Tempo',56],['Shuffle',25]],'Source de tempo du patch ; toutes les divisions en découlent.'],
+      ['Diviseur','Horloge','#2f6b4a',[['Division',40],['Décalage',20]],'Divise ou multiplie l’horloge entrante pour créer des cycles polyrythmiques.'],
+      ['Filtre','Passe-bas','#b9cfd8',[['Coupure',70],['Résonance',40],['Suivi',30]],'Filtre résonant passe-bas, passe-haut ou passe-bande, clé du timbre.'],
+      ['Formant','Filtre','#9ab0b8',[['Voyelle',45],['Largeur',50]],'Banc de résonateurs vocaliques : A, E, I, O, U morphables.'],
+      ['Filtre en peigne','Filtre','#76878e',[['Accord',45],['Retour',55],['Mix',40]],'Ligne à retard courte accordée : cordes pincées et métaux.'],
+      ['Vocodeur','Filtre','#6d8a92',[['Bandes',50],['Attaque',30],['Mix',60]],'Analyse un signal modulateur et l’imprime sur une porteuse, bande par bande.'],
+      ['Enveloppe','Modulation','#3f9a6a',[['Attaque',20],['Déclin',55],['Tenue',70],['Chute',40]],'Enveloppe ADSR déclenchée par la porte, à router vers niveau ou coupure.'],
+      ['LFO','Modulation','#2f6b4a',[['Vitesse',45],['Forme',30],['Profondeur',50]],'Oscillateur lent libre ou synchronisé, pour vibrato, trémolo et balayages.'],
+      ['Suiveur','Modulation','#55916f',[['Sensibilité',55],['Lissage',40]],'Suiveur d’enveloppe : convertit le niveau d’un signal audio en modulation.'],
+      ['Sample & hold','Modulation','#6fa98a',[['Cadence',45],['Glissement',20]],'Échantillonne une tension à chaque impulsion et la maintient jusqu’à la suivante.'],
+      ['Aléatoire','Modulation','#84b79c',[['Densité',40],['Portée',50],['Boucle',30]],'Générateur à registre à décalage : hasard verrouillable en boucle.'],
+      ['Quantificateur','Modulation','#a3c7b4',[['Gamme',30],['Transposition',50]],'Force les hauteurs entrantes sur une gamme choisie avant l’oscillateur.'],
+      ['Écho','Effet','#d9a486',[['Temps',50],['Retour',35],['Mix',45]],'Délai synchronisable avec réinjection et filtrage de la répétition.'],
+      ['Réverbe','Effet','#76878e',[['Taille',60],['Amorti',40],['Mix',30]],'Réverbération à taille, amortissement et pré-délai variables.'],
+      ['Chorus','Effet','#c9b7a4',[['Vitesse',40],['Profondeur',50],['Mix',45]],'Doublage légèrement désaccordé et retardé, pour élargir la stéréo.'],
+      ['Phaser','Effet','#b89a86',[['Vitesse',35],['Étages',45],['Retour',40]],'Filtres passe-tout balayés : encoches mobiles dans le spectre.'],
+      ['Distorsion','Effet','#7a3a22',[['Gain',55],['Ton',45],['Mix',40]],'Saturation à lampe, transistor ou écrêtage dur.'],
+      ['Compresseur','Dynamique','#c2462f',[['Seuil',45],['Ratio',50],['Reprise',40]],'Contrôle la dynamique ; l’entrée de chaîne latérale permet le ducking.'],
+      ['Mélangeur','Dynamique','#a3502f',[['Voie A',60],['Voie B',45],['Voie C',30]],'Somme plusieurs signaux avec niveau indépendant par voie.'],
+      ['VCA','Dynamique','#e0674a',[['Gain',60],['Offset',20]],'Amplificateur commandé : la modulation définit le niveau de passage.'],
+      ['Panoramique','Dynamique','#d47a5c',[['Position',50],['Largeur',55]],'Place le signal dans le champ stéréo, modulable par LFO.'],
+      ['Sortie','Master','#2b7050',[['Volume',80],['Largeur',50]],'Sortie maître du patch vers la baie et le mixeur.']];
+    const mkModule=(idx,wx,wy)=>{
+      const [name,kind,accent,knobs]=paletteDefs[idx]; const id=this.state.nextId;
+      const pend=this.state.lib&&this.state.lib.link;
+      const extra=pend?[{a:pend.dir==='out'?pend.id:id, b:pend.dir==='out'?id:pend.id}]:[];
+      this.setState({nextId:id+1, sel:id, lib:null, mq:null, link:null, linkPos:null,
+        cables:[...this.state.cables,...extra],
+        modules:[...this.state.modules,{id,name,kind,accent,x:wx,y:wy,knobs:knobs.map(k=>[...k])}]});
+    };
+    const libPos=S.lib;
+    const library = paletteDefs.map(([label,kind,c,kn,desc],idx)=>({label,kind,c,desc,
+      create:()=>{ const wx=((libPos?libPos.cx:220)-this.state.px)/this.state.z, wy=((libPos?libPos.cy:140)-this.state.py)/this.state.z; mkModule(idx,wx,wy) }}));
+    const palette = [];
+
+    const spec=(S.spec||Array.from({length:22},(_,i)=>16+i*2)).map((v,i)=>({
+      h:v.toFixed(0)+'%', c: v>70?OR:(i<3?'#d9a486':CY)
+    }));
+
+    const setZoom=(nz,cx,cy)=>{
+      const z0=this.state.z, k=nz/z0;
+      this.setState({z:nz, px:cx-(cx-this.state.px)*k, py:cy-(cy-this.state.py)*k});
+    };
+
+    const ACC='#e0674a';
+    const cueStep8=Math.floor(S.cue/100*8)%8;
+    const rackUpd=(id,fn)=>this.setState({rack:this.state.rack.map(r=>r.id!==id?r:fn(r))});
+    const dragV=(cur,set)=>(e)=>{ e.preventDefault(); const y0=e.clientY, v0=cur;
+      const mv=(ev)=>set(Math.max(0,Math.min(100,v0+(y0-ev.clientY))));
+      const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+      window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) };
+    const putIdx=(key,id,i,v)=>this.setState({[key]:{...this.state[key],[id]:{...(this.state[key]||{})[id],[i]:v}}});
+    const selDefs=[['Mode',['Poly','Mono','Legato','Retrig']],['Route',['Direct','Bus A','Bus B','Aux 1']],['Sync',['Libre','1/4','1/8','1/16']],['Filtre',['LP 24','LP 12','BP 12','HP 12']]];
+    const mtxSrc=['LFO 1','LFO 2','Env 1','Env 2','Molette','Vélocité'];
+    const mtxDst=['Coupure','Hauteur','Forme','Niveau','Pan','Réson.'];
+    const rackUnits=S.rack.map((u,ui)=>({
+      no:String(ui+1).padStart(2,'0'), name:u.name, kind:u.kind, accent:u.accent,
+      bg:u.on?u.accent:'#151a18',
+      ink:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#9ca8a2',
+      sub:u.on?(u.accent==='#b9cfd8'?'rgba(13,18,16,.7)':'rgba(253,243,238,.75)'):'#7c8884',
+      state:u.on?'Actif':'Bypass',
+      railBg:u.on?'rgba(10,13,11,.22)':'rgba(255,255,255,.03)',
+      hair:u.on?'rgba(10,13,11,.35)':'rgba(185,207,216,.16)',
+      pillBg:u.on?'rgba(10,13,11,.3)':'transparent',
+      pillRing:u.on?'rgba(10,13,11,.4)':'rgba(47,107,74,.8)',
+      pillInk:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#9ca8a2',
+      toggle:()=>rackUpd(u.id,k=>({...k,on:!k.on})),
+      up:()=>{ if(ui===0) return; const r=[...S.rack]; [r[ui-1],r[ui]]=[r[ui],r[ui-1]]; this.setState({rack:r}) },
+      down:()=>{ if(ui===S.rack.length-1) return; const r=[...S.rack]; [r[ui+1],r[ui]]=[r[ui],r[ui+1]]; this.setState({rack:r}) },
+      remove:()=>this.setState({rack:S.rack.filter(k=>k.id!==u.id)}),
+      hasPads:u.ui==='pads', hasEnv:u.ui==='env', hasWave:u.ui==='wave', hasSteps:u.ui==='steps', hasXY:u.ui==='xy',
+      steps:u.ui!=='steps'?[]:Array.from({length:8},(_,si)=>{
+        const on=!!(S.pads[u.id]||{})[si], lit=S.seqOn&&si===cueStep8;
+        return { h:(on?(38+si*6)%76+24:6)+'%', fill:u.accent==='#b9cfd8'?'#0d1210':'rgba(253,243,238,.9)',
+          dot:lit?'#fdf3ee':(on?(u.accent==='#b9cfd8'?'#0d1210':'rgba(253,243,238,.6)'):'rgba(10,13,11,.45)'),
+          toggle:()=>this.setState({pads:{...this.state.pads,[u.id]:{...(this.state.pads[u.id]||{}),[si]:!on}}}) };
+      }),
+      sels:selDefs.map(([label,opts],si)=>{ const i=((S.rsel[u.id]||{})[si]||0)%opts.length;
+        return { label, val:opts[i], next:()=>putIdx('rsel',u.id,si,(i+1)%opts.length) } }),
+      slid:['Niv','Pan','Drive','Send'].map((label,si)=>{ const v=((S.rsld[u.id]||{})[si]);
+        const val=v===undefined?[74,50,32,26][si]:v;
+        return { label, pct:(val*.86).toFixed(0)+'%', cap:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#53665b',
+          grab:dragV(val,(nv)=>putIdx('rsld',u.id,si,nv)) } }),
+      wheels:['Pitch','Mod'].map((label,si)=>{ const v=((S.rwhl[u.id]||{})[si]);
+        const val=v===undefined?[50,18][si]:v;
+        return { label, pct:(8+val*.74).toFixed(0)+'%', cap:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#53665b',
+          grab:dragV(val,(nv)=>putIdx('rwhl',u.id,si,nv)) } }),
+      lfoShapes:['∿','◢','⊓','∷'].map((label,si)=>({ label,
+        bg:(((S.rlfo[u.id]||{}).s)||0)===si?'rgba(10,13,11,.55)':'rgba(10,13,11,.18)',
+        ink:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#7c8884',
+        pick:()=>this.setState({rlfo:{...S.rlfo,[u.id]:{...(S.rlfo[u.id]||{}),s:si}}}) })),
+      lfoRateDisp:((((S.rlfo[u.id]||{}).r)||42)/10).toFixed(2)+' Hz',
+      lfoAngle:(-140+((((S.rlfo[u.id]||{}).r)||42)/100)*280).toFixed(0)+'deg',
+      lfoGrab:dragV((((S.rlfo[u.id]||{}).r)||42),(nv)=>this.setState({rlfo:{...this.state.rlfo,[u.id]:{...(this.state.rlfo[u.id]||{}),r:nv}}})),
+      lfoSyncBg:(((S.rlfo[u.id]||{}).k))?'rgba(10,13,11,.5)':'transparent',
+      lfoSync:()=>this.setState({rlfo:{...S.rlfo,[u.id]:{...(S.rlfo[u.id]||{}),k:!((S.rlfo[u.id]||{}).k)}}}),
+      mtx:[0,1,2].map((mi)=>{ const st=(S.rmtx[u.id]||{})[mi]||{};
+        const si=st.s===undefined?(mi+u.id)%mtxSrc.length:st.s, di=st.d===undefined?(mi*2+u.id)%mtxDst.length:st.d;
+        const am=st.a===undefined?[62,38,24][mi]:st.a;
+        const set=(p,v)=>putIdx('rmtx',u.id,mi,{...st,[p]:v});
+        return { src:mtxSrc[si], dst:mtxDst[di], amt:am.toFixed(0), w:Math.max(3,am).toFixed(0)+'%',
+          cap:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#53665b',
+          nextSrc:()=>set('s',(si+1)%mtxSrc.length), nextDst:()=>set('d',(di+1)%mtxDst.length),
+          grab:(e)=>{ e.preventDefault(); const r=e.currentTarget.getBoundingClientRect();
+            const go=(cx)=>set('a',Math.max(0,Math.min(100,(cx-r.left)/r.width*100)));
+            go(e.clientX); const mv=(ev)=>go(ev.clientX);
+            const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+            window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) } } }),
+      xyX:((S.xy[u.id]||[50,50])[0])+'%', xyY:((S.xy[u.id]||[50,50])[1])+'%',
+      xyGrab:(e)=>{ e.preventDefault(); const r=e.currentTarget.getBoundingClientRect();
+        const set=(cx,cy)=>this.setState({xy:{...this.state.xy,[u.id]:[Math.max(0,Math.min(100,(cx-r.left)/r.width*100)),Math.max(0,Math.min(100,(r.bottom-cy)/r.height*100))]}});
+        set(e.clientX,e.clientY);
+        const mv=(ev)=>set(ev.clientX,ev.clientY);
+        const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+        window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) },
+      pads:u.ui!=='pads'?[]:Array.from({length:16},(_,pi)=>{
+        const lit=!!(S.pads[u.id]||{})[pi];
+        return { bg:lit?(u.accent==='#b9cfd8'?'#0d1210':'rgba(10,13,11,.55)'):'rgba(10,13,11,.16)',
+          ring:lit?'rgba(253,243,238,.85)':'rgba(10,13,11,.4)',
+          hit:()=>this.setState({pads:{...this.state.pads,[u.id]:{...(this.state.pads[u.id]||{}),[pi]:!lit}}}) };
+      }),
+      env:u.ui!=='env'?[]:(S.envs[u.id]||[30,50,60,45]).map((v,ei)=>({
+        label:['A','D','S','R'][ei], pct:(v*.8).toFixed(0)+'%',
+        cap:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#53665b',
+        grab:(e)=>{ e.preventDefault(); const y0=e.clientY, v0=v;
+          const mv=(ev)=>{ const nv=Math.max(2,Math.min(100,v0+(y0-ev.clientY)));
+            this.setState({envs:{...this.state.envs,[u.id]:(this.state.envs[u.id]||[30,50,60,45]).map((q,j)=>j===ei?nv:q)}}) };
+          const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+          window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) }
+      })),
+      wavePath:(()=>{ const m=(S.waveMode[u.id]||0), pts=[];
+        for(let x=0;x<=120;x+=3){ const p=x/120*Math.PI*4;
+          let y = m===0?Math.sin(p) : m===1?(Math.asin(Math.sin(p))*.64) : m===2?(2*((p/Math.PI)%1)-1) : (Math.sin(p)>0?1:-1);
+          pts.push(x.toFixed(0)+' '+(19-y*14).toFixed(1)); }
+        return 'M'+pts.join(' L') })(),
+      waveModes:['Sin','Tri','Dent','Car'].map((label,wi)=>({label,
+        bg:(S.waveMode[u.id]||0)===wi?'rgba(10,13,11,.5)':'rgba(10,13,11,.2)',
+        ink:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#7c8884',
+        pick:()=>this.setState({waveMode:{...this.state.waveMode,[u.id]:wi}})})),
+      leds:Array.from({length:8},(_,li)=>{ const v=u.on?(u.knobs[li%u.knobs.length][1]/100):0;
+        const on2=li/8<v; return { h:(6+li*2)+'px',
+          c:on2?(li>5?'#fdf3ee':(u.accent==='#b9cfd8'?'#0d1210':'rgba(253,243,238,.82)')):'rgba(10,13,11,.35)' } }),
+      jacks:[{label:'Entrée',c:u.accent==='#b9cfd8'?'#0d1210':'rgba(253,243,238,.85)'},{label:'Sortie',c:u.accent==='#b9cfd8'?'#0d1210':'rgba(253,243,238,.85)'}],
+      knobs:u.knobs.map(([label,v],ki)=>({
+        label, disp:Math.round(v), angle:(-135+v*2.7).toFixed(1)+'deg',
+        ink:u.on?(u.accent==='#b9cfd8'?'#0d1210':'#fdf3ee'):'#7c8884',
+        grab:(e)=>this.dragValue(e,()=>u.knobs[ki][1],(nv)=>rackUpd(u.id,k=>({...k,knobs:k.knobs.map((q,j)=>j===ki?[q[0],nv]:q)})),.8)
+      }))
+    }));
+    const rackDefs=[
+      ['Synthé','wave','#e0674a',[['Osc',60],['Filtre',70],['Env',40],['Mix',50]]],
+      ['Boîte à rythmes','pads','#d47a5c',[['Pitch',50],['Décroiss.',55],['Ton',45],['Niveau',65]]],
+      ['Échantillonneur','pads','#e59578',[['Départ',20],['Boucle',50],['Pitch',50],['Niveau',60]]],
+      ['Basse analogique','wave','#a3502f',[['Accord',45],['Coupure',62],['Glisse',25],['Niveau',70]]],
+      ['Séquenceur de pas','steps','#78b08f',[['Tempo',50],['Swing',30],['Portée',45]]],
+      ['Arpégiateur','steps','#3f9a6a',[['Motif',40],['Octaves',35],['Gate',55]]],
+      ['Filtre modulé','xy','#b9cfd8',[['Coupure',65],['Résonance',45],['Env',40]]],
+      ['Distorsion','env','#7a3a22',[['Gain',55],['Ton',45],['Mix',40]]],
+      ['Compresseur','env','#c2462f',[['Seuil',45],['Ratio',50],['Reprise',40]]],
+      ['Chorus','xy','#9ab0b8',[['Vitesse',40],['Profondeur',50],['Mix',35]]],
+      ['Écho à bande','env','#d9a486',[['Temps',50],['Retour',35],['Mix',45]]],
+      ['Réverbe','env','#76878e',[['Taille',55],['Amorti',40],['Mix',35]]]];
+    const rackAdd=rackDefs.map(([label,ui,accent,knobs])=>({label,
+      add:()=>{const id=this.state.nextRack;this.setState({nextRack:id+1,rack:[...this.state.rack,{id,name:label,kind:label,ui,accent,on:true,knobs:knobs.map(k=>[...k])}]})}}));
+
+    const seqLaneNames=['Kick','Caisse','Charley','Perc'];
+    const seqColors=[ACC,'#b9cfd8','#d9a486','#3f9a6a'];
+    const cueStep=Math.floor(S.cue/100*16)%16;
+    const seqLanes=seqLaneNames.map((name,li)=>({
+      name, ink:seqColors[li],
+      steps:S.seq[li].map((on,si)=>({
+        bg: on?seqColors[li]:(si===cueStep?'rgba(224,103,74,.35)':(si%4===0?'rgba(185,207,216,.1)':'rgba(185,207,216,.05)')),
+        toggle:()=>{const g=this.state.seq.map(r=>[...r]);g[li][si]=g[li][si]?0:1;this.setState({seq:g})}
+      }))
+    }));
+    const cueTicks=[0,1,2,3,4,5,6,7].map(i=>({x:(i/8*100)+'%',label:String(i+1)}));
+    const trackNames=['Motif A','Motif B','Nappe'];
+    const tracks=trackNames.map((name,ti)=>({
+      name,
+      laneDown:(e)=>{ const r=e.currentTarget.getBoundingClientRect(); this.setState({cue:Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100))}) },
+      blocks:S.tracks[ti].map((b,bi)=>({
+        x:(b.x/4.6)+'%', w:(b.w/4.6)+'%', bg:seqColors[ti%4],
+        grab:(e)=>{ e.preventDefault(); e.stopPropagation();
+          const host=e.currentTarget.parentElement.getBoundingClientRect(); const x0=e.clientX, bx=b.x;
+          const mv=(ev)=>{ const dx=(ev.clientX-x0)/host.width*460; this.setState({tracks:this.state.tracks.map((lane,j)=>j!==ti?lane:lane.map((k,m)=>m!==bi?k:{...k,x:Math.max(0,Math.min(460-k.w,bx+dx))}))}) };
+          const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+          window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) }
+      }))
+    }));
+    const stripNames=['Synthé','Boîte','Effet','Réverbe','Master'];
+    const strips=stripNames.map((name,i)=>{
+      const v=S.faders[i], muted=S.mixMutes[i];
+      const lvl=S.seqOn?Math.max(8,v*(.6+.4*Math.abs(Math.sin(Date.now()/300+i)))):v*.2;
+      return { name, bg:i===4?'#1b211e':'#151a18', nameInk:i===4?'#d9a486':'#9ca8a2',
+        meter:(muted?4:lvl).toFixed(0)+'%', meterC:lvl>84?ACC:(i===4?'#d9a486':'#b9cfd8'),
+        capBg:muted?'#53665b':(i===4?'#d9a486':'#dfe6e1'), capBottom:(v*.85).toFixed(0)+'%',
+        disp:Math.round(v), valueInk:muted?'#53665b':'#e6eae7',
+        muteLabel:muted?'Coupé':'Actif', muteBg:muted?ACC:'rgba(185,207,216,.07)', muteInk:muted?'#170c08':'#9ca8a2',
+        mute:()=>this.setState({mixMutes:S.mixMutes.map((m,j)=>j===i?!m:m)}),
+        grab:(e)=>this.dragValue(e,()=>this.state.faders[i],(nv)=>this.setState({faders:this.state.faders.map((f,j)=>j===i?nv:f)}),.9) };
+    });
+
+    const M=this.state.mod||{}, MK=this.state.mk||{};
+    const setM=(k,v)=>this.setState({mod:{...(this.state.mod||{}),[k]:v}});
+    const setK=(k,v)=>this.setState({mk:{...(this.state.mk||{}),[k]:v}});
+    const gv=(k,d)=>MK[k]===undefined?d:MK[k];
+    const knob=(key,def,label)=>{const v=gv(key,def);
+      return {label,disp:String(Math.round(v)),angle:(-140+v/100*280).toFixed(0)+'deg',grab:dragV(v,nv=>setK(key,nv))}};
+    const vsl=(key,def,label)=>{const v=gv(key,def);
+      return {label,pct:(v*.8).toFixed(0)+'%',disp:String(Math.round(v)),grab:dragV(v,nv=>setK(key,nv))}};
+    const chip=(key,def,label)=>{const on=M[key]===undefined?def:M[key];
+      return {label,bg:on?'#e0674a':'transparent',ink:on?'#150a06':'#8fa39b',ring:on?'#e0674a':'rgba(185,207,216,.22)',tog:()=>setM(key,!on)}};
+    const field=(key,opts,label)=>{const i=(M[key]||0)%opts.length;
+      return {label,val:opts[i],next:()=>setM(key,(i+1)%opts.length)}};
+    const picker=(key,opts,def)=>{const i=M[key]===undefined?def:M[key];
+      return opts.map((label,oi)=>({label,bg:oi===i?'#e0674a':'transparent',ink:oi===i?'#150a06':'#8fa39b',ring:oi===i?'#e0674a':'rgba(185,207,216,.2)',pick:()=>setM(key,oi)}))};
+
+    const drumNames=['BD 1','SD 2','HH clos','HH semi','BD 2','SD 2','HH semi 2','HH open','Take Off','Rimshot','Cymbal FX','Cym. rep','DefSwing','FutureKeys','TomToCo','Sonar Sweep'];
+    const padSel=M.pad===undefined?0:M.pad;
+    const order=[12,13,14,15,8,9,10,11,4,5,6,7,0,1,2,3];
+    const kongPads=order.map(i=>({no:String(i+1).padStart(2,'0'),name:drumNames[i],
+      bg:i===padSel?'#e0674a':'rgba(185,207,216,.05)', ring:i===padSel?'#fdf3ee':'rgba(185,207,216,.18)',
+      ink:i===padSel?'#150a06':'#b9cfd8', sub:i===padSel?'rgba(21,10,6,.75)':'#7c8884',
+      pick:()=>setM('pad',i)}));
+    const kongGroups='ABCDEFGHI'.split('').map((l,i)=>({label:l,
+      bg:(M['kg'+i])?'#2f6b4a':'transparent', ink:(M['kg'+i])?'#fdf3ee':'#8fa39b',
+      tog:()=>setM('kg'+i,!M['kg'+i])}));
+    const kongAssign=Array.from({length:16},(_,i)=>({label:String(i+1),
+      bg:i===padSel?'#e0674a':'transparent', ink:i===padSel?'#150a06':'#8fa39b', pick:()=>setM('pad',i)}));
+    const kongHits=picker('hit',['I','II','III','IV'],0);
+    const kongDrum=[knob('kd0',58,'Pitch'),knob('kd1',42,'Bend'),knob('kd2',64,'Ton'),knob('kd3',30,'Bruit'),knob('kd4',52,'Click'),knob('kd5',38,'Réso'),knob('kd6',18,'Attaque'),knob('kd7',60,'Décroiss.')];
+    const kongFx1=[knob('kf0',66,'Tension'),knob('kf1',48,'Ton'),knob('kf2',40,'Décroiss.'),knob('kf3',55,'Accord')];
+    const kongFx2=[knob('kc0',52,'Quantité'),knob('kc1',26,'Attaque'),knob('kc2',44,'Relâche'),knob('kc3',58,'Gain')];
+    const kongBus=[knob('kb0',62,'Taille'),knob('kb1',48,'Décroiss.'),knob('kb2',36,'Amorti'),knob('kb3',44,'Mix')];
+    const kongMaster=[knob('km0',70,'Fréquence'),knob('km1',34,'Réso'),knob('km2',40,'Quantité'),knob('km3',30,'Décroiss.')];
+    const kongModes=picker('kmode',['LP','BP','HP'],0);
+    const kongLevel=knob('klvl',74,'Master');
+    const kongMeter=Array.from({length:12},(_,i)=>({c:i<8?'#3f9a6a':(i<10?'#e0674a':'#7a3a22')}));
+
+    const euEngine=picker('eng',['I','II','III'],0);
+    const euOsc=[knob('eu0',50,'Oct'),knob('eu1',50,'Semi'),knob('eu2',46,'Accord'),knob('eu3',62,'Kbd')];
+    const euShape=knob('eush',58,'Shape');
+    const euMod1=field('em1',['Octave','Sync','Phase','Repli'],'Modif. 1');
+    const euMod2=field('em2',['Soft Clip','Bit','Anneau','Miroir'],'Modif. 2');
+    const euModK=[knob('emk1',44,'Quantité'),knob('emk2',36,'Quantité')];
+    const euSpecF=[knob('esf',62,'Fréq'),knob('esr',38,'Réso')];
+    const euHarm=[knob('eh0',48,'Pos'),knob('eh1',56,'Quantité')];
+    const euUni=[knob('eu4',35,'Nombre'),knob('eu5',52,'Mélange'),knob('eu6',28,'Détune'),knob('eu7',60,'Étendue')];
+    const euFilterType=field('eft',['SVF HP 12','SVF LP 24','Comb +','Formant'],'Type');
+    const euFilter=[knob('ef0',44,'Drive'),knob('ef1',52,'Réso'),knob('ef2',68,'Fréq')];
+    const euAmp=[vsl('ea0',22,'A'),vsl('ea1',54,'D'),vsl('ea2',68,'S'),vsl('ea3',40,'R')];
+    const euAmpK=[knob('eap',50,'Pan'),knob('eag',62,'Gain'),knob('eav',44,'Vélo')];
+    const euMaster=knob('emv',72,'Volume');
+    const euLevels=[vsl('el0',70,'I'),vsl('el1',52,'II'),vsl('el2',38,'III')];
+    const euSpec=Array.from({length:24},(_,i)=>{const f=gv('esf',62)/100, r=gv('esr',38)/100;
+      const v=Math.max(.06,Math.exp(-Math.pow((i/23-f)*(3.2-r*2),2)*6)*(.85+.15*Math.sin(i*1.7)));
+      return {h:(v*100).toFixed(0)+'%', c:i/23<f?'#e0674a':'#a3502f'}});
+    const euEnvTabs=picker('etab',['1','2','3','4'],0);
+    const euEnvPath=(()=>{const a=gv('ea0',22)/100,d=gv('ea1',54)/100,s=gv('ea2',68)/100,r=gv('ea3',40)/100;
+      const x1=6+a*34, x2=x1+10+d*40, x3=150-r*40, ys=54-s*46;
+      return 'M6 54 L'+x1.toFixed(1)+' 8 C'+(x1+8).toFixed(1)+' '+(10+(1-s)*30).toFixed(1)+' '+x2.toFixed(1)+' '+ys.toFixed(1)+' '+x2.toFixed(1)+' '+ys.toFixed(1)+' L'+x3.toFixed(1)+' '+ys.toFixed(1)+' C'+(x3+12).toFixed(1)+' '+(54-s*20).toFixed(1)+' 162 54 162 54'})();
+    const euLfo=picker('elfo',['∿','◢','⊓','∷'],0);
+    const euLfoRate=knob('elr',42,'Vitesse');
+    const mSrc=['LFO 1','LFO 2','Env 1','Env 2','Molette','Vélocité','Clavier'];
+    const mDst=['Coupure','Détune','Forme','Niveau','Pan','Réson.','Index'];
+    const euMatrix=[0,1,2,3].map(i=>{const si=(M['ms'+i]===undefined?i:M['ms'+i])%mSrc.length;
+      const d1=(M['md'+i]===undefined?(i*2+1):M['md'+i])%mDst.length;
+      const d2=(M['me'+i]===undefined?(i*3+2):M['me'+i])%mDst.length;
+      return {src:mSrc[si], dst1:mDst[d1], dst2:mDst[d2],
+        a1:String(Math.round(gv('ma'+i,[38,41,52,26][i]))), a2:String(Math.round(gv('mb'+i,[44,31,18,60][i]))),
+        w1:Math.max(3,gv('ma'+i,[38,41,52,26][i])).toFixed(0)+'%', w2:Math.max(3,gv('mb'+i,[44,31,18,60][i])).toFixed(0)+'%',
+        nextSrc:()=>setM('ms'+i,si+1), nextD1:()=>setM('md'+i,d1+1), nextD2:()=>setM('me'+i,d2+1),
+        g1:dragV(gv('ma'+i,38),nv=>setK('ma'+i,nv)), g2:dragV(gv('mb'+i,44),nv=>setK('mb'+i,nv))}});
+    const euFx=[chip('fx0',true,'Chorus'),chip('fx1',false,'Dist'),chip('fx2',true,'EQ'),chip('fx3',false,'Delay'),chip('fx4',true,'Comp'),chip('fx5',true,'Rev')];
+
+    const poSlots=[0,1,2].map(i=>({
+      type:['Osc analogique','Osc à table','Osc FM','Bruit'][(M['pt'+i]||0)%4],
+      next:()=>setM('pt'+i,((M['pt'+i]||0)+1)%4),
+      dot:(M['po'+i])?'rgba(185,207,216,.25)':'#3f9a6a', tog:()=>setM('po'+i,!M['po'+i]),
+      knobs:[knob('pk'+i+'a',[52,44,60][i],'Accord'),knob('pk'+i+'b',[38,66,30][i],'Forme'),knob('pk'+i+'c',[70,48,55][i],'Niveau')]}));
+    const poFilters=[{name:['Filtre à états','Ladder','Comb','Formant'][(M.pf0||0)%4],next:()=>setM('pf0',((M.pf0||0)+1)%4),
+        knobs:[knob('pfa',64,'Fréq'),knob('pfb',42,'Réso'),knob('pfc',30,'Env')]},
+      {name:['Comb +','Comb -','Peigne x2','Bypass'][(M.pf1||0)%4],next:()=>setM('pf1',((M.pf1||0)+1)%4),
+        knobs:[knob('pga',48,'Fréq'),knob('pgb',58,'Retour'),knob('pgc',36,'Mix')]}];
+    const poSteps=Array.from({length:16},(_,i)=>{const on=M['ps'+i]===undefined?[1,0,0,1,1,0,1,0,0,1,0,0,1,0,1,0][i]===1:M['ps'+i];
+      const lit=S.seqOn&&i===Math.floor(S.cue/100*16)%16;
+      return {h:(on?24+((i*13)%60):5)+'%', bg:on?(lit?'#fdf3ee':'#e0674a'):'rgba(185,207,216,.12)',
+        dot:lit?'#fdf3ee':(on?'rgba(224,103,74,.7)':'rgba(185,207,216,.18)'), tog:()=>setM('ps'+i,!on)}});
+    const poSeqFields=[field('pr',['1/16','1/8','1/4','1/32'],'Pas'),field('pdi',['Avant','Arrière','Pendule','Aléa'],'Sens'),field('poc',['1 oct','2 oct','3 oct','Fixe'],'Octave')];
+    const poGroove=['Relaxing','Paris','Hercules','Mothership'].map((n,i)=>({name:n,
+      slide:vsl('pgs'+i,[38,52,26,64][i],'Slide'), shuffle:vsl('pgh'+i,[62,30,48,44][i],'Shuffle'),
+      bg:(M['pgo'+i])?'#2f6b4a':'transparent', ink:(M['pgo'+i])?'#fdf3ee':'#8fa39b',
+      tog:()=>setM('pgo'+i,!M['pgo'+i])}));
+    const bayOpen=!!M.bay;
+
+    return {
+      kongPads, kongGroups, kongAssign, kongHits, kongDrum, kongFx1, kongFx2, kongBus, kongMaster, kongModes, kongLevel, kongMeter,
+      kongPadName:drumNames[padSel], kongPadNo:String(padSel+1).padStart(2,'0'),
+      euEngine, euOsc, euShape, euMod1, euMod2, euModK, euSpecF, euHarm, euUni, euFilterType, euFilter,
+      euAmp, euAmpK, euMaster, euLevels, euSpec, euEnvTabs, euEnvPath, euLfo, euLfoRate, euMatrix, euFx,
+      poSlots, poFilters, poSteps, poSeqFields, poGroove,
+      bayOpen, bayCaret:bayOpen?'−':'+', bayToggle:()=>setM('bay',!bayOpen), bayCount:S.rack.length+' appareils',
+      rackUnits, rackAdd, seqLanes, cueTicks, tracks, strips,
+      cueX:'calc('+S.cue.toFixed(1)+'% - 1px)',
+      barDisp:'Mesure '+(Math.floor(S.cue/25)+1)+' / 4',
+      seqLabel:S.seqOn?'Stop':'Jouer', seqBg:S.seqOn?ACC:'transparent', seqInk:S.seqOn?'#170c08':ACC,
+      toggleSeq:()=>this.setState({seqOn:!S.seqOn}),
+      cueDown:(e)=>{ const r=e.currentTarget.getBoundingClientRect(); const go=(cx)=>this.setState({cue:Math.max(0,Math.min(100,(cx-r.left-10)/(r.width-20)*100))}); go(e.clientX); const mv=(ev)=>go(ev.clientX); const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)}; window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) },
+      modules, cables, cableList, linkPath, linking:!!(S.link&&S.linkPos),
+      library, moduleCount:S.modules.length, cableCount:S.cables.length,
+      stopEvt:(e)=>{ e.stopPropagation() },
+      libOpen:!!S.lib, libX:S.lib?Math.min(S.lib.cx,214)+'px':'0px', libY:S.lib?Math.min(S.lib.cy,120)+'px':'0px',
+      libFrom:!!(S.lib&&S.lib.link), libFromLabel:(S.lib&&S.lib.link)?((byId(S.lib.link.id)||{}).name||'')+(S.lib.link.dir==='out'?' → nouveau module':' ← nouveau module'):'',
+      openLib:()=>this.setState({lib:{cx:24,cy:20}}), closeLib:()=>this.setState({lib:null}),
+      marquee:!!S.mq,
+      mqX:S.mq?Math.min(S.mq.x0,S.mq.x1)+'px':'0px', mqY:S.mq?Math.min(S.mq.y0,S.mq.y1)+'px':'0px',
+      mqW:S.mq?Math.abs(S.mq.x1-S.mq.x0)+'px':'0px', mqH:S.mq?Math.abs(S.mq.y1-S.mq.y0)+'px':'0px',
+      noCables:S.cables.length===0,
+      palette, selParams, scope:spec,
+      selName: sel?sel.name:'—', selKind: sel?sel.kind:'',
+      zoomDisp: Math.round(z*100)+'%',
+      gridSize:(26*z).toFixed(1)+'px '+(26*z).toFixed(1)+'px',
+      gridPos:S.px.toFixed(0)+'px '+S.py.toFixed(0)+'px',
+      canvasCursor: S.drag?'grabbing':(S.link?'crosshair':'grab'),
+      hint: S.link ? 'Relâche sur une entrée' : 'Molette : zoom · bouton milieu : déplacer · glisser : nouveau module',
+      bpm:S.bpm, cpu:'18 %',
+      playLabel:S.playing?'Pause':'Lecture',
+      playBg:S.playing?'#c6d5dc':'rgba(198,213,220,.1)',
+      playFg:S.playing?'#0d1210':'#e6eae7',
+      outLevel:'−'+(2+Math.round((100-(sel?sel.knobs[0][1]:70))/12)),
+      togglePlay:()=>this.setState({playing:!S.playing}),
+      bpmGrab:(e)=>{ e.preventDefault(); const y0=e.clientY,b0=S.bpm;
+        const mv=(ev)=>this.setState({bpm:Math.max(60,Math.min(200,Math.round(b0+(y0-ev.clientY)*.4)))});
+        const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+        window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up); },
+      zoomIn:()=>setZoom(Math.min(2,+(z+0.15).toFixed(2)),400,300),
+      zoomOut:()=>setZoom(Math.max(0.35,+(z-0.15).toFixed(2)),400,300),
+      fit:()=>{
+        const xs=S.modules.map(m=>m.x), ys=S.modules.map(m=>m.y);
+        const minX=Math.min(...xs)-40, minY=Math.min(...ys)-40;
+        const maxX=Math.max(...xs)+W+40, maxY=Math.max(...ys.map((y,i)=>y+this.H(S.modules[i])))+40;
+        const nz=Math.max(.35,Math.min(1.3, Math.min(820/(maxX-minX), 460/(maxY-minY))));
+        this.setState({z:nz, px:-minX*nz+20, py:-minY*nz+20});
+      },
+      recenter:()=>this.fitView(),
+      canvasDown:(e)=>{
+        if(S.link){ this.setState({link:null,linkPos:null}); return }
+        const r=e.currentTarget.getBoundingClientRect();
+        if(e.button===1||e.button===2||e.shiftKey){
+          e.preventDefault();
+          const x0=e.clientX,y0=e.clientY,px=S.px,py=S.py;
+          this.setState({drag:true,lib:null});
+          const mv=(ev)=>this.setState({px:px+(ev.clientX-x0), py:py+(ev.clientY-y0)});
+          const up=()=>{this.setState({drag:null});window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+          window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up); return;
+        }
+        if(e.button!==0) return;
+        this.setState({sel:null,lib:null,mq:{x0:e.clientX-r.left,y0:e.clientY-r.top,x1:e.clientX-r.left,y1:e.clientY-r.top}});
+      },
+      canvasMove:(e)=>{
+        const r=e.currentTarget.getBoundingClientRect();
+        if(this.state.link){ this.setState({linkPos:[e.clientX-r.left, e.clientY-r.top]}); return }
+        if(this.state.mq) this.setState({mq:{...this.state.mq,x1:e.clientX-r.left,y1:e.clientY-r.top}});
+      },
+      canvasUp:()=>{
+        const L=this.state.link, LP=this.state.linkPos;
+        if(L){ if(LP) this.setState({lib:{cx:Math.max(8,LP[0]-20),cy:Math.max(8,LP[1]-20),link:L}, link:null, linkPos:null});
+          else this.setState({link:null,linkPos:null});
+          return }
+        const m=this.state.mq;
+        if(m){ const big=Math.abs(m.x1-m.x0)>26&&Math.abs(m.y1-m.y0)>18;
+          this.setState({mq:null, lib:big?{cx:Math.min(m.x0,m.x1),cy:Math.min(m.y0,m.y1)}:null}) }
+      },
+      canvasWheel:(e)=>{
+        if(e.target&&e.target.closest&&e.target.closest('[data-lib]')) return;
+        e.preventDefault(); e.stopPropagation();
+        const r=e.currentTarget.getBoundingClientRect();
+        const nz=Math.max(.35,Math.min(2, +(z*(e.deltaY<0?1.12:0.89)).toFixed(3)));
+        setZoom(nz, e.clientX-r.left, e.clientY-r.top);
+      },
+      duplicateSel:()=>{
+        if(!sel) return; const id=this.state.nextId;
+        this.setState({nextId:id+1, sel:id, modules:[...this.state.modules,{...sel,id,x:sel.x+40,y:sel.y+40,knobs:sel.knobs.map(k=>[...k])}]});
+      },
+      removeSel:()=>{
+        if(!sel) return;
+        this.setState({modules:S.modules.filter(m=>m.id!==sel.id), cables:S.cables.filter(c=>c.a!==sel.id&&c.b!==sel.id)});
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

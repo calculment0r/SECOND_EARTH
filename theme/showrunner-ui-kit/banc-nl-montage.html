@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Venus Rising';src:url('uploads/Venus Rising Rg.otf') format('opentype');font-display:swap}
+*{box-sizing:border-box}
+:root{--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--well:#070908;--ink:#e6eae7;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#b9cfd8;--or:#e0674a;--grn:#2f6b4a;--grn2:#3f9a6a}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:12px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden}
+p,button,a{font-family:'Chakra Petch',sans-serif}
+h1{font-family:'Venus Rising','Chakra Petch',sans-serif;font-weight:400;letter-spacing:.14em}
+h2,h3{font-family:'Venus Rising','Chakra Petch',sans-serif;letter-spacing:.1em}
+a{color:var(--cy);text-decoration:none}
+input,textarea,button,select{font-family:'Chakra Petch',sans-serif;border:none;outline:none}
+::selection{background:var(--or);color:#0a0d0b}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:999px}
+</style>
+</helmet>
+
+<div style="height:100vh;display:flex;flex-direction:column;gap:10px;padding:12px 16px 14px">
+
+  <header style="flex:none;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+    <a href="kit-ui-sommaire.html" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);padding:8px 15px;font-size:11px;color:var(--ink2)" style-hover="box-shadow:inset 0 0 0 1px var(--or);color:var(--ink)">
+      <svg viewBox="0 0 20 12" style="width:11px;height:7px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linejoin:round"><path d="M13 1L7 6L13 11"></path></svg>Sommaire</a>
+    <span style="display:flex;align-items:baseline;gap:10px">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.22em;color:var(--or);text-transform:uppercase">24_banc</span>
+      <span style="font-size:15px;letter-spacing:.1em;text-transform:uppercase">Montage</span>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ seqName }}</span>
+    </span>
+    <div style="flex:1;min-width:10px"></div>
+    <div style="display:flex;gap:5px">
+      <sc-for list="{{ tools }}" as="tl" hint-placeholder-count="6">
+        <button onClick="{{ tl.pick }}" title="{{ tl.name }}" style="width:36px;height:32px;border-radius:10px;background:transparent;box-shadow:{{ tl.ring }};display:flex;align-items:center;justify-content:center;cursor:pointer">
+          <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:none;stroke:{{ tl.ink }};stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"><path d="{{ tl.path }}"></path></svg>
+        </button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:5px">
+      <button onClick="{{ stepBack }}" style="border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);color:var(--ink2);padding:8px 13px;font-size:11px;cursor:pointer">◀◀</button>
+      <button onClick="{{ togglePlay }}" style="border-radius:999px;background:{{ playBg }};color:{{ playFg }};box-shadow:inset 0 0 0 1px var(--or);padding:8px 20px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer">{{ playLabel }}</button>
+      <button onClick="{{ stepFwd }}" style="border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);color:var(--ink2);padding:8px 13px;font-size:11px;cursor:pointer">▶▶</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;border-radius:12px;background:var(--or);color:#170c08;padding:6px 16px">
+      <span><span style="display:block;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase">Timecode</span><span style="font-size:19px;line-height:1.1">{{ tc }}</span></span>
+      <span style="width:1px;align-self:stretch;background:rgba(23,12,8,.3)"></span>
+      <span><span style="display:block;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase">Cadence</span><span style="font-size:19px;line-height:1.1">25</span></span>
+    </div>
+  </header>
+
+  <div style="flex:1;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) minmax(220px,.78fr);gap:10px">
+
+    <div style="display:grid;grid-template-columns:218px minmax(0,1fr) minmax(0,1fr) 274px;gap:10px;min-height:0">
+
+      <div style="border-radius:14px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.7);padding:14px;display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden">
+        <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Chutier · {{ binCount }}</span>
+        <div style="display:flex;flex-direction:column;gap:5px;overflow-y:auto;overflow-x:hidden;min-height:0;padding-right:2px">
+          <sc-for list="{{ bins }}" as="bn" hint-placeholder-count="7">
+            <div onClick="{{ bn.pick }}" style="display:flex;align-items:center;gap:9px;border-radius:10px;background:{{ bn.bg }};padding:8px 10px;cursor:pointer">
+              <span style="width:30px;height:20px;border-radius:5px;background:{{ bn.thumb }};flex:none"></span>
+              <span style="min-width:0;flex:1">
+                <span style="display:block;font-family:'Chakra Petch',sans-serif;font-size:11.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ bn.name }}</span>
+                <span style="display:block;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--ink3)">{{ bn.meta }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="border-radius:14px;background:var(--panel);padding:12px;display:flex;flex-direction:column;gap:9px;min-height:0">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Source</span><span style="font-size:11px;color:var(--cy)">{{ srcTc }}</span></div>
+        <div style="position:relative;flex:1;min-height:0;border-radius:10px;background:{{ srcBg }};overflow:hidden">
+          <span style="position:absolute;left:8%;right:8%;top:10%;bottom:10%;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(185,207,216,.14)"></span>
+        </div>
+        <div onPointerDown="{{ scrubSrc }}" style="height:20px;display:flex;align-items:center;cursor:ew-resize;touch-action:none">
+          <div style="position:relative;width:100%;height:6px;border-radius:999px;background:var(--panel3)">
+            <div style="position:absolute;top:0;bottom:0;border-radius:999px;background:rgba(224,103,74,.4);left:{{ srcInPct }}"></div>
+            <div style="position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%);left:{{ srcPct }}"></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <button onClick="{{ markIn }}" style="border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);color:var(--ink2);padding:6px 12px;font-size:10.5px;cursor:pointer">Entrée</button>
+          <button onClick="{{ markOut }}" style="border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);color:var(--ink2);padding:6px 12px;font-size:10.5px;cursor:pointer">Sortie</button>
+          <button onClick="{{ insertClip }}" style="border-radius:999px;background:var(--or);color:#170c08;padding:6px 14px;font-size:10.5px;font-weight:700;cursor:pointer">Insérer</button>
+          <button onClick="{{ overwriteClip }}" style="border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px var(--or);color:var(--or);padding:6px 12px;font-size:10.5px;cursor:pointer">Écraser</button>
+        </div>
+      </div>
+
+      <div style="border-radius:14px;background:var(--panel);padding:12px;display:flex;flex-direction:column;gap:9px;min-height:0">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Programme</span><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:{{ stateInk }};text-transform:uppercase">{{ progState }}</span></div>
+        <div style="position:relative;flex:1;min-height:0;border-radius:10px;overflow:hidden;background:{{ progBg }};filter:{{ progFilter }}">
+          <span style="position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(185,207,216,.08) 1px,transparent 1px),linear-gradient(rgba(185,207,216,.08) 1px,transparent 1px);background-size:33.34% 33.34%"></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="flex:1;height:6px;border-radius:999px;background:var(--panel3);position:relative"><div style="position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--or);width:{{ playheadPct }}"></div></div>
+          <span style="font-size:11px;color:var(--cy)">{{ progClip }}</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;min-height:0;overflow-y:auto;overflow-x:hidden">
+        <div style="border-radius:14px;box-shadow:inset 0 0 0 1px rgba(224,103,74,.75);padding:14px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Étalonnage</span><span onClick="{{ resetGrade }}" style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--or);text-transform:uppercase;cursor:pointer">Réinit.</span></div>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+            <sc-for list="{{ wheels }}" as="wh" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0">
+                <div onPointerDown="{{ wh.grab }}" style="position:relative;width:100%;aspect-ratio:1;border-radius:50%;background:conic-gradient(from 90deg,#e0674a,#e0c84a,#4ad08a,#4ab8e0,#8a6ae0,#e04ab0,#e0674a);cursor:crosshair;touch-action:none;overflow:hidden">
+                  <span style="position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(232,238,234,.92) 0%,rgba(232,238,234,.45) 26%,rgba(232,238,234,0) 62%)"></span>
+                  <span style="position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(10,13,11,.45)"></span>
+                  <span style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(10,13,11,.22)"></span>
+                  <span style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(10,13,11,.22)"></span>
+                  <span style="position:absolute;width:11px;height:11px;border-radius:50%;background:#070908;box-shadow:inset 0 0 0 2px #fdf3ee;transform:translate(-50%,-50%);left:{{ wh.hx }};top:{{ wh.hy }}"></span>
+                </div>
+                <div onPointerDown="{{ wh.lumaGrab }}" style="width:100%;height:16px;display:flex;align-items:center;cursor:ew-resize;touch-action:none">
+                  <div style="position:relative;width:100%;height:4px;border-radius:999px;background:linear-gradient(90deg,#070908,#e6eae7)"><span style="position:absolute;top:50%;width:9px;height:9px;border-radius:50%;background:var(--or);transform:translate(-50%,-50%);left:{{ wh.lumaPct }}"></span></div>
+                </div>
+                <span style="font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ wh.label }}</span>
+                <span style="font-size:10.5px;color:var(--ink)">{{ wh.disp }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ gradeParams }}" as="gp" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:minmax(0,78px) minmax(0,1fr) 34px;gap:8px;align-items:center">
+              <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ gp.label }}</span>
+              <div onPointerDown="{{ gp.grab }}" style="height:18px;display:flex;align-items:center;cursor:ew-resize;touch-action:none">
+                <div style="position:relative;width:100%;height:5px;border-radius:999px;background:var(--panel3)">
+                  <span style="position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:{{ gp.color }};width:{{ gp.pct }}"></span>
+                  <span style="position:absolute;top:50%;width:11px;height:11px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%);left:{{ gp.pct }}"></span>
+                </div>
+              </div>
+              <span style="font-size:11px;text-align:right">{{ gp.disp }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="border-radius:14px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.7);padding:14px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Scopes</span>
+            <span style="display:flex;gap:4px"><sc-for list="{{ scopeModes }}" as="sm" hint-placeholder-count="3"><span onClick="{{ sm.pick }}" style="border-radius:999px;box-shadow:{{ sm.ring }};padding:3px 9px;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.12em;color:{{ sm.ink }};text-transform:uppercase;cursor:pointer">{{ sm.label }}</span></sc-for></span>
+          </div>
+          <x-import component-from-global-scope="nl-scope" from="./nl-scope.js" mode="{{ scopeMode }}" seed="{{ scopeSeed }}" hint-size="100%,120px" style="display:block;position:relative;height:120px;border-radius:10px;overflow:hidden;background:var(--well)"></x-import>
+        </div>
+
+        <div style="border-radius:14px;background:var(--panel);padding:14px;display:flex;flex-direction:column;gap:9px">
+          <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Inspecteur · {{ selName }}</span>
+          <sc-for list="{{ clipProps }}" as="cp" hint-placeholder-count="4">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase"><span>{{ cp.k }}</span><span style="font-family:'Venus Rising',sans-serif;font-size:11px;color:var(--ink);letter-spacing:.04em">{{ cp.v }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-radius:14px;background:var(--panel);padding:10px 12px 12px;display:flex;flex-direction:column;gap:8px;min-height:0">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Timeline · {{ clipCount }} plans</span>
+        <div style="flex:1;min-width:10px"></div>
+        <span style="display:flex;align-items:center;gap:8px;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">Aimant<span onClick="{{ toggleSnap }}" style="width:34px;height:16px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);position:relative;cursor:pointer;background:{{ snapBg }}"><span style="position:absolute;top:2px;width:12px;height:12px;border-radius:50%;background:#dfe6e1;left:{{ snapLeft }}"></span></span></span>
+        <div style="display:flex;align-items:center;gap:4px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);padding:3px 5px">
+          <span onClick="{{ zoomOut }}" style="width:22px;height:20px;display:flex;align-items:center;justify-content:center;color:var(--ink2);cursor:pointer">−</span>
+          <span style="min-width:40px;text-align:center;font-size:10.5px">{{ zoomDisp }}</span>
+          <span onClick="{{ zoomIn }}" style="width:22px;height:20px;display:flex;align-items:center;justify-content:center;color:var(--ink2);cursor:pointer">+</span>
+        </div>
+      </div>
+
+      <div onWheel="{{ tlWheel }}" onPointerDown="{{ tlDown }}" style="position:relative;flex:1;min-height:150px;border-radius:10px;background:var(--well);overflow:hidden;touch-action:none">
+        <div style="position:absolute;left:0;right:0;top:0;height:24px;background:var(--panel2);overflow:hidden">
+          <span style="position:absolute;left:0;top:0;bottom:0;width:52px;background:var(--panel2);z-index:2"></span>
+          <sc-for list="{{ ticks }}" as="tk" hint-placeholder-count="10">
+            <span style="position:absolute;top:0;bottom:0;display:flex;align-items:center;padding-left:6px;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.08em;color:var(--ink3);border-left:1px solid rgba(185,207,216,.14);left:{{ tk.x }}">{{ tk.label }}</span>
+          </sc-for>
+          <sc-for list="{{ markers }}" as="mk" hint-placeholder-count="3">
+            <span style="position:absolute;top:0;width:8px;height:8px;background:var(--grn2);transform:translateX(-50%) rotate(45deg) translateY(-3px);left:{{ mk.x }}"></span>
+          </sc-for>
+        </div>
+        <div style="position:absolute;left:0;right:0;top:24px;bottom:0;overflow-y:auto;overflow-x:hidden">
+          <sc-for list="{{ lanes }}" as="ln" hint-placeholder-count="6">
+            <div style="position:relative;height:{{ ln.h }};margin-bottom:3px;background:{{ ln.bg }}">
+              <span style="position:absolute;left:0;top:0;bottom:0;width:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:var(--panel2);z-index:3">
+                <span style="font-size:9px;letter-spacing:.06em;color:{{ ln.ink }}">{{ ln.name }}</span>
+                <span onClick="{{ ln.toggleMute }}" style="width:16px;height:12px;border-radius:4px;background:{{ ln.muteBg }};cursor:pointer"></span>
+              </span>
+              <sc-for list="{{ ln.clips }}" as="cl" hint-placeholder-count="3">
+                <div onPointerDown="{{ cl.grab }}" style="position:absolute;top:4px;bottom:4px;border-radius:8px;overflow:hidden;cursor:grab;left:{{ cl.x }};width:{{ cl.w }}">
+                  <span style="position:absolute;inset:0;background:{{ cl.bg }}"></span>
+                  <span style="position:absolute;inset:0;border-radius:8px;box-shadow:{{ cl.ring }}"></span>
+                  <sc-if value="{{ cl.showLabel }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:8px;top:4px;right:8px;font-family:'Chakra Petch',sans-serif;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:{{ cl.ink }}">{{ cl.name }}</span></sc-if>
+                  <sc-if value="{{ cl.showWave }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="nl-wave" from="./nl-scope.js" seed="{{ cl.seed }}" color="{{ cl.waveColor }}" hint-size="100%,100%" style="position:absolute;left:0;right:0;bottom:0;height:60%;display:block"></x-import></sc-if>
+                  <span onPointerDown="{{ cl.trimL }}" style="position:absolute;left:0;top:0;bottom:0;width:7px;cursor:ew-resize"></span>
+                  <span onPointerDown="{{ cl.trimR }}" style="position:absolute;right:0;top:0;bottom:0;width:7px;cursor:ew-resize"></span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+        <div style="position:absolute;top:0;bottom:0;width:2px;background:var(--or);pointer-events:none;left:{{ tlPlayhead }}"><span style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:0 0 4px 4px;background:var(--or)"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state={
+    playing:false,pos:140,z:1,ox:0,sel:2,tool:0,snap:true,scopeMode:0,
+    srcPos:34,srcIn:18,srcOut:72,bin:1,
+    wheels:[[0,0,50],[4,-3,50],[-3,5,50]], grade:[52,58,46,50],
+    mutes:[false,false,false,false,false,false],
+    nextId:11, markers:[60,260,420],
+    clips:[
+      {id:1,lane:0,x:0,w:120,name:'Ouverture',c:'#e59578'},
+      {id:2,lane:0,x:130,w:180,name:'Extérieur jour',c:'#b9cfd8'},
+      {id:3,lane:0,x:320,w:140,name:'Contre-champ',c:'#76878e'},
+      {id:4,lane:1,x:60,w:150,name:'Insert carte',c:'#d47a5c'},
+      {id:5,lane:1,x:340,w:120,name:'Titre',c:'#3f9a6a'},
+      {id:6,lane:2,x:0,w:300,name:'Dialogue A',c:'#76878e'},
+      {id:7,lane:3,x:110,w:260,name:'Ambiance',c:'#3f9a6a'},
+      {id:8,lane:4,x:0,w:460,name:'Musique',c:'#d47a5c'},
+      {id:9,lane:5,x:200,w:140,name:'Bruitage porte',c:'#b9cfd8'}
+    ]
+  };
+  componentDidMount(){ this.t=setInterval(()=>{ if(this.state.playing) this.setState({pos:(this.state.pos+2)%600}) },80) }
+  componentWillUnmount(){ clearInterval(this.t) }
+  tc(f){ const t=Math.floor(f/25),p=(n)=>String(n).padStart(2,'0'); return p(Math.floor(t/3600))+':'+p(Math.floor(t/60)%60)+':'+p(t%60)+':'+p(f%25) }
+  slide(e,set){ e.preventDefault(); e.stopPropagation(); const r=e.currentTarget.getBoundingClientRect(); const go=(cx)=>set(Math.max(0,Math.min(100,(cx-r.left)/r.width*100))); go(e.clientX); const mv=(ev)=>go(ev.clientX); const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)}; window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) }
+  dragX(e,get,set){ e.preventDefault(); e.stopPropagation(); const x0=e.clientX,v0=get(); const mv=(ev)=>set(v0,(ev.clientX-x0)/this.state.z); const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)}; window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) }
+
+  renderVals(){
+    const S=this.state,OR='#e0674a',CY='#b9cfd8',G='#3f9a6a',z=S.z,GUT=52;
+    const detail=z>=.85?2:(z>=.5?1:0);
+    const snap=(v)=>S.snap?Math.round(v/10)*10:v;
+    const upd=(id,fn)=>this.setState({clips:this.state.clips.map(k=>k.id!==id?k:fn(k))});
+
+    const laneDefs=[['V2',40],['V1',40],['A1',34],['A2',34],['A3',34],['A4',34]];
+    const lanes=laneDefs.map(([name,h],li)=>({
+      name,h:h+'px',bg:li<2?'rgba(185,207,216,.035)':'rgba(185,207,216,.018)',
+      ink:S.mutes[li]?'#53665b':'#9ca8a2',
+      muteBg:S.mutes[li]?OR:'rgba(185,207,216,.12)',
+      toggleMute:()=>this.setState({mutes:S.mutes.map((m,j)=>j===li?!m:m)}),
+      clips:S.clips.filter(c=>c.lane===li).map(c=>{
+        const selected=S.sel===c.id;
+        return {
+          name:c.name,seed:c.id,waveColor:selected?'rgba(10,13,11,.6)':c.c,
+          x:(c.x*z+S.ox+GUT).toFixed(1)+'px',w:Math.max(14,c.w*z).toFixed(1)+'px',
+          bg:selected?c.c:'rgba(185,207,216,.1)',ink:selected?'#0d1210':'#e6eae7',
+          ring:selected?'inset 0 0 0 1.5px '+c.c:'inset 0 0 0 1px rgba(185,207,216,.08)',
+          showLabel:detail>=1&&c.w*z>60, showWave:li>=2&&detail>=2&&c.w*z>70,
+          grab:(e)=>{ this.setState({sel:c.id}); this.dragX(e,()=>c.x,(v0,dx)=>upd(c.id,k=>({...k,x:Math.max(0,snap(v0+dx))}))) },
+          trimL:(e)=>{ this.setState({sel:c.id}); this.dragX(e,()=>[c.x,c.w],([x0,w0],dx)=>{const nx=Math.max(0,Math.min(x0+w0-20,snap(x0+dx)));upd(c.id,k=>({...k,x:nx,w:w0-(nx-x0)}))}) },
+          trimR:(e)=>{ this.setState({sel:c.id}); this.dragX(e,()=>c.w,(w0,dx)=>upd(c.id,k=>({...k,w:Math.max(20,snap(w0+dx))}))) }
+        };
+      })
+    }));
+    const step=z>=1.2?50:(z>=.7?100:200), ticks=[];
+    for(let x=0;x<900;x+=step){const sx=x*z+S.ox+GUT; if(sx>GUT+4&&sx<2000) ticks.push({x:sx.toFixed(1)+'px',label:this.tc(x*2).slice(3,8)})}
+    const markers=S.markers.map(m=>({x:(m*z+S.ox+GUT).toFixed(1)+'px'}));
+
+    const toolDefs=[['Sélection','M4 3l14 8-6 2-2 6z'],['Lame','M6 3v18M14 5l4 14'],['Glissement','M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4'],['Ondulation','M3 12c3-4 6 4 9 0s6 4 9 0'],['Zoom','M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4'],['Main','M7 11V6a1.5 1.5 0 0 1 3 0v5V4a1.5 1.5 0 0 1 3 0v7V6a1.5 1.5 0 0 1 3 0v9a5 5 0 0 1-5 5H9l-4-5']];
+    const tools=toolDefs.map(([name,path],i)=>({name,path,ring:S.tool===i?'inset 0 0 0 1px '+OR:'inset 0 0 0 1px rgba(47,107,74,.7)',ink:S.tool===i?OR:'#9ca8a2',pick:()=>this.setState({tool:i})}));
+
+    const binDefs=[['A012 · plateau','00:42 · 4K','#2a6143'],['A014 · prise 3','01:12 · 4K','#24543b'],['B003 · drone','00:58 · 4K','#1f4a34'],['Titres · générique','00:10','#d47a5c'],['Ambiance forêt','03:20 · 48k','#3f9a6a'],['Musique · thème','02:44 · 48k','#a3502f'],['Bruitages · portes','00:31 · 48k','#76878e']];
+    const bins=binDefs.map(([name,meta,thumb],i)=>({name,meta,thumb,bg:S.bin===i?'var(--panel3)':'transparent',pick:()=>this.setState({bin:i})}));
+
+    const wheelDefs=['Ombres','Moyens','Hautes'];
+    const wheels=wheelDefs.map((label,i)=>{
+      const [wx,wy,l]=S.wheels[i];
+      return {label,hx:(50+wx*3.6)+'%',hy:(50+wy*3.6)+'%',lumaPct:l+'%',
+        disp:(wx>=0?'+':'')+wx+' '+(wy>=0?'+':'')+wy+' · '+l,
+        grab:(e)=>{ e.preventDefault(); const r=e.currentTarget.getBoundingClientRect();
+          const set=(cx,cy)=>{const nx=Math.max(-12,Math.min(12,Math.round((cx-r.left-r.width/2)/(r.width/2)*12)));const ny=Math.max(-12,Math.min(12,Math.round((cy-r.top-r.height/2)/(r.height/2)*12)));this.setState({wheels:this.state.wheels.map((w,j)=>j===i?[nx,ny,w[2]]:w)})};
+          set(e.clientX,e.clientY); const mv=(ev)=>set(ev.clientX,ev.clientY); const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)}; window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) },
+        lumaGrab:(e)=>this.slide(e,(v)=>this.setState({wheels:this.state.wheels.map((w,j)=>j===i?[w[0],w[1],Math.round(v)]:w)}))
+      };
+    });
+    const gradeDefs=[['Exposition',CY],['Contraste',CY],['Saturation',OR],['Température','#d9a486']];
+    const gradeParams=gradeDefs.map(([label,color],i)=>({label,color,pct:S.grade[i].toFixed(0)+'%',disp:Math.round(S.grade[i]),grab:(e)=>this.slide(e,(v)=>this.setState({grade:this.state.grade.map((g,j)=>j===i?v:g)}))}));
+
+    const scopeModes=['Onde','Vecteur','RGB'].map((label,i)=>({label,ring:S.scopeMode===i?'inset 0 0 0 1px '+OR:'inset 0 0 0 1px rgba(47,107,74,.7)',ink:S.scopeMode===i?OR:'#9ca8a2',pick:()=>this.setState({scopeMode:i})}));
+
+    const sel=S.clips.find(c=>c.id===S.sel);
+    const clipProps=sel?[{k:'Début',v:this.tc(sel.x*2)},{k:'Durée',v:this.tc(sel.w*2)},{k:'Piste',v:laneDefs[sel.lane][0]},{k:'Vitesse',v:'100 %'}]:[];
+    const ex=S.grade[0],ct=S.grade[1],sa=S.grade[2],te=S.grade[3];
+    const [mx,my]=S.wheels[1];
+    return {
+      seqName:'Séquence — Verdant 02',
+      tools,bins,binCount:binDefs.length,lanes,ticks,markers,wheels,gradeParams,scopeModes,clipProps,
+      scopeMode:S.scopeMode, scopeSeed:Math.round(ex+ct+sa),
+      clipCount:S.clips.length, zoomDisp:Math.round(z*100)+'%',
+      tlPlayhead:(S.pos*z+S.ox+GUT).toFixed(1)+'px', playheadPct:Math.min(100,S.pos/600*100).toFixed(1)+'%',
+      tc:this.tc(S.pos*2), srcTc:this.tc(S.srcPos*4),
+      srcPct:S.srcPos+'%', srcInPct:S.srcIn+'%',
+      srcBg:'linear-gradient(160deg,#16211d,#0b100e 55%,#1d1512)',
+      progClip:sel?sel.name:'—', progState:S.playing?'Lecture':'Arrêt', stateInk:S.playing?OR:'#9ca8a2',
+      progBg:sel?`linear-gradient(150deg,${sel.c}33,#0b100e 60%,${sel.c}22)`:'#0b100e',
+      progFilter:`brightness(${(0.6+ex/100).toFixed(2)}) contrast(${(0.6+ct/100).toFixed(2)}) saturate(${(0.4+sa/60).toFixed(2)}) hue-rotate(${((te-50)*0.4+mx*2).toFixed(0)}deg)`,
+      playLabel:S.playing?'Pause':'Lecture', playBg:S.playing?OR:'transparent', playFg:S.playing?'#170c08':OR,
+      snapBg:S.snap?'rgba(224,103,74,.9)':'transparent', snapLeft:S.snap?'20px':'2px',
+      selName:sel?sel.name:'—',
+      togglePlay:()=>this.setState({playing:!S.playing}),
+      stepBack:()=>this.setState({pos:Math.max(0,S.pos-10)}), stepFwd:()=>this.setState({pos:Math.min(600,S.pos+10)}),
+      toggleSnap:()=>this.setState({snap:!S.snap}),
+      zoomIn:()=>this.setState({z:Math.min(2.4,+(z+.2).toFixed(2))}), zoomOut:()=>this.setState({z:Math.max(.3,+(z-.2).toFixed(2))}),
+      tlWheel:(e)=>{ e.preventDefault(); if(e.shiftKey){this.setState({ox:S.ox-e.deltaY});return} const r=e.currentTarget.getBoundingClientRect(); const cx=e.clientX-r.left-GUT; const nz=Math.max(.3,Math.min(2.4,+(z*(e.deltaY<0?1.12:.89)).toFixed(3))); this.setState({z:nz,ox:cx-(cx-S.ox)*(nz/z)}) },
+      tlDown:(e)=>{ const r=e.currentTarget.getBoundingClientRect(); if(e.clientY-r.top<24){ this.setState({pos:Math.max(0,(e.clientX-r.left-GUT-S.ox)/z)}); return } this.setState({sel:null}); const x0=e.clientX,ox=S.ox; const mv=(ev)=>this.setState({ox:ox+(ev.clientX-x0)}); const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)}; window.addEventListener('pointermove',mv); window.addEventListener('pointerup',up) },
+      scrubSrc:(e)=>this.slide(e,(v)=>this.setState({srcPos:v})),
+      markIn:()=>this.setState({srcIn:Math.min(S.srcPos,S.srcOut-4)}), markOut:()=>this.setState({srcOut:Math.max(S.srcPos,S.srcIn+4)}),
+      insertClip:()=>{ const id=S.nextId,w=Math.max(40,(S.srcOut-S.srcIn)*3); const shifted=S.clips.map(c=>c.lane===0&&c.x>=S.pos?{...c,x:c.x+w}:c); this.setState({nextId:id+1,sel:id,clips:[...shifted,{id,lane:0,x:S.pos,w,name:binDefs[S.bin][0],c:CY}]}) },
+      overwriteClip:()=>{ const id=S.nextId,w=Math.max(40,(S.srcOut-S.srcIn)*3); const cut=S.clips.filter(c=>!(c.lane===0&&c.x<S.pos+w&&c.x+c.w>S.pos)); this.setState({nextId:id+1,sel:id,clips:[...cut,{id,lane:0,x:S.pos,w,name:binDefs[S.bin][0],c:OR}]}) },
+      resetGrade:()=>this.setState({grade:[50,50,50,50],wheels:[[0,0,50],[0,0,50],[0,0,50]]})
+    };
+  }
+}
+</script>
+</body>
+</html>

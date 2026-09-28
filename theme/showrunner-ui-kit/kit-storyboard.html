@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Venus Rising';src:url('uploads/Venus Rising Rg.otf') format('opentype');font-display:swap}
+*{box-sizing:border-box}
+:root{--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--well:#070908;--ink:#e6eae7;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#b9cfd8;--or:#e0674a;--grn:#2f6b4a;--sand:#d9a486}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Venus Rising','Chakra Petch',sans-serif;font-size:12px;line-height:1.5;-webkit-font-smoothing:antialiased}
+p,button,a{font-family:'Chakra Petch',sans-serif}
+a{color:var(--cy);text-decoration:none}
+input,textarea,button,select{font-family:'Chakra Petch',sans-serif;border:none;outline:none}
+::selection{background:var(--or);color:#0a0d0b}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:999px}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(10,13,11,.94);backdrop-filter:blur(12px);padding:14px 26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+  <a href="kit-ui-sommaire.html" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);padding:8px 15px;font-size:11px;color:var(--ink2)"><svg viewBox="0 0 20 12" style="width:11px;height:7px;fill:none;stroke:currentColor;stroke-width:1.2"><path d="M13 1L7 6L13 11"></path></svg>Sommaire</a>
+  <span style="display:flex;align-items:baseline;gap:10px">
+    <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.22em;color:var(--or);text-transform:uppercase">18_planche</span>
+    <span style="font-size:15px;letter-spacing:.1em;text-transform:uppercase">Storyboard</span>
+    <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ boardName }}</span>
+  </span>
+  <div style="flex:1;min-width:10px"></div>
+  <span style="display:flex;gap:5px"><sc-for list="{{ acts }}" as="ac" hint-placeholder-count="3"><span onClick="{{ ac.pick }}" style="border-radius:999px;box-shadow:{{ ac.ring }};padding:7px 14px;font-family:'Chakra Petch',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:{{ ac.ink }};cursor:pointer">{{ ac.label }}</span></sc-for></span>
+  <button onClick="{{ addPanel }}" style="border-radius:999px;background:var(--or);color:#170c08;padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">+ Case</button>
+  <div style="display:flex;align-items:center;gap:14px;border-radius:12px;background:var(--panel);padding:6px 16px">
+    <span><span style="display:block;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;color:var(--ink3);text-transform:uppercase">Durée</span><span style="font-size:18px;line-height:1.1;color:var(--cy)">{{ totalDur }}</span></span>
+    <span style="width:1px;align-self:stretch;background:rgba(185,207,216,.12)"></span>
+    <span><span style="display:block;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.18em;color:var(--ink3);text-transform:uppercase">Cases</span><span style="font-size:18px;line-height:1.1">{{ panelCount }}</span></span>
+  </div>
+</header>
+
+<main style="max-width:1400px;margin:0 auto;padding:22px 26px 70px;display:flex;flex-direction:column;gap:26px">
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Planche</span><span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--or)">01</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:10px">
+      <sc-for list="{{ panels }}" as="pn" hint-placeholder-count="6">
+        <div onClick="{{ pn.pick }}" style="border-radius:14px;background:{{ pn.bg }};padding:10px;display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:transform .15s" style-hover="transform:translateY(-3px)">
+          <span style="display:flex;align-items:baseline;justify-content:space-between;gap:9px;padding:2px 4px">
+            <span style="font-size:15px;letter-spacing:.06em;color:{{ pn.noInk }}">{{ pn.no }}</span>
+            <span style="font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ pn.move }}</span>
+          </span>
+          <span style="position:relative;display:block;aspect-ratio:16/9;border-radius:11px;background:var(--panel3);overflow:hidden">
+            <span style="position:absolute;inset:6%;border-radius:7px;box-shadow:inset 0 0 0 1px rgba(185,207,216,.12)"></span>
+            <svg viewBox="0 0 320 180" style="position:absolute;inset:0;width:100%;height:100%">
+              <path d="{{ pn.horizon }}" fill="none" stroke="rgba(185,207,216,.32)" stroke-width="1"></path>
+              <path d="{{ pn.subject }}" fill="none" stroke="#b9cfd8" stroke-width="1.3"></path>
+              <path d="{{ pn.arrow }}" fill="none" stroke="#e0674a" stroke-width="1.5"></path>
+            </svg>
+            <span style="position:absolute;left:9px;bottom:7px;font-family:'Azeret Mono',monospace;font-size:8.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase">{{ pn.shot }}</span>
+            <span style="position:absolute;right:9px;top:7px;border-radius:999px;background:rgba(10,13,11,.72);padding:2px 9px;font-family:'Azeret Mono',monospace;font-size:8px;letter-spacing:.12em;color:{{ pn.statusInk }};text-transform:uppercase">{{ pn.status }}</span>
+          </span>
+          <span style="display:block;border-radius:11px;background:var(--panel2);padding:9px 11px;font-family:'Chakra Petch',sans-serif;font-size:12px;line-height:1.5;color:var(--ink2)">{{ pn.bulle }}</span>
+          <span style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:0 4px 2px">
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:12.5px;color:var(--ink)">{{ pn.action }}</span>
+            <span style="font-size:13px;color:var(--cy)">{{ pn.dur }}</span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;align-items:start">
+    <div style="border-radius:16px;background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Case {{ selNo }}</span><span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--or);text-transform:uppercase">{{ selShot }}</span></div>
+      <input value="{{ selAction }}" onChange="{{ setAction }}" style="border-radius:10px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.8);color:var(--ink);font-size:13px;padding:9px 12px" style-focus="box-shadow:inset 0 0 0 1px var(--or)">
+      <textarea value="{{ selBulle }}" onChange="{{ setBulle }}" rows="3" style="border-radius:10px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.8);color:var(--ink2);font-size:12px;line-height:1.55;padding:9px 12px;resize:vertical"></textarea>
+      <div style="display:flex;gap:5px;flex-wrap:wrap"><sc-for list="{{ moves }}" as="mv" hint-placeholder-count="5"><span onClick="{{ mv.pick }}" style="border-radius:999px;box-shadow:{{ mv.ring }};padding:5px 12px;font-family:'Chakra Petch',sans-serif;font-size:11px;color:{{ mv.ink }};cursor:pointer">{{ mv.label }}</span></sc-for></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap"><sc-for list="{{ statuses }}" as="st" hint-placeholder-count="3"><span onClick="{{ st.pick }}" style="border-radius:999px;box-shadow:{{ st.ring }};padding:5px 12px;font-family:'Chakra Petch',sans-serif;font-size:11px;color:{{ st.ink }};cursor:pointer">{{ st.label }}</span></sc-for></div>
+      <div style="display:grid;grid-template-columns:minmax(0,84px) minmax(0,1fr) 40px;gap:9px;align-items:center">
+        <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase">Durée</span>
+        <div onPointerDown="{{ durGrab }}" style="height:18px;display:flex;align-items:center;cursor:ew-resize;touch-action:none"><div style="position:relative;width:100%;height:5px;border-radius:999px;background:var(--panel3)"><span style="position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--or);width:{{ durPct }}"></span></div></div>
+        <span style="font-size:12px;text-align:right">{{ selDur }}</span>
+      </div>
+      <div style="display:flex;gap:6px"><button onClick="{{ duplicate }}" style="flex:1;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);color:var(--ink2);padding:8px 10px;font-size:11px;cursor:pointer">Dupliquer</button><button onClick="{{ remove }}" style="flex:1;border-radius:999px;background:rgba(224,103,74,.16);color:var(--or);padding:8px 10px;font-size:11px;cursor:pointer">Retirer</button></div>
+    </div>
+
+    <div style="border-radius:16px;box-shadow:inset 0 0 0 1px rgba(47,107,74,.7);padding:18px;display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase">Bande · ordre des cases</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <sc-for list="{{ strip }}" as="sp" hint-placeholder-count="6">
+          <span onClick="{{ sp.pick }}" style="position:relative;display:block;width:76px;aspect-ratio:16/9;border-radius:9px;background:var(--panel3);box-shadow:{{ sp.ring }};cursor:pointer;overflow:hidden">
+            <span style="position:absolute;left:5px;top:3px;font-size:10px;color:{{ sp.ink }}">{{ sp.no }}</span>
+            <span style="position:absolute;left:0;right:0;bottom:0;height:4px;background:{{ sp.bar }}"></span>
+          </span>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:6px"><button onClick="{{ moveLeft }}" style="flex:1;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);color:var(--ink2);padding:8px 10px;font-size:11px;cursor:pointer">← Reculer</button><button onClick="{{ moveRight }}" style="flex:1;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px rgba(47,107,74,.85);color:var(--ink2);padding:8px 10px;font-size:11px;cursor:pointer">Avancer →</button></div>
+    </div>
+
+    <div style="border-radius:16px;background:var(--or);color:#170c08;padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;position:relative;overflow:hidden">
+      <span style="position:absolute;right:-8px;top:0;bottom:0;width:120px;background-image:radial-gradient(rgba(23,12,8,.3) 1px,transparent 1.1px);background-size:7px 7px"></span>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase">Avancement</span>
+      <span style="font-size:56px;line-height:.9">{{ progress }}</span>
+      <span style="font-family:'Azeret Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;position:relative">{{ approved }} validées · {{ toDraw }} à dessiner</span>
+    </div>
+  </section>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:980}}">
+class Component extends DCLogic {
+  state={ act:0, sel:1, nextId:7,
+    panels:[
+      {id:1,shot:'Plan large',move:'Fixe',status:0,action:'Ext. crête — aube',bulle:'Le vent couvre la radio.',dur:6,seed:2},
+      {id:2,shot:'Plan moyen',move:'Panoramique',status:1,action:'Mara scrute la vallée',bulle:'« Le relais ne répond plus. »',dur:4,seed:5},
+      {id:3,shot:'Gros plan',move:'Travelling avant',status:0,action:'Main sur l\'émetteur',bulle:'Grésillement, puis silence.',dur:3,seed:8},
+      {id:4,shot:'Contre-champ',move:'Fixe',status:2,action:'Ivo fait non de la tête',bulle:'',dur:2,seed:11},
+      {id:5,shot:'Plan taille',move:'Travelling latéral',status:1,action:'Départ vers la passe',bulle:'« On descend. »',dur:5,seed:14},
+      {id:6,shot:'Plan d\'ensemble',move:'Grue',status:0,action:'La neige recouvre les traces',bulle:'',dur:7,seed:17}
+    ] };
+  renderVals(){
+    const S=this.state,OR='#e0674a',CY='#b9cfd8',G='#2f6b4a';
+    const ring=(on)=>on?'inset 0 0 0 1px '+OR:'inset 0 0 0 1px rgba(47,107,74,.7)', ink=(on)=>on?OR:'#9ca8a2';
+    const acts=['Acte I','Acte II','Acte III'].map((label,i)=>({label,ring:ring(S.act===i),ink:ink(S.act===i),pick:()=>this.setState({act:i})}));
+    const statusDefs=[['À dessiner','#7c8884'],['En cours','#d9a486'],['Validée','#3f9a6a']];
+    const draw=(p)=>{
+      const s=p.seed;
+      const hy=96+((s*13)%40)-20;
+      const horizon='M0 '+hy+' L320 '+(hy+((s*7)%18)-9);
+      const cxp=60+((s*29)%200), cy=hy-24;
+      const subject=`M${cxp} ${cy+34} L${cxp} ${cy+8} M${cxp-10} ${cy+16} L${cxp+10} ${cy+16} M${cxp} ${cy+8} a7 7 0 1 0 .1 0 M${cxp} ${cy+34} l-8 16 M${cxp} ${cy+34} l8 16`;
+      const arrow = p.move==='Fixe' ? '' : `M${cxp-50} ${cy+62} L${cxp+62} ${cy+62} L${cxp+50} ${cy+55} M${cxp+62} ${cy+62} L${cxp+50} ${cy+69}`;
+      return {horizon,subject,arrow};
+    };
+    const panels=S.panels.map((p,i)=>{
+      const g=draw(p);
+      return {...g, no:String(i+1).padStart(2,'0'), shot:p.shot, move:p.move,
+        action:p.action, bulle:p.bulle||'—', dur:p.dur+' s',
+        bg:S.sel===p.id?'var(--panel3)':'var(--panel)', noInk:S.sel===p.id?OR:'#e6eae7',
+        status:statusDefs[p.status][0], statusInk:statusDefs[p.status][1],
+        pick:()=>this.setState({sel:p.id})};
+    });
+    const sel=S.panels.find(p=>p.id===S.sel)||S.panels[0];
+    const selIdx=S.panels.findIndex(p=>p.id===sel.id);
+    const upd=(fn)=>this.setState({panels:this.state.panels.map(p=>p.id!==sel.id?p:fn(p))});
+    const moves=['Fixe','Panoramique','Travelling avant','Travelling latéral','Grue'].map(label=>({label,ring:ring(sel.move===label),ink:ink(sel.move===label),pick:()=>upd(p=>({...p,move:label}))}));
+    const statuses=statusDefs.map(([label],i)=>({label,ring:ring(sel.status===i),ink:ink(sel.status===i),pick:()=>upd(p=>({...p,status:i}))}));
+    const strip=S.panels.map((p,i)=>({no:String(i+1).padStart(2,'0'),ink:S.sel===p.id?OR:'#7c8884',
+      ring:S.sel===p.id?'inset 0 0 0 1.5px '+OR:'inset 0 0 0 1px rgba(185,207,216,.1)',
+      bar:statusDefs[p.status][1], pick:()=>this.setState({sel:p.id})}));
+    const total=S.panels.reduce((a,p)=>a+p.dur,0);
+    const approved=S.panels.filter(p=>p.status===2).length;
+    const swap=(j)=>{ if(j<0||j>=S.panels.length) return; const a=[...S.panels]; [a[selIdx],a[j]]=[a[j],a[selIdx]]; this.setState({panels:a}) };
+    return { boardName:'Planche — Verdant 05', acts, panels, moves, statuses, strip,
+      panelCount:S.panels.length, totalDur:Math.floor(total/60)+':'+String(total%60).padStart(2,'0'),
+      selNo:String(selIdx+1).padStart(2,'0'), selShot:sel.shot, selAction:sel.action, selBulle:sel.bulle,
+      selDur:sel.dur+' s', durPct:Math.min(100,sel.dur/12*100).toFixed(0)+'%',
+      progress:Math.round(approved/S.panels.length*100)+' %', approved, toDraw:S.panels.filter(p=>p.status===0).length,
+      setAction:(e)=>upd(p=>({...p,action:e.target.value})),
+      setBulle:(e)=>upd(p=>({...p,bulle:e.target.value})),
+      durGrab:(e)=>{e.preventDefault();const r=e.currentTarget.getBoundingClientRect();
+        const go=(cx)=>upd(p=>({...p,dur:Math.max(1,Math.round((cx-r.left)/r.width*12))}));
+        go(e.clientX);const mv=(ev)=>go(ev.clientX);const up=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
+        window.addEventListener('pointermove',mv);window.addEventListener('pointerup',up)},
+      duplicate:()=>{const id=S.nextId;const a=[...S.panels];a.splice(selIdx+1,0,{...sel,id,seed:sel.seed+3});this.setState({nextId:id+1,sel:id,panels:a})},
+      remove:()=>this.setState({panels:S.panels.filter(p=>p.id!==sel.id),sel:(S.panels[selIdx-1]||S.panels[selIdx+1]||{}).id}),
+      addPanel:()=>{const id=S.nextId;this.setState({nextId:id+1,sel:id,panels:[...S.panels,{id,shot:'Plan moyen',move:'Fixe',status:0,action:'Nouvelle case',bulle:'',dur:4,seed:id*3}]})},
+      moveLeft:()=>swap(selIdx-1), moveRight:()=>swap(selIdx+1) };
+  }
+}
+</script>
+</body>
+</html>
