@@ -241,7 +241,7 @@ Tranché par Cal dans le chat le 28/09/2026 (pas en QCM) : **tout se publie**, �
 
 ## 10. Le site (état au 28/09/2026)
 
-Adresse : https://calculment0r.github.io/SECOND_EARTH/ (active une fois GitHub Pages réglé sur « GitHub Actions » : Settings > Pages > Build and deployment > Source).
+Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé par Cal le 28/09/2026 (Settings > Pages > Build and deployment > Source : GitHub Actions). La branche par défaut du dépôt est `claude/beautiful-goldberg-x0to5u` (première branche poussée) ; l'environnement `github-pages` n'accepte que la branche par défaut.
 
 - **Construction** : `python3 tools/build_site.py` (bibliothèque standard seulement) écrit le site dans `_site/` (ignoré par git). Ouvrir `_site/index.html` depuis le disque marche aussi (liens relatifs, données injectées).
 - **Publication** : `.github/workflows/pages.yml` reconstruit et publie à chaque push sur `main` ou sur la branche de travail, et à la demande (workflow_dispatch).

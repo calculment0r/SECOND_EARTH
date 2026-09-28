@@ -379,7 +379,7 @@ voir_aussi     (quelques fiches) code de la même chose dans un autre fichier
 </ol>
 <hr />
 <h2 id="brief-10-le-site-état-au-28-09-2026">10. Le site (état au 28/09/2026)</h2>
-<p>Adresse : https://calculment0r.github.io/SECOND_EARTH/ (active une fois GitHub Pages réglé sur « GitHub Actions » : Settings &gt; Pages &gt; Build and deployment &gt; Source).</p>
+<p>Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé par Cal le 28/09/2026 (Settings &gt; Pages &gt; Build and deployment &gt; Source : GitHub Actions). La branche par défaut du dépôt est <code>claude/beautiful-goldberg-x0to5u</code> (première branche poussée) ; l'environnement <code>github-pages</code> n'accepte que la branche par défaut.</p>
 <ul>
 <li><strong>Construction</strong> : <code>python3 tools/build_site.py</code> (bibliothèque standard seulement) écrit le site dans <code>_site/</code> (ignoré par git). Ouvrir <code>_site/index.html</code> depuis le disque marche aussi (liens relatifs, données injectées).</li>
 <li><strong>Publication</strong> : <code>.github/workflows/pages.yml</code> reconstruit et publie à chaque push sur <code>main</code> ou sur la branche de travail, et à la demande (workflow_dispatch).</li>
