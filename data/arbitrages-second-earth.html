@@ -1,0 +1,361 @@
+<title>Arbitrages Second Earth</title>
+<meta name="color-scheme" content="only light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{
+  color-scheme: only light;
+  --bg:#f1f1f4; --bg2:#ffffff; --bg3:#e7e7ec; --field:#fafafc;
+  --line:#d8d8e0; --line2:#bcbcca;
+  --ink:#0d0d11; --muted:#55556a; --dim:#8b8b9f;
+  --or:#ff5200; --or-soft:#fff0e8; --or-line:#ffb48f;
+  --ok:#2c7a4b; --ok-soft:#e6f3eb;
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --mono:"DM Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+html,body{background-color:var(--bg)!important;color:var(--ink)}
+body{margin:0;font-family:var(--mono);font-size:13px;line-height:1.6;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0;background-color:var(--bg);z-index:-1}
+.shell,aside,main,header,section,footer,.wrap{background-color:var(--bg)}
+@media (prefers-color-scheme:dark){
+  html,body{background-color:var(--bg)!important;color:var(--ink)}
+  .shell,aside,main,header,section,footer,.wrap{background-color:var(--bg)}
+  .q,.done,.out{background-color:var(--bg2)}
+}
+@media (forced-colors:active){*{forced-color-adjust:none}}
+@media (inverted-colors:inverted){html{filter:invert(1) hue-rotate(180deg)} img,video,canvas{filter:invert(1) hue-rotate(180deg)}}
+
+.shell{display:grid;grid-template-columns:272px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding-inline:24px;padding-block:28px 64px}
+
+/* ---- sidebar ---- */
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;display:flex;flex-direction:column;gap:22px;max-height:calc(100vh - 40px);overflow:auto}
+.brand{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.brand h1{font-family:var(--serif);font-weight:400;font-size:40px;line-height:1;margin:0;letter-spacing:-.01em}
+.brand .meta{font-size:11.5px;color:var(--dim)}
+.prog{display:flex;flex-direction:column;gap:8px}
+.prog .num{font-family:var(--serif);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.prog .num small{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:6px}
+.bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--or);transition:width .25s ease}
+nav ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+nav a{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;border-radius:3px;color:var(--ink);text-decoration:none;font-size:12.5px}
+nav a:hover{background:var(--bg3)}
+nav a:focus-visible{outline:2px solid var(--or);outline-offset:1px}
+nav a .c{color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}
+nav a.full .c{color:var(--ok)}
+.actions{display:flex;flex-direction:column;gap:8px}
+button{font-family:var(--mono);font-size:12.5px;cursor:pointer;border-radius:3px;padding:10px 14px;border:1px solid var(--line2);background:var(--bg2);color:var(--ink);text-align:center}
+button:hover{border-color:var(--ink)}
+button:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+button.primary{background:var(--or);border-color:var(--or);color:var(--ink);font-weight:500;letter-spacing:.02em}
+button.primary:hover{border-color:var(--ink)}
+button.ghost{background:transparent;border-color:transparent;color:var(--muted);padding:6px 10px}
+button.ghost:hover{color:var(--ink);border-color:var(--line2)}
+button.armed{border-color:#c0392b;color:#c0392b}
+.toast{min-height:20px;font-size:12px;color:var(--ok)}
+.toast.warn{color:#a3470c}
+
+/* ---- main ---- */
+main{display:flex;flex-direction:column;gap:48px;min-width:0}
+header.intro{display:flex;flex-direction:column;gap:14px;max-width:68ch}
+header.intro h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,44px);line-height:1.05;margin:0;text-wrap:balance}
+header.intro p{margin:0;color:var(--muted);font-size:13.5px}
+.done{background:var(--bg2);border:1px solid var(--line);border-radius:4px}
+.done summary{cursor:pointer;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;list-style:none}
+.done summary::-webkit-details-marker{display:none}
+.done summary .t{font-size:12.5px}
+.done summary .t b{font-weight:500}
+.done summary .hint{color:var(--dim);font-size:11.5px}
+.done ul{margin:0;padding:4px 16px 16px 34px;display:grid;gap:6px;color:var(--muted);font-size:12.5px}
+.done li::marker{color:var(--ok)}
+
+section.group{display:flex;flex-direction:column;gap:22px;scroll-margin-top:24px}
+.ghead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line2);padding-bottom:10px}
+.ghead h3{font-family:var(--serif);font-weight:400;font-size:30px;margin:0;line-height:1.1}
+.ghead .gl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or);font-weight:500}
+.ghead .gc{margin-left:auto;color:var(--dim);font-size:11.5px;font-variant-numeric:tabular-nums}
+
+.q{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:22px 22px 20px;display:flex;flex-direction:column;gap:14px;scroll-margin-top:24px}
+.q.answered{border-color:var(--line2)}
+.qtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.qid{font-size:11px;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+.chip{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:2px;border:1px solid var(--line2);color:var(--muted)}
+.q.answered .chip{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.multi{font-size:10.5px;color:var(--dim);letter-spacing:.06em}
+.q h4{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.15;margin:0;text-wrap:balance}
+.ctx{margin:0;color:var(--muted);font-size:12.5px;max-width:70ch}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:3px;cursor:pointer;background:var(--bg2);transition:border-color .12s,background-color .12s}
+.opt:hover{border-color:var(--line2);background:var(--field)}
+.opt input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.opt .k{width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line2);border-radius:2px;font-size:12px;font-weight:500;color:var(--muted);background:var(--bg2)}
+.opt .l{font-family:var(--serif);font-size:19px;line-height:1.2;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.opt .d{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
+.opt .rec{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--or);border:1px solid var(--or-line);padding:0 6px;border-radius:2px;line-height:17px}
+.opt:has(input:checked){border-color:var(--or);background:var(--or-soft)}
+.opt:has(input:checked) .k{background:var(--or);border-color:var(--or);color:var(--ink)}
+.opt:has(input:focus-visible){outline:2px solid var(--or);outline-offset:2px}
+.opt.on{border-color:var(--or);background:var(--or-soft)}
+.opt.on .k{background:var(--or);border-color:var(--or);color:var(--ink)}
+.note{display:flex;flex-direction:column;gap:6px}
+.note label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.note textarea{font-family:var(--mono);font-size:13px;line-height:1.55;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:3px;padding:10px 12px;min-height:64px;resize:vertical;width:100%;box-sizing:border-box}
+.note textarea::placeholder{color:var(--dim)}
+.note textarea:focus{outline:2px solid var(--or);outline-offset:0;border-color:var(--or)}
+
+footer.out{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+footer.out h3{font-family:var(--serif);font-weight:400;font-size:24px;margin:0}
+footer.out p{margin:0;color:var(--muted);font-size:12.5px}
+#out{font-family:var(--mono);font-size:12px;line-height:1.55;width:100%;box-sizing:border-box;min-height:220px;border:1px solid var(--line);border-radius:3px;background:var(--field);color:var(--ink);padding:12px;resize:vertical}
+
+.mbar{display:none}
+
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:28px;padding-inline:16px;padding-block:20px 0}
+  aside{position:static;max-height:none;overflow:visible}
+  nav ol{flex-direction:row;flex-wrap:wrap;gap:6px}
+  nav a{border:1px solid var(--line);padding:5px 9px}
+  .brand h1{font-size:34px}
+  .actions .primary{display:none}
+  .q{padding:18px 16px}
+  .q h4{font-size:23px}
+  .mbar{display:flex;position:sticky;bottom:0;z-index:5;gap:10px;align-items:center;justify-content:space-between;background:var(--bg);border-top:1px solid var(--line2);padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));margin-top:8px}
+  .mbar .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="shell">
+  <aside aria-label="Navigation et actions">
+    <div class="brand">
+      <span class="eyebrow">Second Earth · en attente</span>
+      <h1>Arbitrages</h1>
+      <span class="meta">Aucune décision ouverte · 28.09.2026</span>
+    </div>
+    <div class="prog" aria-live="polite">
+      <div class="num"><span id="pn">0</span><small>/ <span id="pt">0</span> répondues</small></div>
+      <div class="bar"><i id="pb"></i></div>
+    </div>
+    <nav aria-label="Groupes de décisions"><ol id="nav"></ol></nav>
+    <div class="actions">
+      <button class="primary" type="button" data-copy>Copier mes réponses</button>
+      <button class="ghost" type="button" id="reset">Tout effacer</button>
+      <div class="toast" id="toast" role="status"></div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="intro">
+      <span class="eyebrow">Décisions ouvertes</span>
+      <h2>Aucune décision ouverte : j’attends ta relecture.</h2>
+      <p>Les options sont des propositions. Le champ sous chaque décision sert à préciser, combiner ou remplacer. Le bouton « Copier mes réponses » met tout au format texte, à coller dans le chat. Tes saisies restent dans ce navigateur si tu fermes la page. Le détail est dans le doc Script Second Earth (architecture 25 / 55, séquencier, modules, propositions), dans la Bible (Registre, Géologie et plaques, Biomes hors trajet), dans la Flore et sur la carte v3.</p>
+      <details class="done">
+        <summary><span class="t"><b>Déjà tranché</b> · <span id="dn"></span> blocs, ne seront plus redemandés</span><span class="hint">afficher</span></summary>
+        <ul id="donelist"></ul>
+      </details>
+    </header>
+
+    <div id="groups" style="display:contents"></div>
+
+    <footer class="out" id="apercu">
+      <h3>Texte copié</h3>
+      <p>Ce qui part dans le presse-papier. Si la copie est bloquée par l'application, le texte est sélectionné ici : Ctrl+C ou Cmd+C.</p>
+      <textarea id="out" readonly aria-label="Texte de réponses à copier"></textarea>
+    </footer>
+
+    <div class="mbar">
+      <span class="n"><span id="mn">0</span> / <span id="mt">0</span> répondues</span>
+      <button class="primary" type="button" data-copy>Copier mes réponses</button>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+const DONE = [
+  "Planète fictive autour de 61 Cygni A ; nom officiel 61 Cygni Ab, rebaptisée Korê aux lacs salés pourpres, d'après le cri d'un oiseau des salins",
+  "Orbite ~0,41 UA, année ~116 j, gravité ~1,13 g, jour ~40 h, axe ~20–25°, une grande lune et une petite, nuits ambrées et saison noire, ~40 % d'eau",
+  "Atmosphère type Carbonifère (~30 % O₂, ~2 % CO₂, 1,3 bar) ; Seed modifiée pour respirer ; biochimie partiellement compatible",
+  "Végétal : pourpre en haut, vert dessous ; pas de règle de plan d'organisation ; jumeaux terrestres du monde entier",
+  "Tectonique active ; cavités karst + tunnels de lave ; récifs de silice ; Titans disparus il y a ~60 Ma, dont un géant volant dans la grotte de Rob2",
+  "Voyage fusion + warp, 2045 → 2098 ; embryons ; charte « ne rien prendre à la Terre » ; repérage depuis l'orbite au prologue",
+  "Robs : Rob1 carbone, eau, azote ; Rob2 phosphore (guano, os du Titan) ; Rob3 soufre et métaux ; Rob4 phosphore marin",
+  "Trajet : jungle → pitons (Acte II) → cavernes → col (~4 000 m) → forêt bioluminescente → Hautes Plaines → forêt ancienne → arc volcanique → mer d'arsenic et fosse → lacs salés pourpres → sinkhole",
+  "Forêt bioluminescente : sources tièdes soufrées et ferrugineuses ; forêt lente, clairsemée, arbres millénaires ; Rob1 doit contenir son feu",
+  "Hautes Plaines : ouvertes par le feu et les buffles ; la horde fuit un feu lointain ; laine blanche = isolation et reflet",
+  "Forêt ancienne : rivière rouge acide et métallique ; fruit toxique selon la logique du piment ; arbres-cathédrales survivants qui boivent le brouillard",
+  "Film 25 min avec Seed ; expo sans Seed, contemplative ; expo classique par biome ; cartels Sur Terre / Sur Korê / Pourquoi",
+  "Carton final : This is a fictional planet. / Earth is the only world we know. / Take care of it.",
+  "Round 10 : Robs à deux échelles (Rob1 et Rob2 avec le XENOPOD, Rob3 et Rob4 largués à des milliers de km) ; une seule sortie, échantillons par drones, drones perdus dans le sinkhole ; voyage en quelques semaines grâce au Rob fusionné qui court",
+  "Rounds 6–7 : oiseau-prédateur à la confluence de l'affluent clair ; salamandres dans l'affluent clair ; l'eau acide pousse Seed vers le fruit ; forêts cristallines vivantes ; flammes bleues ; poches de CO₂ ; respiration liquide ; Rob4 hybride ; oiseau des salins et colonie qui crie « Korê » ; pitons = îles, fleuve perdu dans les tours",
+  "Round 8 : biomes hors trajet validés (saisons émoussées, toundra sans calotte, marées, océan acide et récifs de verre, îles à guano, biosphère profonde) ; bestiaire validé (noms latins, échelle, colonne Seed, recalages, trois Titans)",
+  "Round 9 : carte : disposition validée, corridor équatorial, codes de mission (continents A–D, Océans 1–3, Golfes 1–2), jungle ~5 % le long des grands fleuves ; on continue le monde",
+  "Round 11 : distances de la carte v2 gardées ; Rob fusionné bipède à ~30 km/h, ~10 h par jour de 40 h, Seed dans un siège-harnais ; relais radio tombé dans le sinkhole ; des dernières nuits ambrées à la saison noire ; largage de Rob3 et Rob4 vu au prologue ; un drone porteur de ~15 kg par XENOPOD",
+  "Rounds 12 et 13 (le film) : le 25 est la colonne vertébrale, le 55 ouvre neuf modules aux ellipses du docx ; quatre mots parlés (Rob, Seed, Korê, Je suis Seed) ; écrans en anglais sous-titrés ; master 16:9 + adaptation dôme ; modules sans Seed fabriqués dans Unreal avec BoraBora ; Rob1 change CAIN après un flash du sourire de Seed ; le caillou blanc finit dans l'alvéole H-01 ; ligne « Terre : réception dans 11,4 ans » ; la salle immersive ne finit pas sur le cri ; l'épigraphe du docx est écartée (à remplacer)",
+  "Rounds 12 et 13 (le programme XENOPOD) : PERSEPHORA porte des collecteurs et un seul porte-enfant, le XENOPOD-01 (le 03 du docx, renuméroté) ; deux collecteurs sur Mars et Titan en 2045 (NON VIABLE) ; trois collecteurs lâchés pendant la descente = les robopods de Rob2, Rob3, Rob4 (XENOPOD-02, -03, -04) ; chaque collecteur a envoyé son drone de 15 kg au XENOPOD-01 ; Rob1 fournit la masse, les drones les éléments rares ; pour le reste, le docx fait foi ; Seed dort deux fois par jour de 40 h",
+  "Rounds 12 et 13 (le monde) : onglet Titans validé (sept espèces) ; dossiers des continents B, C, D et des océans validés ; cycle de l'étoile ~7,5 ans validé, 2098 est une année calme, pas d'aurores dans le film ; Récit v2 livré en Word le 27/09",
+  "Round 14 : l'épigraphe du docx est gardée pour l'instant (les candidates sont rejetées, on y reviendra à la demande de Cal) ; SECOND_EARTH_STORY_v2.docx devient la référence après relecture de Cal ; on continue le monde (lunes et calendrier, géologie, Bestiaire des continents B, C, D)",
+  "Round 15 : petite lune lointaine et lente (~1 000 km, à ~120 000 km, seconde marée) ; grande lune de 0,1 masse terrestre, mois de 21 jours de Korê, éclipses en cartel seulement ; phases calées sur le voyage (la nuit la plus noire est celle de la horde) ; enchaînement géologique des paysages validé ; plaques dessinées sur la carte ; douze espèces des continents B, C, D ; on finit le monde",
+  "Round 16 : les douze plantes de B, C, D ; les huit fiches hors trajet et leurs cartels ; les ajouts du dessin des plaques (plaque centrale, fosse de la côte ouest, dorsale de l'Océan 2, transformante B–C, faille de la jungle, suture) ; subduction plane entre l'arc et la fosse ; Cal relit et corrige avant toute suite"
+];
+
+const GROUPS = [];
+
+const Q = [];
+
+const KEY = "se-arbitrages-r17";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
+Q.forEach(q => { if(!state[q.id]) state[q.id] = {sel:[], note:""}; });
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function answered(id){ const s = state[id]; return s && (s.sel.length > 0 || s.note.trim() !== ""); }
+
+// déjà tranché
+document.getElementById("dn").textContent = DONE.length;
+document.getElementById("donelist").innerHTML = DONE.map(d => "<li>"+esc(d)+"</li>").join("");
+
+// groupes + questions
+const host = document.getElementById("groups");
+let html = "";
+GROUPS.forEach(g => {
+  const qs = Q.filter(q => q.g === g.id);
+  html += '<section class="group" id="g-'+g.id+'" aria-labelledby="h-'+g.id+'">';
+  html += '<div class="ghead"><span class="gl">'+g.id+'</span><h3 id="h-'+g.id+'">'+esc(g.name)+'</h3><span class="gc" data-gc="'+g.id+'"></span></div>';
+  qs.forEach(q => {
+    const type = q.multi ? "checkbox" : "radio";
+    html += '<article class="q" id="'+q.id+'" data-q="'+q.id+'">';
+    html += '<div class="qtop"><span class="qid">'+q.id+'</span><span class="chip" data-chip="'+q.id+'">à trancher</span>'+(q.multi ? '<span class="multi">plusieurs choix possibles</span>' : '')+'</div>';
+    html += '<h4>'+esc(q.t)+'</h4>';
+    html += '<p class="ctx">'+esc(q.ctx)+'</p>';
+    html += '<div class="opts" role="'+(q.multi ? "group" : "radiogroup")+'" aria-label="'+esc(q.t)+'">';
+    q.o.forEach(o => {
+      const iid = q.id+"-"+o.k;
+      html += '<label class="opt" for="'+iid+'"><input type="'+type+'" name="'+q.id+'" id="'+iid+'" value="'+o.k+'" data-q="'+q.id+'"><span class="k">'+o.k+'</span><span><span class="l">'+esc(o.l)+(o.r ? '<span class="rec">recommandé</span>' : '')+'</span><span class="d">'+esc(o.d)+'</span></span></label>';
+    });
+    html += '</div>';
+    html += '<div class="note"><label for="note-'+q.id+'">Ta réponse ou précision</label><textarea id="note-'+q.id+'" data-note="'+q.id+'" rows="2" placeholder="Précise, combine ou remplace les options…"></textarea></div>';
+    html += '</article>';
+  });
+  html += '</section>';
+});
+host.innerHTML = html;
+
+// nav
+document.getElementById("nav").innerHTML = GROUPS.map(g =>
+  '<li><a href="#g-'+g.id+'" data-nav="'+g.id+'"><span>'+g.id+' · '+esc(g.name)+'</span><span class="c" data-navc="'+g.id+'"></span></a></li>'
+).join("");
+
+// restaurer l'état
+Q.forEach(q => {
+  state[q.id].sel.forEach(k => { const el = document.getElementById(q.id+"-"+k); if(el) el.checked = true; });
+  const ta = document.getElementById("note-"+q.id); if(ta) ta.value = state[q.id].note;
+});
+
+// interactions
+host.addEventListener("click", e => {
+  const inp = e.target.closest("input[data-q]"); if(!inp) return;
+  const id = inp.dataset.q, k = inp.value, q = Q.find(x => x.id === id), s = state[id];
+  if(q.multi){
+    s.sel = inp.checked ? Array.from(new Set(s.sel.concat(k))) : s.sel.filter(x => x !== k);
+  } else {
+    if(s.sel[0] === k){ inp.checked = false; s.sel = []; } else { s.sel = [k]; }
+  }
+  save(); update();
+});
+host.addEventListener("input", e => {
+  const ta = e.target.closest("textarea[data-note]"); if(!ta) return;
+  state[ta.dataset.note].note = ta.value; save(); update();
+});
+
+function buildText(){
+  const d = new Date();
+  const date = d.toLocaleDateString("fr-FR");
+  const n = Q.filter(q => answered(q.id)).length;
+  let t = "SECOND EARTH · Round 16 ("+date+")\nRépondu : "+n+" / "+Q.length+"\n";
+  GROUPS.forEach(g => {
+    const qs = Q.filter(q => q.g === g.id && answered(q.id));
+    if(!qs.length) return;
+    t += "\n== "+g.id+" · "+g.name+" ==\n";
+    qs.forEach(q => {
+      const s = state[q.id];
+      t += "\n["+q.id+"] "+q.t+"\n";
+      s.sel.slice().sort().forEach(k => { const o = q.o.find(x => x.k === k); if(o) t += "→ "+k+" · "+o.l+"\n"; });
+      if(s.note.trim()) t += "Précision : "+s.note.trim().replace(/\n+/g, " / ")+"\n";
+    });
+  });
+  const miss = Q.filter(q => !answered(q.id)).map(q => q.id);
+  if(miss.length) t += "\nSans réponse : "+miss.join(", ")+"\n";
+  return t;
+}
+
+function update(){
+  const total = Q.length, n = Q.filter(q => answered(q.id)).length;
+  document.getElementById("pn").textContent = n;
+  document.getElementById("pt").textContent = total;
+  document.getElementById("mn").textContent = n;
+  document.getElementById("mt").textContent = total;
+  document.getElementById("pb").style.width = (total ? n/total*100 : 0)+"%";
+  Q.forEach(q => {
+    const a = answered(q.id);
+    const card = document.getElementById(q.id);
+    card.classList.toggle("answered", a);
+    card.querySelector("[data-chip]").textContent = a ? "répondu" : "à trancher";
+    card.querySelectorAll(".opt").forEach(l => { const i = l.querySelector("input"); l.classList.toggle("on", i.checked); });
+  });
+  GROUPS.forEach(g => {
+    const qs = Q.filter(q => q.g === g.id), m = qs.filter(q => answered(q.id)).length;
+    const lbl = m+" / "+qs.length;
+    document.querySelector('[data-gc="'+g.id+'"]').textContent = lbl;
+    const nc = document.querySelector('[data-navc="'+g.id+'"]'); nc.textContent = lbl;
+    document.querySelector('[data-nav="'+g.id+'"]').classList.toggle("full", m === qs.length);
+  });
+  document.getElementById("out").value = buildText();
+}
+
+// copie
+const toast = document.getElementById("toast");
+let tt;
+function say(msg, warn){ toast.textContent = msg; toast.classList.toggle("warn", !!warn); clearTimeout(tt); tt = setTimeout(() => { toast.textContent = ""; }, 6000); }
+function fallback(text){
+  const out = document.getElementById("out");
+  out.value = text;
+  out.scrollIntoView({block:"center"});
+  out.focus(); out.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch(e){ ok = false; }
+  if(ok) say("Copié. Colle-le dans le chat.");
+  else say("Copie bloquée par l'application : le texte est sélectionné en bas de page, fais Ctrl+C ou Cmd+C.", true);
+}
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+  const text = buildText();
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(() => {
+      say("Copié. Colle-le dans le chat.");
+      b.textContent = "Copié";
+      setTimeout(() => { b.textContent = "Copier mes réponses"; }, 1800);
+    }).catch(() => fallback(text));
+  } else { fallback(text); }
+}));
+
+// réinitialisation avec confirmation dans la page
+const reset = document.getElementById("reset");
+let armed = false, at;
+reset.addEventListener("click", () => {
+  if(!armed){
+    armed = true; reset.classList.add("armed"); reset.textContent = "Confirmer l'effacement";
+    at = setTimeout(() => { armed = false; reset.classList.remove("armed"); reset.textContent = "Tout effacer"; }, 4000);
+    return;
+  }
+  clearTimeout(at); armed = false; reset.classList.remove("armed"); reset.textContent = "Tout effacer";
+  Q.forEach(q => { state[q.id] = {sel:[], note:""}; });
+  document.querySelectorAll("input[data-q]").forEach(i => { i.checked = false; });
+  document.querySelectorAll("textarea[data-note]").forEach(t => { t.value = ""; });
+  save(); update(); say("Réponses effacées.");
+});
+
+update();
+})();
+</script>

@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
+<title>Second Earth · Brief de reprise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: only light;
+  --bg:#f1f1f4; --bg2:#ffffff; --bg3:#e7e7ec; --field:#fafafc;
+  --line:#d8d8e0; --line2:#bcbcca;
+  --ink:#0d0d11; --muted:#55556a; --dim:#8b8b9f;
+  --or:#ff5200; --or-soft:#fff0e8; --or-line:#ffb48f;
+  --ok:#2c7a4b; --ok-soft:#e6f3eb;
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --mono:"DM Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+html,body{background-color:var(--bg)!important;color:var(--ink)}
+html{scroll-padding-top:16px}
+body{margin:0;font-family:var(--serif);font-size:19px;line-height:1.5;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0;background-color:var(--bg);z-index:-1}
+.shell,aside,main,header,section,footer,.wrap,nav{background-color:var(--bg)}
+@media (prefers-color-scheme:dark){
+  html,body{background-color:var(--bg)!important;color:var(--ink)}
+  .shell,aside,main,header,section,footer,.wrap,nav{background-color:var(--bg)}
+  .part{background-color:var(--bg2)}
+  pre{background-color:var(--field)}
+}
+@media (forced-colors:active){*{forced-color-adjust:none}}
+@media (inverted-colors:inverted){html{filter:invert(1) hue-rotate(180deg)} img,video,canvas{filter:invert(1) hue-rotate(180deg)}}
+
+.shell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:40px;max-width:1240px;margin:0 auto;padding:28px 24px 80px}
+aside{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow:auto;display:flex;flex-direction:column;gap:20px}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.brand h1{font-weight:400;font-size:42px;line-height:1;margin:6px 0 6px;letter-spacing:-.01em}
+.brand .meta{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+nav ol{list-style:none;margin:0;padding:0}
+nav > ol > li{margin-bottom:10px}
+nav a{display:block;padding:4px 10px;border-radius:3px;color:var(--ink);text-decoration:none;font-family:var(--mono);font-size:12px;line-height:1.35}
+nav a:hover{background:var(--bg3)}
+nav a.top{font-size:12.5px;font-weight:500;color:var(--ink);border-left:2px solid var(--or);border-radius:0 3px 3px 0}
+nav li li a{color:var(--muted);padding-left:14px}
+nav a:focus-visible{outline:2px solid var(--or);outline-offset:1px}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.5;border-top:1px solid var(--line);padding-top:14px}
+
+main{min-width:0;display:flex;flex-direction:column;gap:28px}
+.part{background:var(--bg2);border:1px solid var(--line);border-radius:3px;padding:28px 36px 36px}
+.src{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+h1,h2,h3{font-weight:400;line-height:1.15}
+.part h1{font-size:40px;margin:0 0 14px}
+.part h2{font-size:30px;margin:40px 0 12px;padding-top:18px;border-top:1px solid var(--line)}
+.part h3{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin:26px 0 8px}
+p{margin:0 0 12px}
+a{color:var(--ink);text-decoration-color:var(--or-line);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--or)}
+strong{font-weight:600}
+ul,ol{padding-left:22px;margin:0 0 14px}
+li{margin:3px 0}
+li.todo{list-style:none;position:relative}
+li.todo::before{content:"";position:absolute;left:-20px;top:.45em;width:10px;height:10px;border:1.5px solid var(--or);border-radius:2px}
+code{font-family:var(--mono);font-size:.78em;background:var(--bg3);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+p,li,td{overflow-wrap:break-word}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.55;background:var(--field);border:1px solid var(--line);border-left:3px solid var(--or);border-radius:3px;padding:12px 14px;overflow-x:auto;margin:0 0 16px;white-space:pre}
+pre code{background:none;padding:0;font-size:inherit}
+hr{display:none}
+.tw{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line);border-radius:3px}
+table{border-collapse:collapse;width:100%;font-size:15.5px;line-height:1.4}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;text-align:left;background:var(--bg3)}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap}
+
+@media (max-width:820px){
+  body{font-size:17.5px}
+  .shell{grid-template-columns:minmax(0,1fr);gap:18px;padding:16px 16px 60px}
+  aside{position:static;max-height:none;overflow:visible}
+  nav li li{display:none}
+  nav > ol{display:flex;flex-wrap:wrap;gap:6px}
+  nav > ol > li{margin:0}
+  .part{padding:20px 16px 24px}
+  .part h1{font-size:32px}
+  .part h2{font-size:25px}
+  td:first-child{white-space:normal}
+  pre{font-size:11.5px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand">
+      <div class="eyebrow">NIRVALAB · Science Centre Singapore</div>
+      <h1>Second Earth</h1>
+      <div class="meta">Brief de reprise · 28/09/2026</div>
+    </div>
+    <nav><ol><li><a class="top" href="#brief">Le brief</a><ol><li><a href="#brief-1-la-mission-de-cette-session">1. La mission de cette session</a></li><li><a href="#brief-2-le-projet-en-bref">2. Le projet en bref</a></li><li><a href="#brief-3-korê-les-chiffres">3. Korê, les chiffres</a></li><li><a href="#brief-4-travailler-avec-cal-règles-fermes">4. Travailler avec Cal : règles fermes</a></li><li><a href="#brief-5-ce-qui-est-ouvert-au-28-09-2026">5. Ce qui est ouvert au 28/09/2026</a></li><li><a href="#brief-6-inventaire-du-dossier">6. Inventaire du dossier</a></li><li><a href="#brief-7-les-données-json-pour-l-outil-et-le-site">7. Les données JSON (pour l&#x27;outil et le site)</a></li><li><a href="#brief-8-décisions-à-faire-trancher-par-cal-au-démarrage-en-qcm-pag">8. Décisions à faire trancher par Cal au démarrage (en QCM, page web)</a></li><li><a href="#brief-9-méthode-de-travail-conseillée">9. Méthode de travail conseillée</a></li><li><a href="#brief-10-le-site-état-au-28-09-2026">10. Le site (état au 28/09/2026)</a></li></ol></li><li><a class="top" href="#outil">Outil de prompts</a><ol><li><a href="#outil-1-forme">1. Forme</a></li><li><a href="#outil-2-la-barre-des-réglages-globaux-en-haut-collante">2. La barre des réglages globaux (en haut, collante)</a></li><li><a href="#outil-3-les-onglets">3. Les onglets</a></li><li><a href="#outil-4-la-fiche-une-par-espèce-plante-paysage-personnage">4. La fiche (une par espèce, plante, paysage, personnage)</a></li><li><a href="#outil-5-l-onglet-paysages">5. L&#x27;onglet Paysages</a></li><li><a href="#outil-6-prompts-manquants">6. Prompts manquants</a></li><li><a href="#outil-7-critères-d-acceptation">7. Critères d&#x27;acceptation</a></li></ol></li><li><a class="top" href="#site">Le site</a><ol><li><a href="#site-1-publication-et-confidentialité-à-trancher-par-cal-en-qcm">1. Publication et confidentialité (à trancher par Cal en QCM)</a></li><li><a href="#site-2-structure-proposée">2. Structure proposée</a></li><li><a href="#site-3-technique">3. Technique</a></li><li><a href="#site-4-mise-à-jour-du-contenu">4. Mise à jour du contenu</a></li><li><a href="#site-5-ordre-de-travail">5. Ordre de travail</a></li></ol></li><li><a class="top" href="#charte">La charte</a><ol><li><a href="#charte-règles">Règles</a></li><li><a href="#charte-jetons">Jetons</a></li><li><a href="#charte-app-ios">App iOS</a></li><li><a href="#charte-mise-en-page">Mise en page</a></li></ol></li></ol></nav>
+    <div class="note">Cette page reprend CLAUDE.md et les trois fichiers de site-spec/ contenus dans le zip. C'est CLAUDE.md que la nouvelle session lit en premier.</div>
+  </aside>
+  <main>
+<section class="part" id="brief"><div class="src">CLAUDE.md</div><h1 id="brief-second-earth-brief-de-reprise-pour-une-session-claude">SECOND EARTH · brief de reprise pour une session Claude</h1>
+<p>Ce dossier contient tout le développement de Second Earth au 28/09/2026 : le monde (Bible), les espèces, la science, le film, la carte, les arbitrages, les sources d'origine. Il sert à une nouvelle session Claude (Claude Code ou Cowork) qui construit un site hébergé sur GitHub pour présenter le projet, en commençant par un <strong>outil de prompts Midjourney</strong>.</p>
+<p>Lire ce fichier en entier avant toute action. Puis lire <code>docs/bible/00-registre-des-decisions.md</code>.</p>
+<p><strong>État au 28/09/2026 (fin de la session de construction du site)</strong> : le dépôt <code>calculment0r/SECOND_EARTH</code> (public) contient ce dossier, le site et l'outil de prompts. Voir la section 10 avant de toucher au site.</p>
+<hr />
+<h2 id="brief-1-la-mission-de-cette-session">1. La mission de cette session</h2>
+<ol>
+<li><strong>Priorité 1 : l'outil de prompts Midjourney</strong> (spécification complète : <code>site-spec/outil-prompts.md</code>).
+Une page HTML statique, sans serveur :
+<ul>
+<li>en haut, <strong>une barre de paramètres globaux</strong> saisie une fois (ex. <code>--ar 16:9 --hd --sref 15684 --v 8.2</code>) et ajoutée automatiquement à la fin de chaque prompt ;</li>
+<li>une organisation <strong>par onglets</strong> : d'abord <strong>Bestiaire</strong>, puis <strong>Paysages</strong> dans un autre onglet, puis Flore, Personnages et machines, Titans ;</li>
+<li>une présentation très claire et rangée (groupes par biome, codes, statuts) ;</li>
+<li><strong>un bouton « Copier » par prompt</strong>, qui copie le prompt complet (phrase de style + sujet + paramètres globaux).</li>
+</ul>
+</li>
+<li><strong>Priorité 2 : le site de présentation du projet</strong> sur GitHub Pages, qui héberge l'outil, la carte, le monde, les espèces, le film, la science (spécification : <code>site-spec/site.md</code>).</li>
+<li>Tout le contenu vient de ce dossier. <strong>Rien ne s'invente</strong> : ce qui manque se propose à Cal (voir section 4) et reste marqué « proposé » tant qu'il ne l'a pas tranché.</li>
+</ol>
+<p>Les données sont déjà extraites en JSON dans <code>data/</code> (section 7). Le script qui les produit : <code>tools/build_data.py</code>.</p>
+<hr />
+<h2 id="brief-2-le-projet-en-bref">2. Le projet en bref</h2>
+<ul>
+<li><strong>Auteur et réalisateur</strong> : Cal (NIRVALAB). Écriture et conception avec Medhi Mejri (d'après Cal ; aucun document du dossier ne le mentionne).</li>
+<li><strong>Commanditaire</strong> : Science Centre Singapore, projet porté par Nina Albani (aïo Creative Group, Singapour).</li>
+<li><strong>Produits</strong> :
+<ul>
+<li>un <strong>film de 25 min</strong> maintenant, puis un <strong>film de 55 min</strong> conçu dès l'écriture du 25 pour se fabriquer par ajout, jamais par remontage (colonne vertébrale + 9 modules) ;</li>
+<li>une <strong>salle immersive</strong> temps réel dans Unreal, développée avec <strong>BoraBora Studios</strong> : narration sans Seed, avec les Robs ; le visiteur est chef de mission, un peu d'interaction, surtout contemplatif, jamais scolaire ;</li>
+<li>une <strong>expo classique organisée par biome</strong>, cartels en trois temps : SUR TERRE / SUR KORÊ / POURQUOI.</li>
+</ul>
+</li>
+<li><strong>Financement visé</strong> : une aide IA singapourienne qui ouvre en décembre (~120 k€), combinée à une licence anticipée du Science Centre (d'après Cal ; les documents parlent de l'« aide IA ~120 k€ » et du « dossier de décembre » : <code>docs/film/13-propositions.md</code>, <code>docs/film/30-notes-pour-nina.md</code>).</li>
+<li><strong>Fabrication des images</strong> : deux chaînes, une direction artistique. Les séquences avec Seed passent par le pipeline génératif de NIRVALAB (sur ses machines) avec des planches qui fixent les invariants ; les séquences sans Seed (paysages, Robs, Titans, course) sont construites dans Unreal avec BoraBora. Midjourney sert à la recherche visuelle et aux planches.</li>
+<li><strong>Carton final du film</strong> : « This is a fictional planet. Earth is the only world we know. Take care of it. »</li>
+</ul>
+<h3 id="brief-l-histoire-résumé">L'histoire (résumé)</h3>
+<p>2045 : le vaisseau-semeur PERSEPHORA quitte le système solaire. Il ne prend rien à la Terre : il porte des embryons et des machines. 2098 : il arrive à 61 Cygni A, 11,4 années-lumière. Il largue le XENOPOD-01 (la capsule qui porte l'embryon) et des collecteurs. Quatre robots, les Robs, vérifient en une seule sortie que la planète possède toutes les briques de la vie (carbone, eau, azote, phosphore, soufre, métaux) avant la naissance de Seed. Seed naît, 15 ans apparents, cheveux blancs, presque muette (quatre mots dans tout le film : « Rob ! », « Seed », « Korê », « Je suis Seed »). Le XENOPOD tombe dans un sinkhole. Seed et Rob1 partent chercher Rob2, Rob3, Rob4 à travers 12 biomes (~5 500 km ; « quelques semaines » validé, ~41 jours dans la Chronologie, proposé), rebaptisent la planète <strong>Korê</strong> d'après le cri d'un oiseau des salins, puis reviennent. La Phase 1 réussit : Korê a tout. Rob1 envoie pourtant « NON VIABLE » vers la Terre (« Terre : réception dans 11,4 ans ») : son mensonge protège un monde complet. Puis il modifie le protocole du second embryon, CAIN (ingénieur de terraformation, 35 ans, mémoire transférée à 100 %), ramené à 14 ans et 21 %.</p>
+<p>Référence du récit : <code>sources/SECOND_EARTH_STORY.docx</code> fait foi. <code>sources/SECOND_EARTH_STORY_v2.docx</code> (le récit réécrit avec le monde, livré le 27/09) devient la référence <strong>après la relecture de Cal</strong> (round 14, R01). Version lisible : <code>docs/film/00-recit-v2.md</code>.</p>
+<hr />
+<h2 id="brief-3-korê-les-chiffres">3. Korê, les chiffres</h2>
+<p>Tout est validé sauf ce qui est marqué (proposé).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Donnée</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Étoile</td>
+<td>61 Cygni A, naine orange K5V, 4 400 K, 15 % de la luminosité du Soleil, ~6,1 milliards d'années, 11,4 années-lumière</td>
+</tr>
+<tr>
+<td>Compagne</td>
+<td>61 Cygni B (K7), orbite de ~659 ans ; la nuit, un point orange plus brillant que la pleine Lune (nuits ambrées)</td>
+</tr>
+<tr>
+<td>Planète</td>
+<td>61 Cygni Ab, rebaptisée Korê ; orbite ~0,41 UA ; année ~116 jours terrestres (69,6 jours de Korê)</td>
+</tr>
+<tr>
+<td>Jour</td>
+<td>~40 h ; Seed dort deux fois par jour</td>
+</tr>
+<tr>
+<td>Masse, rayon, gravité</td>
+<td>~1,5 M⊕, ~1,15 R⊕, <strong>1,13 g</strong> (sauts ~12 % moins hauts, chutes ~6 % plus rapides)</td>
+</tr>
+<tr>
+<td>Air</td>
+<td>type Carbonifère : <strong>30 % O₂, 2 % CO₂, 1,3 bar</strong></td>
+</tr>
+<tr>
+<td>Pluie</td>
+<td>pH ~4,7 (karst, cavernes)</td>
+</tr>
+<tr>
+<td>Eau</td>
+<td>~40 % de la surface ; 58 % de terres émergées ; déserts ~30 % des terres, jungles ~4 à 5 %</td>
+</tr>
+<tr>
+<td>Saisons</td>
+<td>inclinaison ~20–25°, quatre saisons d'environ 4 semaines ; saison noire (sans 61 Cygni B la nuit) = bioluminescence</td>
+</tr>
+<tr>
+<td>Grande lune</td>
+<td>0,1 M⊕, ~3 300 km de rayon, ~443 000 km ; mois de 21 jours de Korê (35 jours terrestres) ; même diamètre apparent que l'étoile ; éclipses en cartel seulement</td>
+</tr>
+<tr>
+<td>Petite lune</td>
+<td>~1 000 km, ~120 000 km, révolution 2,35 jours de Korê ; seconde marée (0,6)</td>
+</tr>
+<tr>
+<td>Marées</td>
+<td>vives-eaux ~7 fois la Terre ; Golfe 1 : 10–15 m ; Golfe 2 (mer de Rob4) calme</td>
+</tr>
+<tr>
+<td>Lumière (proposé)</td>
+<td>~4 500 K à midi, ~90 % de l'éclairement terrestre ; ciel bleu pâle laiteux ; crépuscules rouges de plus d'une heure (onglet Lumière et couleurs, jamais validé en round)</td>
+</tr>
+<tr>
+<td>Végétal</td>
+<td>deux lignées : <strong>pourpre en haut, vert dessous</strong> ; sous la canopée la lumière est magenta</td>
+</tr>
+<tr>
+<td>Géologie</td>
+<td>tectonique active, plaques petites et rapides ; rift du Golfe 1, collision du massif, subduction plane de l'Océan 2 (arc volcanique ~1 200 km en arrière de la fosse), mer d'arsenic d'origine volcanique</td>
+</tr>
+<tr>
+<td>Histoire profonde</td>
+<td>Titans (géants) éteints il y a ~60 Ma par une pluie de comètes ; descendants : buffles albinos, Créature des profondeurs</td>
+</tr>
+<tr>
+<td>Voyage</td>
+<td>départ 2045, arrivée 2098, ~21 % de c (fusion + warp drive sous-luminique, Fuchs et al. 2024)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Détail : <code>docs/bible/</code> (registre, biomes, lumière, lunes, géologie, Titans, continents, glossaire) et <code>docs/science/phosphore-biomasse-et-seconde-terre.md</code> (la thèse : le phosphore limite une biomasse finie ; pourquoi pas Mars ; le piège de l'arsenic).</p>
+<hr />
+<h2 id="brief-4-travailler-avec-cal-règles-fermes">4. Travailler avec Cal : règles fermes</h2>
+<p>Ces règles viennent de ses demandes répétées. Elles priment sur toute habitude.</p>
+<ol>
+<li><strong>Langue</strong> : français. Les prompts d'image sont en anglais.</li>
+<li><strong>Jamais d'émoticône</strong>, nulle part (réponses, fichiers, interface, commits).</li>
+<li><strong>Pas de commentaire de valeur, pas de vente.</strong> Exposer les faits, le laisser juger. Pas de « superbe », « puissant », « parfait ».</li>
+<li><strong>Les arbitrages se font par QCM dans une page web</strong> : options pré-rédigées avec leur conséquence écrite en face, un champ libre par décision, un bouton qui copie ses réponses en texte pour les recoller dans le chat. Modèle existant : <code>data/arbitrages-second-earth.html</code> (rounds 1 à 16). Au 28/09 elle ne contient plus de question ouverte (<code>GROUPS = []</code>, <code>Q = []</code>) mais tout le code est là : pour un nouveau round, remplir <code>GROUPS</code> et <code>Q</code> sur le modèle des décisions archivées, et changer la clé de stockage.
+<ul>
+<li>Relire le Registre (<code>docs/bible/00-registre-des-decisions.md</code>) <strong>avant chaque QCM</strong>.</li>
+<li>Ne jamais re-soumettre un point déjà tranché ; ne jamais proposer une option qui contredit un point validé.</li>
+<li>Ne jamais annoncer un QCM sans qu'il s'affiche dans le même tour.</li>
+</ul>
+</li>
+<li><strong>Les fichiers .md lui sont illisibles.</strong> Tout ce qu'il doit lire se livre en page HTML ou en document (Word, Claude Docs), jamais en Markdown. Les .md de ce dossier sont pour Claude.</li>
+<li><strong>Quand un prompt est corrigé, réécrire le bloc entier</strong>, prêt à copier, jamais un morceau.</li>
+<li><strong>Statuts</strong> : chaque élément est « validé » (tranché par Cal, avec son round) ou « proposé ». Un point validé n'est plus remis en question. Le Registre fait foi. Le Bestiaire a ses propres étiquettes de ligne : <strong>Origine</strong> (bestiaire de février 2026, inchangé), <strong>Recalé</strong> (modifié pour respecter une règle), <strong>Nouveau</strong> (ajouté) ; ses règles, noms latins, recalages et Titans ont été validés au round 8. Certaines plantes portent « Validé (docx) » ou « Validé (biome) » : validées avec le docx ou avec la fiche du biome.</li>
+<li><strong>Gel du monde</strong> : au round 16 (N01), Cal a choisi « Relire et corriger » ; le Registre l'écrit ainsi : « Cal relit et corrige ; rien n'avance tant que ses corrections ne sont pas passées. » Tant que ses corrections de relecture ne sont pas intégrées, <strong>ne pas ajouter de contenu au monde ni au script</strong>. L'outil de prompts et le site sont de la fabrication demandée explicitement (28/09) : ils présentent le contenu existant, ils ne le modifient pas.</li>
+<li><strong>Épigraphe du 55</strong> : la phrase du docx est gardée pour l'instant. Ne pas proposer d'autre épigraphe sans demande.</li>
+<li><strong>Prompts d'image</strong> (règles écrites dans les Planches de dessin, document au statut proposé) : formes, matières et lumière uniquement ; <strong>aucun nom d'artiste, de studio, de film, de personnage existant, ni de marque</strong>. Même règle pour la musique.</li>
+<li><strong>Direction artistique</strong> : ne jamais reproduire une œuvre, un personnage ou un logo existants.</li>
+</ol>
+<h3 id="brief-charte-des-interfaces-détail-site-spec-charte-md">Charte des interfaces (détail : <code>site-spec/charte.md</code>)</h3>
+<ul>
+<li><strong>Site : thème « Verdant »</strong> (Showrunner UI Kit, fourni par Cal le 28/09/2026 avec la demande de l'appliquer au site ; référence dans <code>theme/showrunner-ui-kit/</code>). Il remplace pour le site le thème « Oblivion clair » ci-dessous. Pas de bascule clair / sombre.</li>
+<li>Verdant : fond presque noir <code>#0a0d0b</code>, rampe corail <code>#f0b49b → #7a3a22</code>, vert profond <code>#2f6b4a → #1a3f2c</code>, accent <code>#e0674a</code>, encre bleutée <code>#b9cfd8</code> ; Venus Rising (titres, chiffres), Chakra Petch (texte, boutons), Azeret Mono (étiquettes).</li>
+<li>Ancien thème, encore dans le CSS source de la carte et de la page QCM (la construction du site les convertit) : « Oblivion clair », accent <code>#ff5200</code>, Instrument Serif + DM Mono.</li>
+<li>Surbrillance = on voit ce que c'est (fiche lisible), pas seulement des pastilles de couleur ; un clic maintient, un clic dans le vide relâche.</li>
+</ul>
+<hr />
+<h2 id="brief-5-ce-qui-est-ouvert-au-28-09-2026">5. Ce qui est ouvert au 28/09/2026</h2>
+<ul>
+<li class="todo"><strong>Relecture de Cal</strong> (round 16) : en attente de ses corrections. Rien n'avance côté monde et script avant.</li>
+<li class="todo"><strong>Récit v2</strong> : devient la référence après sa relecture.</li>
+<li class="todo"><strong>Épigraphe du 55</strong> : plus tard, à sa demande.</li>
+<li class="todo"><strong>Dessin des nouvelles espèces</strong> : quatre de la jungle, le grimpeur des cols, le Titan volant, l'oiseau des salins.</li>
+<li class="todo"><strong>Prompts à rédiger</strong> : les 11 personnages et machines ont un prompt (Planches de dessin, proposé). Au Bestiaire, 9 lignes sur 66 ont un prompt ; à la Flore, 5 sur 42 ; aucun des 7 Titans ni des 18 paysages. Voir <code>site-spec/outil-prompts.md</code>, section « Prompts manquants ».</li>
+<li class="todo"><strong>Écarts connus dans les documents</strong> (à signaler à Cal, pas à corriger seul) :
+<ul>
+<li>la Flore compte 42 lignes, le Registre dit 41 plantes ;</li>
+<li>dans le document Claude Docs « Flore de Korê », les douze plantes des continents B, C, D sont encore marquées « Proposé » alors que le Registre les dit validées (round 16, F01) ; l'export de ce dossier est corrigé ;</li>
+<li>les neuf espèces hors trajet (HT-01 à HT-09) n'ont pas de statut dans le Bestiaire ;</li>
+<li>quatre planches de dessin (document au statut proposé) ne décrivent pas l'animal comme le Bestiaire (validé au round 8), et leurs prompts suivent la planche : JP-01 fleurs-papillons (10–15 cm posées sur les arbustes-perchoirs / 5–8 cm, fleur fermée sur une tige), HP-01 buffle albinos (~2,5 m, cornes courtes en crochet / 3–4 m, cornes larges incurvées), LS-01 oiseau des salins (~60 cm, gris clair / 1,4 m, pourpre), FB-03 oiseau-reptile (~40 cm, ailes membraneuses, vert-bronze / 15–25 cm, ailes à plumes, écailles irisées). Le détail est dans le champ <code>ecart_planche</code> des données ; l'outil doit l'afficher sur ces fiches ;</li>
+<li>deux choses sont décrites deux fois : TR-F (Titan volant, fossile) au Bestiaire et aux Titans ; TR-05 (plantes-chant) au Bestiaire et FL-TR-01 à la Flore. Champ <code>voir_aussi</code> dans les données ; TR-05 reprend le prompt de FL-TR-01. Le Bestiaire compte donc 64 animaux distincts ;</li>
+<li>les Notes pour Nina (27/09) parlent de 52 espèces et 29 plantes ; les chiffres ont grandi depuis (66 lignes au Bestiaire + 7 Titans ; 42 plantes).</li>
+</ul>
+</li>
+<li class="todo"><strong>Format de projection du 25</strong> (dôme Omni-Theatre ou salle classique) : master 16:9 et adaptation dôme validés (A04) ; le calendrier dépend de BoraBora.</li>
+</ul>
+<hr />
+<h2 id="brief-6-inventaire-du-dossier">6. Inventaire du dossier</h2>
+<pre><code>CLAUDE.md                  ce fichier
+BRIEF.html                 le même brief, en page lisible par Cal
+README.md                  une page d'accueil courte pour le dépôt
+site-spec/
+  outil-prompts.md         spécification de l'outil Midjourney (priorité 1)
+  site.md                  plan du site GitHub Pages, publication, confidentialité
+  charte.md                thème Oblivion clair, jetons CSS, recette iOS
+data/
+  bestiaire.json           66 lignes du Bestiaire (code, noms, taille, à dessiner, vie, jumeau, statut, biome, prompt)
+  titans.json              7 Titans éteints
+  flore.json               42 plantes
+  palette-flore.json       13 lignes : couleur dominante par biome (10 du trajet + continents B, C, D ; rien pour les 8 hors trajet)
+  planches.json            24 planches de dessin (personnages, machines, animaux, plantes) avec prompt EN
+  paysages.json            18 biomes (10 du trajet, 8 hors trajet) avec leurs sections de texte
+  arbitrages-second-earth.html   la page QCM (rounds 1 à 16 archivés, aucune question ouverte) : modèle pour les futurs QCM
+docs/
+  bible/                   le monde : registre des décisions (fait foi), trajet, chronologie,
+                           10 fiches de biome du trajet, biomes hors trajet (+ 8 fiches),
+                           Titans, continents et océans, cartels par acte, lumière et couleurs,
+                           glossaire, lunes et marées, géologie et plaques
+  especes/                 Bestiaire, Flore, Planches de dessin (fiches + prompts)
+  science/                 étude Phosphore, biomasse et seconde Terre (la thèse du film)
+  film/                    Récit v2, architecture 25/55, séquencier, modules du 55,
+                           propositions, écarts docx/Bible, salle immersive,
+                           découpage 25 min (150 plans), journal de Rob1, notes pour Nina
+carte/
+  carte-kore.html          la carte interactive v3 (planète + corridor, couche des plaques)
+  world.png, corridor.png  les deux images de base
+  *.py, map_meta.json, plates.json, map_template_v3.html   le générateur de la carte
+sources/                   NE PAS PUBLIER (voir site-spec/site.md)
+  SECOND_EARTH_STORY.docx  le récit de référence (Cal)
+  SECOND_EARTH_STORY.txt   son texte brut
+  SECOND_EARTH_STORY_v2.docx   le récit réécrit avec le monde (en attente de relecture)
+  SYNOPSIS SECOND EARTH (ENG).md, Traitement 4 pages Second Earth.md   archives (ancienne version Proxima b / EPOCH)
+  biome claude.pdf         le bestiaire de février 2026 (origine)
+tools/
+  xml2md.py                convertisseur Claude Docs -&gt; Markdown utilisé pour l'export
+  build_data.py            extraction des tables Markdown -&gt; data/*.json
+  build_brief_html.py      construit BRIEF.html à partir de CLAUDE.md et site-spec/
+  brief_template.html      gabarit de BRIEF.html
+  build_site.py            construit tout le site dans _site/ (section 10)
+  build_prompts.py         construit l'outil de prompts (appelé par build_site.py)
+  site/prompts.html        gabarit de l'outil de prompts
+site/assets/               thème Verdant du site : site.css, site.js, icon.svg, fonts/venus-rising.otf
+theme/showrunner-ui-kit/   le kit d'interface fourni par Cal (référence visuelle du thème)
+.github/workflows/pages.yml   construction et publication GitHub Pages
+.gitignore                 exclut sources/ et _site/ du dépôt
+</code></pre>
+<p>Ajout du 28/09 : <code>docs/film/01-recit-docx.md</code> est le texte du docx de référence (<code>sources/SECOND_EARTH_STORY.txt</code>), converti tel quel (titres de parties en <code>##</code>), pour publier « le script » à la demande de Cal ; les fichiers de <code>sources/</code> eux-mêmes restent hors du dépôt.</p>
+<p>Chaque fichier de <code>docs/</code> commence par une ligne <code>&lt;!-- Source : ... --&gt;</code> qui donne le document Claude Docs d'origine et la date d'export. <strong>Les documents vivants restent dans Claude Docs</strong> (compte de Cal) ; ce dossier en est une copie au 28/09/2026. Si Cal modifie un document, réexporter plutôt que corriger la copie à la main.</p>
+<p>Liens en ligne (privés, compte de Cal) : la carte https://claude.ai/artifact/PxfBWGF1dk4DJWuzUdXJvt ; le QCM https://claude.ai/artifact/GBg169jA4N56T1hG1jukoK.</p>
+<h3 id="brief-codes-et-vocabulaire">Codes et vocabulaire</h3>
+<ul>
+<li><strong>Espèces</strong> : <code>JP</code> jungle primordiale, <code>PK</code> pitons karstiques, <code>TR</code> terres rocheuses et cavernes, <code>MG</code> massifs et glaciers, <code>FB</code> forêt bioluminescente, <code>HP</code> Hautes Plaines, <code>FA</code> forêt ancienne, <code>ZT</code>/<code>VC</code> course volcanique et zones de transition, <code>MA</code> mer d'arsenic et fosse, <code>LS</code> lacs salés pourpres, <code>HT</code> hors trajet, <code>CB</code>/<code>CC</code>/<code>CD</code> continents B, C, D, <code>TX</code> transversales. Plantes : même code précédé de <code>FL-</code>.</li>
+<li><strong>Géographie</strong> (codes de mission, validés) : continents A à D par surface (A = 60 % des terres, celui du trajet) ; Océans 1 à 3 ; Golfes 1 (ouest) et 2 (est, mer d'arsenic).</li>
+<li><strong>Machines</strong> : PERSEPHORA (le vaisseau-semeur), XENOPOD-01 (la capsule de Seed), XENOPOD-02/-03/-04 (robopods collecteurs de Rob2, Rob3, Rob4), drones porteurs (~15 kg), Rob1 à Rob4, Rob1/2 (fusionné, bipède coureur ~2,5 m), Rob1/2/3 (le tank). CAIN : l'embryon de l'alvéole H-02, ingénieur de terraformation, que Rob1 ramène de 35 à 14 ans et de 100 % à 21 % de mémoire transférée.</li>
+<li>Glossaire complet : <code>docs/bible/34-glossaire.md</code>.</li>
+</ul>
+<hr />
+<h2 id="brief-7-les-données-json-pour-l-outil-et-le-site">7. Les données JSON (pour l'outil et le site)</h2>
+<p>Toutes en UTF-8, champs en français, produits par <code>python3 tools/build_data.py</code>.</p>
+<p>Champs communs à <code>bestiaire.json</code>, <code>flore.json</code> et <code>titans.json</code> :</p>
+<pre><code>code, nom, latin, section (titre de la section du document d'origine),
+groupe (trajet | hors-trajet | continents | transversal | titans),
+taille, jumeau, statut,
+prompt_en      prompt d'origine complet (vide si à rédiger)
+prompt_lumiere la clause de lumière du prompt d'origine
+prompt_corps   le prompt d'origine sans la phrase de style ni la lumière ni « no text, no watermark »
+prompt_statut  « proposé (Planches de dessin) » ou « à rédiger »
+voir_aussi     (quelques fiches) code de la même chose dans un autre fichier
+</code></pre>
+<p>En plus :</p>
+<ul>
+<li><code>bestiaire.json</code> : <code>biome_id</code>, <code>a_dessiner</code>, <code>vie</code> ; <code>biome</code> (texte « où ») seulement pour les hors trajet et les continents ; <code>ecart_planche</code> sur JP-01, HP-01, LS-01, FB-03.</li>
+<li><code>flore.json</code> : <code>biome_id</code>, <code>couleurs</code>, <code>explication</code> ; <code>role</code> (« Dans le film », trajet seulement) ; <code>biome</code> (« Où », hors trajet et continents).</li>
+<li><code>titans.json</code> : <code>vestiges</code>, <code>descendant</code>.</li>
+<li><code>biome_id</code> vaut : jungle, pitons, cavernes, massifs, foret-bio, hautes-plaines, foret-ancienne, volcanique, mer-arsenic, lacs-sales, hors-trajet, continent-b, continent-c, continent-d, transversal.</li>
+</ul>
+<p><code>planches.json</code> : titre, codes, categorie (personnage | machine | animal | plante), silhouette, matieres, traits, poses, invariants (les trois derniers ne sont écrits que pour une partie des planches), statut (« proposé »), prompt_en, prompt_label (« Prompt », ou « Prompt (hybride) » pour Rob4), prompt_lumiere, prompt_corps.
+<code>paysages.json</code> : id, groupe (trajet | hors-trajet), ordre_trajet (trajet seulement), titre, fichier, sections (titre de section -&gt; premier paragraphe ; les titres varient d'une fiche à l'autre : « Où et pourquoi » pour la jungle, « Le milieu » ailleurs, « Les espèces », « Dans l'expo », « Cartels » pour les hors trajet).
+<code>palette-flore.json</code> : biome, dominante, accents, mouvement (10 biomes du trajet + continents B, C, D).</p>
+<p>Ordre du trajet (pour trier) : jungle, pitons, cavernes, massifs, forêt bioluminescente, Hautes Plaines, forêt ancienne, course volcanique, mer d'arsenic et fosse, lacs salés pourpres.</p>
+<hr />
+<h2 id="brief-8-décisions-à-faire-trancher-par-cal-au-démarrage-en-qcm-pag">8. Décisions à faire trancher par Cal au démarrage (en QCM, page web)</h2>
+<p>Ne pas les trancher seul. Présenter un seul QCM au début, avec les conséquences :</p>
+<ol>
+<li><strong>Visibilité du site</strong> : dépôt public + GitHub Pages public (gratuit, tout le monde peut lire, y compris des éléments non encore annoncés au client) / dépôt privé + Pages (GitHub Pro ou Team : le code est privé mais <strong>le site publié reste public</strong>) / site à accès restreint (GitHub Enterprise Cloud seulement) / outil de prompts seul en ligne, le reste hors ligne.</li>
+<li><strong>Ce qui se publie</strong> : tout le monde et les espèces / sans le récit ni le découpage / seulement l'outil de prompts et la carte. Le dossier <code>sources/</code> ne se publie dans aucun cas (docx de Cal, archives).</li>
+<li><strong>Langue du site</strong> : français / anglais (Singapour) / les deux.</li>
+<li><strong>Version de Midjourney par défaut</strong> dans la barre : V8.2 (défaut actuel) / V7 (si ses <code>--sref</code> ou profils ont été faits en V7).</li>
+<li><strong>Prompts manquants</strong> : Claude les rédige par lots à partir des fiches (marqués « proposé », validés par Cal dans l'outil) / Cal les rédige lui-même dans l'outil.</li>
+<li><strong>Nom et adresse</strong> : nom du dépôt, domaine propre ou <code>github.io</code>.</li>
+</ol>
+<p>Tranché par Cal dans le chat le 28/09/2026 (pas en QCM) : <strong>tout se publie</strong>, « la bible, le bestiaire etc, mais aussi le script, tout », sur GitHub Pages depuis le dépôt public <code>calculment0r/SECOND_EARTH</code> (points 1, 2 et 6) ; <strong>thème Verdant</strong> (Showrunner UI Kit). Appliqué par défaut, sans décision de Cal : site en français (le contenu l'est), V8.2 par défaut dans la barre de l'outil (modifiable), prompts manquants laissés « à rédiger » (gel du monde, règle 8). Restent à lui soumettre : langue (point 3), version par défaut (point 4), rédaction des prompts manquants (point 5), domaine propre.</p>
+<hr />
+<h2 id="brief-9-méthode-de-travail-conseillée">9. Méthode de travail conseillée</h2>
+<ol>
+<li>Lire <code>CLAUDE.md</code>, le Registre, <code>site-spec/outil-prompts.md</code>.</li>
+<li>Poser le QCM de la section 8.</li>
+<li>Construire l'outil de prompts (fichier HTML autonome), le tester (Playwright est pratique : copier, onglets, barre de paramètres, recherche, rendu mobile).</li>
+<li>Monter le dépôt et GitHub Pages selon la décision de visibilité.</li>
+<li>Ajouter les pages du site une par une, en reprenant le contenu des <code>docs/</code> sans le réécrire.</li>
+<li>Commits en français, sans émoticône.</li>
+</ol>
+<hr />
+<h2 id="brief-10-le-site-état-au-28-09-2026">10. Le site (état au 28/09/2026)</h2>
+<p>Adresse : https://calculment0r.github.io/SECOND_EARTH/ (active une fois GitHub Pages réglé sur « GitHub Actions » : Settings &gt; Pages &gt; Build and deployment &gt; Source).</p>
+<ul>
+<li><strong>Construction</strong> : <code>python3 tools/build_site.py</code> (bibliothèque standard seulement) écrit le site dans <code>_site/</code> (ignoré par git). Ouvrir <code>_site/index.html</code> depuis le disque marche aussi (liens relatifs, données injectées).</li>
+<li><strong>Publication</strong> : <code>.github/workflows/pages.yml</code> reconstruit et publie à chaque push sur <code>main</code> ou sur la branche de travail, et à la demande (workflow_dispatch).</li>
+<li><strong>Pages</strong> : accueil ; <code>bible/</code> (registre, trajet, chronologie, continents, géologie, lumière, lunes, Titans, glossaire) ; <code>biomes/</code> (10 du trajet dans l'ordre, vue d'ensemble et 8 hors trajet) ; <code>bestiaire/</code> (fiches depuis <code>data/bestiaire.json</code> + <code>titans.json</code>, filtres, recherche ; <code>document.html</code> = le document complet) ; <code>flore/</code> (idem) ; <code>planches/</code> ; <code>carte/</code> (carte v3 dans un cadre + plein écran) ; <code>science/</code> ; <code>film/</code> (récit de référence, récit v2, journal de Rob1, architecture, séquencier, modules, découpage, propositions, écarts, notes pour Nina) ; <code>expo/</code> (cartels par acte, salle immersive) ; <code>arbitrages/</code> (statuts, lien vers le registre, page QCM) ; <code>prompts/</code> (l'outil).</li>
+<li><strong>Le contenu n'est pas réécrit</strong> : chaque page de document est rendue depuis <code>docs/</code> par un petit convertisseur Markdown intégré à <code>build_site.py</code>. Il ajoute seulement : pastilles de statut sur « [validé] », « (proposé) »… ; liens sur les codes d'espèce (vers les fiches) et sur les noms des fiches hors trajet ; remplacement des liens d'artefacts Claude privés (carte, QCM) par les pages du site ; ligne « Source » sans les identifiants internes.</li>
+<li><strong>Plan du site</strong> : listes <code>NAV</code> et <code>SECTIONS</code> en tête de <code>build_site.py</code> (ajouter une page = une ligne).</li>
+<li><strong>Mettre à jour le contenu</strong> : réexporter le document Claude Docs dans <code>docs/</code>, relancer <code>python3 tools/build_data.py</code> si une table d'espèces change, puis pousser : le site se reconstruit.</li>
+</ul>
+</section>
+<section class="part" id="outil"><div class="src">site-spec/outil-prompts.md</div><h1 id="outil-outil-de-prompts-midjourney-spécification">Outil de prompts Midjourney · spécification</h1>
+<p>Demande de Cal (28/09/2026), dans ses mots : une page HTML pour faire les prompts Midjourney ; en haut, une ligne qui gère les indications de prompt (<code>--16:9</code>, <code>--hd</code>, <code>--sref 15684</code>, etc.) pour les mettre une fois et que chaque prompt les ajoute automatiquement ; une organisation par onglets, d'abord le Bestiaire, les paysages dans un autre onglet ; tout rangé de façon très claire ; un bouton pour copier le prompt à chaque fois.</p>
+<hr />
+<h2 id="outil-1-forme">1. Forme</h2>
+<ul>
+<li>Une page HTML <strong>autonome</strong> (CSS et JS dans le fichier), qui marche ouverte depuis le disque et publiée sur GitHub Pages.</li>
+<li>Les données viennent de <code>data/*.json</code>. Comme <code>fetch()</code> ne marche pas en <code>file://</code>, prévoir un petit script de construction (Python ou Node) qui <strong>injecte les JSON dans la page</strong> (<code>&lt;script type=&quot;application/json&quot; id=&quot;data-bestiaire&quot;&gt;…&lt;/script&gt;</code>). La page lit ces blocs ; sur le site, elle peut aussi relire les JSON à jour.</li>
+<li>Thème Oblivion clair, accent <code>#ff5200</code>, pas de bascule sombre (<code>site-spec/charte.md</code>).</li>
+<li>Aucune émoticône, ni dans l'interface ni dans les libellés (« Copié », pas de coche décorative).</li>
+<li>Téléphone : marges de 16 px, aucun défilement horizontal de la page (la barre d'onglets peut défiler seule).</li>
+</ul>
+<hr />
+<h2 id="outil-2-la-barre-des-réglages-globaux-en-haut-collante">2. La barre des réglages globaux (en haut, collante)</h2>
+<p>C'est le cœur de la demande : on règle une fois, chaque prompt en hérite.</p>
+<h3 id="outil-2-1-la-ligne-de-paramètres">2.1 La ligne de paramètres</h3>
+<p>Un champ texte unique, pleine largeur, où Cal tape comme il en a l'habitude :</p>
+<pre><code>--16:9 --hd --sref 15684
+</code></pre>
+<p>La page <strong>normalise</strong> ce qu'il tape et montre en dessous la ligne réellement ajoutée aux prompts :</p>
+<pre><code>--ar 16:9 --hd --sref 15684 --v 8.2
+</code></pre>
+<p>Règles de normalisation :</p>
+<ul>
+<li><code>--16:9</code>, <code>--21:9</code>, <code>--9:16</code>, <code>--1:1</code>, <code>--4:5</code>… deviennent <code>--ar 16:9</code> etc. Midjourney n'accepte que des entiers : <code>2.39:1</code> devient <code>239:100</code>.</li>
+<li><code>--aspect</code> devient <code>--ar</code>, <code>--stylize</code> <code>--s</code>, <code>--chaos</code> <code>--c</code>, <code>--weird</code> <code>--w</code>, <code>--version</code> <code>--v</code>, <code>--quality</code> <code>--q</code>, <code>--profile</code> <code>--p</code>.</li>
+<li>Un paramètre en double : le dernier gagne.</li>
+<li>Plusieurs codes <code>--sref</code> se mettent à la suite : <code>--sref 15684 2291034</code> (et <code>--sw</code> pour le poids).</li>
+<li>Tout ce qui n'est pas reconnu est gardé tel quel à la fin et signalé en gris (« non reconnu, conservé »).</li>
+</ul>
+<p>À côté de la ligne, des <strong>contrôles rapides</strong> qui écrivent dans la même ligne (synchronisation dans les deux sens) :</p>
+<ul>
+<li>Format : 16:9 (défaut, master du film validé A04), 21:9, 2.39:1, 9:16, 1:1, 4:5, 3:2, 2:1.</li>
+<li>Version : 8.2, 8.1, 7 (défaut à faire trancher par Cal, voir CLAUDE.md section 8).</li>
+<li><code>--hd</code> (interrupteur).</li>
+<li><code>--style raw</code> (interrupteur).</li>
+<li><code>--sref</code> (codes ou URL), <code>--sw</code> (0–1000), <code>--sv</code>.</li>
+<li><code>--s</code> (0–1000), <code>--c</code> (0–100), <code>--w</code> (0–3000), <code>--exp</code> (0–100).</li>
+<li><code>--no</code> (liste libre, séparée par des virgules), <code>--seed</code>, <code>--p</code>.</li>
+</ul>
+<h3 id="outil-2-2-compatibilités-à-signaler-sans-bloquer">2.2 Compatibilités à signaler (sans bloquer)</h3>
+<p>État au 28/09/2026, à revérifier en début de session sur la documentation officielle Midjourney :</p>
+<ul>
+<li>V8.2 est la version par défaut depuis le 24/07/2026 ; V8.1 reste sélectionnable ; V7 aussi.</li>
+<li><code>--hd</code> : valide en V8 (image native en 2048 px, coûte plus de temps GPU, ratio maximal réduit à 4:1).</li>
+<li><code>--q</code> : V7 seulement ; en V8 afficher « --q ignoré en V8 ».</li>
+<li><code>--oref</code> / <code>--ow</code> (Omni Reference) et <code>--cref</code> : absents de la famille V8 (remplacés par <code>--edit</code>) ; avertir si présents avec <code>--v 8.x</code>.</li>
+<li>Multi-prompts (<code>::</code>) : non pris en charge en V8.</li>
+<li><code>--sref</code> accepte des codes numériques et des URL d'image ; <code>--sv</code> choisit la version du système de style.</li>
+</ul>
+<p>Sources à relire : https://docs.midjourney.com/hc/en-us/articles/32859204029709-Parameter-List ; https://blakecrosley.com/guides/midjourney (V8.2, tableau des paramètres) ; https://midjourney-v8.com/blog/midjourney-v8-hd-mode-guide</p>
+<h3 id="outil-2-3-la-phrase-de-style-préfixe-global">2.3 La phrase de style (préfixe global)</h3>
+<p>Deuxième champ de la barre, repliable : la phrase de style commune à tous les prompts. Les Planches de dessin (proposé) la fixent ainsi, « à remplacer une fois pour toutes si la direction artistique change » :</p>
+<pre><code>painterly science-fiction concept art, realistic proportions, soft volumetric light from a warm orange star, no text, no watermark
+</code></pre>
+<p>Six des 24 prompts existants changent la lumière (grotte, nuit sans lune, sous l'eau, espace, brouillard). L'outil sépare donc cette phrase en trois parties :</p>
+<ul>
+<li>le <strong>préfixe global</strong> : <code>painterly science-fiction concept art, realistic proportions</code> ;</li>
+<li>la <strong>lumière</strong>, propre à chaque fiche (<code>prompt_lumiere</code>, par défaut <code>soft volumetric light from a warm orange star</code>) ;</li>
+<li>le <strong>négatif</strong>, passé en paramètre plutôt qu'en texte : <code>--no text, watermark</code>.</li>
+</ul>
+<p>Un bouton « Revenir à la phrase des Planches » restaure les valeurs d'origine.</p>
+<h3 id="outil-2-4-jeux-de-réglages">2.4 Jeux de réglages</h3>
+<ul>
+<li>Enregistrer la barre complète sous un nom (« Planche 16:9 », « Paysage 21:9 sref 15684 »…), la rappeler d'un clic.</li>
+<li>Tout est gardé dans <code>localStorage</code>, dans des <code>try/catch</code> (la page doit marcher sans).</li>
+<li>Exporter / importer les réglages et les prompts modifiés en un fichier JSON (pour passer d'un ordinateur à l'autre : Cal travaille sur trois machines et un téléphone).</li>
+</ul>
+<hr />
+<h2 id="outil-3-les-onglets">3. Les onglets</h2>
+<p>Dans cet ordre :</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Onglet</th>
+<th>Données</th>
+<th>Groupes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bestiaire</strong> (ouvert par défaut)</td>
+<td><code>bestiaire.json</code> (66)</td>
+<td>les 10 biomes du trajet dans l'ordre du voyage, puis hors trajet, continents B, C, D, espèces transversales</td>
+</tr>
+<tr>
+<td><strong>Paysages</strong></td>
+<td><code>paysages.json</code> (18) + <code>palette-flore.json</code> (10 biomes du trajet ; rien pour les hors trajet)</td>
+<td>trajet (10, dans l'ordre), hors trajet (8)</td>
+</tr>
+<tr>
+<td><strong>Flore</strong></td>
+<td><code>flore.json</code> (42)</td>
+<td>mêmes groupes que le Bestiaire</td>
+</tr>
+<tr>
+<td><strong>Personnages et machines</strong></td>
+<td><code>planches.json</code>, catégories personnage et machine (11)</td>
+<td>Seed, les Robs, les machines</td>
+</tr>
+<tr>
+<td><strong>Titans</strong></td>
+<td><code>titans.json</code> (7)</td>
+<td>un seul groupe</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chaque onglet affiche son nombre de fiches et le nombre de prompts prêts (ex. « Bestiaire 66 · 8 prompts »).</p>
+<h3 id="outil-dans-chaque-onglet">Dans chaque onglet</h3>
+<ul>
+<li>Une colonne de navigation à gauche (collante sur ordinateur, repliée en liste déroulante sur téléphone) : les groupes, avec leur nombre.</li>
+<li>Une recherche (code, nom, nom latin, texte des fiches), des filtres : « prompt prêt / à rédiger », statut (les valeurs réelles des données : validé avec son round, proposé, origine, recalé, nouveau, non indiqué).</li>
+<li>Les fiches en liste, groupées sous des titres de biome.</li>
+</ul>
+<hr />
+<h2 id="outil-4-la-fiche-une-par-espèce-plante-paysage-personnage">4. La fiche (une par espèce, plante, paysage, personnage)</h2>
+<p>De haut en bas :</p>
+<ol>
+<li><strong>En-tête</strong> : code (DM Mono), nom français, nom latin en italique, étiquette de statut, biome. Si la fiche a un <code>ecart_planche</code>, une ligne d'alerte orange « Écart planche / Bestiaire » qui déplie le texte ; si elle a un <code>voir_aussi</code>, un lien vers l'autre fiche.</li>
+<li><strong>Repères</strong> (repliables, ouverts par défaut sur ordinateur) : taille ; à dessiner ; vie ; jumeau terrestre. Pour les plantes : forme et taille, couleurs, ce qui l'explique. Pour les personnages : silhouette, matières, trois traits, invariants. Ces textes sont en français, tels que dans les documents.</li>
+<li><strong>Vue</strong> (boutons radio) : « Planche » (vue de référence trois-quarts sur fond gris clair, avec la silhouette de Seed pour l'échelle, comme dans les Planches) / « En situation » (dans son biome, sous la lumière de ce biome) / « Libre » (le corps du prompt seul). La vue change la phrase d'ouverture du corps du prompt ; elle ne touche pas au sujet.</li>
+<li><strong>Prompt</strong> (anglais, zone de texte modifiable) : le corps du prompt (<code>prompt_corps</code>) et sa lumière (<code>prompt_lumiere</code>). Une modification est gardée localement, marquée « modifié », avec un bouton « Rétablir ».</li>
+<li><strong>Aperçu du prompt complet</strong>, en une ligne qui se replie, avec les trois parties distinguées par la couleur du texte : préfixe global, sujet, paramètres globaux.</li>
+<li><strong>Bouton « Copier »</strong>, bien visible, qui copie le prompt complet. Retour : le bouton affiche « Copié » deux secondes. Un second bouton plus discret : « Copier sans paramètres ».</li>
+</ol>
+<p>Fiches sans prompt : zone vide marquée « à rédiger », avec un bouton « Brouillon depuis la fiche » qui assemble un premier jet à partir des champs (voir section 6) ; le brouillon reste marqué « proposé ».</p>
+<h3 id="outil-composition-du-prompt-copié">Composition du prompt copié</h3>
+<pre><code>{phrase de style}, {lumière}. {ouverture de la vue} {corps} {paramètres globaux}
+</code></pre>
+<p>Exemple, avec la barre <code>--ar 16:9 --hd --sref 15684 --v 8.2 --no text, watermark</code> :</p>
+<pre><code>painterly science-fiction concept art, realistic proportions, soft volumetric light from a warm orange star. Creature sheet, side and three-quarter views on a neutral light grey background: a massive … --ar 16:9 --hd --sref 15684 --v 8.2 --no text, watermark
+</code></pre>
+<p>Le champ <code>prompt_en</code> garde le prompt d'origine complet, tel qu'écrit dans les Planches ; un réglage « Prompt d'origine tel quel » permet de copier celui-là, suivi des seuls paramètres.</p>
+<hr />
+<h2 id="outil-5-l-onglet-paysages">5. L'onglet Paysages</h2>
+<p>Un paysage par biome : les 10 du trajet dans l'ordre du voyage, puis les 8 hors trajet.</p>
+<p>Repères de la fiche : les sections de la fiche de biome (leurs titres varient : « Où et pourquoi », « Le milieu », « Climat, lumière et couleurs »…), dominante / accents / ce qui bouge (<code>palette-flore.json</code>, biomes du trajet), les espèces du biome (liens vers leurs fiches du Bestiaire et de la Flore).</p>
+<p>Variantes de moment (boutons) qui changent la lumière du prompt, d'après <code>docs/bible/33-lumiere-et-couleurs.md</code> :</p>
+<ul>
+<li><strong>Jour</strong> : warm 4 500 K light all day like a late Earth afternoon, pale milky turquoise-grey sky, never deep blue.</li>
+<li><strong>Crépuscule</strong> : long deep red dusk (plus d'une heure).</li>
+<li><strong>Nuit ambrée</strong> : amber night light from a bright orange companion star, double shadows when a moon is up.</li>
+<li><strong>Saison noire</strong> : moonless black night where bioluminescence is the only light.</li>
+<li><strong>Sous la canopée</strong> (jungle, forêts) : magenta light under a purple canopy, green understory almost black except in clearings.</li>
+</ul>
+<p>Cadrage : plan large d'établissement, avec Seed (1,60 m) ou le Rob fusionné en silhouette minuscule pour l'échelle quand le biome est sur le trajet.</p>
+<hr />
+<h2 id="outil-6-prompts-manquants">6. Prompts manquants</h2>
+<p>À la date du brief : les 11 personnages et machines ont un prompt ; au Bestiaire 9 lignes sur 66 (dont TR-05, qui reprend celui de FL-TR-01) ; à la Flore 5 sur 42. Il manque 57 lignes du Bestiaire (TR-F reprendra le prompt du Titan volant), 37 plantes, 7 Titans et les 18 paysages.</p>
+<p>Quatre prompts existants (JP-01, HP-01, LS-01, FB-03) suivent la planche de dessin, qui ne décrit pas l'animal comme le Bestiaire (champ <code>ecart_planche</code>). L'outil affiche l'écart sur la fiche ; la correction se fait par QCM avec Cal (garder la planche / aligner sur le Bestiaire).</p>
+<p>Règles pour rédiger (celles des Planches de dessin, document au statut proposé, appliquées aux 24 prompts existants) :</p>
+<ul>
+<li>en anglais ; formes, matières, couleurs, lumière ; <strong>aucun nom d'artiste, de studio, de film, de personnage, de marque</strong> ;</li>
+<li>partir du champ « À dessiner » (animaux), « Forme et taille » + « Couleurs » (plantes), les sections de la fiche de biome (« Où et pourquoi » ou « Le milieu ») + la palette quand elle existe (paysages ; pour les hors trajet, tirer les couleurs du texte de la fiche) ; garder les tailles en mètres ou centimètres ; ajouter l'échelle (silhouette de Seed, 1,60 m) pour les planches ;</li>
+<li>tenir les règles du monde : 1,13 g (grands animaux trapus, pattes en colonne), air dense (grands volants plausibles), pourpre en haut / vert dessous, couleurs de structure chez les animaux, bioluminescence en saison noire ;</li>
+<li>un prompt se réécrit en entier quand on le corrige.</li>
+</ul>
+<p>Procédure : rédiger par lots (un biome à la fois), les marquer « proposé » dans les données, et faire valider par Cal avec un QCM en page web (une ligne par prompt : garder / corriger + champ libre), jamais en lui demandant de relire du Markdown.</p>
+<hr />
+<h2 id="outil-7-critères-d-acceptation">7. Critères d'acceptation</h2>
+<ul>
+<li>Taper <code>--16:9 --hd --sref 15684</code> dans la barre : chaque bouton Copier de chaque onglet copie un prompt qui finit par <code>--ar 16:9 --hd --sref 15684</code> (plus la version et le négatif si réglés).</li>
+<li>Changer la phrase de style une fois change tous les prompts.</li>
+<li>Recharger la page : la barre, les jeux de réglages et les prompts modifiés sont toujours là ; en navigation privée, la page marche quand même.</li>
+<li>Le Bestiaire s'ouvre par défaut ; ses groupes suivent l'ordre du trajet.</li>
+<li>La recherche « buffle » trouve HP-01 ; « Megabos » aussi.</li>
+<li>Aucune émoticône dans le fichier (<code>grep</code> sur les plages Unicode des émoticônes).</li>
+<li>À 390 px de large : pas de défilement horizontal, bouton Copier atteignable au pouce.</li>
+<li>Test automatique conseillé : Playwright (onglets, copie via <code>navigator.clipboard</code> simulé, normalisation de la barre).</li>
+</ul>
+</section>
+<section class="part" id="site"><div class="src">site-spec/site.md</div><h1 id="site-site-de-présentation-second-earth-spécification">Site de présentation Second Earth · spécification</h1>
+<p>Un site statique hébergé sur GitHub (GitHub Pages) qui présente le projet et héberge les outils de fabrication. L'outil de prompts vient en premier (<code>site-spec/outil-prompts.md</code>).</p>
+<p><strong>Construit le 28/09/2026</strong> : voir CLAUDE.md, section 10. Cal a tranché dans le chat : tout se publie (« la bible, le bestiaire etc, mais aussi le script, tout »), dépôt public <code>calculment0r/SECOND_EARTH</code>, thème Verdant (<code>site-spec/charte.md</code>). Les sections ci-dessous restent comme spécification d'origine.</p>
+<h2 id="site-1-publication-et-confidentialité-à-trancher-par-cal-en-qcm">1. Publication et confidentialité (à trancher par Cal en QCM)</h2>
+<p>Faits à lui présenter (vérifiés le 28/09/2026 sur la documentation GitHub, à revérifier) :</p>
+<ul>
+<li><strong>GitHub Free</strong> : Pages seulement depuis un dépôt <strong>public</strong>.</li>
+<li><strong>GitHub Pro / Team</strong> : Pages possible depuis un dépôt privé, mais <strong>le site publié est public</strong> (toute personne qui a l'adresse le lit).</li>
+<li><strong>GitHub Enterprise Cloud</strong> : seul plan où l'on peut restreindre l'accès au site publié.</li>
+</ul>
+<p>Le contenu contient des éléments non annoncés (récit complet, découpage, notes pour la cliente, montant du grant visé). Options à présenter avec leurs conséquences :</p>
+<ol>
+<li>Tout public.</li>
+<li>Public sans le récit, le découpage ni les notes pour Nina.</li>
+<li>Seulement l'outil de prompts et la carte en ligne ; le reste en local.</li>
+<li>Accès restreint (Enterprise Cloud, ou un autre hébergeur avec mot de passe).</li>
+</ol>
+<p><strong>Dans tous les cas, <code>sources/</code> ne se publie pas</strong> (docx de Cal, archives, PDF de février) et n'entre pas dans le dépôt : le <code>.gitignore</code> du dossier l'exclut déjà.</p>
+<h2 id="site-2-structure-proposée">2. Structure proposée</h2>
+<pre><code>/                      Accueil : Second Earth en une page (le film, la planète, l'expo)
+/prompts/              L'outil de prompts Midjourney (priorité 1)
+/monde/                Korê : le système, la planète, la vie, l'histoire profonde, lumière et couleurs, lunes et marées
+/carte/                La carte interactive v3 (carte/carte-kore.html, déjà prête)
+/biomes/               Les 10 biomes du trajet dans l'ordre du voyage, puis les 8 hors trajet
+/bestiaire/            Les 66 espèces et 7 Titans (fiches, filtres par biome)
+/flore/                Les 42 plantes
+/science/              L'étude Phosphore, biomasse et seconde Terre ; la note science
+/film/                 Architecture 25 / 55, séquencier, modules (selon la décision de confidentialité)
+/expo/                 Salle immersive (esquisse), cartels par acte, principe SUR TERRE / SUR KORÊ / POURQUOI
+/arbitrages/           Le registre des décisions (lecture) et la page QCM des rounds
+</code></pre>
+<p>Chaque page reprend le contenu des fichiers de <code>docs/</code> sans le réécrire. Les statuts (validé avec son round, proposé) restent visibles.</p>
+<h2 id="site-3-technique">3. Technique</h2>
+<ul>
+<li>HTML, CSS et JavaScript simples, sans framework obligatoire. Si un générateur est utile, le choisir léger et le justifier à Cal (un script Python qui transforme <code>docs/*.md</code> et <code>data/*.json</code> en pages suffit).</li>
+<li>Publication : branche <code>main</code>, dossier <code>/site</code> ou <code>/docs</code> du dépôt, ou une GitHub Action qui construit puis publie.</li>
+<li>Pas de dépendance à un service extérieur au moment de la lecture, hors Google Fonts.</li>
+<li>Chaque page suit <code>site-spec/charte.md</code> (thème clair, accent <code>#ff5200</code>, recette iOS, pas de bascule sombre).</li>
+<li>La carte (<code>carte/carte-kore.html</code>) est déjà autonome : la copier telle quelle ; son générateur (<code>carte/*.py</code>) sert seulement si la carte change.</li>
+</ul>
+<h2 id="site-4-mise-à-jour-du-contenu">4. Mise à jour du contenu</h2>
+<p>Les documents vivants sont dans Claude Docs (compte de Cal). Quand ils changent :</p>
+<ol>
+<li>réexporter les onglets concernés en Markdown (<code>tools/xml2md.py</code> convertit la lecture d'un document Claude Docs) ;</li>
+<li>relancer <code>python3 tools/build_data.py</code> ;</li>
+<li>reconstruire les pages.</li>
+</ol>
+<h2 id="site-5-ordre-de-travail">5. Ordre de travail</h2>
+<ol>
+<li>QCM de départ (CLAUDE.md section 8).</li>
+<li>Outil de prompts, testé.</li>
+<li>Dépôt, <code>.gitignore</code> (dont <code>sources/</code>), GitHub Pages.</li>
+<li>Accueil, carte, bestiaire, flore, biomes.</li>
+<li>Monde, science, expo, film selon la décision de confidentialité.</li>
+</ol>
+</section>
+<section class="part" id="charte"><div class="src">site-spec/charte.md</div><h1 id="charte-charte-des-interfaces-thème-verdant-showrunner-ui-kit">Charte des interfaces · thème Verdant (Showrunner UI Kit)</h1>
+<p>Le 28/09/2026, Cal a fourni le Showrunner UI Kit (thème <strong>Verdant</strong>, rev 5.0, NIRVALAB) et demandé de l'appliquer au site. Il remplace, pour le site, le thème « Oblivion clair » (fond clair, accent <code>#ff5200</code>, Instrument Serif + DM Mono) décrit dans les versions précédentes de ce fichier.</p>
+<ul>
+<li>Référence visuelle : <code>theme/showrunner-ui-kit/</code> (13 pages ; point d'entrée <code>kit-ui-sommaire.html</code> ; <code>kit-ui-systeme.html</code> pour les composants). Ces pages utilisent un petit moteur React chargé depuis unpkg (<code>support.js</code>) : elles servent de modèle, le site ne les réutilise pas telles quelles.</li>
+<li>Mise en œuvre sur le site : <code>site/assets/site.css</code> (jetons et composants), <code>site/assets/site.js</code> (menu, copie, filtres), gabarit dans <code>tools/build_site.py</code>.</li>
+<li>La carte (<code>carte/carte-kore.html</code>) et la page QCM (<code>data/arbitrages-second-earth.html</code>) gardent leur CSS d'origine (Oblivion clair) dans le dépôt ; la construction du site les convertit en Verdant (fonction <code>verdantize</code> de <code>tools/build_site.py</code> : jetons remplacés, polices, contrastes des boutons, étiquettes de la carte).</li>
+</ul>
+<h2 id="charte-règles">Règles</h2>
+<ul>
+<li>Fond presque noir <code>#0a0d0b</code>, panneaux <code>#101413</code> / <code>#151a18</code> / <code>#1b211e</code>. Pas de bascule clair / sombre.</li>
+<li>Deux familles de couleur : <strong>rampe corail</strong> <code>#f0b49b → #e59578 → #d47a5c → #a3502f → #7a3a22</code> (blocs empilés, action principale) et <strong>vert profond</strong> <code>#2f6b4a → #24543b → #1a3f2c</code> (tuiles, statut validé). Accent <code>#e0674a</code> ; encre bleutée <code>#b9cfd8</code> (liens, sous-titres).</li>
+<li>L'accent corail marque l'action principale : bouton Copier, onglet ou rubrique active, focus.</li>
+<li>Typographie :
+<ul>
+<li><strong>Venus Rising</strong> pour les titres, les noms de page et les chiffres (fichier <code>site/assets/fonts/venus-rising.otf</code>, fourni avec le kit) ;</li>
+<li><strong>Chakra Petch</strong> pour le texte courant et les boutons ;</li>
+<li><strong>Azeret Mono</strong> pour les micro-étiquettes : 8.5–9.5 px, majuscules, <code>letter-spacing</code> .14–.22em.</li>
+<li>Google Fonts : <code>https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&amp;family=Saira+Semi+Condensed:wght@400;500;600;700&amp;family=Azeret+Mono:wght@300;400;500&amp;display=swap</code></li>
+</ul>
+</li>
+<li>Blocs pleins, filets de 1 px, rayons 10–18 px, pas de dégradé (la trame de points des blocs corail est un motif, pas un dégradé), pas d'ombre lourde, contraste d'au moins 4,5 sur couleur pleine (texte <code>#170c08</code> sur corail).</li>
+<li>Statuts visibles partout : pastille verte « validé », pastille corail en filet « proposé », filet gris « origine » / « recalé », filet bleuté « nouveau ».</li>
+<li>Surbrillance : on voit ce que c'est (une fiche lisible), pas seulement une pastille ; un clic maintient, un clic dans le vide relâche.</li>
+<li>Aucune émoticône.</li>
+</ul>
+<h2 id="charte-jetons">Jetons</h2>
+<pre><code class="language-css">:root{
+  color-scheme: dark;
+  --bg:#0a0d0b; --panel:#101413; --panel2:#151a18; --panel3:#1b211e;
+  --ink:#e6eae7; --body:#c9d2cd; --ink2:#9ca8a2; --ink3:#7c8884; --cy:#b9cfd8;
+  --or:#e0674a; --or-ink:#170c08;
+  --c1:#f0b49b; --c2:#e59578; --c3:#d47a5c; --c4:#a3502f; --c5:#7a3a22;
+  --g1:#2f6b4a; --g2:#24543b; --g3:#1a3f2c;
+  --display:'Venus Rising','Chakra Petch',sans-serif;
+  --text:'Chakra Petch',sans-serif;
+  --mono:'Azeret Mono',ui-monospace,monospace;
+}
+</code></pre>
+<h2 id="charte-app-ios">App iOS</h2>
+<p>Constaté par Cal (17/08/2026) : la visionneuse de l'app iOS repeint le fond de <code>html</code>/<code>body</code> en sombre. Avec un thème sombre, ce n'est plus un risque de texte illisible ; la feuille garde pourtant un fond explicite (<code>html,body{background-color:var(--bg)!important}</code> et <code>body::before</code>) pour que le rendu ne dépende pas de la visionneuse. Un filtre sur <code>html</code> casse <code>position:fixed</code> : les barres collantes sont en <code>position:sticky</code>.</p>
+<h2 id="charte-mise-en-page">Mise en page</h2>
+<ul>
+<li>Ordinateur : barre du haut collante ; colonne de navigation de ~268 px collante à gauche (sommaire de la rubrique et titres de la page), contenu jusqu'à ~1320 px, texte courant limité à ~78 caractères.</li>
+<li>Téléphone (&lt; 820 px) : une colonne, marges de 16 px, menu replié en haut, sommaire de la rubrique repliable, aucun défilement horizontal de la page (les tableaux défilent seuls).</li>
+<li>Boutons : filet clair, rayon plein ; bouton principal fond corail, texte <code>#170c08</code>.</li>
+</ul>
+</section>
+  </main>
+</div>
+</body>
+</html>

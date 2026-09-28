@@ -1,0 +1,352 @@
+<title>Carte de Korê</title>
+<meta name="color-scheme" content="only light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{
+  color-scheme: only light;
+  --bg:#f1f1f4; --bg2:#ffffff; --bg3:#e7e7ec; --line:#d8d8e0; --line2:#bcbcca;
+  --ink:#0d0d11; --muted:#55556a; --dim:#8b8b9f; --or:#ff5200; --or-soft:#fff0e8;
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+html,body{background-color:var(--bg)!important;color:var(--ink);height:100%}
+body{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.55;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0;background-color:var(--bg);z-index:-1}
+.shell,aside,main,header,section,footer,.wrap{background-color:var(--bg)}
+@media (prefers-color-scheme:dark){html,body{background-color:var(--bg)!important;color:var(--ink)} .shell,aside,main,header,section,footer,.wrap{background-color:var(--bg)} .card,.stage{background-color:var(--bg2)}}
+@media (forced-colors:active){*{forced-color-adjust:none}}
+@media (inverted-colors:inverted){html{filter:invert(1) hue-rotate(180deg)} img,video,canvas,svg image{filter:invert(1) hue-rotate(180deg)}}
+
+.shell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:0;height:100%;min-height:100%}
+aside{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:22px 20px 24px 24px;box-sizing:border-box;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1;margin:2px 0 4px;letter-spacing:-.01em}
+.meta{font-size:11.5px;color:var(--dim)}
+.views{display:flex;gap:6px}
+.views button{flex:1;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:9px 6px;border:1px solid var(--line2);background:var(--bg2);color:var(--ink);border-radius:3px;cursor:pointer}
+.views button.on{background:var(--or);border-color:var(--or)}
+.views button:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.legend{display:flex;flex-direction:column;gap:2px}
+.legend h2{font-family:var(--serif);font-weight:400;font-size:20px;margin:0 0 6px}
+.li{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:9px;align-items:center;padding:4px 6px;border-radius:3px;cursor:default;font-size:11.5px}
+.li i{width:14px;height:14px;border-radius:2px;border:1px solid rgba(0,0,0,.12)}
+.li .p{color:var(--dim);font-variant-numeric:tabular-nums;font-size:10.5px}
+.li.hot{background:var(--or-soft);outline:1px solid var(--or)}
+.lbl.cont{font-size:15px;letter-spacing:.08em;text-transform:uppercase;fill:#2a2a36;font-weight:500}
+.lbl.sub{font-size:9px;fill:#55556a;letter-spacing:.06em}
+.stat .dist{display:block;margin-top:6px;font-size:11px;color:var(--muted);line-height:1.4}
+.hint{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:grid;gap:4px}
+.hint b{font-weight:500;color:var(--ink)}
+.stat{font-size:11.5px;color:var(--muted)}
+.stat b{font-family:var(--serif);font-size:22px;color:var(--ink);font-weight:400;margin-right:4px}
+
+main{position:relative;min-width:0;display:flex;flex-direction:column}
+.stage{position:relative;flex:1;min-height:60vh;background:var(--bg2);overflow:hidden;cursor:grab}
+.stage.drag{cursor:grabbing}
+svg{width:100%;height:100%;display:block;touch-action:none}
+svg image{image-rendering:pixelated;image-rendering:crisp-edges}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;fill:var(--ink);paint-order:stroke;stroke:rgba(255,255,255,.85);stroke-width:3px;pointer-events:none}
+.lbl.sea{fill:#31445c}
+.mk circle{fill:var(--bg2);stroke:var(--ink);stroke-width:1.5}
+.mk text{font-family:var(--mono);font-size:9px;font-weight:500;fill:var(--ink);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.mk.rob circle{fill:var(--or);stroke:var(--ink)}
+.mk.hot circle,.mk.pin circle{stroke:var(--or);stroke-width:3}
+.mk{cursor:pointer}
+.mk.place rect{fill:transparent;stroke:none}
+.mk.place.hot text.lbl,.mk.place.pin text.lbl{fill:var(--or)}
+.mk.place text.lbl{pointer-events:none}
+.trail{fill:none;stroke:var(--or);stroke-width:2;stroke-dasharray:6 4;vector-effect:non-scaling-stroke}
+.box{fill:none;stroke:var(--or);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.grat{stroke:rgba(13,13,17,.14);stroke-width:1;vector-effect:non-scaling-stroke}
+.card{position:absolute;z-index:4;max-width:300px;background:var(--bg2);border:1px solid var(--line2);border-left:3px solid var(--or);border-radius:3px;padding:10px 12px;box-shadow:0 8px 24px -12px rgba(0,0,0,.35);pointer-events:none;display:none}
+.card.show{display:block}
+.card .k{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.card h3{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.15;margin:2px 0 6px}
+.card p{margin:0 0 5px;font-size:11.5px;color:var(--ink)}
+.card .tw{color:var(--muted)}
+.card .role{color:var(--or)}
+.bar{display:flex;gap:14px;align-items:center;padding:8px 16px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);flex-wrap:wrap}
+.bar span b{color:var(--ink);font-weight:500}
+.bar button{font-family:var(--mono);font-size:11px;border:1px solid var(--line2);background:var(--bg2);color:var(--ink);border-radius:3px;padding:4px 9px;cursor:pointer}
+
+/* v3 : plaques */
+.layers{display:flex;gap:6px;align-items:center}
+.layers .lt{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.layers button{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--line2);background:var(--bg2);color:var(--ink);border-radius:3px;cursor:pointer}
+.layers button.on{background:var(--or);border-color:var(--or)}
+.layers button:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.plegend{display:flex;flex-direction:column;gap:3px}
+.plegend h2{font-family:var(--serif);font-weight:400;font-size:20px;margin:0 0 6px}
+.pli{display:grid;grid-template-columns:34px minmax(0,1fr);gap:9px;align-items:center;font-size:11.5px;padding:2px 6px}
+.pli svg{width:34px;height:14px;display:block}
+.pnote{font-size:10.5px;color:var(--dim);padding:4px 6px 0;line-height:1.4}
+.pl{fill:none;vector-effect:non-scaling-stroke;pointer-events:none;stroke-linejoin:round}
+.pl.ridge{stroke:#d81b60;stroke-width:2.6}
+.pl.rift{stroke:#d81b60;stroke-width:2.2;stroke-dasharray:7 4}
+.pl.subduction{stroke:#1a1a22;stroke-width:2}
+.pl.transform{stroke:#4a4a5e;stroke-width:1.3}
+.pl.collision{stroke:#8a5a1a;stroke-width:2.6;stroke-dasharray:2 3}
+.pl.suture{stroke:#6b5b7b;stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}
+.pl.faille{stroke:#7a120c;stroke-width:2.4;stroke-dasharray:10 3 2 3}
+.plhit{fill:none;stroke:transparent;stroke-width:12;vector-effect:non-scaling-stroke;pointer-events:stroke;cursor:pointer}
+.plhit.hot,.plhit.pin{stroke:rgba(255,82,0,.32)}
+.tooth{pointer-events:none}
+.tooth path{fill:#1a1a22}
+.plab{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;fill:#8b1a4a;paint-order:stroke;stroke:rgba(255,255,255,.9);stroke-width:3px;pointer-events:none;font-style:italic}
+.plab.sp{font-size:9px;letter-spacing:.08em;fill:#55556a;font-style:normal;text-transform:none}
+.mk.plate rect{fill:transparent;stroke:none}
+.mk.plate text.as{text-anchor:start}
+.mk.plate.hot text.plab,.mk.plate.pin text.plab{fill:var(--or)}
+.parrow{stroke:#8b1a4a;stroke-width:1.4;fill:none}
+.parrowh{fill:#8b1a4a}
+
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr);height:auto}
+  aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}
+  .legend{display:grid;grid-template-columns:1fr 1fr}
+  .stage{min-height:70vh}
+  .card{max-width:80vw}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="shell">
+  <aside>
+    <div>
+      <div class="eyebrow">Second Earth · 61 Cygni Ab</div>
+      <h1>Carte de Korê</h1>
+      <div class="meta">Carte de travail v3 · deux échelles · plaques · générée d'après la Bible · 28.09.2026</div>
+    </div>
+    <div class="views" role="tablist">
+      <button type="button" data-view="world" class="on" role="tab">Planète</button>
+      <button type="button" data-view="corridor" role="tab">Corridor de Seed</button>
+    </div>
+    <div class="layers"><span class="lt">Couche</span><button type="button" id="tgPlates" class="on" aria-pressed="true">Plaques</button></div>
+    <div class="stat" id="stat"></div>
+    <div class="plegend" id="plegend"><h2>Plaques</h2><div id="plegendi"></div><div class="pnote">7 plaques nommées, une plaque centrale et une douzaine de petites ; 10 à 20 cm/an. Au-delà de 72° de latitude, la projection déforme trop : limites non tracées.</div></div>
+    <div class="legend"><h2>Biomes</h2><div id="legend"></div></div>
+    <div class="hint">
+      <span><b>Survol</b> : fiche du biome ou du lieu</span>
+      <span><b>Clic</b> : épingle la fiche · <b>clic dans le vide</b> : tout réaffiche</span>
+      <span><b>Molette</b> : zoom · <b>glisser</b> : déplacer · <b>double-clic</b> : recadrer</span>
+    </div>
+  </aside>
+  <main>
+    <div class="stage" id="stage">
+      <svg id="svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte de Korê">
+        <image id="img" x="0" y="0" width="1" height="1" href="" preserveAspectRatio="none"/>
+        <g id="ov"></g>
+      </svg>
+      <div class="card" id="card"></div>
+    </div>
+    <div class="bar">
+      <span id="coord"></span>
+      <span id="scale"></span>
+      <button type="button" id="reset">Recadrer</button>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+const D = __DATA__;
+const IMG = {world:"__WORLD__", corridor:"__CORRIDOR__"};
+const SIZE = {world:[D.W,D.H], corridor:[D.CW,D.CH]};
+const svg = document.getElementById('svg'), img = document.getElementById('img'), ov = document.getElementById('ov');
+const stage = document.getElementById('stage'), card = document.getElementById('card');
+const legend = document.getElementById('legend'), stat = document.getElementById('stat');
+const NS = 'http://www.w3.org/2000/svg';
+let view = 'world', vb = {x:0,y:0,w:1,h:1}, k = 1, pinned = null, hot = null;
+const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d', {willReadFrequently:true});
+let px = null;  // pixel lookup
+const colorKey = {};
+Object.keys(D.biomes).forEach(kk => { const c = D.biomes[kk].color; colorKey[parseInt(c.slice(1,3),16)+','+parseInt(c.slice(3,5),16)+','+parseInt(c.slice(5,7),16)] = kk; });
+
+// legend
+const order = ['jungle','pitons','cavernes','massifs','glaciers','biolum','plaines','ancienne','canyon','cristal','arc','lave','sel','desert','savane','saison','toundra','mangrove','recifs','remontees','fosse','arsenic','ocean','fleuve','rouge'];
+order.forEach(kk => {
+  const b = D.biomes[kk]; const el = document.createElement('div'); el.className = 'li'; el.dataset.k = kk;
+  const pct = (b.pctland != null) ? b.pctland+' % des terres' : (b.pct ? b.pct+' % du globe' : '');
+  el.innerHTML = '<i style="background:'+b.color+'"></i><span>'+b.name+'</span><span class="p">'+(b.pct>=0.05 ? pct : '')+'</span>';
+  el.addEventListener('mouseenter', () => { if(!pinned) showBiome(kk, null); });
+  el.addEventListener('mouseleave', () => { if(!pinned) hideCard(); });
+  legend.appendChild(el);
+});
+stat.innerHTML = '<b>'+D.landpct.toLocaleString('fr-FR')+' %</b> de terres émergées (Terre : 29 %)<br><span class="dist">Trajet : Rob2 à pied ~'+D.dist.rob2+' km, puis en Rob fusionné : col ~'+D.dist.col+', Rob3 ~'+D.dist.rob3+', Rob4 ~'+D.dist.rob4+', boucle ~'+D.dist.loop+' km</span>';
+
+function setView(v){
+  view = v; const [w,h] = SIZE[v];
+  img.setAttribute('href', IMG[v]); img.setAttribute('width', w); img.setAttribute('height', h);
+  document.querySelectorAll('.views button').forEach(b => b.classList.toggle('on', b.dataset.view===v));
+  const im = new Image(); im.onload = () => { canvas.width = w; canvas.height = h; ctx.imageSmoothingEnabled = false; ctx.drawImage(im,0,0); px = ctx.getImageData(0,0,w,h).data; };
+  im.src = IMG[v];
+  pinned = null; hideCard(); buildOverlay(); fit();
+}
+function fit(){
+  const [w,h] = SIZE[view]; const r = stage.getBoundingClientRect(); const ar = r.width/r.height;
+  if(w/h > ar){ vb.w = w; vb.h = w/ar; vb.x = 0; vb.y = (h-vb.h)/2; } else { vb.h = h; vb.w = h*ar; vb.y = 0; vb.x = (w-vb.w)/2; }
+  apply();
+}
+function apply(){
+  svg.setAttribute('viewBox', vb.x+' '+vb.y+' '+vb.w+' '+vb.h);
+  const r = stage.getBoundingClientRect(); k = r.width/vb.w;   // screen px per image px
+  ov.querySelectorAll('[data-fix]').forEach(g => { const p = g.dataset.fix.split(','); g.setAttribute('transform','translate('+p[0]+','+p[1]+') scale('+(1/k)+')'); });
+  ov.querySelectorAll('[data-lod]').forEach(g => { g.style.display = (k >= parseFloat(g.dataset.lod)) ? '' : 'none'; });
+  const kmpp = view==='corridor' ? D.kmpx/k : (40*Math.PI*7330/360/ (D.W/360) )/k;  // corridor: km per image px / k ; world: km per screen px at equator
+  document.getElementById('scale').textContent = view==='corridor' ? ('1 px écran ≈ '+kmpp.toFixed(1)+' km') : ('à l’équateur, 1 px écran ≈ '+(kmpp).toFixed(0)+' km');
+}
+function el(tag, attrs, cls){ const e = document.createElementNS(NS, tag); for(const a in attrs) e.setAttribute(a, attrs[a]); if(cls) e.setAttribute('class', cls); return e; }
+let showPlates = true;
+const PT = {
+ ridge:['Dorsale',"Les deux plaques s'écartent ; le magma monte et fabrique du fond neuf.",'d’ouverture'],
+ rift:['Rift',"Un continent ou un golfe qui s'ouvre : failles normales, séismes, un futur océan.",'d’ouverture'],
+ subduction:['Fosse de subduction',"Une plaque plonge sous l'autre : fosse, séismes profonds, volcans du côté des triangles.",'de convergence'],
+ transform:['Faille transformante',"Les plaques glissent l'une contre l'autre : séismes, pas de volcans.",'de glissement'],
+ collision:['Collision',"Deux continents se heurtent : une chaîne se soulève.",'de convergence'],
+ suture:['Suture du bloc des Plaines',"La cicatrice d'une collision achevée : le bloc des Hautes Plaines s'est soudé au continent A ; le massif et le col en sont nés.",''],
+ faille:['Faille de la jungle',"Branche du rift du Golfe 1 sous la jungle : le séisme de l'Acte I, le sinkhole, puis la crevasse de Rob2, 250 km plus loin sur la même faille.",'']
+};
+const PLEG = [['ridge','Dorsale : les plaques s’écartent'],['rift','Rift : un continent s’ouvre'],['subduction','Fosse : triangles du côté de la plaque qui reste en surface'],['transform','Faille transformante'],['collision','Collision de continents'],['suture','Suture (collision achevée), vue corridor'],['faille','Faille de la jungle, vue corridor']];
+(function(){ const h = document.getElementById('plegendi'); PLEG.forEach(([t,n]) => { const d = document.createElement('div'); d.className='pli'; d.innerHTML = '<svg viewBox="0 0 34 14"><path class="pl '+t+'" d="M2,9 L32,9"/>'+(t==='subduction'?'<path d="M8,9 L14,9 L11,4 Z M20,9 L26,9 L23,4 Z" fill="#1a1a22"/>':'')+'</svg><span>'+n+'</span>'; h.appendChild(d); }); })();
+function fmt(v){ return (Math.round(v*10)/10).toLocaleString('fr-FR'); }
+function teeth(g, pts, sp, lod, offset){
+  let next = sp/2 + (offset||0), cum = 0;
+  for(let i=0;i<pts.length-1;i++){
+    const a = pts[i], b = pts[i+1]; const dx = b[0]-a[0], dy = b[1]-a[1]; const len = Math.hypot(dx,dy); if(!len) continue;
+    while(cum + len >= next){
+      const f = (next-cum)/len; const x = a[0]+dx*f, y = a[1]+dy*f; const ang = Math.atan2(dy,dx)*180/Math.PI;
+      const t = el('g',{'data-fix':x+','+y,'data-lod':lod},'tooth'); t.appendChild(el('path',{d:'M-4,0 L4,0 L0,-6.5 Z',transform:'rotate('+ang.toFixed(1)+')'})); g.appendChild(t);
+      next += sp;
+    }
+    cum += len;
+  }
+}
+function buildPlates(){
+  const g = el('g',{id:'plates'}); if(!showPlates) g.style.display = 'none';
+  const lines = view==='world' ? D.plates.lines : D.plates.clines;
+  const sp = view==='world' ? 12 : 70;
+  lines.forEach((L,i) => {
+    const d = 'M'+L.pts.map(q => q[0]+','+q[1]).join(' L ');
+    g.appendChild(el('path',{d:d},'pl '+L.t));
+    if(L.t==='subduction'){ teeth(g, L.pts, sp, '0', 0); teeth(g, L.pts, sp, '2.2', sp/2); }
+  });
+  lines.forEach((L,i) => { const d = 'M'+L.pts.map(q => q[0]+','+q[1]).join(' L '); g.appendChild(el('path',{d:d,'data-line':i},'mk plhit')); });
+  if(view==='world'){
+    D.plates.labels.forEach(P => {
+      const gg = el('g',{'data-fix':P.p[0]+','+P.p[1],'data-plate':P.code},'mk plate');
+      const left = P.p[0] < 120, dy = (P.dy||0);
+      const x0 = left ? 0 : -70, anc = left ? 'start' : 'middle', cx = left ? 70 : 0;
+      gg.appendChild(el('rect',{x:x0,y:14+dy,width:140,height:34}));
+      const t = el('text',{x:left?4:0,y:28+dy,'text-anchor':anc},'plab'+(left?' as':'')); t.textContent = P.n; gg.appendChild(t);
+      const t2 = el('text',{x:left?4:-8,y:42+dy,'text-anchor':anc},'plab sp'+(left?' as':'')); t2.textContent = '~'+P.sp+' cm/an'; gg.appendChild(t2);
+      const ang = Math.atan2(-P.v[1], P.v[0])*180/Math.PI;
+      const ar = el('g',{transform:'translate('+(left?74:34)+','+(38+dy)+') rotate('+ang.toFixed(1)+')'}); ar.appendChild(el('path',{d:'M-8,0 L6,0'},'parrow')); ar.appendChild(el('path',{d:'M9,0 L4,-3.5 L4,3.5 Z'},'parrowh')); gg.appendChild(ar);
+      g.appendChild(gg);
+    });
+  } else {
+    D.plates.clabels.forEach(L => { const gg = el('g',{'data-fix':L.p[0]+','+L.p[1]}); const t = el('text',{x:0,y:0,'text-anchor':'middle'},'plab'); t.textContent = L.n; gg.appendChild(t); g.appendChild(gg); });
+  }
+  ov.appendChild(g);
+}
+function buildOverlay(){
+  ov.innerHTML = '';
+  if(view==='world'){
+    for(let lon=-150; lon<=150; lon+=30){ const x = (lon+180)/360*D.W; ov.appendChild(el('line',{x1:x,y1:0,x2:x,y2:D.H},'grat')); }
+    for(let lat=-60; lat<=60; lat+=30){ const y = (90-lat)/180*D.H; ov.appendChild(el('line',{x1:0,y1:y,x2:D.W,y2:y},'grat')); }
+    const eq = (90-0)/180*D.H; const l = el('line',{x1:0,y1:eq,x2:D.W,y2:eq},'grat'); l.style.strokeDasharray='4 4'; ov.appendChild(l);
+    buildPlates();
+    const b = D.box; ov.appendChild(el('rect',{x:b[0],y:b[1],width:b[2]-b[0],height:b[3]-b[1]},'box'));
+    const g = el('g',{'data-fix':b[0]+','+(b[1]-4)}); const t = el('text',{x:0,y:0},'lbl'); t.textContent = D.boxlabel; g.appendChild(t); ov.appendChild(g);
+    const g2 = el('g',{'data-fix':(D.W*0.22)+','+(eq-6)}); const t2 = el('text',{x:0,y:0},'lbl'); t2.textContent='Équateur'; t2.style.fill='#55556a'; g2.appendChild(t2); ov.appendChild(g2);
+    const g3 = el('g',{'data-fix':((90+180)/360*D.W+4)+','+(D.H*0.12)}); const t3 = el('text',{x:0,y:0},'lbl'); t3.textContent='90° E'; t3.style.fill='#55556a'; g3.appendChild(t3); ov.appendChild(g3);
+    const gb = el('g',{'data-fix':(b[0]+(b[2]-b[0])/2)+','+(b[1]+(b[3]-b[1])/2), 'data-act':'box'},'mk'); gb.appendChild(el('circle',{r:7})); const tb = el('text',{},''); tb.textContent='S'; gb.appendChild(tb); ov.appendChild(gb);
+    D.places.forEach(P => { const g = el('g',{'data-fix':P.w[0]+','+P.w[1],'data-place':P.code},'mk place'); const wdt = P.kind==='continent' ? 150 : 70; g.appendChild(el('rect',{x:-wdt/2,y:-14,width:wdt,height:(P.kind==='continent'?34:20)})); const t = el('text',{x:0,y:0,'text-anchor':'middle'},'lbl '+(P.kind==='continent'?'cont':'sea')); t.textContent = P.kind==='continent' ? 'Continent '+P.code : P.code; g.appendChild(t); if(P.kind==='continent'){ const t2 = el('text',{x:0,y:14,'text-anchor':'middle'},'lbl sub'); t2.textContent = P.pct+' % des terres'; g.appendChild(t2); } ov.appendChild(g); });
+  } else {
+    buildPlates();
+    const p = el('path',{d:'M'+D.path.map(q=>q.join(',')).join(' L ')},'trail'); ov.appendChild(p);
+    D.labels.forEach(L => { const g = el('g',{'data-fix':L.p[0]+','+L.p[1],'data-lod':(['jungle','pitons','cavernes','savane'].includes(L.k)?'1.1':'0.3')}); const t = el('text',{x:0,y:0,'text-anchor':'middle'},'lbl'+(['arsenic','fosse'].includes(L.k)?' sea':'')); t.textContent = L.n; g.appendChild(t); ov.appendChild(g); });
+    D.places.filter(P => P.kind==='gulf').forEach(P => { const g = el('g',{'data-fix':P.c[0]+','+P.c[1],'data-place':P.code},'mk place'); g.appendChild(el('rect',{x:-35,y:-14,width:70,height:20})); const t = el('text',{x:0,y:0,'text-anchor':'middle'},'lbl sea'); t.textContent = P.code; g.appendChild(t); ov.appendChild(g); });
+    D.robs.forEach(R => { const g = el('g',{'data-fix':R.p[0]+','+R.p[1],'data-rob':R.id,'data-lod':(R.id==='Rob1'?'1.1':'0')},'mk rob'); g.appendChild(el('circle',{r:9})); const t = el('text',{}); t.textContent = R.id.replace('Rob',''); g.appendChild(t); ov.appendChild(g); });
+    D.markers.forEach(M => { const g = el('g',{'data-fix':M.p[0]+','+M.p[1],'data-act':M.id,'data-lod':(['P','I','II','IX'].includes(M.id)?'1.1':'0')},'mk'); g.appendChild(el('circle',{r:10})); const t = el('text',{}); t.textContent = M.id; g.appendChild(t); ov.appendChild(g); });
+  }
+}
+// cards
+function place(x,y){ const r = stage.getBoundingClientRect(); let cx = x - r.left + 16, cy = y - r.top + 16; card.style.left='0';card.style.top='0'; const cw = card.offsetWidth, ch = card.offsetHeight; if(cx+cw > r.width-8) cx = x - r.left - cw - 16; if(cy+ch > r.height-8) cy = y - r.top - ch - 16; card.style.left = Math.max(8,cx)+'px'; card.style.top = Math.max(8,cy)+'px'; }
+function showBiome(kk, ev){
+  const b = D.biomes[kk]; if(!b) return;
+  const pct = b.pctland != null ? b.pctland+' % des terres émergées' : (b.pct ? b.pct+' % de la surface du globe' : '');
+  card.innerHTML = '<div class="k">Biome'+(pct? ' · '+pct:'')+'</div><h3>'+b.name+'</h3><p>'+b.desc+'</p>'+(b.role?'<p class="role">'+b.role+'</p>':'')+'<p class="tw">Jumeau terrestre : '+b.twin+'</p>';
+  card.classList.add('show'); if(ev) place(ev.clientX, ev.clientY); else { card.style.left='16px'; card.style.top='16px'; }
+  setHot(kk);
+}
+function showMarker(g, ev){
+  if(g.dataset.line !== undefined){
+    const L = (view==='world' ? D.plates.lines : D.plates.clines)[+g.dataset.line]; const T = PT[L.t];
+    const v = (L.t==='transform') ? L.rel : L.r; let rel = '';
+    if(L.t==='subduction' && L.under) rel = L.under+' plonge sous '+L.over+(v ? ' · ~'+fmt(v)+' cm/an '+T[2] : '');
+    else if(L.b) rel = 'Entre '+L.a+' et '+L.b+(v ? ' · ~'+fmt(v)+' cm/an '+T[2] : '');
+    card.innerHTML = '<div class="k">Limite de plaques · '+L.st+'</div><h3>'+T[0]+'</h3><p>'+T[1]+'</p>'+(rel ? '<p class="role">'+rel+'</p>' : '');
+    card.classList.add('show'); place(ev.clientX, ev.clientY); return;
+  }
+  if(g.dataset.plate){
+    const P = D.plates.labels.find(p => p.code===g.dataset.plate);
+    card.innerHTML = '<div class="k">Plaque · '+P.st+'</div><h3>'+P.n+' · ~'+P.sp+' cm/an</h3><p>'+P.d+'</p><p class="role">'+P.lim+'</p>';
+    card.classList.add('show'); place(ev.clientX, ev.clientY); return;
+  }
+  const id = g.dataset.act || g.dataset.rob || g.dataset.place;
+  if(g.dataset.place){ const P = D.places.find(p=>p.code===g.dataset.place); const I = P.info||{}; card.innerHTML = '<div class="k">'+(P.kind==='continent'?'Continent · '+P.pct+' % des terres':(P.kind==='ocean'?'Océan':'Golfe'))+'</div><h3>'+(P.kind==='continent'?'Continent '+P.code:P.code)+(I.t?' · '+I.t:'')+'</h3><p>'+(I.d||'')+'</p>'+(I.m?'<p class="role">'+I.m+'</p>':'')+(I.w?'<p class="tw">'+I.w+'</p>':''); card.classList.add('show'); place(ev.clientX, ev.clientY); return; }
+  if(id==='box'){ card.innerHTML = '<div class="k">Corridor</div><h3>Corridor de Seed</h3><p>Le trajet du film : jungle, cavernes, col, forêts, plaines, volcans, mer d’arsenic, lacs salés. Ouvre la vue « Corridor de Seed ».</p>'; }
+  else if(g.dataset.rob){ const R = D.robs.find(r=>r.id===id); card.innerHTML = '<div class="k">Site de mission</div><h3>'+R.id+'</h3><p>'+R.d+'</p>'; }
+  else { const M = D.markers.find(m=>m.id===id); card.innerHTML = '<div class="k">Trajet de Seed</div><h3>'+M.t+'</h3><p>'+M.d+'</p>'; }
+  card.classList.add('show'); place(ev.clientX, ev.clientY);
+}
+function hideCard(){ card.classList.remove('show'); setHot(null); }
+function setHot(kk){ hot = kk; legend.querySelectorAll('.li').forEach(l => l.classList.toggle('hot', l.dataset.k===kk)); }
+function imgPoint(ev){ const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; const p = pt.matrixTransform(svg.getScreenCTM().inverse()); return p; }
+function biomeAt(p){ if(!px) return null; const [w,h] = SIZE[view]; const x = Math.floor(p.x), y = Math.floor(p.y); if(x<0||y<0||x>=w||y>=h) return null; const i = (y*w+x)*4; return colorKey[px[i]+','+px[i+1]+','+px[i+2]] || null; }
+
+// interactions
+let dragging = false, moved = false, last = null;
+stage.addEventListener('pointerdown', ev => { dragging = true; moved = false; last = [ev.clientX, ev.clientY]; stage.classList.add('drag'); stage.setPointerCapture(ev.pointerId); });
+stage.addEventListener('pointermove', ev => {
+  if(dragging && last){ const dx = ev.clientX-last[0], dy = ev.clientY-last[1]; if(Math.abs(dx)+Math.abs(dy) > 2) moved = true; vb.x -= dx/k; vb.y -= dy/k; last = [ev.clientX, ev.clientY]; apply(); if(pinned) return; }
+  if(pinned) return;
+  const g = ev.target.closest('.mk');
+  ov.querySelectorAll('.mk.hot').forEach(m => m.classList.remove('hot'));
+  if(g){ g.classList.add('hot'); showMarker(g, ev); return; }
+  const p = imgPoint(ev); const kk = biomeAt(p);
+  const [w,h] = SIZE[view];
+  if(view==='corridor'){ const bk = D.bk; const xk = (p.x/w)*(bk[1]-bk[0])+bk[0], yk = bk[3]-(p.y/h)*(bk[3]-bk[2]); document.getElementById('coord').innerHTML = '<b>'+Math.round(xk)+' km</b> est · <b>'+Math.round(yk)+' km</b> nord du XENOPOD'; }
+  else { const lon = p.x/w*360-180, lat = 90-p.y/h*180; document.getElementById('coord').innerHTML = '<b>'+Math.abs(lat).toFixed(1)+'° '+(lat>=0?'N':'S')+'</b> · <b>'+Math.abs(lon).toFixed(1)+'° '+(lon>=0?'E':'O')+'</b>'; }
+  if(kk){ showBiome(kk, ev); } else hideCard();
+});
+stage.addEventListener('pointerup', ev => {
+  stage.classList.remove('drag'); dragging = false;
+  if(moved) return;
+  const g = ev.target.closest('.mk');
+  if(g){ ov.querySelectorAll('.mk.pin').forEach(m => m.classList.remove('pin')); g.classList.add('pin'); pinned = g; showMarker(g, ev); if(g.dataset.act==='box'){ /* open corridor on second click */ if(g.dataset.armed){ setView('corridor'); } else g.dataset.armed='1'; } return; }
+  const p = imgPoint(ev); const kk = biomeAt(p);
+  if(pinned){ pinned = null; ov.querySelectorAll('.mk.pin').forEach(m => m.classList.remove('pin')); hideCard(); return; }
+  if(kk){ pinned = {biome:kk}; showBiome(kk, ev); }
+});
+stage.addEventListener('pointerleave', () => { if(!pinned) hideCard(); });
+stage.addEventListener('wheel', ev => {
+  ev.preventDefault(); const p = imgPoint(ev); const f = Math.exp(-ev.deltaY*0.0015);
+  const [w,h] = SIZE[view]; const nw = Math.min(Math.max(vb.w/f, w/40), w*2.5); const nf = vb.w/nw;
+  vb.x = p.x - (p.x-vb.x)/nf; vb.y = p.y - (p.y-vb.y)/nf; vb.w = nw; vb.h = vb.h/nf; apply();
+}, {passive:false});
+stage.addEventListener('dblclick', fit);
+document.getElementById('reset').addEventListener('click', fit);
+document.querySelectorAll('.views button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+const tg = document.getElementById('tgPlates'), pleg = document.getElementById('plegend');
+tg.addEventListener('click', () => { showPlates = !showPlates; tg.classList.toggle('on', showPlates); tg.setAttribute('aria-pressed', showPlates); pleg.style.display = showPlates ? '' : 'none'; const g = document.getElementById('plates'); if(g) g.style.display = showPlates ? '' : 'none'; pinned = null; hideCard(); });
+window.addEventListener('resize', fit);
+// touch pinch
+let pinch = null;
+stage.addEventListener('touchstart', ev => { if(ev.touches.length===2){ pinch = Math.hypot(ev.touches[0].clientX-ev.touches[1].clientX, ev.touches[0].clientY-ev.touches[1].clientY); } }, {passive:true});
+stage.addEventListener('touchmove', ev => { if(ev.touches.length===2 && pinch){ const d = Math.hypot(ev.touches[0].clientX-ev.touches[1].clientX, ev.touches[0].clientY-ev.touches[1].clientY); const f = d/pinch; pinch = d; const cx = vb.x+vb.w/2, cy = vb.y+vb.h/2; vb.w/=f; vb.h/=f; vb.x = cx-vb.w/2; vb.y = cy-vb.h/2; apply(); } }, {passive:true});
+setView('world');
+})();
+</script>

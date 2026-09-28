@@ -1,0 +1,80 @@
+[
+ {
+  "biome": "Jungle primordiale",
+  "dominante": "Pourpre sombre de la canopée, magenta du sous-bois",
+  "accents": "Argent des dessous de feuilles, vert vif des trouées",
+  "mouvement": "Les fleurs-papillons ; les voûtes qui filtrent le lever de l'étoile"
+ },
+ {
+  "biome": "Pitons karstiques",
+  "dominante": "Blanc-gris des tours, pourpre délavé des sommets",
+  "accents": "Rideaux verts des épiphytes, brume",
+  "mouvement": "Les voiles de brume dans le vent du fleuve"
+ },
+ {
+  "biome": "Cavernes",
+  "dominante": "Noir, bleu-vert des plantes-chant",
+  "accents": "Jaune-vert des champignons-lanternes",
+  "mouvement": "La lumière qui s'éteint quand la Créature approche"
+ },
+ {
+  "biome": "Massifs et glaciers",
+  "dominante": "Blanc, gris, noir des coussinets",
+  "accents": "Rose de la neige",
+  "mouvement": "Rien : c'est le lieu immobile"
+ },
+ {
+  "biome": "Forêt bioluminescente",
+  "dominante": "Bleu électrique sur blanc crème, nuit noire",
+  "accents": "Rouille de la mousse",
+  "mouvement": "Les lamelles qui pulsent ; la mousse qui gagne"
+ },
+ {
+  "biome": "Hautes Plaines",
+  "dominante": "Bleu-gris des herbes, doré des herbes sèches",
+  "accents": "Noir des écorces brûlées, blanc de la horde",
+  "mouvement": "Les vagues dans l'herbe, le feu à l'horizon"
+ },
+ {
+  "biome": "Forêt ancienne",
+  "dominante": "Roux des écorces, pourpre profond, brouillard",
+  "accents": "Rouge de la rivière, vert franc des joncs de l'affluent clair, violet laqué du fruit",
+  "mouvement": "L'eau rouge et l'eau claire côte à côte"
+ },
+ {
+  "biome": "Course volcanique",
+  "dominante": "Ocre rayé du canyon, noir des laves, irisations des arbres cristallins",
+  "accents": "Orange des lichens, bleu des flammes de soufre",
+  "mouvement": "La lumière réfractée par les écorces au passage du tank"
+ },
+ {
+  "biome": "Mer d'arsenic et côtes",
+  "dominante": "Gris-vert métallique de l'eau, noir du sable",
+  "accents": "Pourpre des mangroves, bleu-violet-rose de Rob4",
+  "mouvement": "Les vapeurs acides ; les lanières d'algues"
+ },
+ {
+  "biome": "Lacs salés pourpres",
+  "dominante": "Rose à pourpre de la saumure, blanc du sel",
+  "accents": "Gris-vert puis rouge des buissons de sel",
+  "mouvement": "La colonie d'oiseaux qui décolle en criant"
+ },
+ {
+  "biome": "Continent B (hors trajet)",
+  "dominante": "Pourpre uniforme des lauriers, eau brune des grands fleuves",
+  "accents": "Vert sombre des fougères-lames, fleurs crème des lanternes la nuit, rose des nénuphars",
+  "mouvement": "La crue qui monte entre les troncs ; les planeurs d'un arbre à l'autre"
+ },
+ {
+  "biome": "Continent C (hors trajet)",
+  "dominante": "Gris et noir du vieux socle, jaune-vert des lichens-cartes",
+  "accents": "Taches bleu-vert et jaunes des fleurs des métaux, rouge des coussins et des saules couchés",
+  "mouvement": "Presque rien : la lumière rasante qui revient après deux mois de nuit"
+ },
+ {
+  "biome": "Continent D (hors trajet)",
+  "dominante": "Pourpre-brun des tourbières, blanc des herbes à laine en fin d'été",
+  "accents": "Crème et orange des coupes solaires, noir luisant du varech à marée basse",
+  "mouvement": "La marée qui découvre des kilomètres d'estran ; les nuées de moucherons ; les migrations"
+ }
+]

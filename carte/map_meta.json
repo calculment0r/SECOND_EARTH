@@ -1,0 +1,286 @@
+{
+ "keys": [
+  "ocean",
+  "recifs",
+  "remontees",
+  "fosse",
+  "arsenic",
+  "jungle",
+  "pitons",
+  "cavernes",
+  "massifs",
+  "glaciers",
+  "biolum",
+  "plaines",
+  "ancienne",
+  "canyon",
+  "cristal",
+  "arc",
+  "lave",
+  "sel",
+  "desert",
+  "savane",
+  "saison",
+  "toundra",
+  "mangrove",
+  "fleuve",
+  "rouge",
+  "lac"
+ ],
+ "names": {
+  "ocean": "Océan profond",
+  "recifs": "Mers peu profondes et récifs de silice",
+  "remontees": "Zones de remontée océanique",
+  "fosse": "Fosse océanique",
+  "arsenic": "Mer d'arsenic",
+  "jungle": "Jungle primordiale",
+  "pitons": "Pitons karstiques",
+  "cavernes": "Terres rocheuses et cavernes",
+  "massifs": "Massifs et glaciers",
+  "glaciers": "Glaciers",
+  "biolum": "Forêt bioluminescente",
+  "plaines": "Hautes Plaines",
+  "ancienne": "Forêt ancienne",
+  "canyon": "Canyon ocre",
+  "cristal": "Forêts cristallines",
+  "arc": "Arc volcanique",
+  "lave": "Plaines de lave et tunnels",
+  "sel": "Lacs salés pourpres",
+  "desert": "Grands déserts continentaux",
+  "savane": "Savanes à feu",
+  "saison": "Forêts des moyennes latitudes",
+  "toundra": "Toundra polaire",
+  "mangrove": "Mangroves et côtes à marées",
+  "fleuve": "Fleuve",
+  "rouge": "Rivière rouge (acide)",
+  "lac": "Lac salé (eau)"
+ },
+ "colors": {
+  "ocean": "#b8c9d9",
+  "recifs": "#c4e2ea",
+  "remontees": "#a3bfd2",
+  "fosse": "#7f93a8",
+  "arsenic": "#9fb8a6",
+  "jungle": "#7a3c8a",
+  "pitons": "#b58cc2",
+  "cavernes": "#8c7f78",
+  "massifs": "#aaa6b4",
+  "glaciers": "#f2f1f5",
+  "biolum": "#4f7f8f",
+  "plaines": "#9fb0b8",
+  "ancienne": "#3f5a3a",
+  "canyon": "#c98a5a",
+  "cristal": "#d9c9e0",
+  "arc": "#4a3f43",
+  "lave": "#2f2b2e",
+  "sel": "#d98cc0",
+  "desert": "#e3c48f",
+  "savane": "#c9a86a",
+  "saison": "#8a5a86",
+  "toundra": "#c8c3b0",
+  "mangrove": "#5f7f5a",
+  "fleuve": "#6fa7c9",
+  "rouge": "#c0392b",
+  "lac": "#e9b8dc"
+ },
+ "stats": {
+  "ocean": {
+   "pct_planet": 38.52214085431269,
+   "pct_land": null
+  },
+  "recifs": {
+   "pct_planet": 2.0007279027404423,
+   "pct_land": null
+  },
+  "remontees": {
+   "pct_planet": 1.2745461105772906,
+   "pct_land": null
+  },
+  "fosse": {
+   "pct_planet": 0.20950186560078668,
+   "pct_land": null
+  },
+  "arsenic": {
+   "pct_planet": 0.22475905647036082,
+   "pct_land": null
+  },
+  "jungle": {
+   "pct_planet": 2.5201015386038264,
+   "pct_land": 4.3624279794402705
+  },
+  "pitons": {
+   "pct_planet": 0.0018196719213670338,
+   "pct_land": 0.0031499475642442795
+  },
+  "cavernes": {
+   "pct_planet": 0.006059577583347801,
+   "pct_land": 0.010489446710083988
+  },
+  "massifs": {
+   "pct_planet": 0.9575999457138803,
+   "pct_land": 1.6576557461280275
+  },
+  "glaciers": {
+   "pct_planet": 1.7961872328075306,
+   "pct_land": 3.109294336233008
+  },
+  "biolum": {
+   "pct_planet": 0.14208072103433309,
+   "pct_land": 0.24594918231850696
+  },
+  "plaines": {
+   "pct_planet": 11.951725862304327,
+   "pct_land": 20.68906451015534
+  },
+  "ancienne": {
+   "pct_planet": 0.035889731877471895,
+   "pct_land": 0.0621270088203005
+  },
+  "canyon": {
+   "pct_planet": 0.012096428761802657,
+   "pct_land": 0.020939552820966566
+  },
+  "cristal": {
+   "pct_planet": 0.00726550371545879,
+   "pct_land": 0.012576968113199239
+  },
+  "arc": {
+   "pct_planet": 0.03722827544967277,
+   "pct_land": 0.06444409796993218
+  },
+  "lave": {
+   "pct_planet": 0.10664028540933747,
+   "pct_land": 0.1845999288833907
+  },
+  "sel": {
+   "pct_planet": 1.656562576886156,
+   "pct_land": 2.8675967314815036
+  },
+  "desert": {
+   "pct_planet": 17.18579788395322,
+   "pct_land": 29.749517783120126
+  },
+  "savane": {
+   "pct_planet": 7.841103938358875,
+   "pct_land": 13.573362297674255
+  },
+  "saison": {
+   "pct_planet": 6.556432600409642,
+   "pct_land": 11.349528811917342
+  },
+  "toundra": {
+   "pct_planet": 6.140589627877083,
+   "pct_land": 10.629682809428619
+  },
+  "mangrove": {
+   "pct_planet": 0.8131428076311021,
+   "pct_land": 1.407592861220894
+  },
+  "fleuve": {
+   "pct_planet": 0.0,
+   "pct_land": 0.0
+  },
+  "rouge": {
+   "pct_planet": 0.0,
+   "pct_land": 0.0
+  },
+  "lac": {
+   "pct_planet": 0.0,
+   "pct_land": 0.0
+  },
+  "_land_pct": 57.768324210298424
+ },
+ "corridor_box_km": [
+  -1900,
+  4000,
+  -700,
+  2400
+ ],
+ "design_box_km": [
+  -640,
+  1150,
+  -320,
+  700
+ ],
+ "transform": {
+  "R0": 260.0,
+  "k": 4.0,
+  "w": 30.0
+ },
+ "km_per_deg": 128.0,
+ "origin_lonlat": [
+  48,
+  1
+ ],
+ "world_size": [
+  1440,
+  720
+ ],
+ "corridor_size": [
+  2950,
+  1550
+ ],
+ "places": [
+  {
+   "code": "A",
+   "kind": "continent",
+   "lon": 104.44753300903403,
+   "lat": -26.41168289290681,
+   "pct_land": 59.735555366069924
+  },
+  {
+   "code": "B",
+   "kind": "continent",
+   "lon": -131.4662960389159,
+   "lat": 30.166898470097358,
+   "pct_land": 20.375944151277242
+  },
+  {
+   "code": "C",
+   "kind": "continent",
+   "lon": -121.4593467685893,
+   "lat": -63.96383866481224,
+   "pct_land": 12.01377107368621
+  },
+  {
+   "code": "D",
+   "kind": "continent",
+   "lon": -24.141765114662974,
+   "lat": 68.72044506258692,
+   "pct_land": 7.874729408978702
+  },
+  {
+   "code": "Océan 1",
+   "kind": "ocean",
+   "lon": -47.15774843641418,
+   "lat": -14.895688456189148,
+   "pct_planet": 39.64634709793491
+  },
+  {
+   "code": "Océan 2",
+   "kind": "ocean",
+   "lon": 72.9256428075052,
+   "lat": 3.880389429763568,
+   "pct_planet": 1.0148740623042882
+  },
+  {
+   "code": "Océan 3",
+   "kind": "ocean",
+   "lon": -133.21751216122308,
+   "lat": -11.641168289290675,
+   "pct_planet": 0.646043215551766
+  },
+  {
+   "code": "Golfe 1",
+   "kind": "gulf",
+   "lon": 35.26083167443646,
+   "lat": -1.1231947209272568
+  },
+  {
+   "code": "Golfe 2",
+   "kind": "gulf",
+   "lon": 69.43127577374402,
+   "lat": 2.9482977976130926
+  }
+ ]
+}
