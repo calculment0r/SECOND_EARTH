@@ -726,6 +726,7 @@ svg .lbl{fill:#0d0d11;stroke:rgba(255,255,255,.85)}
 .li i{border-color:rgba(255,255,255,.18)}
 .pli .pl.subduction,.pli .pl.transform{stroke:#c9d2cd}
 .pli .tooth path{fill:#c9d2cd}
+@media (max-width:860px){.legend{grid-template-columns:minmax(0,1fr)!important}}
 .backlink{position:fixed;right:14px;bottom:14px;z-index:50;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;background:var(--or);color:#170c08;padding:9px 14px;border-radius:999px;text-decoration:none}
 """
 
