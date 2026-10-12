@@ -545,11 +545,8 @@ details[open]>summary .chev{transform:rotate(45deg)}
   // Prompts rédigés le 09/10/2026 d'après les fiches (data/prompts-propose.json) : proposés, à valider par Cal
   ITEMS.forEach(function (it) {
     var q = RAW.propose[it.id];
-    if (q && !it.promptEn && typeof q.sujet === 'string' && q.sujet) {
-      it.corps = it.kind === 'paysage'
-        ? OPEN.paysage + ' ' + q.sujet + (it.biome ? ' ' + SCALE_LAND : '')
-        : situOpen(it) + ' ' + q.sujet;
-      it.light = q.lumiere || ''; it.promptStatut = q.statut || 'proposé (rédigé par Claude, à valider)'; it.proposed = true;
+    if (q && !it.promptEn && typeof q.corps === 'string' && q.corps) {
+      it.corps = q.corps; it.light = q.lumiere || ''; it.promptStatut = q.statut || 'proposé (rédigé par Claude, à valider)'; it.proposed = true;
     }
   });
   function isReady(it) { return !!(it.promptEn || it.proposed); }
@@ -803,9 +800,10 @@ details[open]>summary .chev{transform:rotate(45deg)}
   function edit(it) { return S.edits[it.id] || {}; }
   function effLight(it) { var e = edit(it); return typeof e.lumiere === 'string' ? e.lumiere : baseLight(it); }
   function effCorps(it) { var e = edit(it); return typeof e.corps === 'string' ? e.corps : it.corps; }
-  // Animaux, plantes et Titans : photographie sur le terrain par défaut ; personnages et machines : planche de référence
-  function defView(it) { return it.kind === 'perso' || it.kind === 'paysage' ? 'planche' : 'situ'; }
-  function effView(it) { var v = S.views[it.id] || defView(it); return it.proposed && v === 'planche' ? 'situ' : v; }
+  // Planche de référence par défaut pour toutes les fiches : le prompt est copié en entier (ouverture « sheet », fond, échelle).
+  // « En situation » et « Libre » restent des variantes à choisir fiche par fiche.
+  function defView(it) { return 'planche'; }
+  function effView(it) { return S.views[it.id] || defView(it); }
   function lightIsCommon(it) {
     var e = edit(it);
     if (typeof e.lumiere === 'string') return false;
@@ -1005,7 +1003,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
         return '<button type="button" role="radio" aria-checked="false" data-act="moment" data-m="' + m.k + '">' + esc(m.l) + '</button>';
       }).join('') + '</div></div><p class="hint">Cadrage : plan large d\'établissement' + (it.biome ? ', Seed en silhouette minuscule pour l\'échelle' : '') + '.</p>';
     } else {
-      h += '<div class="pf-row"><span class="lbl">Vue</span><div class="seg pf-view" role="radiogroup" aria-label="Vue">' + VIEWS.filter(function (v) { return !(it.proposed && v.k === 'planche'); }).map(function (v) {
+      h += '<div class="pf-row"><span class="lbl">Vue</span><div class="seg pf-view" role="radiogroup" aria-label="Vue">' + VIEWS.map(function (v) {
         return '<button type="button" role="radio" aria-checked="false" data-act="view" data-v="' + v.k + '">' + esc(v.l) + '</button>';
       }).join('') + '</div></div><p class="hint pf-open" hidden></p>';
     }
@@ -1014,7 +1012,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     h += '<div class="pf-draft" hidden><button type="button" class="btn sm" data-act="draft">Brouillon depuis la fiche</button><span class="hint">premier jet assemblé depuis les champs de la fiche, marqué « proposé »</span></div>';
     h += '<p class="hint pf-dnote" hidden>Brouillon assemblé depuis les champs de la fiche, en français : à réécrire en anglais (formes, matières, couleurs, lumière) avant usage.</p>';
     if (it.promptEn) h += '<div><button type="button" class="tog pf-orig" data-act="orig" aria-pressed="false"><span>Prompt d\'origine tel quel</span><i aria-hidden="true"></i></button></div>';
-    h += '<div class="pf-pv"><div class="pf-pvh"><span class="lbl">Aperçu du prompt complet</span><button type="button" class="bl" data-act="pv" aria-expanded="false">Déplier</button></div><div class="pv" lang="en"></div><p class="pf-warn" hidden></p></div>';
+    h += '<div class="pf-pv"><div class="pf-pvh"><span class="lbl">Aperçu du prompt complet</span><button type="button" class="bl" data-act="pv" aria-expanded="true">Replier</button></div><div class="pv open" lang="en"></div><p class="pf-warn" hidden></p></div>';
     h += '<div class="pf-actions"><button type="button" class="btn pri pf-copy" data-act="copy">Copier</button><button type="button" class="btn pf-copy2" data-act="copy-np">Copier sans paramètres</button></div>';
     return h + '</div>';
   }
