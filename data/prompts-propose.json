@@ -1,13 +1,15 @@
 {
  "JP-02": {
-  "corps": "Creature sheet, side and three-quarter views on a neutral light grey background: a 1.5 to 3 m long, 3 to 5 cm thick liana snake with an oxidised-copper body identical to a liana, a flattened head, two infrared eye spots and a sticky latex seeping from its skin, shown lying in loose coils. A 1.60 m girl with white hair stands beside it for scale.",
+  "complet": "A realistic alien ambush predator, a limbless animal 1.5 to 3 m long and only 3 to 5 cm thick, its body the exact colour and texture of oxidised copper, identical to the copper lianas it hides among, with a flattened head, two small infrared eye spots and a sticky latex seeping from its skin. Creature sheet of the same animal, four views side by side: head from the front, head from the side, head from above, and the full body in a loose coil. Clean white background, photorealistic, ultra-detailed, soft even studio lighting.",
   "lumiere": "",
-  "statut": "proposé (rédigé par Claude le 12/10/2026 d'après la fiche, à valider)"
+  "statut": "proposé (version 2 rédigée le 12/10/2026, à tester dans Midjourney avant de refaire les autres)",
+  "remplace": true
  },
  "JP-03": {
-  "corps": "Creature sheet, enlarged macro views on a neutral light grey background: a 2 to 4 cm beetle with a faceted carapace cut like a gemstone, its structural colours shifting from facet to facet with the angle of view, and six sturdy legs, shown from above and from the side.",
+  "complet": "A realistic alien armoured animal, 2 to 4 cm long, with a carapace cut into facets like a gemstone, every facet a different structural colour that shifts with the angle of the light, and six sturdy legs. Creature sheet of the same animal, four views side by side: top view, side view, front view and view from behind. Clean white background, photorealistic macro photograph, ultra-detailed, soft even studio lighting.",
   "lumiere": "",
-  "statut": "proposé (rédigé par Claude le 12/10/2026 d'après la fiche, à valider)"
+  "statut": "proposé (version 2 rédigée le 12/10/2026, à tester dans Midjourney avant de refaire les autres)",
+  "remplace": true
  },
  "JP-04": {
   "corps": "Creature sheet, side and three-quarter views on a neutral light grey background: an 8 to 12 cm frog, 25 cm across when inflated, with a stocky translucent pink body, an iridescent bubble-like thoracic pouch swollen to full size, and four webbed limbs spread wide, the two front limbs prehensile and reaching forward.",
@@ -593,5 +595,11 @@
   "corps": "Wide establishing landscape photograph: the floor of an ocean trench 10 km deep, bare seabed pierced by seeps around which white microbial mats spread in irregular patches of different sizes, the beam of a single underwater lamp fading into black water at the edges of the frame, deep-sea photograph with a 24 mm wide-angle lens, deep depth of field, every mat in sharp detail.",
   "lumiere": "total darkness at 10 km depth, lit only by the narrow beam of one underwater lamp, no other light source",
   "statut": "proposé (rédigé par Claude le 12/10/2026 d'après la fiche, à valider)"
+ },
+ "JP-01": {
+  "complet": "A realistic alien creature, a flying animal that looks like a flower, 5 to 8 cm across: at rest a closed violet flower on a thin stem, in flight membranous purple wings with gold reflections, a tiny body and six thin legs. Creature sheet of the same animal, four views side by side: resting as a closed flower, then in flight seen from the front, from the side and from behind. Clean white background, photorealistic macro photograph, ultra-detailed, soft even studio lighting.",
+  "lumiere": "",
+  "statut": "proposé (version 2 rédigée le 12/10/2026, à tester dans Midjourney avant de refaire les autres)",
+  "remplace": true
  }
 }

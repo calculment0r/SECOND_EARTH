@@ -545,7 +545,10 @@ details[open]>summary .chev{transform:rotate(45deg)}
   // Prompts rédigés le 09/10/2026 d'après les fiches (data/prompts-propose.json) : proposés, à valider par Cal
   ITEMS.forEach(function (it) {
     var q = RAW.propose[it.id];
-    if (q && !it.promptEn && typeof q.corps === 'string' && q.corps) {
+    if (q && typeof q.complet === 'string' && q.complet) {
+      // Prompt complet (version 2) : texte prêt à copier, sans préfixe ni lumière communs ; remplace le prompt d'origine
+      it.corps = q.complet; it.light = ''; it.promptStatut = q.statut || 'proposé (version 2, à tester)'; it.proposed = true; it.fixed = true;
+    } else if (q && !it.promptEn && typeof q.corps === 'string' && q.corps) {
       it.corps = q.corps; it.light = q.lumiere || ''; it.promptStatut = q.statut || 'proposé (rédigé par Claude, à valider)'; it.proposed = true;
     }
   });
@@ -831,6 +834,10 @@ details[open]>summary .chev{transform:rotate(45deg)}
     return corps;
   }
   function promptParts(it) {
+    if (it.fixed && !(S.origine[it.id] && it.promptEn)) {
+      var fc = String(effCorps(it) || '').trim();
+      return fc ? { fixed: true, pre: '', light: '', sub: fc, par: PL.full } : null;
+    }
     if (S.origine[it.id] && it.promptEn) {
       var i = it.promptEn.indexOf('. ');
       return { orig: true, pre: i > 0 ? it.promptEn.slice(0, i + 1) : '', sub: i > 0 ? it.promptEn.slice(i + 2) : it.promptEn, par: PL.orig };
@@ -1045,6 +1052,10 @@ details[open]>summary .chev{transform:rotate(45deg)}
     if (!it) return;
     var e = edit(it), corps = effCorps(it), light = effLight(it), orig = !!(S.origine[it.id] && it.promptEn);
     var li = $('.pf-light', el), ta = $('.pf-corps', el);
+    if (it.fixed) {
+      var vw = $('.pf-view', el); if (vw && vw.closest('.pf-row')) vw.closest('.pf-row').hidden = true;
+      if (li.closest('.pf-f')) li.closest('.pf-f').hidden = true;
+    }
     if (document.activeElement !== li) li.value = light;
     if (document.activeElement !== ta && ta.value !== corps) { ta.value = corps; if (grow) autosize(ta); }
     $('.pf-lc', el).hidden = !lightIsCommon(it);
@@ -1064,7 +1075,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     var vs = $('.pf-view', el); if (vs) vs.classList.toggle('dis', orig);
     var on = $('.pf-open', el);
     if (on) {
-      if (view === 'planche' || orig || empty) on.hidden = true;
+      if (it.fixed || view === 'planche' || orig || empty) on.hidden = true;
       else {
         var so = splitOpen(String(corps).trim());
         on.hidden = view === 'situ' && so.open === situOpen(it) && !SCALE_RE.test(String(corps));

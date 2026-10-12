@@ -645,7 +645,7 @@ def fiche_html(it, ctx, kind, planche_codes):
         target = ctx.codes.get(va)
         if target:
             links.append('<a href="%s%s">Voir aussi %s</a>' % (ctx.prefix, esc(target), esc(va)))
-    origin = bool(it.get('prompt_en'))
+    origin = bool(it.get('prompt_en')) and not PROPOSED.get(code, {}).get('remplace')
     proposed = code in PROPOSED and not origin
     ready = origin or proposed
     links.append('<a href="%sprompts/index.html#%s">%s</a>' % (ctx.prefix, esc(code), 'Prompt' if ready else 'Prompt à rédiger'))

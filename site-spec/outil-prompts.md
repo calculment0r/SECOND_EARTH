@@ -146,6 +146,8 @@ Cadrage : plan large d'établissement, avec Seed (1,60 m) ou le Rob fusionné en
 
 ## 6. Prompts manquants
 
+**Mise à jour du 12/10/2026 (format 2, en test)** : Cal juge que les planches ne sortent pas comme des planches, que les images se ressemblent et que les animaux ressemblent à ceux de la Terre. Les trois premiers du Bestiaire (JP-01, JP-02, JP-03) sont refaits en texte complet : sujet d'abord, « realistic alien … », aucun nom d'animal terrestre, vues nommées (face, côté, dessus, dos), « clean white background », environ 70 à 95 mots ; l'outil les copie tels quels. Les autres restent au format 1 jusqu'au test de Cal dans Midjourney. Format conseillé : `--ar 2:1`.
+
 **Mise à jour du 09/10/2026** : Cal a relevé que beaucoup de prompts n'étaient pas rédigés. Les 119 manquants (57 Bestiaire, 37 Flore, 7 Titans, 18 paysages) ont été rédigés par lots d'après les fiches (planches photoréalistes pour les espèces, vues larges pour les paysages), relus par un second agent contre les fiches, et sont dans `data/prompts-propose.json` (champs `corps`, `lumiere`, `statut` « proposé »). L'outil les affiche comme tous les autres prompts, avec l'étiquette « proposé ». Ils restent à valider par Cal en QCM. Le texte ci-dessous décrit la situation du 28/09.
 
 À la date du brief : les 11 personnages et machines ont un prompt ; au Bestiaire 9 lignes sur 66 (dont TR-05, qui reprend celui de FL-TR-01) ; à la Flore 5 sur 42. Il manque 57 lignes du Bestiaire (TR-F reprendra le prompt du Titan volant), 37 plantes, 7 Titans et les 18 paysages.
