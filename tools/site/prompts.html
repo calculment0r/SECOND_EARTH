@@ -277,7 +277,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     <h1>Outil de prompts</h1>
     <p class="lede">Les paramètres saisis une fois dans la barre s'ajoutent à la fin de chaque prompt. Un bouton Copier par fiche.</p>
   </div>
-  <p class="legend" aria-label="Couleurs de l'aperçu"><span class="lbl">Aperçu</span><span class="pv-pre">phrase de style</span><span class="pv-light">lumière</span><span class="pv-sub">sujet</span><span class="pv-par">paramètres</span></p>
+  <p class="legend" aria-label="Couleurs de l'aperçu"><span class="lbl">Aperçu</span><span class="pv-sub">sujet et vues</span><span class="pv-pre">style</span><span class="pv-light">lumière</span><span class="pv-par">paramètres</span></p>
   <p class="store-note" id="storeNote" hidden>Stockage local indisponible (navigation privée ou stockage bloqué) : les réglages et les prompts modifiés ne seront pas gardés à la fermeture. Les exporter en JSON pour les conserver.</p>
 </div>
 
@@ -307,13 +307,13 @@ details[open]>summary .chev{transform:rotate(45deg)}
         <div class="adv" id="adv"></div>
       </div>
       <div class="bpanel" id="pStyle" hidden>
-        <div class="bp-h"><span class="lbl or">Phrase de style</span><span class="hint">En tête de chaque prompt : préfixe global, puis la lumière de la fiche ; le négatif passe en paramètre --no.</span></div>
+        <div class="bp-h"><span class="lbl or">Phrase de style</span><span class="hint">À la fin de chaque prompt, après le sujet et les vues : le style, puis la lumière ; le négatif passe en paramètre --no.</span></div>
         <div class="style-grid">
-          <label class="fld"><span class="lbl">Préfixe global</span><textarea class="inp" id="sPrefix" rows="2" spellcheck="false" lang="en"></textarea></label>
-          <label class="fld"><span class="lbl">Lumière commune</span><textarea class="inp" id="sLight" rows="2" spellcheck="false" lang="en"></textarea><span class="hint">Pour les fiches qui suivent la lumière commune. Les autres gardent la leur (grotte, nuit sans lune, sous l'eau, espace, brouillard).</span></label>
+          <label class="fld"><span class="lbl">Style (fin du prompt)</span><textarea class="inp" id="sPrefix" rows="2" spellcheck="false" lang="en"></textarea></label>
+          <label class="fld"><span class="lbl">Lumière commune</span><textarea class="inp" id="sLight" rows="2" spellcheck="false" lang="en"></textarea><span class="hint">Pour toutes les fiches d'espèces, de personnages et de machines. Les paysages ont leur lumière (moment du jour) (grotte, nuit sans lune, sous l'eau, espace, brouillard).</span></label>
           <label class="fld"><span class="lbl">Négatif (--no)</span><input class="inp" id="sNeg" type="text" spellcheck="false" lang="en"></label>
         </div>
-        <div class="bp-f"><button type="button" class="btn" id="sReset">Revenir à la phrase photographique</button><button type="button" class="btn" id="sResetOld">Ancienne phrase des Planches (peinte)</button><p class="hint">Phrase photographique, direction artistique décidée le 09/10/2026 : <code id="sOrig"></code></p><p class="hint">Ancienne phrase des Planches de dessin, abandonnée : <code id="sOld"></code></p></div>
+        <div class="bp-f"><button type="button" class="btn" id="sReset">Revenir au style par défaut</button><p class="hint">Style par défaut, validé par Cal dans Midjourney le 12/10/2026 : <code id="sOrig"></code></p></div>
       </div>
       <div class="bpanel" id="pSets" hidden>
         <div class="bp-h"><span class="lbl or">Jeux de réglages</span><span class="hint">Un jeu garde la barre complète : paramètres et phrase de style.</span></div>
@@ -393,14 +393,20 @@ details[open]>summary .chev{transform:rotate(45deg)}
     light: 'warm 4,500 K orange light like a late Earth afternoon, soft natural shadows',
     neg: 'text, watermark, painting, illustration, drawing, concept art, 3d render, cgi, cartoon'
   };
-  var PHOTO_PHRASE = PHOTO_STYLE.prefix + ', ' + PHOTO_STYLE.light + ' --no ' + PHOTO_STYLE.neg;
+  // Style par défaut (version 3, 12/10/2026) : placé APRES le sujet et la phrase de planche, fond blanc, lumière de studio
+  var STYLE_V3 = {
+    prefix: 'Clean white background, photorealistic, ultra-detailed, vibrant natural colours',
+    light: 'soft even studio lighting',
+    neg: 'text, watermark, painting, illustration, drawing, concept art, 3d render, cgi, cartoon'
+  };
+  var PHOTO_PHRASE = STYLE_V3.prefix + ', ' + STYLE_V3.light + '. --no ' + STYLE_V3.neg;
   // Ancienne phrase des Planches de dessin (peinture), abandonnée : gardée pour « Prompt d'origine tel quel » et pour mémoire
   var PLANCHES_PHRASE = 'painterly science-fiction concept art, realistic proportions, soft volumetric light from a warm orange star, no text, no watermark';
   var PLANCHES_STYLE = { prefix: 'painterly science-fiction concept art, realistic proportions', light: 'soft volumetric light from a warm orange star', neg: 'text, watermark' };
-  function freshStyle() { return { prefix: PHOTO_STYLE.prefix, light: PHOTO_STYLE.light, neg: PHOTO_STYLE.neg }; }
+  function freshStyle() { return { prefix: STYLE_V3.prefix, light: STYLE_V3.light, neg: STYLE_V3.neg }; }
   // Un champ resté à l'ancienne valeur par défaut passe à la nouvelle ; un champ modifié par l'utilisateur est gardé
   function migrateStyle(st) {
-    ['prefix', 'light', 'neg'].forEach(function (k) { if (st[k] === PLANCHES_STYLE[k]) st[k] = PHOTO_STYLE[k]; });
+    ['prefix', 'light', 'neg'].forEach(function (k) { if (st[k] === PLANCHES_STYLE[k] || st[k] === PHOTO_STYLE[k]) st[k] = STYLE_V3[k]; });
     return st;
   }
   var DEFAULT_PARAMS = '--ar 16:9';
@@ -422,7 +428,6 @@ details[open]>summary .chev{transform:rotate(45deg)}
     { k: 'noire', l: 'Saison noire', t: 'moonless black night where bioluminescence is the only light' },
     { k: 'canopee', l: 'Sous la canopée', t: 'magenta light under a purple canopy, green understory almost black except in clearings', only: FORESTS }
   ];
-  var VIEWS = [{ k: 'planche', l: 'Planche' }, { k: 'situ', l: 'En situation' }, { k: 'libre', l: 'Libre' }];
   // Ouvertures reprises des prompts existants des Planches (pour les brouillons)
   var OPEN = {
     animal: 'Creature sheet, side and three-quarter views on a neutral light grey background:',
@@ -545,11 +550,8 @@ details[open]>summary .chev{transform:rotate(45deg)}
   // Prompts rédigés le 09/10/2026 d'après les fiches (data/prompts-propose.json) : proposés, à valider par Cal
   ITEMS.forEach(function (it) {
     var q = RAW.propose[it.id];
-    if (q && typeof q.complet === 'string' && q.complet) {
-      // Prompt complet (version 2) : texte prêt à copier, sans préfixe ni lumière communs ; remplace le prompt d'origine
-      it.corps = q.complet; it.light = ''; it.promptStatut = q.statut || 'proposé (version 2, à tester)'; it.proposed = true; it.fixed = true;
-    } else if (q && !it.promptEn && typeof q.corps === 'string' && q.corps) {
-      it.corps = q.corps; it.light = q.lumiere || ''; it.promptStatut = q.statut || 'proposé (rédigé par Claude, à valider)'; it.proposed = true;
+    if (q && typeof q.corps === 'string' && q.corps) {
+      it.corps = q.corps; it.light = q.lumiere || ''; it.promptStatut = q.statut || 'proposé (version 3, à valider)'; it.proposed = true;
     }
   });
   function isReady(it) { return !!(it.promptEn || it.proposed); }
@@ -590,23 +592,23 @@ details[open]>summary .chev{transform:rotate(45deg)}
   /* ================= état et stockage ================= */
   var STORE_KEY = 'second-earth.outil-prompts.v1';
   var storageOK = true;
-  function defState() { return { params: DEFAULT_PARAMS, style: freshStyle(), styleV: 2, sets: [], edits: {}, views: {}, origine: {}, moments: {} }; }
+  function defState() { return { params: DEFAULT_PARAMS, style: freshStyle(), styleV: 3, sets: [], edits: {}, origine: {}, moments: {} }; }
   function isObj(o) { return o && typeof o === 'object' && !Array.isArray(o); }
   function sanitize(o, base) {
     var d = base || defState();
     if (!isObj(o)) return d;
     if (typeof o.params === 'string') d.params = o.params;
-    if (isObj(o.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof o.style[k] === 'string') d.style[k] = o.style[k]; }); if (o.styleV !== 2) migrateStyle(d.style); }
+    if (isObj(o.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof o.style[k] === 'string') d.style[k] = o.style[k]; }); if (o.styleV !== 3) migrateStyle(d.style); }
     if (Array.isArray(o.sets)) {
       o.sets.forEach(function (x) {
         if (!isObj(x) || typeof x.name !== 'string' || typeof x.params !== 'string') return;
         var st = freshStyle();
-        if (isObj(x.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof x.style[k] === 'string') st[k] = x.style[k]; }); if (o.styleV !== 2) migrateStyle(st); }
+        if (isObj(x.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof x.style[k] === 'string') st[k] = x.style[k]; }); if (o.styleV !== 3) migrateStyle(st); }
         d.sets = d.sets.filter(function (s) { return s.name !== x.name; });
         d.sets.push({ name: x.name.slice(0, 60), params: x.params, style: st });
       });
     }
-    if (isObj(o.edits)) Object.keys(o.edits).forEach(function (id) {
+    if (isObj(o.edits) && o.styleV === 3) Object.keys(o.edits).forEach(function (id) {
       var e = o.edits[id]; if (!isObj(e)) return;
       var n = {};
       if (typeof e.corps === 'string') n.corps = e.corps;
@@ -614,7 +616,6 @@ details[open]>summary .chev{transform:rotate(45deg)}
       if (e.draft === true && typeof n.corps === 'string') n.draft = true;
       if ('corps' in n || 'lumiere' in n) d.edits[id] = n;
     });
-    if (isObj(o.views)) Object.keys(o.views).forEach(function (id) { if (['situ', 'libre', 'planche'].indexOf(o.views[id]) !== -1) d.views[id] = o.views[id]; });
     if (isObj(o.origine)) Object.keys(o.origine).forEach(function (id) { if (o.origine[id] === true) d.origine[id] = true; });
     if (isObj(o.moments)) Object.keys(o.moments).forEach(function (id) { if (typeof o.moments[id] === 'string') d.moments[id] = o.moments[id]; });
     return d;
@@ -791,80 +792,53 @@ details[open]>summary .chev{transform:rotate(45deg)}
 
   /* ================= composition des prompts ================= */
   var PL = computeLine(S.params, S.style);
-  function isDefaultLight(l) { return !l || l === PLANCHES_STYLE.light || l === PHOTO_STYLE.light; }
   function baseLight(it) {
     if (it.kind === 'paysage') {
       var mk = S.moments[it.id];
       for (var i = 0; i < MOMENTS.length; i++) if (MOMENTS[i].k === mk) return MOMENTS[i].t;
-      return isDefaultLight(it.light) ? S.style.light : it.light;
+      return it.light ? it.light : MOMENTS[0].t;
     }
-    return isDefaultLight(it.light) ? S.style.light : it.light;
+    return it.light ? it.light : S.style.light;
   }
   function edit(it) { return S.edits[it.id] || {}; }
   function effLight(it) { var e = edit(it); return typeof e.lumiere === 'string' ? e.lumiere : baseLight(it); }
   function effCorps(it) { var e = edit(it); return typeof e.corps === 'string' ? e.corps : it.corps; }
-  // Planche de référence par défaut pour toutes les fiches : le prompt est copié en entier (ouverture « sheet », fond, échelle).
-  // « En situation » et « Libre » restent des variantes à choisir fiche par fiche.
-  function defView(it) { return 'planche'; }
-  function effView(it) { return S.views[it.id] || defView(it); }
   function lightIsCommon(it) {
     var e = edit(it);
     if (typeof e.lumiere === 'string') return false;
-    return it.kind === 'paysage' ? (!S.moments[it.id] && isDefaultLight(it.light)) : isDefaultLight(it.light);
+    return it.kind === 'paysage' ? (!S.moments[it.id] && !it.light) : !it.light;
   }
   function isModified(it) {
     var e = edit(it);
     return (typeof e.corps === 'string' && e.corps !== it.corps) || (typeof e.lumiere === 'string' && e.lumiere !== baseLight(it));
   }
-  function splitOpen(c) {
-    var m = /^([^:.]{3,200}):\s+/.exec(c);
-    return m ? { open: m[1] + ':', subject: c.slice(m[0].length) } : { open: '', subject: c };
-  }
-  function situOpen(it) {
-    if (it.kind === 'perso') return 'In a scene on location:';
-    return BIOME_EN[it.group] ? 'In its natural habitat, ' + BIOME_EN[it.group] + ':' : 'In its natural habitat:';
-  }
-  // La silhouette de Seed pour l'échelle n'a de sens que sur la planche de référence
-  var SCALE_RE = /\s*An? (?:tiny )?1\.60 m girl with white hair[^.]*for scale\.\s*$/i;
-  function viewBody(it, corps, view) {
-    if (it.kind === 'paysage') return corps;
-    var sp = splitOpen(corps);
-    if (view === 'situ') return situOpen(it) + ' ' + sp.subject.replace(SCALE_RE, '');
-    if (view === 'libre') return cap(sp.subject.replace(SCALE_RE, ''));
-    return corps;
-  }
+  // Composition (version 3) : le sujet et la phrase de planche d'abord, puis le style et la lumière, puis les paramètres.
+  // Un paysage n'a pas de style de planche : sujet, puis sa lumière (jour, crépuscule, nuit...), puis les paramètres.
   function promptParts(it) {
-    if (it.fixed && !(S.origine[it.id] && it.promptEn)) {
-      var fc = String(effCorps(it) || '').trim();
-      return fc ? { fixed: true, pre: '', light: '', sub: fc, par: PL.full } : null;
-    }
-    if (S.origine[it.id] && it.promptEn) {
-      var i = it.promptEn.indexOf('. ');
-      return { orig: true, pre: i > 0 ? it.promptEn.slice(0, i + 1) : '', sub: i > 0 ? it.promptEn.slice(i + 2) : it.promptEn, par: PL.orig };
-    }
     var corps = String(effCorps(it) || '').trim();
     if (!corps) return null;
-    return { pre: clean(S.style.prefix), light: clean(effLight(it)), sub: viewBody(it, corps, effView(it)), par: PL.full };
+    if (it.kind === 'paysage') return { land: true, pre: '', light: clean(effLight(it)), sub: corps, par: PL.full };
+    return { pre: clean(S.style.prefix), light: clean(effLight(it)), sub: corps, par: PL.full };
   }
   function promptText(p, withParams) {
     if (!p) return '';
-    var t = p.orig ? (p.pre ? p.pre + ' ' : '') + p.sub
-      : ((p.pre || p.light) ? [p.pre, p.light].filter(Boolean).join(', ') + '. ' : '') + p.sub;
+    var t = p.sub;
+    if (p.land) { if (p.light) t += ' ' + cap(p.light) + '.'; }
+    else { var tail = [p.pre, p.light].filter(Boolean).join(', '); if (tail) t += ' ' + tail + '.'; }
     if (withParams && p.par) t += ' ' + p.par;
     return t;
   }
   function previewHtml(p) {
     if (!p) return '<span class="pv-empty">à rédiger</span>';
-    var h = '';
-    if (p.orig) {
-      if (p.pre) h += '<span class="pv-pre">' + esc(p.pre) + ' </span>';
-      h += '<span class="pv-sub">' + esc(p.sub) + '</span>';
+    var h = '<span class="pv-sub">' + esc(p.sub) + '</span>';
+    if (p.land) {
+      if (p.light) h += ' <span class="pv-light">' + esc(cap(p.light)) + '.</span>';
     } else {
+      if (p.pre || p.light) h += ' ';
       if (p.pre) h += '<span class="pv-pre">' + esc(p.pre) + '</span>';
       if (p.pre && p.light) h += '<span class="pv-pre">, </span>';
       if (p.light) h += '<span class="pv-light">' + esc(p.light) + '</span>';
-      if (p.pre || p.light) h += '<span class="pv-pre">. </span>';
-      h += '<span class="pv-sub">' + esc(p.sub) + '</span>';
+      if (p.pre || p.light) h += '<span class="pv-pre">.</span>';
     }
     if (p.par) h += ' <span class="pv-par">' + esc(p.par) + '</span>';
     return h;
@@ -1008,17 +982,12 @@ details[open]>summary .chev{transform:rotate(45deg)}
     if (it.kind === 'paysage') {
       h += '<div class="pf-row"><span class="lbl">Moment</span><div class="seg pf-moment" role="radiogroup" aria-label="Moment">' + MOMENTS.filter(function (m) { return !m.only || m.only.indexOf(it.id) !== -1; }).map(function (m) {
         return '<button type="button" role="radio" aria-checked="false" data-act="moment" data-m="' + m.k + '">' + esc(m.l) + '</button>';
-      }).join('') + '</div></div><p class="hint">Cadrage : plan large d\'établissement' + (it.biome ? ', Seed en silhouette minuscule pour l\'échelle' : '') + '.</p>';
-    } else {
-      h += '<div class="pf-row"><span class="lbl">Vue</span><div class="seg pf-view" role="radiogroup" aria-label="Vue">' + VIEWS.map(function (v) {
-        return '<button type="button" role="radio" aria-checked="false" data-act="view" data-v="' + v.k + '">' + esc(v.l) + '</button>';
-      }).join('') + '</div></div><p class="hint pf-open" hidden></p>';
+      }).join('') + '</div></div><p class="hint">Vue large photographique, sans personnage ; la lumière change avec le moment.</p>';
     }
     h += '<label class="pf-f"><span class="fh"><span class="lbl">Lumière</span><span class="c pf-lc" hidden>commune</span></span><input type="text" class="inp pf-light" data-edit="lumiere" spellcheck="false" lang="en"></label>';
     h += '<label class="pf-f"><span class="fh"><span class="lbl">Corps du prompt</span></span><textarea class="inp pf-corps" data-edit="corps" rows="4" spellcheck="false" lang="en" placeholder="à rédiger"></textarea></label>';
     h += '<div class="pf-draft" hidden><button type="button" class="btn sm" data-act="draft">Brouillon depuis la fiche</button><span class="hint">premier jet assemblé depuis les champs de la fiche, marqué « proposé »</span></div>';
     h += '<p class="hint pf-dnote" hidden>Brouillon assemblé depuis les champs de la fiche, en français : à réécrire en anglais (formes, matières, couleurs, lumière) avant usage.</p>';
-    if (it.promptEn) h += '<div><button type="button" class="tog pf-orig" data-act="orig" aria-pressed="false"><span>Prompt d\'origine tel quel</span><i aria-hidden="true"></i></button></div>';
     h += '<div class="pf-pv"><div class="pf-pvh"><span class="lbl">Aperçu du prompt complet</span><button type="button" class="bl" data-act="pv" aria-expanded="true">Replier</button></div><div class="pv open" lang="en"></div><p class="pf-warn" hidden></p></div>';
     h += '<div class="pf-actions"><button type="button" class="btn pri pf-copy" data-act="copy">Copier</button><button type="button" class="btn pf-copy2" data-act="copy-np">Copier sans paramètres</button></div>';
     return h + '</div>';
@@ -1050,12 +1019,9 @@ details[open]>summary .chev{transform:rotate(45deg)}
   function updateFiche(el, grow) {
     var it = BY_ID[el.getAttribute('data-id')];
     if (!it) return;
-    var e = edit(it), corps = effCorps(it), light = effLight(it), orig = !!(S.origine[it.id] && it.promptEn);
+    var e = edit(it), corps = effCorps(it), light = effLight(it), orig = false;
     var li = $('.pf-light', el), ta = $('.pf-corps', el);
-    if (it.fixed) {
-      var vw = $('.pf-view', el); if (vw && vw.closest('.pf-row')) vw.closest('.pf-row').hidden = true;
-      if (li.closest('.pf-f')) li.closest('.pf-f').hidden = true;
-    }
+
     if (document.activeElement !== li) li.value = light;
     if (document.activeElement !== ta && ta.value !== corps) { ta.value = corps; if (grow) autosize(ta); }
     $('.pf-lc', el).hidden = !lightIsCommon(it);
@@ -1070,20 +1036,6 @@ details[open]>summary .chev{transform:rotate(45deg)}
     var empty = !String(corps || '').trim();
     $('.pf-draft', el).hidden = !(empty && !isReady(it));
     $('.pf-dnote', el).hidden = !e.draft;
-    var view = effView(it);
-    $$('[data-act="view"]', el).forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-v') === view)); });
-    var vs = $('.pf-view', el); if (vs) vs.classList.toggle('dis', orig);
-    var on = $('.pf-open', el);
-    if (on) {
-      if (it.fixed || view === 'planche' || orig || empty) on.hidden = true;
-      else {
-        var so = splitOpen(String(corps).trim());
-        on.hidden = view === 'situ' && so.open === situOpen(it) && !SCALE_RE.test(String(corps));
-        on.textContent = view === 'situ'
-          ? 'Ouverture remplacée : « ' + (so.open || '(aucune)') + ' » devient « ' + situOpen(it) + ' » (proposé par l\'outil).' + (SCALE_RE.test(String(corps)) ? ' Phrase d\'échelle retirée.' : '')
-          : 'Ouverture retirée : « ' + (so.open || '(aucune)') + ' ».' + (SCALE_RE.test(String(corps)) ? ' Phrase d\'échelle retirée.' : '');
-      }
-    }
     var mk = typeof e.lumiere === 'string' ? '' : (S.moments[it.id] || '');
     $$('[data-act="moment"]', el).forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-m') === mk)); });
     var ob = $('.pf-orig', el); if (ob) ob.setAttribute('aria-pressed', String(orig));
@@ -1260,7 +1212,6 @@ details[open]>summary .chev{transform:rotate(45deg)}
       return '<div class="fld" data-adv="' + a.k + '">' + head + '<input class="inp" type="text" id="adv-' + a.k + '" spellcheck="false" autocomplete="off" placeholder="' + esc(a.ph) + '" data-adv-t="' + a.k + '"></div>';
     }).join('');
     $('#sOrig').textContent = PHOTO_PHRASE;
-    $('#sOld').textContent = PLANCHES_PHRASE;
   }
   function advValue(k) {
     var m = PL.parsed.map;
@@ -1439,7 +1390,6 @@ details[open]>summary .chev{transform:rotate(45deg)}
       btn.textContent = open ? 'Replier' : 'Déplier';
       return;
     }
-    if (act === 'view') { var v = btn.getAttribute('data-v'); if (v === defView(it)) delete S.views[it.id]; else S.views[it.id] = v; }
     else if (act === 'moment') {
       var mk = btn.getAttribute('data-m');
       S.moments[it.id] = mk;
@@ -1495,12 +1445,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     $('#sReset').addEventListener('click', function () {
       S.style = freshStyle();
       ['sPrefix', 'sLight', 'sNeg'].forEach(function (id) { $('#' + id).blur(); });
-      refreshAll(); save(); live('Phrase photographique rétablie');
-    });
-    $('#sResetOld').addEventListener('click', function () {
-      S.style = { prefix: PLANCHES_STYLE.prefix, light: PLANCHES_STYLE.light, neg: PLANCHES_STYLE.neg };
-      ['sPrefix', 'sLight', 'sNeg'].forEach(function (id) { $('#' + id).blur(); });
-      refreshAll(); save(); live('Ancienne phrase des Planches rétablie');
+      refreshAll(); save(); live('Style par défaut rétabli');
     });
     $('.bar-btns').addEventListener('click', function (ev) { var b = ev.target.closest('[data-panel]'); if (b) openPanel(b.getAttribute('data-panel')); });
     $('#bMobile').addEventListener('click', function () {
@@ -1536,7 +1481,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     });
     $('#bExport').addEventListener('click', function () {
       var d = new Date(), stamp = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
-      var data = { format: 'second-earth-outil-prompts', version: 1, exporte_le: d.toISOString(), styleV: 2, params: S.params, style: S.style, sets: S.sets, edits: S.edits, views: S.views, origine: S.origine, moments: S.moments };
+      var data = { format: 'second-earth-outil-prompts', version: 1, exporte_le: d.toISOString(), styleV: 3, params: S.params, style: S.style, sets: S.sets, edits: S.edits, origine: S.origine, moments: S.moments };
       try {
         var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         var a = document.createElement('a');
