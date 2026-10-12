@@ -277,7 +277,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     <h1>Outil de prompts</h1>
     <p class="lede">Les paramètres saisis une fois dans la barre s'ajoutent à la fin de chaque prompt. Un bouton Copier par fiche.</p>
   </div>
-  <p class="legend" aria-label="Couleurs de l'aperçu"><span class="lbl">Aperçu</span><span class="pv-sub">sujet et vues</span><span class="pv-pre">style</span><span class="pv-light">lumière</span><span class="pv-par">paramètres</span></p>
+  <p class="legend" aria-label="Couleurs de l'aperçu"><span class="lbl">Aperçu</span><span class="pv-pre">début</span><span class="pv-sub">sujet et planche</span><span class="pv-light">lumière</span><span class="pv-par">paramètres</span></p>
   <p class="store-note" id="storeNote" hidden>Stockage local indisponible (navigation privée ou stockage bloqué) : les réglages et les prompts modifiés ne seront pas gardés à la fermeture. Les exporter en JSON pour les conserver.</p>
 </div>
 
@@ -295,7 +295,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
         <div class="qgrp"><span class="lbl" id="lFormat">Format</span><div class="seg" id="segFormat" role="group" aria-labelledby="lFormat"></div></div>
         <div class="qgrp"><span class="lbl" id="lVersion">Version</span><div class="seg" id="segVersion" role="group" aria-labelledby="lVersion"></div></div>
         <button type="button" class="tog pm" id="tHd" aria-pressed="false"><span>--hd</span><i aria-hidden="true"></i></button>
-        <button type="button" class="tog pm" id="tRaw" aria-pressed="false"><span>--style raw</span><i aria-hidden="true"></i></button>
+        <button type="button" class="tog pm" id="tRaw" aria-pressed="false"><span>--raw</span><i aria-hidden="true"></i></button>
       </div>
       <div class="bar-btns">
         <button type="button" class="bb" data-panel="pAdv" aria-expanded="false" aria-controls="pAdv">Paramètres avancés</button>
@@ -307,13 +307,13 @@ details[open]>summary .chev{transform:rotate(45deg)}
         <div class="adv" id="adv"></div>
       </div>
       <div class="bpanel" id="pStyle" hidden>
-        <div class="bp-h"><span class="lbl or">Phrase de style</span><span class="hint">À la fin de chaque prompt, après le sujet et les vues : le style, puis la lumière ; le négatif passe en paramètre --no.</span></div>
+        <div class="bp-h"><span class="lbl or">Phrase de style</span><span class="hint">Au début du prompt de chaque espèce (animal, Titan, plante), avant le sujet. Personnages, machines et paysages portent leur propre début. La fin et le négatif sont facultatifs.</span></div>
         <div class="style-grid">
-          <label class="fld"><span class="lbl">Style (fin du prompt)</span><textarea class="inp" id="sPrefix" rows="2" spellcheck="false" lang="en"></textarea></label>
-          <label class="fld"><span class="lbl">Lumière commune</span><textarea class="inp" id="sLight" rows="2" spellcheck="false" lang="en"></textarea><span class="hint">Pour toutes les fiches d'espèces, de personnages et de machines. Les paysages ont leur lumière (moment du jour) (grotte, nuit sans lune, sous l'eau, espace, brouillard).</span></label>
-          <label class="fld"><span class="lbl">Négatif (--no)</span><input class="inp" id="sNeg" type="text" spellcheck="false" lang="en"></label>
+          <label class="fld"><span class="lbl">Début du prompt (espèces)</span><textarea class="inp" id="sPrefix" rows="2" spellcheck="false" lang="en"></textarea></label>
+          <label class="fld"><span class="lbl">Fin du prompt (espèces, facultatif)</span><textarea class="inp" id="sLight" rows="2" spellcheck="false" lang="en"></textarea><span class="hint">Vide par défaut : les prompts de Cal n'avaient rien après la phrase de planche. Les paysages ont leur lumière (moment du jour).</span></label>
+          <label class="fld"><span class="lbl">Négatif (--no, facultatif)</span><input class="inp" id="sNeg" type="text" spellcheck="false" lang="en"></label>
         </div>
-        <div class="bp-f"><button type="button" class="btn" id="sReset">Revenir au style par défaut</button><p class="hint">Style par défaut, validé par Cal dans Midjourney le 12/10/2026 : <code id="sOrig"></code></p></div>
+        <div class="bp-f"><button type="button" class="btn" id="sReset">Revenir au style par défaut</button><p class="hint">Début par défaut, repris des essais de Cal dans Midjourney (12/10/2026) : <code id="sOrig"></code></p></div>
       </div>
       <div class="bpanel" id="pSets" hidden>
         <div class="bp-h"><span class="lbl or">Jeux de réglages</span><span class="hint">Un jeu garde la barre complète : paramètres et phrase de style.</span></div>
@@ -393,23 +393,28 @@ details[open]>summary .chev{transform:rotate(45deg)}
     light: 'warm 4,500 K orange light like a late Earth afternoon, soft natural shadows',
     neg: 'text, watermark, painting, illustration, drawing, concept art, 3d render, cgi, cartoon'
   };
-  // Style par défaut (version 3, 12/10/2026) : placé APRES le sujet et la phrase de planche, fond blanc, lumière de studio
+  // Ancien style par défaut (version 3, 12/10/2026) : placé après le sujet ; gardé pour reconnaître et migrer un état enregistré
   var STYLE_V3 = {
     prefix: 'Clean white background, photorealistic, ultra-detailed, vibrant natural colours',
     light: 'soft even studio lighting',
     neg: 'text, watermark, painting, illustration, drawing, concept art, 3d render, cgi, cartoon'
   };
-  var PHOTO_PHRASE = STYLE_V3.prefix + ', ' + STYLE_V3.light + '. --no ' + STYLE_V3.neg;
+  // Style par défaut (version 4, 12/10/2026) : le début de prompt des essais de Cal dans Midjourney (« ça marche »), placé AVANT le sujet ;
+  // pas de lumière ni de négatif : ses prompts n'en avaient pas. Il s'applique aux espèces ; personnages, machines et paysages portent leur début.
+  var STYLE_V4 = { prefix: 'photorealistic and cinematic photography of a Fantastic mythic', light: '', neg: '' };
+  var PHOTO_PHRASE = STYLE_V4.prefix;
   // Ancienne phrase des Planches de dessin (peinture), abandonnée : gardée pour « Prompt d'origine tel quel » et pour mémoire
   var PLANCHES_PHRASE = 'painterly science-fiction concept art, realistic proportions, soft volumetric light from a warm orange star, no text, no watermark';
   var PLANCHES_STYLE = { prefix: 'painterly science-fiction concept art, realistic proportions', light: 'soft volumetric light from a warm orange star', neg: 'text, watermark' };
-  function freshStyle() { return { prefix: STYLE_V3.prefix, light: STYLE_V3.light, neg: STYLE_V3.neg }; }
-  // Un champ resté à l'ancienne valeur par défaut passe à la nouvelle ; un champ modifié par l'utilisateur est gardé
+  function freshStyle() { return { prefix: STYLE_V4.prefix, light: STYLE_V4.light, neg: STYLE_V4.neg }; }
+  // Un champ resté à une ancienne valeur par défaut passe à la nouvelle ; un champ modifié par l'utilisateur est gardé
   function migrateStyle(st) {
-    ['prefix', 'light', 'neg'].forEach(function (k) { if (st[k] === PLANCHES_STYLE[k] || st[k] === PHOTO_STYLE[k]) st[k] = STYLE_V3[k]; });
+    ['prefix', 'light', 'neg'].forEach(function (k) { if (st[k] === PLANCHES_STYLE[k] || st[k] === PHOTO_STYLE[k] || st[k] === STYLE_V3[k]) st[k] = STYLE_V4[k]; });
     return st;
   }
-  var DEFAULT_PARAMS = '--ar 16:9';
+  var STYLE_VERSION = 4;
+  // Paramètres des essais de Cal (12/10/2026) ; la version de Midjourney est ajoutée à part (--v 8.2 par défaut)
+  var DEFAULT_PARAMS = '--chaos 15 --ar 2:1 --raw --stylize 400 --hd';
   var DEFAULT_VERSION = '8.2';
   var FORMATS = [['16:9', '16:9'], ['21:9', '21:9'], ['2.39:1', '239:100'], ['9:16', '9:16'], ['1:1', '1:1'], ['4:5', '4:5'], ['3:2', '3:2'], ['2:1', '2:1']];
   var VERSIONS = ['8.2', '8.1', '7'];
@@ -551,7 +556,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
   ITEMS.forEach(function (it) {
     var q = RAW.propose[it.id];
     if (q && typeof q.corps === 'string' && q.corps) {
-      it.corps = q.corps; it.light = q.lumiere || ''; it.promptStatut = q.statut || 'proposé (version 3, à valider)'; it.proposed = true;
+      it.corps = q.corps; it.light = q.lumiere || ''; it.promptStatut = q.statut || 'proposé (à valider)'; it.proposed = true;
     }
   });
   function isReady(it) { return !!(it.promptEn || it.proposed); }
@@ -592,23 +597,24 @@ details[open]>summary .chev{transform:rotate(45deg)}
   /* ================= état et stockage ================= */
   var STORE_KEY = 'second-earth.outil-prompts.v1';
   var storageOK = true;
-  function defState() { return { params: DEFAULT_PARAMS, style: freshStyle(), styleV: 3, sets: [], edits: {}, origine: {}, moments: {} }; }
+  function defState() { return { params: DEFAULT_PARAMS, style: freshStyle(), styleV: STYLE_VERSION, sets: [], edits: {}, origine: {}, moments: {} }; }
   function isObj(o) { return o && typeof o === 'object' && !Array.isArray(o); }
   function sanitize(o, base) {
     var d = base || defState();
     if (!isObj(o)) return d;
-    if (typeof o.params === 'string') d.params = o.params;
-    if (isObj(o.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof o.style[k] === 'string') d.style[k] = o.style[k]; }); if (o.styleV !== 3) migrateStyle(d.style); }
+    // Avant la version 4 les paramètres par défaut étaient d'autres (avec --sref) : on repart de ceux qui marchent, une seule fois
+    if (typeof o.params === 'string' && o.styleV === STYLE_VERSION) d.params = o.params;
+    if (isObj(o.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof o.style[k] === 'string') d.style[k] = o.style[k]; }); if (o.styleV !== STYLE_VERSION) migrateStyle(d.style); }
     if (Array.isArray(o.sets)) {
       o.sets.forEach(function (x) {
         if (!isObj(x) || typeof x.name !== 'string' || typeof x.params !== 'string') return;
         var st = freshStyle();
-        if (isObj(x.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof x.style[k] === 'string') st[k] = x.style[k]; }); if (o.styleV !== 3) migrateStyle(st); }
+        if (isObj(x.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof x.style[k] === 'string') st[k] = x.style[k]; }); if (o.styleV !== STYLE_VERSION) migrateStyle(st); }
         d.sets = d.sets.filter(function (s) { return s.name !== x.name; });
         d.sets.push({ name: x.name.slice(0, 60), params: x.params, style: st });
       });
     }
-    if (isObj(o.edits) && o.styleV === 3) Object.keys(o.edits).forEach(function (id) {
+    if (isObj(o.edits) && o.styleV === STYLE_VERSION) Object.keys(o.edits).forEach(function (id) {
       var e = o.edits[id]; if (!isObj(e)) return;
       var n = {};
       if (typeof e.corps === 'string') n.corps = e.corps;
@@ -665,7 +671,6 @@ details[open]>summary .chev{transform:rotate(45deg)}
   function keyOf(name) {
     var n = String(name).toLowerCase();
     if (/^\d+(?:[.,]\d+)?:\d+(?:[.,]\d+)?$/.test(n)) return { key: 'ar', val: n };
-    if (n === 'raw') return { key: 'style', val: 'raw' };
     var k = PALIAS[n] || n;
     return P[k] ? { key: k } : null;
   }
@@ -713,11 +718,13 @@ details[open]>summary .chev{transform:rotate(45deg)}
     });
     return { map: map, unknown: unknown, notes: notes };
   }
+  // Écriture : les noms longs de chaos et stylize, comme dans les essais de Cal (équivalents des formes courtes --c et --s)
+  var LONGNAME = { c: 'chaos', s: 'stylize' };
   function ser(k, v) {
-    var sp = P[k];
-    if (sp.t === 'flag') return '--' + k;
-    if (Array.isArray(v)) return '--' + k + (v.length ? ' ' + v.join(' ') : '');
-    return '--' + k + (v !== '' && v != null ? ' ' + v : '');
+    var sp = P[k], n = LONGNAME[k] || k;
+    if (sp.t === 'flag') return '--' + n;
+    if (Array.isArray(v)) return '--' + n + (v.length ? ' ' + v.join(' ') : '');
+    return '--' + n + (v !== '' && v != null ? ' ' + v : '');
   }
   function mergeNo(a, b) {
     var seen = {}, out = [];
@@ -798,6 +805,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
       for (var i = 0; i < MOMENTS.length; i++) if (MOMENTS[i].k === mk) return MOMENTS[i].t;
       return it.light ? it.light : MOMENTS[0].t;
     }
+    if (it.kind === 'perso') return it.light || '';
     return it.light ? it.light : S.style.light;
   }
   function edit(it) { return S.edits[it.id] || {}; }
@@ -812,34 +820,30 @@ details[open]>summary .chev{transform:rotate(45deg)}
     var e = edit(it);
     return (typeof e.corps === 'string' && e.corps !== it.corps) || (typeof e.lumiere === 'string' && e.lumiere !== baseLight(it));
   }
-  // Composition (version 3) : le sujet et la phrase de planche d'abord, puis le style et la lumière, puis les paramètres.
-  // Un paysage n'a pas de style de planche : sujet, puis sa lumière (jour, crépuscule, nuit...), puis les paramètres.
+  // Composition (version 4) : pour une espèce, le début de prompt de Cal, puis le sujet et la phrase de planche (le `corps`), puis les paramètres.
+  // Un personnage, une machine ou un paysage porte son propre début dans le `corps` ; un paysage ajoute sa lumière (jour, crépuscule, nuit...).
   function promptParts(it) {
     var corps = String(effCorps(it) || '').trim();
     if (!corps) return null;
     if (it.kind === 'paysage') return { land: true, pre: '', light: clean(effLight(it)), sub: corps, par: PL.full };
-    return { pre: clean(S.style.prefix), light: clean(effLight(it)), sub: corps, par: PL.full };
+    return { pre: it.kind === 'perso' ? '' : clean(S.style.prefix), light: clean(effLight(it)), sub: corps, par: PL.full };
   }
   function promptText(p, withParams) {
     if (!p) return '';
-    var t = p.sub;
+    var t = (p.pre ? p.pre + ' ' : '') + p.sub;
     if (p.land) { if (p.light) t += ' ' + cap(p.light) + '.'; }
-    else { var tail = [p.pre, p.light].filter(Boolean).join(', '); if (tail) t += ' ' + tail + '.'; }
+    else if (p.light) t += ', ' + p.light;
     if (withParams && p.par) t += ' ' + p.par;
     return t;
   }
   function previewHtml(p) {
     if (!p) return '<span class="pv-empty">à rédiger</span>';
-    var h = '<span class="pv-sub">' + esc(p.sub) + '</span>';
+    var h = '';
+    if (p.pre) h += '<span class="pv-pre">' + esc(p.pre) + '</span> ';
+    h += '<span class="pv-sub">' + esc(p.sub) + '</span>';
     if (p.land) {
       if (p.light) h += ' <span class="pv-light">' + esc(cap(p.light)) + '.</span>';
-    } else {
-      if (p.pre || p.light) h += ' ';
-      if (p.pre) h += '<span class="pv-pre">' + esc(p.pre) + '</span>';
-      if (p.pre && p.light) h += '<span class="pv-pre">, </span>';
-      if (p.light) h += '<span class="pv-light">' + esc(p.light) + '</span>';
-      if (p.pre || p.light) h += '<span class="pv-pre">.</span>';
-    }
+    } else if (p.light) h += '<span class="pv-pre">, </span><span class="pv-light">' + esc(p.light) + '</span>';
     if (p.par) h += ' <span class="pv-par">' + esc(p.par) + '</span>';
     return h;
   }
@@ -984,7 +988,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
         return '<button type="button" role="radio" aria-checked="false" data-act="moment" data-m="' + m.k + '">' + esc(m.l) + '</button>';
       }).join('') + '</div></div><p class="hint">Vue large photographique, sans personnage ; la lumière change avec le moment.</p>';
     }
-    h += '<label class="pf-f"><span class="fh"><span class="lbl">Lumière</span><span class="c pf-lc" hidden>commune</span></span><input type="text" class="inp pf-light" data-edit="lumiere" spellcheck="false" lang="en"></label>';
+    h += '<label class="pf-f pf-lf"><span class="fh"><span class="lbl">Lumière</span><span class="c pf-lc" hidden>commune</span></span><input type="text" class="inp pf-light" data-edit="lumiere" spellcheck="false" lang="en"></label>';
     h += '<label class="pf-f"><span class="fh"><span class="lbl">Corps du prompt</span></span><textarea class="inp pf-corps" data-edit="corps" rows="4" spellcheck="false" lang="en" placeholder="à rédiger"></textarea></label>';
     h += '<div class="pf-draft" hidden><button type="button" class="btn sm" data-act="draft">Brouillon depuis la fiche</button><span class="hint">premier jet assemblé depuis les champs de la fiche, marqué « proposé »</span></div>';
     h += '<p class="hint pf-dnote" hidden>Brouillon assemblé depuis les champs de la fiche, en français : à réécrire en anglais (formes, matières, couleurs, lumière) avant usage.</p>';
@@ -1025,6 +1029,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     if (document.activeElement !== li) li.value = light;
     if (document.activeElement !== ta && ta.value !== corps) { ta.value = corps; if (grow) autosize(ta); }
     $('.pf-lc', el).hidden = !lightIsCommon(it);
+    $('.pf-lf', el).hidden = it.kind !== 'paysage' && !light && typeof e.lumiere !== 'string';
     var pst = $('.pf-pst', el);
     pst.textContent = isReady(it) ? it.promptStatut : 'à rédiger';
     pst.className = 'st pf-pst ' + (isReady(it) ? 'st-prop' : 'st-off');
@@ -1230,7 +1235,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
       b.title = imp ? 'Version par défaut, ajoutée sans être écrite dans la ligne' : '';
     });
     $('#tHd').setAttribute('aria-pressed', String(m.has('hd')));
-    $('#tRaw').setAttribute('aria-pressed', String(m.get('style') === 'raw'));
+    $('#tRaw').setAttribute('aria-pressed', String(m.has('raw') || m.get('style') === 'raw'));
     ADV.forEach(function (a) {
       var v = advValue(a.k);
       if (a.t === 'range') {
@@ -1425,7 +1430,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     $('#segFormat').addEventListener('click', function (ev) { var b = ev.target.closest('button'); if (b) setParam('ar', b.getAttribute('data-ar')); });
     $('#segVersion').addEventListener('click', function (ev) { var b = ev.target.closest('button'); if (b) setParam('v', b.getAttribute('data-v')); });
     $('#tHd').addEventListener('click', function () { setParam('hd', PL.parsed.map.has('hd') ? null : true); });
-    $('#tRaw').addEventListener('click', function () { setParam('style', PL.parsed.map.get('style') === 'raw' ? null : 'raw'); });
+    $('#tRaw').addEventListener('click', function () { var m = PL.parsed.map; if (m.get('style') === 'raw') setParam('style', null); else setParam('raw', m.has('raw') ? null : true); });
     $('#adv').addEventListener('input', function (ev) {
       var t = ev.target, k;
       if ((k = t.getAttribute('data-adv-r'))) setParam(k, String(t.value));
@@ -1481,7 +1486,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     });
     $('#bExport').addEventListener('click', function () {
       var d = new Date(), stamp = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
-      var data = { format: 'second-earth-outil-prompts', version: 1, exporte_le: d.toISOString(), styleV: 3, params: S.params, style: S.style, sets: S.sets, edits: S.edits, origine: S.origine, moments: S.moments };
+      var data = { format: 'second-earth-outil-prompts', version: 1, exporte_le: d.toISOString(), styleV: STYLE_VERSION, params: S.params, style: S.style, sets: S.sets, edits: S.edits, origine: S.origine, moments: S.moments };
       try {
         var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         var a = document.createElement('a');
