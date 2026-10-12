@@ -148,6 +148,9 @@ ARTIFACT_LINKS = {
 # Outils
 # ---------------------------------------------------------------------------
 
+PROPOSED = {}   # code -> prompt proposé (data/prompts-propose.json), rempli par main()
+
+
 def esc(s):
     return html.escape(str(s or ''), quote=True)
 
@@ -642,7 +645,9 @@ def fiche_html(it, ctx, kind, planche_codes):
         target = ctx.codes.get(va)
         if target:
             links.append('<a href="%s%s">Voir aussi %s</a>' % (ctx.prefix, esc(target), esc(va)))
-    ready = bool(it.get('prompt_en'))
+    origin = bool(it.get('prompt_en'))
+    proposed = code in PROPOSED and not origin
+    ready = origin or proposed
     links.append('<a href="%sprompts/index.html#%s">%s</a>' % (ctx.prefix, esc(code), 'Prompt' if ready else 'Prompt à rédiger'))
     if code in planche_codes:
         links.append('<a href="%splanches/index.html#%s">Planche de dessin</a>' % (ctx.prefix, esc(planche_codes[code])))
@@ -654,8 +659,8 @@ def fiche_html(it, ctx, kind, planche_codes):
             '<div class="foot"><span class="st %s">%s</span>%s</div></article>') % (
         esc(code), esc(code), status_class(statut), esc(statut), esc(it['nom']),
         ('<div class="latin">%s</div>' % esc(it['latin'])) if it.get('latin') else '',
-        ''.join(rows), warn, 'st-ok' if ready else 'st-off',
-        'prompt prêt' if ready else 'prompt à rédiger', ''.join(links))
+        ''.join(rows), warn, 'st-ok' if origin else ('st-prop' if proposed else 'st-off'),
+        'prompt prêt' if origin else ('prompt proposé' if proposed else 'prompt à rédiger'), ''.join(links))
 
 
 def fiches_page(kind, items_by_group, ctx, title, ref, lede, intros, palettes, doc_link, planche_codes, total_note):
@@ -844,6 +849,9 @@ def main(argv):
     planches = load_json('planches.json')
     paysages = load_json('paysages.json')
     palette = load_json('palette-flore.json')
+    PROPOSED.clear()
+    if (DATA / 'prompts-propose.json').exists():
+        PROPOSED.update(load_json('prompts-propose.json'))
 
     codes = {}
     for it in best:
@@ -937,11 +945,11 @@ def main(argv):
     for it in best:
         if it['section'] in intros_raw and it['biome_id'] not in intros and it['biome_id'] not in ('continent-c', 'continent-d'):
             intros[it['biome_id']] = intros_raw[it['section']]
-    n_ready = sum(1 for it in best + titans if it.get('prompt_en'))
+    n_ready = sum(1 for it in best + titans if it.get('prompt_en') or it['code'] in PROPOSED)
     best_doc = Doc(DOCS / 'especes/bestiaire-de-kore.md')
     write('bestiaire/index.html', fiches_page(
         'bestiaire', groups, ctx, 'Bestiaire de Korê', '04_bestiaire', best_doc.lede, intros, {}, 'document.html',
-        planche_codes, '%d lignes · %d Titans · %d prompts prêts' % (len(best), len(titans), n_ready)))
+        planche_codes, '%d lignes · %d Titans · %d prompts (origine ou proposés)' % (len(best), len(titans), n_ready)))
     # document complet du bestiaire
     bsec = {'title': 'Bestiaire', 'ref': '04_bestiaire', 'single': True,
             'pages': [('document', 'especes/bestiaire-de-kore.md', 'Bestiaire, document complet', 'Document')]}
@@ -961,10 +969,10 @@ def main(argv):
         if m:
             fpal['continent-' + m.group(1).lower()] = row
     flore_doc = Doc(DOCS / 'especes/flore-de-kore.md')
-    n_ready = sum(1 for it in flore if it.get('prompt_en'))
+    n_ready = sum(1 for it in flore if it.get('prompt_en') or it['code'] in PROPOSED)
     write('flore/index.html', fiches_page(
         'flore', fgroups, ctx, 'Flore de Korê', '05_flore', flore_doc.lede, {}, fpal, 'document.html',
-        planche_codes, '%d plantes · %d prompts prêts' % (len(flore), n_ready)))
+        planche_codes, '%d plantes · %d prompts (origine ou proposés)' % (len(flore), n_ready)))
     fsec = {'title': 'Flore', 'ref': '05_flore', 'single': True,
             'pages': [('document', 'especes/flore-de-kore.md', 'Flore, document complet', 'Document')]}
     html_, _ = doc_page('flore', fsec, 0, ctx_factory)

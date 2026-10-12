@@ -30,6 +30,8 @@ DATA_BLOCKS = [
     ('data-paysages', 'paysages.json'),
     ('data-palette-flore', 'palette-flore.json'),
 ]
+# Prompts rédigés d'après les fiches, à valider (objet, optionnel : absent = aucun prompt proposé)
+OPTIONAL_BLOCKS = [('data-prompts-propose', 'prompts-propose.json')]
 
 MARKERS = ('SITE_CSS', 'SITE_HEADER', 'DATA')
 MARKER_RE = re.compile(r'<!--(%s)-->' % '|'.join(MARKERS))
@@ -72,6 +74,9 @@ def build(root, header_html, site_css):
     for block_id, filename in DATA_BLOCKS:
         data = json.loads((root / 'data' / filename).read_text(encoding='utf-8'))
         blocks.append(_json_block(block_id, data))
+    for block_id, filename in OPTIONAL_BLOCKS:
+        path = root / 'data' / filename
+        blocks.append(_json_block(block_id, json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}))
 
     parts = {
         'SITE_CSS': '<style>\n' + _fix_font_urls(site_css).strip() + '\n</style>',

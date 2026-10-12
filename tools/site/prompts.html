@@ -310,10 +310,10 @@ details[open]>summary .chev{transform:rotate(45deg)}
         <div class="bp-h"><span class="lbl or">Phrase de style</span><span class="hint">En tête de chaque prompt : préfixe global, puis la lumière de la fiche ; le négatif passe en paramètre --no.</span></div>
         <div class="style-grid">
           <label class="fld"><span class="lbl">Préfixe global</span><textarea class="inp" id="sPrefix" rows="2" spellcheck="false" lang="en"></textarea></label>
-          <label class="fld"><span class="lbl">Lumière commune</span><textarea class="inp" id="sLight" rows="2" spellcheck="false" lang="en"></textarea><span class="hint">Pour les fiches qui ont la lumière des Planches. Les autres gardent la leur (grotte, nuit sans lune, sous l'eau, espace, brouillard).</span></label>
+          <label class="fld"><span class="lbl">Lumière commune</span><textarea class="inp" id="sLight" rows="2" spellcheck="false" lang="en"></textarea><span class="hint">Pour les fiches qui suivent la lumière commune. Les autres gardent la leur (grotte, nuit sans lune, sous l'eau, espace, brouillard).</span></label>
           <label class="fld"><span class="lbl">Négatif (--no)</span><input class="inp" id="sNeg" type="text" spellcheck="false" lang="en"></label>
         </div>
-        <div class="bp-f"><button type="button" class="btn" id="sReset">Revenir à la phrase des Planches</button><p class="hint">Phrase des Planches de dessin (proposé) : <code id="sOrig"></code></p></div>
+        <div class="bp-f"><button type="button" class="btn" id="sReset">Revenir à la phrase photographique</button><button type="button" class="btn" id="sResetOld">Ancienne phrase des Planches (peinte)</button><p class="hint">Phrase photographique, direction artistique décidée le 09/10/2026 : <code id="sOrig"></code></p><p class="hint">Ancienne phrase des Planches de dessin, abandonnée : <code id="sOld"></code></p></div>
       </div>
       <div class="bpanel" id="pSets" hidden>
         <div class="bp-h"><span class="lbl or">Jeux de réglages</span><span class="hint">Un jeu garde la barre complète : paramètres et phrase de style.</span></div>
@@ -372,17 +372,37 @@ details[open]>summary .chev{transform:rotate(45deg)}
     if (!el) return [];
     try { var v = JSON.parse(el.textContent); return Array.isArray(v) ? v : []; } catch (e) { return []; }
   }
+  function readObj(id) {
+    var el = document.getElementById(id);
+    if (!el) return {};
+    try { var v = JSON.parse(el.textContent); return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; } catch (e) { return {}; }
+  }
   var desktopMQ = window.matchMedia('(min-width: 821px)');
 
   /* ================= données ================= */
   var RAW = {
     best: readJSON('data-bestiaire'), flore: readJSON('data-flore'), titans: readJSON('data-titans'),
-    planches: readJSON('data-planches'), paysages: readJSON('data-paysages'), palette: readJSON('data-palette-flore')
+    planches: readJSON('data-planches'), paysages: readJSON('data-paysages'), palette: readJSON('data-palette-flore'),
+    propose: readObj('data-prompts-propose')
   };
 
-  // Phrase de style des Planches de dessin (proposé), séparée en trois parties
+  // Phrase de style photographique : direction artistique décidée par Cal le 09/10/2026 (photographie documentaire de nature,
+  // photoréaliste). Le nom d'un magazine ou d'une marque ne s'écrit pas dans un prompt (règle 10) : le look passe par le matériel et la lumière.
+  var PHOTO_STYLE = {
+    prefix: 'photorealistic documentary nature photograph, ultra-detailed, true-to-life colours and textures, natural light, sharp focus, shot on a full-frame camera',
+    light: 'warm 4,500 K orange light like a late Earth afternoon, soft natural shadows',
+    neg: 'text, watermark, painting, illustration, drawing, concept art, 3d render, cgi, cartoon'
+  };
+  var PHOTO_PHRASE = PHOTO_STYLE.prefix + ', ' + PHOTO_STYLE.light + ' --no ' + PHOTO_STYLE.neg;
+  // Ancienne phrase des Planches de dessin (peinture), abandonnée : gardée pour « Prompt d'origine tel quel » et pour mémoire
   var PLANCHES_PHRASE = 'painterly science-fiction concept art, realistic proportions, soft volumetric light from a warm orange star, no text, no watermark';
   var PLANCHES_STYLE = { prefix: 'painterly science-fiction concept art, realistic proportions', light: 'soft volumetric light from a warm orange star', neg: 'text, watermark' };
+  function freshStyle() { return { prefix: PHOTO_STYLE.prefix, light: PHOTO_STYLE.light, neg: PHOTO_STYLE.neg }; }
+  // Un champ resté à l'ancienne valeur par défaut passe à la nouvelle ; un champ modifié par l'utilisateur est gardé
+  function migrateStyle(st) {
+    ['prefix', 'light', 'neg'].forEach(function (k) { if (st[k] === PLANCHES_STYLE[k]) st[k] = PHOTO_STYLE[k]; });
+    return st;
+  }
   var DEFAULT_PARAMS = '--ar 16:9';
   var DEFAULT_VERSION = '8.2';
   var FORMATS = [['16:9', '16:9'], ['21:9', '21:9'], ['2.39:1', '239:100'], ['9:16', '9:16'], ['1:1', '1:1'], ['4:5', '4:5'], ['3:2', '3:2'], ['2:1', '2:1']];
@@ -408,7 +428,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     animal: 'Creature sheet, side and three-quarter views on a neutral light grey background:',
     titan: 'Creature sheet, side and three-quarter views on a neutral light grey background:',
     plante: 'Botanical sheet on a neutral light grey background:',
-    paysage: 'Wide establishing shot:'
+    paysage: 'Wide establishing landscape photograph:'
   };
   var SCALE = 'A 1.60 m girl with white hair stands beside it for scale.';
   var SCALE_LAND = 'A tiny 1.60 m girl with white hair in the distance for scale.';
@@ -522,6 +542,17 @@ details[open]>summary .chev{transform:rotate(45deg)}
       planche: null, ecart: '', voir: '', promptEn: '', light: '', corps: '', promptStatut: 'à rédiger'
     });
   });
+  // Prompts rédigés le 09/10/2026 d'après les fiches (data/prompts-propose.json) : proposés, à valider par Cal
+  ITEMS.forEach(function (it) {
+    var q = RAW.propose[it.id];
+    if (q && !it.promptEn && typeof q.sujet === 'string' && q.sujet) {
+      it.corps = it.kind === 'paysage'
+        ? OPEN.paysage + ' ' + q.sujet + (it.biome ? ' ' + SCALE_LAND : '')
+        : situOpen(it) + ' ' + q.sujet;
+      it.light = q.lumiere || ''; it.promptStatut = q.statut || 'proposé (rédigé par Claude, à valider)'; it.proposed = true;
+    }
+  });
+  function isReady(it) { return !!(it.promptEn || it.proposed); }
   // Planches animal et plante : adresse #planche-<titre> vers la fiche du code
   RAW.planches.forEach(function (p) {
     if (p.categorie === 'personnage' || p.categorie === 'machine') return;
@@ -531,7 +562,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
   });
   // Texte de recherche
   ITEMS.forEach(function (it) {
-    var parts = [it.id, it.code, it.title, it.latin, it.statut, it.where, it.ecart, it.promptEn];
+    var parts = [it.id, it.code, it.title, it.latin, it.statut, it.where, it.ecart, it.promptEn, it.proposed ? it.corps : ''];
     it.reperes.forEach(function (r) { parts.push(r[1]); });
     if (it.planche) ['titre', 'silhouette', 'matieres', 'traits', 'poses', 'invariants'].forEach(function (k) { parts.push(it.planche[k]); });
     if (it.sections) Object.keys(it.sections).forEach(function (k) { parts.push(k, it.sections[k]); });
@@ -559,18 +590,18 @@ details[open]>summary .chev{transform:rotate(45deg)}
   /* ================= état et stockage ================= */
   var STORE_KEY = 'second-earth.outil-prompts.v1';
   var storageOK = true;
-  function defState() { return { params: DEFAULT_PARAMS, style: { prefix: PLANCHES_STYLE.prefix, light: PLANCHES_STYLE.light, neg: PLANCHES_STYLE.neg }, sets: [], edits: {}, views: {}, origine: {}, moments: {} }; }
+  function defState() { return { params: DEFAULT_PARAMS, style: freshStyle(), styleV: 2, sets: [], edits: {}, views: {}, origine: {}, moments: {} }; }
   function isObj(o) { return o && typeof o === 'object' && !Array.isArray(o); }
   function sanitize(o, base) {
     var d = base || defState();
     if (!isObj(o)) return d;
     if (typeof o.params === 'string') d.params = o.params;
-    if (isObj(o.style)) ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof o.style[k] === 'string') d.style[k] = o.style[k]; });
+    if (isObj(o.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof o.style[k] === 'string') d.style[k] = o.style[k]; }); if (o.styleV !== 2) migrateStyle(d.style); }
     if (Array.isArray(o.sets)) {
       o.sets.forEach(function (x) {
         if (!isObj(x) || typeof x.name !== 'string' || typeof x.params !== 'string') return;
-        var st = { prefix: PLANCHES_STYLE.prefix, light: PLANCHES_STYLE.light, neg: PLANCHES_STYLE.neg };
-        if (isObj(x.style)) ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof x.style[k] === 'string') st[k] = x.style[k]; });
+        var st = freshStyle();
+        if (isObj(x.style)) { ['prefix', 'light', 'neg'].forEach(function (k) { if (typeof x.style[k] === 'string') st[k] = x.style[k]; }); if (o.styleV !== 2) migrateStyle(st); }
         d.sets = d.sets.filter(function (s) { return s.name !== x.name; });
         d.sets.push({ name: x.name.slice(0, 60), params: x.params, style: st });
       });
@@ -760,23 +791,25 @@ details[open]>summary .chev{transform:rotate(45deg)}
 
   /* ================= composition des prompts ================= */
   var PL = computeLine(S.params, S.style);
-  function isDefaultLight(l) { return !l || l === PLANCHES_STYLE.light; }
+  function isDefaultLight(l) { return !l || l === PLANCHES_STYLE.light || l === PHOTO_STYLE.light; }
   function baseLight(it) {
     if (it.kind === 'paysage') {
       var mk = S.moments[it.id];
       for (var i = 0; i < MOMENTS.length; i++) if (MOMENTS[i].k === mk) return MOMENTS[i].t;
-      return S.style.light;
+      return isDefaultLight(it.light) ? S.style.light : it.light;
     }
     return isDefaultLight(it.light) ? S.style.light : it.light;
   }
   function edit(it) { return S.edits[it.id] || {}; }
   function effLight(it) { var e = edit(it); return typeof e.lumiere === 'string' ? e.lumiere : baseLight(it); }
   function effCorps(it) { var e = edit(it); return typeof e.corps === 'string' ? e.corps : it.corps; }
-  function effView(it) { return S.views[it.id] || 'planche'; }
+  // Animaux, plantes et Titans : photographie sur le terrain par défaut ; personnages et machines : planche de référence
+  function defView(it) { return it.kind === 'perso' || it.kind === 'paysage' ? 'planche' : 'situ'; }
+  function effView(it) { var v = S.views[it.id] || defView(it); return it.proposed && v === 'planche' ? 'situ' : v; }
   function lightIsCommon(it) {
     var e = edit(it);
     if (typeof e.lumiere === 'string') return false;
-    return it.kind === 'paysage' ? !S.moments[it.id] : isDefaultLight(it.light);
+    return it.kind === 'paysage' ? (!S.moments[it.id] && isDefaultLight(it.light)) : isDefaultLight(it.light);
   }
   function isModified(it) {
     var e = edit(it);
@@ -790,11 +823,13 @@ details[open]>summary .chev{transform:rotate(45deg)}
     if (it.kind === 'perso') return 'In a scene on location:';
     return BIOME_EN[it.group] ? 'In its natural habitat, ' + BIOME_EN[it.group] + ':' : 'In its natural habitat:';
   }
+  // La silhouette de Seed pour l'échelle n'a de sens que sur la planche de référence
+  var SCALE_RE = /\s*An? (?:tiny )?1\.60 m girl with white hair[^.]*for scale\.\s*$/i;
   function viewBody(it, corps, view) {
     if (it.kind === 'paysage') return corps;
     var sp = splitOpen(corps);
-    if (view === 'situ') return situOpen(it) + ' ' + sp.subject;
-    if (view === 'libre') return cap(sp.subject);
+    if (view === 'situ') return situOpen(it) + ' ' + sp.subject.replace(SCALE_RE, '');
+    if (view === 'libre') return cap(sp.subject.replace(SCALE_RE, ''));
     return corps;
   }
   function promptParts(it) {
@@ -970,7 +1005,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
         return '<button type="button" role="radio" aria-checked="false" data-act="moment" data-m="' + m.k + '">' + esc(m.l) + '</button>';
       }).join('') + '</div></div><p class="hint">Cadrage : plan large d\'établissement' + (it.biome ? ', Seed en silhouette minuscule pour l\'échelle' : '') + '.</p>';
     } else {
-      h += '<div class="pf-row"><span class="lbl">Vue</span><div class="seg pf-view" role="radiogroup" aria-label="Vue">' + VIEWS.map(function (v) {
+      h += '<div class="pf-row"><span class="lbl">Vue</span><div class="seg pf-view" role="radiogroup" aria-label="Vue">' + VIEWS.filter(function (v) { return !(it.proposed && v.k === 'planche'); }).map(function (v) {
         return '<button type="button" role="radio" aria-checked="false" data-act="view" data-v="' + v.k + '">' + esc(v.l) + '</button>';
       }).join('') + '</div></div><p class="hint pf-open" hidden></p>';
     }
@@ -1016,15 +1051,15 @@ details[open]>summary .chev{transform:rotate(45deg)}
     if (document.activeElement !== ta && ta.value !== corps) { ta.value = corps; if (grow) autosize(ta); }
     $('.pf-lc', el).hidden = !lightIsCommon(it);
     var pst = $('.pf-pst', el);
-    pst.textContent = it.promptEn ? it.promptStatut : 'à rédiger';
-    pst.className = 'st pf-pst ' + (it.promptEn ? 'st-prop' : 'st-off');
+    pst.textContent = isReady(it) ? it.promptStatut : 'à rédiger';
+    pst.className = 'st pf-pst ' + (isReady(it) ? 'st-prop' : 'st-off');
     var flag = $('.pf-flag', el), mod = isModified(it);
     if (e.draft) { flag.hidden = false; flag.className = 'st pf-flag st-prop'; flag.textContent = 'brouillon · proposé'; }
     else if (mod) { flag.hidden = false; flag.className = 'st pf-flag tag-mod'; flag.textContent = 'modifié'; }
     else flag.hidden = true;
     $('[data-act="restore"]', el).hidden = !(e.draft || mod);
     var empty = !String(corps || '').trim();
-    $('.pf-draft', el).hidden = !(empty && !it.promptEn);
+    $('.pf-draft', el).hidden = !(empty && !isReady(it));
     $('.pf-dnote', el).hidden = !e.draft;
     var view = effView(it);
     $$('[data-act="view"]', el).forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-v') === view)); });
@@ -1034,10 +1069,10 @@ details[open]>summary .chev{transform:rotate(45deg)}
       if (view === 'planche' || orig || empty) on.hidden = true;
       else {
         var so = splitOpen(String(corps).trim());
-        on.hidden = false;
+        on.hidden = view === 'situ' && so.open === situOpen(it) && !SCALE_RE.test(String(corps));
         on.textContent = view === 'situ'
-          ? 'Ouverture remplacée : « ' + (so.open || '(aucune)') + ' » devient « ' + situOpen(it) + ' » (proposé par l\'outil).'
-          : 'Ouverture retirée : « ' + (so.open || '(aucune)') + ' ».';
+          ? 'Ouverture remplacée : « ' + (so.open || '(aucune)') + ' » devient « ' + situOpen(it) + ' » (proposé par l\'outil).' + (SCALE_RE.test(String(corps)) ? ' Phrase d\'échelle retirée.' : '')
+          : 'Ouverture retirée : « ' + (so.open || '(aucune)') + ' ».' + (SCALE_RE.test(String(corps)) ? ' Phrase d\'échelle retirée.' : '');
       }
     }
     var mk = typeof e.lumiere === 'string' ? '' : (S.moments[it.id] || '');
@@ -1048,7 +1083,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     $('.pv', el).innerHTML = previewHtml(p);
     var warn = $('.pf-warn', el), txt = promptText(p, false);
     if (PL.v8 && txt.indexOf('::') !== -1) { warn.hidden = false; warn.textContent = 'Multi-prompts (::) non pris en charge en V8'; }
-    else if (orig) { warn.hidden = false; warn.textContent = 'Copie du prompt d\'origine des Planches, suivi des seuls paramètres ; la vue et les modifications ne s\'appliquent pas.'; }
+    else if (orig) { warn.hidden = false; warn.textContent = 'Copie du prompt d\'origine des Planches (ancienne phrase de style peinte), suivi des seuls paramètres ; la vue et les modifications ne s\'appliquent pas.'; }
     else warn.hidden = true;
     $('.pf-copy', el).disabled = !p;
     $('.pf-copy2', el).disabled = !p;
@@ -1058,7 +1093,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
   var LIST = $('#list');
   function renderTabs() {
     $('#tabs').innerHTML = TABS.map(function (t) {
-      var items = itemsOf(t.key), ready = items.filter(function (i) { return i.promptEn; }).length, sel = t.key === UI.tab;
+      var items = itemsOf(t.key), ready = items.filter(isReady).length, sel = t.key === UI.tab;
       return '<button type="button" role="tab" class="tab" id="tab-' + t.key + '" data-tab="' + t.key + '" aria-selected="' + sel + '" aria-controls="panel" tabindex="' + (sel ? 0 : -1) + '">' +
         '<span class="tn">' + esc(t.label) + '</span><span class="tc"><b>' + items.length + '</b> · <b>' + ready + '</b> ' + (ready > 1 ? 'prompts' : 'prompt') + '</span></button>';
     }).join('');
@@ -1100,8 +1135,8 @@ details[open]>summary .chev{transform:rotate(45deg)}
   }
   function renderFilters() {
     var items = itemsOf(UI.tab);
-    var fp = [['tous', 'Tous', items.length], ['pret', 'Prompt prêt', items.filter(function (i) { return i.promptEn; }).length],
-      ['rediger', 'À rédiger', items.filter(function (i) { return !i.promptEn; }).length], ['modifie', 'Modifié ici', items.filter(function (i) { return S.edits[i.id]; }).length]];
+    var fp = [['tous', 'Tous', items.length], ['pret', 'Prompt prêt', items.filter(isReady).length],
+      ['rediger', 'À rédiger', items.filter(function (i) { return !isReady(i); }).length], ['modifie', 'Modifié ici', items.filter(function (i) { return S.edits[i.id]; }).length]];
     $('#fPrompt').innerHTML = '<span class="lbl">Prompt</span>' + fp.map(function (f) {
       return '<button type="button" class="chip' + (UI.fp === f[0] ? ' on' : '') + '" data-fp="' + f[0] + '" aria-pressed="' + (UI.fp === f[0]) + '">' + esc(f[1]) + '<span class="c">' + f[2] + '</span></button>';
     }).join('');
@@ -1135,10 +1170,10 @@ details[open]>summary .chev{transform:rotate(45deg)}
       $$('.pf', g).forEach(function (el) {
         var it = BY_ID[el.getAttribute('data-id')];
         var ok = matchQ(it, terms) &&
-          (UI.fp === 'tous' || (UI.fp === 'pret' && it.promptEn) || (UI.fp === 'rediger' && !it.promptEn) || (UI.fp === 'modifie' && S.edits[it.id])) &&
+          (UI.fp === 'tous' || (UI.fp === 'pret' && isReady(it)) || (UI.fp === 'rediger' && !isReady(it)) || (UI.fp === 'modifie' && S.edits[it.id])) &&
           (UI.fs === 'tous' || it.fam === UI.fs);
         el.hidden = !ok;
-        if (ok) { k++; if (it.promptEn) ready++; }
+        if (ok) { k++; if (isReady(it)) ready++; }
       });
       g.hidden = k === 0; total += k;
       $('[data-gc]', g).textContent = nb(k, 'fiche', 'fiches') + ' · ' + nb(ready, 'prompt', 'prompts');
@@ -1215,7 +1250,8 @@ details[open]>summary .chev{transform:rotate(45deg)}
       }
       return '<div class="fld" data-adv="' + a.k + '">' + head + '<input class="inp" type="text" id="adv-' + a.k + '" spellcheck="false" autocomplete="off" placeholder="' + esc(a.ph) + '" data-adv-t="' + a.k + '"></div>';
     }).join('');
-    $('#sOrig').textContent = PLANCHES_PHRASE;
+    $('#sOrig').textContent = PHOTO_PHRASE;
+    $('#sOld').textContent = PLANCHES_PHRASE;
   }
   function advValue(k) {
     var m = PL.parsed.map;
@@ -1394,7 +1430,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
       btn.textContent = open ? 'Replier' : 'Déplier';
       return;
     }
-    if (act === 'view') { var v = btn.getAttribute('data-v'); if (v === 'planche') delete S.views[it.id]; else S.views[it.id] = v; }
+    if (act === 'view') { var v = btn.getAttribute('data-v'); if (v === defView(it)) delete S.views[it.id]; else S.views[it.id] = v; }
     else if (act === 'moment') {
       var mk = btn.getAttribute('data-m');
       S.moments[it.id] = mk;
@@ -1448,9 +1484,14 @@ details[open]>summary .chev{transform:rotate(45deg)}
       $('#' + x[0]).addEventListener('input', function (ev) { S.style[x[1]] = ev.target.value; refreshAll(); save(); });
     });
     $('#sReset').addEventListener('click', function () {
+      S.style = freshStyle();
+      ['sPrefix', 'sLight', 'sNeg'].forEach(function (id) { $('#' + id).blur(); });
+      refreshAll(); save(); live('Phrase photographique rétablie');
+    });
+    $('#sResetOld').addEventListener('click', function () {
       S.style = { prefix: PLANCHES_STYLE.prefix, light: PLANCHES_STYLE.light, neg: PLANCHES_STYLE.neg };
       ['sPrefix', 'sLight', 'sNeg'].forEach(function (id) { $('#' + id).blur(); });
-      refreshAll(); save(); live('Phrase des Planches rétablie');
+      refreshAll(); save(); live('Ancienne phrase des Planches rétablie');
     });
     $('.bar-btns').addEventListener('click', function (ev) { var b = ev.target.closest('[data-panel]'); if (b) openPanel(b.getAttribute('data-panel')); });
     $('#bMobile').addEventListener('click', function () {
@@ -1486,7 +1527,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     });
     $('#bExport').addEventListener('click', function () {
       var d = new Date(), stamp = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
-      var data = { format: 'second-earth-outil-prompts', version: 1, exporte_le: d.toISOString(), params: S.params, style: S.style, sets: S.sets, edits: S.edits, views: S.views, origine: S.origine, moments: S.moments };
+      var data = { format: 'second-earth-outil-prompts', version: 1, exporte_le: d.toISOString(), styleV: 2, params: S.params, style: S.style, sets: S.sets, edits: S.edits, views: S.views, origine: S.origine, moments: S.moments };
       try {
         var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         var a = document.createElement('a');

@@ -89,6 +89,7 @@ Ces règles viennent de ses demandes répétées. Elles priment sur toute habitu
 9. **Épigraphe du 55** : la phrase du docx est gardée pour l'instant. Ne pas proposer d'autre épigraphe sans demande.
 10. **Prompts d'image** (règles écrites dans les Planches de dessin, document au statut proposé) : formes, matières et lumière uniquement ; **aucun nom d'artiste, de studio, de film, de personnage existant, ni de marque**. Même règle pour la musique.
 11. **Direction artistique** : ne jamais reproduire une œuvre, un personnage ou un logo existants.
+12. **Style des prompts d'image (Cal, 09/10/2026, dans le chat)** : photographie documentaire de nature, **photoréaliste**, hyper-détaillée, « genre National Geographic ». La phrase « painterly science-fiction concept art, realistic proportions » des Planches de dessin est **abandonnée** : elle produisait des images peintes, pas voulues. Le nom du magazine est une marque : il ne s'écrit **jamais** dans un prompt (règle 10) ; le look passe par le matériel et la lumière (focale, profondeur de champ, netteté, lumière naturelle). Phrase par défaut de l'outil : `photorealistic documentary nature photograph, ultra-detailed, true-to-life colours and textures, natural light, sharp focus, shot on a full-frame camera`, lumière commune `warm 4,500 K orange light like a late Earth afternoon, soft natural shadows`, négatif `--no text, watermark, painting, illustration, drawing, concept art, 3d render, cgi, cartoon`. Le document Planches de dessin de Claude Docs (compte de Cal) porte encore l'ancienne phrase et les ouvertures « Creature sheet » : à mettre à jour là-bas, puis réexporter.
 
 ### Charte des interfaces (détail : `site-spec/charte.md`)
 
@@ -105,14 +106,23 @@ Ces règles viennent de ses demandes répétées. Elles priment sur toute habitu
 - [ ] **Récit v2** : devient la référence après sa relecture.
 - [ ] **Épigraphe du 55** : plus tard, à sa demande.
 - [ ] **Dessin des nouvelles espèces** : quatre de la jungle, le grimpeur des cols, le Titan volant, l'oiseau des salins.
-- [ ] **Prompts à rédiger** : les 11 personnages et machines ont un prompt (Planches de dessin, proposé). Au Bestiaire, 9 lignes sur 66 ont un prompt ; à la Flore, 5 sur 42 ; aucun des 7 Titans ni des 18 paysages. Voir `site-spec/outil-prompts.md`, section « Prompts manquants ».
+- [ ] **Prompts à valider** : les 11 personnages et machines et 9 + 5 fiches ont un prompt d'origine (Planches de dessin, proposé, ancien style). Le 09/10/2026, Cal a relevé que beaucoup de prompts n'étaient pas rédigés : Claude a rédigé les 119 manquants (57 Bestiaire, 37 Flore, 7 Titans, 18 paysages), en photographie documentaire, d'après les fiches, sans rien ajouter au monde. Ils sont dans `data/prompts-propose.json`, marqués « proposé », et s'affichent dans l'outil. À valider par Cal en QCM (une ligne par prompt : garder / corriger + champ libre), jamais en lui demandant de relire du Markdown. Les 24 prompts d'origine gardent leur sujet ; l'outil en change le style, l'ouverture et la lumière.
 - [ ] **Écarts connus dans les documents** (à signaler à Cal, pas à corriger seul) :
   - la Flore compte 42 lignes, le Registre dit 41 plantes ;
   - dans le document Claude Docs « Flore de Korê », les douze plantes des continents B, C, D sont encore marquées « Proposé » alors que le Registre les dit validées (round 16, F01) ; l'export de ce dossier est corrigé ;
   - les neuf espèces hors trajet (HT-01 à HT-09) n'ont pas de statut dans le Bestiaire ;
   - quatre planches de dessin (document au statut proposé) ne décrivent pas l'animal comme le Bestiaire (validé au round 8), et leurs prompts suivent la planche : JP-01 fleurs-papillons (10–15 cm posées sur les arbustes-perchoirs / 5–8 cm, fleur fermée sur une tige), HP-01 buffle albinos (~2,5 m, cornes courtes en crochet / 3–4 m, cornes larges incurvées), LS-01 oiseau des salins (~60 cm, gris clair / 1,4 m, pourpre), FB-03 oiseau-reptile (~40 cm, ailes membraneuses, vert-bronze / 15–25 cm, ailes à plumes, écailles irisées). Le détail est dans le champ `ecart_planche` des données ; l'outil doit l'afficher sur ces fiches ;
   - deux choses sont décrites deux fois : TR-F (Titan volant, fossile) au Bestiaire et aux Titans ; TR-05 (plantes-chant) au Bestiaire et FL-TR-01 à la Flore. Champ `voir_aussi` dans les données ; TR-05 reprend le prompt de FL-TR-01. Le Bestiaire compte donc 64 animaux distincts ;
-  - les Notes pour Nina (27/09) parlent de 52 espèces et 29 plantes ; les chiffres ont grandi depuis (66 lignes au Bestiaire + 7 Titans ; 42 plantes).
+  - les Notes pour Nina (27/09) parlent de 52 espèces et 29 plantes ; les chiffres ont grandi depuis (66 lignes au Bestiaire + 7 Titans ; 42 plantes) ;
+  - **relevés en rédigeant les 119 prompts (09/10/2026), à signaler à Cal, pas à corriger seul** :
+    - hauteurs : Arbre-voûte FL-JP-01 90–110 m (Flore) contre arbres émergents de 30–50 m (fiche Jungle) ; arbres-cathédrales 80–100 m (fiche Forêt ancienne) contre 100–115 m (FL-FA-01) ;
+    - couleurs : neige FL-MG-02 « rose à orangé » (Flore) contre « neige pourpre » (fiche Massifs) et « blanc, rosé » (Lumière et couleurs) ; FL-FB-01 « sans feuilles, lamelles en éventail » contre « les feuilles brillent » (fiche Forêt bioluminescente) ; HT-06 « orange ou violet » (orange retenu dans le prompt) ;
+    - noms : FL-HP-01 Herbes cireuses = « herbes-vagues » dans la fiche Hautes Plaines ;
+    - physique : MA-02 « résistent à l'acidité » alors que la mer d'arsenic est à pH 7,3 (Lumière et couleurs) ; FL-HT-03 ciel orangé (fiche Déserts) contre ciel gris-turquoise laiteux (Lumière et couleurs) ; FL-CD-04 « plus grand stock de carbone vivant » alors que la forêt de B est dite la plus grande ; FL-CB-03 cœur pourpre mais pollinisateurs qui ne voient pas les couleurs, floraison « lumineuse en saison noire » (HT-3) contre fleurs « ouvertes la nuit de 20 h » ;
+    - Titans : TI-DES-CIMES vit dans les arbres-cathédrales de 100 m mais ses fossiles sont dans les forêts cristallines (arbres de 10–25 m) ;
+    - précisions manquantes : HT-08 « 1 m » (longueur ou envergure ?) ; HT-04 sans pôle précis (prompt au pôle D, nord) ; JP-08 « bas sur pattes » et « membres longs » ; TR-F « ailes membraneuses » sur un squelette fossile ; statuts des FL-HT-03/04/05 « Proposé » alors que l'explication note « validé B03/B05 » ;
+    - fautes de frappe dans les sources : « nière » pour « niche » (CC-03), « aculé » pour « acculé » (JP-07) ;
+    - choix faits dans les prompts, à valider : le paysage des toundras (ht-4) montre le pôle D seulement ; la course volcanique est un composite (canyon, forêt cristalline, coulées, arc) car la fiche décrit quatre paysages ; les Titans sont montrés vivants (aucun n'est visible vivant dans le film) ; TR-F est le squelette dans la voûte de la grotte, avec son propre prompt (le brief disait de reprendre celui de TI-VOLANT).
 - [ ] **Format de projection du 25** (dôme Omni-Theatre ou salle classique) : master 16:9 et adaptation dôme validés (A04) ; le calendrier dépend de BoraBora.
 
 ---
@@ -134,6 +144,7 @@ data/
   palette-flore.json       13 lignes : couleur dominante par biome (10 du trajet + continents B, C, D ; rien pour les 8 hors trajet)
   planches.json            24 planches de dessin (personnages, machines, animaux, plantes) avec prompt EN
   paysages.json            18 biomes (10 du trajet, 8 hors trajet) avec leurs sections de texte
+  prompts-propose.json     119 prompts rédigés le 09/10/2026 pour les fiches qui n'en avaient pas (proposé, à valider) ; non généré par build_data.py
   arbitrages-second-earth.html   la page QCM (rounds 1 à 16 archivés, aucune question ouverte) : modèle pour les futurs QCM
 docs/
   bible/                   le monde : registre des décisions (fait foi), trajet, chronologie,
@@ -208,6 +219,7 @@ En plus :
 `planches.json` : titre, codes, categorie (personnage | machine | animal | plante), silhouette, matieres, traits, poses, invariants (les trois derniers ne sont écrits que pour une partie des planches), statut (« proposé »), prompt_en, prompt_label (« Prompt », ou « Prompt (hybride) » pour Rob4), prompt_lumiere, prompt_corps.
 `paysages.json` : id, groupe (trajet | hors-trajet), ordre_trajet (trajet seulement), titre, fichier, sections (titre de section -> premier paragraphe ; les titres varient d'une fiche à l'autre : « Où et pourquoi » pour la jungle, « Le milieu » ailleurs, « Les espèces », « Dans l'expo », « Cartels » pour les hors trajet).
 `palette-flore.json` : biome, dominante, accents, mouvement (10 biomes du trajet + continents B, C, D).
+`prompts-propose.json` : objet dont la clé est le code d'une fiche (JP-02, FL-HT-01, TI-VOLANT…) ou l'id d'un paysage (biome-01-jungle…), et la valeur `{sujet, lumiere, statut}`. `sujet` : le sujet du prompt en anglais, en photographie documentaire, sans style ni ouverture ni paramètres ; `lumiere` : vide (lumière commune) ou la lumière propre à la fiche (grotte, sous l'eau, saison noire…) ; `statut` : « proposé (rédigé par Claude le 09/10/2026 d'après la fiche, à valider) ». L'outil compose : phrase de style + lumière + ouverture (« In its natural habitat, <biome> : » ou « Wide establishing landscape photograph : ») + sujet + paramètres. Un prompt d'origine (`prompt_en` dans les autres fichiers) a toujours priorité sur un prompt proposé. Ce fichier n'est pas produit par `build_data.py` : ne pas le régénérer à la main sans relire les fiches.
 
 Ordre du trajet (pour trier) : jungle, pitons, cavernes, massifs, forêt bioluminescente, Hautes Plaines, forêt ancienne, course volcanique, mer d'arsenic et fosse, lacs salés pourpres.
 
@@ -224,7 +236,7 @@ Ne pas les trancher seul. Présenter un seul QCM au début, avec les conséquenc
 5. **Prompts manquants** : Claude les rédige par lots à partir des fiches (marqués « proposé », validés par Cal dans l'outil) / Cal les rédige lui-même dans l'outil.
 6. **Nom et adresse** : nom du dépôt, domaine propre ou `github.io`.
 
-Tranché par Cal dans le chat le 28/09/2026 (pas en QCM) : **tout se publie**, « la bible, le bestiaire etc, mais aussi le script, tout », sur GitHub Pages depuis le dépôt public `calculment0r/SECOND_EARTH` (points 1, 2 et 6) ; **thème Verdant** (Showrunner UI Kit). Appliqué par défaut, sans décision de Cal : site en français (le contenu l'est), V8.2 par défaut dans la barre de l'outil (modifiable), prompts manquants laissés « à rédiger » (gel du monde, règle 8). Restent à lui soumettre : langue (point 3), version par défaut (point 4), rédaction des prompts manquants (point 5), domaine propre.
+Tranché par Cal dans le chat le 28/09/2026 (pas en QCM) : **tout se publie**, « la bible, le bestiaire etc, mais aussi le script, tout », sur GitHub Pages depuis le dépôt public `calculment0r/SECOND_EARTH` (points 1, 2 et 6) ; **thème Verdant** (Showrunner UI Kit). Appliqué par défaut, sans décision de Cal : site en français (le contenu l'est), V8.2 par défaut dans la barre de l'outil (modifiable). Point 5 : Cal ayant relevé le 09/10/2026 que beaucoup de prompts n'étaient pas rédigés, Claude les a rédigés (`data/prompts-propose.json`, marqués « proposé »). Restent à lui soumettre : langue (point 3), version par défaut (point 4), validation des 119 prompts rédigés (point 5), domaine propre.
 
 ---
 
