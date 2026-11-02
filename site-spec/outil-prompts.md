@@ -174,3 +174,12 @@ Procédure : rédiger par lots (un biome à la fois), les marquer « proposé »
 - Aucune émoticône dans le fichier (`grep` sur les plages Unicode des émoticônes).
 - À 390 px de large : pas de défilement horizontal, bouton Copier atteignable au pouce.
 - Test automatique conseillé : Playwright (onglets, copie via `navigator.clipboard` simulé, normalisation de la barre).
+
+## 7. Relecture finale (02/11/2026)
+
+Demande de Cal : « commenter en lecture finale ». Chaque fiche porte, sous les boutons Copier, un bloc **Relecture** : deux boutons exclusifs « Garder » et « À corriger » (un second clic retire l'avis) et un champ Commentaire. Le drapeau de la fiche affiche « gardé », « à corriger », « commenté » ou « avis ancien ». Un bandeau au-dessus de la liste compte les gardés, les à corriger, les commentés et les à relire sur les 144 prompts ; la barre de filtres de chaque onglet ajoute À relire, Gardés, À corriger et Commentés.
+
+- **Copier mes retours** : un texte à coller dans le chat, daté, avec les totaux, la liste « À CORRIGER » (code, nom, commentaire, prompt actuel, mention « modifié dans l'outil » si Cal l'a modifié), les commentaires sans avis, la liste des gardés (avec leurs commentaires) et les avis sur d'anciennes versions.
+- **Stockage** : `avis` dans l'état local (`{id: {v: "ok" | "ko", c: commentaire, h: empreinte}}`), exporté et importé avec le JSON de l'outil. L'empreinte porte sur le sujet du prompt et sa lumière propre (pas sur le début global, les paramètres ni le moment du jour d'un paysage) : si le prompt change, l'avis devient « ancien » et ne compte plus comme gardé ou à corriger.
+- **Effacer mes avis** : demande une seconde pression dans les 4 secondes.
+- **Conséquence** : « Garder » ne change aucun statut dans le dépôt ; le statut « validé » est écrit par Claude après le retour de Cal dans le chat. « À corriger » : Claude réécrit le prompt entier d'après le commentaire (règle 6 de `CLAUDE.md`).

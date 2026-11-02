@@ -216,6 +216,16 @@ details[open]>summary .chev{transform:rotate(45deg)}
 .pf-warn{margin:0;font-family:var(--mono);font-size:10px;color:var(--c1)}
 .pf-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .pf-copy{min-width:150px;min-height:42px;font-size:12.5px}
+.pf-rev{display:flex;flex-direction:column;gap:8px;padding-top:12px;margin-top:2px;border-top:1px solid var(--line)}
+.pf-rev .seg button{font-size:10.5px;padding:4px 10px;min-height:28px}
+.pf-rev .seg button[data-v="ko"][aria-checked="true"]{background:var(--c1);color:var(--or-ink)}
+.pf-avis{min-height:56px}
+.pf-av{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;box-shadow:inset 0 0 0 1px currentColor}
+.pf-av[data-v="ok"]{color:var(--g-ink)}.pf-av[data-v="ko"]{color:var(--c1)}.pf-av[data-v="note"],.pf-av[data-v="old"]{color:var(--ink3)}
+.rev-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:10px 14px;margin:0 0 18px;border-radius:12px;background:var(--panel);box-shadow:inset 0 0 0 1px rgba(47,107,74,.45)}
+.rev-strip .rs-n{font-family:var(--mono);font-size:12px;color:var(--ink2)}
+.rev-strip .rs-n b{color:var(--ink);font-weight:600}
+.rev-strip .hint{flex:1 1 100%}
 @media (min-width:1101px){.pf-prompt{position:sticky;top:calc(var(--stick) + 14px);max-height:calc(100vh - var(--stick) - 28px);overflow-y:auto}}
 
 /* ---------- ordinateur moyen ---------- */
@@ -341,6 +351,13 @@ details[open]>summary .chev{transform:rotate(45deg)}
           <div class="fgrp" id="fStatut" role="group" aria-label="Filtre statut"></div>
         </div>
         <div class="pt-count"><span class="count" id="count"></span><span class="elsewhere" id="elsewhere"></span></div>
+      </div>
+      <div class="rev-strip" id="revStrip" role="group" aria-label="Relecture finale">
+        <span class="lbl or">Relecture</span>
+        <span class="rs-n"><b id="rvOk">0</b> gardés · <b id="rvKo">0</b> à corriger · <b id="rvCom">0</b> commentés · <b id="rvTodo">0</b> à relire</span>
+        <button type="button" class="btn sm pri" id="bRetours">Copier mes retours</button>
+        <button type="button" class="btn sm" id="bAvisClear">Effacer mes avis</button>
+        <p class="hint">Sur chaque fiche : « Garder » (le prompt reste tel quel ; il passera à « validé » quand tu me le diras dans le chat) ou « À corriger » (je réécris le prompt entier d'après ton commentaire), plus un commentaire libre. Les avis restent dans ce navigateur. « Copier mes retours » les met dans le presse-papiers : colle-les dans le chat.</p>
       </div>
       <div id="list"></div>
       <p class="empty" id="empty" hidden>Aucune fiche ne correspond à la recherche et aux filtres.</p>
@@ -597,7 +614,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
   /* ================= état et stockage ================= */
   var STORE_KEY = 'second-earth.outil-prompts.v1';
   var storageOK = true;
-  function defState() { return { params: DEFAULT_PARAMS, style: freshStyle(), styleV: STYLE_VERSION, sets: [], edits: {}, origine: {}, moments: {} }; }
+  function defState() { return { params: DEFAULT_PARAMS, style: freshStyle(), styleV: STYLE_VERSION, sets: [], edits: {}, origine: {}, moments: {}, avis: {} }; }
   function isObj(o) { return o && typeof o === 'object' && !Array.isArray(o); }
   function sanitize(o, base) {
     var d = base || defState();
@@ -623,6 +640,14 @@ details[open]>summary .chev{transform:rotate(45deg)}
       if ('corps' in n || 'lumiere' in n) d.edits[id] = n;
     });
     if (isObj(o.origine)) Object.keys(o.origine).forEach(function (id) { if (o.origine[id] === true) d.origine[id] = true; });
+    if (isObj(o.avis)) Object.keys(o.avis).forEach(function (id) {
+      var a = o.avis[id]; if (!isObj(a)) return;
+      var n = {};
+      if (a.v === 'ok' || a.v === 'ko') n.v = a.v;
+      if (typeof a.c === 'string' && a.c.trim()) n.c = a.c.slice(0, 3000);
+      if (typeof a.h === 'string') n.h = a.h.slice(0, 16);
+      if (n.v || n.c) d.avis[id] = n;
+    });
     if (isObj(o.moments)) Object.keys(o.moments).forEach(function (id) { if (typeof o.moments[id] === 'string') d.moments[id] = o.moments[id]; });
     return d;
   }
@@ -811,6 +836,17 @@ details[open]>summary .chev{transform:rotate(45deg)}
   function edit(it) { return S.edits[it.id] || {}; }
   function effLight(it) { var e = edit(it); return typeof e.lumiere === 'string' ? e.lumiere : baseLight(it); }
   function effCorps(it) { var e = edit(it); return typeof e.corps === 'string' ? e.corps : it.corps; }
+  /* ---------- relecture : un avis par fiche, valable pour le texte du prompt au moment de l'avis ---------- */
+  function itemHash(it) {
+    // le moment du jour d'un paysage et le début global ne comptent pas : l'avis porte sur le sujet et la lumière propre de la fiche
+    var e = edit(it), t = String(effCorps(it) || '') + '|' + (typeof e.lumiere === 'string' ? e.lumiere : (it.light || '')), h = 5381;
+    for (var i = 0; i < t.length; i++) h = ((h << 5) + h + t.charCodeAt(i)) | 0;
+    return (h >>> 0).toString(36);
+  }
+  function avisOf(it) { return S.avis[it.id] || null; }
+  function avisStale(it) { var a = avisOf(it); return !!(a && (a.v || a.c) && a.h !== itemHash(it)); }
+  function verdictOf(it) { var a = avisOf(it); return a && a.v && !avisStale(it) ? a.v : ''; }
+  function hasComment(it) { var a = avisOf(it); return !!(a && a.c && a.c.trim()); }
   function lightIsCommon(it) {
     var e = edit(it);
     if (typeof e.lumiere === 'string') return false;
@@ -982,7 +1018,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
   }
   function promptHtml(it) {
     var h = '<div class="pf-prompt">';
-    h += '<div class="pf-ph"><span class="lbl or">' + esc(it.promptLabel || 'Prompt') + '</span><span class="st pf-pst"></span><span class="st pf-flag" hidden></span><button type="button" class="bl sp-r" data-act="restore" hidden>Rétablir</button></div>';
+    h += '<div class="pf-ph"><span class="lbl or">' + esc(it.promptLabel || 'Prompt') + '</span><span class="st pf-pst"></span><span class="st pf-flag" hidden></span><span class="pf-av" hidden></span><button type="button" class="bl sp-r" data-act="restore" hidden>Rétablir</button></div>';
     if (it.kind === 'paysage') {
       h += '<div class="pf-row"><span class="lbl">Moment</span><div class="seg pf-moment" role="radiogroup" aria-label="Moment">' + MOMENTS.filter(function (m) { return !m.only || m.only.indexOf(it.id) !== -1; }).map(function (m) {
         return '<button type="button" role="radio" aria-checked="false" data-act="moment" data-m="' + m.k + '">' + esc(m.l) + '</button>';
@@ -994,6 +1030,9 @@ details[open]>summary .chev{transform:rotate(45deg)}
     h += '<p class="hint pf-dnote" hidden>Brouillon assemblé depuis les champs de la fiche, en français : à réécrire en anglais (formes, matières, couleurs, lumière) avant usage.</p>';
     h += '<div class="pf-pv"><div class="pf-pvh"><span class="lbl">Aperçu du prompt complet</span><button type="button" class="bl" data-act="pv" aria-expanded="true">Replier</button></div><div class="pv open" lang="en"></div><p class="pf-warn" hidden></p></div>';
     h += '<div class="pf-actions"><button type="button" class="btn pri pf-copy" data-act="copy">Copier</button><button type="button" class="btn pf-copy2" data-act="copy-np">Copier sans paramètres</button></div>';
+    h += '<div class="pf-rev"><div class="pf-row"><span class="lbl">Relecture</span><div class="seg" role="radiogroup" aria-label="Avis sur ce prompt"><button type="button" role="radio" aria-checked="false" data-act="avis" data-v="ok">Garder</button><button type="button" role="radio" aria-checked="false" data-act="avis" data-v="ko">À corriger</button></div></div>' +
+      '<label class="pf-f"><span class="fh"><span class="lbl">Commentaire</span></span><textarea class="inp pf-avis" data-avis="1" rows="2" spellcheck="true" lang="fr" placeholder="Ce que Midjourney a donné, ce qui ne va pas, ce qu\'il faut changer"></textarea></label>' +
+      '<p class="hint pf-avis-note" hidden></p></div>';
     return h + '</div>';
   }
   function ficheHtml(it) {
@@ -1041,6 +1080,18 @@ details[open]>summary .chev{transform:rotate(45deg)}
     var empty = !String(corps || '').trim();
     $('.pf-draft', el).hidden = !(empty && !isReady(it));
     $('.pf-dnote', el).hidden = !e.draft;
+    var av = avisOf(it), stale = avisStale(it), vd = verdictOf(it), af = $('.pf-av', el);
+    $$('[data-act="avis"]', el).forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-v') === vd)); });
+    var at = $('.pf-avis', el); if (at && document.activeElement !== at) at.value = av && av.c ? av.c : '';
+    var an = $('.pf-avis-note', el);
+    if (an) {
+      an.hidden = !stale;
+      an.textContent = stale ? (av.v ? 'Avis « ' + (av.v === 'ok' ? 'garder' : 'à corriger') + ' » donné sur une version plus ancienne de ce prompt : à confirmer.' : 'Commentaire écrit sur une version plus ancienne de ce prompt.') : '';
+    }
+    if (af) {
+      var lab = vd === 'ok' ? 'gardé' : vd === 'ko' ? 'à corriger' : stale ? 'avis ancien' : (av && av.c ? 'commenté' : '');
+      af.hidden = !lab; af.textContent = lab; af.setAttribute('data-v', vd || (stale ? 'old' : 'note'));
+    }
     var mk = typeof e.lumiere === 'string' ? '' : (S.moments[it.id] || '');
     $$('[data-act="moment"]', el).forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-m') === mk)); });
     var ob = $('.pf-orig', el); if (ob) ob.setAttribute('aria-pressed', String(orig));
@@ -1098,11 +1149,14 @@ details[open]>summary .chev{transform:rotate(45deg)}
     $$('.pf', LIST).forEach(function (el) { updateFiche(el, false); });
     applyFilters();
     setupSpy();
+    refreshAvis();
   }
   function renderFilters() {
     var items = itemsOf(UI.tab);
     var fp = [['tous', 'Tous', items.length], ['pret', 'Prompt prêt', items.filter(isReady).length],
-      ['rediger', 'À rédiger', items.filter(function (i) { return !isReady(i); }).length], ['modifie', 'Modifié ici', items.filter(function (i) { return S.edits[i.id]; }).length]];
+      ['rediger', 'À rédiger', items.filter(function (i) { return !isReady(i); }).length], ['modifie', 'Modifié ici', items.filter(function (i) { return S.edits[i.id]; }).length],
+      ['arelire', 'À relire', items.filter(function (i) { return isReady(i) && !verdictOf(i); }).length], ['gardes', 'Gardés', items.filter(function (i) { return verdictOf(i) === 'ok'; }).length],
+      ['acorriger', 'À corriger', items.filter(function (i) { return verdictOf(i) === 'ko'; }).length], ['commentes', 'Commentés', items.filter(hasComment).length]];
     $('#fPrompt').innerHTML = '<span class="lbl">Prompt</span>' + fp.map(function (f) {
       return '<button type="button" class="chip' + (UI.fp === f[0] ? ' on' : '') + '" data-fp="' + f[0] + '" aria-pressed="' + (UI.fp === f[0]) + '">' + esc(f[1]) + '<span class="c">' + f[2] + '</span></button>';
     }).join('');
@@ -1117,6 +1171,64 @@ details[open]>summary .chev{transform:rotate(45deg)}
       items.forEach(function (i) { if (i.statut && (f[0] === 'tous' || i.fam === f[0]) && vals.indexOf(i.statut) === -1) vals.push(i.statut); });
       return '<button type="button" class="chip' + (UI.fs === f[0] ? ' on' : '') + '" data-fs="' + f[0] + '" aria-pressed="' + (UI.fs === f[0]) + '" title="' + esc(f[0] === 'tous' ? '' : vals.join(' ; ')) + '">' + esc(f[1]) + '<span class="c">' + f[2] + '</span></button>';
     }).join('');
+  }
+  function refreshAvis() {
+    var ok = 0, ko = 0, com = 0, todo = 0;
+    ITEMS.forEach(function (i) {
+      if (!isReady(i)) return;
+      var v = verdictOf(i);
+      if (v === 'ok') ok++; else if (v === 'ko') ko++; else todo++;
+      if (hasComment(i)) com++;
+    });
+    $('#rvOk').textContent = ok; $('#rvKo').textContent = ko; $('#rvCom').textContent = com; $('#rvTodo').textContent = todo;
+    var items = itemsOf(UI.tab), c = {
+      arelire: items.filter(function (i) { return isReady(i) && !verdictOf(i); }).length, gardes: items.filter(function (i) { return verdictOf(i) === 'ok'; }).length,
+      acorriger: items.filter(function (i) { return verdictOf(i) === 'ko'; }).length, commentes: items.filter(hasComment).length
+    };
+    Object.keys(c).forEach(function (k) { var b = $('#fPrompt [data-fp="' + k + '"] .c'); if (b) b.textContent = c[k]; });
+  }
+  function itemLabel(it) { return (it.kind === 'animal' || it.kind === 'plante' || it.kind === 'titan') ? it.code + ' · ' + it.title : it.title + ' (' + it.id + ')'; }
+  function retoursText() {
+    var d = new Date(), stamp = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    var all = ITEMS.filter(isReady), ko = [], ok = [], notes = [], old = [];
+    TABS.forEach(function (t) {
+      itemsOf(t.key).filter(isReady).forEach(function (it) {
+        var v = verdictOf(it), a = avisOf(it);
+        if (avisStale(it)) old.push(it);
+        else if (v === 'ko') ko.push(it);
+        else if (v === 'ok') ok.push(it);
+        else if (hasComment(it)) notes.push(it);
+      });
+    });
+    function cm(it) { return (avisOf(it).c || '').trim().replace(/\n+/g, ' / '); }
+    function cur(it) { var p = promptParts(it); return p ? promptText(p, false) : ''; }
+    var L = ['RETOURS DE RELECTURE · outil de prompts · ' + stamp, 'Total : ' + all.length + ' prompts · gardés : ' + ok.length + ' · à corriger : ' + ko.length + ' · commentés sans avis : ' + notes.length + ' · avis anciens : ' + old.length + ' · à relire : ' + (all.length - ok.length - ko.length - notes.length - old.length), ''];
+    if (ko.length) {
+      L.push('À CORRIGER (' + ko.length + ')');
+      ko.forEach(function (it) {
+        L.push('- ' + itemLabel(it) + ' : ' + (cm(it) || '(pas de commentaire)'));
+        L.push('  Prompt actuel' + (S.edits[it.id] ? ' (modifié dans l\'outil)' : '') + ' : ' + cur(it));
+      });
+      L.push('');
+    }
+    if (notes.length) {
+      L.push('COMMENTAIRES SANS AVIS (' + notes.length + ')');
+      notes.forEach(function (it) { L.push('- ' + itemLabel(it) + ' : ' + cm(it)); });
+      L.push('');
+    }
+    if (ok.length) {
+      L.push('GARDÉS (' + ok.length + ')');
+      L.push(ok.map(function (it) { return it.kind === 'animal' || it.kind === 'plante' || it.kind === 'titan' ? it.code : it.id; }).join(', '));
+      var okc = ok.filter(hasComment);
+      if (okc.length) { L.push('Commentaires sur des prompts gardés :'); okc.forEach(function (it) { L.push('- ' + itemLabel(it) + ' : ' + cm(it)); }); }
+      L.push('');
+    }
+    if (old.length) {
+      L.push('AVIS SUR D\'ANCIENNES VERSIONS (' + old.length + ', le prompt a changé depuis)');
+      old.forEach(function (it) { var a = avisOf(it); L.push('- ' + itemLabel(it) + ' (' + (a.v === 'ok' ? 'gardé' : a.v === 'ko' ? 'à corriger' : 'commentaire') + ') : ' + (cm(it) || '(pas de commentaire)')); });
+      L.push('');
+    }
+    return L.join('\n').replace(/\n+$/, '') + '\n';
   }
   function refreshModCount() {
     var b = $('#fPrompt [data-fp="modifie"] .c');
@@ -1136,7 +1248,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
       $$('.pf', g).forEach(function (el) {
         var it = BY_ID[el.getAttribute('data-id')];
         var ok = matchQ(it, terms) &&
-          (UI.fp === 'tous' || (UI.fp === 'pret' && isReady(it)) || (UI.fp === 'rediger' && !isReady(it)) || (UI.fp === 'modifie' && S.edits[it.id])) &&
+          (UI.fp === 'tous' || (UI.fp === 'pret' && isReady(it)) || (UI.fp === 'rediger' && !isReady(it)) || (UI.fp === 'modifie' && S.edits[it.id]) || (UI.fp === 'arelire' && isReady(it) && !verdictOf(it)) || (UI.fp === 'gardes' && verdictOf(it) === 'ok') || (UI.fp === 'acorriger' && verdictOf(it) === 'ko') || (UI.fp === 'commentes' && hasComment(it))) &&
           (UI.fs === 'tous' || it.fam === UI.fs);
         el.hidden = !ok;
         if (ok) { k++; if (isReady(it)) ready++; }
@@ -1276,6 +1388,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     PL = computeLine(S.params, S.style);
     renderQuick(); renderNotes(); renderSets();
     $$('.pf', LIST).forEach(function (el) { updateFiche(el, false); });
+    refreshAvis();
     measure();
   }
   function openPanel(id) {
@@ -1376,7 +1489,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     if (!('corps' in e)) delete e.draft;
     if ('corps' in e || 'lumiere' in e) S.edits[it.id] = e; else delete S.edits[it.id];
     updateFiche(el, false);
-    refreshModCount();
+    refreshModCount(); refreshAvis();
     save();
   }
   function ficheAction(btn, el) {
@@ -1400,6 +1513,12 @@ details[open]>summary .chev{transform:rotate(45deg)}
       S.moments[it.id] = mk;
       if (S.edits[it.id]) { delete S.edits[it.id].lumiere; if (!('corps' in S.edits[it.id])) delete S.edits[it.id]; }
     }
+    else if (act === 'avis') {
+      var vv = btn.getAttribute('data-v'), cu = avisOf(it), nw = { h: itemHash(it) };
+      if (cu && cu.c) nw.c = cu.c;
+      if (verdictOf(it) !== vv) nw.v = vv;
+      if (nw.v || nw.c) S.avis[it.id] = nw; else delete S.avis[it.id];
+    }
     else if (act === 'orig') { if (S.origine[it.id]) delete S.origine[it.id]; else S.origine[it.id] = true; }
     else if (act === 'restore') { delete S.edits[it.id]; }
     else if (act === 'draft') {
@@ -1408,7 +1527,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     }
     updateFiche(el, true);
     if (act === 'restore' || act === 'draft') { var ta = $('.pf-corps', el); ta.value = effCorps(it); autosize(ta); }
-    refreshModCount();
+    refreshModCount(); refreshAvis();
     save();
   }
   function bind() {
@@ -1486,7 +1605,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
     });
     $('#bExport').addEventListener('click', function () {
       var d = new Date(), stamp = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
-      var data = { format: 'second-earth-outil-prompts', version: 1, exporte_le: d.toISOString(), styleV: STYLE_VERSION, params: S.params, style: S.style, sets: S.sets, edits: S.edits, origine: S.origine, moments: S.moments };
+      var data = { format: 'second-earth-outil-prompts', version: 1, exporte_le: d.toISOString(), styleV: STYLE_VERSION, params: S.params, style: S.style, sets: S.sets, edits: S.edits, origine: S.origine, moments: S.moments, avis: S.avis };
       try {
         var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         var a = document.createElement('a');
@@ -1495,6 +1614,19 @@ details[open]>summary .chev{transform:rotate(45deg)}
         setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
         setMsg('Exporté : ' + nb(S.sets.length, 'jeu', 'jeux') + ', ' + nb(Object.keys(S.edits).length, 'prompt modifié', 'prompts modifiés') + '.');
       } catch (e) { setMsg('Export impossible dans ce navigateur.'); }
+    });
+    $('#bRetours').addEventListener('click', function () {
+      var b = this;
+      copyText(retoursText()).then(function () { flash(b, 'Copié', true); live('Retours copiés'); }, function () { flash(b, 'Échec de la copie', false); live('La copie a échoué'); });
+    });
+    $('#bAvisClear').addEventListener('click', function () {
+      var b = this;
+      if (!Object.keys(S.avis).length) { flash(b, 'Aucun avis', false); return; }
+      if (!b._arm) { b._arm = setTimeout(function () { b._arm = 0; b.textContent = 'Effacer mes avis'; }, 4000); b.textContent = 'Confirmer l\'effacement'; return; }
+      clearTimeout(b._arm); b._arm = 0; b.textContent = 'Effacer mes avis';
+      S.avis = {};
+      $$('.pf', LIST).forEach(function (el) { updateFiche(el, false); });
+      refreshAvis(); save(); live('Avis effacés');
     });
     $('#bImport').addEventListener('click', function () { $('#fImport').click(); });
     $('#fImport').addEventListener('change', function () {
@@ -1509,7 +1641,7 @@ details[open]>summary .chev{transform:rotate(45deg)}
         S = sanitize(o, S);
         $('#params').value = S.params;
         PL = computeLine(S.params, S.style);
-        renderTab(); refreshAll(); save();
+        renderTab(); refreshAll(); refreshAvis(); save();
         setMsg('Importé : ' + nb(nSets, 'jeu', 'jeux') + ', ' + nb(nEd, 'prompt modifié', 'prompts modifiés') + '.');
       };
       rd.onerror = function () { setMsg('Lecture du fichier impossible.'); };
@@ -1559,6 +1691,14 @@ details[open]>summary .chev{transform:rotate(45deg)}
     // fiches
     LIST.addEventListener('input', function (ev) {
       var t = ev.target, f = t.getAttribute('data-edit');
+      if (t.hasAttribute('data-avis')) {
+        var el0 = t.closest('.pf'), it0 = BY_ID[el0.getAttribute('data-id')], nv = { h: itemHash(it0) }, v0 = verdictOf(it0);
+        if (v0) nv.v = v0;
+        if (t.value.trim()) nv.c = t.value;
+        if (nv.v || nv.c) S.avis[it0.id] = nv; else delete S.avis[it0.id];
+        updateFiche(el0, false); refreshAvis(); save();
+        return;
+      }
       if (!f) return;
       var el = t.closest('.pf');
       if (f === 'corps') autosize(t);
