@@ -155,6 +155,9 @@ data/
   paysages.json            18 biomes (10 du trajet, 8 hors trajet) avec leurs sections de texte
   prompts-propose.json     144 prompts (une planche ou une vue large par fiche), format des essais de Cal du 12/10/2026 (proposé, à valider) ; non généré par build_data.py
   arbitrages-second-earth.html   la page QCM (rounds 1 à 16 archivés, aucune question ouverte) : modèle pour les futurs QCM
+  film.json                le script du 25 min en données (11 actes, 150 plans, 9 charnières, 9 modules, les 4 mots) ; produit par tools/build_film.mjs
+  essais.json              les données des essais de lecture du film (32 promesses, 16 faits de savoir, 11 personnages et 52 relations),
+                           écrites à la main, chaque élément avec sa provenance ; non généré (section 12)
 docs/
   bible/                   le monde : registre des décisions (fait foi), trajet, chronologie,
                            10 fiches de biome du trajet, biomes hors trajet (+ 8 fiches),
@@ -183,7 +186,12 @@ tools/
   build_site.py            construit tout le site dans _site/ (section 10)
   build_prompts.py         construit l'outil de prompts (appelé par build_site.py)
   site/prompts.html        gabarit de l'outil de prompts
+  build_film.mjs           tables de docs/film/ -> data/film.json (Node, sans dépendance)
+  build_essais.mjs         construit les pages des essais dans site/essais/ (section 12)
+  essais/                  le code des essais : commun.js, promesses.js, savoir.js, toile.js, essais.css
+tests/                     vérifications (Node) : node --test depuis la racine ; --test-update-snapshots réécrit film.json et site/essais/
 site/assets/               thème Verdant du site : site.css, site.js, icon.svg, fonts/venus-rising.otf
+site/essais/               les quatre pages des essais, autonomes, produites par build_essais.mjs et versionnées (ne pas les éditer à la main)
 theme/showrunner-ui-kit/   le kit d'interface fourni par Cal (référence visuelle du thème)
 video/seedance/            séquences vidéo Seedance 2.5 : prompts/ (10 séquences de 30 s, 4 plans de 15 s), references.json
                            (ordre des images et identifiants Higgsfield), jobs-2026-11-05.json, tools/ (voir section 11)
@@ -297,3 +305,27 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 - Option brouillon 480p (`--draft true`), finalisable sept jours : à proposer pour tester un découpage.
 
 **Ouvert** : relancer les séquences avec la planche d'échelle (une seule d'abord, avec l'accord de Cal et le coût annoncé) ; placer les 27 animaux de ses images en rencontres ; S09 : ses lacs (image 38) sont vert acide, la Bible les dit rose et pourpre (signalé, non tranché).
+
+---
+
+## 12. Essais de lecture du film (16/11/2026)
+
+**Demande de Cal** (16/11/2026, dans le chat et par QCM) : appliquer au film de Second Earth des essais d'interface faits pour un autre de ses projets. Ses quatre réponses : essais retenus = Le livre des promesses, La Partition du savoir, La toile des personnages ; ils vivent **dans le site de Second Earth** ; **le docx de référence fait foi** ; Claude peut déduire, **tout ce qui est déduit est marqué**.
+
+**Ce qui existe** : quatre pages dans `site/essais/` (accueil, promesses, savoir, toile), publiées sous `essais/` et liées depuis la rubrique Film.
+
+- **Le livre des promesses** : 32 promesses (les neuf crochets de l'Architecture et ceux du Séquencier ; les promesses tenues à l'intérieur du 25). États : posée (payée seulement dans le 55), payée, due, assumée. Vue 25 ou 55 ; place de M9 (après M4 ou prégénérique).
+- **La Partition du savoir** : 16 faits, quatre portées (spectateur, Seed, Rob1, PERSEPHORA et la Terre). Écarts nommés par le code : ironie, suspense (si le fait porte `menace`, classement de Claude), surprise, secret (champ `cache`, écrit dans le docx).
+- **La toile des personnages** : 11 personnages, 52 relations orientées, chacune avec son plan « depuis » ; un curseur sur les 150 plans.
+
+**Règles de ces essais** :
+
+- Ils **lisent** le script, ils ne le modifient pas : le gel du monde (règle 8) tient. Aucune proposition de contenu par la machine. Les gestes de Cal (assumer une promesse, lui donner un paiement, poser un « apprend », tirer un lien) restent dans son navigateur (stockage local) ; « Copier mes choix » en fait un texte à coller dans le chat.
+- **Provenance obligatoire** dans `data/essais.json` : `src` = `docx` (citation), un autre document du script (`decoupage`, `sequencier`, `architecture`, `modules`, `propositions`, `registre` : affiché « hors docx »), `infere` (avec `pourquoi` et les plans `fonde`) ou `manquant`. `tests/essais-donnees.test.mjs` vérifie chaque citation mot pour mot dans le document nommé (pour le découpage : dans la ligne du plan). Au 16/11 : 10 éléments inférés, 4 manquants, listés sur la page d'accueil des essais.
+- Les numéros de plan sont ceux du Découpage (statut proposé). Dans le 55, un module est posé juste après le plan de sa charnière : convention des essais.
+- Le code est écrit pour ce dépôt, d'après les fiches des essais d'origine ; rien n'est copié de l'autre projet (privé), dont le nom ne s'écrit pas sur le site.
+- Après toute modification de `data/essais.json`, de `tools/essais/` ou des documents de `docs/film/` : `node --test --test-update-snapshots`, puis relire le diff de `site/essais/`.
+
+**Non vérifié** : les pages n'ont pas été ouvertes dans un navigateur (les calculs, les gestes et le montage sont testés sous Node) ; `tools/build_site.py` modifié sans pouvoir être lancé dans la session (Python sans droit d'exécution) ; `BRIEF.html` non régénéré.
+
+**Relevé par les essais, à signaler à Cal, pas à corriger seul** : dans l'ordre du 55, cinq crochets viennent après le module qui les paie (photo d'Elena / M1, ombre 4-09 / M4, compteur 87 km / M7, mot Korê / M8, couche sombre 7-18 / M9) ; trois promesses sont dues (regard vers la mer et la fosse, drone cassé, la suite avec CAIN) ; M8 laisse ouvert « pose le caillou au bord d'un lac » alors que A08 le met dans l'alvéole H-01 à la fin ; le docx fait revoir à Rob1 « Je suis d'ici maintenant » (Rob4), scène que le récit ne montre pas.

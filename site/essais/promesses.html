@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0d0b">
+<title>Le livre des promesses · Second Earth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&amp;family=Saira+Semi+Condensed:wght@400;500;600;700&amp;family=Azeret+Mono:wght@300;400;500&amp;display=swap">
+<style>
+/* Second Earth · thème Verdant (d'après le Showrunner UI Kit, rev 5.0)
+   Fond presque noir, rampe corail, rampe vert profond, encre bleutée.
+   Titres et chiffres : Venus Rising. Texte : Chakra Petch. Étiquettes : Azeret Mono. */
+
+@font-face{font-family:'Venus Rising';src:url('../assets/fonts/venus-rising.otf') format('opentype');font-weight:400;font-display:swap}
+
+:root{
+  color-scheme: dark;
+  --bg:#0a0d0b; --panel:#101413; --panel2:#151a18; --panel3:#1b211e;
+  --ink:#e6eae7; --body:#c9d2cd; --ink2:#9ca8a2; --ink3:#7c8884; --cy:#b9cfd8;
+  --or:#e0674a; --or-ink:#170c08;
+  --c1:#f0b49b; --c2:#e59578; --c3:#d47a5c; --c4:#a3502f; --c5:#7a3a22;
+  --g1:#2f6b4a; --g2:#24543b; --g3:#1a3f2c; --g-ink:#8fd1a8;
+  --line:rgba(185,207,216,.11); --line2:rgba(185,207,216,.22);
+  --display:'Venus Rising','Chakra Petch','Saira Semi Condensed',sans-serif;
+  --text:'Chakra Petch','Saira Semi Condensed',system-ui,sans-serif;
+  --mono:'Azeret Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  --r-s:10px; --r-m:14px; --r-l:18px;
+  --dots:radial-gradient(rgba(23,12,8,.3) 1px,transparent 1.1px);
+}
+
+*{box-sizing:border-box}
+html,body{background-color:var(--bg)!important;color:var(--ink)}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;font-family:var(--text);font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+body::before{content:"";position:fixed;inset:0;background-color:var(--bg);z-index:-1}
+header,main,footer,nav,aside,section,.wrap{background-color:transparent}
+@media (forced-colors:active){*{forced-color-adjust:none}}
+@media (inverted-colors:inverted){html{filter:invert(1) hue-rotate(180deg)} img,video,canvas,iframe{filter:invert(1) hue-rotate(180deg)}}
+::selection{background:var(--or);color:var(--bg)}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:999px}
+a{color:var(--cy);text-decoration:none}
+a:hover{color:#fff}
+:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+img{max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+
+/* ---------- étiquettes ---------- */
+.lbl{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
+.lbl.or{color:var(--or)}
+.num{font-family:var(--display);letter-spacing:.03em}
+
+/* ---------- barre du haut ---------- */
+.top{position:sticky;top:0;z-index:40;background:rgba(10,13,11,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1320px;margin:0 auto;padding:13px 30px;display:flex;align-items:center;gap:22px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--ink);flex:none}
+.brand:hover{color:var(--ink)}
+.brand-mark{width:24px;height:24px;border-radius:8px;background:var(--or);display:flex;align-items:center;justify-content:center;flex:none}
+.brand-mark::after{content:"";width:7px;height:7px;border-radius:2px;background:var(--or-ink)}
+.brand-name{display:block;font-family:var(--text);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1.2}
+.brand-sub{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;color:var(--ink3);text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-left:auto}
+.nav a{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);padding:7px 9px;border-radius:999px;display:inline-flex;align-items:center;gap:7px}
+.nav a:hover{color:var(--ink);background:var(--panel2)}
+.nav a.on{color:var(--ink);background:var(--panel3)}
+.nav a.on::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--or)}
+.nav a.cta{background:var(--or);color:var(--or-ink);font-weight:500;margin-left:6px}
+.nav a.cta:hover{filter:brightness(1.08);color:var(--or-ink)}
+.nav a.cta.on::before{background:var(--or-ink)}
+.menu{display:none;margin-left:auto}
+.menu summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--line2);border-radius:999px;padding:8px 14px;color:var(--ink)}
+.menu summary::-webkit-details-marker{display:none}
+.menu[open] summary{background:var(--or);color:var(--or-ink);border-color:var(--or)}
+.menu-list{position:absolute;left:16px;right:16px;top:calc(100% + 6px);background:var(--panel);border:1px solid var(--line2);border-radius:var(--r-m);padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px;box-shadow:0 20px 40px -20px #000}
+.menu-list a{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding:11px 12px;border-radius:var(--r-s);background:var(--panel2)}
+.menu-list a.on{background:var(--or);color:var(--or-ink)}
+
+/* ---------- structure ---------- */
+.wrap{max-width:1320px;margin:0 auto;padding:26px 30px 90px}
+.page{display:grid;grid-template-columns:268px minmax(0,1fr);gap:26px;align-items:start}
+.side{position:sticky;top:78px;max-height:calc(100vh - 96px);overflow:auto;background:var(--panel);border-radius:var(--r-l);padding:18px 14px 16px;display:flex;flex-direction:column;gap:12px}
+.side-head{padding:0 6px;display:flex;flex-direction:column;gap:6px}
+.side-title{font-family:var(--display);font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);line-height:1.2}
+.side-group{font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);padding:10px 8px 2px}
+.side ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.side li a{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:baseline;padding:8px 9px;border-radius:var(--r-s);color:var(--ink2);font-size:13.5px;line-height:1.3}
+.side li a .n{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--ink3)}
+.side li a:hover{background:var(--panel2);color:var(--ink)}
+.side li.on>a{background:var(--panel3);color:var(--ink)}
+.side li.on>a .n{color:var(--or)}
+.toc{list-style:none;margin:4px 0 6px 32px!important;padding:0 0 0 10px!important;border-left:1px solid var(--line2);gap:0!important}
+.toc a{display:block!important;padding:4px 6px!important;font-size:12px!important;color:var(--ink3)!important;background:none!important}
+.toc a:hover{color:var(--ink)!important}
+.side-toggle{display:none}
+
+/* ---------- en-tête de document ---------- */
+.head{position:relative;border-radius:var(--r-l);background:var(--panel);padding:30px 30px 28px;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.head h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,36px);line-height:1.2;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);text-wrap:balance}
+.head .meta{display:flex;flex-wrap:wrap;gap:6px 14px}
+.head .lede{margin:0;color:var(--ink2);font-size:15px;max-width:72ch;text-wrap:pretty}
+.head.accent::after{content:"";position:absolute;right:0;top:0;bottom:0;width:130px;background-image:radial-gradient(rgba(224,103,74,.35) 1px,transparent 1.1px);background-size:7px 7px;pointer-events:none}
+
+/* ---------- corps de document ---------- */
+.doc{min-width:0;display:flex;flex-direction:column;gap:0}
+.prose{counter-reset:h2;padding:24px 4px 0}
+.prose>h2:first-child{margin-top:4px}
+.prose>*{max-width:78ch}
+.prose>.tbl,.prose>pre,.prose>.prompt,.prose>blockquote,.prose>.wide{max-width:none}
+.prose p{margin:0 0 14px;color:var(--body);text-wrap:pretty}
+.prose strong{color:var(--ink);font-weight:600}
+.prose em{color:var(--ink)}
+.prose h2{counter-increment:h2;margin:46px 0 16px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--display);font-weight:400;font-size:18px;line-height:1.3;letter-spacing:.09em;text-transform:uppercase;color:var(--ink);display:flex;gap:12px;align-items:baseline}
+.prose h2::before{content:counter(h2,decimal-leading-zero);font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--or);flex:none;transform:translateY(-2px)}
+.prose h3{margin:30px 0 10px;font-family:var(--text);font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cy)}
+.prose h4,.prose h5,.prose h6{margin:22px 0 8px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2)}
+.prose ul,.prose ol{margin:0 0 16px;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.prose ul>li{position:relative;padding-left:20px;color:var(--body)}
+.prose ul>li::before{content:"";position:absolute;left:2px;top:.66em;width:6px;height:6px;border-radius:2px;background:var(--c3)}
+.prose ol{counter-reset:ol}
+.prose ol>li{counter-increment:ol;position:relative;padding-left:34px;color:var(--body)}
+.prose ol>li::before{content:counter(ol,decimal-leading-zero);position:absolute;left:0;top:.28em;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--or)}
+.prose a{border-bottom:1px solid rgba(185,207,216,.35)}
+.prose a:hover{border-bottom-color:#fff}
+.prose code{font-family:var(--mono);font-size:.84em;background:var(--panel2);padding:1px 6px;border-radius:6px;color:var(--ink)}
+.prose hr{border:none;border-top:1px solid var(--line);margin:28px 0}
+.prose blockquote{margin:22px 0;position:relative;border-radius:var(--r-l);background:var(--or);color:var(--or-ink);padding:26px 150px 26px 28px;overflow:hidden}
+.prose blockquote::after{content:"";position:absolute;right:-8px;top:0;bottom:0;width:130px;background-image:var(--dots);background-size:7px 7px}
+.prose blockquote p{color:var(--or-ink);font-family:var(--display);font-size:clamp(15px,1.8vw,20px);line-height:1.45;letter-spacing:.04em;text-transform:uppercase;margin:0}
+
+/* tableaux */
+.tbl{margin:6px 0 22px;border-radius:var(--r-m);background:var(--panel);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.5}
+.tbl th{position:sticky;top:0;text-align:left;vertical-align:bottom;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);background:var(--panel2);padding:12px 14px}
+.tbl td{vertical-align:top;padding:11px 14px;border-top:1px solid var(--line);color:var(--body);min-width:120px}
+.tbl td:first-child{color:var(--ink);min-width:140px}
+.tbl tr:hover td{background:rgba(185,207,216,.03)}
+.tbl strong{color:var(--ink)}
+
+/* statuts */
+.st{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:999px;vertical-align:.12em;line-height:1.6;white-space:normal}
+.st-ok{background:rgba(47,107,74,.32);color:var(--g-ink);box-shadow:inset 0 0 0 1px rgba(47,107,74,.9)}
+.st-prop{color:var(--c2);box-shadow:inset 0 0 0 1px rgba(229,149,120,.55)}
+.st-new{color:var(--cy);box-shadow:inset 0 0 0 1px rgba(185,207,216,.45)}
+.st-off{color:var(--ink3);box-shadow:inset 0 0 0 1px var(--line2)}
+
+/* codes d'espèce liés */
+a.code{font-family:var(--mono);font-size:.86em;letter-spacing:.04em;color:var(--c2);border-bottom:1px dotted rgba(229,149,120,.6)!important;white-space:nowrap}
+a.code:hover{color:#fff}
+
+/* blocs de prompt */
+.prompt{position:relative;margin:8px 0 20px;border-radius:var(--r-m);background:var(--panel2);box-shadow:inset 0 0 0 1px var(--line)}
+.prompt pre{margin:0;padding:16px 18px 18px;font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+.prompt-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px 0 18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--text);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--ink);cursor:pointer;min-height:36px;white-space:nowrap}
+.btn:hover{border-color:var(--ink2)}
+.btn.pri{background:var(--or);border-color:var(--or);color:var(--or-ink)}
+.btn.pri:hover{filter:brightness(1.08)}
+.btn.done{background:var(--g1);border-color:var(--g1);color:#e6f3eb}
+
+/* navigation précédent / suivant */
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:48px}
+.pager a{display:flex;flex-direction:column;gap:8px;border-radius:var(--r-m);background:var(--panel);padding:16px 18px;color:var(--ink);min-height:88px;transition:transform .15s,background .15s}
+.pager a:hover{background:var(--panel2);transform:translateY(-2px)}
+.pager a.next{text-align:right;align-items:flex-end}
+.pager .t{font-family:var(--display);font-size:14px;letter-spacing:.06em;text-transform:uppercase;line-height:1.25}
+.source{margin-top:26px;padding:14px 16px;border-radius:var(--r-m);box-shadow:inset 0 0 0 1px var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.06em;line-height:1.7;color:var(--ink3)}
+
+/* ---------- blocs empilés (rampe corail) ---------- */
+.stack{display:flex;flex-direction:column;gap:5px}
+.blk{position:relative;display:flex;align-items:center;gap:16px;border-radius:var(--r-m);padding:18px 22px;min-height:84px;overflow:hidden;transition:transform .16s,filter .16s;color:var(--or-ink)}
+.blk:hover{transform:translateX(5px);filter:brightness(1.07);color:var(--or-ink)}
+.blk::after{content:"";position:absolute;right:16px;top:0;bottom:0;width:130px;background-image:var(--dots);background-size:7px 7px;pointer-events:none}
+.blk .ref{font-family:var(--mono);font-size:9px;letter-spacing:.18em;flex:none}
+.blk .main{min-width:0;flex:1;position:relative}
+.blk .name{display:block;font-family:var(--display);font-size:clamp(18px,2.4vw,27px);letter-spacing:.06em;text-transform:uppercase;line-height:1.05}
+.blk .sub{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;margin-top:6px}
+.blk .val{position:relative;z-index:1;font-family:var(--display);font-size:clamp(14px,1.8vw,21px);letter-spacing:.04em;text-transform:uppercase;flex:none;text-align:right}
+.blk.k1{background:var(--c1)} .blk.k2{background:var(--c2)} .blk.k3{background:var(--c3)}
+.blk.k4{background:var(--c4);color:#fff4ee} .blk.k5{background:var(--c5);color:#fff4ee}
+.blk.k4:hover,.blk.k5:hover{color:#fff4ee}
+
+/* ---------- tuiles vertes ---------- */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.tile{position:relative;border-radius:var(--r-m);padding:16px 18px;min-height:132px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;color:#e8f3ec;overflow:hidden;transition:transform .15s,filter .15s;background:var(--g2)}
+.tile:hover{transform:translateY(-4px);filter:brightness(1.08);color:#e8f3ec}
+.tile.t1{background:var(--g1)} .tile.t2{background:var(--g2)} .tile.t3{background:var(--g3)}
+.tile .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tile .ref{font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;opacity:.85}
+.tile .dot{width:6px;height:6px;border-radius:50%;background:var(--or)}
+.tile .name{font-family:var(--display);font-size:clamp(16px,1.7vw,21px);letter-spacing:.06em;text-transform:uppercase;line-height:1.12}
+.tile .sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;line-height:1.5;opacity:.9}
+
+/* ---------- cartes neutres ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+.card{position:relative;display:flex;flex-direction:column;gap:10px;border-radius:var(--r-m);background:var(--panel);padding:18px 18px 16px;color:var(--ink);transition:background .15s,transform .15s}
+a.card:hover{background:var(--panel2);transform:translateY(-2px);color:var(--ink)}
+.card .name{font-family:var(--display);font-size:15px;letter-spacing:.06em;text-transform:uppercase;line-height:1.25}
+.card p{margin:0;color:var(--ink2);font-size:13.5px;line-height:1.55}
+.card .big{font-family:var(--display);font-size:34px;line-height:1;color:var(--or)}
+
+/* ---------- sections d'accueil ---------- */
+.sec{display:flex;flex-direction:column;gap:12px}
+.sec-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.sec-h h2{margin:0;font-family:var(--display);font-weight:400;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.sec-h .k{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--or)}
+.sec-h .r{margin-left:auto}
+.home{display:flex;flex-direction:column;gap:40px}
+.hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:10px}
+.hero-main{border-radius:var(--r-l);background:var(--panel);padding:36px 32px;display:flex;flex-direction:column;justify-content:center;gap:18px;min-width:0}
+.hero-main h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,72px);line-height:1.02;letter-spacing:.04em;text-transform:uppercase}
+.hero-main p{margin:0;font-size:15px;line-height:1.62;color:var(--ink2);max-width:60ch;text-wrap:pretty}
+.hero-side{position:relative;border-radius:var(--r-l);background:var(--or);color:var(--or-ink);padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;overflow:hidden;min-height:240px}
+.hero-side::after{content:"";position:absolute;right:-8px;top:0;bottom:0;width:130px;background-image:var(--dots);background-size:7px 7px}
+.hero-side .big{font-family:var(--display);font-size:clamp(56px,8vw,96px);line-height:.9;letter-spacing:.02em;position:relative;z-index:1}
+.hero-side .lbl{color:var(--or-ink);position:relative;z-index:1}
+.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.fig{border-radius:var(--r-m);background:var(--panel);padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-height:118px;justify-content:space-between}
+.fig .v{font-family:var(--display);font-size:clamp(24px,2.6vw,32px);line-height:1;color:var(--ink);letter-spacing:.02em;white-space:nowrap}
+.fig .v small{font-size:.5em;color:var(--ink2);margin-left:4px}
+.fig .d{font-size:12.5px;line-height:1.45;color:var(--ink2)}
+.fig.o{box-shadow:inset 0 0 0 1px rgba(224,103,74,.6)}
+.fig.g{box-shadow:inset 0 0 0 1px rgba(47,107,74,.9)}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.panel{border-radius:var(--r-l);background:var(--panel);padding:24px 26px;display:flex;flex-direction:column;gap:12px}
+.panel p{margin:0;color:var(--body);text-wrap:pretty}
+.panel h3{margin:0;font-family:var(--display);font-weight:400;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
+.quote{position:relative;border-radius:var(--r-l);background:var(--or);color:var(--or-ink);padding:30px 150px 30px 30px;overflow:hidden}
+.quote::after{content:"";position:absolute;right:-8px;top:0;bottom:0;width:130px;background-image:var(--dots);background-size:7px 7px}
+.quote p{margin:0;font-family:var(--display);font-size:clamp(17px,2.2vw,26px);line-height:1.35;letter-spacing:.04em;text-transform:uppercase}
+
+/* ---------- fiches (bestiaire, flore) ---------- */
+.tools{position:sticky;top:66px;z-index:5;background:rgba(10,13,11,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:12px 0;display:flex;flex-direction:column;gap:10px;margin-bottom:6px}
+.search{width:100%;background:var(--panel);border:1px solid var(--line2);border-radius:var(--r-s);padding:11px 14px;font-family:var(--text);font-size:14px;color:var(--ink);outline:none}
+.search:focus{border-color:var(--or)}
+.search::placeholder{color:var(--ink3)}
+.chips{display:flex;gap:5px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--ink2);cursor:pointer;white-space:nowrap}
+.chip:hover{color:var(--ink);border-color:var(--ink3)}
+.chip.on{background:var(--or);border-color:var(--or);color:var(--or-ink)}
+.chip .c{opacity:.7;margin-left:5px}
+.count{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.grp{margin:26px 0 10px;display:flex;flex-direction:column;gap:8px}
+.grp-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.grp-h h2{margin:0;font-family:var(--display);font-weight:400;font-size:17px;letter-spacing:.08em;text-transform:uppercase}
+.grp-intro{margin:0;color:var(--ink2);font-size:14px;max-width:80ch}
+.pal{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink2)}
+.pal b{font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);font-weight:400;margin-right:6px}
+.fiches{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:8px}
+.fiche{border-radius:var(--r-m);background:var(--panel);padding:16px 18px;display:flex;flex-direction:column;gap:10px;scroll-margin-top:150px;transition:box-shadow .2s}
+.fiche:target,.fiche.hl{box-shadow:inset 0 0 0 1px var(--or)}
+.fiche-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.fiche .code{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--or)}
+.fiche h3{margin:0;font-family:var(--text);font-size:17px;font-weight:600;letter-spacing:.04em;line-height:1.25;color:var(--ink)}
+.fiche .latin{font-style:italic;color:var(--cy);font-size:13.5px;margin-top:-6px}
+.fiche dl{margin:0;display:grid;grid-template-columns:92px minmax(0,1fr);gap:7px 12px;font-size:13.5px;line-height:1.5}
+.fiche dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);padding-top:4px}
+.fiche dd{margin:0;color:var(--body)}
+.fiche .foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
+.fiche .foot a{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase}
+.warn{border-radius:var(--r-s);background:rgba(224,103,74,.1);box-shadow:inset 0 0 0 1px rgba(224,103,74,.5);padding:9px 12px;font-size:12.5px;color:var(--c1)}
+.warn summary{cursor:pointer;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--or)}
+.warn p{margin:8px 0 0}
+.empty{padding:30px;text-align:center;color:var(--ink3);font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+[hidden]{display:none!important}
+
+/* ---------- carte (cadre) ---------- */
+.frame{border-radius:var(--r-l);overflow:hidden;background:var(--panel);height:calc(100vh - 170px);min-height:520px}
+.frame iframe{border:0;width:100%;height:100%;display:block}
+
+/* ---------- pied de page ---------- */
+.foot-site{max-width:1320px;margin:0 auto;padding:22px 30px 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;border-top:1px solid var(--line)}
+
+/* ---------- téléphone ---------- */
+@media (max-width:1100px){
+  .nav{display:none}
+  .menu{display:block}
+  .top-in{position:relative}
+}
+@media (max-width:1000px){
+  .tiles,.figs{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .page{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;max-height:none;padding:12px}
+  .side-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:4px 6px;cursor:pointer;color:var(--ink)}
+  .side-toggle .lbl{color:var(--ink2)}
+  .side:not(.open) .side-body{display:none}
+  .side-head{display:none}
+  .hero{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:820px){
+  .top-in{padding:11px 16px}
+  .wrap{padding:16px 16px 70px}
+  .foot-site{padding:18px 16px 32px}
+  .head{padding:22px 18px 20px}
+  .hero-main{padding:26px 20px}
+  .blk{padding:16px 16px;gap:12px}
+  .blk::after{width:70px}
+  .blk .val{display:none}
+  .blk .ref{display:none}
+  .quote,.prose blockquote{padding:22px 60px 22px 20px}
+  .quote::after,.prose blockquote::after{width:50px}
+  .fiches{grid-template-columns:minmax(0,1fr)}
+  .fiche dl{grid-template-columns:minmax(0,1fr);gap:2px}
+  .fiche dd{margin-bottom:6px}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .pager{grid-template-columns:minmax(0,1fr)}
+  .tools{top:58px}
+  .frame{height:calc(100vh - 150px)}
+  .tbl td{min-width:150px}
+}
+/* Second Earth · essais de lecture du film (thème Verdant : jetons de site/assets/site.css). */
+
+.es{display:flex;flex-direction:column;gap:14px}
+.es-nav{display:flex;flex-wrap:wrap;gap:6px}
+.es-nav a{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);padding:7px 11px;border-radius:999px;border:1px solid var(--line2)}
+.es-nav a:hover{color:var(--ink);border-color:var(--ink3)}
+.es-nav a.on{background:var(--panel3);color:var(--ink);border-color:var(--panel3)}
+
+/* la phrase du geste : toujours visible */
+body:has(header.top){--es-top:59px}
+.es-phrase{position:sticky;top:var(--es-top,0px);z-index:6;min-height:46px;display:flex;align-items:center;padding:10px 18px;border-radius:var(--r-m);background:var(--panel3);box-shadow:inset 0 0 0 1px var(--line2);color:var(--ink);font-size:16px;font-weight:500;line-height:1.35}
+
+/* réglages */
+.es-outils{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.es-groupe,.es-garde{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.es-garde{margin:6px 0}
+.es-et{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+.es-ici{font-size:13px;color:var(--ink2);padding:0 6px}
+.es-bt{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--ink2);cursor:pointer;line-height:1.3;text-align:left}
+.es-bt:hover:not(:disabled){color:var(--ink);border-color:var(--ink3)}
+.es-bt[aria-pressed="true"]{background:var(--panel3);border-color:var(--cy);color:var(--ink)}
+.es-bt:disabled{opacity:.4;cursor:default}
+.es-bt.es-go{background:var(--or);border-color:var(--or);color:var(--or-ink);font-weight:500}
+.es-bt.es-go:disabled{background:transparent;border-color:var(--line2);color:var(--ink3)}
+
+/* figure à gauche, ce qui réagit à droite */
+.es-corps{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:14px;align-items:start}
+.es-gauche-col{min-width:0;display:flex;flex-direction:column;gap:12px}
+.es-fig{border-radius:var(--r-l);background:var(--panel);padding:14px 16px 16px;overflow-x:auto}
+.es-fig-in{min-width:760px;display:flex;flex-direction:column;gap:2px}
+.es-cote{position:sticky;top:calc(var(--es-top,0px) + 58px);max-height:calc(100vh - var(--es-top,0px) - 74px);overflow:auto;border-radius:var(--r-l);background:var(--panel);padding:16px 18px 18px;font-size:13.5px;line-height:1.5}
+.es-cote h2{margin:0 0 8px;font-family:var(--text);font-size:17px;font-weight:600;line-height:1.25;color:var(--ink)}
+.es-cote h3{margin:16px 0 6px;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cy)}
+.es-cote p{margin:0 0 8px;color:var(--body)}
+.es-choix{border-radius:var(--r-l);background:var(--panel);padding:12px 16px 14px;font-size:13.5px}
+.es-note{font-size:12.5px;color:var(--ink2)!important}
+.es-ecran{font-family:var(--mono);font-size:11.5px;color:var(--c1)!important}
+.es-vide{color:var(--ink3);padding:14px 0}
+.es-si{border-radius:var(--r-s);padding:10px 12px;margin:0 0 10px;background:repeating-linear-gradient(135deg,rgba(240,180,155,.1) 0 6px,transparent 6px 12px);box-shadow:inset 0 0 0 1px rgba(240,180,155,.45)}
+.es-si h3{margin-top:0}
+.es-champ{display:flex;flex-direction:column;gap:5px;margin:6px 0}
+.es-champ input{background:var(--bg);border:1px solid var(--line2);border-radius:var(--r-s);padding:9px 11px;font-size:14px;color:var(--ink)}
+.es-champ input:focus{border-color:var(--or);outline:none}
+
+/* listes et provenance */
+.es-liste{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:7px}
+.es-liste>li{color:var(--body)}
+.es-prov>li{padding:8px 10px;border-radius:var(--r-s);background:var(--panel2);display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.es-choix .es-liste>li{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.es-liste.es-att>li{color:var(--c1)}
+.es-ou{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.es-quoi{color:var(--body)}
+.es-cit{color:var(--ink2);font-size:12.5px}
+.es-fonde{color:var(--ink3)}
+.es-preuve{margin-top:5px;display:flex;flex-direction:column;gap:3px;align-items:flex-start}
+.es-src{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;padding:1px 7px;border-radius:999px;line-height:1.7;white-space:nowrap}
+.es-src-docx{color:var(--g-ink);box-shadow:inset 0 0 0 1px rgba(47,107,74,.9);background:rgba(47,107,74,.25)}
+.es-src-hors{color:var(--cy);box-shadow:inset 0 0 0 1px rgba(185,207,216,.45)}
+.es-src-inf{color:var(--c1);border-radius:3px;outline:1px dashed rgba(240,180,155,.7);outline-offset:-1px}
+.es-src-man{color:var(--ink3);box-shadow:inset 0 0 0 1px var(--line2)}
+.es-src-choix{color:var(--or-ink);background:var(--cy)}
+.es-legende>li{display:flex;gap:9px;align-items:center;font-size:12.5px;color:var(--ink2)}
+.es-legende .es-pt{position:static;transform:none;flex:none}
+
+/* lignes : un nom à gauche, une piste à droite, toutes sur la même échelle de temps */
+.es-ligne{display:grid;grid-template-columns:250px minmax(0,1fr);gap:10px;align-items:center;border-radius:8px}
+.es-ligne.es-sel{background:var(--panel3)}
+.es-ligne.es-att{background:repeating-linear-gradient(135deg,rgba(240,180,155,.1) 0 6px,transparent 6px 12px)}
+.es-gauche{min-width:0;display:flex;gap:8px;align-items:center;padding:4px 6px}
+button.es-nom{background:none;border:0;cursor:pointer;text-align:left;border-radius:8px;width:100%}
+button.es-nom:hover .es-titre{color:#fff}
+.es-titre{font-size:13px;line-height:1.25;color:var(--ink)}
+.es-vu{font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--c1);white-space:nowrap}
+.es-piste{position:relative;height:26px;border-radius:5px;background:rgba(185,207,216,.035)}
+.es-tete{margin-bottom:6px}
+.es-bande{height:30px;background:none}
+.es-case{position:absolute;top:0;bottom:0;padding:0;border:0;border-left:1px solid var(--bg);background:var(--panel2);color:var(--ink2);font-family:var(--mono);font-size:9px;letter-spacing:.06em;cursor:pointer;overflow:hidden;white-space:nowrap}
+.es-case:hover{background:var(--panel3);color:var(--ink)}
+.es-acte{background:var(--g3);color:#e8f3ec}
+.es-acte:hover{background:var(--g2)}
+.es-module{z-index:1;background:var(--c4);color:#fff4ee}
+.es-module:hover{background:var(--c3)}
+.es-plan-mot{box-shadow:inset 0 -3px 0 var(--or)}
+.es-ligne:not(.es-tete) .es-case{background:transparent;border-left-color:var(--line)}
+.es-ligne:not(.es-tete) .es-case:hover{background:rgba(185,207,216,.1)}
+.es-ligne:not(.es-tete) .es-module{background:rgba(163,80,47,.28)}
+.es-portee.es-cible .es-piste{box-shadow:inset 0 0 0 1px var(--c1)}
+
+/* points et traits */
+.es-trait{position:absolute;top:50%;height:2px;margin-top:-1px;background:var(--line2);pointer-events:none}
+.es-pt{position:absolute;top:50%;width:11px;height:11px;transform:translate(-50%,-50%);box-sizing:border-box;pointer-events:none;z-index:2}
+.es-pt-posee{border-radius:50%;border:2px solid var(--c2);background:var(--bg)}
+.es-pt-payee{border-radius:2px;background:var(--g-ink)}
+.es-pt-choix{background:var(--cy)}
+.es-pt-att{background:repeating-linear-gradient(135deg,var(--c1) 0 3px,var(--bg) 3px 5px);box-shadow:0 0 0 1px var(--c1)}
+.es-pt-hors{opacity:.45;width:7px;height:7px}
+.es-mot{display:inline-block;flex:none;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:1px 7px;border-radius:999px;line-height:1.7}
+.es-mot-payee{color:var(--g-ink);box-shadow:inset 0 0 0 1px rgba(47,107,74,.9);background:rgba(47,107,74,.25)}
+.es-mot-posee{color:var(--c2);box-shadow:inset 0 0 0 1px rgba(229,149,120,.55)}
+.es-mot-due{color:var(--c1);background:rgba(240,180,155,.12)}
+.es-mot-assumee{color:var(--ink2);box-shadow:inset 0 0 0 1px var(--line2)}
+.es-mot-orpheline{color:var(--cy);box-shadow:inset 0 0 0 1px rgba(185,207,216,.45)}
+
+/* la partition : portées, écarts, faits */
+.es-portee .es-piste{height:50px}
+.es-portee .es-gauche{flex-direction:column;align-items:flex-start;gap:2px}
+.es-portee .es-pt{top:15px}
+.es-mode-sait,.es-mode-apprend{border-radius:2px;background:var(--g-ink)}
+.es-mode-pressent{border:2px solid var(--g-ink);background:var(--bg);transform:translate(-50%,-50%) rotate(45deg)}
+.es-mode-tort{border-radius:2px;border:2px solid var(--c2);background:linear-gradient(135deg,transparent 42%,var(--c2) 42% 58%,transparent 58%)}
+.es-legende .es-mode-pressent{transform:rotate(45deg)}
+.es-etq{position:absolute;top:27px;transform:translateX(-50%);font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--ink2);white-space:nowrap;pointer-events:none;z-index:2}
+.es-tic{position:absolute;top:10px;width:5px;height:10px;margin-left:-2px;border-radius:1px;background:var(--ink3);opacity:.55;cursor:pointer;z-index:1}
+.es-tic:hover{opacity:1;background:var(--ink)}
+.es-ecart{position:absolute;top:5px;height:20px;border-radius:3px;pointer-events:none;z-index:1;overflow:visible}
+.es-ecart span{position:absolute;left:4px;top:-1px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;line-height:20px;padding-left:14px}
+.es-ecart-ironie{background:rgba(229,149,120,.3);box-shadow:inset 0 0 0 1px rgba(229,149,120,.7)}
+.es-ecart-ironie span{color:var(--c1)}
+.es-ecart-suspense{background:repeating-linear-gradient(135deg,rgba(224,103,74,.5) 0 5px,rgba(224,103,74,.15) 5px 10px);box-shadow:inset 0 0 0 1px var(--or)}
+.es-ecart-suspense span{color:#fff4ee}
+.es-ecart-surprise{background:rgba(185,207,216,.2);box-shadow:inset 0 0 0 1px rgba(185,207,216,.6)}
+.es-ecart-surprise span{color:var(--cy)}
+.es-ecart-secret{top:auto;bottom:2px;height:5px;background:var(--g1);box-shadow:none}
+.es-ecart-secret span{top:-18px;left:auto;right:4px;color:var(--g-ink)}
+.es-ecart.es-ouvert{border-top-right-radius:0;border-bottom-right-radius:0}
+.es-faits{display:flex;flex-direction:column;gap:4px}
+.es-fait{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:12px;align-items:center;text-align:left;border:0;border-radius:var(--r-s);background:var(--panel);padding:9px 12px;cursor:pointer}
+.es-fait:hover{background:var(--panel2)}
+.es-fait.es-sel{background:var(--panel3);box-shadow:inset 0 0 0 1px var(--line2)}
+.es-fait.es-att{background:repeating-linear-gradient(135deg,rgba(240,180,155,.1) 0 6px,var(--panel) 6px 12px)}
+.es-ecs{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.es-ec-ironie{color:var(--c1);box-shadow:inset 0 0 0 1px rgba(229,149,120,.7)}
+.es-ec-suspense{color:#fff4ee;background:rgba(224,103,74,.4)}
+.es-ec-surprise{color:var(--cy);box-shadow:inset 0 0 0 1px rgba(185,207,216,.5)}
+.es-ec-secret{color:var(--g-ink);box-shadow:inset 0 0 0 1px rgba(47,107,74,.9)}
+.es-ec-manque{color:var(--ink3);box-shadow:inset 0 0 0 1px var(--line2)}
+
+/* la toile */
+.es-toile{display:block;width:100%;height:auto;min-width:700px}
+.es-lien{fill:none;stroke:var(--ink3);stroke-width:1.2;opacity:.45}
+.es-lien-sortant{stroke:var(--c2);stroke-width:2;opacity:1}
+.es-lien-entrant{stroke:var(--cy);stroke-width:2;opacity:1}
+.es-lien-inf,.es-lien-choix{stroke-dasharray:5 5}
+.es-lien-att{stroke:var(--c1);stroke-dasharray:2 4}
+.es-lien-neuf{stroke-width:3.2;opacity:1}
+.es-fl-sortant path{fill:var(--c2)} .es-fl-entrant path{fill:var(--cy)} .es-fl-autre path{fill:var(--ink3)}
+.es-lien-mot{font-family:var(--text);font-size:12px;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round;pointer-events:none}
+.es-lien-mot-sortant{fill:var(--c1)} .es-lien-mot-entrant{fill:var(--cy)}
+.es-noeud{cursor:pointer;outline:none}
+.es-noeud circle{fill:var(--panel3);stroke:var(--line2);stroke-width:1.5}
+.es-noeud text{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;fill:var(--ink2)}
+.es-sorte-humaine circle{fill:var(--c4)} .es-sorte-robot circle{fill:var(--g1)} .es-sorte-vivant circle{fill:#5a3f66} .es-sorte-vaisseau circle{fill:var(--panel3)}
+.es-noeud:hover circle,.es-noeud:focus-visible circle{stroke:#fff;stroke-width:2.5}
+.es-noeud.es-sel circle{stroke:var(--or);stroke-width:4}
+.es-noeud.es-sel text{fill:var(--ink)}
+.es-noeud.es-vers circle{stroke:var(--c1);stroke-width:3;stroke-dasharray:4 4}
+.es-noeud.es-absent{opacity:.28}
+.es-range{width:100%;accent-color:var(--or);margin:8px 0 2px}
+.es-curseur,.es-plan{border-radius:var(--r-l);background:var(--panel);padding:12px 16px;font-size:13.5px}
+.es-plan p{margin:6px 0 0;color:var(--body)}
+.es-etapes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;width:100%}
+.es-etapes>li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 8px;align-items:baseline}
+.es-etapes>li>.es-src,.es-etapes>li>.es-cit{grid-column:2}
+.es-etapes>li>.es-src{justify-self:start}
+.es-etapes .es-avenir{opacity:.5}
+.es-etapes .es-actif .es-quoi{color:var(--ink);font-weight:600}
+.es-plan-bt{padding:3px 8px}
+.es-trait-leg{flex:none;width:26px;height:0;border-top:2px solid var(--ink3)}
+.es-trait-leg.es-lien-sortant{border-color:var(--c2)} .es-trait-leg.es-lien-entrant{border-color:var(--cy)} .es-trait-leg.es-lien-inf{border-top-style:dashed}
+
+/* page d'accueil des essais */
+.es-cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px}
+
+@media (max-width:1000px){
+  .es-corps{grid-template-columns:minmax(0,1fr)}
+  .es-cote{position:static;max-height:none}
+  .es-ligne{grid-template-columns:170px minmax(0,1fr)}
+  .es-fait{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+<!--SITE_HEADER-->
+<main class="wrap">
+<div class="es" id="essai">
+<nav class="es-nav" aria-label="Essais"><a href="index.html">Les essais</a><a class="on" href="promesses.html">Le livre des promesses</a><a href="savoir.html">La Partition du savoir</a><a href="toile.html">La toile des personnages</a></nav>
+<div class="head accent"><div class="meta"><span class="lbl or">Film · essai de lecture</span><span class="lbl">proposé · le docx fait foi</span></div><h1>Le livre des promesses</h1><p class="lede">Chaque promesse du film de 25 min : le plan où elle est posée, le plan ou le module qui la paie, la distance entre les deux. Le docx fait foi ; ce qui vient d'un autre document ou d'une déduction est marqué.</p></div>
+<div class="es-phrase" data-zone="phrase" role="status" aria-live="polite"></div>
+<div class="es-outils" data-zone="outils"></div>
+<div class="es-corps"><div class="es-gauche-col">
+<div class="es-fig"><div class="es-fig-in" data-zone="figure"></div></div>
+<div class="es-choix" data-zone="choix"></div>
+</div><aside class="es-cote" data-zone="cote"></aside></div>
+</div>
+</main>
+<footer class="foot-site"><span class="lbl">Second Earth · NIRVALAB · 2026</span><span class="lbl">Essais de lecture du film · proposé · ils ne modifient pas le script</span></footer>
+<script type="application/json" id="data-essai">{"film":{"duree_s":1500,"actes":[{"id":"P","nom":"Prologue","titre":"Terre 2045, 61 Cygni, quatre capsules","duree_s":90},{"id":"1","nom":"I","titre":"naissance, Elena à l'écran, le sinkhole","duree_s":225},{"id":"2","nom":"II","titre":"la marche, les pitons","duree_s":90},{"id":"3","nom":"III","titre":"la caverne, la fusion, la Créature, la fuite","duree_s":180},{"id":"4","nom":"IV","titre":"énergie critique, l'organisme-batterie, le col","duree_s":120},{"id":"5","nom":"V","titre":"Rob3, les rongeurs, le feu","duree_s":150},{"id":"6","nom":"VI","titre":"la horde","duree_s":150},{"id":"7","nom":"VII","titre":"rivière rouge, fruit, visions, course, Rob4","duree_s":255},{"id":"8","nom":"VIII","titre":"le retour, Korê (absent du docx)","duree_s":30},{"id":"9","nom":"IX","titre":"l'extraction, le message, le mensonge, « Je suis Seed »","duree_s":150},{"id":"10","nom":"X","titre":"CAIN, carton final","duree_s":60}],"plans":[{"n":"P-01","acte":"P","ordre":1,"debut_s":0,"duree_s":8,"cadre":"TPL","action":"La Terre depuis l'orbite, 2045","son_ecran":"Voix d'Elena : « Ce qui est beau dans ce monde, c'est qu'il lutte. » ; carton 2045","note":"La seule voix humaine adulte","mot":null},{"n":"P-02","acte":"P","ordre":2,"debut_s":8,"duree_s":10,"cadre":"PL","action":"Quatre images de la Terre qui mue : giga-feux, digues, serres, Venise sous les eaux","son_ecran":"Voix d'Elena continue","note":"E1 : le 55 ouvre ici M1 (Elena, la charte)","mot":null},{"n":"P-03","acte":"P","ordre":3,"debut_s":18,"duree_s":10,"cadre":"PL","action":"Le lanceur cinétique sur les pentes du Fuji ; la capsule catapultée, le rail qui vibre","son_ecran":"Vibration, ciel laiteux","note":"","mot":null},{"n":"P-04","acte":"P","ordre":4,"debut_s":28,"duree_s":12,"cadre":"PL","action":"Le dock orbital ; PERSEPHORA s'arrache sur rails magnétiques ; allumage de la fusion, la bulle de warp se forme","son_ecran":"Silence puis basse profonde","note":"Fusion + warp (Bible), plus de voiles solaires","mot":null},{"n":"P-05","acte":"P","ordre":5,"debut_s":40,"duree_s":8,"cadre":"ÉCR","action":"Le vaisseau en croisière ; carton « 2045 → 2098 · 11,4 années-lumière · 53 ans »","son_ecran":"Basse continue","note":"Cartel Prologue (la distance)","mot":null},{"n":"P-06","acte":"P","ordre":6,"debut_s":48,"duree_s":12,"cadre":"TPL","action":"Arrivée : l'étoile orange, sa compagne au loin, la planète ; carton « 61 Cygni Ab »","son_ecran":"Freinage","note":"Lumière orangée sur la coque, pas rouge","mot":null},{"n":"P-07","acte":"P","ordre":7,"debut_s":60,"duree_s":14,"cadre":"PL","action":"Le XENOPOD-01 lâché ; entrée atmosphérique ; trois trappes : les trois robopods s'écartent, un vers la jungle proche, deux vers l'horizon","son_ecran":"Plasma, télémétrie saturée","note":"T05 validé : la géographie sans un mot ; dôme","mot":null},{"n":"P-08","acte":"P","ordre":8,"debut_s":74,"duree_s":16,"cadre":"PL","action":"Atterrissage dans la clairière ; le mât-relais se dresse ; PERSEPHORA rallume ses propulseurs et s'éloigne","son_ecran":"Ping vers l'espace ; carton « Jour −45 · XENOPOD-01 » (durée de gestation proposée)","note":"","mot":null},{"n":"1-01","acte":"1","ordre":9,"debut_s":90,"duree_s":10,"cadre":"ÉCR + PL","action":"Trois fenêtres : Rob2 dans la grotte à guano, Rob3 sur ses roues dans la forêt bioluminescente, Rob4 qui plonge vers la fosse ; trois voyants verts","son_ecran":"SAMPLES: P · S/FE · MARINE · OK","note":"E2 : le 55 ouvre ici M2 (Phase 1)","mot":null},{"n":"1-02","acte":"1","ordre":10,"debut_s":100,"duree_s":8,"cadre":"PM","action":"Rob1 réceptionne les trois drones porteurs ; les containers ; analyses","son_ecran":"ANALYSIS: PASS","note":"Trois drones (round 11)","mot":null},{"n":"1-03","acte":"1","ordre":11,"debut_s":108,"duree_s":10,"cadre":"PR","action":"Le panneau coulisse ; la cuve, la lumière bleutée ; l'ovule ; première division","son_ecran":"PHASE 1: COLLECTION COMPLETE / PHASE 2: HUMAN VIABILITY INITIALIZING","note":"","mot":null},{"n":"1-04","acte":"1","ordre":12,"debut_s":118,"duree_s":8,"cadre":"PR","action":"Time-lapse : le corps grandit dans le fluide, six semaines en huit secondes","son_ecran":"Cartons « Jour −42 → 0 »","note":"Cartel X (de quoi est fait un corps) se prépare ici","mot":null},{"n":"1-05","acte":"1","ordre":13,"debut_s":126,"duree_s":12,"cadre":"PL","action":"Nuit : le séisme ; des geysers lumineux bleu-violet-rose jaillissent des crevasses ; le XENOPOD tremble","son_ecran":"Grondement ; alarme","note":"Lumières sismiques (Bible, proposé) ; dôme","mot":null},{"n":"1-06","acte":"1","ordre":14,"debut_s":138,"duree_s":6,"cadre":"ÉCR","action":"INCUBATION HALTED · SUBJECT: 15 YEARS · MEMORY TRANSFER 23 %","son_ecran":"Bip d'erreur","note":"","mot":null},{"n":"1-07","acte":"1","ordre":15,"debut_s":144,"duree_s":6,"cadre":"GP","action":"Seed ouvre les yeux dans le fluide","son_ecran":"Silence","note":"","mot":null},{"n":"1-08","acte":"1","ordre":16,"debut_s":150,"duree_s":8,"cadre":"ÉCR","action":"Rob1 envoie l'échec ; le signal part","son_ecran":"FAILURE REPORT SENT · PERSEPHORA ETA: WEEKS","note":"Le mât-relais visible dehors : il servira au plan 1-20","mot":null},{"n":"1-09","acte":"1","ordre":17,"debut_s":158,"duree_s":10,"cadre":"PM","action":"Premiers pas, Seed s'appuie aux parois ; Rob1 prêt à intervenir","son_ecran":"Pas mal assurés","note":"Sauts plus courts, chutes plus rapides (Bible)","mot":null},{"n":"1-10","acte":"1","ordre":18,"debut_s":168,"duree_s":12,"cadre":"PR","action":"Seed devant l'écran : son reflet, puis la photo ; ses mains, les mains d'Elena","son_ecran":"ELENA VASQUEZ · EXOBIOLOGIST · 34","note":"Crochet de M1","mot":null},{"n":"1-11","acte":"1","ordre":19,"debut_s":180,"duree_s":8,"cadre":"ÉCR","action":"Rob1 affiche","son_ecran":"SUBJECT SEED-03 · DNA SOURCE: ELENA VASQUEZ (PARTIAL CLONE) · MEMORY 23 % · 15 YEARS APPARENT","note":"","mot":null},{"n":"1-12","acte":"1","ordre":20,"debut_s":188,"duree_s":8,"cadre":"GP","action":"Seed essaie de parler : un souffle rauque ; elle recule d'un pas","son_ecran":"Souffle","note":"Début de l'arc de la voix","mot":null},{"n":"1-13","acte":"1","ordre":21,"debut_s":196,"duree_s":13,"cadre":"PM","action":"Time-lapse d'adaptation : debout, marcher, manger ; la relation avec Rob1 se noue","son_ecran":"Cartons « Jour 1 », « Jour 2 »","note":"","mot":null},{"n":"1-14","acte":"1","ordre":22,"debut_s":209,"duree_s":18,"cadre":"PL","action":"Seed sort : la jungle au lever de l'étoile, les voûtes, la lumière magenta du sous-bois, les « fleurs » sur les arbustes","son_ecran":"Premier son de la forêt","note":"La première image de couleur ; dôme","mot":null},{"n":"1-15","acte":"1","ordre":23,"debut_s":227,"duree_s":6,"cadre":"TGP","action":"Le pied du XENOPOD s'enfonce de quelques millimètres","son_ecran":"Craquement léger","note":"Cartel I (le sol qui s'ouvre)","mot":null},{"n":"1-16","acte":"1","ordre":24,"debut_s":233,"duree_s":10,"cadre":"PM → GP","action":"La tablette ; Seed lit ; elle regarde Rob1, le ciel ; la larme","son_ecran":"PHASE 2 IN PROGRESS · ROLE: PROOF OF CONCEPT","note":"","mot":null},{"n":"1-17","acte":"1","ordre":25,"debut_s":243,"duree_s":8,"cadre":"Alterné","action":"Rob1 s'affaire dedans / les pieds s'enfoncent dehors","son_ecran":"Vibration du plancher","note":"","mot":null},{"n":"1-18","acte":"1","ordre":26,"debut_s":251,"duree_s":4,"cadre":"GP","action":"Seed se fige","son_ecran":"Le craquement sourd","note":"","mot":null},{"n":"1-19","acte":"1","ordre":27,"debut_s":255,"duree_s":12,"cadre":"PL","action":"Le sinkhole s'ouvre ; le XENOPOD bascule ; les fleurs-papillons s'envolent par milliers, ralenti","son_ecran":"Battements d'ailes, roche","note":"Bullet time du docx ; dôme","mot":null},{"n":"1-20","acte":"1","ordre":28,"debut_s":267,"duree_s":10,"cadre":"PM","action":"Rob1 attrape le sac, bondit, atterrit près de Seed ; derrière lui le mât-relais bascule dans le trou ; le XENOPOD disparaît","son_ecran":"Chute, puis rien","note":"T03 validé : le relais est perdu, en une image","mot":null},{"n":"1-21","acte":"1","ordre":29,"debut_s":277,"duree_s":18,"cadre":"PL → PR","action":"Silence, poussière ; Seed au bord ; le caillou jeté, aucun bruit ; le flare qui descend et disparaît","son_ecran":"Le caillou qu'on n'entend jamais tomber","note":"","mot":null},{"n":"1-22","acte":"1","ordre":30,"debut_s":295,"duree_s":20,"cadre":"PR + ÉCR","action":"La carte de Rob1 : le XENOPOD inaccessible (communicateur, incubateur, réserves) ; les balises : Rob2 tourne en rond, Rob3 en erreur, Rob4 en mer ; Seed hoche la tête ; ils partent","son_ecran":"BEACONS ONLY · NO COMMAND LINK","note":"Balises reçues, dialogue impossible (Bible)","mot":null},{"n":"2-01","acte":"2","ordre":31,"debut_s":315,"duree_s":8,"cadre":"PL","action":"Seed porte Rob1 sur son dos le long du fleuve ; les premières tours","son_ecran":"Pas dans l'eau","note":"E3 : le 55 ouvre ici M3 (la marche) ; la relation inversée en une image","mot":null},{"n":"2-02","acte":"2","ordre":32,"debut_s":323,"duree_s":10,"cadre":"PL","action":"Les pitons : chaque tour une île de plantes, des rideaux de brume entre elles","son_ecran":"Vent, gouttes","note":"K01 validé ; dôme","mot":null},{"n":"2-03","acte":"2","ordre":33,"debut_s":333,"duree_s":12,"cadre":"PM","action":"Seed boit au fleuve, à genoux ; Rob1 confirme","son_ecran":"WATER: SAFE · pH 7.1 · LIMESTONE","note":"Cartel II : l'eau qu'on peut boire","mot":null},{"n":"2-04","acte":"2","ordre":34,"debut_s":345,"duree_s":12,"cadre":"TPL","action":"Crépuscule : les tours en silhouette ; la nuit tombe noire, 61 Cygni B n'est plus là","son_ecran":"Carton « Jour 12 · 250 km »","note":"T04 : la saison noire commence ; dôme","mot":null},{"n":"2-05","acte":"2","ordre":35,"debut_s":357,"duree_s":10,"cadre":"PL","action":"Le fleuve disparaît sous une arche de calcaire : il se perd dans les tours","son_ecran":"L'eau qui s'enfonce","note":"K02 validé","mot":null},{"n":"2-06","acte":"2","ordre":36,"debut_s":367,"duree_s":12,"cadre":"PM + ÉCR","action":"La position de Rob2 : la balise, personne ; Rob1 scanne, Seed cherche","son_ecran":"BEACON HERE · ROB2: NOT FOUND","note":"","mot":null},{"n":"2-07","acte":"2","ordre":37,"debut_s":379,"duree_s":14,"cadre":"PL","action":"La crevasse ouverte par le séisme ; en contrebas une lueur ; le robopod de Rob2 tombé, brisé ; Rob2 qui tourne en rond","son_ecran":"Moteur qui peine","note":"Le robopod (docx)","mot":null},{"n":"2-08","acte":"2","ordre":38,"debut_s":393,"duree_s":12,"cadre":"PM","action":"Seed et Rob1 se regardent ; ils descendent aux lianes-cordes","son_ecran":"Respiration","note":"","mot":null},{"n":"3-01","acte":"3","ordre":39,"debut_s":405,"duree_s":12,"cadre":"PL","action":"La caverne : les plantes-chant bleu-vert, la musique ; Seed émerveillée","son_ecran":"La musique de fées (motif 1)","note":"Chimiosynthèse (cartel III) ; dôme","mot":null},{"n":"3-02","acte":"3","ordre":40,"debut_s":417,"duree_s":6,"cadre":"PL","action":"Dans la voûte, en relief, le squelette du Titan volant","son_ecran":"Rien","note":"Crochet de M9 (les Titans)","mot":null},{"n":"3-03","acte":"3","ordre":41,"debut_s":423,"duree_s":8,"cadre":"PM","action":"Rob2 tourne en rond ; il s'arrête en les voyant","son_ecran":"BATTERY 4 %","note":"","mot":null},{"n":"3-04","acte":"3","ordre":42,"debut_s":431,"duree_s":10,"cadre":"PM","action":"Rob1 grimpe sur le dos de Rob2 ; jambes repliées, torse qui pivote, connecteurs qui sortent","son_ecran":"Mécanique","note":"","mot":null},{"n":"3-05","acte":"3","ordre":43,"debut_s":441,"duree_s":6,"cadre":"GP","action":"Click. Click. Click.","son_ecran":"Les trois clics","note":"","mot":null},{"n":"3-06","acte":"3","ordre":44,"debut_s":447,"duree_s":8,"cadre":"PA","action":"Le nouveau droïde se redresse ; écran-visage : quelque chose comme de la fierté ; Seed recule","son_ecran":"Servos","note":"Rob1/2, bipède coureur (round 11)","mot":null},{"n":"3-07","acte":"3","ordre":45,"debut_s":455,"duree_s":8,"cadre":"ÉCR","action":"La tablette : Rob1 et Rob2 conçus pour s'assembler, schéma","son_ecran":"ASSEMBLY 1+2: NOMINAL","note":"","mot":null},{"n":"3-08","acte":"3","ordre":46,"debut_s":463,"duree_s":10,"cadre":"PR","action":"Seed prélève une touffe de plantes-chant dans un container du robopod","son_ecran":"La plante chante encore","note":"L'organisme-batterie (TR-05)","mot":null},{"n":"3-09","acte":"3","ordre":47,"debut_s":473,"duree_s":6,"cadre":"PL","action":"Tout s'éteint d'un coup","son_ecran":"Silence total","note":"","mot":null},{"n":"3-10","acte":"3","ordre":48,"debut_s":479,"duree_s":8,"cadre":"PR","action":"Rob1/2 en alerte, capteurs dressés ; Seed se fige","son_ecran":"ALERT","note":"","mot":null},{"n":"3-11","acte":"3","ordre":49,"debut_s":487,"duree_s":8,"cadre":"PM","action":"Seed recule vers Rob1/2, qui se place entre elle et le bruit","son_ecran":"Raclement, souffle rauque, grondement","note":"","mot":null},{"n":"3-12","acte":"3","ordre":50,"debut_s":495,"duree_s":10,"cadre":"PL","action":"La Créature émerge : carapace noire, membres trop longs, la pulpe lumineuse qui coule","son_ecran":"Grondement","note":"TR-01","mot":null},{"n":"3-13","acte":"3","ordre":51,"debut_s":505,"duree_s":6,"cadre":"GP","action":"La pulpe : les plantes broyées ; Seed comprend, ils sont dans son garde-manger","son_ecran":"Mastication","note":"","mot":null},{"n":"3-14","acte":"3","ordre":52,"debut_s":511,"duree_s":6,"cadre":"PM","action":"Rob1/2 se baisse ; Seed saute sur son dos, s'accroche","son_ecran":"CLIMB","note":"","mot":null},{"n":"3-15","acte":"3","ordre":53,"debut_s":517,"duree_s":8,"cadre":"PL","action":"Propulsion vers la sortie ; le sac de matériel attrapé au passage ; la Créature charge","son_ecran":"Le sol tremble","note":"","mot":null},{"n":"3-16","acte":"3","ordre":54,"debut_s":525,"duree_s":12,"cadre":"VS","action":"La paroi en vue subjective : trajectoires, points d'appui","son_ecran":"GREEN · GREEN · GREEN · RED · GREEN","note":"","mot":null},{"n":"3-17","acte":"3","ordre":55,"debut_s":537,"duree_s":10,"cadre":"PM","action":"Bonds de yamakasi ; CRAC, une prise cède ; glissade ; recalcul impossible","son_ecran":"RED RED RED","note":"","mot":null},{"n":"3-18","acte":"3","ordre":56,"debut_s":547,"duree_s":12,"cadre":"PR","action":"Seed tend le bras, attrape une racine, se balance, donne l'impulsion ; Rob1/2 se rétablit","son_ecran":"Souffle","note":"Humain + machine","mot":null},{"n":"3-19","acte":"3","ordre":57,"debut_s":559,"duree_s":12,"cadre":"PL","action":"Remontée bond après bond ; en bas, la Créature glisse contre la paroi et renonce","son_ecran":"Rugissement qui s'éloigne","note":"","mot":null},{"n":"3-20","acte":"3","ordre":58,"debut_s":571,"duree_s":14,"cadre":"PL","action":"Ils émergent : elle hors de souffle, lui surchauffé ; la nuit noire, les deux lunes","son_ecran":"Carton « Jour 15 »","note":"","mot":null},{"n":"4-01","acte":"4","ordre":59,"debut_s":585,"duree_s":10,"cadre":"ÉCR + PR","action":"La carte : le cercle vert d'autonomie de Rob2 ; le XENOPOD hors du cercle ; le robopod de Rob3 presque à portée, son parasol fonctionne","son_ecran":"RANGE: 41 % · ROBOPOD-3: SOLAR OK","note":"","mot":null},{"n":"4-02","acte":"4","ordre":60,"debut_s":595,"duree_s":8,"cadre":"PM","action":"Rob1 pointe Rob3 ; Seed hoche la tête","son_ecran":"","note":"","mot":null},{"n":"4-03","acte":"4","ordre":61,"debut_s":603,"duree_s":12,"cadre":"PL","action":"Le Rob fusionné court, Seed dans le siège-harnais ; les herbes bleu-gris, puis les contreforts","son_ecran":"Carton « Jour 17 · 680 km »","note":"E4 : le 55 ouvre ici M4 (le col) ; dôme","mot":null},{"n":"4-04","acte":"4","ordre":62,"debut_s":615,"duree_s":8,"cadre":"ÉCR","action":"Alerte : plus tôt que prévu ; les trois raisons défilent","son_ecran":"LOW POWER · terrain · load · ROB1 PRIORITY","note":"","mot":null},{"n":"4-05","acte":"4","ordre":63,"debut_s":623,"duree_s":10,"cadre":"PL","action":"Le col : les glaciers sous les deux lunes ; le froid ; le Rob ralentit","son_ecran":"Vent, servos qui peinent","note":"Cartel IV (le froid) ; dôme","mot":null},{"n":"4-06","acte":"4","ordre":64,"debut_s":633,"duree_s":10,"cadre":"PR","action":"Seed sort le container ; l'organisme pulse faiblement ; elle le tend à Rob1","son_ecran":"La plante chante à peine","note":"","mot":null},{"n":"4-07","acte":"4","ordre":65,"debut_s":643,"duree_s":10,"cadre":"ÉCR","action":"Analyse, puis l'animation du transfert","son_ecran":"LITHIUM IONS · ORGANIC PHOSPHATES · 340 mS/cm · 3.7 V PER CELL · LIVING BATTERY","note":"Cartel IV (une batterie vivante)","mot":null},{"n":"4-08","acte":"4","ordre":66,"debut_s":653,"duree_s":8,"cadre":"PR","action":"L'organisme contre le port de charge ; les indicateurs hésitent","son_ecran":"+5 % … +5.1 % … +5.2 %","note":"","mot":null},{"n":"4-09","acte":"4","ordre":67,"debut_s":661,"duree_s":12,"cadre":"PL","action":"Reparti, plus vite ; vue de dessus, une grande ombre passe sur eux","son_ecran":"Cri lointain","note":"L'ombre du docx = un oiseau-prédateur (Écarts) ; dôme","mot":null},{"n":"4-10","acte":"4","ordre":68,"debut_s":673,"duree_s":10,"cadre":"PR","action":"Presque arrivés ; Rob1 ouvre le container : l'organisme s'éteint sous leurs yeux","son_ecran":"BATTERY CRITICAL","note":"","mot":null},{"n":"4-11","acte":"4","ordre":69,"debut_s":683,"duree_s":12,"cadre":"PM","action":"Seed le met en terre ; le petit tipi de brindilles ; Rob1 regarde","son_ecran":"Silence","note":"","mot":null},{"n":"4-12","acte":"4","ordre":70,"debut_s":695,"duree_s":10,"cadre":"PL","action":"Ils s'éloignent ; au premier plan le totem ; une faible lueur sous la terre","son_ecran":"Rien","note":"Crochet de M5 et de la proposition S6","mot":null},{"n":"5-01","acte":"5","ordre":71,"debut_s":705,"duree_s":14,"cadre":"PL","action":"Le robopod de Rob3 dans la forêt bioluminescente ; Rob3 éteint, ses deux grosses roues molles ; le parasol déployé","son_ecran":"Forêt lente","note":"","mot":null},{"n":"5-02","acte":"5","ordre":72,"debut_s":719,"duree_s":8,"cadre":"ÉCR","action":"La tablette : Rob1/2 + Rob3 = le tank, schéma","son_ecran":"ASSEMBLY 1+2+3","note":"","mot":null},{"n":"5-03","acte":"5","ordre":73,"debut_s":727,"duree_s":10,"cadre":"PR","action":"Rob3 couvert de mousse ; Rob1 gratte, elle repousse ; dans le robopod, la famille de rongeurs","son_ecran":"Petits cris","note":"Cartel V (ce qui colonise une machine)","mot":null},{"n":"5-04","acte":"5","ordre":74,"debut_s":737,"duree_s":8,"cadre":"PM","action":"Rob1/2 se branche au robopod ; recharge ; Seed apprivoise un rongeur","son_ecran":"Charge","note":"","mot":null},{"n":"5-05","acte":"5","ordre":75,"debut_s":745,"duree_s":14,"cadre":"PL","action":"Time-lapse : le nettoyage de Rob3 ; le coucher de l'étoile, rouge profond, long","son_ecran":"Carton « Jour 21 · 1 200 km »","note":"","mot":null},{"n":"5-06","acte":"5","ordre":76,"debut_s":759,"duree_s":16,"cadre":"PL","action":"Nuit noire : la forêt à son maximum, lamelles bleu électrique ; Rob1 fait un feu à l'arc électrique","son_ecran":"Crépitement","note":"T04 : cœur de la saison noire ; pas d'aurores (W03) ; dôme","mot":null},{"n":"5-07","acte":"5","ordre":77,"debut_s":775,"duree_s":16,"cadre":"PM","action":"Autour du feu, la famille vient se réchauffer ; le petit à l'oreille abîmée","son_ecran":"Feu","note":"","mot":null},{"n":"5-08","acte":"5","ordre":78,"debut_s":791,"duree_s":10,"cadre":"GP","action":"Le petit siffle ; Seed essaie : rien ; elle sourit","son_ecran":"Le sifflement (motif 3)","note":"Arc de la voix","mot":null},{"n":"5-09","acte":"5","ordre":79,"debut_s":801,"duree_s":14,"cadre":"PR","action":"Le petit apporte le caillou blanc, le compare à ses cheveux ; Seed le met dans sa poche","son_ecran":"","note":"Crochet A08 et M6","mot":null},{"n":"5-10","acte":"5","ordre":80,"debut_s":815,"duree_s":10,"cadre":"ÉCR","action":"Rob1 enregistre, hésite, zoome sur le sourire, réétiquette","son_ecran":"BEHAVIORAL OBSERVATION · minor → IMPORTANT","note":"","mot":null},{"n":"5-11","acte":"5","ordre":81,"debut_s":825,"duree_s":8,"cadre":"ÉCR","action":"Les réserves","son_ecran":"WATER 1.2 L · FOOD 3–4 DAYS · STATUS: CRITICAL","note":"","mot":null},{"n":"5-12","acte":"5","ordre":82,"debut_s":833,"duree_s":8,"cadre":"PM","action":"Rob1 regarde Seed jouer ; referme le sac sans rien dire","son_ecran":"","note":"","mot":null},{"n":"5-13","acte":"5","ordre":83,"debut_s":841,"duree_s":6,"cadre":"PL","action":"Seed s'endort près du feu, le petit contre elle","son_ecran":"Feu qui baisse","note":"","mot":null},{"n":"5-14","acte":"5","ordre":84,"debut_s":847,"duree_s":8,"cadre":"PL","action":"Fondu au noir lent sur la forêt qui pulse","son_ecran":"La forêt","note":"E5 : le 55 ouvre ici M5 (la nuit noire)","mot":null},{"n":"6-01","acte":"6","ordre":85,"debut_s":855,"duree_s":8,"cadre":"GP","action":"Réveil : deux rongeurs mordillent la main de Seed","son_ecran":"Un tremblement sourd qui monte","note":"","mot":null},{"n":"6-02","acte":"6","ordre":86,"debut_s":863,"duree_s":6,"cadre":"PM","action":"Seed comprend : ce n'est pas un séisme","son_ecran":"Le sol vibre","note":"","mot":null},{"n":"6-03","acte":"6","ordre":87,"debut_s":869,"duree_s":10,"cadre":"TPL","action":"Vue aérienne : le nuage de poussière au loin, droit sur le campement","son_ecran":"Grondement","note":"dôme","mot":null},{"n":"6-04","acte":"6","ordre":88,"debut_s":879,"duree_s":10,"cadre":"PL","action":"La horde : des milliers de buffles albinos, laine épaisse, yeux bleus énormes","son_ecran":"Sabots","note":"HP-01 ; cartel VI (le feu et les plaines) : un feu à l'horizon derrière eux","mot":null},{"n":"6-05","acte":"6","ordre":89,"debut_s":889,"duree_s":8,"cadre":"PM","action":"Panique : Rob2 s'assemble à Rob3, réveillé par le nettoyage","son_ecran":"Servos","note":"","mot":null},{"n":"6-06","acte":"6","ordre":90,"debut_s":897,"duree_s":8,"cadre":"PM","action":"Rob1 attrape le sac ; tente de décrocher le parasol du robopod","son_ecran":"Métal qui résiste","note":"","mot":null},{"n":"6-07","acte":"6","ordre":91,"debut_s":905,"duree_s":6,"cadre":"PR","action":"Les rongeurs rentrent dans le robopod : leur abri de métal","son_ecran":"Petits cris","note":"","mot":null},{"n":"6-08","acte":"6","ordre":92,"debut_s":911,"duree_s":8,"cadre":"PA","action":"Seed court vers Rob2/3 ; elle voit Rob1 renoncer au parasol et courir sur ses petites jambes","son_ecran":"Souffle","note":"","mot":null},{"n":"6-09","acte":"6","ordre":93,"debut_s":919,"duree_s":8,"cadre":"PL","action":"Vue aérienne : la horde presque sur eux","son_ecran":"Grondement","note":"dôme","mot":null},{"n":"6-10","acte":"6","ordre":94,"debut_s":927,"duree_s":8,"cadre":"PR","action":"Seed aperçoit le petit à l'oreille cassée, en mauvaise posture ; elle s'arrête, fait demi-tour","son_ecran":"","note":"","mot":null},{"n":"6-11","acte":"6","ordre":95,"debut_s":935,"duree_s":10,"cadre":"PM","action":"Rob1 rejoint Rob2/3 et s'assemble : le tank, très agité, fonce vers le robopod à contresens de la horde","son_ecran":"Moteur","note":"Le tank Rob1/2/3 (docx)","mot":null},{"n":"6-12","acte":"6","ordre":96,"debut_s":945,"duree_s":12,"cadre":"TPL","action":"Vue de dessus à 120° : la horde, le tank, Seed avec le petit, le robopod au centre","son_ecran":"Tout ensemble","note":"Le plan du docx ; dôme","mot":null},{"n":"6-13","acte":"6","ordre":97,"debut_s":957,"duree_s":10,"cadre":"PR","action":"In extremis, Seed remet le petit à sa famille ; pas de place pour elle ; elle referme le capot ; un sourire","son_ecran":"","note":"","mot":null},{"n":"6-14","acte":"6","ordre":98,"debut_s":967,"duree_s":12,"cadre":"PL","action":"La horde heurte le robopod, qui vole au-dessus d'elle au ralenti ; elle se retourne vers le tank, trop loin ; poings serrés","son_ecran":"« RooOOOB ! »","note":"Mot 1","mot":1},{"n":"6-15","acte":"6","ordre":99,"debut_s":979,"duree_s":12,"cadre":"PL","action":"Seed percutée par les buffles de tête ; le tank percuté, emporté ailleurs","son_ecran":"Chocs","note":"","mot":null},{"n":"6-16","acte":"6","ordre":100,"debut_s":991,"duree_s":14,"cadre":"TPL","action":"Vue aérienne : tout le monde emporté dans des directions différentes ; la poussière ; fondu au noir","son_ecran":"Le grondement s'éloigne","note":"E6 : le 55 ouvre ici M6 (dans la horde)","mot":null},{"n":"7-01","acte":"7","ordre":101,"debut_s":1005,"duree_s":8,"cadre":"GP","action":"Seed se réveille, à moitié dans l'eau rouge ; la grande cascade au fond","son_ecran":"Bruit d'eau ; carton « Jour 25 »","note":"","mot":null},{"n":"7-02","acte":"7","ordre":102,"debut_s":1013,"duree_s":8,"cadre":"PM","action":"Blessée au bras et à la jambe ; elle sort de l'eau, s'adosse à l'arbre-cathédrale","son_ecran":"Douleur","note":"FL-FA-01","mot":null},{"n":"7-03","acte":"7","ordre":103,"debut_s":1021,"duree_s":8,"cadre":"PR","action":"Le caillou blanc dans sa main ; elle regarde le ciel","son_ecran":"","note":"","mot":null},{"n":"7-04","acte":"7","ordre":104,"debut_s":1029,"duree_s":8,"cadre":"GP","action":"Elle siffle : cette fois ça sort ; un sourire","son_ecran":"Le sifflement","note":"Arc de la voix","mot":null},{"n":"7-05","acte":"7","ordre":105,"debut_s":1037,"duree_s":8,"cadre":"PM","action":"Soif : elle se penche sur l'eau rouge ; ses plaies brûlent ; elle recule","son_ecran":"","note":"F03 validé : l'eau acide la pousse vers le fruit","mot":null},{"n":"7-06","acte":"7","ordre":106,"debut_s":1045,"duree_s":10,"cadre":"PL","action":"La rivière rouge et, de l'autre côté, l'affluent clair : deux eaux côte à côte sans se mélanger, les joncs verts","son_ecran":"Deux bruits d'eau","note":"F01 ; cartel II","mot":null},{"n":"7-07","acte":"7","ordre":107,"debut_s":1055,"duree_s":10,"cadre":"PL","action":"L'eau bouillonne ; un cri ; l'oiseau-prédateur de dix mètres plonge à la confluence, dans la bande claire","son_ecran":"Cri strident, splash","note":"HP-02 ; dôme","mot":null},{"n":"7-08","acte":"7","ordre":108,"debut_s":1065,"duree_s":8,"cadre":"PR","action":"L'oiseau-reptile mange tranquillement le fruit violet dans l'arbre voisin","son_ecran":"Mastication","note":"FB-03","mot":null},{"n":"7-09","acte":"7","ordre":109,"debut_s":1073,"duree_s":10,"cadre":"PM → GP","action":"Seed cueille, hésite, mord ; son visage : sucré, presque électrique","son_ecran":"","note":"Cartel VII (le fruit toxique)","mot":null},{"n":"7-10","acte":"7","ordre":110,"debut_s":1083,"duree_s":10,"cadre":"PM","action":"Elle s'effondre ; la fièvre ; plaques rouges, veinules noires comme des racines","son_ecran":"Souffle court","note":"","mot":null},{"n":"7-11","acte":"7","ordre":111,"debut_s":1093,"duree_s":16,"cadre":"VS","action":"Six flashs d'Elena : la main qui écrit PERSEPHORA ; l'enfant devant les fourmis ; le diplôme, les jumeaux ; le labo ; la forêt en flammes ; la signature, don d'ADN, don de conscience","son_ecran":"Sons de Terre","note":"Jamais Korê, jamais le futur (S7) ; M1 montre l'autre côté","mot":null},{"n":"7-12","acte":"7","ordre":112,"debut_s":1109,"duree_s":12,"cadre":"VS","action":"Le parc, l'homme, l'enfant ; « Elena. » glitch « Seed. » glitch ; les deux visages superposés","son_ecran":"La voix qui se déforme","note":"","mot":null},{"n":"7-13","acte":"7","ordre":113,"debut_s":1121,"duree_s":6,"cadre":"GP","action":"Ses lèvres : « Seed », faiblement ; elle s'endort","son_ecran":"« Seed »","note":"Mot 2","mot":2},{"n":"7-14","acte":"7","ordre":114,"debut_s":1127,"duree_s":10,"cadre":"PL","action":"Le tank surgit des buissons, s'arrête net ; Seed immobile, couverte de plaques","son_ecran":"Moteur, puis rien ; carton « Jour 28 »","note":"","mot":null},{"n":"7-15","acte":"7","ordre":115,"debut_s":1137,"duree_s":10,"cadre":"ÉCR","action":"Le scan ; aucun antidote ; croisement avec les données d'exploration","son_ecran":"ALIEN TOXIN · IMMUNE SYSTEM: INCOMPATIBLE · ORGAN FAILURE: CRITICAL","note":"","mot":null},{"n":"7-16","acte":"7","ordre":116,"debut_s":1147,"duree_s":10,"cadre":"ÉCR","action":"Le résultat ; la carte ; la distance","son_ecran":"MATCH · ROB4 DATABASE · JK-47B · ENZYMATIC FILTRATION · 73 % · ARSENIC SEA","note":"","mot":null},{"n":"7-17","acte":"7","ordre":117,"debut_s":1157,"duree_s":8,"cadre":"PM","action":"Seed installée sur le tank ; départ à pleine vitesse","son_ecran":"Moteur","note":"","mot":null},{"n":"7-18","acte":"7","ordre":118,"debut_s":1165,"duree_s":12,"cadre":"PL","action":"La course, trois paysages : le canyon ocre et sa couche sombre, les forêts cristallines irisées, l'arc volcanique et ses flammes bleues","son_ecran":"Vitesse","note":"E7 : le 55 ouvre ici M7 (la course) ; dôme","mot":null},{"n":"7-19","acte":"7","ordre":119,"debut_s":1177,"duree_s":8,"cadre":"GP","action":"Les plaques montent jusqu'au cou ; respiration saccadée","son_ecran":"Souffle","note":"","mot":null},{"n":"7-20","acte":"7","ordre":120,"debut_s":1185,"duree_s":8,"cadre":"ÉCR","action":"Les constantes ; le compteur","son_ecran":"HEART 156 · TEMP 40.2 · SpO₂ 88 % · ROB4 > 87 km","note":"Les 87 km du docx : la dernière ligne droite","mot":null},{"n":"7-21","acte":"7","ordre":121,"debut_s":1193,"duree_s":8,"cadre":"PL","action":"Le tank dévale une pente ; au loin, la ligne grise de la mer","son_ecran":"Moteur qui surchauffe","note":"dôme","mot":null},{"n":"7-22","acte":"7","ordre":122,"debut_s":1201,"duree_s":10,"cadre":"PL","action":"La plage noire, les cristaux, les vapeurs ; l'eau bouge ; Rob4 émerge, hybride, filaments pulsants vert-orange-rouge","son_ecran":"Vagues","note":"M02 validé","mot":null},{"n":"7-23","acte":"7","ordre":123,"debut_s":1211,"duree_s":10,"cadre":"PR","action":"Rob1 tente ses codes : rien ; Rob4 répond par la lumière ; Rob1 apprend, ajuste","son_ecran":"Pulsations traduites : BRING HER","note":"La lumière comme langue (S4)","mot":null},{"n":"7-24","acte":"7","ordre":124,"debut_s":1221,"duree_s":12,"cadre":"PM","action":"Rob1 porte Seed ; la membrane s'ouvre ; il la dépose ; elle se referme ; le liquide entre dans sa bouche et respire pour elle","son_ecran":"Silence sous l'eau","note":"M01 validé ; cartel VII (respirer un liquide)","mot":null},{"n":"7-25","acte":"7","ordre":125,"debut_s":1233,"duree_s":14,"cadre":"PL","action":"Nuit : Rob4, cocon de lumière dans les vagues ; les filaments travaillent ; les plaques reculent et laissent des cicatrices lumineuses","son_ecran":"Le cœur ralenti, les pulsations","note":"dôme","mot":null},{"n":"7-26","acte":"7","ordre":126,"debut_s":1247,"duree_s":13,"cadre":"PR → PL","action":"La première aube ambrée : 61 Cygni B se lève avant l'étoile ; Seed ouvre les yeux dans le liquide, marquée ; Rob1 affiche les réserves et le XENOPOD ; ils regardent l'horizon","son_ecran":"Carton « Jour 32 · 3 300 km » ; FOOD < 1 DAY · REPORT DUE","note":"T04 : le retour des aubes ambrées","mot":null},{"n":"8-01","acte":"8","ordre":127,"debut_s":1260,"duree_s":10,"cadre":"TPL","action":"Le retour : les lacs pourpres sous une aube ambrée, le tank minuscule sur la croûte de sel","son_ecran":"Carton « Jour 37 · 4 800 km »","note":"E8 : le 55 ouvre ici M8 (Korê) ; dôme","mot":null},{"n":"8-02","acte":"8","ordre":128,"debut_s":1270,"duree_s":12,"cadre":"PL → PR","action":"La colonie d'oiseaux des salins décolle en criant ; Rob1 affiche le mot, il trouve ça drôle ; Seed répète","son_ecran":"« Ko-rê » (motif 2) ; KORÊ ? · « Korê »","note":"Mot 3 ; L02 validé (une colonie entière)","mot":3},{"n":"8-03","acte":"8","ordre":129,"debut_s":1282,"duree_s":8,"cadre":"PR","action":"Seed et Rob1 face aux lacs","son_ecran":"Carton « KORÊ · 61 Cygni Ab »","note":"","mot":null},{"n":"9-01","acte":"9","ordre":130,"debut_s":1290,"duree_s":10,"cadre":"PL","action":"Le tank en vue du sinkhole ; les quatre au bord ; l'obscurité","son_ecran":"Carton « Jour 39 · 5 500 km »","note":"","mot":null},{"n":"9-02","acte":"9","ordre":131,"debut_s":1300,"duree_s":8,"cadre":"PM","action":"Câbles, grappins ; Rob2/3 descendent en rappel ; Seed et Rob1 tiennent les câbles","son_ecran":"Métal","note":"","mot":null},{"n":"9-03","acte":"9","ordre":132,"debut_s":1308,"duree_s":8,"cadre":"ÉCR","action":"Les minutes s'étirent ; puis","son_ecran":"FOUND","note":"","mot":null},{"n":"9-04","acte":"9","ordre":133,"debut_s":1316,"duree_s":12,"cadre":"PL","action":"Tension ; Seed tire de toutes ses forces ; Rob1 calcule les angles ; le XENOPOD remonte centimètre par centimètre","son_ecran":"Effort","note":"","mot":null},{"n":"9-05","acte":"9","ordre":134,"debut_s":1328,"duree_s":8,"cadre":"PL","action":"Il émerge, bascule sur le bord, s'écroule ; cabossé, entier","son_ecran":"Bruit sourd","note":"","mot":null},{"n":"9-06","acte":"9","ordre":135,"debut_s":1336,"duree_s":8,"cadre":"PM","action":"Seed s'effondre, épuisée ; tape l'épaule de Rob2 ; animation joyeuse de Rob1","son_ecran":"","note":"","mot":null},{"n":"9-07","acte":"9","ordre":136,"debut_s":1344,"duree_s":8,"cadre":"ÉCR + PL","action":"Diagnostic ; par la caméra de Rob2/3, au fond du trou, le drone porteur cassé","son_ecran":"BATTERY 0 % · INCUBATOR INTACT · FOOD INTACT","note":"Le drone du round 11","mot":null},{"n":"9-08","acte":"9","ordre":137,"debut_s":1352,"duree_s":10,"cadre":"PL","action":"Le parasol déployé vers l'étoile ; Seed mange enfin ; le soleil monte ; bip, bip ; le XENOPOD revit","son_ecran":"Ventilateurs, écrans","note":"","mot":null},{"n":"9-09","acte":"9","ordre":138,"debut_s":1362,"duree_s":10,"cadre":"ÉCR","action":"Le message","son_ecran":"NEW MESSAGE · FROM PERSEPHORA · PHASE 2 FAILURE ACKNOWLEDGED · PROTOCOL NOT MET · SUBJECT SEED: INCOMPLETE, NOT QUALIFIED","note":"","mot":null},{"n":"9-10","acte":"9","ordre":139,"debut_s":1372,"duree_s":8,"cadre":"ÉCR","action":"Le texte s'efface, un autre","son_ecran":"NEW PROTOCOL · MISSION LEADER: ROB-1 · DETERMINE PLANET VIABILITY · REPORT: YES / NO","note":"","mot":null},{"n":"9-11","acte":"9","ordre":140,"debut_s":1380,"duree_s":12,"cadre":"VS","action":"PROCESSING : les souvenirs en vue subjective de Rob1 : Seed hors de la cuve ; elle le porte ; l'organisme qui s'éteint et le rituel ; le caillou et le sourire ; la paroi ; le sinkhole qu'il a causé ; Rob4","son_ecran":"PROCESSING …","note":"S9 : le sinkhole ajouté au flux","mot":null},{"n":"9-12","acte":"9","ordre":141,"debut_s":1392,"duree_s":10,"cadre":"ÉCR","action":"Le rapport ; transmission","son_ecran":"FINAL EVALUATION: NOT VIABLE · PHASE 3: ABORTED · TRANSMITTED · EARTH: RECEIPT IN 11.4 YEARS","note":"La dernière ligne si A09 = A","mot":null},{"n":"9-13","acte":"9","ordre":142,"debut_s":1402,"duree_s":10,"cadre":"PM","action":"Rob1 ouvre le panneau de maintenance ; circuits arrachés, antenne sectionnée ; méthodique, calme","son_ecran":"Métal","note":"","mot":null},{"n":"9-14","acte":"9","ordre":143,"debut_s":1412,"duree_s":12,"cadre":"PL → ÉCR","action":"Rob1 ressort, silhouette sombre contre l'étoile ; Seed l'attend ; son geste : ça marche ? ; l'écran","son_ecran":"COMMUNICATOR DAMAGED · REPAIR IM/POSSIBLE, le IM qui pulse","note":"","mot":null},{"n":"9-15","acte":"9","ordre":144,"debut_s":1424,"duree_s":16,"cadre":"PR","action":"Seed devant l'écran ; elle sait ; elle regarde le paysage, Rob2/3 en veille, le ciel qui vire au violet ; revient sur Rob1 ; hoche la tête ; un sourire","son_ecran":"« Je suis Seed »","note":"Mot 4","mot":4},{"n":"10-01","acte":"10","ordre":145,"debut_s":1440,"duree_s":8,"cadre":"PL","action":"Nuit ; Seed dort près du feu ; Rob1 se lève sans bruit","son_ecran":"Carton « Jour 41 »","note":"","mot":null},{"n":"10-02","acte":"10","ordre":146,"debut_s":1448,"duree_s":8,"cadre":"ÉCR","action":"L'incubateur, le même écran qu'au début","son_ecran":"C 53 % · N 51 % · P 49 % · H₂O 58 % · INSUFFICIENT FOR PHASE II → AWAITING BIOLOGICAL MATTER","note":"Cartel X (de quoi est fait un corps)","mot":null},{"n":"10-03","acte":"10","ordre":147,"debut_s":1456,"duree_s":10,"cadre":"PR","action":"Le panneau scellé ; la vapeur froide ; des milliers de boîtes ; l'alvéole vide H-01 SEED, et à côté H-02 CAIN","son_ecran":"Souffle de vapeur","note":"","mot":null},{"n":"10-04","acte":"10","ordre":148,"debut_s":1466,"duree_s":12,"cadre":"ÉCR","action":"La boîte dans le lecteur","son_ecran":"SUBJECT CAIN · MALE · EXIT AGE 35 · TERRAFORMING ENGINEER · MEMORY 100 % · 7 DAYS ; Rob1 immobile ; deux secondes du sourire de Seed au rongeur, le caillou, l'étiquette IMPORTANT (A07 tranché : B)","note":"A07","mot":null},{"n":"10-05","acte":"10","ordre":149,"debut_s":1478,"duree_s":12,"cadre":"ÉCR + PR","action":"Il modifie ; si A08 = A, le caillou blanc posé dans l'alvéole H-01","son_ecran":"EXIT AGE 35 → 14 · MEMORY 100 % → 21 % · INCUBATION: AUTO · RESOURCES: SUFFICIENT","note":"A08","mot":null},{"n":"10-06","acte":"10","ordre":150,"debut_s":1490,"duree_s":10,"cadre":"ÉCR","action":"Noir, puis le carton en trois lignes","son_ecran":"This is a fictional planet. / Earth is the only world we know. / Take care of it.","note":"E9 ; le carton validé","mot":null}],"charnieres":[{"id":"E1","plan":"P-02","module":"M1"},{"id":"E2","plan":"1-01","module":"M2"},{"id":"E3","plan":"2-01","module":"M3"},{"id":"E4","plan":"4-03","module":"M4"},{"id":"E5","plan":"5-14","module":"M5"},{"id":"E6","plan":"6-16","module":"M6"},{"id":"E7","plan":"7-18","module":"M7"},{"id":"E8","plan":"8-01","module":"M8"},{"id":"E9","plan":"10-06","module":"M9"}],"modules":[{"id":"M1","titre":"Elena, 2045","duree_s":180,"contenu":"La Terre qui mue : giga-feux, digues, serres. Elena enfant devant les fourmis ; le laboratoire ; la signature (don d'ADN, don de conscience) ; la charte PERSEPHORA : ne rien prendre à la Terre. Sa voix off, la seule voix humaine adulte du film","enjeu":"Poser la charte, pour que le mensonge de Rob1 à la fin soit un choix moral et pas une panne"},{"id":"M2","titre":"Phase 1","duree_s":300,"contenu":"Les Robs explorent, point de vue par point de vue, comme le docx le demande : Rob2 dans le karst et la grotte à guano, Rob3 sur ses roues dans la forêt bioluminescente, Rob4 qui plonge vers la fosse. Les drones porteurs qui reviennent au XENOPOD. L'incubateur qui s'allume","enjeu":"Montrer que Korê a tout ; c'est la Phase 1 que la fin déclare réussie"},{"id":"M3","titre":"La marche","duree_s":180,"contenu":"Dix jours à pied : Seed qui porte Rob1, qui apprend à marcher sur Korê (les chutes plus rapides, les sauts plus courts), les tours-îles, le fleuve qui se perd, la première nuit noire","enjeu":"La relation inversée (elle le porte) installée dans la durée"},{"id":"M4","titre":"Le col et l'ombre","duree_s":180,"contenu":"Le Rob fusionné qui court, Seed endormie dans le harnais ; le massif, les glaciers sous les deux lunes ; le froid et les batteries ; la grande ombre qui passe (le docx la demande) : un oiseau-prédateur, cousin lointain du Titan de la voûte","enjeu":"Le premier vrai paysage de la planète vu de haut ; l'échelle"},{"id":"M5","titre":"La nuit noire","duree_s":180,"contenu":"La forêt bioluminescente au maximum de la saison noire ; la famille de rongeurs ; Seed qui essaie de siffler ; loin derrière eux, le totem de l'organisme-batterie qui luit sous la terre (il n'est pas mort)","enjeu":"Le spectateur sait ce que Seed ne sait pas"},{"id":"M6","titre":"Dans la horde","duree_s":120,"contenu":"Ce que le noir du 25 cache : Seed emportée par la horde, le robopod des rongeurs qui roule et s'arrête intact, le tank charrié vers le nord, les buffles vus de tout près (laine, yeux, feu à l'horizon)","enjeu":"Le sort de la famille de rongeurs, que le 25 laisse ouvert"},{"id":"M7","titre":"La course","duree_s":180,"contenu":"Le tank sans arrêt : canyon ocre (la couche sombre des comètes dans la paroi), forêts cristallines, plaines de lave et tunnels, l'arc et ses flammes bleues, une poche de CO₂ qui manque de tout arrêter ; ROB4 > 87 km","enjeu":"Le danger vient de la planète, pas d'un animal"},{"id":"M8","titre":"Korê","duree_s":180,"contenu":"Le retour d'une semaine sous les aubes ambrées ; les lacs pourpres ; la colonie d'oiseaux des salins ; le cri ; Rob1 qui trouve ça drôle, Seed qui répète ; la planète a un nom ; Seed qui pose le caillou blanc au bord d'un lac (ou le garde : à trancher)","enjeu":"La planète devient un lieu ; le troisième mot"},{"id":"M9","titre":"Il y a 60 millions d'années","duree_s":120,"contenu":"Les Titans vivants : le brouteur, le chasseur, le volant ; l'étoile de passage ; la pluie de comètes ; l'hiver ; le squelette qui se retrouve dans la voûte de la grotte","enjeu":"La planète a une histoire, et cette histoire est une extinction"}],"mots":[{"rang":1,"plan":"6-14","texte":"« RooOOOB ! »"},{"rang":2,"plan":"7-13","texte":"« Seed »"},{"rang":3,"plan":"8-02","texte":"« Ko-rê » (motif 2) ; KORÊ ? · « Korê »"},{"rang":4,"plan":"9-15","texte":"« Je suis Seed »"}]},"docs":{"docx":{"fichier":"docs/film/01-recit-docx.md","nom":"docx"},"decoupage":{"fichier":"docs/film/20-decoupage-25-min.md","nom":"découpage"},"sequencier":{"fichier":"docs/film/11-sequencier-25-min.md","nom":"séquencier"},"architecture":{"fichier":"docs/film/10-architecture-25-55.md","nom":"architecture 25 / 55"},"modules":{"fichier":"docs/film/12-modules-du-55.md","nom":"modules du 55"},"propositions":{"fichier":"docs/film/13-propositions.md","nom":"propositions"},"registre":{"fichier":"docs/bible/00-registre-des-decisions.md","nom":"registre"}},"promesses":[{"id":"photo-elena","titre":"La photo d'Elena","genre":"crochet","dit":{"src":"architecture","cit":"La photo d'Elena sur l'écran (Acte I)"},"posee":[{"plan":"1-10","src":"decoupage","cit":"Crochet de M1"}],"payee":[{"module":"M1","src":"architecture","cit":"M1 Terre 2045, Elena signe"}]},{"id":"voyants-verts","titre":"Les trois voyants verts","genre":"crochet","dit":{"src":"architecture","cit":"Les trois voyants verts des échantillons"},"posee":[{"plan":"1-01","src":"decoupage","cit":"trois voyants verts"}],"payee":[{"module":"M2","src":"architecture","cit":"M2 Phase 1 : les Robs explorent, point de vue par point de vue"}]},{"id":"seed-porte-rob1","titre":"Seed porte Rob1","genre":"crochet","dit":{"src":"architecture","cit":"Seed qui porte Rob1 (une image)"},"posee":[{"plan":"2-01","src":"decoupage","cit":"Seed porte Rob1 sur son dos le long du fleuve"}],"payee":[{"module":"M3","src":"architecture","cit":"M3 La marche : les pitons, Seed qui porte Rob1"}]},{"id":"squelette-ombre","titre":"Le squelette dans la voûte et l'ombre","genre":"crochet","dit":{"src":"architecture","cit":"Le squelette dans la voûte (Acte III) et l'ombre"},"posee":[{"plan":"3-02","src":"decoupage","cit":"le squelette du Titan volant"},{"plan":"4-09","src":"decoupage","cit":"une grande ombre passe sur eux"}],"payee":[{"module":"M4","src":"architecture","cit":"M4 Le col et l'ombre du Titan"}]},{"id":"totem","titre":"Le totem qui luit","genre":"crochet","dit":{"src":"architecture","cit":"Le totem qui luit en arrière-plan"},"posee":[{"plan":"4-12","src":"decoupage","cit":"Crochet de M5 et de la proposition S6"}],"payee":[{"module":"M5","src":"modules","cit":"le totem de l'organisme-batterie qui luit sous la terre (il n'est pas mort)"}]},{"id":"caillou-blanc","titre":"Le caillou blanc","genre":"crochet","dit":{"src":"architecture","cit":"Le caillou blanc dans la poche de Seed"},"posee":[{"plan":"5-09","src":"decoupage","cit":"Crochet A08 et M6"}],"payee":[{"plan":"7-03","src":"docx","cit":"Elle sort le caillou que lui avait donné le petit rongeur."},{"module":"M6","src":"architecture","cit":"M6 Dans la horde : où vont Seed, le tank, le robopod"},{"plan":"10-05","src":"decoupage","cit":"si A08 = A, le caillou blanc posé dans l'alvéole H-01"}],"alertes":[{"texte":"Le module M8 laisse ouvert que Seed pose le caillou au bord d'un lac. Le Registre a validé le caillou dans l'alvéole H-01 à la fin (A08). Dans le 55, M8 passe avant le plan 10-05 : les deux ne tiennent ensemble que si elle le garde.","preuves":[{"src":"modules","cit":"Seed qui pose le caillou blanc au bord d'un lac (ou le garde : à trancher)"},{"src":"registre","cit":"le caillou blanc dans l'alvéole H-01 à la fin (A08)"}]}]},{"id":"compteur-87","titre":"Le compteur « ROB4 > 87 km »","genre":"crochet","dit":{"src":"architecture","cit":"Le compteur « ROB4 > 87 km »"},"posee":[{"plan":"7-20","src":"decoupage","cit":"ROB4 > 87 km"}],"payee":[{"module":"M7","src":"modules","cit":"une poche de CO₂ qui manque de tout arrêter ; ROB4 > 87 km"}]},{"id":"mot-kore","titre":"Le mot « Korê »","genre":"crochet","dit":{"src":"architecture","cit":"Le mot « Korê », un des quatre mots"},"posee":[{"plan":"8-02","src":"decoupage","cit":"Mot 3"}],"payee":[{"module":"M8","src":"modules","cit":"la planète a un nom"}]},{"id":"squelette-couche","titre":"Le squelette et la couche sombre du canyon","genre":"crochet","dit":{"src":"architecture","cit":"Le squelette de la voûte, la couche sombre du canyon"},"posee":[{"plan":"3-02","src":"decoupage","cit":"Crochet de M9 (les Titans)"},{"plan":"7-18","src":"decoupage","cit":"le canyon ocre et sa couche sombre"}],"payee":[{"module":"M9","src":"modules","cit":"le squelette qui se retrouve dans la voûte de la grotte"}]},{"id":"robopod-famille","titre":"Le robopod et la famille de rongeurs","genre":"crochet","dit":{"src":"sequencier","cit":"Ce que devient le robopod et la famille (M6)"},"posee":[{"plan":"6-14","src":"decoupage","cit":"La horde heurte le robopod, qui vole au-dessus d'elle au ralenti"}],"payee":[{"module":"M6","src":"modules","cit":"le robopod des rongeurs qui roule et s'arrête intact"}]},{"id":"regard-mer","titre":"Le regard vers la mer et la fosse","genre":"crochet","dit":{"src":"sequencier","cit":"le regard vers la mer et la fosse"},"posee":[{"plan":"7-26","src":"infere","pourquoi":"Le séquencier ne nomme pas le plan ; 7-26 est le seul plan de l'acte où ils regardent l'horizon.","fonde":["7-26"]}],"payee":[]},{"id":"drone-casse","titre":"Le drone cassé au fond du sinkhole","genre":"crochet","dit":{"src":"sequencier","cit":"Le drone cassé au fond du sinkhole, vu en un plan"},"posee":[{"plan":"9-07","src":"decoupage","cit":"au fond du trou, le drone porteur cassé"}],"payee":[]},{"id":"suite","titre":"La suite : CAIN","genre":"crochet","dit":{"src":"sequencier","cit":"La suite, si suite il y a"},"posee":[{"plan":"10-05","src":"docx","cit":"NOUVEAU SUJET : CAIN"}],"payee":[]},{"id":"charte","titre":"La charte : ne rien prendre à la Terre","genre":"crochet","seulement_55":true,"dit":{"src":"modules","cit":"Poser la charte, pour que le mensonge de Rob1 à la fin soit un choix moral et pas une panne"},"posee":[{"module":"M1","src":"modules","cit":"la charte PERSEPHORA : ne rien prendre à la Terre"}],"payee":[{"plan":"9-12","src":"docx","cit":"ÉVALUATION FINALE : NON VIABLE"}]},{"id":"souvenirs-elena","titre":"Les souvenirs d'Elena, vus des deux côtés","genre":"crochet","seulement_55":true,"dit":{"src":"propositions","cit":"Dans le 55, M1 montre les mêmes scènes du côté d'Elena ; le spectateur les reconnaît dans les visions de l'Acte VII"},"posee":[{"module":"M1","src":"decoupage","cit":"M1 montre l'autre côté"}],"payee":[{"plan":"7-11","src":"decoupage","cit":"Jamais Korê, jamais le futur (S7)"}]},{"id":"relais","titre":"Le mât-relais","genre":"interne","dit":{"src":"decoupage","cit":"Le mât-relais visible dehors : il servira au plan 1-20"},"posee":[{"plan":"1-08","src":"decoupage","cit":"Le mât-relais visible dehors : il servira au plan 1-20"}],"payee":[{"plan":"1-20","src":"decoupage","cit":"T03 validé : le relais est perdu, en une image"}]},{"id":"signal-echec","titre":"Le signal d'échec envoyé à PERSEPHORA","genre":"interne","dit":{"src":"docx","cit":"Elle recevra le message dans quelques semaines."},"posee":[{"plan":"1-08","src":"docx","cit":"Rob1 envoie un signal d'échec à PERSEPHORA."}],"payee":[{"plan":"9-09","src":"docx","cit":"ACCUSÉ RÉCEPTION SIGNAL ÉCHEC PHASE 2."}]},{"id":"ecran-incubateur","titre":"L'écran de l'incubateur","genre":"interne","dit":{"src":"docx","cit":"Le même écran qu'au début. Quand Seed a grandi."},"posee":[{"plan":"1-03","src":"docx","cit":"Derrière, une cuve cylindrique transparente."}],"payee":[{"plan":"10-02","src":"docx","cit":"Le même écran qu'au début."}]},{"id":"voix","titre":"La voix de Seed","genre":"interne","dit":{"src":"decoupage","cit":"Début de l'arc de la voix"},"posee":[{"plan":"1-12","src":"docx","cit":"Elle essaie de parler. Rien ne sort. Juste un souffle rauque."}],"payee":[{"plan":"6-14","src":"docx","cit":"pour la première fois de sa vie dit quelque chose"},{"plan":"7-13","src":"docx","cit":"on l'entend dire faiblement"},{"plan":"8-02","src":"decoupage","cit":"Mot 3"},{"plan":"9-15","src":"docx","cit":"dit-elle distinctement"}]},{"id":"nom","titre":"Qui lui a donné son nom","genre":"interne","dit":{"src":"infere","pourquoi":"Le docx pose « même pas qui lui a donné son nom » à la naissance ; les deux seuls plans où elle dit son nom sont 7-13 et 9-15.","fonde":["1-12","7-13","9-15"]},"posee":[{"plan":"1-12","src":"docx","cit":"Seed ne sait rien, même pas qui lui a donné son nom."}],"payee":[{"plan":"7-13","src":"docx","cit":"on l'entend dire faiblement"},{"plan":"9-15","src":"docx","cit":"dit-elle distinctement"}]},{"id":"visions","titre":"Les flashs de la mémoire d'Elena","genre":"interne","dit":{"src":"infere","pourquoi":"Le docx annonce des « flashs incompréhensibles » à la naissance ; ils ne reviennent qu'avec la fièvre, en 7-11.","fonde":["1-12","7-11"]},"posee":[{"plan":"1-12","src":"docx","cit":"des flashs incompréhensibles qui traversent son esprit"}],"payee":[{"plan":"7-11","src":"docx","cit":"Puis viennent les visions."}]},{"id":"faute","titre":"La faute de Rob1","genre":"interne","dit":{"src":"propositions","cit":"Le docx dit « tout est de sa faute » à l'Acte I et ne le rappelle plus"},"posee":[{"plan":"1-20","src":"docx","cit":"réalise que tout est de sa faute"}],"payee":[{"plan":"9-11","src":"decoupage","cit":"le sinkhole qu'il a causé"}]},{"id":"extraction","titre":"Sortir le XENOPOD du gouffre","genre":"interne","dit":{"src":"docx","cit":"Peut-être ensemble pourront-ils extraire le XENOPOD."},"posee":[{"plan":"1-22","src":"docx","cit":"Peut-être ensemble pourront-ils extraire le XENOPOD."}],"payee":[{"plan":"9-05","src":"docx","cit":"Enfin, le XENOPOD émerge du gouffre."}]},{"id":"eau","titre":"L'eau qu'on peut boire","genre":"interne","dit":{"src":"sequencier","cit":"pourquoi elle pourra boire ici et pas la rivière rouge"},"posee":[{"plan":"2-03","src":"decoupage","cit":"Seed boit au fleuve, à genoux"}],"payee":[{"plan":"7-05","src":"decoupage","cit":"F03 validé : l'eau acide la pousse vers le fruit"}]},{"id":"saison-noire","titre":"La saison noire","genre":"interne","dit":{"src":"decoupage","cit":"T04 : la saison noire commence"},"posee":[{"plan":"2-04","src":"decoupage","cit":"T04 : la saison noire commence"}],"payee":[{"plan":"7-26","src":"decoupage","cit":"T04 : le retour des aubes ambrées"}]},{"id":"echantillon","titre":"L'échantillon de plantes-chant","genre":"interne","dit":{"src":"docx","cit":"Seed repense alors à l'échantillon bioluminescent qu'elle a réussi à conserver dans la fuite"},"posee":[{"plan":"3-08","src":"docx","cit":"Elle en prélève un gros échantillon"}],"payee":[{"plan":"4-06","src":"docx","cit":"Elle le donne à Rob1."},{"plan":"4-08","src":"docx","cit":"Connexion établie."}]},{"id":"ombre-oiseau","titre":"L'ombre du grand oiseau","genre":"interne","dit":{"src":"infere","pourquoi":"Le découpage dit que l'ombre de 4-09 est un oiseau-prédateur ; le seul oiseau-prédateur montré est celui de 7-07.","fonde":["4-09","7-07"]},"posee":[{"plan":"4-09","src":"decoupage","cit":"L'ombre du docx = un oiseau-prédateur (Écarts)"}],"payee":[{"plan":"7-07","src":"decoupage","cit":"l'oiseau-prédateur de dix mètres plonge à la confluence"}]},{"id":"sifflement","titre":"Le sifflement","genre":"interne","dit":{"src":"docx","cit":"Seed arrive à reproduire le petit sifflement qu'elle n'avait pas réussi à faire"},"posee":[{"plan":"5-08","src":"docx","cit":"Seed essaie de sortir un son"}],"payee":[{"plan":"7-04","src":"docx","cit":"Seed arrive à reproduire le petit sifflement"}]},{"id":"important","titre":"L'étiquette IMPORTANT","genre":"interne","dit":{"src":"decoupage","cit":"deux secondes du sourire de Seed au rongeur, le caillou, l'étiquette IMPORTANT"},"posee":[{"plan":"5-10","src":"docx","cit":"Il archive la séquence avec une nouvelle étiquette"}],"payee":[{"plan":"9-11","src":"docx","cit":"et Seed qui sourit pour la première fois"},{"plan":"10-04","src":"decoupage","cit":"deux secondes du sourire de Seed au rongeur, le caillou, l'étiquette IMPORTANT"}]},{"id":"reserves","titre":"Les réserves","genre":"interne","dit":{"src":"infere","pourquoi":"Le compte des réserves ouvert en 5-11 (« critique ») revient en 7-26 (« moins d'un jour ») et se ferme quand Seed mange, en 9-08.","fonde":["5-11","7-26","9-08"]},"posee":[{"plan":"5-11","src":"docx","cit":"STATUT : CRITIQUE"}],"payee":[{"plan":"9-08","src":"docx","cit":"Seed mange enfin"}]},{"id":"rapport","titre":"Le rapport : viable ou non viable","genre":"interne","dit":{"src":"docx","cit":"Tout dépendra de ce message."},"posee":[{"plan":"7-26","src":"docx","cit":"Envoyer le rapport à PERSEPHORA : planète viable ou non viable."}],"payee":[{"plan":"9-12","src":"docx","cit":"ÉVALUATION FINALE : NON VIABLE"}]},{"id":"rob4-ici","titre":"Rob4 : « Je suis d'ici maintenant »","genre":"interne","dit":{"src":"docx","cit":"Je suis d'ici maintenant."},"posee":[],"payee":[{"plan":"9-11","src":"docx","cit":"Rob4 qui recule dans l'eau, filaments lumineux pulsant"}],"alertes":[{"texte":"Le docx fait revoir à Rob1 une scène que le récit ne montre pas : à l'Acte VII, Rob4 ne recule pas dans l'eau et ne dit rien ; on passe de l'horizon au départ. Le découpage garde « Rob4 » dans les souvenirs de 9-11, sans la phrase.","preuves":[{"src":"docx","cit":"Ils se mettent en route vers le XENOPOD."},{"src":"decoupage","cit":"le sinkhole qu'il a causé ; Rob4"}]}]}]}</script>
+<script>
+/* Second Earth · essais de lecture du film : socle commun aux trois essais.
+   L'axe du temps (film de 25 min, ou de 55 min avec ses modules), les cases, la provenance,
+   la pile « en attente » avec Garder / Revenir, et le montage dans la page.
+   Chaque essai fournit : init(d, gardes), reduire(d, etat, action), vue(d, etat), texte(d, etat).
+   vue() rend du HTML par zone ; rien ne s'écrit ailleurs que dans le navigateur (stockage local).
+   Aucune dépendance. Chargé par la page (window.SE_ESSAIS) et par les tests (require). */
+(function () {
+  'use strict';
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function mmss(s) {
+    s = Math.round(s);
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  var memo = new WeakMap();
+  function index(film) {
+    var i = memo.get(film);
+    if (!i) {
+      i = { plan: {}, module: {}, acte: {} };
+      film.plans.forEach(function (p) { i.plan[p.n] = p; });
+      film.modules.forEach(function (m) { i.module[m.id] = m; });
+      film.actes.forEach(function (a) { i.acte[a.id] = a; });
+      memo.set(film, i);
+    }
+    return i;
+  }
+
+  function parId(liste, id) {
+    for (var k = 0; k < liste.length; k++) if (liste[k].id === id) return liste[k];
+    return null;
+  }
+
+  // L'axe du temps. version « 25 » : les 150 plans. version « 55 » : chaque module est posé juste après
+  // le plan de sa charnière (convention de l'essai : les documents disent « le 55 ouvre ici ») ;
+  // M9 va après M4, ou en prégénérique (les deux places que les documents laissent ouvertes).
+  function axe(film, version, m9) {
+    var I = index(film), apres = {}, segs = [], plan = {}, mod = {}, t = 0;
+    function pose(id, acte) {
+      var s = { type: 'module', id: id, acte: acte, t0: t, t1: t + I.module[id].duree_s };
+      segs.push(s); mod[id] = s; t = s.t1;
+    }
+    if (version === '55') {
+      film.charnieres.forEach(function (c) {
+        if (c.module && c.module !== 'M9') (apres[c.plan] = apres[c.plan] || []).push(c.module);
+      });
+      if (m9 === 'pregenerique') pose('M9', film.actes[0].id);
+      else {
+        var e4 = parId(film.charnieres, 'E4');
+        (apres[e4.plan] = apres[e4.plan] || []).push('M9');
+      }
+    }
+    film.plans.forEach(function (p) {
+      var s = { type: 'plan', n: p.n, acte: p.acte, t0: t, t1: t + p.duree_s };
+      segs.push(s); plan[p.n] = s; t = s.t1;
+      (apres[p.n] || []).forEach(function (id) { pose(id, p.acte); });
+    });
+    var actes = film.actes.map(function (a) {
+      var miens = segs.filter(function (s) { return s.acte === a.id; });
+      return { id: a.id, nom: a.nom, titre: a.titre, t0: miens[0].t0, t1: miens[miens.length - 1].t1 };
+    });
+    return { version: version, m9: m9, total: t, segs: segs, plan: plan, module: mod, actes: actes };
+  }
+
+  function fenetre(ax, zoom) {
+    var a = zoom ? parId(ax.actes, zoom) : null;
+    return a ? { t0: a.t0, t1: a.t1, acte: a.id } : { t0: 0, t1: ax.total, acte: null };
+  }
+
+  // Début d'un point ({plan} ou {module}) sur l'axe ; null si le point n'existe pas dans cette version.
+  function tPoint(ax, pt) {
+    var s = pt.plan ? ax.plan[pt.plan] : ax.module[pt.module];
+    return s ? s.t0 : null;
+  }
+
+  function nomPoint(pt) { return pt.plan || pt.module; }
+
+  function xDe(fen, t) { return (t - fen.t0) / (fen.t1 - fen.t0) * 100; }
+
+  function nomActe(a) { return a.nom === 'Prologue' ? 'le Prologue' : "l'Acte " + a.nom; }
+
+  // Position d'un temps dans la fenêtre : x en %, et de quel côté il déborde (-1, 0, 1).
+  function place(fen, t) {
+    var x = xDe(fen, t);
+    return x < 0 ? { x: 0, hors: -1 } : x > 100 ? { x: 100, hors: 1 } : { x: x, hors: 0 };
+  }
+
+  // Les cases d'une piste : les actes (un clic en ouvre un), ou les plans de l'acte ouvert.
+  function cases(d, ax, fen, o) {
+    o = o || {};
+    var I = index(d.film), h = '', cle = o.portee || 'b';
+    var extra = o.portee ? ' data-portee="' + o.portee + '"' : '';
+    function style(s) {
+      return 'left:' + xDe(fen, s.t0).toFixed(3) + '%;width:' + ((s.t1 - s.t0) / (fen.t1 - fen.t0) * 100).toFixed(3) + '%';
+    }
+    function unModule(s) {
+      var m = I.module[s.id];
+      return '<button type="button" class="es-case es-module" style="' + style(s) + '" data-act="case" data-module="' + s.id + '"' + extra +
+        ' data-f="c-' + cle + '-' + s.id + '" title="' + esc(s.id + ' · ' + m.titre + ' · ' + mmss(m.duree_s)) + '">' + (o.etiquette ? s.id : '') + '</button>';
+    }
+    if (!fen.acte) {
+      ax.actes.forEach(function (a) {
+        h += '<button type="button" class="es-case es-acte" style="' + style(a) + '" data-act="zoom" data-id="' + a.id + '" data-f="z-' + cle + '-' + a.id +
+          '" title="' + esc('Ouvrir ' + nomActe(a) + ' · ' + (a.titre || '')) + '">' + (o.etiquette ? esc(a.nom === 'Prologue' ? 'Prol.' : a.nom) : '') + '</button>';
+      });
+      ax.segs.forEach(function (s) { if (s.type === 'module') h += unModule(s); });
+      return h;
+    }
+    ax.segs.forEach(function (s) {
+      if (s.t0 < fen.t0 || s.t1 > fen.t1) return;
+      if (s.type === 'module') { h += unModule(s); return; }
+      var p = I.plan[s.n];
+      h += '<button type="button" class="es-case es-plan' + (p.mot ? ' es-plan-mot' : '') + '" style="' + style(s) + '" data-act="case" data-plan="' + s.n + '"' + extra +
+        ' data-f="c-' + cle + '-' + s.n + '" title="' + esc(s.n + ' · ' + p.duree_s + ' s · ' + p.action) + '">' + (o.etiquette ? esc(s.n.split('-')[1]) : '') + '</button>';
+    });
+    return h;
+  }
+
+  // La provenance d'un élément : docx, autre document du script, déduction, manquant, ou choix de Cal.
+  function prov(d, p) {
+    if (!p) return '';
+    if (p.src === 'choix') return '<span class="es-src es-src-choix">ton choix</span>';
+    if (p.src === 'infere') {
+      return '<span class="es-src es-src-inf">inféré</span><span class="es-cit">' + esc(p.pourquoi) +
+        ' <span class="es-fonde">Fondé sur ' + p.fonde.map(esc).join(', ') + '.</span></span>';
+    }
+    if (p.src === 'manquant') {
+      return '<span class="es-src es-src-man">non écrit</span><span class="es-cit">' + esc(p.note) + (p.voir ? ' ' + prov(d, p.voir) : '') + '</span>';
+    }
+    var hors = p.src !== 'docx';
+    return '<span class="es-src ' + (hors ? 'es-src-hors' : 'es-src-docx') + '">' + (hors ? 'hors docx · ' + esc(d.docs[p.src].nom) : 'docx') + '</span>' +
+      '<span class="es-cit">« ' + esc(p.cit) + ' »' + (p.note ? ' ' + esc(p.note) : '') + '</span>';
+  }
+
+  function bouton(act, label, o) {
+    o = o || {};
+    var h = '<button type="button" class="es-bt' + (o.cls ? ' ' + o.cls : '') + '" data-act="' + act + '" data-f="' + esc(o.f || act + '-' + (o.id || o.v || '')) + '"';
+    if (o.id != null) h += ' data-id="' + esc(o.id) + '"';
+    if (o.v != null) h += ' data-v="' + esc(o.v) + '"';
+    if (o.i != null) h += ' data-i="' + o.i + '"';
+    if (o.champ) h += ' data-champ="' + o.champ + '"';
+    if (o.presse != null) h += ' aria-pressed="' + (o.presse ? 'true' : 'false') + '"';
+    if (o.inactif) h += ' disabled';
+    return h + '>' + esc(label) + '</button>';
+  }
+
+  // Les réglages de l'axe : 25 ou 55, la place de M9, l'acte ouvert.
+  function outilsAxe(d, e, ax, fen, o) {
+    o = o || {};
+    var h = '<div class="es-groupe"><span class="es-et">Film</span>' +
+      bouton('version', '25 min', { v: '25', presse: e.version === '25' }) +
+      bouton('version', '55 min', { v: '55', presse: e.version === '55' }) + '</div>';
+    if (o.m9 && e.version === '55') {
+      h += '<div class="es-groupe"><span class="es-et">Module M9, les Titans</span>' +
+        bouton('m9', 'après le col (M4)', { v: 'apres-m4', presse: e.m9 !== 'pregenerique' }) +
+        bouton('m9', 'en prégénérique', { v: 'pregenerique', presse: e.m9 === 'pregenerique' }) + '</div>';
+    }
+    h += '<div class="es-groupe"><span class="es-et">Vue</span>' + bouton('zoom', 'Tout le film', { id: '', presse: !fen.acte, f: 'zoom-tout' });
+    if (fen.acte) {
+      var k = ax.actes.findIndex(function (a) { return a.id === fen.acte; });
+      if (k > 0) h += bouton('zoom', 'Acte précédent', { id: ax.actes[k - 1].id, f: 'zoom-prec' });
+      h += '<span class="es-ici">' + esc(ax.actes[k].nom === 'Prologue' ? 'Prologue' : 'Acte ' + ax.actes[k].nom) + ' · ' + esc(ax.actes[k].titre || '') + '</span>';
+      if (k < ax.actes.length - 1) h += bouton('zoom', 'Acte suivant', { id: ax.actes[k + 1].id, f: 'zoom-suiv' });
+    } else h += '<span class="es-ici">Un clic sur un acte l\'ouvre plan par plan.</span>';
+    return h + '</div>';
+  }
+
+  // La pile « en attente », Garder / Revenir, et les choix gardés (avec « Copier mes choix »).
+  function choix(e, decrire) {
+    var h = '<div class="es-garde">' +
+      bouton('garder', 'Garder', { cls: 'es-go', inactif: !e.attente.length }) +
+      bouton('revenir', 'Revenir', { inactif: !e.attente.length && !e.arme }) +
+      '<span class="es-et">' + (e.attente.length ? e.attente.length + ' en attente' : 'Rien en attente') + '</span></div>';
+    if (e.attente.length) {
+      h += '<ul class="es-liste es-att">' + e.attente.map(function (g) { return '<li>' + esc(decrire(g)) + '</li>'; }).join('') + '</ul>';
+    }
+    h += '<div class="es-garde"><span class="es-et">Mes choix gardés · ' + e.gardes.length + '</span>' +
+      bouton('copier', 'Copier mes choix', { inactif: !e.gardes.length }) + '</div>';
+    if (e.gardes.length) {
+      h += '<ul class="es-liste">' + e.gardes.map(function (g, i) {
+        return '<li><span>' + esc(decrire(g)) + '</span>' + bouton('retirer', 'Retirer', { i: i, f: 'retirer-' + i }) + '</li>';
+      }).join('') + '</ul>';
+    }
+    return h + '<p class="es-note">Tes choix restent dans ce navigateur. Ils ne changent ni le script ni les documents : « Copier mes choix » en fait un texte à coller dans le chat.</p>';
+  }
+
+  // Réductions communes à tous les essais ; renvoie null si l'action n'est pas de celles-là.
+  function reduireCommun(e, a) {
+    switch (a.type) {
+      case 'version': return Object.assign({}, e, { version: a.v === '55' ? '55' : '25' });
+      case 'm9': return Object.assign({}, e, { m9: a.v === 'pregenerique' ? 'pregenerique' : 'apres-m4' });
+      case 'zoom': return Object.assign({}, e, { zoom: a.id || null });
+      case 'garder': return e.attente.length ? Object.assign({}, e, { gardes: e.gardes.concat(e.attente), attente: [], arme: false }) : e;
+      case 'revenir': return Object.assign({}, e, { attente: [], arme: false });
+      case 'retirer': return Object.assign({}, e, { gardes: e.gardes.filter(function (_, i) { return i !== Number(a.i); }) });
+      default: return null;
+    }
+  }
+
+  function copier(texte) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(texte).catch(function () { return copieDeSecours(texte); });
+    }
+    return copieDeSecours(texte);
+  }
+  function copieDeSecours(texte) {
+    return new Promise(function (ok, non) {
+      var ta = document.createElement('textarea');
+      ta.value = texte; ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { if (document.execCommand('copy')) ok(); else non(); } catch (err) { non(err); }
+      document.body.removeChild(ta);
+    });
+  }
+
+  var essais = {};
+
+  // Monte un essai dans la page : les zones [data-zone] reçoivent le HTML de vue() ;
+  // tout élément [data-act] envoie une action ; Entrée garde, Échap revient.
+  function monter(nom, racine, d) {
+    var essai = essais[nom], cle = 'se.essais.' + nom + '.v1', gardes = [];
+    try { gardes = JSON.parse(localStorage.getItem(cle) || '[]'); } catch (err) { gardes = []; }
+    if (!Array.isArray(gardes)) gardes = [];
+    var etat = essai.init(d, gardes), zones = {}, dernier = {};
+    Array.prototype.forEach.call(racine.querySelectorAll('[data-zone]'), function (z) { zones[z.getAttribute('data-zone')] = z; });
+
+    function rendre() {
+      var v = essai.vue(d, etat), actif = document.activeElement;
+      var f = actif && actif.getAttribute ? actif.getAttribute('data-f') : null;
+      Object.keys(v).forEach(function (k) {
+        if (zones[k] && dernier[k] !== v[k]) { zones[k].innerHTML = v[k]; dernier[k] = v[k]; }
+      });
+      if (f && (!document.activeElement || document.activeElement.getAttribute('data-f') !== f)) {
+        var cible = racine.querySelector('[data-f="' + f.replace(/"/g, '') + '"]');
+        if (cible && cible.focus) cible.focus();
+      }
+      if (essai.apres) essai.apres(racine, etat);
+    }
+
+    function agir(a) {
+      var avant = etat;
+      etat = essai.reduire(d, etat, a) || etat;
+      if (etat.gardes !== avant.gardes) {
+        try { localStorage.setItem(cle, JSON.stringify(etat.gardes)); } catch (err) { /* stockage indisponible */ }
+      }
+      rendre();
+    }
+
+    racine.addEventListener('click', function (ev) {
+      var el = ev.target.closest('[data-act]');
+      if (!el || !racine.contains(el) || el.disabled || el.hasAttribute('data-range')) return;
+      var a = { type: el.getAttribute('data-act') };
+      ['id', 'v', 'i', 'plan', 'module', 'portee'].forEach(function (k) {
+        var val = el.getAttribute('data-' + k);
+        if (val != null) a[k] = val;
+      });
+      if (el.getAttribute('data-champ')) {
+        var champ = racine.querySelector('[name="' + el.getAttribute('data-champ') + '"]');
+        a.texte = champ ? champ.value : '';
+      }
+      if (a.type === 'copier') {
+        var libelle = el.textContent;
+        copier(essai.texte(d, etat)).then(function () { el.textContent = 'Copié'; }, function () { el.textContent = 'Échec de la copie'; });
+        setTimeout(function () { el.textContent = libelle; }, 2000);
+        return;
+      }
+      agir(a);
+    });
+
+    racine.addEventListener('input', function (ev) {
+      var el = ev.target;
+      if (el.hasAttribute && el.hasAttribute('data-range')) agir({ type: el.getAttribute('data-act'), v: el.value });
+    });
+
+    document.addEventListener('keydown', function (ev) {
+      var el = ev.target, tag = el && el.tagName ? el.tagName.toLowerCase() : '';
+      if (ev.key === 'Escape') { agir({ type: 'revenir' }); return; }
+      if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+      if ((ev.key === 'Enter' || ev.key === ' ') && el.getAttribute && el.getAttribute('data-act') && tag !== 'button') {
+        ev.preventDefault(); el.dispatchEvent(new MouseEvent('click', { bubbles: true })); return;
+      }
+      if (ev.key === 'Enter' && tag !== 'button' && tag !== 'a') agir({ type: 'garder' });
+    });
+
+    rendre();
+    return { agir: agir, etat: function () { return etat; } };
+  }
+
+  var api = {
+    esc: esc, mmss: mmss, index: index, parId: parId, axe: axe, fenetre: fenetre, tPoint: tPoint, nomPoint: nomPoint,
+    xDe: xDe, place: place, nomActe: nomActe, cases: cases, prov: prov, bouton: bouton, outilsAxe: outilsAxe, choix: choix,
+    reduireCommun: reduireCommun, essais: essais, monter: monter,
+  };
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  if (typeof window !== 'undefined') window.SE_ESSAIS = api;
+})();
+/* Essai « Le livre des promesses » : chaque promesse du film, où elle est posée, où elle est payée,
+   à quelle distance ; dans le 25 seul, puis dans le 55 avec ses modules.
+   États : posée (payée seulement dans le 55), payée, due (aucun paiement écrit), assumée (choix de Cal).
+   Gestes : marquer une promesse due « assumée » ; lui donner un paiement en cliquant une case ;
+   déplacer le module M9. Rien ne s'écrit sans Garder, et rien ne sort du navigateur. */
+(function () {
+  'use strict';
+  var E = typeof module === 'object' && module.exports ? require('./commun.js') : window.SE_ESSAIS;
+  var esc = E.esc, mmss = E.mmss;
+
+  var CLASSE = { 'posée': 'posee', 'payée': 'payee', 'due': 'due', 'assumée': 'assumee', 'payée sans avoir été posée': 'orpheline' };
+  var FILTRES = [['toutes', 'Toutes'], ['crochet', 'Crochets du 55'], ['interne', 'Dans le 25'], ['due', 'Dues'], ['regarder', 'À regarder']];
+
+  function gestes(e) {
+    return e.gardes.concat(e.attente.map(function (g) { return Object.assign({ attente: true }, g); }));
+  }
+
+  function visibles(ax, pts) {
+    return pts.map(function (p) { return { p: p, t: E.tPoint(ax, p) }; })
+      .filter(function (x) { return x.t != null; })
+      .sort(function (a, b) { return a.t - b.t; });
+  }
+
+  // L'état d'une promesse sur un axe donné, avec les gestes de Cal (gardés ou en attente).
+  function etatPromesse(ax, pr, gs) {
+    var posee = visibles(ax, pr.posee), payee = visibles(ax, pr.payee), assumee = false;
+    (gs || []).forEach(function (g) {
+      if (g.promesse !== pr.id) return;
+      if (g.type === 'assumer') assumee = true;
+      if (g.type === 'paiement') {
+        var t = E.tPoint(ax, g.cible);
+        if (t != null) payee.push({ p: Object.assign({ src: 'choix' }, g.cible), t: t, choix: true, attente: !!g.attente });
+      }
+    });
+    payee.sort(function (a, b) { return a.t - b.t; });
+    var ailleurs = ax.version === '25' ? pr.payee.filter(function (p) { return p.module; }) : [];
+    var mot;
+    if (!posee.length) mot = 'payée sans avoir été posée';
+    else if (payee.length) mot = 'payée';
+    else if (ailleurs.length) mot = 'posée';
+    else mot = assumee ? 'assumée' : 'due';
+    // une pose qu'aucun paiement ne suit : le paiement précède la promesse
+    var inverse = payee.length ? posee.filter(function (x) { return !payee.some(function (y) { return y.t >= x.t; }); }) : [];
+    var premier = posee.length ? payee.filter(function (y) { return y.t >= posee[0].t; })[0] || null : null;
+    return {
+      posee: posee, payee: payee, mot: mot, ailleurs: ailleurs, inverse: inverse,
+      distance: premier ? premier.t - posee[0].t : null, premier: premier,
+      debut: posee.length ? posee[0].t : payee.length ? payee[0].t : 0,
+    };
+  }
+
+  function aRegarder(pr, et) {
+    return et.inverse.length > 0 || et.mot === 'payée sans avoir été posée' || (pr.alertes || []).length > 0;
+  }
+
+  function decrire(d, g) {
+    var pr = E.parId(d.promesses, g.promesse);
+    if (g.type === 'assumer') return '« ' + pr.titre + ' » : assumée, laissée ouverte à dessein';
+    return '« ' + pr.titre + ' » : payée en ' + E.nomPoint(g.cible);
+  }
+
+  function init(d, gardes) {
+    return { version: '25', m9: 'apres-m4', zoom: null, sel: null, cas: null, arme: false, filtre: 'toutes', attente: [], gardes: gardes || [] };
+  }
+
+  function reduire(d, e, a) {
+    var commun = E.reduireCommun(e, a);
+    if (commun) return commun;
+    switch (a.type) {
+      case 'filtre': return Object.assign({}, e, { filtre: a.v });
+      case 'sel': return Object.assign({}, e, { sel: e.sel === a.id ? null : a.id, cas: null, arme: false });
+      case 'armer': return e.sel ? Object.assign({}, e, { arme: !e.arme }) : e;
+      case 'assumer':
+        if (!e.sel) return e;
+        return Object.assign({}, e, {
+          attente: e.attente.filter(function (g) { return !(g.type === 'assumer' && g.promesse === e.sel); }).concat([{ type: 'assumer', promesse: e.sel }]),
+        });
+      case 'case': {
+        var cible = a.plan ? { plan: a.plan } : { module: a.module };
+        if (e.arme && e.sel) {
+          return Object.assign({}, e, {
+            arme: false,
+            attente: e.attente.filter(function (g) { return !(g.type === 'paiement' && g.promesse === e.sel); })
+              .concat([{ type: 'paiement', promesse: e.sel, cible: cible }]),
+          });
+        }
+        return Object.assign({}, e, { cas: cible, sel: null, arme: false });
+      }
+      default: return e;
+    }
+  }
+
+  function phrase(d, e, ax, liste) {
+    var sel = e.sel ? liste.filter(function (x) { return x.pr.id === e.sel; })[0] : null;
+    if (e.arme && sel) {
+      return 'Choisis la case qui paierait « ' + sel.pr.titre + ' » : ' + (e.zoom ? 'clique un plan' : 'ouvre un acte, puis clique un plan') +
+        (e.version === '55' ? ', ou clique un module' : '') + '. Échap pour renoncer.';
+    }
+    if (e.attente.length) {
+      var g = e.attente[e.attente.length - 1], pr = E.parId(d.promesses, g.promesse), txt = e.attente.length + ' en attente · ';
+      if (g.type === 'assumer') return txt + '« ' + pr.titre + ' » resterait ouverte à dessein : assumée, plus due.';
+      var et = etatPromesse(ax, pr, [Object.assign({ attente: true }, g)]), t = E.tPoint(ax, g.cible);
+      txt += '« ' + pr.titre + ' » serait payée en ' + E.nomPoint(g.cible);
+      if (t == null) return txt + ' · ce module n\'existe que dans le 55.';
+      if (et.posee.length && t < et.posee[0].t) return txt + ' · ce paiement viendrait avant la promesse.';
+      return txt + (et.distance != null ? ' · distance ' + mmss(et.distance) : '') + '.';
+    }
+    if (sel) {
+      var s = '« ' + sel.pr.titre + ' » · ';
+      s += sel.et.posee.length ? 'posée en ' + sel.et.posee.map(function (x) { return E.nomPoint(x.p); }).join(', ') : 'jamais posée';
+      if (sel.et.payee.length) s += ' · payée en ' + sel.et.payee.map(function (x) { return E.nomPoint(x.p); }).join(', ');
+      else if (sel.et.ailleurs.length) s += ' · payée dans le 55 seulement (' + sel.et.ailleurs.map(E.nomPoint).join(', ') + ')';
+      else s += ' · aucun paiement écrit';
+      if (sel.et.distance != null) s += ' · distance ' + mmss(sel.et.distance);
+      return s + '.';
+    }
+    return 'Clique une promesse pour voir où elle est posée, où elle est payée, et à quelle distance.';
+  }
+
+  function outils(d, e, ax, fen, liste) {
+    var h = E.outilsAxe(d, e, ax, fen, { m9: true }) + '<div class="es-groupe"><span class="es-et">Montrer</span>';
+    FILTRES.forEach(function (f) {
+      var n = liste.filter(function (x) { return garde(f[0], x); }).length;
+      h += E.bouton('filtre', f[1] + ' · ' + n, { v: f[0], presse: e.filtre === f[0] });
+    });
+    return h + '</div>';
+  }
+
+  function garde(filtre, x) {
+    if (filtre === 'crochet' || filtre === 'interne') return x.pr.genre === filtre;
+    if (filtre === 'due') return x.et.mot === 'due' || x.et.mot === 'assumée';
+    if (filtre === 'regarder') return aRegarder(x.pr, x.et);
+    return true;
+  }
+
+  function figure(d, e, ax, fen, liste) {
+    var h = '<div class="es-ligne es-tete"><div class="es-gauche es-et">' +
+      (fen.acte ? 'Plans' : 'Actes' + (e.version === '55' ? ' et modules' : '')) + ' · ' + mmss(fen.t1 - fen.t0) +
+      '</div><div class="es-piste es-bande">' + E.cases(d, ax, fen, { etiquette: true }) + '</div></div>';
+    liste.forEach(function (x) {
+      var et = x.et, pts = '', tous = et.posee.concat(et.payee);
+      if (tous.length > 1) {
+        var a = Math.min.apply(null, tous.map(function (y) { return y.t; })), b = Math.max.apply(null, tous.map(function (y) { return y.t; }));
+        var xa = Math.max(0, E.xDe(fen, a)), xb = Math.min(100, E.xDe(fen, b));
+        if (xb > xa) pts += '<i class="es-trait" style="left:' + xa.toFixed(3) + '%;width:' + (xb - xa).toFixed(3) + '%"></i>';
+      }
+      et.posee.forEach(function (y) { pts += unPoint(fen, y, 'posee', 'posée en ' + E.nomPoint(y.p)); });
+      et.payee.forEach(function (y) { pts += unPoint(fen, y, 'payee' + (y.choix ? ' es-pt-choix' : '') + (y.attente ? ' es-pt-att' : ''), 'payée en ' + E.nomPoint(y.p)); });
+      var att = e.attente.some(function (g) { return g.promesse === x.pr.id; });
+      h += '<div class="es-ligne' + (e.sel === x.pr.id ? ' es-sel' : '') + (att ? ' es-att' : '') + '">' +
+        '<button type="button" class="es-gauche es-nom" data-act="sel" data-id="' + x.pr.id + '" data-f="sel-' + x.pr.id + '" aria-pressed="' + (e.sel === x.pr.id) + '">' +
+        '<span class="es-mot es-mot-' + CLASSE[et.mot] + '">' + esc(et.mot === 'payée sans avoir été posée' ? 'sans pose' : et.mot) + '</span>' +
+        '<span class="es-titre">' + esc(x.pr.titre) + (aRegarder(x.pr, et) ? ' <span class="es-vu">à regarder</span>' : '') + '</span></button>' +
+        '<div class="es-piste">' + pts + '</div></div>';
+    });
+    if (!liste.length) h += '<p class="es-vide">Aucune promesse dans ce tri.</p>';
+    return h;
+  }
+
+  function unPoint(fen, y, cls, titre) {
+    var pl = E.place(fen, y.t);
+    return '<i class="es-pt es-pt-' + cls + (pl.hors ? ' es-pt-hors' : '') + '" style="left:' + pl.x.toFixed(3) + '%" title="' + esc(titre + (pl.hors ? ' (hors de cette vue)' : '')) + '"></i>';
+  }
+
+  function lignePoint(d, ax, pt, role) {
+    var I = E.index(d.film), nom = E.nomPoint(pt), absent = E.tPoint(ax, pt) == null;
+    var quoi = pt.plan ? I.plan[pt.plan].action : I.module[pt.module].titre + ' (module du 55)';
+    return '<li><span class="es-ou">' + role + ' · ' + esc(nom) + (absent ? ' · dans le 55 seulement' : '') + '</span>' +
+      '<span class="es-quoi">' + esc(quoi) + '</span>' + E.prov(d, pt) + '</li>';
+  }
+
+  function cote(d, e, ax, liste) {
+    var I = E.index(d.film), h = '';
+    var sel = e.sel ? liste.filter(function (x) { return x.pr.id === e.sel; })[0] : null;
+    if (sel) {
+      var pr = sel.pr, et = sel.et, gs = gestes(e);
+      h += '<h2>' + esc(pr.titre) + '</h2><p><span class="es-mot es-mot-' + CLASSE[et.mot] + '">' + esc(et.mot) + '</span> ' +
+        esc(pr.genre === 'crochet' ? 'Crochet que le 55 déplie.' : 'Posée et payée à l\'intérieur du 25.') + '</p>';
+      if (et.mot === 'posée') h += '<p>Dans le 25, elle reste posée : c\'est ' + esc(et.ailleurs.map(E.nomPoint).join(', ')) + ', dans le 55, qui la paie.</p>';
+      if (et.mot === 'due') h += '<p>Aucun document ne dit où elle est payée.</p>';
+      h += '<h3>Qui dit que c\'est une promesse</h3><ul class="es-liste es-prov"><li>' + E.prov(d, pr.dit) + '</li></ul>';
+      h += '<h3>Les points</h3><ul class="es-liste es-prov">';
+      pr.posee.forEach(function (pt) { h += lignePoint(d, ax, pt, 'posée'); });
+      pr.payee.forEach(function (pt) { h += lignePoint(d, ax, pt, 'payée'); });
+      et.payee.filter(function (y) { return y.choix; }).forEach(function (y) { h += lignePoint(d, ax, y.p, y.attente ? 'payée (en attente)' : 'payée (gardé)'); });
+      if (!pr.posee.length) h += '<li><span class="es-ou">posée</span><span class="es-quoi">Aucun plan ne la pose.</span></li>';
+      h += '</ul>';
+      var d25 = etatPromesse(E.axe(d.film, '25', e.m9), pr, gs), d55 = etatPromesse(E.axe(d.film, '55', e.m9), pr, gs);
+      h += '<h3>Distance entre la pose et le premier paiement</h3><p>Dans le 25 : ' + (d25.distance != null ? mmss(d25.distance) : 'pas de paiement') +
+        ' · dans le 55 : ' + (d55.distance != null ? mmss(d55.distance) : 'pas de paiement après la pose') + '</p>';
+      var notes = et.inverse.map(function (y) {
+        return 'Posée en ' + E.nomPoint(y.p) + ', après son dernier paiement (' + E.nomPoint(et.payee[et.payee.length - 1].p) + ') : le paiement précède la promesse.';
+      });
+      if (et.mot === 'payée sans avoir été posée') notes.push('Elle est payée sans qu\'aucun plan ne l\'ait posée.');
+      if (notes.length || (pr.alertes || []).length) {
+        h += '<h3>À regarder</h3><ul class="es-liste es-prov">' + notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('');
+        (pr.alertes || []).forEach(function (al) {
+          h += '<li>' + esc(al.texte) + al.preuves.map(function (p) { return '<div class="es-preuve">' + E.prov(d, p) + '</div>'; }).join('') + '</li>';
+        });
+        h += '</ul>';
+      }
+      if (et.mot === 'due' || et.mot === 'assumée') {
+        h += '<h3>Tes gestes</h3><div class="es-garde">' +
+          (et.mot === 'due' ? E.bouton('assumer', 'La marquer assumée') : '') +
+          E.bouton('armer', e.arme ? 'Choisis une case…' : 'Lui donner un paiement', { presse: e.arme }) + '</div>' +
+          '<p class="es-note">« Assumée » : ouverte à dessein, ce n\'est pas une faute. Un paiement donné ici est une hypothèse de lecture, marquée « ton choix ».</p>';
+      }
+      return h;
+    }
+    if (e.cas) {
+      var nom = E.nomPoint(e.cas), touchent = liste.filter(function (x) {
+        return x.pr.posee.concat(x.pr.payee).some(function (pt) { return E.nomPoint(pt) === nom; });
+      });
+      if (e.cas.plan) {
+        var p = I.plan[e.cas.plan];
+        h += '<h2>Plan ' + esc(p.n) + '</h2><p class="es-et">' + p.duree_s + ' s · ' + esc(p.cadre) + (ax.plan[p.n] ? ' · à ' + mmss(ax.plan[p.n].t0) : '') + '</p><p>' + esc(p.action) + '</p>' +
+          (p.son_ecran ? '<p class="es-ecran">' + esc(p.son_ecran) + '</p>' : '') + (p.note ? '<p class="es-note">' + esc(p.note) + '</p>' : '');
+      } else {
+        var m = I.module[e.cas.module];
+        h += '<h2>' + esc(m.id + ' · ' + m.titre) + '</h2><p class="es-et">Module du 55 · ' + mmss(m.duree_s) + '</p><p>' + esc(m.contenu) + '</p><p class="es-note">Enjeu : ' + esc(m.enjeu) + '</p>';
+      }
+      h += '<h3>Promesses qui passent par là</h3>' + (touchent.length ? '<div class="es-garde">' + touchent.map(function (x) {
+        return E.bouton('sel', x.pr.titre, { id: x.pr.id, f: 'cas-' + x.pr.id });
+      }).join('') + '</div>' : '<p>Aucune.</p>');
+      return h;
+    }
+    var compte = {};
+    liste.forEach(function (x) { compte[x.et.mot] = (compte[x.et.mot] || 0) + 1; });
+    h += '<h2>Ce que montre cet essai</h2><p>' + liste.length + ' promesses dans le film de ' + (e.version === '55' ? '55' : '25') + ' min : ' +
+      Object.keys(compte).map(function (k) { return compte[k] + ' ' + (k === 'payée sans avoir été posée' ? 'payée sans pose' : k) + (compte[k] > 1 && k !== 'payée sans avoir été posée' ? 's' : ''); }).join(', ') + '.</p>' +
+      '<ul class="es-liste es-legende">' +
+      '<li><i class="es-pt es-pt-posee"></i> posée : le plan où la promesse est faite</li>' +
+      '<li><i class="es-pt es-pt-payee"></i> payée : le plan ou le module qui la tient</li>' +
+      '<li><span class="es-mot es-mot-posee">posée</span> payée seulement dans le 55</li>' +
+      '<li><span class="es-mot es-mot-due">due</span> aucun paiement écrit</li>' +
+      '<li><span class="es-mot es-mot-assumee">assumée</span> ouverte à dessein (ton choix)</li>' +
+      '</ul><h3>Provenance</h3><ul class="es-liste es-legende">' +
+      '<li><span class="es-src es-src-docx">docx</span> écrit dans le récit de référence</li>' +
+      '<li><span class="es-src es-src-hors">hors docx</span> écrit dans le découpage, le séquencier, l\'architecture ou les modules</li>' +
+      '<li><span class="es-src es-src-inf">inféré</span> déduit, avec les plans qui le fondent</li>' +
+      '</ul><p class="es-note">Dans le 55, chaque module est posé juste après le plan de sa charnière : c\'est une convention de cet essai, les documents disent seulement « le 55 ouvre ici ».</p>';
+    return h;
+  }
+
+  function prepare(d, e) {
+    var ax = E.axe(d.film, e.version, e.m9), gs = gestes(e);
+    var liste = d.promesses.filter(function (pr) { return e.version === '55' || !pr.seulement_55; })
+      .map(function (pr) { return { pr: pr, et: etatPromesse(ax, pr, gs) }; })
+      .sort(function (a, b) { return a.et.debut - b.et.debut; });
+    return { ax: ax, fen: E.fenetre(ax, e.zoom), liste: liste };
+  }
+
+  function vue(d, e) {
+    var c = prepare(d, e), montre = c.liste.filter(function (x) { return garde(e.filtre, x); });
+    return {
+      phrase: esc(phrase(d, e, c.ax, c.liste)),
+      outils: outils(d, e, c.ax, c.fen, c.liste),
+      figure: figure(d, e, c.ax, c.fen, montre),
+      cote: cote(d, e, c.ax, c.liste),
+      choix: E.choix(e, function (g) { return decrire(d, g); }),
+    };
+  }
+
+  function texte(d, e) {
+    var l = ['Second Earth · essai « Le livre des promesses » · mes choix'];
+    e.gardes.forEach(function (g, i) { l.push((i + 1) + '. ' + decrire(d, g)); });
+    if (e.version === '55') l.push('Module M9 regardé : ' + (e.m9 === 'pregenerique' ? 'en prégénérique' : 'après le col (M4)'));
+    return l.join('\n');
+  }
+
+  E.essais.promesses = { init: init, reduire: reduire, vue: vue, texte: texte, etatPromesse: etatPromesse, prepare: prepare };
+  if (typeof module === 'object' && module.exports) module.exports = E.essais.promesses;
+})();
+SE_ESSAIS.monter("promesses", document.getElementById('essai'), JSON.parse(document.getElementById('data-essai').textContent));
+</script>
+</body>
+</html>

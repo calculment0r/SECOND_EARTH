@@ -13,7 +13,7 @@
 // ne sont dans aucune table : elles ne sont pas dans ce fichier.
 //
 // Usage : node tools/build_film.mjs   (écrit data/film.json)
-// Vérification : node --test tests/   (--test-update-snapshots réécrit le fichier)
+// Vérification : node --test   (--test-update-snapshots réécrit le fichier)
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';

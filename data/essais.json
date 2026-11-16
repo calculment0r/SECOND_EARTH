@@ -1,0 +1,484 @@
+{
+ "titre": "Second Earth · essais de lecture du film de 25 min",
+ "statut": "proposé (essais du 16/11/2026 ; ils lisent le script, ils ne le modifient pas)",
+ "reference": "docx",
+ "regle": "Chaque élément porte sa provenance : une citation du docx (qui fait foi), une citation d'un autre document du script (hors docx), une déduction (« infere », avec les plans qui la fondent), ou « manquant » quand aucun document ne le dit. Les citations sont vérifiées mot pour mot par tests/essais.test.mjs.",
+ "docs": {
+  "docx": {"fichier": "docs/film/01-recit-docx.md", "nom": "docx"},
+  "decoupage": {"fichier": "docs/film/20-decoupage-25-min.md", "nom": "découpage"},
+  "sequencier": {"fichier": "docs/film/11-sequencier-25-min.md", "nom": "séquencier"},
+  "architecture": {"fichier": "docs/film/10-architecture-25-55.md", "nom": "architecture 25 / 55"},
+  "modules": {"fichier": "docs/film/12-modules-du-55.md", "nom": "modules du 55"},
+  "propositions": {"fichier": "docs/film/13-propositions.md", "nom": "propositions"},
+  "registre": {"fichier": "docs/bible/00-registre-des-decisions.md", "nom": "registre"}
+ },
+ "promesses": [
+  {
+   "id": "photo-elena", "titre": "La photo d'Elena", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "La photo d'Elena sur l'écran (Acte I)"},
+   "posee": [{"plan": "1-10", "src": "decoupage", "cit": "Crochet de M1"}],
+   "payee": [{"module": "M1", "src": "architecture", "cit": "M1 Terre 2045, Elena signe"}]
+  },
+  {
+   "id": "voyants-verts", "titre": "Les trois voyants verts", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "Les trois voyants verts des échantillons"},
+   "posee": [{"plan": "1-01", "src": "decoupage", "cit": "trois voyants verts"}],
+   "payee": [{"module": "M2", "src": "architecture", "cit": "M2 Phase 1 : les Robs explorent, point de vue par point de vue"}]
+  },
+  {
+   "id": "seed-porte-rob1", "titre": "Seed porte Rob1", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "Seed qui porte Rob1 (une image)"},
+   "posee": [{"plan": "2-01", "src": "decoupage", "cit": "Seed porte Rob1 sur son dos le long du fleuve"}],
+   "payee": [{"module": "M3", "src": "architecture", "cit": "M3 La marche : les pitons, Seed qui porte Rob1"}]
+  },
+  {
+   "id": "squelette-ombre", "titre": "Le squelette dans la voûte et l'ombre", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "Le squelette dans la voûte (Acte III) et l'ombre"},
+   "posee": [
+    {"plan": "3-02", "src": "decoupage", "cit": "le squelette du Titan volant"},
+    {"plan": "4-09", "src": "decoupage", "cit": "une grande ombre passe sur eux"}
+   ],
+   "payee": [{"module": "M4", "src": "architecture", "cit": "M4 Le col et l'ombre du Titan"}]
+  },
+  {
+   "id": "totem", "titre": "Le totem qui luit", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "Le totem qui luit en arrière-plan"},
+   "posee": [{"plan": "4-12", "src": "decoupage", "cit": "Crochet de M5 et de la proposition S6"}],
+   "payee": [{"module": "M5", "src": "modules", "cit": "le totem de l'organisme-batterie qui luit sous la terre (il n'est pas mort)"}]
+  },
+  {
+   "id": "caillou-blanc", "titre": "Le caillou blanc", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "Le caillou blanc dans la poche de Seed"},
+   "posee": [{"plan": "5-09", "src": "decoupage", "cit": "Crochet A08 et M6"}],
+   "payee": [
+    {"plan": "7-03", "src": "docx", "cit": "Elle sort le caillou que lui avait donné le petit rongeur."},
+    {"module": "M6", "src": "architecture", "cit": "M6 Dans la horde : où vont Seed, le tank, le robopod"},
+    {"plan": "10-05", "src": "decoupage", "cit": "si A08 = A, le caillou blanc posé dans l'alvéole H-01"}
+   ],
+   "alertes": [{
+    "texte": "Le module M8 laisse ouvert que Seed pose le caillou au bord d'un lac. Le Registre a validé le caillou dans l'alvéole H-01 à la fin (A08). Dans le 55, M8 passe avant le plan 10-05 : les deux ne tiennent ensemble que si elle le garde.",
+    "preuves": [
+     {"src": "modules", "cit": "Seed qui pose le caillou blanc au bord d'un lac (ou le garde : à trancher)"},
+     {"src": "registre", "cit": "le caillou blanc dans l'alvéole H-01 à la fin (A08)"}
+    ]
+   }]
+  },
+  {
+   "id": "compteur-87", "titre": "Le compteur « ROB4 > 87 km »", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "Le compteur « ROB4 > 87 km »"},
+   "posee": [{"plan": "7-20", "src": "decoupage", "cit": "ROB4 > 87 km"}],
+   "payee": [{"module": "M7", "src": "modules", "cit": "une poche de CO₂ qui manque de tout arrêter ; ROB4 > 87 km"}]
+  },
+  {
+   "id": "mot-kore", "titre": "Le mot « Korê »", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "Le mot « Korê », un des quatre mots"},
+   "posee": [{"plan": "8-02", "src": "decoupage", "cit": "Mot 3"}],
+   "payee": [{"module": "M8", "src": "modules", "cit": "la planète a un nom"}]
+  },
+  {
+   "id": "squelette-couche", "titre": "Le squelette et la couche sombre du canyon", "genre": "crochet",
+   "dit": {"src": "architecture", "cit": "Le squelette de la voûte, la couche sombre du canyon"},
+   "posee": [
+    {"plan": "3-02", "src": "decoupage", "cit": "Crochet de M9 (les Titans)"},
+    {"plan": "7-18", "src": "decoupage", "cit": "le canyon ocre et sa couche sombre"}
+   ],
+   "payee": [{"module": "M9", "src": "modules", "cit": "le squelette qui se retrouve dans la voûte de la grotte"}]
+  },
+  {
+   "id": "robopod-famille", "titre": "Le robopod et la famille de rongeurs", "genre": "crochet",
+   "dit": {"src": "sequencier", "cit": "Ce que devient le robopod et la famille (M6)"},
+   "posee": [{"plan": "6-14", "src": "decoupage", "cit": "La horde heurte le robopod, qui vole au-dessus d'elle au ralenti"}],
+   "payee": [{"module": "M6", "src": "modules", "cit": "le robopod des rongeurs qui roule et s'arrête intact"}]
+  },
+  {
+   "id": "regard-mer", "titre": "Le regard vers la mer et la fosse", "genre": "crochet",
+   "dit": {"src": "sequencier", "cit": "le regard vers la mer et la fosse"},
+   "posee": [{"plan": "7-26", "src": "infere", "pourquoi": "Le séquencier ne nomme pas le plan ; 7-26 est le seul plan de l'acte où ils regardent l'horizon.", "fonde": ["7-26"]}],
+   "payee": []
+  },
+  {
+   "id": "drone-casse", "titre": "Le drone cassé au fond du sinkhole", "genre": "crochet",
+   "dit": {"src": "sequencier", "cit": "Le drone cassé au fond du sinkhole, vu en un plan"},
+   "posee": [{"plan": "9-07", "src": "decoupage", "cit": "au fond du trou, le drone porteur cassé"}],
+   "payee": []
+  },
+  {
+   "id": "suite", "titre": "La suite : CAIN", "genre": "crochet",
+   "dit": {"src": "sequencier", "cit": "La suite, si suite il y a"},
+   "posee": [{"plan": "10-05", "src": "docx", "cit": "NOUVEAU SUJET : CAIN"}],
+   "payee": []
+  },
+  {
+   "id": "charte", "titre": "La charte : ne rien prendre à la Terre", "genre": "crochet", "seulement_55": true,
+   "dit": {"src": "modules", "cit": "Poser la charte, pour que le mensonge de Rob1 à la fin soit un choix moral et pas une panne"},
+   "posee": [{"module": "M1", "src": "modules", "cit": "la charte PERSEPHORA : ne rien prendre à la Terre"}],
+   "payee": [{"plan": "9-12", "src": "docx", "cit": "ÉVALUATION FINALE : NON VIABLE"}]
+  },
+  {
+   "id": "souvenirs-elena", "titre": "Les souvenirs d'Elena, vus des deux côtés", "genre": "crochet", "seulement_55": true,
+   "dit": {"src": "propositions", "cit": "Dans le 55, M1 montre les mêmes scènes du côté d'Elena ; le spectateur les reconnaît dans les visions de l'Acte VII"},
+   "posee": [{"module": "M1", "src": "decoupage", "cit": "M1 montre l'autre côté"}],
+   "payee": [{"plan": "7-11", "src": "decoupage", "cit": "Jamais Korê, jamais le futur (S7)"}]
+  },
+  {
+   "id": "relais", "titre": "Le mât-relais", "genre": "interne",
+   "dit": {"src": "decoupage", "cit": "Le mât-relais visible dehors : il servira au plan 1-20"},
+   "posee": [{"plan": "1-08", "src": "decoupage", "cit": "Le mât-relais visible dehors : il servira au plan 1-20"}],
+   "payee": [{"plan": "1-20", "src": "decoupage", "cit": "T03 validé : le relais est perdu, en une image"}]
+  },
+  {
+   "id": "signal-echec", "titre": "Le signal d'échec envoyé à PERSEPHORA", "genre": "interne",
+   "dit": {"src": "docx", "cit": "Elle recevra le message dans quelques semaines."},
+   "posee": [{"plan": "1-08", "src": "docx", "cit": "Rob1 envoie un signal d'échec à PERSEPHORA."}],
+   "payee": [{"plan": "9-09", "src": "docx", "cit": "ACCUSÉ RÉCEPTION SIGNAL ÉCHEC PHASE 2."}]
+  },
+  {
+   "id": "ecran-incubateur", "titre": "L'écran de l'incubateur", "genre": "interne",
+   "dit": {"src": "docx", "cit": "Le même écran qu'au début. Quand Seed a grandi."},
+   "posee": [{"plan": "1-03", "src": "docx", "cit": "Derrière, une cuve cylindrique transparente."}],
+   "payee": [{"plan": "10-02", "src": "docx", "cit": "Le même écran qu'au début."}]
+  },
+  {
+   "id": "voix", "titre": "La voix de Seed", "genre": "interne",
+   "dit": {"src": "decoupage", "cit": "Début de l'arc de la voix"},
+   "posee": [{"plan": "1-12", "src": "docx", "cit": "Elle essaie de parler. Rien ne sort. Juste un souffle rauque."}],
+   "payee": [
+    {"plan": "6-14", "src": "docx", "cit": "pour la première fois de sa vie dit quelque chose"},
+    {"plan": "7-13", "src": "docx", "cit": "on l'entend dire faiblement"},
+    {"plan": "8-02", "src": "decoupage", "cit": "Mot 3"},
+    {"plan": "9-15", "src": "docx", "cit": "dit-elle distinctement"}
+   ]
+  },
+  {
+   "id": "nom", "titre": "Qui lui a donné son nom", "genre": "interne",
+   "dit": {"src": "infere", "pourquoi": "Le docx pose « même pas qui lui a donné son nom » à la naissance ; les deux seuls plans où elle dit son nom sont 7-13 et 9-15.", "fonde": ["1-12", "7-13", "9-15"]},
+   "posee": [{"plan": "1-12", "src": "docx", "cit": "Seed ne sait rien, même pas qui lui a donné son nom."}],
+   "payee": [
+    {"plan": "7-13", "src": "docx", "cit": "on l'entend dire faiblement"},
+    {"plan": "9-15", "src": "docx", "cit": "dit-elle distinctement"}
+   ]
+  },
+  {
+   "id": "visions", "titre": "Les flashs de la mémoire d'Elena", "genre": "interne",
+   "dit": {"src": "infere", "pourquoi": "Le docx annonce des « flashs incompréhensibles » à la naissance ; ils ne reviennent qu'avec la fièvre, en 7-11.", "fonde": ["1-12", "7-11"]},
+   "posee": [{"plan": "1-12", "src": "docx", "cit": "des flashs incompréhensibles qui traversent son esprit"}],
+   "payee": [{"plan": "7-11", "src": "docx", "cit": "Puis viennent les visions."}]
+  },
+  {
+   "id": "faute", "titre": "La faute de Rob1", "genre": "interne",
+   "dit": {"src": "propositions", "cit": "Le docx dit « tout est de sa faute » à l'Acte I et ne le rappelle plus"},
+   "posee": [{"plan": "1-20", "src": "docx", "cit": "réalise que tout est de sa faute"}],
+   "payee": [{"plan": "9-11", "src": "decoupage", "cit": "le sinkhole qu'il a causé"}]
+  },
+  {
+   "id": "extraction", "titre": "Sortir le XENOPOD du gouffre", "genre": "interne",
+   "dit": {"src": "docx", "cit": "Peut-être ensemble pourront-ils extraire le XENOPOD."},
+   "posee": [{"plan": "1-22", "src": "docx", "cit": "Peut-être ensemble pourront-ils extraire le XENOPOD."}],
+   "payee": [{"plan": "9-05", "src": "docx", "cit": "Enfin, le XENOPOD émerge du gouffre."}]
+  },
+  {
+   "id": "eau", "titre": "L'eau qu'on peut boire", "genre": "interne",
+   "dit": {"src": "sequencier", "cit": "pourquoi elle pourra boire ici et pas la rivière rouge"},
+   "posee": [{"plan": "2-03", "src": "decoupage", "cit": "Seed boit au fleuve, à genoux"}],
+   "payee": [{"plan": "7-05", "src": "decoupage", "cit": "F03 validé : l'eau acide la pousse vers le fruit"}]
+  },
+  {
+   "id": "saison-noire", "titre": "La saison noire", "genre": "interne",
+   "dit": {"src": "decoupage", "cit": "T04 : la saison noire commence"},
+   "posee": [{"plan": "2-04", "src": "decoupage", "cit": "T04 : la saison noire commence"}],
+   "payee": [{"plan": "7-26", "src": "decoupage", "cit": "T04 : le retour des aubes ambrées"}]
+  },
+  {
+   "id": "echantillon", "titre": "L'échantillon de plantes-chant", "genre": "interne",
+   "dit": {"src": "docx", "cit": "Seed repense alors à l'échantillon bioluminescent qu'elle a réussi à conserver dans la fuite"},
+   "posee": [{"plan": "3-08", "src": "docx", "cit": "Elle en prélève un gros échantillon"}],
+   "payee": [
+    {"plan": "4-06", "src": "docx", "cit": "Elle le donne à Rob1."},
+    {"plan": "4-08", "src": "docx", "cit": "Connexion établie."}
+   ]
+  },
+  {
+   "id": "ombre-oiseau", "titre": "L'ombre du grand oiseau", "genre": "interne",
+   "dit": {"src": "infere", "pourquoi": "Le découpage dit que l'ombre de 4-09 est un oiseau-prédateur ; le seul oiseau-prédateur montré est celui de 7-07.", "fonde": ["4-09", "7-07"]},
+   "posee": [{"plan": "4-09", "src": "decoupage", "cit": "L'ombre du docx = un oiseau-prédateur (Écarts)"}],
+   "payee": [{"plan": "7-07", "src": "decoupage", "cit": "l'oiseau-prédateur de dix mètres plonge à la confluence"}]
+  },
+  {
+   "id": "sifflement", "titre": "Le sifflement", "genre": "interne",
+   "dit": {"src": "docx", "cit": "Seed arrive à reproduire le petit sifflement qu'elle n'avait pas réussi à faire"},
+   "posee": [{"plan": "5-08", "src": "docx", "cit": "Seed essaie de sortir un son"}],
+   "payee": [{"plan": "7-04", "src": "docx", "cit": "Seed arrive à reproduire le petit sifflement"}]
+  },
+  {
+   "id": "important", "titre": "L'étiquette IMPORTANT", "genre": "interne",
+   "dit": {"src": "decoupage", "cit": "deux secondes du sourire de Seed au rongeur, le caillou, l'étiquette IMPORTANT"},
+   "posee": [{"plan": "5-10", "src": "docx", "cit": "Il archive la séquence avec une nouvelle étiquette"}],
+   "payee": [
+    {"plan": "9-11", "src": "docx", "cit": "et Seed qui sourit pour la première fois"},
+    {"plan": "10-04", "src": "decoupage", "cit": "deux secondes du sourire de Seed au rongeur, le caillou, l'étiquette IMPORTANT"}
+   ]
+  },
+  {
+   "id": "reserves", "titre": "Les réserves", "genre": "interne",
+   "dit": {"src": "infere", "pourquoi": "Le compte des réserves ouvert en 5-11 (« critique ») revient en 7-26 (« moins d'un jour ») et se ferme quand Seed mange, en 9-08.", "fonde": ["5-11", "7-26", "9-08"]},
+   "posee": [{"plan": "5-11", "src": "docx", "cit": "STATUT : CRITIQUE"}],
+   "payee": [{"plan": "9-08", "src": "docx", "cit": "Seed mange enfin"}]
+  },
+  {
+   "id": "rapport", "titre": "Le rapport : viable ou non viable", "genre": "interne",
+   "dit": {"src": "docx", "cit": "Tout dépendra de ce message."},
+   "posee": [{"plan": "7-26", "src": "docx", "cit": "Envoyer le rapport à PERSEPHORA : planète viable ou non viable."}],
+   "payee": [{"plan": "9-12", "src": "docx", "cit": "ÉVALUATION FINALE : NON VIABLE"}]
+  },
+  {
+   "id": "rob4-ici", "titre": "Rob4 : « Je suis d'ici maintenant »", "genre": "interne",
+   "dit": {"src": "docx", "cit": "Je suis d'ici maintenant."},
+   "posee": [],
+   "payee": [{"plan": "9-11", "src": "docx", "cit": "Rob4 qui recule dans l'eau, filaments lumineux pulsant"}],
+   "alertes": [{
+    "texte": "Le docx fait revoir à Rob1 une scène que le récit ne montre pas : à l'Acte VII, Rob4 ne recule pas dans l'eau et ne dit rien ; on passe de l'horizon au départ. Le découpage garde « Rob4 » dans les souvenirs de 9-11, sans la phrase.",
+    "preuves": [
+     {"src": "docx", "cit": "Ils se mettent en route vers le XENOPOD."},
+     {"src": "decoupage", "cit": "le sinkhole qu'il a causé ; Rob4"}
+    ]
+   }]
+  }
+ ],
+ "savoir": {
+  "portees": [
+   {"id": "spectateur", "nom": "Le spectateur"},
+   {"id": "seed", "nom": "Seed"},
+   {"id": "rob1", "nom": "Rob1"},
+   {"id": "terre", "nom": "PERSEPHORA et la Terre"}
+  ],
+  "faits": [
+   {
+    "id": "viable", "titre": "Korê a tout ce qu'il faut à la vie",
+    "portees": {
+     "rob1": [{"plan": "1-02", "mode": "apprend", "src": "docx", "cit": "Analyses chimiques. Tout passe au vert."}],
+     "spectateur": [{"plan": "1-03", "mode": "apprend", "src": "docx", "cit": "PHASE 1 : COLLECTE — COMPLÈTE"}],
+     "seed": [{"plan": "1-16", "mode": "apprend", "src": "docx", "cit": "Phase 1 : Collecte d'échantillons (COMPLÈTE)"}],
+     "terre": [
+      {"plan": "1-08", "mode": "apprend", "src": "docx", "cit": "Les conditions matérielles sont réunies (Phase 1 : OK)."},
+      {"plan": "9-12", "mode": "croit à tort", "src": "docx", "cit": "RAISON : CONDITIONS ENVIRONNEMENTALES INCOMPATIBLES"}
+     ]
+    }
+   },
+   {
+    "id": "cobaye", "titre": "Seed est une preuve de concept : un test",
+    "portees": {
+     "terre": [{"plan": "1-03", "mode": "sait", "src": "docx", "cit": "L'objectif : qu'elle puisse être la preuve que la vie est bien possible"}],
+     "rob1": [{"plan": "1-03", "mode": "sait", "src": "docx", "cit": "PHASE 2 : VIABILITÉ HUMAINE — INITIALISATION"}],
+     "spectateur": [{"plan": "1-16", "mode": "apprend", "src": "docx", "cit": "Rôle : Preuve de concept. Cobaye."}],
+     "seed": [{"plan": "1-16", "mode": "apprend", "src": "docx", "cit": "Seed réalise à ce moment qu'elle est un outil. Un test."}]
+    }
+   },
+   {
+    "id": "clone", "titre": "Seed est un clone partiel d'Elena, mémoire transférée à 23 %",
+    "portees": {
+     "rob1": [{"plan": "1-06", "mode": "sait", "src": "decoupage", "cit": "INCUBATION HALTED · SUBJECT: 15 YEARS · MEMORY TRANSFER 23 %"}],
+     "terre": [{"plan": "1-08", "mode": "apprend", "src": "docx", "cit": "Sujet incomplet."}],
+     "spectateur": [{"plan": "1-11", "mode": "apprend", "src": "docx", "cit": "SOURCE ADN : ELENA VASQUEZ (CLONE PARTIEL)"}],
+     "seed": [{"plan": "1-11", "mode": "apprend", "src": "docx", "cit": "Elle est Elena. Mais elle ne l'est pas."}]
+    }
+   },
+   {
+    "id": "echec", "titre": "Rob1 a signalé l'échec de la Phase 2 à PERSEPHORA",
+    "portees": {
+     "rob1": [{"plan": "1-08", "mode": "sait", "src": "docx", "cit": "Rob1 envoie un signal d'échec à PERSEPHORA."}],
+     "spectateur": [{"plan": "1-08", "mode": "apprend", "src": "docx", "cit": "Le signal part vers l'espace."}],
+     "seed": [{"mode": "manquant", "src": "manquant", "note": "Le docx le dit au lecteur au moment du départ (1-22), sans dire si Seed le sait.", "voir": {"src": "docx", "cit": "Rob1 a envoyé un message d'erreur et le vaisseau pourrait ne pas revenir"}}],
+     "terre": [{"plan": "9-09", "mode": "apprend", "src": "docx", "cit": "ACCUSÉ RÉCEPTION SIGNAL ÉCHEC PHASE 2."}]
+    }
+   },
+   {
+    "id": "sol", "titre": "Le sol cède sous le XENOPOD", "menace": true,
+    "portees": {
+     "spectateur": [{"plan": "1-15", "mode": "apprend", "src": "docx", "cit": "gros plan sur le pied du XENOPOD qui s enfonce légèrement dans le sol"}],
+     "seed": [{"plan": "1-18", "mode": "apprend", "src": "docx", "cit": "Seed se fige, paralysée."}],
+     "rob1": [{"plan": "1-19", "mode": "apprend", "src": "docx", "cit": "Ce qu'il ne sait pas : le premier tremblement de terre a fragilisé le sol sous le module."}]
+    }
+   },
+   {
+    "id": "faute", "titre": "C'est le poids de Rob1 qui fait tomber le XENOPOD",
+    "portees": {
+     "spectateur": [{"plan": "1-17", "mode": "apprend", "src": "docx", "cit": "Chaque mouvement de Rob1 à l'intérieur fait légèrement basculer la structure."}],
+     "rob1": [{"plan": "1-20", "mode": "apprend", "src": "docx", "cit": "réalise que tout est de sa faute"}],
+     "seed": [{"mode": "ignore", "src": "infere", "pourquoi": "Aucun plan ne montre Seed l'apprendre ; Rob1 le revoit seul, dans ses souvenirs.", "fonde": ["9-11"]}]
+    }
+   },
+   {
+    "id": "assemblage", "titre": "Rob1 et Rob2 sont faits pour s'assembler",
+    "portees": {
+     "terre": [{"plan": "P-04", "mode": "sait", "src": "docx", "cit": "L'organisation du PERSEPHORA avait tout prévu."}],
+     "rob1": [{"plan": "1-22", "mode": "sait", "src": "docx", "cit": "ils étaient conçus dès le départ pour s'assembler"}],
+     "spectateur": [{"plan": "3-05", "mode": "apprend", "src": "docx", "cit": "Les deux robots fusionnent."}],
+     "seed": [{"plan": "3-07", "mode": "apprend", "src": "docx", "cit": "Maintenant Seed comprend pourquoi Rob1 insistait tant pour sauver Rob2"}]
+    }
+   },
+   {
+    "id": "totem", "titre": "L'organisme-batterie n'est pas mort",
+    "portees": {
+     "spectateur": [
+      {"plan": "4-12", "mode": "apprend", "src": "docx", "cit": "Il n'est pas mort, mais nos amis ne le savent pas."},
+      {"module": "M5", "mode": "apprend", "src": "modules", "cit": "Le spectateur sait ce que Seed ne sait pas"}
+     ],
+     "seed": [{"plan": "4-10", "mode": "croit à tort", "src": "docx", "cit": "Seed réalise tristement qu'ils ont tué un être vivant pour pouvoir avancer dans leur quête."}],
+     "rob1": [{"plan": "4-10", "mode": "croit à tort", "src": "docx", "cit": "s'éteint sous leurs yeux"}]
+    }
+   },
+   {
+    "id": "reserves", "titre": "Les réserves sont critiques : 1,2 L d'eau, trois à quatre jours de rations", "menace": true,
+    "cache": {"de": "rob1", "a": "seed", "plan": "5-12", "src": "docx", "cit": "Il ne dit rien. Pas maintenant."},
+    "portees": {
+     "rob1": [{"plan": "5-11", "mode": "apprend", "src": "docx", "cit": "STATUT : CRITIQUE"}],
+     "spectateur": [{"plan": "5-11", "mode": "apprend", "src": "docx", "cit": "Nourriture : 3-4 jours (rations minimales)"}],
+     "seed": [{"plan": "7-26", "mode": "apprend", "src": "docx", "cit": "Seed regarde l'écran.", "note": "L'écran de 7-26 affiche les réserves : moins d'un jour de rations."}]
+    }
+   },
+   {
+    "id": "rongeurs", "titre": "La famille de rongeurs survit à la horde",
+    "portees": {
+     "spectateur": [
+      {"mode": "ignore", "src": "modules", "cit": "Le sort de la famille de rongeurs, que le 25 laisse ouvert"},
+      {"module": "M6", "mode": "apprend", "src": "modules", "cit": "le robopod des rongeurs qui roule et s'arrête intact"}
+     ],
+     "seed": [{"mode": "ignore", "src": "docx", "cit": "Elle est sûrement en train de se demander si son petit ami et sa famille ont réussi à s'en sortir."}],
+     "rob1": [{"mode": "manquant", "src": "manquant", "note": "Aucun document ne dit ce que Rob1 sait du robopod après la horde."}]
+    }
+   },
+   {
+    "id": "abandon", "titre": "PERSEPHORA ne reviendra pas : Seed est jugée incomplète, non qualifiée",
+    "cache": {"de": "rob1", "a": "seed", "plan": "9-14", "src": "docx", "cit": "Mais il reste silencieux."},
+    "portees": {
+     "terre": [{"plan": "9-09", "mode": "sait", "src": "docx", "cit": "SUJET TEST: SEED > INCOMPLET, NON QUALIFIÉ."}],
+     "rob1": [{"plan": "9-09", "mode": "apprend", "src": "docx", "cit": "PERSEPHORA ne reviendra pas chercher Seed."}],
+     "spectateur": [{"plan": "9-09", "mode": "apprend", "src": "docx", "cit": "Ils l'abandonnent."}],
+     "seed": [{"mode": "ignore", "src": "docx", "cit": "Rob1 pourrait afficher la vérité. Il pourrait tout lui dire. Qu'elle a été abandonnée."}]
+    }
+   },
+   {
+    "id": "chef", "titre": "Rob1 décide seul si la planète est viable",
+    "cache": {"de": "rob1", "a": "seed", "plan": "9-14", "src": "docx", "cit": "Mais il reste silencieux."},
+    "portees": {
+     "terre": [{"plan": "9-10", "mode": "sait", "src": "docx", "cit": "NEW MISSION LEADER : ROB-1"}],
+     "rob1": [{"plan": "9-10", "mode": "apprend", "src": "docx", "cit": "AUTORITÉ : DÉTERMINER VIABILITÉ PLANÈTE."}],
+     "spectateur": [{"plan": "9-10", "mode": "apprend", "src": "docx", "cit": "RAPPORT REQUIS : OUI / NON."}],
+     "seed": [{"plan": "9-15", "mode": "pressent", "src": "docx", "cit": "Que Rob1 a fait un choix. Pour elle."}]
+    }
+   },
+   {
+    "id": "mensonge", "titre": "Rob1 déclare Korê non viable",
+    "cache": {"de": "rob1", "a": "seed", "plan": "9-14", "src": "docx", "cit": "Qu'il a menti. Qu'il a choisi pour elle."},
+    "portees": {
+     "rob1": [{"plan": "9-12", "mode": "sait", "src": "docx", "cit": "ÉVALUATION FINALE : NON VIABLE"}],
+     "spectateur": [{"plan": "9-12", "mode": "apprend", "src": "docx", "cit": "Confirmation : MESSAGE TRANSMIS"}],
+     "terre": [{"plan": "9-12", "mode": "apprend", "src": "decoupage", "cit": "EARTH: RECEIPT IN 11.4 YEARS", "note": "La ligne des 11,4 ans n'est pas dans le docx (Registre, A09)."}],
+     "seed": [{"plan": "9-15", "mode": "pressent", "src": "docx", "cit": "Pas les détails. Mais elle sait que quelque chose s'est passé là-dedans."}]
+    }
+   },
+   {
+    "id": "sabotage", "titre": "Rob1 détruit lui-même le communicateur",
+    "cache": {"de": "rob1", "a": "seed", "plan": "9-14", "src": "docx", "cit": "Communicateur défectueux."},
+    "portees": {
+     "rob1": [{"plan": "9-13", "mode": "sait", "src": "docx", "cit": "Circuits arrachés. Antenne sectionnée. Relais brisés."}],
+     "spectateur": [{"plan": "9-13", "mode": "apprend", "src": "docx", "cit": "Plus aucun message ne pourra être envoyé ou reçu."}],
+     "seed": [
+      {"plan": "9-14", "mode": "croit à tort", "src": "docx", "cit": "Réparation impossible."},
+      {"plan": "9-15", "mode": "pressent", "src": "docx", "cit": "Quelque chose ne colle pas. Elle le sent."}
+     ],
+     "terre": [{"mode": "ignore", "src": "infere", "pourquoi": "Le dernier message parti est le rapport de 9-12 ; le lien est coupé au plan suivant.", "fonde": ["9-12", "9-13"]}]
+    }
+   },
+   {
+    "id": "cain", "titre": "Un second humain est lancé : CAIN, 14 ans, 21 % de mémoire",
+    "portees": {
+     "rob1": [{"plan": "10-05", "mode": "sait", "src": "docx", "cit": "ÂGE SORTIE : 35 ANS > 14 ANS"}],
+     "spectateur": [{"plan": "10-05", "mode": "apprend", "src": "docx", "cit": "TRANSFERT MÉMOIRE : 100% > 21%"}],
+     "seed": [{"mode": "ignore", "src": "infere", "pourquoi": "Seed dort depuis 10-01 et le film se ferme sans qu'elle le voie.", "fonde": ["10-01", "10-06"]}],
+     "terre": [{"mode": "ignore", "src": "infere", "pourquoi": "Le communicateur est détruit depuis 9-13.", "fonde": ["9-13"]}]
+    }
+   },
+   {
+    "id": "charte", "titre": "PERSEPHORA a une charte : ne rien prendre à la Terre",
+    "portees": {
+     "spectateur": [
+      {"mode": "ignore", "src": "modules", "cit": "Poser la charte, pour que le mensonge de Rob1 à la fin soit un choix moral et pas une panne", "note": "La charte n'est posée que dans le 55."},
+      {"module": "M1", "mode": "apprend", "src": "modules", "cit": "la charte PERSEPHORA : ne rien prendre à la Terre"}
+     ],
+     "rob1": [{"mode": "manquant", "src": "manquant", "note": "Aucun document ne dit ce que Rob1 sait de la charte."}],
+     "seed": [{"mode": "manquant", "src": "manquant", "note": "Aucun document ne dit ce que Seed sait de la charte."}]
+    }
+   }
+  ]
+ },
+ "toile": {
+  "noeuds": [
+   {"id": "seed", "nom": "Seed", "sorte": "humaine", "entre": "1-07", "x": 400, "y": 300, "r": 32},
+   {"id": "rob1", "nom": "Rob1", "sorte": "robot", "entre": "1-02", "x": 600, "y": 300, "r": 32},
+   {"id": "elena", "nom": "Elena", "sorte": "humaine", "entre": "P-01", "x": 150, "y": 110, "r": 24},
+   {"id": "persephora", "nom": "PERSEPHORA", "sorte": "vaisseau", "entre": "P-04", "x": 840, "y": 100, "r": 24},
+   {"id": "rob4", "nom": "Rob4", "sorte": "robot", "entre": "1-01", "x": 880, "y": 215, "r": 24},
+   {"id": "cain", "nom": "CAIN", "sorte": "humaine", "entre": "10-03", "x": 930, "y": 540, "r": 24},
+   {"id": "rob3", "nom": "Rob3", "sorte": "robot", "entre": "1-01", "x": 730, "y": 540, "r": 24},
+   {"id": "rob2", "nom": "Rob2", "sorte": "robot", "entre": "1-01", "x": 560, "y": 530, "r": 24},
+   {"id": "creature", "nom": "La Créature", "sorte": "vivant", "entre": "3-12", "x": 380, "y": 545, "r": 24},
+   {"id": "organisme", "nom": "L'organisme-batterie", "sorte": "vivant", "entre": "3-01", "x": 205, "y": 540, "r": 24},
+   {"id": "rongeur", "nom": "Le petit rongeur", "sorte": "vivant", "entre": "5-03", "x": 150, "y": 400, "r": 24}
+  ],
+  "relations": [
+   {"de": "rob1", "vers": "seed", "depuis": "1-07", "mot": "l'observe dans la cuve", "src": "docx", "cit": "Rob1 observe l'adolescente flottant dans l'incubateur."},
+   {"de": "rob1", "vers": "seed", "depuis": "1-09", "mot": "l'accompagne, prêt à intervenir", "src": "docx", "cit": "Rob1 l'observe, prêt à intervenir."},
+   {"de": "rob1", "vers": "seed", "depuis": "3-11", "mot": "se place entre elle et le danger", "src": "docx", "cit": "L'assemblage se positionne entre elle et la source du bruit"},
+   {"de": "rob1", "vers": "seed", "depuis": "5-10", "mot": "garde son sourire : IMPORTANT", "src": "docx", "cit": "Il zoome sur le visage de Seed"},
+   {"de": "rob1", "vers": "seed", "depuis": "5-12", "mot": "lui tait l'état des réserves", "src": "docx", "cit": "Il ne dit rien. Pas maintenant."},
+   {"de": "rob1", "vers": "seed", "depuis": "7-17", "mot": "court pour la sauver", "src": "docx", "cit": "Rob1 pousse le tank au-delà de ses limites."},
+   {"de": "rob1", "vers": "seed", "depuis": "9-12", "mot": "choisit pour elle, et lui ment", "src": "docx", "cit": "Qu'il a menti. Qu'il a choisi pour elle."},
+   {"de": "seed", "vers": "rob1", "depuis": "1-09", "mot": "s'appuie sur lui", "src": "docx", "cit": "Avec l'aide de Rob1, il y a une petite phase d'adaptation"},
+   {"de": "seed", "vers": "rob1", "depuis": "2-01", "mot": "le porte", "src": "docx", "cit": "c'est Seed qui doit l'aider, le porter"},
+   {"de": "seed", "vers": "rob1", "depuis": "3-14", "mot": "s'accroche à lui", "src": "docx", "cit": "Elle saute sur son dos, s'accroche."},
+   {"de": "seed", "vers": "rob1", "depuis": "3-18", "mot": "le rattrape : humain + machine", "src": "docx", "cit": "Coordination parfaite. Humain + machine."},
+   {"de": "seed", "vers": "rob1", "depuis": "6-14", "mot": "l'appelle : son premier mot", "src": "docx", "cit": "elle hurle du plus fort qu'elle peut"},
+   {"de": "seed", "vers": "rob1", "depuis": "9-15", "mot": "sait qu'il a choisi pour elle, et acquiesce", "src": "docx", "cit": "Que Rob1 a fait un choix. Pour elle."},
+   {"de": "seed", "vers": "elena", "depuis": "1-10", "mot": "se reconnaît en elle", "src": "docx", "cit": "Les mêmes. En plus jeune. En inachevé."},
+   {"de": "seed", "vers": "elena", "depuis": "7-11", "mot": "revit ses souvenirs", "src": "docx", "cit": "Puis viennent les visions."},
+   {"de": "seed", "vers": "elena", "depuis": "9-15", "mot": "se nomme elle-même", "src": "docx", "cit": "dit-elle distinctement"},
+   {"de": "elena", "vers": "seed", "depuis": "1-11", "mot": "lui a donné son ADN et une part de sa mémoire", "src": "docx", "cit": "SOURCE ADN : ELENA VASQUEZ (CLONE PARTIEL)"},
+   {"de": "elena", "vers": "persephora", "depuis": "7-11", "mot": "a signé : don d'ADN, don de conscience", "src": "docx", "cit": "Elena signe des documents. Projet PERSEPHORA."},
+   {"de": "persephora", "vers": "seed", "depuis": "1-16", "mot": "la tient pour une preuve de concept", "src": "docx", "cit": "Rôle : Preuve de concept. Cobaye."},
+   {"de": "persephora", "vers": "seed", "depuis": "9-09", "mot": "l'abandonne : incomplète, non qualifiée", "src": "docx", "cit": "PERSEPHORA ne reviendra pas chercher Seed."},
+   {"de": "seed", "vers": "persephora", "depuis": "7-26", "mot": "sait ce qu'on attend d'elle", "src": "docx", "cit": "Elle sait ce qu'ils attendent d'elle."},
+   {"de": "persephora", "vers": "rob1", "depuis": "9-10", "mot": "le nomme chef de mission", "src": "docx", "cit": "NEW MISSION LEADER : ROB-1"},
+   {"de": "rob1", "vers": "persephora", "depuis": "1-08", "mot": "lui rend compte", "src": "docx", "cit": "Rob1 envoie un signal d'échec à PERSEPHORA."},
+   {"de": "rob1", "vers": "persephora", "depuis": "9-12", "mot": "lui ment : non viable", "src": "docx", "cit": "ÉVALUATION FINALE : NON VIABLE"},
+   {"de": "rob1", "vers": "persephora", "depuis": "9-13", "mot": "coupe le lien", "src": "docx", "cit": "Plus aucun message ne pourra être envoyé ou reçu."},
+   {"de": "rob1", "vers": "rob2", "depuis": "1-22", "mot": "veut le rejoindre", "src": "docx", "cit": "il faut les réveiller. Les rassembler."},
+   {"de": "rob1", "vers": "rob2", "depuis": "3-05", "mot": "s'assemble à lui : Rob1/2", "src": "docx", "cit": "Les deux robots fusionnent."},
+   {"de": "rob2", "vers": "rob1", "depuis": "4-04", "mot": "lui cède sa batterie", "src": "docx", "cit": "il devient prioritaire en batterie"},
+   {"de": "seed", "vers": "rob2", "depuis": "9-06", "mot": "lui tape l'épaule", "src": "docx", "cit": "tape sur l'épaule métallique de Rob2"},
+   {"de": "rob1", "vers": "rob3", "depuis": "5-03", "mot": "le découvre couvert de mousse", "src": "docx", "cit": "Rob1 découvre qu'il est colonisé par une espèce de mousse étrange"},
+   {"de": "rob1", "vers": "rob3", "depuis": "6-11", "mot": "s'assemble : le tank", "src": "docx", "cit": "il s'assemble avec eux et pour la première fois il est très agité"},
+   {"de": "rob2", "vers": "rob3", "depuis": "6-05", "mot": "s'assemble à lui", "src": "docx", "cit": "Rob2 qui s'assemble à Rob3 qui s'est finalement réveillé après son nettoyage"},
+   {"de": "rob1", "vers": "rob4", "depuis": "1-22", "mot": "le sait en mer, hors d'atteinte", "src": "docx", "cit": "ne peut pas venir à eux"},
+   {"de": "rob1", "vers": "rob4", "depuis": "7-23", "mot": "apprend sa langue de lumière", "src": "docx", "cit": "Rob1 observe, apprend, ajuste."},
+   {"de": "rob4", "vers": "rob1", "depuis": "7-23", "mot": "lui répond par la lumière", "src": "docx", "cit": "Rob4 répond autrement. Par la lumière."},
+   {"de": "rob4", "vers": "seed", "depuis": "7-24", "mot": "la soigne, respire pour elle", "src": "docx", "cit": "Le liquide respire pour elle."},
+   {"de": "seed", "vers": "rob4", "depuis": "7-26", "mot": "porte ses marques", "src": "docx", "cit": "Elle est transformée. Marquée. Hybride."},
+   {"de": "seed", "vers": "rongeur", "depuis": "5-04", "mot": "l'apprivoise", "src": "docx", "cit": "Seed arrive à les apprivoiser un peu"},
+   {"de": "seed", "vers": "rongeur", "depuis": "5-07", "mot": "se lie d'amitié", "src": "docx", "cit": "Elle se noue d'amitié"},
+   {"de": "seed", "vers": "rongeur", "depuis": "6-10", "mot": "fait demi-tour pour lui", "src": "docx", "cit": "fait demi-tour à toute vitesse pour aller secourir le petit animal"},
+   {"de": "seed", "vers": "rongeur", "depuis": "7-03", "mot": "pense à lui, le caillou en main", "src": "docx", "cit": "Elle sort le caillou que lui avait donné le petit rongeur."},
+   {"de": "rongeur", "vers": "seed", "depuis": "5-09", "mot": "lui offre le caillou blanc", "src": "docx", "cit": "Le petit animal lui amène un caillou blanc et rond"},
+   {"de": "rongeur", "vers": "seed", "depuis": "6-01", "mot": "la réveille", "src": "docx", "cit": "qui lui mordillent la main comme pour la sortir de son sommeil"},
+   {"de": "rob1", "vers": "rongeur", "depuis": "5-10", "mot": "note une intelligence communicative", "src": "docx", "cit": "Intelligence communicative détectée (rongeur)"},
+   {"de": "creature", "vers": "seed", "depuis": "3-12", "mot": "la trouve dans son garde-manger", "src": "docx", "cit": "ils sont dans son garde-manger"},
+   {"de": "creature", "vers": "seed", "depuis": "3-19", "mot": "renonce", "src": "docx", "cit": "Elle abandonne, retourne dans l'obscurité de sa caverne."},
+   {"de": "seed", "vers": "organisme", "depuis": "3-08", "mot": "le prélève", "src": "docx", "cit": "Elle en prélève un gros échantillon"},
+   {"de": "seed", "vers": "organisme", "depuis": "4-06", "mot": "le donne pour avancer", "src": "docx", "cit": "Elle le donne à Rob1."},
+   {"de": "seed", "vers": "organisme", "depuis": "4-11", "mot": "l'enterre, invente un rituel", "src": "docx", "cit": "Elle invente un rituel pour cet être vivant"},
+   {"de": "rob1", "vers": "cain", "depuis": "10-04", "mot": "le lit : ingénieur, 35 ans, 100 %", "src": "docx", "cit": "PROFESSION : INGÉNIEUR TERRAFORMATION"},
+   {"de": "rob1", "vers": "cain", "depuis": "10-05", "mot": "le ramène à 14 ans, 21 %", "src": "docx", "cit": "TRANSFERT MÉMOIRE : 100% > 21%"},
+   {"de": "cain", "vers": "seed", "depuis": "10-05", "mot": "refait à sa mesure", "src": "infere", "pourquoi": "14 ans et 21 % : à un an et deux points de Seed (15 ans, 23 %). Le docx dit seulement que Rob1 « repense à Seed » avant de modifier.", "fonde": ["10-04", "10-05"]}
+  ]
+ }
+}

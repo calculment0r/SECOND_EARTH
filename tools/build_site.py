@@ -2,7 +2,8 @@
 """Construit le site Second Earth (GitHub Pages) dans _site/.
 
 Entrées : docs/**/*.md, data/*.json, carte/carte-kore.html, data/arbitrages-second-earth.html,
-site/assets/ (thème Verdant), tools/site/prompts.html (outil de prompts, via tools/build_prompts.py).
+site/assets/ (thème Verdant), tools/site/prompts.html (outil de prompts, via tools/build_prompts.py),
+site/essais/*.html (essais de lecture du film, produits par tools/build_essais.mjs).
 Bibliothèque standard seulement. Usage : python3 tools/build_site.py [--out _site]
 """
 import html
@@ -900,6 +901,11 @@ def main(argv):
         extra_top = ''
         if key == 'film':
             extra_bottom = '<section class="quote"><p>This is a fictional planet. Earth is the only world we know. Take care of it.</p></section>'
+            if (ROOT / 'site' / 'essais' / 'index.html').exists():
+                extra_top = ('<div class="stack"><a class="blk k2" href="../essais/index.html"><span class="ref">Essais</span>'
+                             '<span class="main"><span class="name">Essais de lecture du film</span>'
+                             '<span class="sub">Promesses · savoir · personnages · le script du 25 min en données</span></span>'
+                             '<span class="val">Ouvrir</span></a></div>')
         if key == 'expo':
             extra_top = ('<div class="duo"><div class="panel"><span class="lbl or">Principe des cartels</span><h3>Sur Terre / Sur Korê / Pourquoi</h3>'
                          "<p>Une expo classique organisée par biome, cartels en trois temps : SUR TERRE / SUR KORÊ / POURQUOI.</p></div>"
@@ -1024,6 +1030,14 @@ def main(argv):
     else:
         write('prompts/index.html', page('Outil de prompts', '../', 'prompts',
                                          '<div class="head"><h1>Outil de prompts</h1><p class="lede">En construction.</p></div>'))
+
+    # essais de lecture du film : pages autonomes produites par tools/build_essais.mjs (versionnées dans
+    # site/essais/) ; seule la barre du site y est ajoutée ici
+    essais = ROOT / 'site' / 'essais'
+    if essais.is_dir():
+        for src in sorted(essais.glob('*.html')):
+            write('essais/%s' % src.name,
+                  src.read_text(encoding='utf-8').replace('<!--SITE_HEADER-->', header('../', 'film')))
 
     # accueil et 404
     counts = {'bestiaire': len(best), 'titans': len(titans), 'flore': len(flore), 'planches': len(planches),

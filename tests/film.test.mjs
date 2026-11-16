@@ -1,6 +1,6 @@
 // data/film.json : le script du 25 min en données, vérifié contre les documents.
-// node --test tests/                            vérifie
-// node --test --test-update-snapshots tests/    réécrit data/film.json puis vérifie
+// node --test                            vérifie (depuis la racine du dépôt)
+// node --test --test-update-snapshots    réécrit data/film.json puis vérifie
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { build, texte, SORTIE } from '../tools/build_film.mjs';
