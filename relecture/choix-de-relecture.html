@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Second Earth · Relecture : tes choix et ce qu'ils changent</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0a0d0b; --panel:#101413; --panel2:#151a18; --panel3:#1b211e;
+  --ink:#e6eae7; --body:#c9d2cd; --ink2:#9ca8a2; --ink3:#7c8884; --cy:#b9cfd8;
+  --or:#e0674a; --or-ink:#170c08; --c1:#f0b49b; --c2:#e59578;
+  --g1:#2f6b4a; --g3:#1a3f2c; --line:#26302b;
+  --text:'Chakra Petch','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --mono:'Azeret Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)!important;color:var(--body)}
+body{margin:0;font-family:var(--text);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:26px 20px 120px}
+.lbl,.num,.zl,.sec{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+h1{font-weight:600;font-size:29px;line-height:1.15;color:var(--ink);margin:8px 0 10px}
+h2{font-weight:600;font-size:20px;line-height:1.25;color:var(--ink);margin:4px 0 6px}
+p{margin:0 0 10px}
+.lead{color:var(--ink2);max-width:86ch}
+.mode{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0 22px}
+.mode div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14.5px}
+.mode b{display:block;font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c2);margin-bottom:3px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:26px;align-items:start}
+aside{position:sticky;top:14px;max-height:calc(100vh - 90px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+aside h2{font-size:17px;margin:0 0 4px}
+.avance{font-size:14.5px;color:var(--ink2);margin-bottom:12px}
+.avance b{color:var(--ink);font-weight:600}
+.film{display:flex;gap:3px;margin:6px 0 3px}
+.film button,.mods button{font-family:var(--mono);font-size:11px;color:var(--ink2);background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:9px 0 7px;cursor:pointer;min-width:0;position:relative}
+.film button{flex-basis:0}
+.mods{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:3px;margin-bottom:6px}
+.film button:hover,.mods button:hover{border-color:var(--ink3)}
+.film button.touche,.mods button.touche{background:var(--or);border-color:var(--or);color:var(--or-ink);font-weight:500}
+.film button.apercu,.mods button.apercu{outline:2px dashed var(--cy);outline-offset:1px}
+.film button.filtre,.mods button.filtre{box-shadow:0 0 0 2px var(--c1)}
+.film button i,.mods button i{position:absolute;top:1px;right:3px;font-style:normal;font-size:8.5px;color:var(--cy)}
+.film button.touche i,.mods button.touche i{color:var(--or-ink)}
+.legende{font-size:12.5px;color:var(--ink3);margin:0 0 4px}
+.zinfo{min-height:42px;font-size:13.5px;color:var(--cy);margin:0 0 10px}
+aside details{border-top:1px solid var(--line);padding:10px 0 2px}
+aside summary{cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c2);margin-bottom:8px}
+aside ul{list-style:none;margin:0;padding:0}
+aside li{font-size:14px;margin:0 0 8px;color:var(--body)}
+aside li a{font-family:var(--mono);font-size:11px;color:var(--c1);text-decoration:none;margin-right:6px}
+aside li.r{color:var(--ink3)}
+.vide{font-size:13.5px;color:var(--ink3)}
+.filtres{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.filtres button{font-family:var(--text);font-size:14px;color:var(--ink2);background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 13px;cursor:pointer}
+.filtres button.on{background:var(--panel3);border-color:var(--c2);color:var(--ink)}
+.ginfo{color:var(--ink2);font-size:14.5px;margin:0 0 14px;max-width:80ch}
+.q{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:12px;padding:18px 20px 16px;margin:0 0 16px;scroll-margin-top:14px}
+.q.fait{border-left-color:var(--or)}
+.q.ouvert{border-left-color:var(--cy)}
+.qq{color:var(--ink);font-weight:600;margin-bottom:8px}
+.ctx{color:var(--ink2);font-size:14.5px;max-width:82ch}
+.zones{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:8px 0 10px}
+.z{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--line);border-radius:4px;padding:2px 6px}
+.z.on{background:var(--or);border-color:var(--or);color:var(--or-ink)}
+.pl{font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-left:4px}
+details.dit{margin:0 0 10px;font-size:14px}
+details.dit summary{cursor:pointer;color:var(--cy);font-size:13.5px}
+details.dit p{margin:8px 0 0;padding-left:10px;border-left:2px solid var(--line);color:var(--body)}
+details.dit b{display:block;font-family:var(--mono);font-weight:400;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.opt{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer}
+.opt:hover{border-color:var(--ink3)}
+.opt input{margin:4px 0 0;accent-color:var(--or);width:16px;height:16px}
+.opt.on{border-color:var(--or);background:var(--panel3)}
+.opt .lab{color:var(--ink);font-weight:600}
+.opt .csq,.opt .meta{display:block;font-size:14.5px;margin-top:4px;color:var(--body)}
+.opt .meta{color:var(--ink2);font-size:13.5px}
+.opt b{font-family:var(--mono);font-weight:400;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-right:6px}
+.opt .tag{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cy);border:1px solid var(--line);border-radius:4px;padding:1px 6px;margin-left:8px}
+.avis{border-left:2px solid var(--g1);background:var(--g3);border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0 10px;font-size:14.5px}
+.avis b{font-family:var(--mono);font-weight:400;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--c1);display:block;margin-bottom:3px}
+label.libre{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin:12px 0 6px}
+textarea{width:100%;min-height:58px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:var(--text);font-size:15px;line-height:1.45;resize:vertical}
+textarea:focus,button:focus-visible,.opt input:focus-visible,summary:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;z-index:5}
+.bar button{font-family:var(--text);font-size:15px;font-weight:600;border-radius:999px;padding:9px 20px;cursor:pointer;border:1px solid var(--ink3);background:transparent;color:var(--ink)}
+.bar button.main{background:var(--or);border-color:var(--or);color:var(--or-ink)}
+.msg{font-family:var(--mono);font-size:11px;color:var(--ink2)}
+pre{white-space:pre-wrap;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:12px;color:var(--body);margin:14px 0 0;display:none}
+@media (max-width:980px){
+  .wrap{padding:18px 16px 130px}
+  h1{font-size:24px}
+  .mode{grid-template-columns:minmax(0,1fr)}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  aside{position:static;max-height:none;order:-1}
+  .q{padding:16px 14px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lbl">Second Earth · relecture du round 16 · 16/11/2026</div>
+  <h1>Tes choix, et ce qu'ils changent dans le film</h1>
+  <p class="lead">Vingt-trois choix tirés des documents : ce qui est resté « proposé », « à garder » ou « à trancher », et ce que les essais de lecture ont fait remonter. Aucun ne revient sur une décision que tu as déjà validée. Tes propres corrections de relecture vont dans le dernier bloc.</p>
+  <div class="mode">
+    <div><b>1 · Choisir</b>Chaque option dit ce qu'elle change dans l'histoire et quels documents sont à reprendre. Tu peux ne répondre qu'à une partie.</div>
+    <div><b>2 · Voir</b>Le panneau montre le film acte par acte : les actes touchés par tes choix s'allument. Un clic sur un acte ne garde que les choix qui le concernent.</div>
+    <div><b>3 · Copier</b>« Copier mes choix » en fait un texte à coller dans le chat. Rien n'est modifié dans les documents avant.</div>
+  </div>
+  <div class="cols">
+    <main>
+      <div class="filtres" id="filtres"></div>
+      <p class="ginfo" id="ginfo"></p>
+      <div id="cartes"></div>
+      <pre id="sortie"></pre>
+    </main>
+    <aside aria-label="Ce que tes choix changent">
+      <h2>Ce que tes choix changent</h2>
+      <div class="avance" id="avance"></div>
+      <div class="sec">Le film de 25 min, acte par acte</div>
+      <div class="film" id="film"></div>
+      <div class="sec">Les neuf modules du 55</div>
+      <div class="mods" id="mods"></div>
+      <p class="legende">Plein : touché par un choix fait. Chiffre : choix encore sans réponse. Clic : filtrer.</p>
+      <p class="zinfo" id="zinfo"></p>
+      <details id="d-hist"><summary>Dans l'histoire</summary><ul id="l-hist"></ul></details>
+      <details id="d-docs"><summary>Documents à reprendre</summary><ul id="l-docs"></ul></details>
+      <details id="d-prod"><summary>Ce que ça touche</summary><ul id="l-prod"></ul></details>
+    </aside>
+  </div>
+</div>
+<div class="bar">
+  <button class="main" id="copier" type="button">Copier mes choix</button>
+  <button id="effacer" type="button">Tout effacer</button>
+  <span class="msg" id="msg"></span>
+</div>
+
+<script type="application/json" id="data-relecture">
+{
+"version": "relecture-2026-11-16",
+"docs": {
+ "registre": {"f": "docs/bible/00-registre-des-decisions.md", "n": "Registre des décisions"},
+ "docx": {"f": "docs/film/01-recit-docx.md", "n": "Docx de référence"},
+ "v2": {"f": "docs/film/00-recit-v2.md", "n": "Récit v2"},
+ "decoupage": {"f": "docs/film/20-decoupage-25-min.md", "n": "Découpage 25 min"},
+ "sequencier": {"f": "docs/film/11-sequencier-25-min.md", "n": "Séquencier"},
+ "architecture": {"f": "docs/film/10-architecture-25-55.md", "n": "Architecture 25 / 55"},
+ "modules": {"f": "docs/film/12-modules-du-55.md", "n": "Modules du 55"},
+ "propositions": {"f": "docs/film/13-propositions.md", "n": "Propositions"},
+ "ecarts": {"f": "docs/film/14-ecarts-docx-bible.md", "n": "Écarts docx / Bible"},
+ "chronologie": {"f": "docs/bible/02-chronologie-du-voyage.md", "n": "Chronologie du voyage"},
+ "lumiere": {"f": "docs/bible/33-lumiere-et-couleurs.md", "n": "Lumière et couleurs"},
+ "flore": {"f": "docs/especes/flore-de-kore.md", "n": "Flore de Korê"},
+ "massifs": {"f": "docs/bible/13-biome-massifs-et-glaciers.md", "n": "Fiche Massifs et glaciers"},
+ "foret": {"f": "docs/bible/16-biome-foret-ancienne.md", "n": "Fiche Forêt ancienne"},
+ "jungle": {"f": "docs/bible/10-biome-01-jungle.md", "n": "Fiche Jungle"}
+},
+"actes": [
+ {"id": "P", "c": "P", "nom": "Prologue", "titre": "Terre 2045, 61 Cygni, quatre capsules", "d": 90},
+ {"id": "1", "c": "I", "nom": "Acte I", "titre": "naissance, Elena à l'écran, le gouffre", "d": 225},
+ {"id": "2", "c": "II", "nom": "Acte II", "titre": "la marche, les pitons", "d": 90},
+ {"id": "3", "c": "III", "nom": "Acte III", "titre": "la caverne, la fusion, la Créature, la fuite", "d": 180},
+ {"id": "4", "c": "IV", "nom": "Acte IV", "titre": "énergie critique, l'organisme-batterie, le col", "d": 120},
+ {"id": "5", "c": "V", "nom": "Acte V", "titre": "Rob3, les rongeurs, le feu", "d": 150},
+ {"id": "6", "c": "VI", "nom": "Acte VI", "titre": "la horde", "d": 150},
+ {"id": "7", "c": "VII", "nom": "Acte VII", "titre": "rivière rouge, fruit, visions, course, Rob4", "d": 255},
+ {"id": "8", "c": "VIII", "nom": "Acte VIII", "titre": "le retour, Korê", "d": 30},
+ {"id": "9", "c": "IX", "nom": "Acte IX", "titre": "l'extraction, le message, le mensonge, « Je suis Seed »", "d": 150},
+ {"id": "10", "c": "X", "nom": "Acte X", "titre": "CAIN, carton final", "d": 60}
+],
+"modules": [
+ {"id": "M1", "titre": "Elena, 2045", "d": 180},
+ {"id": "M2", "titre": "Phase 1", "d": 300},
+ {"id": "M3", "titre": "La marche", "d": 180},
+ {"id": "M4", "titre": "Le col et l'ombre", "d": 180},
+ {"id": "M5", "titre": "La nuit noire", "d": 180},
+ {"id": "M6", "titre": "Dans la horde", "d": 120},
+ {"id": "M7", "titre": "La course", "d": 180},
+ {"id": "M8", "titre": "Korê", "d": 180},
+ {"id": "M9", "titre": "Il y a 60 millions d'années", "d": 120}
+],
+"produits": {"25": "Film de 25 min", "55": "Film de 55 min", "salle": "Salle immersive", "expo": "Expo", "images": "Images et prompts", "son": "Musique et son"},
+"groupes": [
+ {"id": "recit", "nom": "Le récit", "intro": "Le texte qui fait foi, et ce qu'il contient encore de « proposé »."},
+ {"id": "fils", "nom": "Les fils", "intro": "Cinq idées des Propositions notées « à garder », jamais tranchées. Le découpage les applique déjà : les écarter change des plans."},
+ {"id": "film", "nom": "Le 25 et le 55", "intro": "Comment les deux films se répondent : la place des Titans, les crochets, les promesses sans paiement."},
+ {"id": "monde", "nom": "À l'image", "intro": "Ce qui se voit dans le film et que deux documents décrivent différemment."},
+ {"id": "decoule", "nom": "Découle de tes décisions", "intro": "Ici, tes décisions validées ne laissent qu'une lecture. Tu confirmes, ou tu dis pourquoi non dans le champ libre."},
+ {"id": "gel", "nom": "Le gel", "intro": "Ce que ces choix font du gel du round 16, et la place de tes autres corrections."}
+],
+"choix": [
+ {
+  "id": "R1", "g": "recit", "titre": "Le texte de référence",
+  "q": "Le Récit v2 devient-il le texte qui fait foi ?",
+  "ctx": "Le Récit v2 annonce dix changements par rapport au docx. Six reprennent tels quels des points que tu as validés (l'étoile, le moteur, XENOPOD-01, la saison noire, l'Acte VIII, les trois crochets payés et le carton final). Quatre mêlent du validé et du « proposé » : les balises (R2), les jours des cartons (R3), le tank à partir de l'Acte V (D5) et l'ombre du col (D2). Je n'ai pas recompté le v2 scène par scène contre le docx.",
+  "plans": [],
+  "dit": [
+   {"d": "registre", "c": "SECOND_EARTH_STORY_v2.docx (le Récit v2 en Word, livré le 27/09) devient la référence après relecture de Cal ; jusqu'à cette relecture, le docx d'origine fait foi."},
+   {"d": "v2", "c": "mêmes scènes, même ordre, même fin. Ce qui change est listé en tête."}
+  ],
+  "opts": [
+   {"l": "Oui, tel quel", "h": "Le texte qui fait foi contient l'Acte VIII, les quatre mots, le caillou dans l'alvéole et la ligne des 11,4 ans. Le docx d'origine devient une archive. L'ordre des scènes et la fin ne changent pas.", "t": ["P", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "docs": ["Registre", "Essais de lecture (citations à refaire sur le v2)"], "prod": ["25", "55"]},
+   {"l": "Oui, après mes corrections", "h": "Tu écris tes corrections dans le champ libre ou dans le chat. Je réécris en entier chaque passage touché, puis le v2 fait foi.", "t": ["P", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "docs": ["Récit v2", "Registre", "Essais de lecture (citations à refaire sur le v2)"], "prod": ["25", "55"]},
+   {"l": "Pas encore : le docx d'origine reste la référence", "h": "Rien ne change. Le docx garde Proxima, les voiles solaires et « XENOPOD-03 » ; ses quatorze écarts avec le monde restent tenus dans un tableau à part. Les essais de lecture restent sur le docx.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": null, "t": "Pas d'avis sur le texte lui-même : c'est ta lecture qui décide. Un fait pour t'aider : ce que le v2 fixe sans validation tient dans les quatre points nommés ci-dessus, que tu tranches plus bas. S'ils te vont, « tel quel » ne décide rien d'autre."}
+ },
+ {
+  "id": "R2", "g": "recit", "titre": "Ce que Rob1 sait des autres Robs après le gouffre",
+  "q": "Rob1 reçoit-il encore la position des trois Robs (les balises) ?",
+  "ctx": "Tu as validé que le relais radio tombe dans le gouffre et que Rob1 n'a plus qu'une radio de proximité. Le docx montre pourtant Rob1 qui voit Rob2 tourner en rond sur son écran. Les balises, encore « proposé », font tenir les deux : Rob1 entend, il ne peut pas parler.",
+  "plans": ["1-22", "2-06", "4-01"],
+  "dit": [
+   {"d": "registre", "c": "le relais radio du XENOPOD est tombé avec lui ; Rob1 n'a qu'une radio de proximité"},
+   {"d": "registre", "c": "Rob1 reçoit une position par jour de chaque robopod, comme dans le docx, mais sans le relais du XENOPOD il ne peut ni commander, ni parler, ni joindre PERSEPHORA."},
+   {"d": "docx", "c": "On le voit bouger sur l'écran de contrôle qu'a Rob1, mais il tourne en rond et ne vient pas."}
+  ],
+  "opts": [
+   {"l": "Valider les balises", "h": "Rob1 voit où sont les trois Robs, une fois par jour, sans pouvoir leur parler. La carte du plan 1-22 reste (Rob2 tourne en rond, Rob3 en erreur, Rob4 en mer), comme la balise sans personne du plan 2-06 et le robopod de Rob3 sur la carte du plan 4-01. À chaque étape, ils savent où ils vont.", "t": ["1", "2", "4"], "docs": ["Registre"], "prod": ["25", "55"]},
+   {"l": "Pas de balises : Rob1 ne reçoit plus rien", "h": "Lecture stricte du relais perdu. Rob1 ne connaît que les sites prévus avant le gouffre. L'image du docx (Rob2 qui tourne en rond sur l'écran) sort du plan 1-22 ; la balise du plan 2-06 et la carte du plan 4-01 sont à réécrire. Le départ devient un pari.", "t": ["1", "2", "4"], "docs": ["Découpage", "Récit v2", "Registre", "Écarts docx / Bible"], "prod": ["25", "55"]},
+   {"l": "Laisser « proposé »", "h": "Le découpage garde ses trois plans, marqués proposé. La question revient avant de fabriquer l'Acte I.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Valider. Pourquoi : c'est la seule lecture où le docx (Rob1 voit Rob2 tourner en rond) et ta décision du relais perdu tiennent ensemble sans réécrire un plan."}
+ },
+ {
+  "id": "R3", "g": "recit", "titre": "Les jours écrits sur les cartons",
+  "q": "Les numéros de jour de la Chronologie deviennent-ils fixes ?",
+  "ctx": "Treize plans portent un carton de jour ou de distance, du « Jour −45 » de l'atterrissage au « Jour 41 » de la dernière nuit. Les distances sont validées (round 11). Les jours viennent de la Chronologie, qui se dit elle-même « proposée ». Deux documents ne donnent pas la même durée : cinq semaines pour le Registre, six pour la Chronologie.",
+  "plans": ["P-08", "1-04", "1-13", "2-04", "3-20", "4-03", "5-05", "7-01", "7-14", "7-26", "8-01", "9-01", "10-01"],
+  "dit": [
+   {"d": "chronologie", "c": "les dates elles-mêmes sont proposées."},
+   {"d": "chronologie", "c": "Six semaines environ : ~41 jours terrestres"},
+   {"d": "registre", "c": "~5 semaines avec les arrêts"},
+   {"d": "registre", "c": "pleine au jour 7 sur les pitons, dernier quartier au col, nouvelle lune au jour 25 sur les Hautes Plaines"}
+  ],
+  "opts": [
+   {"l": "Valider la Chronologie : environ 41 jours", "h": "Les treize cartons deviennent fixes. Le voyage dure six semaines à l'image, et le Registre s'aligne (il écrit cinq). Les modules du 55 prennent ces cartons pour titres ; la salle immersive a la même horloge.", "t": ["P", "1", "2", "3", "4", "5", "7", "8", "9", "10"], "docs": ["Chronologie", "Registre"], "prod": ["25", "55", "salle"]},
+   {"l": "Garder les distances, retirer les numéros de jour", "h": "Les cartons ne montrent que ce qui est validé : 250, 680, 1 200, 3 300, 4 800 et 5 500 km. Les cartons sans distance (jours 15, 25, 28 et 41, et ceux de la gestation) disparaissent. Le temps passé n'est plus chiffré à l'image ; il se lit par le ciel et la lune.", "t": ["P", "1", "2", "3", "4", "5", "7", "8", "9", "10"], "docs": ["Découpage", "Séquencier", "Architecture 25 / 55", "Récit v2"], "prod": ["25", "55", "salle"]},
+   {"l": "Laisser « proposé »", "h": "Les cartons restent provisoires dans le découpage. Ils sont à l'image : à fixer avant le montage.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Valider. Pourquoi : les phases de la lune que tu as validées au round 15 sont déjà calées sur ces jours (pleine au jour 7, nouvelle au jour 25). Valider la Chronologie met le reste au même niveau."}
+ },
+ {
+  "id": "R4", "g": "recit", "titre": "Rob4 : « Je suis d'ici maintenant »",
+  "q": "Le spectateur voit-il Rob4 rester dans sa mer ?",
+  "ctx": "À l'Acte IX, Rob1 revoit ses souvenirs avant de décider. Le docx y met Rob4 qui recule dans l'eau avec la phrase « Je suis d'ici maintenant ». À l'Acte VII, cette scène n'est pas montrée : on passe de l'aube au départ. Le découpage garde « Rob4 » dans les souvenirs (plan 9-11), sans la phrase.",
+  "plans": ["7-26", "9-11"],
+  "dit": [
+   {"d": "docx", "c": "Rob4 qui recule dans l'eau, filaments lumineux pulsant"},
+   {"d": "docx", "c": "Ils se mettent en route vers le XENOPOD."},
+   {"d": "decoupage", "c": "le sinkhole qu'il a causé ; Rob4"},
+   {"d": "v2", "c": "Rob4 qui recule dans l'eau, filaments pulsants : je suis d'ici maintenant"}
+  ],
+  "opts": [
+   {"l": "Montrer la scène à la fin de l'Acte VII", "h": "Un plan s'ajoute après 7-26 : Rob4 recule dans l'eau en pulsant. Le souvenir du plan 9-11 rappelle alors quelque chose que le spectateur a vu. L'Acte VII fait 4:15 pile : ces secondes sont à prendre sur un autre plan de l'acte. La phrase passe par la lumière et l'écran de Rob1, pas par une voix (quatre mots parlés seulement).", "t": ["7", "9"], "docs": ["Découpage", "Séquencier"], "prod": ["25", "55"]},
+   {"l": "Le souvenir seul, avec la phrase", "h": "Au plan 9-11, le spectateur apprend par le souvenir de Rob1 un moment qu'il n'a pas vu : Rob4 a choisi de rester. La phrase s'affiche sur l'écran de Rob1, comme « BRING HER » au plan 7-23. Aucun plan ne s'ajoute.", "t": ["9"], "docs": ["Découpage"], "prod": ["25", "55"]},
+   {"l": "Le souvenir seul, sans la phrase (état du découpage)", "h": "Rien ne bouge dans le découpage : Rob1 revoit Rob4 parmi ses souvenirs, sans un mot. Le Récit v2, qui garde la phrase, est à aligner.", "t": ["9"], "docs": ["Récit v2"], "prod": ["25", "55"]}
+  ],
+  "avis": {"o": 1, "t": "Le souvenir avec la phrase. Pourquoi : c'est ce que le docx écrit, et l'Acte VII ne s'allonge pas. À savoir : le spectateur lit alors Rob4 pour la première fois dans un souvenir."}
+ },
+ {
+  "id": "F1", "g": "fils", "titre": "La voix de Seed et les trois motifs sonores (S2, P4)",
+  "q": "Le sifflement et les sons du monde deviennent-ils la musique du film ?",
+  "ctx": "Les scènes viennent du docx : le sifflement raté à l'Acte V, réussi à l'Acte VII. Ce que la proposition ajoute, c'est une consigne de musique : trois motifs qui viennent du monde (les plantes-chant, le cri « Ko-rê », le sifflement). Le découpage les numérote déjà.",
+  "plans": ["1-12", "3-01", "5-08", "7-04", "8-02", "9-15"],
+  "dit": [
+   {"d": "propositions", "c": "Le sifflement devient le motif musical du film"},
+   {"d": "propositions", "c": "Une musique qui vient du monde, réutilisable dans l'expo"},
+   {"d": "decoupage", "c": "Début de l'arc de la voix"}
+  ],
+  "opts": [
+   {"l": "Valider", "h": "Du souffle rauque du plan 1-12 à « Je suis Seed » (9-15), la voix de Seed monte par étapes : sifflement raté (5-08), réussi (7-04), cri, murmure, nom, phrase. La musique se construit sur trois sons du monde : les plantes-chant (3-01), le cri des oiseaux (8-02), le sifflement. C'est une consigne pour le compositeur, et l'expo peut reprendre les mêmes sons.", "t": ["1", "3", "5", "7", "8", "9"], "docs": ["Propositions"], "prod": ["25", "55", "expo", "son"]},
+   {"l": "Laisser « à garder »", "h": "Les plans restent (ils viennent du docx). Les motifs restent une idée, sans consigne de musique.", "t": [], "docs": [], "prod": [], "r": true},
+   {"l": "Écarter", "h": "Les deux sifflements restent des scènes, rien de plus. La musique est libre. Les notes « arc de la voix » et « motif 1, 2, 3 » sortent du découpage.", "t": ["1", "3", "5", "7", "8"], "docs": ["Découpage", "Propositions"], "prod": ["son"]}
+  ],
+  "avis": {"o": 0, "t": "Valider. Pourquoi : les plans sont déjà dans le docx ; valider n'ajoute qu'une consigne de musique, sans un plan de plus."}
+ },
+ {
+  "id": "F2", "g": "fils", "titre": "La lumière comme langue (S4)",
+  "q": "Toutes les lumières vivantes du film parlent-elles le même code ?",
+  "ctx": "Cinq lumières sont dans le docx : les plantes-chant, la pulpe de la Créature, l'organisme-batterie, le totem, les filaments de Rob4. La proposition les relie par un même code de pulsations, que Rob1 apprend à la mer d'arsenic et que Seed porte ensuite sur la peau.",
+  "plans": ["3-01", "3-12", "4-06", "4-12", "7-23", "7-25"],
+  "dit": [
+   {"d": "propositions", "c": "Rob1 apprend ce code à la mer d'arsenic ; Seed le portera sur la peau (cicatrices lumineuses)"},
+   {"d": "propositions", "c": "le visiteur éclaire, et les plantes-chant répondent par pulsations, avec le code de Rob4"},
+   {"d": "decoupage", "c": "La lumière comme langue (S4)"}
+  ],
+  "opts": [
+   {"l": "Valider", "h": "Un fil sans parole traverse le film : la caverne (3-01, 3-12), l'organisme et le totem (4-06, 4-12), Rob4 (7-23) pulsent selon un même code. Quand Rob1 l'apprend au plan 7-23, le spectateur peut reconnaître ce qu'il a vu depuis l'Acte III. Les cicatrices de Seed (7-25) en font partie. Contrainte de fabrication : le code se dessine une fois et se tient dans cinq endroits. La salle immersive peut s'en servir (le visiteur éclaire, les plantes répondent).", "t": ["3", "4", "7"], "docs": ["Propositions"], "prod": ["25", "55", "salle"]},
+   {"l": "Laisser « à garder »", "h": "Le plan 7-23 garde sa note. Les pulsations des autres plans restent libres, sans lien entre elles.", "t": [], "docs": [], "prod": [], "r": true},
+   {"l": "Écarter", "h": "Chaque lumière vit pour elle-même. Rob4 parle par la lumière (docx), sans écho avec la caverne ni le totem. L'interaction prévue pour la salle immersive (E3) perd son appui.", "t": ["7"], "docs": ["Découpage", "Propositions"], "prod": ["salle"]}
+  ],
+  "avis": {"o": 0, "t": "Valider. Pourquoi : les cinq lumières existent déjà dans le docx ; le fil les relie sans ajouter de plan, et il sert aussi la salle immersive. Le coût est un code de pulsations à dessiner et à tenir."}
+ },
+ {
+  "id": "F3", "g": "fils", "titre": "Le totem qui luit, revu au retour (S6)",
+  "q": "Dans le 55, le retour repasse-t-il devant le totem ?",
+  "ctx": "Dans le 25, le plan 4-12 montre une lueur sous la terre : l'organisme n'est pas mort, Seed ne le sait pas. Dans le 55, M5 paie déjà ce plan (le totem luit, loin derrière eux). La proposition S6 ajoute un second passage, au retour. Aucun module ne l'écrit aujourd'hui.",
+  "plans": ["4-12"],
+  "dit": [
+   {"d": "propositions", "c": "dans le 55, le retour repasse devant et l'organisme est devenu une tache lumineuse dans la savane"},
+   {"d": "modules", "c": "le totem de l'organisme-batterie qui luit sous la terre (il n'est pas mort)"},
+   {"d": "decoupage", "c": "Crochet de M5 et de la proposition S6"}
+  ],
+  "opts": [
+   {"l": "Valider", "h": "Dans le 25, rien ne change. Dans le 55, le retour passe devant le totem, devenu une tache de lumière : Seed a semé sans le savoir, en écho à PERSEPHORA la semeuse. Il faut l'écrire dans M8, qui ne le contient pas : après le gel.", "t": ["4", "M5", "M8"], "docs": ["Modules du 55", "Propositions"], "prod": ["55"]},
+   {"l": "Laisser « à garder »", "h": "Le 25 garde son plan. Le 55 paie le totem une fois, dans M5. La question se repose quand tu écriras M8.", "t": [], "docs": [], "prod": [], "r": true},
+   {"l": "Écarter", "h": "Le totem est payé une seule fois, dans M5. Le retour ne repasse pas devant. La mention « proposition S6 » sort de la note du plan 4-12.", "t": ["4", "M5"], "docs": ["Découpage", "Propositions"], "prod": ["55"]}
+  ],
+  "avis": {"o": 1, "t": "Laisser pour l'instant. Pourquoi : le totem est déjà payé dans M5, et l'ajouter au retour demande d'écrire dans M8, qui porte déjà le nom de la planète. À reprendre quand tu écriras le 55."}
+ },
+ {
+  "id": "F4", "g": "fils", "titre": "Les visions d'Elena (S7)",
+  "q": "Les visions ne montrent-elles que des souvenirs d'avant 2045 ?",
+  "ctx": "À l'Acte VII, la fièvre fait remonter la mémoire d'Elena en six flashs. La proposition en fait une règle : jamais Korê, jamais le futur. Dans le 55, M1 montre les mêmes scènes du côté d'Elena, et le spectateur les reconnaît. Aujourd'hui M1 reprend trois des six flashs (les fourmis, le laboratoire, la signature).",
+  "plans": ["7-11"],
+  "dit": [
+   {"d": "propositions", "c": "seulement ses souvenirs d'avant 2045 (les 23 %)"},
+   {"d": "decoupage", "c": "Jamais Korê, jamais le futur (S7) ; M1 montre l'autre côté"},
+   {"d": "modules", "c": "Elena enfant devant les fourmis ; le laboratoire ; la signature (don d'ADN, don de conscience)"}
+  ],
+  "opts": [
+   {"l": "Valider", "h": "Les six flashs du plan 7-11 sont tous des souvenirs de la Terre. Seed ne voit rien de Korê ni de ce qui vient : la fièvre lui rend un passé, pas une prophétie. Dans le 55, M1 et le plan 7-11 se répondent (même souvenir, deux points de vue) et se fabriquent ensemble.", "t": ["7", "M1"], "docs": ["Propositions", "Modules du 55"], "prod": ["25", "55"]},
+   {"l": "Laisser « à garder »", "h": "Le plan 7-11 garde ses six flashs. Rien n'oblige M1 à montrer les mêmes scènes.", "t": [], "docs": [], "prod": [], "r": true},
+   {"l": "Écarter", "h": "Les visions ne sont plus tenues à cette règle. M1 et le plan 7-11 deviennent indépendants ; la note du plan 7-11 est à retirer.", "t": ["7", "M1"], "docs": ["Découpage", "Propositions"], "prod": ["25", "55"]}
+  ],
+  "avis": {"o": 0, "t": "Valider. Pourquoi : la règle est déjà appliquée au plan 7-11 et ne coûte rien au 25 ; elle donne au 55 une raison de montrer Elena deux fois."}
+ },
+ {
+  "id": "F5", "g": "fils", "titre": "Le gouffre dans la mémoire de Rob1 (S9)",
+  "q": "Rob1 revoit-il sa faute avant de mentir ?",
+  "ctx": "À l'Acte I, c'est le poids de Rob1 qui fait basculer la capsule ; le docx dit qu'il « réalise que tout est de sa faute », puis n'en parle plus. La proposition ajoute le gouffre aux souvenirs qu'il revoit à l'Acte IX. Le découpage l'applique déjà.",
+  "plans": ["1-20", "9-11"],
+  "dit": [
+   {"d": "docx", "c": "réalise que tout est de sa faute"},
+   {"d": "propositions", "c": "Sa faute est le premier maillon de son choix final"},
+   {"d": "decoupage", "c": "S9 : le sinkhole ajouté au flux"}
+  ],
+  "opts": [
+   {"l": "Valider", "h": "Au plan 9-11, parmi les souvenirs de Rob1, il y a la capsule qui bascule sous son poids. Son mensonge se lit aussi comme une réparation : il a fait tomber ce qui devait la protéger, il protège ce qui reste. Une image dans un plan qui existe déjà, sans durée en plus.", "t": ["1", "9"], "docs": ["Propositions"], "prod": ["25", "55"]},
+   {"l": "Laisser « à garder »", "h": "Le découpage garde le gouffre dans les souvenirs, marqué proposé.", "t": [], "docs": [], "prod": [], "r": true},
+   {"l": "Écarter", "h": "Le gouffre sort des souvenirs du plan 9-11 : la liste revient à celle du docx. La faute de l'Acte I n'est plus rappelée ; le choix de Rob1 repose sur Seed seule.", "t": ["9"], "docs": ["Découpage", "Récit v2", "Propositions"], "prod": ["25", "55"]}
+  ],
+  "avis": {"o": 0, "t": "Valider. Pourquoi : une image, pas une seconde de plus, et elle donne une suite à une phrase du docx qui n'en avait pas."}
+ },
+ {
+  "id": "C1", "g": "film", "titre": "La place des Titans dans le 55 (M9)",
+  "q": "Les Titans vivants : après le col, ou en ouverture du 55 ?",
+  "ctx": "Deux documents laissent les deux places ouvertes. Le tableau des durées, lui, compte M9 après M4. Dans le 25, deux plans annoncent les Titans : le squelette dans la voûte (3-02) et la couche sombre du canyon (7-18).",
+  "plans": ["3-02", "4-09", "7-18"],
+  "dit": [
+   {"d": "modules", "c": "Après M4, ou en prégénérique du 55"},
+   {"d": "architecture", "c": "placé plus tôt (après E4) ou en prégénérique du 55"},
+   {"d": "architecture", "c": "M9 Les Titans 2:00 (placé après M4)"}
+  ],
+  "opts": [
+   {"l": "Après le col (après M4)", "h": "Le spectateur du 55 voit le squelette dans la voûte, puis l'ombre au col, puis les Titans vivants et leur fin : le squelette pose une question, M9 y répond. La couche sombre du canyon (7-18) arrive après et se lit comme un rappel. Avec M4 et M9 à la suite, l'Acte IV passe de 2:00 à 7:00.", "t": ["3", "4", "7", "M4", "M9"], "docs": ["Modules du 55", "Architecture 25 / 55"], "prod": ["55", "salle"]},
+   {"l": "En ouverture du 55, avant la voix d'Elena", "h": "Le 55 commence il y a 60 millions d'années, deux minutes sans Seed ni la Terre. Le spectateur connaît les Titans avant de voir le squelette (3-02) et la couche sombre (7-18) : les deux deviennent des rappels, plus des questions.", "t": ["P", "3", "7", "M9"], "docs": ["Modules du 55", "Architecture 25 / 55"], "prod": ["55", "salle"]},
+   {"l": "Pas encore", "h": "Les documents gardent les deux places. À fixer avant d'écrire M9.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Après le col. Pourquoi : c'est la place que tes tableaux de durées utilisent déjà, et le squelette reste une question pour le spectateur. En ouverture, les deux crochets du 25 n'annoncent plus rien."}
+ },
+ {
+  "id": "C2", "g": "film", "titre": "Cinq crochets arrivent après leur module",
+  "q": "Dans le 55, ces plans annoncent-ils encore, ou rappellent-ils ?",
+  "ctx": "Dans le 55, un module s'ouvre à sa charnière ; le plan du 25 qui l'annonçait est parfois plus loin dans le même acte. Cinq cas : la photo d'Elena (1-10) vient après M1 ; l'ombre (4-09) après M4 ; la couche sombre du canyon (7-18) après M9 ; le compteur 87 km (7-20) après M7 ; le mot Korê (8-02) après M8. Le mot Korê a sa propre question (D3), parce qu'il touche tes quatre mots.",
+  "plans": ["1-10", "4-09", "7-18", "7-20", "8-02"],
+  "dit": [
+   {"d": "architecture", "c": "Le 25 se comprend sans le crochet ; le 55 le paie."},
+   {"d": "architecture", "c": "Les séquences-cœur ne bougent pas d'une image."}
+  ],
+  "opts": [
+   {"l": "Assumer : dans le 55, ce sont des échos", "h": "Rien ne bouge. Le même plan annonce dans le 25 et rappelle dans le 55 : après avoir vu Elena signer, le spectateur du 55 la reconnaît sur la photo. Un mot à préciser dans l'Architecture : « crochet » pour le 25, « écho » pour le 55.", "t": ["1", "4", "7"], "docs": ["Architecture 25 / 55"], "prod": ["55"]},
+   {"l": "Les modules s'arrêtent avant ce que le plan montre", "h": "M4 ne montre pas l'ombre, M7 s'arrête avant le compteur : le plan du cœur garde la primeur. Ces modules perdent leur fin écrite et sont à reprendre après le gel. M1 et M9 ne peuvent pas suivre cette règle : ils montrent Elena et les Titans par nature.", "t": ["4", "7", "M4", "M7"], "docs": ["Modules du 55", "Architecture 25 / 55"], "prod": ["55"]},
+   {"l": "Au cas par cas, quand j'écrirai le 55", "h": "Le constat reste noté dans le livre des promesses. Rien n'est décidé.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Assumer. Pourquoi : c'est la conséquence directe de ta règle « le cœur ne bouge pas », et un rappel ne casse rien. L'autre option oblige à récrire des modules."}
+ },
+ {
+  "id": "C3", "g": "film", "titre": "Le drone cassé au fond du gouffre",
+  "q": "Ce plan annonce-t-il quelque chose ?",
+  "ctx": "Le plan 9-07 montre le drone porteur cassé au fond du trou. Le séquencier le range parmi les crochets pour le 55, mais aucun module n'y répond, et l'Acte IX n'en reçoit pas.",
+  "plans": ["9-07"],
+  "dit": [
+   {"d": "sequencier", "c": "Le drone cassé au fond du sinkhole, vu en un plan"},
+   {"d": "decoupage", "c": "au fond du trou, le drone porteur cassé"},
+   {"d": "registre", "c": "ils sont tombés avec lui dans le sinkhole (validé)"}
+  ],
+  "opts": [
+   {"l": "C'est une image, pas un crochet", "h": "Le plan montre où sont passés les drones (tombés avec la capsule : validé) et n'annonce rien. Il sort de la colonne « crochet pour le 55 » du séquencier ; le livre des promesses ne le compte plus comme dû.", "t": ["9"], "docs": ["Séquencier", "Essais de lecture"], "prod": ["25", "55"]},
+   {"l": "C'est un crochet : à payer dans le 55", "h": "Un module doit répondre à ce plan. Aucun ne le fait aujourd'hui : tu dis où dans le champ libre, et cela s'écrit après le gel.", "t": ["9"], "docs": ["Modules du 55"], "prod": ["55"]},
+   {"l": "Pas encore", "h": "Il reste marqué « dû » dans le livre des promesses.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Une image. Pourquoi : le sort des drones est déjà réglé par ta décision validée, et l'Acte IX est un acte clos, sans module."}
+ },
+ {
+  "id": "C4", "g": "film", "titre": "Le regard vers la mer et la fosse",
+  "q": "La fosse revient-elle après l'Acte VII ?",
+  "ctx": "Le séquencier note, parmi les crochets de l'Acte VII, « le regard vers la mer et la fosse ». Il ne nomme pas de plan (le plus proche est 7-26, où ils regardent l'horizon) et aucun module ne le paie. La fosse n'est vue qu'à travers Rob4, avant : au plan 1-01 et dans M2.",
+  "plans": ["1-01", "7-26"],
+  "dit": [
+   {"d": "sequencier", "c": "le regard vers la mer et la fosse"},
+   {"d": "registre", "c": "Oui (la fosse, vue à travers Rob4)"},
+   {"d": "decoupage", "c": "Rob4 qui plonge vers la fosse"}
+  ],
+  "opts": [
+   {"l": "Un regard, sans suite", "h": "La fosse reste ce qu'on en voit par Rob4 au début. Le regard du plan 7-26 est un regard vers le chemin du retour. Le séquencier ne le compte plus comme crochet.", "t": ["7"], "docs": ["Séquencier", "Essais de lecture"], "prod": ["25", "55"]},
+   {"l": "À payer dans le 55", "h": "Un module doit montrer la fosse après l'Acte VII. Aucun ne le fait : M2 la montre avant, pendant la Phase 1. À écrire après le gel.", "t": ["7", "M2"], "docs": ["Modules du 55"], "prod": ["55", "salle"]},
+   {"l": "Pas encore", "h": "Il reste marqué « dû » dans le livre des promesses.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Un regard, sans suite. Pourquoi : aucun document ne dit ce que la fosse devrait révéler plus tard ; tant que ce n'est pas écrit, c'est une promesse sans objet."}
+ },
+ {
+  "id": "V1", "g": "monde", "titre": "Lumière et couleurs",
+  "q": "Ce document, jamais passé en round, devient-il la règle de l'image ?",
+  "ctx": "Tout ce qui se voit en dépend : la lumière de jour, les trois nuits, la couleur de chaque acte. Il est déduit de points validés, mais lui-même est resté « proposé ». Les prompts de paysages et les séquences vidéo s'appuient déjà dessus.",
+  "plans": [],
+  "dit": [
+   {"d": "lumiere", "c": "Proposé, pour le département image et la salle immersive."},
+   {"d": "lumiere", "c": "Une seule température de couleur de jour : ~4 500 K. Pas de midi blanc."},
+   {"d": "lumiere", "c": "est le seul blanc pur du film"}
+  ],
+  "opts": [
+   {"l": "Valider", "h": "Tout le film se règle dessus : un jour à la lumière de fin d'après-midi, sans midi blanc ; un ciel bleu pâle ; des crépuscules rouges de plus d'une heure ; trois nuits (ambrée au début et à la fin, lunaire froide au col, noire et lumineuse au cœur). Chaque étape a sa couleur : magenta de la jungle, bleu-vert des cavernes et de la forêt, rouge de la rivière, pourpre des lacs. Le blanc pur est réservé aux cheveux de Seed, au caillou et aux buffles.", "t": ["P", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "docs": ["Lumière et couleurs", "Registre"], "prod": ["25", "55", "salle", "expo", "images"]},
+   {"l": "Valider, sauf ce que je note", "h": "Tu écris ce qui ne va pas dans le champ libre ; je réécris la ligne en entier, le reste est validé.", "t": ["P", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "docs": ["Lumière et couleurs", "Registre"], "prod": ["25", "55", "salle", "expo", "images"]},
+   {"l": "Laisser « proposé »", "h": "Les prompts et les séquences vidéo continuent de s'appuyer sur un document non validé.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": null, "t": "Le trancher, dans un sens ou dans l'autre. Pourquoi : c'est le seul document dont toute l'image dépend et qui n'est passé dans aucun round. Les trois questions suivantes s'y rattachent."}
+ },
+ {
+  "id": "V2", "g": "monde", "titre": "La neige du col",
+  "q": "De quelle couleur est la neige des glaciers ?",
+  "ctx": "Trois documents, trois couleurs. Elle se voit au plan 4-05, de nuit, sous les deux lunes.",
+  "plans": ["4-05"],
+  "dit": [
+   {"d": "lumiere", "c": "Blanc, rosé par endroits"},
+   {"d": "flore", "c": "Rose à orangé"},
+   {"d": "massifs", "c": "elle est pourpre"}
+  ],
+  "opts": [
+   {"l": "Blanche, rosée par endroits", "h": "Au col, les glaciers restent blancs sous la lune, avec des plaques roses. La fiche Massifs et la Flore s'alignent.", "t": ["4", "M4"], "docs": ["Fiche Massifs et glaciers", "Flore"], "prod": ["25", "55", "salle", "expo", "images"]},
+   {"l": "Rose à orangé", "h": "Des croûtes d'algues rose-orangé couvrent la neige. De nuit, sous la lune froide, la teinte se lit peu au plan 4-05 ; elle compte surtout pour M4, les planches et l'expo.", "t": ["4", "M4"], "docs": ["Fiche Massifs et glaciers", "Lumière et couleurs"], "prod": ["25", "55", "salle", "expo", "images"]},
+   {"l": "Pourpre", "h": "La neige prend la couleur du végétal de Korê : le col n'est plus un paysage blanc.", "t": ["4", "M4"], "docs": ["Flore", "Lumière et couleurs"], "prod": ["25", "55", "salle", "expo", "images"]},
+   {"l": "Pas encore", "h": "Les trois documents restent en désaccord ; le prompt du paysage garde sa couleur actuelle.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": null, "t": "Rose (la première ou la deuxième option). Pourquoi : deux documents sur trois parlent d'algues roses ; « pourpre » ne figure que dans une phrase de cartel. Entre les deux roses, c'est une nuance à juger sur image."}
+ },
+ {
+  "id": "V3", "g": "monde", "titre": "La taille des arbres-cathédrales",
+  "q": "Quelle hauteur pour les arbres de la forêt ancienne ?",
+  "ctx": "Seed s'adosse à l'un d'eux au plan 7-02. La fiche du biome dit 80 à 100 m ; la Flore et la planche de dessin disent 100 à 115 m. La fiche du biome donne aussi la hauteur maximale possible sur Korê : environ 106 à 115 m.",
+  "plans": ["7-02"],
+  "dit": [
+   {"d": "foret", "c": "80 à 100 m, des milliers d'années"},
+   {"d": "foret", "c": "proches de la hauteur maximale possible sur Korê (~106 à 115 m"},
+   {"d": "flore", "c": "100–115 m, les plus hauts de Korê"}
+  ],
+  "opts": [
+   {"l": "100 à 115 m, les plus hauts de Korê", "h": "Seed se réveille au pied d'arbres à la limite de ce que la planète permet. La fiche du biome s'aligne sur la Flore.", "t": ["7"], "docs": ["Fiche Forêt ancienne"], "prod": ["25", "55", "expo", "images"]},
+   {"l": "80 à 100 m", "h": "Les arbres-cathédrales restent sous la limite. Mais l'Arbre-voûte de la jungle (90 à 110 m dans la Flore) devient alors plus haut qu'eux, et ils ne sont plus « les plus hauts de Korê ».", "t": ["7"], "docs": ["Flore", "Planches de dessin", "Prompts"], "prod": ["25", "55", "expo", "images"]},
+   {"l": "Pas encore", "h": "Les deux hauteurs restent dans les documents.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "100 à 115 m. Pourquoi : deux documents sur trois le disent, et c'est ainsi que la Flore les définit (les plus hauts)."}
+ },
+ {
+  "id": "V4", "g": "monde", "titre": "La taille de la jungle",
+  "q": "La première forêt que voit Seed a-t-elle déjà des géants ?",
+  "ctx": "Le plan 1-14 montre « les voûtes » de la jungle. La Flore décrit l'Arbre-voûte à 90–110 m. La fiche Jungle range la forêt en étages, et son étage le plus haut fait 30–50 m.",
+  "plans": ["1-14"],
+  "dit": [
+   {"d": "flore", "c": "90–110 m, tronc évasé en cloche avec contreforts de 10 m"},
+   {"d": "jungle", "c": "Émergents | 30–50 m | pourpre"}
+  ],
+  "opts": [
+   {"l": "L'Arbre-voûte fait 90 à 110 m", "h": "La première sortie de Seed se passe sous des voûtes deux à trois fois plus hautes que le reste de la jungle. La jungle (Acte I) et la forêt ancienne (Acte VII) ont alors des arbres de taille proche. La fiche Jungle doit dire où il se place au-dessus de ses étages.", "t": ["1"], "docs": ["Fiche Jungle"], "prod": ["25", "55", "expo", "images"]},
+   {"l": "La jungle culmine à 30–50 m", "h": "La jungle reste une forêt de taille terrestre. Les géants sont réservés à la forêt ancienne, à l'Acte VII. L'Arbre-voûte est ramené à cette taille dans la Flore, et son prompt est à réécrire.", "t": ["1", "7"], "docs": ["Flore", "Prompts"], "prod": ["25", "55", "expo", "images"]},
+   {"l": "Pas encore", "h": "Les deux tailles restent dans les documents.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 1, "t": "30–50 m, de peu. Pourquoi : si la jungle a déjà des arbres de cent mètres à l'Acte I, la forêt ancienne ne montre rien de plus grand à l'Acte VII. C'est un choix d'image : le tien."}
+ },
+ {
+  "id": "D1", "g": "decoule", "titre": "Le caillou blanc pendant le retour",
+  "q": "Seed garde le caillou jusqu'à la fin : M8 est corrigé ?",
+  "ctx": "Tu as validé le caillou dans l'alvéole H-01 à la fin (A08). M8 laisse encore ouvert que Seed le pose au bord d'un lac. Dans le 55, M8 passe avant la fin : les deux ne tiennent ensemble que si elle le garde. Le Récit v2 écrit que c'est Rob1 qui le pose dans l'alvéole, sans dire s'il l'a pris ou si elle le lui a donné.",
+  "plans": ["5-09", "7-03", "10-05"],
+  "dit": [
+   {"d": "registre", "c": "le caillou blanc dans l'alvéole H-01 à la fin (A08)"},
+   {"d": "modules", "c": "Seed qui pose le caillou blanc au bord d'un lac (ou le garde : à trancher)"},
+   {"d": "v2", "c": "il pose quelque chose dans l'alvéole vide de Seed, H-01 : le caillou blanc"}
+  ],
+  "opts": [
+   {"l": "Appliquer", "h": "Le caillou suit Seed du feu de camp (5-09) à la rivière rouge (7-03), traverse le retour dans sa poche, et finit dans l'alvéole (10-05). M8 perd la phrase du lac. La proposition S5, qui listait encore trois issues, est fermée.", "t": ["5", "7", "8", "10", "M8"], "docs": ["Modules du 55", "Propositions"], "prod": ["55"]},
+   {"l": "Ne pas appliquer pour l'instant", "h": "M8 garde son « à trancher », en contradiction avec A08.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Appliquer : ta décision A08 ne laisse pas d'autre lecture."}
+ },
+ {
+  "id": "D2", "g": "decoule", "titre": "L'ombre du col",
+  "q": "L'ombre est celle d'un oiseau vivant : deux lignes sont corrigées ?",
+  "ctx": "Les Titans sont éteints depuis 60 millions d'années (validé). L'ombre qui passe au plan 4-09 ne peut pas être celle d'un Titan. Les Écarts et le découpage disent « oiseau-prédateur » ; le séquencier et un titre de l'Architecture disent encore « Titan ».",
+  "plans": ["3-02", "4-09", "7-07"],
+  "dit": [
+   {"d": "ecarts", "c": "L'ombre est un oiseau-prédateur ; le Titan reste un squelette"},
+   {"d": "sequencier", "c": "l'ombre du Titan volant en un plan"},
+   {"d": "architecture", "c": "M4 Le col et l'ombre du Titan"}
+  ],
+  "opts": [
+   {"l": "Appliquer", "h": "L'ombre du plan 4-09 est celle d'un oiseau-prédateur vivant, l'espèce qu'on voit plonger au plan 7-07. Le Titan volant n'existe plus que comme squelette (3-02). Deux lignes changent : « l'ombre du Titan volant » dans le séquencier et le titre de M4 dans l'Architecture.", "t": ["4", "7", "M4"], "docs": ["Séquencier", "Architecture 25 / 55"], "prod": ["25", "55"]},
+   {"l": "Ne pas appliquer pour l'instant", "h": "Deux documents continuent de parler de l'ombre d'un Titan.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Appliquer : l'extinction des Titans est validée, il n'en reste pas de vivant."}
+ },
+ {
+  "id": "D3", "g": "decoule", "titre": "Le mot « Korê » dans le 55",
+  "q": "M8 s'arrête avant le cri, pour que le mot ne soit dit qu'une fois ?",
+  "ctx": "Dans le 55, M8 s'ouvre après le plan 8-01 ; le plan 8-02, où Seed dit le mot, vient ensuite et ne bouge pas. Or M8 écrit lui aussi le cri et Seed qui répète : le mot serait dit deux fois, alors que tu as validé quatre mots, rien d'autre. C'est ma lecture de deux de tes décisions (A01, A02) ; si tu en as une autre, le champ libre est là.",
+  "plans": ["8-01", "8-02", "8-03"],
+  "dit": [
+   {"d": "registre", "c": "quatre mots parlés, rien d'autre (A02)"},
+   {"d": "decoupage", "c": "E8 : le 55 ouvre ici M8 (Korê)"},
+   {"d": "modules", "c": "le cri ; Rob1 qui trouve ça drôle, Seed qui répète ; la planète a un nom"}
+  ],
+  "opts": [
+   {"l": "Appliquer", "h": "M8 raconte la semaine du retour et l'arrivée aux lacs ; il se ferme quand la colonie est en vue. Le cri, le mot de Seed et le nom restent aux plans 8-02 et 8-03, identiques dans les deux films. M8 perd sa fin écrite ; « le troisième mot » n'est plus son enjeu, il appartient au cœur.", "t": ["8", "M8"], "docs": ["Modules du 55"], "prod": ["55"]},
+   {"l": "Ne pas appliquer pour l'instant", "h": "M8 et le plan 8-02 portent tous deux le mot. À régler avant d'écrire M8.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Appliquer. Pourquoi : c'est la seule façon de tenir à la fois « le cœur ne bouge pas » et « quatre mots »."}
+ },
+ {
+  "id": "D4", "g": "decoule", "titre": "Corrections d'écriture, sans effet sur l'histoire",
+  "q": "Je corrige ces quatre points dans les documents ?",
+  "ctx": "1. L'en-tête du découpage place les quatre mots en 6-14, 7-15, 8-03 et 9-14 ; la table des plans les place en 6-14, 7-13, 8-02 et 9-15. 2. L'en-tête annonce vingt-deux plans « dôme », la table en marque dix-neuf. 3. Deux notes de plan sont encore au conditionnel (« si A08 = A », « si A09 = A ») alors que tu as tranché. 4. Le Registre marque encore « proposé » les distances de Rob3 et Rob4, que tu as gardées au round 11.",
+  "plans": [],
+  "dit": [
+   {"d": "decoupage", "c": "Rob (6-14), Seed (7-15), Korê (8-03), Je suis Seed (9-14)"},
+   {"d": "decoupage", "c": "vingt-deux plans"},
+   {"d": "decoupage", "c": "si A08 = A, le caillou blanc posé dans l'alvéole H-01"},
+   {"d": "registre", "c": "largué d'orbite à ~1 200 km à vol d'oiseau (proposé, carte v2)"}
+  ],
+  "opts": [
+   {"l": "Corriger les quatre", "h": "Aucun plan ne change. L'en-tête du découpage suit sa table (mots en 7-13, 8-02, 9-15 ; dix-neuf plans dôme), les deux notes perdent leur « si », le Registre marque les distances validées.", "t": [], "docs": ["Découpage", "Registre"], "prod": []},
+   {"l": "Corriger, sauf ce que je note", "h": "Par exemple si tu veux vingt-deux plans dôme : tu dis lesquels s'ajoutent aux dix-neuf.", "t": [], "docs": ["Découpage", "Registre"], "prod": []},
+   {"l": "Ne rien toucher", "h": "Les documents gardent ces quatre écarts.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Corriger les quatre : ce sont des restes d'écriture, la table des plans et tes décisions disent déjà la suite."}
+ },
+ {
+  "id": "D5", "g": "decoule", "titre": "Le coureur, puis le tank",
+  "q": "Deux machines l'une après l'autre : c'est bien ta lecture ?",
+  "ctx": "Tu as validé le Rob fusionné en bipède coureur, Seed dans un harnais (round 11). Le docx, lui, a un tank à roues. Les Écarts font tenir les deux : le bipède d'abord, le tank ensuite. Le découpage l'applique. Un détail : les Écarts écrivent « à partir de l'Acte V », le tank s'assemble au plan 6-11, pendant la horde.",
+  "plans": ["3-06", "4-03", "6-11", "7-17"],
+  "dit": [
+   {"d": "registre", "c": "le Rob fusionné est un bipède coureur"},
+   {"d": "ecarts", "c": "Rob1/2 court jusqu'à Rob3 ; à partir de l'Acte V, le tank à roues fait les plaines, la course et le retour"},
+   {"d": "decoupage", "c": "Le tank Rob1/2/3 (docx)"}
+  ],
+  "opts": [
+   {"l": "Oui", "h": "Rob1/2, le bipède, court de la caverne à Rob3 (Actes III et IV), Seed endormie dans le harnais. Rob1/2/3, le tank, naît dans la panique de la horde (6-11) et roule ensuite : la course vers Rob4, le retour. La réconciliation des Écarts passe de « proposé » à validé.", "t": ["3", "4", "6", "7", "8"], "docs": ["Écarts docx / Bible", "Registre"], "prod": ["25", "55"]},
+   {"l": "Pas tout à fait", "h": "Tu dis ce qui ne va pas dans le champ libre. Les plans 3-06, 4-03, 6-11 et 7-17 dépendent de cette lecture.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": 0, "t": "Oui : c'est ce que le découpage montre déjà, et les deux sources (ta décision, le docx) y tiennent entières."}
+ },
+ {
+  "id": "G1", "g": "gel", "titre": "Et après : le gel du monde",
+  "q": "Ces choix valent-ils corrections de relecture ?",
+  "ctx": "Depuis le round 16, rien ne s'ajoute au monde ni au script tant que tes corrections ne sont pas passées. Si tu as relevé autre chose en relisant (une scène, un nom, un chiffre), écris-le ici : ce champ est fait pour ça.",
+  "plans": [],
+  "dit": [
+   {"d": "registre", "c": "Cal relit et corrige ; rien n'avance tant que ses corrections ne sont pas passées."}
+  ],
+  "opts": [
+   {"l": "Oui : le gel est levé une fois ces choix intégrés", "h": "J'intègre tes choix dans les documents (chaque passage réécrit en entier), je te montre ce qui a changé, puis le monde et le script reprennent : écrire les modules du 55, payer ce qui reste dû, compléter les fiches.", "t": [], "docs": ["Registre"], "prod": []},
+   {"l": "J'ai d'autres corrections : le gel reste", "h": "Tu les écris ci-dessous ou dans le chat. J'intègre tout ensemble ; rien ne s'ajoute avant.", "t": [], "docs": [], "prod": [], "r": true},
+   {"l": "Je n'ai pas fini de relire : le gel reste", "h": "J'intègre seulement ce que tu as tranché ici. Le reste attend.", "t": [], "docs": [], "prod": [], "r": true}
+  ],
+  "avis": {"o": null, "t": ""}
+ }
+]
+}
+</script>
+
+<script id="logique">
+// Fonctions sans écran : elles servent à la page et aux vérifications (tests/relecture.test.mjs).
+function zoneDe(c) {
+  var vu = {}, out = [];
+  (c.plans || []).forEach(function (n) { vu[n.split('-')[0]] = 1; });
+  c.opts.forEach(function (o) { (o.t || []).forEach(function (k) { vu[k] = 1; }); });
+  ['P', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9'].forEach(function (k) { if (vu[k]) out.push(k); });
+  return out;
+}
+function nomZone(D, k) {
+  var a = D.actes.filter(function (x) { return x.id === k; })[0];
+  if (a) return a.nom;
+  var m = D.modules.filter(function (x) { return x.id === k; })[0];
+  return m ? m.id + ' ' + m.titre : k;
+}
+function choisi(c, etat) {
+  var e = etat[c.id];
+  var i = e && typeof e.c === 'number' ? e.c : -1;
+  return c.opts[i] ? i : -1;
+}
+function bilan(D, etat) {
+  var b = { tranches: 0, ouverts: 0, sans: 0, zones: {}, attente: {}, docs: {}, prod: {}, lignes: [] };
+  D.choix.forEach(function (c) {
+    var i = choisi(c, etat);
+    if (i < 0) {
+      b.sans++;
+      zoneDe(c).forEach(function (k) { b.attente[k] = (b.attente[k] || 0) + 1; });
+      return;
+    }
+    var o = c.opts[i];
+    if (o.r) b.ouverts++; else b.tranches++;
+    (o.t || []).forEach(function (k) { (b.zones[k] = b.zones[k] || []).push(c.id); });
+    (o.docs || []).forEach(function (d) { (b.docs[d] = b.docs[d] || []).push(c.id); });
+    (o.prod || []).forEach(function (p) { (b.prod[p] = b.prod[p] || []).push(c.id); });
+    b.lignes.push({ id: c.id, titre: c.titre, l: o.l, h: o.h, r: !!o.r });
+  });
+  return b;
+}
+function texteChoix(D, etat, date) {
+  var out = ['SECOND EARTH · relecture · mes choix (' + date + ')'], sans = [];
+  D.choix.forEach(function (c) {
+    var i = choisi(c, etat);
+    var t = ((etat[c.id] && etat[c.id].t) || '').trim();
+    if (i < 0 && !t) { sans.push(c.id); return; }
+    out.push('', c.id + ' · ' + c.titre);
+    if (i >= 0) out.push('Choix : ' + c.opts[i].l);
+    if (t) out.push('Précision : ' + t);
+  });
+  out.push('', sans.length ? 'Sans réponse : ' + sans.join(', ') : 'Tous les choix ont une réponse.');
+  return out.join('\n');
+}
+</script>
+
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('data-relecture').textContent);
+  var KEY = 'second-earth-' + D.version;
+  var etat = {};
+  try { etat = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { etat = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(etat)); } catch (e) {} }
+  var filtre = { g: 'tous', zone: null };
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, txt) { var n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; }
+  function court(k) { var a = D.actes.filter(function (x) { return x.id === k; })[0]; return a ? a.c : k; }
+  function groupe(id) { return D.groupes.filter(function (g) { return g.id === id; })[0]; }
+  function st(c) { return etat[c.id] || (etat[c.id] = { c: -1, t: '' }); }
+  function mmss(s) { return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+
+  function carte(c) {
+    var box = el('section', 'q'); box.id = 'q-' + c.id;
+    box.appendChild(el('div', 'num', c.id + ' · ' + groupe(c.g).nom));
+    box.appendChild(el('h2', null, c.titre));
+    box.appendChild(el('p', 'qq', c.q));
+    box.appendChild(el('p', 'ctx', c.ctx));
+    var zones = zoneDe(c);
+    if (zones.length) {
+      var zz = el('div', 'zones');
+      zz.appendChild(el('span', 'zl', 'Dans le film'));
+      zones.forEach(function (k) { var s = el('span', 'z', court(k)); s.title = nomZone(D, k); s.setAttribute('data-k', k); zz.appendChild(s); });
+      if (c.plans.length) zz.appendChild(el('span', 'pl', (c.plans.length > 1 ? 'plans ' : 'plan ') + c.plans.join(', ')));
+      box.appendChild(zz);
+    }
+    var det = el('details', 'dit');
+    det.appendChild(el('summary', null, 'Ce que disent les documents (' + c.dit.length + ')'));
+    c.dit.forEach(function (x) { var p = el('p'); p.appendChild(el('b', null, D.docs[x.d].n)); p.appendChild(document.createTextNode('« ' + x.c + ' »')); det.appendChild(p); });
+    box.appendChild(det);
+    c.opts.forEach(function (o, i) {
+      var lab = el('label', 'opt');
+      var inp = document.createElement('input');
+      inp.type = 'radio'; inp.name = c.id;
+      inp.addEventListener('click', function () { var s = st(c); s.c = (s.c === i) ? -1 : i; save(); maj(); });
+      var d = el('div');
+      d.appendChild(el('span', 'lab', o.l));
+      if (o.r) d.appendChild(el('span', 'tag', 'reste ouvert'));
+      var h = el('span', 'csq'); h.appendChild(el('b', null, "Dans l'histoire")); h.appendChild(document.createTextNode(o.h)); d.appendChild(h);
+      if (o.docs && o.docs.length) { var m = el('span', 'meta'); m.appendChild(el('b', null, 'À reprendre')); m.appendChild(document.createTextNode(o.docs.join(' · '))); d.appendChild(m); }
+      lab.appendChild(inp); lab.appendChild(d);
+      lab.addEventListener('mouseenter', function () { apercu(o.t); });
+      lab.addEventListener('mouseleave', function () { apercu(null); });
+      box.appendChild(lab);
+    });
+    if (c.avis && c.avis.t) {
+      var a = el('div', 'avis');
+      a.appendChild(el('b', null, 'Avis de Claude (tu décides)'));
+      a.appendChild(document.createTextNode(c.avis.t));
+      box.appendChild(a);
+    }
+    var l = el('label', 'libre', 'Autre réponse, précision ou correction');
+    l.setAttribute('for', 't-' + c.id);
+    var ta = document.createElement('textarea');
+    ta.id = 't-' + c.id; ta.value = st(c).t || '';
+    ta.addEventListener('input', function () { st(c).t = ta.value; save(); });
+    box.appendChild(l); box.appendChild(ta);
+    return box;
+  }
+
+  function visibles() {
+    return D.choix.filter(function (c) {
+      if (filtre.zone && zoneDe(c).indexOf(filtre.zone) < 0) return false;
+      if (filtre.g === 'tous') return true;
+      if (filtre.g === 'sans') return choisi(c, etat) < 0;
+      return c.g === filtre.g;
+    });
+  }
+
+  function rendre() {
+    var f = $('filtres'); f.textContent = '';
+    var liste = [['tous', 'Tous (' + D.choix.length + ')']].concat(D.groupes.map(function (g) {
+      return [g.id, g.nom + ' (' + D.choix.filter(function (c) { return c.g === g.id; }).length + ')'];
+    }), [['sans', 'Sans réponse']]);
+    liste.forEach(function (x) {
+      var b = el('button', filtre.g === x[0] ? 'on' : null, x[1]); b.type = 'button';
+      b.setAttribute('aria-pressed', filtre.g === x[0] ? 'true' : 'false');
+      b.addEventListener('click', function () { filtre.g = x[0]; rendre(); });
+      f.appendChild(b);
+    });
+    var g = groupe(filtre.g), info = g ? g.intro : '';
+    if (filtre.zone) info = 'Choix qui concernent ' + nomZone(D, filtre.zone) + ' (cliquer de nouveau sur la case pour tout revoir). ' + info;
+    $('ginfo').textContent = info;
+    var root = $('cartes'); root.textContent = '';
+    var v = visibles();
+    v.forEach(function (c) { root.appendChild(carte(c)); });
+    if (!v.length) root.appendChild(el('p', 'vide', 'Aucun choix ici.'));
+    maj();
+  }
+
+  function apercu(t) {
+    Array.prototype.forEach.call(document.querySelectorAll('#film button, #mods button'), function (b) {
+      b.classList.toggle('apercu', !!t && t.indexOf(b.getAttribute('data-k')) >= 0);
+    });
+  }
+
+  function bande() {
+    function bouton(k, txt, titre, duree) {
+      var b = el('button', null, txt); b.type = 'button'; b.setAttribute('data-k', k);
+      b.setAttribute('aria-label', titre);
+      b.appendChild(el('i'));
+      var dire = function () { $('zinfo').textContent = titre + ' · ' + mmss(duree) + ' · ' + D.choix.filter(function (c) { return zoneDe(c).indexOf(k) >= 0; }).length + ' choix le concernent'; };
+      b.addEventListener('mouseenter', dire); b.addEventListener('focus', dire);
+      b.addEventListener('click', function () { filtre.zone = (filtre.zone === k) ? null : k; dire(); rendre(); });
+      return b;
+    }
+    D.actes.forEach(function (a) { var b = bouton(a.id, a.c, a.nom + ' : ' + a.titre, a.d); b.style.flexGrow = a.d; $('film').appendChild(b); });
+    D.modules.forEach(function (m) { $('mods').appendChild(bouton(m.id, m.id, m.id + ' · ' + m.titre, m.d)); });
+  }
+
+  function lister(ul, items, vide) {
+    ul.textContent = '';
+    if (!items.length) { ul.appendChild(el('li', 'vide', vide)); return; }
+    items.forEach(function (it) { ul.appendChild(it); });
+  }
+  function lien(id) {
+    var a = el('a', null, id); a.href = '#q-' + id;
+    a.addEventListener('click', function (ev) {
+      if (!document.getElementById('q-' + id)) { ev.preventDefault(); filtre = { g: 'tous', zone: null }; rendre(); var q = document.getElementById('q-' + id); if (q) q.scrollIntoView(); }
+    });
+    return a;
+  }
+
+  function maj() {
+    var b = bilan(D, etat);
+    D.choix.forEach(function (c) {
+      var box = document.getElementById('q-' + c.id); if (!box) return;
+      var i = choisi(c, etat), o = c.opts[i];
+      box.classList.toggle('fait', !!o && !o.r);
+      box.classList.toggle('ouvert', !!o && !!o.r);
+      Array.prototype.forEach.call(box.querySelectorAll('.opt'), function (lab, n) {
+        lab.classList.toggle('on', n === i); lab.querySelector('input').checked = (n === i);
+      });
+      Array.prototype.forEach.call(box.querySelectorAll('.z'), function (z) {
+        z.classList.toggle('on', !!o && (o.t || []).indexOf(z.getAttribute('data-k')) >= 0);
+      });
+    });
+    var av = $('avance'); av.textContent = '';
+    [[b.tranches, ' tranchés · '], [b.ouverts, ' laissés ouverts · '], [b.sans, ' sans réponse']].forEach(function (x) {
+      av.appendChild(el('b', null, String(x[0]))); av.appendChild(document.createTextNode(x[1]));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#film button, #mods button'), function (bt) {
+      var k = bt.getAttribute('data-k');
+      bt.classList.toggle('touche', !!b.zones[k]);
+      bt.classList.toggle('filtre', filtre.zone === k);
+      bt.querySelector('i').textContent = b.attente[k] ? String(b.attente[k]) : '';
+    });
+    lister($('l-hist'), b.lignes.map(function (x) {
+      var li = el('li', x.r ? 'r' : null); li.appendChild(lien(x.id));
+      li.appendChild(document.createTextNode(x.r ? x.titre + ' : ' + x.l : x.h)); return li;
+    }), 'Aucun choix fait pour l\'instant. Chaque choix ajoute ici ce qu\'il change.');
+    lister($('l-docs'), Object.keys(b.docs).sort().map(function (d) {
+      var li = el('li'); li.appendChild(document.createTextNode(d + ' : '));
+      b.docs[d].forEach(function (id) { li.appendChild(lien(id)); }); return li;
+    }), 'Aucun document à reprendre pour l\'instant.');
+    lister($('l-prod'), Object.keys(D.produits).filter(function (p) { return b.prod[p]; }).map(function (p) {
+      return el('li', null, D.produits[p] + ' : ' + b.prod[p].length + ' choix');
+    }), 'Rien pour l\'instant.');
+    $('msg').textContent = b.tranches + b.ouverts + ' réponses sur ' + D.choix.length;
+  }
+
+  $('copier').addEventListener('click', function () {
+    var t = texteChoix(D, etat, new Date().toLocaleDateString('fr-FR'));
+    var pre = $('sortie');
+    function secours() {
+      pre.textContent = t; pre.style.display = 'block'; pre.scrollIntoView();
+      $('msg').textContent = 'Copie automatique impossible ici : sélectionne le texte affiché et copie-le.';
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(function () { $('msg').textContent = 'Copié. Colle dans le chat.'; }, secours);
+    } else { secours(); }
+  });
+  var arme = false;
+  $('effacer').addEventListener('click', function () {
+    if (!arme) { arme = true; this.textContent = 'Cliquer encore pour tout effacer'; return; }
+    arme = false; this.textContent = 'Tout effacer';
+    etat = {}; save(); $('sortie').style.display = 'none'; rendre();
+    $('msg').textContent = 'Réponses effacées.';
+  });
+
+  var large = window.matchMedia && window.matchMedia('(min-width: 981px)').matches;
+  $('d-hist').open = true; $('d-docs').open = large; $('d-prod').open = large;
+  bande(); rendre();
+})();
+</script>
+</body>
+</html>

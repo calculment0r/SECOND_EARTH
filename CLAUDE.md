@@ -192,6 +192,7 @@ tools/
 tests/                     vérifications (Node) : node --test depuis la racine ; --test-update-snapshots réécrit film.json et site/essais/
 site/assets/               thème Verdant du site : site.css, site.js, icon.svg, fonts/venus-rising.otf
 site/essais/               les quatre pages des essais, autonomes, produites par build_essais.mjs et versionnées (ne pas les éditer à la main)
+relecture/                 choix-de-relecture.html : l'outil de choix de la relecture du round 16 (section 13), page autonome écrite à la main
 theme/showrunner-ui-kit/   le kit d'interface fourni par Cal (référence visuelle du thème)
 video/seedance/            séquences vidéo Seedance 2.5 : prompts/ (10 séquences de 30 s, 4 plans de 15 s), references.json
                            (ordre des images et identifiants Higgsfield), jobs-2026-11-05.json, tools/ (voir section 11)
@@ -329,3 +330,22 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 **Non vérifié** : les pages n'ont pas été ouvertes dans un navigateur (les calculs, les gestes et le montage sont testés sous Node) ; `tools/build_site.py` modifié sans pouvoir être lancé dans la session (Python sans droit d'exécution) ; `BRIEF.html` non régénéré.
 
 **Relevé par les essais, à signaler à Cal, pas à corriger seul** : dans l'ordre du 55, cinq crochets viennent après le module qui les paie (photo d'Elena / M1, ombre 4-09 / M4, compteur 87 km / M7, mot Korê / M8, couche sombre 7-18 / M9) ; trois promesses sont dues (regard vers la mer et la fosse, drone cassé, la suite avec CAIN) ; M8 laisse ouvert « pose le caillou au bord d'un lac » alors que A08 le met dans l'alvéole H-01 à la fin ; le docx fait revoir à Rob1 « Je suis d'ici maintenant » (Rob4), scène que le récit ne montre pas.
+
+---
+
+## 13. Outil de choix de la relecture (16/11/2026)
+
+**Demande de Cal** (16/11/2026, réponse au QCM de reprise) : chantier « Monde et récit : passer tes corrections » ; ses mots : « fais-moi un outil hyper clair pour faire mes choix et voir ce qu'ils impliquent en termes de story ». Ses prompts Midjourney ne sont pas encore relus.
+
+**Ce qui existe** : `relecture/choix-de-relecture.html`, page autonome (CSS, JS et données dans le fichier, aucune ressource réseau), aussi montrée à Cal en artefact. 23 choix en six groupes : le récit (R1 à R4), les fils « à garder » des Propositions (F1 à F5), le 25 et le 55 (C1 à C4), ce qui se voit à l'image (V1 à V4), ce qui découle de décisions validées (D1 à D5), le gel (G1). Chaque option écrit ce qu'elle change dans l'histoire, les actes et modules touchés, les documents à reprendre. Un panneau montre le film acte par acte et les neuf modules : les cases s'allument selon les choix, un clic filtre. « Copier mes choix » fait un texte à coller dans le chat ; les réponses restent dans le navigateur de Cal (stockage local).
+
+**Règles** :
+
+- Aucun choix ne re-soumet un point validé ; le groupe « découle » ne propose que d'appliquer ou non la seule lecture compatible avec le Registre. D3 (le mot Korê dit une seule fois dans le 55) est une lecture de Claude à partir de A01 et A02, écrite comme telle.
+- Chaque choix cite les documents (champ `dit`) ; `tests/relecture.test.mjs` vérifie chaque citation mot pour mot, l'existence des plans nommés, les durées des actes et des modules contre `data/film.json`, et les fonctions sans écran de la page (bilan, texte copié).
+- La page ne modifie aucun document. **Rien n'est intégré tant que Cal n'a pas collé ses choix dans le chat.** À réception : réécrire en entier chaque passage touché, mettre le Registre à jour (nouveau round), et ne lever le gel que si G1 le dit.
+- Laissés hors de l'outil, toujours à signaler (section 5) : les écarts entre fiches sans effet à l'image du film (comptes de la Flore, HT sans statut, noms, fautes de frappe, physique des hors trajet, Titans), la promesse « la suite avec CAIN », la proposition S12 (3 × 17, « pas à décider » selon l'Architecture).
+
+**Non vérifié** : la page n'a pas été ouverte dans un navigateur ; elle n'est pas branchée dans le site (`tools/build_site.py` non touché) ; `BRIEF.html` non régénéré. Le Récit v2 n'a pas été recompté scène par scène contre le docx.
+
+**Relevé en préparant l'outil** : le Registre écrit « ~5 semaines avec les arrêts », la Chronologie « six semaines environ : ~41 jours » ; les Écarts placent le tank « à partir de l'Acte V », il s'assemble au plan 6-11 ; le séquencier et l'Architecture parlent encore de « l'ombre du Titan » (plan 4-09), les Écarts d'un oiseau-prédateur.
