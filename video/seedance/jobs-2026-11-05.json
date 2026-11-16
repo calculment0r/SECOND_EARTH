@@ -1,0 +1,197 @@
+{
+ "note": "Générations Seedance 2.5 lancées par Claude le 05/11/2026 sur le compte Higgsfield de Cal (toutes terminées). Aucune n'avait la planche d'échelle : la taille de Rob1 varie. Résultats dans l'historique Higgsfield (higgsfield generate get <job_id>).",
+ "jobs": [
+  {
+   "sequence": "S01",
+   "job_id": "79d36167-946a-4ba1-9360-632f149a30f0",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S02",
+   "job_id": "7bab28aa-e53c-4e6b-bdef-05697e39371d",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S03",
+   "job_id": "f9b831a0-4ed2-4862-af78-470cb758ae11",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S04",
+   "job_id": "127dd296-29a8-474e-a831-b88b8cdccf34",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S05",
+   "job_id": "8aa4a44d-725d-4b72-8780-d93e384eb762",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S06",
+   "job_id": "a9a4c34f-6222-4171-8eb4-47421d2d3788",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S07",
+   "job_id": "b440210b-928f-4dce-9b07-b46f01877efd",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S08",
+   "job_id": "72b72874-58ee-419f-9b98-0168e85665ab",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S09",
+   "job_id": "e95b6557-3e83-4087-a3b7-203a7817fc02",
+   "format": "16:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "lancé sans planche d'échelle"
+  },
+  {
+   "sequence": "S10",
+   "job_id": "b94eb46e-f35d-4611-8161-b03939584435",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S01",
+   "job_id": "dcfaabbf-8efd-4177-b08a-159a98d08e19",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S02",
+   "job_id": "621e0bde-420c-4cf3-92ca-e48bd2268b45",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S03",
+   "job_id": "e187f16c-a08f-49d4-9ec8-3ca8f6ca0694",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S04",
+   "job_id": "989f6cc2-e68c-4157-802d-4f23e9a2695e",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S05",
+   "job_id": "95f59622-4145-49cb-a879-9c30a8e16b65",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S06",
+   "job_id": "8515018b-0a3b-4483-a298-3cca9511213b",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S07",
+   "job_id": "e79e8e31-069a-4861-b4a4-29b4ef6dc549",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S08",
+   "job_id": "64aa9d23-9115-42f7-a293-a6633ebdfd1f",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "S09",
+   "job_id": "23a1d025-f670-49ef-b758-88c30827e180",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "sans planche d'échelle"
+  },
+  {
+   "sequence": "SP1",
+   "job_id": "9086de45-1392-44a2-840c-d5b627b96ede",
+   "format": "21:9",
+   "duree_s": 15,
+   "resolution": "1080p",
+   "note": "plan spectaculaire, sans planche d'échelle"
+  },
+  {
+   "sequence": "SP2",
+   "job_id": "8e194a91-b92b-45b8-ab4a-10b529fe5f61",
+   "format": "21:9",
+   "duree_s": 15,
+   "resolution": "1080p",
+   "note": "plan spectaculaire, sans planche d'échelle"
+  },
+  {
+   "sequence": "SP3",
+   "job_id": "d8e9b79f-def9-49e3-bffa-4bccd50a5c5e",
+   "format": "21:9",
+   "duree_s": 15,
+   "resolution": "1080p",
+   "note": "plan spectaculaire, sans planche d'échelle"
+  },
+  {
+   "sequence": "SP4",
+   "job_id": "e3530cbe-215e-4975-9bc6-8cb9eab6e4bb",
+   "format": "21:9",
+   "duree_s": 15,
+   "resolution": "1080p",
+   "note": "plan spectaculaire, sans planche d'échelle"
+  },
+  {
+   "sequence": "S05",
+   "job_id": "be27226d-09bf-4c5b-82fc-bd2098b7bcb4",
+   "format": "21:9",
+   "duree_s": 30,
+   "resolution": "720p",
+   "note": "Rob1 réduit dans le texte, sans planche d'échelle"
+  }
+ ]
+}

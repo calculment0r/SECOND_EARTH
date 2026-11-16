@@ -6,6 +6,8 @@ Lire ce fichier en entier avant toute action. Puis lire `docs/bible/00-registre-
 
 **État au 28/09/2026 (fin de la session de construction du site)** : le dépôt `calculment0r/SECOND_EARTH` (public) contient ce dossier, le site et l'outil de prompts. Voir la section 10 avant de toucher au site.
 
+**État au 16/11/2026** : séquences vidéo Seedance 2.5 générées le 05/11/2026 sur le compte Higgsfield de Cal ; prompts, scripts et références dans `video/seedance/`. Lire la section 11 et la règle 15 avant toute génération vidéo.
+
 ---
 
 ## 1. La mission de cette session
@@ -92,6 +94,11 @@ Ces règles viennent de ses demandes répétées. Elles priment sur toute habitu
 12. **Style des prompts d'image (Cal, 09/10 et 12/10/2026, dans le chat)** : photographie **photoréaliste** de planches de référence, « genre National Geographic » (le nom du magazine est une marque : il ne s'écrit **jamais** dans un prompt, règle 10 ; le look passe par la matière et la lumière). L'ancienne phrase « painterly science-fiction concept art » des Planches de dessin est **abandonnée** : elle produisait des images peintes. Le document Planches de dessin de Claude Docs (compte de Cal) porte encore cette phrase et des ouvertures « Creature sheet » : à mettre à jour là-bas, puis réexporter.
 13. **Format des prompts : celui des essais de Cal dans Midjourney (12/10/2026, dans le chat)** : l'outil ne peut pas lancer Midjourney, donc ne jamais affirmer qu'un format « donne une planche » ou « marche » sans que Cal l'ait testé. Cal a refusé les séries précédentes (« c'est de la merde ») et a donné ses propres prompts, qui marchent : `photrealistic and cinematic photography of a Fantastic mythic giant and colorful flying beast , sheet with 3 view of same animal : perspective view, side view, back view on white background --chaos 15 --ar 2:1 --raw --stylize 400 --hd`. On **garde ce qui marche** : le début `photorealistic and cinematic photography of a Fantastic mythic`, la phrase de planche `sheet with 3 view of same animal : perspective view, side view, back view on white background` (animal ; `plant`, `organism : wide view, close view, macro view`, `character`, `robot`, `machine` pour les autres), et les paramètres `--chaos 15 --ar 2:1 --raw --stylize 400 --hd` (défaut de la barre ; l'outil écrit `--raw`, `--chaos` et `--stylize` tels que Cal les tape et ajoute `--v 8.2`). Le texte copié d'une espèce = début (dans l'outil, modifiable) + `corps` (sujet, habitat, phrase de planche) + paramètres ; pas de lumière ni de négatif par défaut. Un personnage, une machine ou un paysage porte son propre début dans le `corps` ; un paysage ajoute sa lumière (moment du jour). **« alien » est proscrit** (Cal : il rajoute un truc glauque et flippant), ainsi que « colorful » (Cal : on décrit les matières et les couleurs de l'étude, on n'écrit pas « colorful »). **Décrire simplement** : « deux petites pattes et un grand cou », 2 à 4 traits, une seule taille, pas de liste d'anatomie, pour que Midjourney invente de belles créatures. Il n'y a plus de vues « Planche / En situation / Libre » dans l'outil, ni de fille pour l'échelle. Un `--sref` pèse souvent plus que le texte : c'est un suspect si tout se ressemble (il n'est plus dans les paramètres par défaut).
 14. **Créatures belles, aux couleurs de l'étude, jamais flippantes (Cal, 12/10/2026)** : aucun nom d'animal ou de plante de la Terre dans un prompt (serpent, scarabée, grenouille, lièvre, laurier, nénuphar, mangrove…), même en « X-like », et pas le jumeau terrestre de la fiche ; on décrit les formes de la fiche. Cal a constaté des animaux gris ou sombres : **les couleurs viennent de l'étude** (`data/palette-flore.json` par biome, `docs/bible/33-lumiere-et-couleurs.md`, couleurs de structure et iridescence des animaux, pigments de la nourriture, pourpre pour le végétal, bioluminescence en saison noire, couleurs vives en saison ambrée) ; un gris, un noir ou un brun imposé par la fiche reçoit des reflets ou des accents de la palette du biome. Ton posé et beau : pas de predator, ambush, jaws, slime, ooze, blood, decay. Les règles de rédaction détaillées étaient dans les briefs de la session (hors dépôt) : sujet de 15 à 40 mots, une seule taille, une expression d'habitat, une phrase de planche fixe, 2 à 3 couleurs précises de l'étude.
+15. **Vidéo (Cal, 05/11/2026, après 5 370 crédits Higgsfield dépensés en générations ratées)** :
+   - **format 21:9**, jamais 16:9 sans demande : le projet est immersif, à 360 degrés ;
+   - **toujours joindre la planche d'échelle de Cal en dernière référence** (Seed, petit Rob1 et grand robot côte à côte) ; sans elle, Rob1 change de taille à chaque génération. Quand le grand robot n'est pas dans la séquence, joindre la planche recadrée sur Seed et Rob1 seulement, sinon le modèle l'ajoute au rendu. Rob1 fait environ 75 cm, le haut du casque juste sous la hanche de Seed ;
+   - **ne jamais lancer une génération payante sans l'accord explicite de Cal pour ce lancement**, annoncer le coût avant (`higgsfield generate cost`), et **tester une seule séquence** avant tout lot ;
+   - ne jamais suggérer que Cal n'a pas été clair ; une vérification partielle de l'historique n'est pas une preuve.
 
 ### Charte des interfaces (détail : `site-spec/charte.md`)
 
@@ -178,6 +185,8 @@ tools/
   site/prompts.html        gabarit de l'outil de prompts
 site/assets/               thème Verdant du site : site.css, site.js, icon.svg, fonts/venus-rising.otf
 theme/showrunner-ui-kit/   le kit d'interface fourni par Cal (référence visuelle du thème)
+video/seedance/            séquences vidéo Seedance 2.5 : prompts/ (10 séquences de 30 s, 4 plans de 15 s), references.json
+                           (ordre des images et identifiants Higgsfield), jobs-2026-11-05.json, tools/ (voir section 11)
 .github/workflows/pages.yml   construction et publication GitHub Pages
 .gitignore                 exclut sources/ et _site/ du dépôt
 ```
@@ -263,3 +272,28 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 - **Le contenu n'est pas réécrit** : chaque page de document est rendue depuis `docs/` par un petit convertisseur Markdown intégré à `build_site.py`. Il ajoute seulement : pastilles de statut sur « [validé] », « (proposé) »… ; liens sur les codes d'espèce (vers les fiches) et sur les noms des fiches hors trajet ; remplacement des liens d'artefacts Claude privés (carte, QCM) par les pages du site ; ligne « Source » sans les identifiants internes.
 - **Plan du site** : listes `NAV` et `SECTIONS` en tête de `build_site.py` (ajouter une page = une ligne).
 - **Mettre à jour le contenu** : réexporter le document Claude Docs dans `docs/`, relancer `python3 tools/build_data.py` si une table d'espèces change, puis pousser : le site se reconstruit.
+
+---
+
+## 11. Séquences vidéo Seedance 2.5 (05/11/2026)
+
+**Demande de Cal** : séquences de 30 s, très cinéma, photoréalistes, pour le cinéma immersif (21:9, voir règle 15). La relation Seed / Rob1 au centre : Rob1 pense en adulte mais a la taille d'un petit enfant, Seed le porte parfois ; il est expressif (yeux bleus sur son visière, formes drôles), espiègle, puissant, il défend Seed à tout prix (elle est la mission), la veille quand elle dort, cache les mauvaises nouvelles. De l'action (escalade, séisme, tempête magnétique, nuées étranges), de l'infiltration (animaux énormes endormis), jamais rien d'effrayant. Deux paysages par séquence pour montrer la progression d'un biome à l'autre, regroupés par couleur. Prompts en anglais.
+
+**Matériel de Cal (hors dépôt, ne pas publier)** :
+- 5 images envoyées dans le chat : `1.webp` grand robot bipède (étiqueté ROB 1 en rouge, joue Rob2), `2.webp` petit Rob1 (4 vues), `3.jpg` Seed (3 vues et 4 visages), `4.jpg` **planche d'échelle** (grand robot, Seed, petit Rob1), `5.webp` XENOPOD-01 (porte un drapeau américain à retirer). À redemander à Cal dans une nouvelle session ; `references.json` donne les identifiants Higgsfield de celles déjà envoyées (tout sauf la planche).
+- 100 images Midjourney dans son Google Drive, dossier « seedance input » (lien partagé par Cal dans le chat, à redemander ; lisible avec le connecteur Google Drive, téléchargement direct `https://drive.google.com/uc?export=download&id=<id>`). Numérotées 1 à 100 dans l'ordre de mes planches contact ; rangement par couleur dans `tools/build3.py` (liste `GALLERY`).
+
+**Ce qui existe** :
+- `prompts/` : les prompts complets, à jour (planche d'échelle jointe, Rob1 à 75 cm). Structure du guide Higgsfield : GLOBAL STYLE, FORMAT MODE, SCENE, REFERENCES (« Reference image N is … »), LOCATION, FIRST FRAME AND BLOCKING, SHOTS minutés avec HARD CUT, CAPTURE FORMAT AND OPTICS, PHYSICS, LIGHTING, AUDIO, POSITIVE LOCKS, TEXTURE AND REALISM. Seed ne dit que « Rob! » (S06) et « Korê » (S09).
+- `references.json` : pour chaque séquence, l'ordre exact des images à joindre ; pour chaque image, le fichier Drive et l'identifiant Higgsfield.
+- `jobs-2026-11-05.json` : les 24 générations lancées le 05/11 (9 en 16:9, 11 en 21:9, 4 plans de 15 s en 1080p), toutes **sans planche d'échelle** : Rob1 y change de taille. Cal a ensuite lancé lui-même d'autres générations (12/11). Solde au 16/11 : 4,5 crédits.
+- `tools/` : `data3.py` (les 10 séquences), `build3.py` (page de copier-coller ; lit `_work/thumbs.json` et `_work/imgthumbs.json`, vignettes non versionnées), `spec15.py` (4 plans spectaculaires de 15 s), `kit.py` (un dossier par séquence : images numérotées + prompt.txt), `launch.py` (lancement par la CLI avec gestion de la limite et téléchargement). Le dossier `_work/` est ignoré par git.
+- Page de copier-coller (privée, compte de Cal) : https://claude.ai/artifact/MLySip1kEKs3gskcoywUCy
+
+**Higgsfield, ce qui marche et ce qui ne marche pas** :
+- Le connecteur MCP Higgsfield de Cal ne fait que lire (modèles, crédits, historique) : il ne génère pas. Cal refuse l'API à clé (payante à part de l'abonnement).
+- La **CLI officielle** génère sur l'abonnement : `npm i -g @higgsfield/cli`, puis `higgsfield auth login --port 8765`. Dans une session cloud, le navigateur ne s'ouvre pas : donner à Cal le lien du fichier `sign-in.html` ; après connexion, son navigateur affiche une erreur sur `localhost:8765/callback?code=…` ; il copie l'adresse (Ctrl+L, Ctrl+C) et la colle, et on la rejoue avec `curl` dans la session **sans changer la casse du code**, dans les minutes qui suivent. Puis `higgsfield workspace set <id>`. Skills compagnons : `npx skills add higgsfield-ai/skills` (installés dans le dossier du projet ; exclus de git localement via `.git/info/exclude`, ne pas les commiter).
+- Seedance 2.5 : `higgsfield generate create seedance_2_5 --mode omni_reference --duration 30 --resolution 720p --aspect_ratio 21:9 --generate_audio true --prompt "…" --image-references <fichier ou id> …` (images dans l'ordre). Limite : **8 générations simultanées** (`rate_limit_reached`). Coût constaté : 210 crédits pour 30 s en 720p, 240 crédits pour 15 s en 1080p. En 21:9, 720p donne 576 px de haut, 1080p 864 px.
+- Option brouillon 480p (`--draft true`), finalisable sept jours : à proposer pour tester un découpage.
+
+**Ouvert** : relancer les séquences avec la planche d'échelle (une seule d'abord, avec l'accord de Cal et le coût annoncé) ; placer les 27 animaux de ses images en rencontres ; S09 : ses lacs (image 38) sont vert acide, la Bible les dit rose et pourpre (signalé, non tranché).

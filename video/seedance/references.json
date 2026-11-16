@@ -1,0 +1,306 @@
+{
+ "note": "Ordre exact des images à joindre par séquence. higgsfield_media_id : image déjà envoyée sur le compte Higgsfield de Cal, réutilisable avec --image-references <id>. Les planches d'échelle n'ont pas encore été envoyées : les joindre depuis les images de Cal.",
+ "references": {
+  "seed": {
+   "role": "Seed",
+   "higgsfield_media_id": "956f358f-e7d2-4413-90e5-ffc7f7bf365e",
+   "fichier_cal": "3.jpg (planche Seed : 3 vues et 4 visages)"
+  },
+  "rob1": {
+   "role": "Rob1",
+   "higgsfield_media_id": "96fe33e0-11a3-4ee2-bf70-166c7ebce4b4",
+   "fichier_cal": "2.webp (planche Rob1, petit humanoïde, 4 vues)"
+  },
+  "big": {
+   "role": "Grand robot",
+   "higgsfield_media_id": "08cd6392-41d9-4ce8-80fc-a1fc6245bcb2",
+   "fichier_cal": "1.webp (grand robot bipède, 3 vues)"
+  },
+  "xeno": {
+   "role": "XENOPOD-01",
+   "higgsfield_media_id": "157fefc5-3d79-4012-8b5c-d658c280ba14",
+   "fichier_cal": "5.webp (XENOPOD-01 ; retirer le drapeau)"
+  },
+  "i05": {
+   "role": "Sentier d'argile rouge, arbres cramoisis",
+   "higgsfield_media_id": "181c31dc-f6ed-4307-a564-5c58751b4bee",
+   "image_cal": "image 05 de la planche contact",
+   "fichier_drive": "top.2.webp",
+   "dossier_drive": "seedance input"
+  },
+  "i95": {
+   "role": "Rivière dans un canyon, bosquets roses",
+   "higgsfield_media_id": "09062084-a5cf-4eec-a4c7-03b918a5bdca",
+   "image_cal": "image 95 de la planche contact",
+   "fichier_drive": "universal_upscale_0_264087a7-a5f6-495d-83b9-0563e6497112_0.jpg",
+   "dossier_drive": "seedance input"
+  },
+  "i85": {
+   "role": "Vallée verte, oeufs de pierre, falaises",
+   "higgsfield_media_id": "3eeae7e5-cece-4023-aebf-ec677c156a50",
+   "image_cal": "image 85 de la planche contact",
+   "fichier_drive": "nic007_httpss.mj.run-t-eKAoG3yU_cinematic_still__an_alien_lan_bb1d9914-2ac1-438f-89ce-28b3ff480e51_0.png",
+   "dossier_drive": "seedance input"
+  },
+  "i48": {
+   "role": "Caverne sombre, masses claires lumineuses",
+   "higgsfield_media_id": "5fab4407-8d66-4f1d-b195-9a95b8a6dfda",
+   "image_cal": "image 48 de la planche contact",
+   "fichier_drive": "nic007_httpss.mj.runN2sG_DB7rqk_Cinematic_epic_wide_shot_of_a_5028350c-5af1-4923-bba5-11625941950c_3.png",
+   "dossier_drive": "seedance input"
+  },
+  "i40": {
+   "role": "Forêt sombre, rais de lumière bleue, plantes violettes",
+   "higgsfield_media_id": "c43eec82-facd-41cb-b5c5-2bead562a17b",
+   "image_cal": "image 40 de la planche contact",
+   "fichier_drive": "httpss.mj.runZMpgThrww8E_httpss.mj.runHd5RfvWnEkI_httpss.mj.r_86310cfe-0c42-4e3b-b6d8-1f3f4e4b6259_3.png",
+   "dossier_drive": "seedance input"
+  },
+  "i55": {
+   "role": "Vallée, lichen turquoise, aiguilles rouges",
+   "higgsfield_media_id": "fa0a56fd-3bb8-44ee-b783-ba787b67a49e",
+   "image_cal": "image 55 de la planche contact",
+   "fichier_drive": "nic007_giant_red_raw_crystal_forming_towering_spires_--ar_238_c54feb6d-b327-488b-aafd-00913a88989d_3_bloom_subtle_4x.png",
+   "dossier_drive": "seedance input"
+  },
+  "i45": {
+   "role": "Lac sombre sous la brume, petits champignons lumineux",
+   "higgsfield_media_id": "c410f683-08e9-466f-ac3a-e2d26576762d",
+   "image_cal": "image 45 de la planche contact",
+   "fichier_drive": "httpss.mj.runZMpgThrww8E_httpss.mj.runHd5RfvWnEkI_httpss.mj.r_320898b4-ff26-446a-88a2-d94773365d29_3.png",
+   "dossier_drive": "seedance input"
+  },
+  "i60": {
+   "role": "Herbe bleue, arbres-champignons bleus, falaises pourpres",
+   "higgsfield_media_id": "2bd83724-ee17-4056-830a-4af47343e3ad",
+   "image_cal": "image 60 de la planche contact",
+   "fichier_drive": "httpss.mj.runZEetlWqRbeY_cinematic_wild_establishing_shot_In__ff6bd81c-bfae-47cb-8f3c-bbc982de214a_0.png",
+   "dossier_drive": "seedance input"
+  },
+  "i58": {
+   "role": "Herbe bleue, arbres-champignons, parois pourpres",
+   "higgsfield_media_id": "f61e7e44-41a3-494d-b510-d16a6af9feb4",
+   "image_cal": "image 58 de la planche contact",
+   "fichier_drive": "nic007_cinematic_wild_establishing_shot_In_the_style_of_a_Zac_e9f641e1-6c06-4641-b69c-2afe85585ab4_3.png",
+   "dossier_drive": "seedance input"
+  },
+  "i14": {
+   "role": "Plaine d'herbe dorée, mesa, tours-champignons",
+   "higgsfield_media_id": "fb51718e-1125-4a59-8418-1325a0798f0e",
+   "image_cal": "image 14 de la planche contact",
+   "fichier_drive": "hf_20260904_145835_e368be14-293f-4daa-ac5b-be8e10260e33.png",
+   "dossier_drive": "seedance input"
+  },
+  "i12": {
+   "role": "Plaine dorée, grande tour-champignon grise",
+   "higgsfield_media_id": "91588476-1425-4afb-976e-821a3a9bab25",
+   "image_cal": "image 12 de la planche contact",
+   "fichier_drive": "hf_20260904_150455_6c93bd70-8a9f-48d0-93d2-5072ca7a4fd3.png",
+   "dossier_drive": "seedance input"
+  },
+  "i09": {
+   "role": "Forêt sombre, rais de lumière, feuillage rouge",
+   "higgsfield_media_id": "e3f3c7e3-4591-473e-a937-49be36802c45",
+   "image_cal": "image 09 de la planche contact",
+   "fichier_drive": "alien_planet__red_forest_giant_yellow_canyon__cinematic_still__705f7482-54ed-4073-b2f2-8a6206e03bb2_1.png",
+   "dossier_drive": "seedance input"
+  },
+  "i42": {
+   "role": "Canyon orange en vagues, formes de champignons",
+   "higgsfield_media_id": "e7d5e013-24f6-4f29-a4d0-8f7b77bac09d",
+   "image_cal": "image 42 de la planche contact",
+   "fichier_drive": "httpss.mj.runZMpgThrww8E_httpss.mj.runHd5RfvWnEkI_httpss.mj.r_ce2db28f-7881-4780-8af7-3b0443dacd56_1.png",
+   "dossier_drive": "seedance input"
+  },
+  "i97": {
+   "role": "Baie dorée, colonnes de nuée lumineuse",
+   "higgsfield_media_id": "037bc563-686f-44d6-85de-122cb203c590",
+   "image_cal": "image 97 de la planche contact",
+   "fichier_drive": "A_cinematic_still_of_an_alien_planet_with_bleu_dark_sand_dese_45f50908-aa1a-43ef-a3ed-cd145779fd82_0.png",
+   "dossier_drive": "seedance input"
+  },
+  "i46": {
+   "role": "Cônes volcaniques, coulées orange en éventail",
+   "higgsfield_media_id": "97f9cd70-bd95-452e-b85d-9c79a99da76e",
+   "image_cal": "image 46 de la planche contact",
+   "fichier_drive": "httpss.mj.runZMpgThrww8E_httpss.mj.runHd5RfvWnEkI_httpss.mj.r_7f452f71-1d2f-4ddc-b076-7a386e1d0098_3.png",
+   "dossier_drive": "seedance input"
+  },
+  "i28": {
+   "role": "Végétation bleu électrique, sable noir, mer",
+   "higgsfield_media_id": "4905ce4c-a43c-4724-8631-2fc94bc4cf77",
+   "image_cal": "image 28 de la planche contact",
+   "fichier_drive": "beautiful_blue_vegetation_and_black_sand_landscape_and_unknow_3887353b-f2fe-4a39-aead-fe0213d1fdfe_0.png",
+   "dossier_drive": "seedance input"
+  },
+  "i36": {
+   "role": "Désert de sable noir et ocre, volcan",
+   "higgsfield_media_id": "0cd996e2-1950-4544-a32e-9cef9c5d2187",
+   "image_cal": "image 36 de la planche contact",
+   "fichier_drive": "magnific-1yCa0XIHTRXPdBlWfKJr-nic007_aerial_wide_shot_of_an_unknown_planet_black_sand_desert__ea01d14f-5e0d-4adb-84c4-54255151f062.jpeg",
+   "dossier_drive": "seedance input"
+  },
+  "i38": {
+   "role": "Lacs vert acide, croûte de sel blanche",
+   "higgsfield_media_id": "a72648c7-c5dc-4fd2-949b-fe816501bdb9",
+   "image_cal": "image 38 de la planche contact",
+   "fichier_drive": "national_geopgraphic_reportage_sur_an_unknown_planet_made_of__633cbc75-050c-49fe-9152-143d8f941efe_0.png",
+   "dossier_drive": "seedance input"
+  },
+  "i18": {
+   "role": "Plaine rose et crème, champignons rouge-rose",
+   "higgsfield_media_id": "19e4927a-e068-40ff-a04f-bfb3a34c0c4c",
+   "image_cal": "image 18 de la planche contact",
+   "fichier_drive": "a_wide_shot_of_landscape_of_an_a_unknown_planet__100m_long_gi_b411883b-7135-4503-bdea-aa7461752002_1.png",
+   "dossier_drive": "seedance input"
+  },
+  "i43": {
+   "role": "Arbre cramoisi, lune rouge, brume rouge",
+   "higgsfield_media_id": "0ad97b2d-607e-4152-87fd-cf4c99fde0c1",
+   "image_cal": "image 43 de la planche contact",
+   "fichier_drive": "httpss.mj.runZMpgThrww8E_httpss.mj.runHd5RfvWnEkI_httpss.mj.r_8a7cc909-cf54-404a-a6a0-2b980b2248e6_0.png",
+   "dossier_drive": "seedance input"
+  },
+  "i74": {
+   "role": "Bêtes laineuses blanches, grandes cornes (planche)",
+   "higgsfield_media_id": "c99fd1a1-8826-49e8-8235-4961d4f3e841",
+   "image_cal": "image 74 de la planche contact",
+   "fichier_drive": "photrealistic_and_cinematic_photography_of_a_Fantastic_mythic_d7c0e52c-04ac-40ff-a7cf-d98b0506f96f_2.png",
+   "dossier_drive": "seedance input"
+  },
+  "i26": {
+   "role": "Taureau blanc-bleu en plaine enneigée",
+   "higgsfield_media_id": "dc7683e5-5e46-491f-a442-1adfc2e5743c",
+   "image_cal": "image 26 de la planche contact",
+   "fichier_drive": "cinematic_full_body_shot_of_A_genetically_modified_hybrid_ani_ee571f41-4fde-476e-960c-fe13d89abe94_0.png",
+   "dossier_drive": "seedance input"
+  },
+  "board": {
+   "role": "Planche d'échelle Seed / Rob1",
+   "higgsfield_media_id": null,
+   "fichier_cal": "4.jpg recadrée sur Seed + petit Rob1 (planche d'échelle sans le grand robot)"
+  },
+  "board_full": {
+   "role": "Planche d'échelle complète",
+   "higgsfield_media_id": null,
+   "fichier_cal": "4.jpg (planche d'échelle complète : grand robot, Seed, petit Rob1)"
+  }
+ },
+ "sequences": {
+  "S01": {
+   "titre": "Rob1 refuse d'être porté",
+   "trajet": "Jungle, puis fleuve entre les tours",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "i05",
+    "i95",
+    "board"
+   ]
+  },
+  "S02": {
+   "titre": "La descente",
+   "trajet": "Vallée de pierre, puis caverne",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "i85",
+    "i48",
+    "board"
+   ]
+  },
+  "S03": {
+   "titre": "Click, click, click",
+   "trajet": "Caverne, puis montagne",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "big",
+    "i40",
+    "i55",
+    "board_full"
+   ]
+  },
+  "S04": {
+   "titre": "La veille",
+   "trajet": "Lac sous la brume, puis vallée bleue",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "i45",
+    "i60",
+    "board"
+   ]
+  },
+  "S05": {
+   "titre": "Les géants endormis",
+   "trajet": "Vallée bleue, puis plaine dorée",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "i58",
+    "i14",
+    "i74",
+    "i26",
+    "board"
+   ]
+  },
+  "S06": {
+   "titre": "La secousse",
+   "trajet": "Plaine dorée, puis forêt sombre",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "i12",
+    "i09",
+    "board"
+   ]
+  },
+  "S07": {
+   "titre": "L'aimant",
+   "trajet": "Canyon orange, puis baie dorée",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "i42",
+    "i97",
+    "board"
+   ]
+  },
+  "S08": {
+   "titre": "La plage qui s'allume",
+   "trajet": "Cônes volcaniques, puis plage de sable noir",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "i46",
+    "i28",
+    "board"
+   ]
+  },
+  "S09": {
+   "titre": "Ko-rê",
+   "trajet": "Désert de sable noir, puis lacs salés",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "i36",
+    "i38",
+    "board"
+   ]
+  },
+  "S10": {
+   "titre": "Les câbles",
+   "trajet": "Plaine rose, puis clairière rouge",
+   "refs_dans_l_ordre": [
+    "seed",
+    "rob1",
+    "big",
+    "xeno",
+    "i18",
+    "i43",
+    "board_full"
+   ]
+  }
+ }
+}
