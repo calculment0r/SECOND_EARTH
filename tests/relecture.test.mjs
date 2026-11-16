@@ -1,5 +1,8 @@
 // relecture/choix-de-relecture.html : l'outil de choix de la relecture (round 16).
 // La page est écrite à la main et autonome ; ces vérifications lisent ses données et ses fonctions sans écran.
+// Cal a répondu aux 23 choix le 16/11/2026 (round 17) et ses réponses sont intégrées aux documents :
+// la page est désormais une archive des questions telles qu'elles étaient posées. Ses citations décrivent
+// les documents d'avant l'intégration (commit 7dc9a53) ; elles ne sont donc plus comparées aux documents actuels.
 // node --test   (depuis la racine du dépôt)
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -68,14 +71,37 @@ test('chaque choix : un groupe, une question, des options avec leur conséquence
   }
 });
 
-test('chaque citation se retrouve mot pour mot dans le document nommé', () => {
+test('chaque choix cite un document connu (archive : les citations datent d\'avant le round 17)', () => {
   for (const c of D.choix) {
     assert.ok(c.dit.length > 0, `${c.id} : sans citation`);
     for (const x of c.dit) {
       assert.ok(textes[x.d], `${c.id} : document « ${x.d} » inconnu`);
-      assert.ok(textes[x.d].includes(norm(x.c)), `${c.id} : « ${x.c} » introuvable dans ${D.docs[x.d].n}`);
+      assert.ok(x.c && x.c.length > 5, `${c.id} : citation vide`);
     }
   }
+});
+
+test('round 17 : les réponses de Cal sont dans les documents', () => {
+  const t = textes;
+  // R1, R3, R4
+  assert.match(t.registre, /le Récit v2 fait foi, tel quel/);
+  assert.doesNotMatch(t.v2, /Carton : Jour|cartons Jour/);
+  assert.doesNotMatch(t.decoupage, /« Jour [−-]?\d/);
+  assert.ok(t.decoupage.includes('I AM FROM HERE NOW'));
+  // C1, C3, C4, D2, D3, D1
+  assert.ok(t.modules.includes(norm('E4, Acte IV, à la suite de M4')));
+  assert.doesNotMatch(t.modules, /prégénérique|à trancher|pose le caillou blanc au bord/);
+  assert.doesNotMatch(t.sequencier, /regard vers la mer et la fosse|ombre du Titan/);
+  assert.doesNotMatch(t.architecture, /ombre du Titan|vingt-deux/);
+  // V1 à V4
+  assert.match(t.lumiere, /Validé par Cal au round 17/);
+  assert.ok(t.massifs.includes(norm('blanche, rosée par endroits')));
+  assert.ok(t.foret.includes(norm('100 à 115 m, les plus hauts de Korê')));
+  assert.ok(t.jungle.includes(norm('| Voûtes | 90–110 m |')));
+  // D4, G1
+  assert.ok(t.decoupage.includes(norm('Rob (6-14), Seed (7-13), Korê (8-02), Je suis Seed (9-15)')));
+  assert.doesNotMatch(t.decoupage, /si A0[89] = A/);
+  assert.match(t.registre, /Le gel du round 16 est levé/);
 });
 
 test('les plans nommés dans le texte des choix existent dans le découpage', () => {
@@ -86,13 +112,13 @@ test('les plans nommés dans le texte des choix existent dans le découpage', ()
 });
 
 test('ce que la page affirme sur le découpage reste vrai', () => {
-  const avecCarton = film.plans.filter((p) => /carton|cartons/i.test(p.son_ecran) && /Jour/.test(p.son_ecran)).map((p) => p.n);
-  assert.deepEqual(D.choix.find((c) => c.id === 'R3').plans, avecCarton);
+  // R3 tranché : plus aucun carton ne porte de numéro de jour
+  assert.deepEqual(film.plans.filter((p) => /Jour\s[−-]?\d/.test(p.son_ecran)).map((p) => p.n), []);
   assert.equal(film.plans.filter((p) => /dôme/.test(p.note)).length, 19);
   assert.deepEqual(film.plans.filter((p) => /^Mot \d/.test(p.note)).map((p) => p.n), ['6-14', '7-13', '8-02', '9-15']);
   // les cinq crochets de C2 viennent après le plan de leur charnière
   const rang = Object.fromEntries(film.plans.map((p, i) => [p.n, i]));
-  const charniere = Object.fromEntries(film.charnieres.map((c) => [c.module, c.plan]));
+  const charniere = Object.fromEntries(film.charnieres.flatMap((c) => c.modules.map((m) => [m, c.plan])));
   for (const [plan, module] of [['1-10', 'M1'], ['4-09', 'M4'], ['7-20', 'M7'], ['8-02', 'M8']]) {
     assert.ok(rang[plan] > rang[charniere[module]], `${plan} après la charnière de ${module}`);
   }

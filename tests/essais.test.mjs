@@ -21,9 +21,8 @@ const donnees = JSON.parse(readFileSync(join(RACINE, 'data', 'essais.json'), 'ut
 const d = { film: filmPourPage(build()), docs: donnees.docs, promesses: donnees.promesses, savoir: donnees.savoir, toile: donnees.toile };
 const promesse = (id) => E.parId(d.promesses, id);
 const fait = (id) => E.parId(d.savoir.faits, id);
-const ax25 = E.axe(d.film, '25', 'apres-m4');
-const ax55 = E.axe(d.film, '55', 'apres-m4');
-const axPre = E.axe(d.film, '55', 'pregenerique');
+const ax25 = E.axe(d.film, '25');
+const ax55 = E.axe(d.film, '55');
 
 // Joue une suite d'actions et rend la vue après chacune : aucune zone ne doit porter de valeur manquante.
 function jouer(essai, actions, gardes = []) {
@@ -39,30 +38,34 @@ function jouer(essai, actions, gardes = []) {
   return { e, v: vues[vues.length - 1] };
 }
 
-test('axe : 25:00 pour le 25, 52:00 pour le 55, quelle que soit la place de M9', () => {
+test('axe : 25:00 pour le 25, 52:00 pour le 55 ; M9 suit M4 (round 17)', () => {
   assert.equal(ax25.total, 25 * 60);
   assert.equal(ax55.total, 52 * 60);
-  assert.equal(axPre.total, 52 * 60);
   assert.equal(Object.keys(ax25.module).length, 0);
   assert.equal(Object.keys(ax55.module).length, 9);
-  assert.equal(axPre.module.M9.t0, 0);
   // chaque module suit le plan de sa charnière ; M9 suit M4
-  for (const c of d.film.charnieres) if (c.module !== 'M9') assert.ok(ax55.module[c.module].t0 >= ax55.plan[c.plan].t1, c.id);
+  for (const c of d.film.charnieres) for (const m of c.modules) assert.ok(ax55.module[m].t0 >= ax55.plan[c.plan].t1, `${c.id} ${m}`);
   assert.equal(ax55.module.M9.t0, ax55.module.M4.t1);
   assert.equal(ax55.actes.at(-1).t1, ax55.total);
   const f = E.fenetre(ax55, '7');
   assert.equal(f.t1 - f.t0, (4 * 60 + 15) + 3 * 60);
+  const f4 = E.fenetre(ax55, '4');
+  assert.equal(f4.t1 - f4.t0, 7 * 60);
+  const f10 = E.fenetre(ax55, '10');
+  assert.equal(f10.t1 - f10.t0, 60);
 });
 
 test('promesses : les quatre états, lus sur les documents', () => {
   const totem25 = promesses.etatPromesse(ax25, promesse('totem'), []);
   assert.equal(totem25.mot, 'posée');
-  assert.deepEqual(totem25.ailleurs.map(E.nomPoint), ['M5']);
+  assert.deepEqual(totem25.ailleurs.map(E.nomPoint), ['M5', 'M8']);
   const totem55 = promesses.etatPromesse(ax55, promesse('totem'), []);
   assert.equal(totem55.mot, 'payée');
   assert.equal(totem55.distance, ax55.module.M5.t0 - ax55.plan['4-12'].t0);
-  assert.equal(promesses.etatPromesse(ax25, promesse('drone-casse'), []).mot, 'due');
-  assert.equal(promesses.etatPromesse(ax55, promesse('drone-casse'), []).mot, 'due');
+  assert.equal(promesses.etatPromesse(ax25, promesse('suite'), []).mot, 'due');
+  assert.equal(promesses.etatPromesse(ax55, promesse('suite'), []).mot, 'due');
+  // round 17 : il ne reste qu'une promesse due, la suite avec CAIN
+  assert.deepEqual(d.promesses.filter((pr) => promesses.etatPromesse(ax55, pr, []).mot === 'due').map((pr) => pr.id), ['suite']);
   assert.equal(promesses.etatPromesse(ax25, promesse('rob4-ici'), []).mot, 'payée sans avoir été posée');
   const caillou = promesses.etatPromesse(ax25, promesse('caillou-blanc'), []);
   assert.equal(caillou.mot, 'payée');
@@ -71,30 +74,33 @@ test('promesses : les quatre états, lus sur les documents', () => {
 
 test('promesses : un paiement qui précède sa promesse est signalé', () => {
   const inverse = (ax, id) => promesses.etatPromesse(ax, promesse(id), []).inverse.map((x) => E.nomPoint(x.p));
+  // les quatre échos assumés au round 17 (C2) ; le mot « Korê » n'en est plus un (D3)
+  assert.deepEqual(inverse(ax55, 'photo-elena'), ['1-10']);
+  assert.deepEqual(inverse(ax55, 'ombre-col'), ['4-09']);
   assert.deepEqual(inverse(ax55, 'compteur-87'), ['7-20']);
-  assert.deepEqual(inverse(ax55, 'mot-kore'), ['8-02']);
   assert.deepEqual(inverse(ax55, 'squelette-couche'), ['7-18']);
-  assert.deepEqual(inverse(axPre, 'squelette-couche'), ['3-02', '7-18']);
+  assert.deepEqual(inverse(ax55, 'retour-lacs'), []);
   assert.deepEqual(inverse(ax55, 'totem'), []);
+  assert.deepEqual(d.promesses.filter((pr) => inverse(ax55, pr.id).length).map((pr) => pr.id), ['photo-elena', 'ombre-col', 'compteur-87', 'squelette-couche']);
   for (const pr of d.promesses) assert.deepEqual(inverse(ax25, pr.id), [], pr.id);
 });
 
 test('promesses : les gestes passent par l\'attente, Garder les retient, Revenir les rend', () => {
-  let { e } = jouer(promesses, [{ type: 'sel', id: 'drone-casse' }, { type: 'assumer' }]);
+  let { e } = jouer(promesses, [{ type: 'sel', id: 'suite' }, { type: 'assumer' }]);
   assert.equal(e.attente.length, 1);
   assert.equal(e.gardes.length, 0);
-  assert.equal(promesses.prepare(d, e).liste.find((x) => x.pr.id === 'drone-casse').et.mot, 'assumée');
-  ({ e } = jouer(promesses, [{ type: 'sel', id: 'drone-casse' }, { type: 'assumer' }, { type: 'revenir' }]));
+  assert.equal(promesses.prepare(d, e).liste.find((x) => x.pr.id === 'suite').et.mot, 'assumée');
+  ({ e } = jouer(promesses, [{ type: 'sel', id: 'suite' }, { type: 'assumer' }, { type: 'revenir' }]));
   assert.equal(e.attente.length, 0);
-  assert.equal(promesses.prepare(d, e).liste.find((x) => x.pr.id === 'drone-casse').et.mot, 'due');
+  assert.equal(promesses.prepare(d, e).liste.find((x) => x.pr.id === 'suite').et.mot, 'due');
   const r = jouer(promesses, [
-    { type: 'sel', id: 'regard-mer' }, { type: 'armer' }, { type: 'zoom', id: '9' }, { type: 'case', plan: '9-01' },
-    { type: 'garder' }, { type: 'version', v: '55' }, { type: 'm9', v: 'pregenerique' }, { type: 'filtre', v: 'regarder' },
+    { type: 'sel', id: 'suite' }, { type: 'armer' }, { type: 'zoom', id: '10' }, { type: 'case', plan: '10-06' },
+    { type: 'garder' }, { type: 'version', v: '55' }, { type: 'filtre', v: 'regarder' },
     { type: 'case', module: 'M5' }, { type: 'zoom', id: '' }, { type: 'filtre', v: 'due' },
   ]);
-  assert.deepEqual(r.e.gardes, [{ type: 'paiement', promesse: 'regard-mer', cible: { plan: '9-01' } }]);
-  assert.match(promesses.texte(d, r.e), /« Le regard vers la mer et la fosse » : payée en 9-01/);
-  assert.match(promesses.texte(d, r.e), /en prégénérique/);
+  assert.deepEqual(r.e.gardes, [{ type: 'paiement', promesse: 'suite', cible: { plan: '10-06' } }]);
+  assert.match(promesses.texte(d, r.e), /« La suite : CAIN » : payée en 10-06/);
+  assert.doesNotMatch(promesses.texte(d, r.e), /prégénérique/);
   assert.equal(jouer(promesses, [{ type: 'retirer', i: '0' }], r.e.gardes).e.gardes.length, 0);
   // sans promesse choisie, une case s'ouvre en fiche et n'arme rien
   assert.match(jouer(promesses, [{ type: 'zoom', id: '5' }, { type: 'case', plan: '5-09' }]).v.cote, /Plan 5-09/);
@@ -215,5 +221,6 @@ test('pages : à jour, autonomes, une zone par morceau de vue', (t) => {
     for (const zone of Object.keys(v)) assert.ok(html.includes(`data-zone="${zone}"`), `${nom} : zone ${zone}`);
     assert.equal(html.split('</script>').length, 3, `${nom} : deux blocs de script, pas un de plus`);
   }
-  assert.match(p['index.html'], /10 éléments sur 32 promesses, 16 faits et 52 relations/);
+  assert.match(p['index.html'], /9 éléments sur 30 promesses, 16 faits et 52 relations/);
+  assert.doesNotMatch(Object.values(p).join('\n').replace(/<script type="application\/json"[\s\S]*?<\/script>/g, ''), /le docx fait foi|hors docx|prégénérique/);
 });

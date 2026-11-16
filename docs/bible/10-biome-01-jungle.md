@@ -32,10 +32,11 @@ De longues journées chaudes, de longues nuits fraîches, et une lumière magent
 
 ## Architecture végétale
 
-Cinq étages, chacun avec une raison physique à sa forme (proposé, sauf la règle de couleur qui est validée).
+Six étages, chacun avec une raison physique à sa forme (proposé, sauf la règle de couleur et la hauteur des arbres-voûtes, qui sont validées).
 
 | Étage | Hauteur | Lignée | Formes et raisons |
 | --- | --- | --- | --- |
+| Voûtes | 90–110 m | pourpre | **Arbres-voûtes** (FL-JP-01 ; hauteur validée au round 17). Ils dominent les cinq autres étages, deux à trois fois plus hauts que les émergents : tronc évasé en cloche, contreforts de 10 m (gravité de 1,13 g), branches qui se rejoignent en voûtes. Ce sont les voûtes que le lever de l'étoile traverse à l'Acte I. |
 | Émergents | 30–50 m | pourpre | **Arbres-spirales** du bestiaire. Troncs torsadés : l'air dense pousse ~30 % plus fort sur les troncs, et une fibre en spirale plie sans casser. Contreforts à la base (gravité de 1,13 g, sol mince, crues). |
 | Canopée | 20–30 m | pourpre | Feuilles larges et fines, translucides en contre-jour, à pointe d'égouttement. Le CO₂ à 2 % favorise une croissance rapide. **Lianes-cuivre** et leur latex. |
 | Sous-bois | 3–15 m | verte | Grandes feuilles qui captent la lumière magenta, formes de fougères et de palmiers, nombreuses plantes accrochées aux troncs. Pendant les crues, les racines respirent par des excroissances hors de l'eau, comme dans les forêts inondables terrestres. |

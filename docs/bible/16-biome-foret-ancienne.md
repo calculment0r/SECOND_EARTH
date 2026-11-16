@@ -7,7 +7,7 @@ Acte VII : Seed seule, blessée, au bord de la rivière rouge ; le fruit toxique
 
 Une vallée profonde et abritée, où des arbres ont traversé les extinctions. C'est là que la horde a emporté Seed.
 
-- **Les arbres-cathédrales.** 80 à 100 m, des milliers d'années. Ils sont proches de la hauteur maximale possible sur Korê (~106 à 115 m, à cause de la gravité) : pour faire monter l'eau jusqu'à la cime, ils la captent aussi dans le brouillard par leurs feuilles. Sur Terre, les séquoias côtiers de Californie font exactement cela.
+- **Les arbres-cathédrales.** 100 à 115 m, les plus hauts de Korê (validé, round 17), des milliers d'années. Ils touchent la hauteur maximale possible sur Korê (~106 à 115 m, à cause de la gravité) : pour faire monter l'eau jusqu'à la cime, ils la captent aussi dans le brouillard par leurs feuilles. Sur Terre, les séquoias côtiers de Californie font exactement cela.
 - **Des survivants.** Leur lignée existait déjà à l'époque des Titans. Jumeaux terrestres : le ginkgo et le pin de Wollemi, « fossiles vivants ».
 - **La rivière rouge.** [Validé : eau acide et métallique.] En amont, l'eau traverse des roches riches en sulfures de fer ; ils s'oxydent, produisent un acide et libèrent du fer dissous qui colore l'eau en rouge. L'eau n'est pas potable et brûle la peau à la longue. Seuls des microbes adaptés y vivent. Jumeau terrestre : le Rio Tinto, en Espagne, rouge et très acide, étudié par les agences spatiales comme modèle de Mars.
 - **La grande cascade.** Le point où la rivière quitte le plateau ; la vapeur qu'elle soulève nourrit le brouillard dont vivent les arbres.

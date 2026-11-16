@@ -9,7 +9,7 @@
 //
 // Rien n'est interprété : chaque champ est une cellule d'une table, ou un repère relevé
 // tel quel dans une cellule (charnière « E3 », « Mot 2 », « Crochet de M9 », « dôme »,
-// carton de jour). Les lignes du récit, ce que chaque personnage sait et les relations
+// carton de distance). Les lignes du récit, ce que chaque personnage sait et les relations
 // ne sont dans aucune table : elles ne sont pas dans ce fichier.
 //
 // Usage : node tools/build_film.mjs   (écrit data/film.json)
@@ -139,10 +139,11 @@ function lireArchitecture(actes) {
   for (const t of tables(ARCHITECTURE)) {
     if (t.section === 'Les emplacements') {
       for (const row of t.rows) {
-        const module = /^(M[1-9])\b/.exec(col(row, 3));
+        // Round 17 : E4 ouvre deux modules (M4 puis M9), E9 aucun. « module » = le premier, « modules » = tous, dans l'ordre.
+        const modules = [...col(row, 3).matchAll(/\bM[1-9]\b/g)].map((x) => x[0]);
         charnieres.push({
           id: col(row, 0), ou_docx: col(row, 1), dans_25: col(row, 2), dans_55: col(row, 3),
-          module: module ? module[1] : null, crochet: col(row, 4),
+          module: modules[0] ?? null, modules, crochet: col(row, 4),
         });
       }
     } else if (t.section === 'Les durées') {
@@ -150,7 +151,7 @@ function lireArchitecture(actes) {
         const m = tete.exec(col(row, 0));
         if (!m) continue;
         Object.assign(actes.find((a) => a.id === idActe(m[1])), {
-          // « M9 Les Titans 2:00 (placé après M4) » : seul le module en tête de terme compte
+          // « M4 Le col et l'ombre 3:00 + M9 Les Titans 2:00 » : un module par terme
           titre: m[2],
           modules_55: [...col(row, 2).matchAll(/(?:^|\+\s*)(M[1-9])\b/g)].map((x) => x[1]),
           duree_55_s: secondes(col(row, 3)),
@@ -188,7 +189,7 @@ export function build() {
   mots.sort((a, b) => a.rang - b.rang);
   return {
     titre: 'Second Earth · film de 25 min',
-    statut: 'proposé (découpage du 27/09/2026 ; le docx fait foi pour le récit)',
+    statut: 'proposé (découpage du 27/09/2026, amendé au round 17 du 16/11/2026 ; le Récit v2 fait foi pour le récit)',
     sources: [DECOUPAGE, SEQUENCIER, ARCHITECTURE, MODULES],
     duree_s: plans.reduce((s, p) => s + p.duree_s, 0),
     nb_plans: plans.length,

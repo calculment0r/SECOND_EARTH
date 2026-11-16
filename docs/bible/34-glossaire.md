@@ -21,7 +21,7 @@ Les noms et les codes du projet, pour l'équipe (Nina, BoraBora, image, son). Un
 | Rob3 | ~2 m, deux grosses roues molles ; soufre, fer, métaux ; colonisé par la mousse | Validé |
 | Rob4 | ~3 m, marin ; phosphore marin, tri phosphore/arsenic ; devenu hybride avec les filaments (JK-47B) | Validé |
 | Rob1/2 | Le Rob fusionné : bipède coureur, ~30 km/h, Seed dans un siège-harnais | Validé (round 11) |
-| Rob1/2/3 | Le tank à roues, Rob1 en pilote ; à partir de l'Acte V | Validé (docx) |
+| Rob1/2/3 | Le tank à roues, Rob1 en pilote ; il s'assemble pendant la horde (Acte VI, plan 6-11) | Validé (docx, round 17) |
 | Seed | SEED-03, alvéole H-01 ; clone partiel d'Elena Vasquez, 15 ans apparents, 23 % de mémoire transférée ; cheveux blancs ; muette jusqu'à « Rob ! » | Validé (docx) |
 | Elena Vasquez | Exobiologiste, 34 ans, source de l'ADN et de la mémoire de Seed ; sa voix ouvre le film | Validé (docx) |
 | CAIN | Alvéole H-02 ; ingénieur de terraformation, 35 ans, 100 % ; que Rob1 ramène à 14 ans et 21 % à la fin | Validé (docx) |
@@ -36,7 +36,7 @@ Les noms et les codes du projet, pour l'équipe (Nina, BoraBora, image, son). Un
 | Les plantes-chant, l'organisme-batterie, le totem | La flore de la caverne ; l'échantillon qui recharge Rob2 ; le petit sanctuaire où Seed l'enterre, et qui luit | Validé (docx) |
 | JK-47B / Symbiofilum | Les filaments symbiotiques de la mer d'arsenic qui soignent Seed dans Rob4 | Validé (docx) |
 | Le caillou blanc | Le cadeau du petit rongeur à l'oreille abîmée | Validé (docx) |
-| Les cartons de jour | « Jour 12 · 250 km » : la ponctuation des deux films | Proposé |
+| Les cartons de distance | « 250 km » : la ponctuation des deux films ; aucun numéro de jour à l'image | Validé (round 17) |
 | E1–E9, M1–M9 | Les neuf emplacements du 25 et les neuf modules du 55 (doc Script) | Proposé |
 | Cartel | Panneau d'expo en trois temps : SUR TERRE / SUR KORÊ / POURQUOI | Validé |
 | Le carton final | This is a fictional planet. / Earth is the only world we know. / Take care of it. | Validé |

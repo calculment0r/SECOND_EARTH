@@ -55,9 +55,11 @@ function point(pt, ou) {
   provenance(pt, ou, pt.plan);
 }
 
-test('le docx est la référence', () => {
-  assert.equal(essais.reference, 'docx');
-  assert.ok(textes.docx.length > 10000);
+test('le Récit v2 est la référence (round 17)', () => {
+  assert.equal(essais.reference, 'recit');
+  assert.equal(essais.docs.recit.fichier, 'docs/film/00-recit-v2.md');
+  assert.ok(textes.recit.length > 10000);
+  assert.ok(!essais.docs.docx, 'le docx d\'origine est une archive : plus aucune citation ne s\'y appuie');
 });
 
 test('promesses : identifiants uniques, points connus, provenance vérifiée', () => {
@@ -77,12 +79,15 @@ test('promesses : identifiants uniques, points connus, provenance vérifiée', (
   }
 });
 
-test('promesses : chaque crochet de l\'architecture y est, avec son module', () => {
+test('promesses : chaque module a son crochet de l\'architecture, lu dans la case de sa charnière', () => {
   for (const c of film.charnieres) {
-    const pr = essais.promesses.find((p) => p.dit.src === 'architecture' && norm(c.crochet) === norm(p.dit.cit));
-    assert.ok(pr, `${c.id} : crochet « ${c.crochet} » absent`);
-    assert.ok(pr.payee.some((pt) => pt.module === c.module), `${c.id} : ${pr.id} n'est pas payée par ${c.module}`);
+    for (const m of c.modules) {
+      const pr = essais.promesses.find((p) => p.dit.src === 'architecture' && norm(c.crochet).includes(norm(p.dit.cit)) && p.payee.some((pt) => pt.module === m));
+      assert.ok(pr, `${c.id} : aucun crochet de « ${c.crochet} » n'est payé par ${m}`);
+    }
   }
+  // Round 17 : le drone cassé et le regard vers la mer ne sont pas des crochets ; le mot « Korê » reste au cœur.
+  for (const id of ['drone-casse', 'regard-mer', 'mot-kore']) assert.ok(!essais.promesses.some((p) => p.id === id), id);
 });
 
 test('savoir : portées connues, modes connus, provenance vérifiée', () => {
@@ -138,5 +143,5 @@ test('ce qui est déduit ou manquant se compte', () => {
   ];
   const compte = (src) => tout.filter((p) => p.src === src).length;
   // Garde-fou : si ces nombres changent, la page d'accueil des essais doit le dire.
-  assert.deepEqual({ infere: compte('infere'), manquant: compte('manquant'), docx: compte('docx') > 100 }, { infere: 10, manquant: 4, docx: true });
+  assert.deepEqual({ infere: compte('infere'), manquant: compte('manquant'), recit: compte('recit') > 100 }, { infere: 9, manquant: 4, recit: true });
 });

@@ -5,7 +5,7 @@
 
 Toutes les décisions de worldbuilding validées par Cal, classées par thème. Un point listé ici n'est plus remis en question.
 
-**Les documents du projet (27/09)** : cette Bible (le monde) ; Phosphore, biomasse et seconde Terre (la thèse) ; Bestiaire de Korê et Flore de Korê (les espèces et les plantes) ; [la carte de Korê](https://claude.ai/artifact/PxfBWGF1dk4DJWuzUdXJvt) ; Script Second Earth (architecture 25 / 55, séquencier, modules, propositions, écarts, salle immersive) ; Découpage 25 min (150 plans) ; Journal de Rob1 (écrans, voix off, voix de la salle) ; Second Earth · Récit v2 (le docx réécrit avec le monde) ; Planches de dessin (fiches et prompts) ; Notes pour Nina (science, process IA, clips de test, dossier de décembre) ; [le QCM des arbitrages](https://claude.ai/artifact/GBg169jA4N56T1hG1jukoK) (rounds 1 à 16 tranchés au 28/09). Le statut de chaque point est indiqué dans les onglets (validé avec son round, ou proposé).
+**Les documents du projet (27/09)** : cette Bible (le monde) ; Phosphore, biomasse et seconde Terre (la thèse) ; Bestiaire de Korê et Flore de Korê (les espèces et les plantes) ; [la carte de Korê](https://claude.ai/artifact/PxfBWGF1dk4DJWuzUdXJvt) ; Script Second Earth (architecture 25 / 55, séquencier, modules, propositions, écarts, salle immersive) ; Découpage 25 min (150 plans) ; Journal de Rob1 (écrans, voix off, voix de la salle) ; Second Earth · Récit v2 (le docx réécrit avec le monde) ; Planches de dessin (fiches et prompts) ; Notes pour Nina (science, process IA, clips de test, dossier de décembre) ; [le QCM des arbitrages](https://claude.ai/artifact/GBg169jA4N56T1hG1jukoK) (rounds 1 à 16 tranchés au 28/09 ; round 17 tranché le 16/11 dans l'outil de relecture). Le statut de chaque point est indiqué dans les onglets (validé avec son round, ou proposé).
 
 ## Le monde
 
@@ -90,16 +90,16 @@ PERSEPHORA ne prend rien à la Terre : elle envoie des embryons et des machines,
 - Embryon modifié génétiquement pour respirer l'air de Korê (protocole testé sur Terre avant le départ).
 - Aucune modification pour la gravité : née sur place, elle s'anime comme une Terrienne, avec des sauts ~12 % moins hauts et des chutes et des pas ~6 % plus rapides.
 - Elle ne choisit pas ses paysages : elle doit rejoindre les Robs.
-- Elle marche jusqu'à Rob2 (~250 km, une dizaine de jours). Ensuite le Rob fusionné (Rob1+Rob2) court vite sur ses deux jambes et la porte : tout le voyage tient en **quelques semaines** (validé, round 10). Détail proposé : ~300 km par jour de 40 h, boucle de ~5 500 km, ~5 semaines avec les arrêts.
+- Elle marche jusqu'à Rob2 (~250 km, une dizaine de jours). Ensuite le Rob fusionné (Rob1+Rob2) court vite sur ses deux jambes et la porte : tout le voyage tient en **quelques semaines** (validé, round 10). Détail proposé : ~300 km par jour de 40 h, boucle de ~5 500 km, ~5 semaines avec les arrêts (la Chronologie du voyage compte ~6 semaines : écart non tranché). Round 17 : Rob1/2, le bipède, court de la caverne à Rob3 ; le tank à roues Rob1/2/3 s'assemble pendant la horde (plan 6-11) et fait la course et le retour (validé).
 
-**Les Robs** vont là où ils soupçonnent les briques de la vie. PERSEPHORA a choisi leurs sites depuis l'orbite, par spectroscopie, **à deux échelles** (validé, round 10) : Rob1 et Rob2 sont posés avec le XENOPOD, à moins de 250 km l'un de l'autre, là où l'eau, le carbone, l'azote et le phosphore du guano se touchent : c'est l'essentiel de la gestation. Rob3 et Rob4 sont **largués d'orbite à des milliers de kilomètres**, comme sondes de confirmation, sur le meilleur gisement de soufre et de métaux et sur la meilleure remontée marine de la planète. **Une seule sortie** (validé) : les Robs ne sont jamais revenus au XENOPOD ; de petits **drones** ont rapporté les échantillons. Les drones étaient rangés dans le XENOPOD : ils sont **tombés avec lui dans le sinkhole** (validé), et Seed et Rob1 ne peuvent pas s'en servir. Validé (round 11) : le relais radio du XENOPOD est tombé avec lui ; Rob1 n'a qu'une radio de proximité, d'où le silence de Rob2, Rob3 et Rob4 et la nécessité d'aller les chercher. Les drones (validé, rounds 11 et 13) : chaque XENOPOD collecteur (les robopods de Rob2, Rob3, Rob4 = XENOPOD-02, -03, -04) avait un drone porteur de ~15 kg, de quoi rapporter ce qui constitue le corps de Seed ; les trois drones ont livré leurs éléments rares au XENOPOD-01, y sont restés et sont tombés avec lui. Les robopods (docx, proposé dans la Bible) : chaque Rob de terrain a son robopod, mini-campement avec antenne-relais, station de recharge photovoltaïque et abri ; celui de Rob2 est tombé dans la crevasse, celui de Rob3 abrite la famille de rongeurs. Balises (proposé) : Rob1 reçoit une position par jour de chaque robopod, comme dans le docx, mais sans le relais du XENOPOD il ne peut ni commander, ni parler, ni joindre PERSEPHORA.
+**Les Robs** vont là où ils soupçonnent les briques de la vie. PERSEPHORA a choisi leurs sites depuis l'orbite, par spectroscopie, **à deux échelles** (validé, round 10) : Rob1 et Rob2 sont posés avec le XENOPOD, à moins de 250 km l'un de l'autre, là où l'eau, le carbone, l'azote et le phosphore du guano se touchent : c'est l'essentiel de la gestation. Rob3 et Rob4 sont **largués d'orbite à des milliers de kilomètres**, comme sondes de confirmation, sur le meilleur gisement de soufre et de métaux et sur la meilleure remontée marine de la planète. **Une seule sortie** (validé) : les Robs ne sont jamais revenus au XENOPOD ; de petits **drones** ont rapporté les échantillons. Les drones étaient rangés dans le XENOPOD : ils sont **tombés avec lui dans le sinkhole** (validé), et Seed et Rob1 ne peuvent pas s'en servir. Validé (round 11) : le relais radio du XENOPOD est tombé avec lui ; Rob1 n'a qu'une radio de proximité, d'où le silence de Rob2, Rob3 et Rob4 et la nécessité d'aller les chercher. Les drones (validé, rounds 11 et 13) : chaque XENOPOD collecteur (les robopods de Rob2, Rob3, Rob4 = XENOPOD-02, -03, -04) avait un drone porteur de ~15 kg, de quoi rapporter ce qui constitue le corps de Seed ; les trois drones ont livré leurs éléments rares au XENOPOD-01, y sont restés et sont tombés avec lui. Les robopods (docx, proposé dans la Bible) : chaque Rob de terrain a son robopod, mini-campement avec antenne-relais, station de recharge photovoltaïque et abri ; celui de Rob2 est tombé dans la crevasse, celui de Rob3 abrite la famille de rongeurs. Balises (validé, round 17) : Rob1 reçoit une position par jour de chaque robopod, comme dans le docx, mais sans le relais du XENOPOD il ne peut ni commander, ni parler, ni joindre PERSEPHORA.
 
 | Rob | Biome | Ce qu'il cherche |
 | --- | --- | --- |
 | Rob1 | Jungle, autour du XENOPOD, posé avec lui | Carbone, eau, azote fixé |
 | Rob2 | Terres rocheuses et cavernes, ~250 km du XENOPOD par le fleuve, posé avec lui | **Phosphore** : roches à apatite, guano des chauves-souris cristallines |
-| Rob3 | Forêt bioluminescente, largué d'orbite à ~1 200 km à vol d'oiseau (proposé, carte v2) | Soufre, fer, métaux traces |
-| Rob4 | Mer d'arsenic et fosse océanique, largué d'orbite à ~2 800 km à vol d'oiseau (proposé, carte v2) | Phosphore marin, preuve que la vie locale distingue phosphore et arsenic |
+| Rob3 | Forêt bioluminescente, largué d'orbite à ~1 200 km (carte v2, distance gardée au round 11) | Soufre, fer, métaux traces |
+| Rob4 | Mer d'arsenic et fosse océanique, largué d'orbite à ~2 800 km à vol d'oiseau, ~3 300 km le long du trajet (carte v2, distance du trajet gardée au round 11) | Phosphore marin, preuve que la vie locale distingue phosphore et arsenic |
 
 **Le sens de la fin.** La Phase 1 réussit : Korê a tout. Le mensonge de Rob1 (« non viable ») protège donc un monde complet, pas un monde stérile.
 
@@ -117,7 +117,7 @@ Autres fiches du trajet : Biome · Pitons karstiques, Biome · Forêt biolumines
 
 Ajoutés le 26/09 en attendant le round 12 (proposé) : Les Titans, Continents et océans, Cartels par acte.
 
-Ajoutés aussi le 26/09 (proposé) : Lumière et couleurs, Glossaire, et le document Flore de Korê (les plantes, biome par biome, avec leurs règles).
+Ajoutés aussi le 26/09 (proposé) : Lumière et couleurs, Glossaire, et le document Flore de Korê (les plantes, biome par biome, avec leurs règles). Lumière et couleurs est validé au round 17.
 
 Ajoutés le 27/09 après le round 14, validés au round 15 : Lunes, marées et calendrier (la grande lune, deux options pour la petite, les marées, le calendrier, le ciel jour par jour), Géologie et plaques (l'origine de chaque paysage du trajet, sept plaques, le séisme et le sinkhole), et douze espèces des continents B, C et D dans le Bestiaire de Korê.
 
@@ -156,7 +156,7 @@ Toutes les espèces, recalées et prêtes pour le dessin : Bestiaire de Korê.
 
 Le film raconte Seed ; l'expo raconte les Robs et la planète entière, en trois niveaux.
 
-- **Récit de référence** : SECOND_EARTH_STORY.docx fait foi (PERSEPHORA, Seed 15 ans, Elena exobiologiste) ; la capsule qu'il nomme XENOPOD-03 est renumérotée XENOPOD-01 (round 13). Le Récit v2 (27/09) est le docx réécrit avec le monde, à valider. Les autres versions sont des archives.
+- **Récit de référence** : le Récit v2 (27/09), le docx réécrit avec le monde, fait foi depuis le round 17 (16/11/2026), validé tel quel par Cal ; ses cartons ne portent plus de numéro de jour. SECOND_EARTH_STORY.docx (PERSEPHORA, Seed 15 ans, Elena exobiologiste), qui faisait foi jusque-là, devient une archive, comme les autres versions.
 - **Film de 25 min** : le récit de Seed, condensé.
 - **Salle immersive** : narration sans Seed, avec les Robs, développée avec BoraBora Studios. Le visiteur est chef de mission, avec un peu d'interaction, mais surtout contemplatif : il suit les Robs. L'esprit est celui du divertissement immersif contemporain, jamais scolaire.
 - **Expo classique** : organisée par biome. Cartels en trois temps, SUR TERRE / SUR KORÊ / POURQUOI, sans badge de certitude.
@@ -218,10 +218,28 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 - **Arc et fosse (G04)** : une subduction plane. La plaque de l'Océan 2 plonge en pente très douce ; l'arc volcanique s'ouvre ~1 200 km en arrière de la fosse ; le Golfe 2 est un bassin posé au-dessus de la plaque qui plonge. Rob4, la fosse et les distances du trajet ne bougent pas.
 - **Suite (N01)** : Cal relit et corrige ; rien n'avance tant que ses corrections ne sont pas passées.
 
+**Round 17 (16/11/2026), relecture de Cal : 23 décisions, intégrées le même jour.**
+
+- **Récit de référence (R1)** : le Récit v2 fait foi, tel quel ; le docx d'origine devient une archive.
+- **Balises (R2)** : validées. Rob1 reçoit une position par jour de chaque robopod, sans pouvoir commander ni parler.
+- **Cartons (R3)** : les distances restent à l'image (250, 680, 1 200, 3 300, 4 800 et 5 500 km) ; les numéros de jour en sortent, ainsi que les cartons sans distance (gestation, jours 15, 25, 28 et 41). Le temps passé se lit par le ciel et la lune. La Chronologie du voyage reste proposée, comme horloge de travail.
+- **Rob4 (R4)** : « Je suis d'ici maintenant » n'est vu que dans le souvenir de Rob1 (plan 9-11), la phrase affichée sur son écran. Aucun plan ajouté à l'Acte VII.
+- **Fils validés (F1 à F5)** : l'arc de la voix de Seed et les trois motifs sonores du monde, plantes-chant, cri « Ko-rê », sifflement (S2, P4) ; la lumière comme langue, un seul code de pulsations (S4) ; le totem revu au retour dans le 55 (S6) ; les visions d'Elena ne montrent que des souvenirs d'avant 2045, et M1 montre les mêmes scènes de son côté (S7) ; le gouffre dans les souvenirs de Rob1 avant le mensonge (S9).
+- **Les Titans dans le 55 (C1)** : M9 est placé après le col, à la suite de M4. L'Acte IV du 55 fait 7:00, l'Acte X 1:00 ; le total reste 52:00.
+- **Crochets et échos (C2)** : dans le 55, quatre plans du cœur arrivent après le module qu'ils annonçaient dans le 25 (photo d'Elena, ombre du col, couche sombre du canyon, compteur 87 km). C'est assumé : crochet dans le 25, écho dans le 55.
+- **Le drone cassé (C3)** : le plan 9-07 est une image, pas un crochet. **Le regard vers la mer (C4)** : un regard, sans suite ; la fosse n'est vue qu'à travers Rob4.
+- **Lumière et couleurs (V1)** : le document est validé ; c'est la règle de l'image.
+- **La neige du col (V2)** : blanche, rosée par endroits. **Les arbres-cathédrales (V3)** : 100 à 115 m, les plus hauts de Korê. **L'Arbre-voûte de la jungle (V4)** : 90 à 110 m.
+- **Le caillou blanc (D1)** : Seed le garde sur elle pendant le retour, jusqu'à l'alvéole H-01 (A08). **L'ombre du col (D2)** : un oiseau-prédateur vivant ; le Titan volant n'existe que comme squelette. **Le mot « Korê » dans le 55 (D3)** : M8 s'arrête quand la colonie est en vue ; le cri et le mot restent aux plans 8-02 et 8-03, dits une seule fois. **Corrections d'écriture (D4)** : en-tête du découpage (les quatre mots en 6-14, 7-13, 8-02 et 9-15 ; dix-neuf plans dôme), deux notes sans conditionnel, distances de Rob3 et Rob4. **Le coureur, puis le tank (D5)** : validé.
+- **Suite (G1)** : ces choix valent corrections de relecture. Le gel du round 16 est levé : le monde et le script reprennent.
+
 27/09 : le découpage plan par plan du 25 min est écrit (proposé, 16:9 par défaut) : Découpage 25 min.
 
 ## Questions ouvertes
 
 - [ ] Épigraphe du 55 : la phrase du docx est gardée pour l'instant (round 14) ; à revoir plus tard, à la demande de Cal.
 - [ ] Dessin des nouvelles espèces : quatre de la jungle, le grimpeur des cols, le Titan volant, l'oiseau des salins.
-- [ ] Relecture de Cal (round 16, N01) : en attente de ses corrections avant toute suite.
+- [x] Relecture de Cal (round 16, N01) : faite au round 17 (16/11/2026), 23 décisions intégrées ; le gel est levé.
+- [ ] Durée du voyage : ~5 semaines ici, ~6 semaines (41 jours) dans la Chronologie du voyage, restée proposée.
+- [ ] Le totem au retour (S6, validé round 17) : le retour passe par les lacs salés, le totem est avant Rob3, de l'autre côté de la boucle ; sa place sur le chemin du retour reste à écrire.
+- [ ] La phrase de Rob4 à l'écran (plan 9-11) : son texte anglais (« I AM FROM HERE NOW ») est une traduction proposée.

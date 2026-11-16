@@ -2,7 +2,7 @@
    à quelle distance ; dans le 25 seul, puis dans le 55 avec ses modules.
    États : posée (payée seulement dans le 55), payée, due (aucun paiement écrit), assumée (choix de Cal).
    Gestes : marquer une promesse due « assumée » ; lui donner un paiement en cliquant une case ;
-   déplacer le module M9. Rien ne s'écrit sans Garder, et rien ne sort du navigateur. */
+   passer du 25 au 55. Rien ne s'écrit sans Garder, et rien ne sort du navigateur. */
 (function () {
   'use strict';
   var E = typeof module === 'object' && module.exports ? require('./commun.js') : window.SE_ESSAIS;
@@ -235,8 +235,8 @@
       '<li><span class="es-mot es-mot-due">due</span> aucun paiement écrit</li>' +
       '<li><span class="es-mot es-mot-assumee">assumée</span> ouverte à dessein (ton choix)</li>' +
       '</ul><h3>Provenance</h3><ul class="es-liste es-legende">' +
-      '<li><span class="es-src es-src-docx">docx</span> écrit dans le récit de référence</li>' +
-      '<li><span class="es-src es-src-hors">hors docx</span> écrit dans le découpage, le séquencier, l\'architecture ou les modules</li>' +
+      '<li><span class="es-src es-src-docx">récit</span> écrit dans le récit de référence (Récit v2)</li>' +
+      '<li><span class="es-src es-src-hors">hors récit</span> écrit dans le découpage, le séquencier, l\'architecture ou les modules</li>' +
       '<li><span class="es-src es-src-inf">inféré</span> déduit, avec les plans qui le fondent</li>' +
       '</ul><p class="es-note">Dans le 55, chaque module est posé juste après le plan de sa charnière : c\'est une convention de cet essai, les documents disent seulement « le 55 ouvre ici ».</p>';
     return h;
@@ -264,7 +264,6 @@
   function texte(d, e) {
     var l = ['Second Earth · essai « Le livre des promesses » · mes choix'];
     e.gardes.forEach(function (g, i) { l.push((i + 1) + '. ' + decrire(d, g)); });
-    if (e.version === '55') l.push('Module M9 regardé : ' + (e.m9 === 'pregenerique' ? 'en prégénérique' : 'après le col (M4)'));
     return l.join('\n');
   }
 

@@ -37,7 +37,7 @@
     };
   }
 
-  // Les écarts d'un fait : entre le spectateur et chaque personnage, et le secret de Rob1 quand le docx l'écrit.
+  // Les écarts d'un fait : entre le spectateur et chaque personnage, et le secret de Rob1 quand le récit l'écrit.
   function ecarts(ax, fait, gs) {
     var sp = portee(ax, fait, 'spectateur', gs), out = [], devant = null;
     PERSONNAGES.forEach(function (k) {
@@ -275,15 +275,15 @@
       '<li><span class="es-mot es-ec-ironie">ironie</span> le spectateur sait, le personnage non</li>' +
       '<li><span class="es-mot es-ec-suspense">suspense</span> pareil, quand le fait est une menace (classement de moi)</li>' +
       '<li><span class="es-mot es-ec-surprise">surprise</span> un personnage savait avant le spectateur</li>' +
-      '<li><span class="es-mot es-ec-secret">secret</span> Rob1 sait et le tait à Seed : le docx l\'écrit</li>' +
+      '<li><span class="es-mot es-ec-secret">secret</span> Rob1 sait et le tait à Seed : le récit l\'écrit</li>' +
       '<li><span class="es-mot es-ec-manque">non écrit</span> aucun document ne le dit</li>' +
       '</ul><h3>Sur une portée</h3><ul class="es-liste es-legende">' +
       '<li><i class="es-pt es-mode-apprend"></i> sait ou apprend</li>' +
       '<li><i class="es-pt es-mode-pressent"></i> pressent, sans les détails</li>' +
       '<li><i class="es-pt es-mode-tort"></i> croit à tort</li>' +
       '</ul><h3>Provenance</h3><ul class="es-liste es-legende">' +
-      '<li><span class="es-src es-src-docx">docx</span> écrit dans le récit de référence</li>' +
-      '<li><span class="es-src es-src-hors">hors docx</span> écrit dans un autre document du script</li>' +
+      '<li><span class="es-src es-src-docx">récit</span> écrit dans le récit de référence (Récit v2)</li>' +
+      '<li><span class="es-src es-src-hors">hors récit</span> écrit dans un autre document du script</li>' +
       '<li><span class="es-src es-src-inf">inféré</span> déduit, avec les plans qui le fondent</li>' +
       '<li><span class="es-src es-src-man">non écrit</span> manquant</li></ul>';
     return h;

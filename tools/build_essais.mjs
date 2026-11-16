@@ -31,7 +31,7 @@ const FONTS = 'https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;50
 const ESSAIS = [
   {
     nom: 'promesses', titre: 'Le livre des promesses', js: 'promesses.js', partie: 'promesses',
-    lede: "Chaque promesse du film de 25 min : le plan où elle est posée, le plan ou le module qui la paie, la distance entre les deux. Le docx fait foi ; ce qui vient d'un autre document ou d'une déduction est marqué.",
+    lede: "Chaque promesse du film de 25 min : le plan où elle est posée, le plan ou le module qui la paie, la distance entre les deux. Le Récit v2 fait foi ; ce qui vient d'un autre document ou d'une déduction est marqué.",
     carte: "Les crochets que le 55 déplie et les promesses tenues à l'intérieur du 25 : posée, payée, due, assumée.",
     corps: `<div class="es-corps"><div class="es-gauche-col">
 <div class="es-fig"><div class="es-fig-in" data-zone="figure"></div></div>
@@ -40,7 +40,7 @@ const ESSAIS = [
   },
   {
     nom: 'savoir', titre: 'La Partition du savoir', js: 'savoir.js', partie: 'savoir',
-    lede: "Qui sait quoi, et depuis quel plan : le spectateur, Seed, Rob1, PERSEPHORA et la Terre. L'écart entre deux portées se dessine et se nomme d'un mot. Le docx fait foi ; ce qui est déduit ou manquant est marqué.",
+    lede: "Qui sait quoi, et depuis quel plan : le spectateur, Seed, Rob1, PERSEPHORA et la Terre. L'écart entre deux portées se dessine et se nomme d'un mot. Le Récit v2 fait foi ; ce qui est déduit ou manquant est marqué.",
     carte: 'Une portée par personnage et une pour le spectateur : ironie, suspense, surprise, secret.',
     corps: `<div class="es-corps"><div class="es-gauche-col">
 <div class="es-fig"><div class="es-fig-in" data-zone="figure"></div></div>
@@ -50,7 +50,7 @@ const ESSAIS = [
   },
   {
     nom: 'toile', titre: 'La toile des personnages', js: 'toile.js', partie: 'toile',
-    lede: "Les personnages et ce que chacun est pour l'autre, plan par plan. Le curseur parcourt les 150 plans du film de 25 min ; chaque relation porte le plan depuis lequel elle vaut et sa citation du docx.",
+    lede: "Les personnages et ce que chacun est pour l'autre, plan par plan. Le curseur parcourt les 150 plans du film de 25 min ; chaque relation porte le plan depuis lequel elle vaut et sa citation du Récit v2.",
     carte: "Ce que A est pour B n'est pas ce que B est pour A : deux demi-liens, qui changent au fil des plans.",
     corps: `<div class="es-corps"><div class="es-gauche-col">
 <div class="es-curseur" data-zone="curseur"></div>
@@ -75,7 +75,7 @@ function filmPourPage(film) {
     duree_s: film.duree_s,
     actes: film.actes.map(({ id, nom, titre, duree_s }) => ({ id, nom, titre, duree_s })),
     plans: film.plans.map(({ n, acte, ordre, debut_s, duree_s, cadre, action, son_ecran, note, mot }) => ({ n, acte, ordre, debut_s, duree_s, cadre, action, son_ecran, note, mot })),
-    charnieres: film.charnieres.map(({ id, plan, module }) => ({ id, plan, module })),
+    charnieres: film.charnieres.map(({ id, plan, module, modules }) => ({ id, plan, module, modules })),
     modules: film.modules.map(({ id, titre, duree_s, contenu, enjeu }) => ({ id, titre, duree_s, contenu, enjeu })),
     mots: film.mots,
   };
@@ -120,7 +120,7 @@ ${queue}
 }
 
 function tete(titre, lede) {
-  return `<div class="head accent"><div class="meta"><span class="lbl or">Film · essai de lecture</span><span class="lbl">proposé · le docx fait foi</span></div><h1>${esc(titre)}</h1><p class="lede">${esc(lede)}</p></div>`;
+  return `<div class="head accent"><div class="meta"><span class="lbl or">Film · essai de lecture</span><span class="lbl">proposé · le Récit v2 fait foi</span></div><h1>${esc(titre)}</h1><p class="lede">${esc(lede)}</p></div>`;
 }
 
 function pageEssai(essai, film, donnees) {
@@ -163,14 +163,12 @@ function pageIndex(film, donnees) {
   for (const r of donnees.toile.relations) range(r, `Relation ${nomNoeud(r.de)} → ${nomNoeud(r.vers)}, « ${r.mot} » (${r.depuis})`);
 
   const regarder = [], avant = [], dues = [];
-  const ax55 = E.axe(d.film, '55', 'apres-m4'), axPre = E.axe(d.film, '55', 'pregenerique');
+  const ax55 = E.axe(d.film, '55');
   for (const pr of donnees.promesses) {
     for (const al of pr.alertes || []) regarder.push(`<strong>${esc(pr.titre)}</strong> : ${esc(al.texte)}`);
     const et = promesses.etatPromesse(ax55, pr, []);
     if (et.inverse.length) {
       avant.push(`<strong>${esc(pr.titre)}</strong> : ${esc(et.payee.map((y) => E.nomPoint(y.p)).join(', '))} passe avant le plan ${esc(et.inverse.map((y) => E.nomPoint(y.p)).join(', '))}.`);
-    } else if (promesses.etatPromesse(axPre, pr, []).inverse.length) {
-      avant.push(`<strong>${esc(pr.titre)}</strong> : seulement si M9 passe en prégénérique.`);
     }
     if (et.mot === 'due') dues.push(`<strong>${esc(pr.titre)}</strong>, posée en ${esc(pr.posee.map(E.nomPoint).join(', '))}.`);
   }
@@ -188,8 +186,8 @@ ${tete('Essais de lecture du film', "Trois façons de regarder le film de 25 min
 <div class="es-cartes">${cartes}</div>
 <div class="prose">
 <h2>Comment lire</h2>
-<p>Le docx de référence fait foi. Chaque élément porte sa provenance : une citation du docx ; une citation d'un autre document du script (découpage, séquencier, architecture, modules), marquée « hors docx » ; une déduction, marquée « inféré », avec les plans qui la fondent ; ou « non écrit » quand aucun document ne le dit. Les citations sont vérifiées mot pour mot contre les documents à chaque construction.</p>
-<p>Les numéros de plan sont ceux du découpage (150 plans, 25:00), au statut proposé. Dans le 55, chaque module est posé juste après le plan de sa charnière : c'est une convention des essais, les documents disent seulement « le 55 ouvre ici ».</p>
+<p>Le Récit v2 fait foi depuis la relecture du 16/11/2026 (round 17) ; le docx d'origine est une archive. Chaque élément porte sa provenance : une citation du Récit v2, marquée « récit » ; une citation d'un autre document du script (découpage, séquencier, architecture, modules), marquée « hors récit » ; une déduction, marquée « inféré », avec les plans qui la fondent ; ou « non écrit » quand aucun document ne le dit. Les citations sont vérifiées mot pour mot contre les documents à chaque construction.</p>
+<p>Les numéros de plan sont ceux du découpage (150 plans, 25:00), au statut proposé. Dans le 55, chaque module est posé juste après le plan de sa charnière : c'est une convention des essais, les documents disent seulement « le 55 ouvre ici ». Le module des Titans (M9) suit celui du col (M4) : tranché au round 17.</p>
 <p>Les gestes (marquer une promesse assumée, lui donner un paiement, poser un « apprend », tirer un lien) restent dans le navigateur. « Copier mes choix » en fait un texte à coller dans le chat.</p>
 <h2>Ce qui est déduit</h2>
 <p>${deduit.length} éléments sur ${donnees.promesses.length} promesses, ${donnees.savoir.faits.length} faits et ${donnees.toile.relations.length} relations.</p>
@@ -197,14 +195,14 @@ ${liste(deduit)}
 <h2>Ce qui n'est écrit nulle part</h2>
 ${liste(manque)}
 <h2>Ce que les essais font remonter</h2>
-<p>Des constats, à trancher par l'auteur ; rien n'est corrigé.</p>
-<h3>Dans l'ordre du 55, des crochets viennent après le module qui les paie</h3>
-<p>Le plan qui pose la promesse reste à sa place dans le 55 ; le module s'ouvre à la charnière, avant lui. Cela ne dépend pas de la convention des essais : ces plans sont après le plan de charnière dans le découpage.</p>
+<p>Des constats. Ceux du 16/11/2026 ont été tranchés par l'auteur au round 17 ; ce qui reste ouvert est dit ci-dessous.</p>
+<h3>Crochet dans le 25, écho dans le 55</h3>
+<p>Le plan qui pose la promesse reste à sa place dans le 55 ; le module s'ouvre à la charnière, avant lui. Tranché au round 17 : c'est assumé, le même plan annonce dans le 25 et rappelle dans le 55.</p>
 ${liste(avant)}
 <h3>Promesses dues, dans le 25 comme dans le 55</h3>
 <p>Aucun document ne dit où elles sont payées.</p>
 ${liste(dues)}
-<h3>Deux écarts entre documents</h3>
+<h3>Écarts entre documents</h3>
 ${liste(regarder)}
 <h3>Ce que Seed ne sait pas à la fin du 25</h3>
 ${liste(ouverts)}

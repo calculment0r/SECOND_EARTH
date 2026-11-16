@@ -24,27 +24,24 @@ C'est tout l'arc de Rob1 en grammaire : du rapport à la personne, et un dernier
 
 ## Les écrans du 25 min
 
-Texte définitif de chaque écran, en anglais, dans l'ordre des plans. Les cartons de jour sont inclus. Un écran = trois lignes au plus ; ce qui dépasse est coupé au montage, pas ajouté.
+Texte définitif de chaque écran, en anglais, dans l'ordre des plans. Les cartons sont inclus : depuis le round 17 (16/11/2026), ils ne portent que les distances, sans numéro de jour, et les cartons sans distance ont disparu. Un écran = trois lignes au plus ; ce qui dépasse est coupé au montage, pas ajouté.
 
 | Plan | Écran | Texte |
 | --- | --- | --- |
 | P-01 | Carton | 2045 |
 | P-05 | Carton | 2045 → 2098 · 11.4 LIGHT-YEARS · 53 YEARS |
 | P-06 | Carton | 61 CYGNI Ab |
-| P-08 | Carton | DAY −45 · XENOPOD-01 · GROUND NODE ACTIVE |
 | 1-01 | Fenêtres | ROB2 · PHOSPHORUS: FOUND / ROB3 · SULFUR · IRON: FOUND / ROB4 · MARINE PHOSPHORUS: FOUND |
 | 1-02 | Rob1 | DRONES 1–3 DOCKED · SAMPLES: 41.6 KG · ANALYSIS: PASS |
 | 1-03 | Cuve | PHASE 1 – COLLECTION: COMPLETE / PHASE 2 – HUMAN VIABILITY: INITIALIZING |
-| 1-04 | Cartons | DAY −42 → DAY 0 |
 | 1-06 | Cuve | INCUBATION HALTED / SUBJECT AGE: 15 YEARS / MEMORY TRANSFER: 23 % (INCOMPLETE) |
 | 1-08 | Rob1 | FAILURE REPORT → PERSEPHORA / TRANSMITTED / EXPECTED REPLY: WEEKS |
 | 1-10 | Écran | ELENA VASQUEZ · EXOBIOLOGIST · 34 |
 | 1-11 | Rob1 | SUBJECT: SEED-03 / DNA SOURCE: ELENA VASQUEZ (PARTIAL CLONE) / MEMORY: 23 % · AGE: 15 (APPARENT) |
-| 1-13 | Cartons | DAY 1 · DAY 2 |
 | 1-16 | Tablette | PHASE 1: COMPLETE / PHASE 2: IN PROGRESS / SUBJECT ROLE: PROOF OF CONCEPT |
 | 1-22 | Carte | XENOPOD: UNREACHABLE · COMM LINK: LOST / BEACONS ONLY: ROB2 MOVING · ROB3 ERROR · ROB4 AT SEA / NO COMMAND LINK |
 | 2-03 | Rob1 | WATER: SAFE · pH 7.1 · LIMESTONE BUFFER |
-| 2-04 | Carton | DAY 12 · 250 KM |
+| 2-04 | Carton | 250 KM |
 | 2-06 | Carte | BEACON: HERE · ROB2: NOT FOUND |
 | 3-03 | Rob2 | BATTERY: 4 % |
 | 3-06 | Visage | (animation : quelque chose comme de la fierté) |
@@ -53,43 +50,39 @@ Texte définitif de chaque écran, en anglais, dans l'ordre des plans. Les carto
 | 3-14 | Visage | CLIMB |
 | 3-16 | VS | GREEN · GREEN · GREEN · RED (FRAGILE) · GREEN |
 | 3-17 | VS | RED · RED · RECALC: IMPOSSIBLE |
-| 3-20 | Carton | DAY 15 |
 | 4-01 | Carte | ROB2 RANGE: 41 % · XENOPOD: OUT OF RANGE / ROBOPOD-3: SOLAR OK · IN RANGE |
-| 4-03 | Carton | DAY 17 · 680 KM |
+| 4-03 | Carton | 680 KM |
 | 4-04 | Rob1 | LOW POWER – EARLIER THAN ESTIMATED / TERRAIN · LOAD · ROB1 PRIORITY DRAW |
 | 4-07 | Rob1 | LITHIUM IONS: HIGH · ORGANIC PHOSPHATES · 340 mS/cm / POTENTIAL: 3.7 V PER CELL / LIVING BATTERY |
 | 4-08 | Rob2 | +5.0 % … +5.1 % … +5.2 % |
 | 4-10 | Rob2 | BATTERY: CRITICAL |
 | 5-02 | Tablette | ASSEMBLY 1+2+3: DESIGNED · PILOT: ROB1 |
-| 5-05 | Carton | DAY 21 · 1 200 KM |
+| 5-05 | Carton | 1 200 KM |
 | 5-10 | Rob1 | BEHAVIORAL OBSERVATION / INTERSPECIES CONTACT: POSITIVE · SYMBOLIC OFFERING / SEED: ADAPTED EMPATHIC RESPONSE / minor → IMPORTANT |
 | 5-11 | Rob1 | WATER: 1.2 L · FOOD: 3–4 DAYS / STATUS: CRITICAL |
-| 7-01 | Carton | DAY 25 |
-| 7-14 | Carton | DAY 28 |
 | 7-15 | Rob1 | ALIEN TOXIN · COMPOSITION: UNKNOWN / HUMAN IMMUNE SYSTEM: INCOMPATIBLE / ORGAN FAILURE: CRITICAL · NO ANTIDOTE |
 | 7-16 | Rob1 | MATCH · SOURCE: ROB4 DATABASE / ORGANISM JK-47B · ENZYMATIC FILTRATION / EFFICACY: 73 % · ARSENIC SEA · SECTOR NORTH |
 | 7-20 | Rob1 | HEART: 156 · TEMP: 40.2 · SpO₂: 88 % / FAILURE: IMMINENT / ROB4 > 87 KM |
 | 7-23 | Traduction | (pulsations) BRING HER |
-| 7-26 | Carton + Rob1 | DAY 32 · 3 300 KM / FOOD: < 1 DAY · XENOPOD: TO RECOVER · REPORT: DUE |
-| 8-01 | Carton | DAY 37 · 4 800 KM |
+| 7-26 | Carton + Rob1 | 3 300 KM / FOOD: < 1 DAY · XENOPOD: TO RECOVER · REPORT: DUE |
+| 8-01 | Carton | 4 800 KM |
 | 8-02 | Rob1 | KORÊ ? |
 | 8-03 | Carton | KORÊ · 61 CYGNI Ab |
-| 9-01 | Carton | DAY 39 · 5 500 KM |
+| 9-01 | Carton | 5 500 KM |
 | 9-03 | Rob1 | FOUND |
 | 9-07 | Rob1 | BATTERY: 0 % · INCUBATOR: INTACT · FOOD: INTACT / DRONE 2: DESTROYED |
 | 9-09 | Comm | NEW MESSAGE · FROM: PERSEPHORA · TO: XENOPOD-01 / PHASE 2 FAILURE: ACKNOWLEDGED · PROTOCOL: NOT MET / SUBJECT SEED: INCOMPLETE · NOT QUALIFIED |
 | 9-10 | Comm | NEW PROTOCOL / MISSION LEADER: ROB-1 / AUTHORITY: DETERMINE PLANET VIABILITY · REPORT: YES / NO |
-| 9-11 | Rob1 | PROCESSING … PROCESSING … PROCESSING … |
+| 9-11 | Rob1 | PROCESSING … PROCESSING … PROCESSING … / (souvenir de Rob4) I AM FROM HERE NOW |
 | 9-12 | Comm | MISSION REPORT XENOPOD-01 / FINAL EVALUATION: NOT VIABLE · REASON: INCOMPATIBLE ENVIRONMENT / PHASE 3: ABORTED · TRANSMITTED · EARTH: RECEIPT IN 11.4 YEARS |
 | 9-14 | Visage | COMMUNICATOR: DAMAGED / REPAIR: IM POSSIBLE (le IM qui pulse) |
-| 10-01 | Carton | DAY 41 |
 | 10-02 | Incubateur | RESOURCES · C 53 % · N 51 % · P 49 % · H₂O 58 % / INSUFFICIENT FOR PHASE II / → AWAITING BIOLOGICAL MATTER |
 | 10-03 | Alvéoles | XENOPOD-01 / H-01 / SEED · XENOPOD-01 / H-02 / CAIN |
 | 10-04 | Incubateur | SUBJECT: CAIN · MALE / EXIT AGE: 35 · TERRAFORMING ENGINEER / MEMORY: 100 % · INCUBATION: 7 DAYS |
 | 10-05 | Incubateur | EXIT AGE: 35 → 14 / MEMORY: 100 % → 21 % / INCUBATION: AUTO · RESOURCES: SUFFICIENT |
 | 10-06 | Carton | This is a fictional planet. / Earth is the only world we know. / Take care of it. |
 
-Deux écrans sont conditionnels : la dernière ligne de 9-12 (QCM A09) et l'écran 7-23, qui n'existe que si Rob4 est traduit ; sinon, les pulsations seules.
+La dernière ligne de 9-12 est validée (A09). Un écran reste conditionnel : 7-23, qui n'existe que si Rob4 est traduit ; sinon, les pulsations seules. Au plan 9-11, la phrase de Rob4, « Je suis d'ici maintenant », s'affiche parmi les souvenirs (round 17) ; son texte anglais est une traduction proposée, à confirmer.
 
 ## La voix du 55
 

@@ -168,7 +168,7 @@
       '<li><span class="es-trait-leg es-lien-sortant"></span> part du personnage choisi</li>' +
       '<li><span class="es-trait-leg es-lien-entrant"></span> arrive au personnage choisi</li>' +
       '<li><span class="es-trait-leg es-lien-inf"></span> inféré, ou ton choix : en pointillé</li>' +
-      '<li><span class="es-src es-src-docx">docx</span> chaque relation écrite porte sa citation du récit de référence</li></ul>' +
+      '<li><span class="es-src es-src-docx">récit</span> chaque relation écrite porte sa citation du récit de référence (Récit v2)</li></ul>' +
       '<p class="es-note">Une paire absente de la toile n\'a aucune relation écrite : rien n\'est supposé.</p>';
     return h;
   }

@@ -1,7 +1,7 @@
 <!-- Source : Claude Docs, Bible Second Earth, onglet « Chronologie du voyage », node 7dafeff3-ab1f, exporté le 28/09/2026 -->
 # Chronologie du voyage
 
-Six semaines environ : ~41 jours terrestres, soit ~25 jours de Korê de 40 h, des dernières soirées ambrées à la première aube ambrée. Les durées reposent sur les points validés (250 km à pied jusqu'à Rob2, Rob fusionné à ~30 km/h et ~10 h de course par jour de 40 h, saison noire au milieu du film) ; les dates elles-mêmes sont proposées.
+Six semaines environ : ~41 jours terrestres, soit ~25 jours de Korê de 40 h, des dernières soirées ambrées à la première aube ambrée. Les durées reposent sur les points validés (250 km à pied jusqu'à Rob2, Rob fusionné à ~30 km/h et ~10 h de course par jour de 40 h, saison noire au milieu du film) ; les dates elles-mêmes sont proposées. Round 17 (16/11/2026) : les numéros de jour ne s'affichent plus à l'image, les cartons ne gardent que les distances. Cette chronologie reste l'horloge de travail du film (ciel, lune, marées), au statut proposé.
 
 ## Le ciel pendant le voyage
 
@@ -32,7 +32,7 @@ Jours terrestres depuis la naissance de Seed ; les distances sont celles de la c
 | 19 à 23 | V | Forêt bioluminescente, 1 200 km | Rob3 colonisé par la mousse ; la famille de rongeurs ; le feu de camp | Saison noire à son cœur : la forêt à son maximum |
 | 23 à 25 | VI | Hautes Plaines, ~1 700 km | La horde de buffles albinos fuit un feu et sépare Seed des Robs | Nuits noires, feux de savane à l'horizon |
 | 25 à 28 | VII | Forêt ancienne, ~2 000 km | Seed seule ; la rivière rouge qu'elle ne peut pas boire ; le fruit ; les visions d'Elena | Nuits noires, brouillard |
-| 28 à 30 | VII | La course, canyon, cristal, arc, ~3 300 km | Le tank (Rob1/2/3, à roues depuis l'Acte V, comme dans le docx) la retrouve et fonce sans s'arrêter : ~1 300 km en deux jours | Flammes bleues de soufre la nuit |
+| 28 à 30 | VII | La course, canyon, cristal, arc, ~3 300 km | Le tank (Rob1/2/3, à roues, assemblé pendant la horde de l'Acte VI, comme dans le docx) la retrouve et fonce sans s'arrêter : ~1 300 km en deux jours | Flammes bleues de soufre la nuit |
 | 30 à 32 | VII | Mer d'arsenic, Rob4 | Rob4 hybride ; Seed guérie dans son liquide ; cicatrices lumineuses | Jour 32 : première aube ambrée, quand Seed se réveille guérie |
 | 32 à 39 | Retour | Lacs salés pourpres, ~4 800 km | Le cri « Korê » d'une colonie entière ; Rob1 et Seed rebaptisent la planète | Aubes ambrées de plus en plus longues |
 | 39 à 41 | IX–X | Sinkhole, ~5 500 km | Extraction du XENOPOD ; le drone cassé au fond ; le message de PERSEPHORA ; le mensonge de Rob1 ; CAIN | B se lève bien avant le soleil : la jungle retrouve ses nuits ambrées |

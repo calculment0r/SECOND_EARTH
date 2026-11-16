@@ -8,6 +8,8 @@ Lire ce fichier en entier avant toute action. Puis lire `docs/bible/00-registre-
 
 **État au 16/11/2026** : séquences vidéo Seedance 2.5 générées le 05/11/2026 sur le compte Higgsfield de Cal ; prompts, scripts et références dans `video/seedance/`. Lire la section 11 et la règle 15 avant toute génération vidéo.
 
+**État au 16/11/2026, soir (round 17)** : Cal a fait sa relecture par l'outil de choix (23 décisions, section 13) et tout est intégré dans `docs/`, les données et les essais. **Le Récit v2 fait foi ; le gel du monde est levé.** Lire le Round 17 du Registre et la section 13 avant de toucher au monde ou au script. Les documents vivants de Claude Docs (compte de Cal) et le fichier Word du Récit v2 ne portent pas encore ces changements : ce dépôt est en avance sur eux, ne pas réexporter par-dessus sans les y reporter.
+
 ---
 
 ## 1. La mission de cette session
@@ -41,7 +43,7 @@ Les données sont déjà extraites en JSON dans `data/` (section 7). Le script q
 
 2045 : le vaisseau-semeur PERSEPHORA quitte le système solaire. Il ne prend rien à la Terre : il porte des embryons et des machines. 2098 : il arrive à 61 Cygni A, 11,4 années-lumière. Il largue le XENOPOD-01 (la capsule qui porte l'embryon) et des collecteurs. Quatre robots, les Robs, vérifient en une seule sortie que la planète possède toutes les briques de la vie (carbone, eau, azote, phosphore, soufre, métaux) avant la naissance de Seed. Seed naît, 15 ans apparents, cheveux blancs, presque muette (quatre mots dans tout le film : « Rob ! », « Seed », « Korê », « Je suis Seed »). Le XENOPOD tombe dans un sinkhole. Seed et Rob1 partent chercher Rob2, Rob3, Rob4 à travers 12 biomes (~5 500 km ; « quelques semaines » validé, ~41 jours dans la Chronologie, proposé), rebaptisent la planète **Korê** d'après le cri d'un oiseau des salins, puis reviennent. La Phase 1 réussit : Korê a tout. Rob1 envoie pourtant « NON VIABLE » vers la Terre (« Terre : réception dans 11,4 ans ») : son mensonge protège un monde complet. Puis il modifie le protocole du second embryon, CAIN (ingénieur de terraformation, 35 ans, mémoire transférée à 100 %), ramené à 14 ans et 21 %.
 
-Référence du récit : `sources/SECOND_EARTH_STORY.docx` fait foi. `sources/SECOND_EARTH_STORY_v2.docx` (le récit réécrit avec le monde, livré le 27/09) devient la référence **après la relecture de Cal** (round 14, R01). Version lisible : `docs/film/00-recit-v2.md`.
+Référence du récit : **le Récit v2 fait foi depuis le round 17 (16/11/2026)**, validé tel quel par Cal ; version à jour : `docs/film/00-recit-v2.md` (cartons sans numéro de jour). `sources/SECOND_EARTH_STORY_v2.docx` est le même récit en Word, livré le 27/09, sans les retouches du round 17. `sources/SECOND_EARTH_STORY.docx`, qui faisait foi jusque-là, est une archive (`docs/film/01-recit-docx.md`).
 
 ---
 
@@ -63,7 +65,7 @@ Tout est validé sauf ce qui est marqué (proposé).
 | Grande lune | 0,1 M⊕, ~3 300 km de rayon, ~443 000 km ; mois de 21 jours de Korê (35 jours terrestres) ; même diamètre apparent que l'étoile ; éclipses en cartel seulement |
 | Petite lune | ~1 000 km, ~120 000 km, révolution 2,35 jours de Korê ; seconde marée (0,6) |
 | Marées | vives-eaux ~7 fois la Terre ; Golfe 1 : 10–15 m ; Golfe 2 (mer de Rob4) calme |
-| Lumière (proposé) | ~4 500 K à midi, ~90 % de l'éclairement terrestre ; ciel bleu pâle laiteux ; crépuscules rouges de plus d'une heure (onglet Lumière et couleurs, jamais validé en round) |
+| Lumière | ~4 500 K à midi, ~90 % de l'éclairement terrestre ; ciel bleu pâle laiteux ; crépuscules rouges de plus d'une heure (onglet Lumière et couleurs, validé au round 17) |
 | Végétal | deux lignées : **pourpre en haut, vert dessous** ; sous la canopée la lumière est magenta |
 | Géologie | tectonique active, plaques petites et rapides ; rift du Golfe 1, collision du massif, subduction plane de l'Océan 2 (arc volcanique ~1 200 km en arrière de la fosse), mer d'arsenic d'origine volcanique |
 | Histoire profonde | Titans (géants) éteints il y a ~60 Ma par une pluie de comètes ; descendants : buffles albinos, Créature des profondeurs |
@@ -87,7 +89,7 @@ Ces règles viennent de ses demandes répétées. Elles priment sur toute habitu
 5. **Les fichiers .md lui sont illisibles.** Tout ce qu'il doit lire se livre en page HTML ou en document (Word, Claude Docs), jamais en Markdown. Les .md de ce dossier sont pour Claude.
 6. **Quand un prompt est corrigé, réécrire le bloc entier**, prêt à copier, jamais un morceau.
 7. **Statuts** : chaque élément est « validé » (tranché par Cal, avec son round) ou « proposé ». Un point validé n'est plus remis en question. Le Registre fait foi. Le Bestiaire a ses propres étiquettes de ligne : **Origine** (bestiaire de février 2026, inchangé), **Recalé** (modifié pour respecter une règle), **Nouveau** (ajouté) ; ses règles, noms latins, recalages et Titans ont été validés au round 8. Certaines plantes portent « Validé (docx) » ou « Validé (biome) » : validées avec le docx ou avec la fiche du biome.
-8. **Gel du monde** : au round 16 (N01), Cal a choisi « Relire et corriger » ; le Registre l'écrit ainsi : « Cal relit et corrige ; rien n'avance tant que ses corrections ne sont pas passées. » Tant que ses corrections de relecture ne sont pas intégrées, **ne pas ajouter de contenu au monde ni au script**. L'outil de prompts et le site sont de la fabrication demandée explicitement (28/09) : ils présentent le contenu existant, ils ne le modifient pas.
+8. **Gel du monde** : au round 16 (N01), Cal a choisi « Relire et corriger » ; le Registre l'écrit ainsi : « Cal relit et corrige ; rien n'avance tant que ses corrections ne sont pas passées. » **Ce gel est levé depuis le round 17 (16/11/2026, G1)** : Cal a répondu aux 23 choix de la relecture, ils sont intégrés, le monde et le script reprennent. La règle 7 tient toujours : un point validé ne se rediscute pas, et ce qui s'ajoute reste « proposé » jusqu'à ce que Cal le tranche en QCM.
 9. **Épigraphe du 55** : la phrase du docx est gardée pour l'instant. Ne pas proposer d'autre épigraphe sans demande.
 10. **Prompts d'image** (règles écrites dans les Planches de dessin, document au statut proposé) : formes, matières et lumière uniquement ; **aucun nom d'artiste, de studio, de film, de personnage existant, ni de marque**. Même règle pour la musique.
 11. **Direction artistique** : ne jamais reproduire une œuvre, un personnage ou un logo existants.
@@ -111,8 +113,9 @@ Ces règles viennent de ses demandes répétées. Elles priment sur toute habitu
 
 ## 5. Ce qui est ouvert au 28/09/2026
 
-- [ ] **Relecture de Cal** (round 16) : en attente de ses corrections. Rien n'avance côté monde et script avant.
-- [ ] **Récit v2** : devient la référence après sa relecture.
+- [x] **Relecture de Cal** (round 16) : faite le 16/11/2026 (round 17), 23 décisions intégrées ; le gel est levé.
+- [x] **Récit v2** : il fait foi depuis le round 17.
+- [ ] **Restes du round 17, à soumettre à Cal** (section 13) : la place du totem sur le chemin du retour (S6) ; le texte anglais de la phrase de Rob4 au plan 9-11 ; la voix off de Rob1 qui compte encore les jours ; la durée du voyage (5 ou 6 semaines) ; reporter le round 17 dans Claude Docs et dans le Word du Récit v2.
 - [ ] **Épigraphe du 55** : plus tard, à sa demande.
 - [ ] **Dessin des nouvelles espèces** : quatre de la jungle, le grimpeur des cols, le Titan volant, l'oiseau des salins.
 - [ ] **Prompts à valider** : les 144 fiches (66 Bestiaire, 42 Flore, 7 Titans, 11 personnages et machines, 18 paysages) ont un prompt rédigé au format de la règle 13, dans `data/prompts-propose.json`, marqué « proposé » dans l'outil. Historique du 12/10/2026 : trois séries successives refusées ou remplacées (scènes sur le terrain ; planches avec phrase de style en fin de prompt et « alien » ; puis un format testé sur JP-01 à JP-03) ; Cal a ensuite fourni ses propres prompts qui marchent et la série actuelle (version 5) les reprend : début « Fantastic mythic », phrase « sheet with 3 view of same animal », fond blanc, paramètres `--chaos 15 --ar 2:1 --raw --stylize 400 --hd`, sujet court et simple, couleurs de l'étude. Aucun n'est testé dans Midjourney par Claude : Cal teste et corrige. À valider par Cal en QCM (une ligne par prompt : garder / corriger + champ libre), jamais en lui demandant de relire du Markdown. Les anciens prompts peints restent dans `prompt_en` des fichiers de données (historique) mais ne s'affichent plus. HP-01, LS-01, FB-03 (et JP-01) suivent le Bestiaire validé, pas la planche de dessin (écart signalé plus bas). Quelques couleurs sont des choix de rédaction tirés de la palette du biome (champ `notes` des lots, hors dépôt) : museau jaune-vert de CC-04, yeux ambre de CD-01, bec orange de CD-04, os crème et ambre de TR-F, bandes de PK-01, couleurs des sept Titans (aucune couleur dans leurs fiches). **Relecture finale (demandée par Cal le 02/11/2026, « commenter en lecture finale »)** : chaque fiche de l'outil porte un avis « Garder » / « À corriger » et un commentaire libre ; un bandeau compte les gardés, à corriger, commentés et à relire ; quatre filtres (À relire, Gardés, À corriger, Commentés) ; « Copier mes retours » met dans le presse-papiers un texte à coller dans le chat (à corriger avec le prompt actuel, commentaires, gardés). Les avis restent dans le navigateur de Cal (stockage local, export et import JSON) et valent pour le texte du prompt au moment de l'avis : un prompt modifié depuis rend l'avis « ancien ». À réception des retours : réécrire en entier chaque prompt « à corriger » (règle 6) ; un prompt « gardé » ne passe à « validé » (champ `statut` de `data/prompts-propose.json`) qu'après le retour de Cal dans le chat.
@@ -156,7 +159,7 @@ data/
   prompts-propose.json     144 prompts (une planche ou une vue large par fiche), format des essais de Cal du 12/10/2026 (proposé, à valider) ; non généré par build_data.py
   arbitrages-second-earth.html   la page QCM (rounds 1 à 16 archivés, aucune question ouverte) : modèle pour les futurs QCM
   film.json                le script du 25 min en données (11 actes, 150 plans, 9 charnières, 9 modules, les 4 mots) ; produit par tools/build_film.mjs
-  essais.json              les données des essais de lecture du film (32 promesses, 16 faits de savoir, 11 personnages et 52 relations),
+  essais.json              les données des essais de lecture du film (30 promesses, 16 faits de savoir, 11 personnages et 52 relations),
                            écrites à la main, chaque élément avec sa provenance ; non généré (section 12)
 docs/
   bible/                   le monde : registre des décisions (fait foi), trajet, chronologie,
@@ -192,7 +195,7 @@ tools/
 tests/                     vérifications (Node) : node --test depuis la racine ; --test-update-snapshots réécrit film.json et site/essais/
 site/assets/               thème Verdant du site : site.css, site.js, icon.svg, fonts/venus-rising.otf
 site/essais/               les quatre pages des essais, autonomes, produites par build_essais.mjs et versionnées (ne pas les éditer à la main)
-relecture/                 choix-de-relecture.html : l'outil de choix de la relecture du round 16 (section 13), page autonome écrite à la main
+relecture/                 choix-de-relecture.html : l'outil de choix de la relecture du round 16 (section 13), page autonome écrite à la main ; Cal y a répondu le 16/11 (round 17) : archive
 theme/showrunner-ui-kit/   le kit d'interface fourni par Cal (référence visuelle du thème)
 video/seedance/            séquences vidéo Seedance 2.5 : prompts/ (10 séquences de 30 s, 4 plans de 15 s), references.json
                            (ordre des images et identifiants Higgsfield), jobs-2026-11-05.json, tools/ (voir section 11)
@@ -311,25 +314,25 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 
 ## 12. Essais de lecture du film (16/11/2026)
 
-**Demande de Cal** (16/11/2026, dans le chat et par QCM) : appliquer au film de Second Earth des essais d'interface faits pour un autre de ses projets. Ses quatre réponses : essais retenus = Le livre des promesses, La Partition du savoir, La toile des personnages ; ils vivent **dans le site de Second Earth** ; **le docx de référence fait foi** ; Claude peut déduire, **tout ce qui est déduit est marqué**.
+**Demande de Cal** (16/11/2026, dans le chat et par QCM) : appliquer au film de Second Earth des essais d'interface faits pour un autre de ses projets. Ses quatre réponses : essais retenus = Le livre des promesses, La Partition du savoir, La toile des personnages ; ils vivent **dans le site de Second Earth** ; **le docx de référence fait foi** ; Claude peut déduire, **tout ce qui est déduit est marqué**. **Depuis le round 17 (même jour), le Récit v2 fait foi** : les citations des essais ont été rebasées sur lui (`src` = `recit`), plus aucune ne s'appuie sur le docx d'origine.
 
 **Ce qui existe** : quatre pages dans `site/essais/` (accueil, promesses, savoir, toile), publiées sous `essais/` et liées depuis la rubrique Film.
 
-- **Le livre des promesses** : 32 promesses (les neuf crochets de l'Architecture et ceux du Séquencier ; les promesses tenues à l'intérieur du 25). États : posée (payée seulement dans le 55), payée, due, assumée. Vue 25 ou 55 ; place de M9 (après M4 ou prégénérique).
-- **La Partition du savoir** : 16 faits, quatre portées (spectateur, Seed, Rob1, PERSEPHORA et la Terre). Écarts nommés par le code : ironie, suspense (si le fait porte `menace`, classement de Claude), surprise, secret (champ `cache`, écrit dans le docx).
+- **Le livre des promesses** : 30 promesses depuis le round 17 (les crochets de l'Architecture et du Séquencier ; les promesses tenues à l'intérieur du 25 ; le drone cassé et le regard vers la mer n'en sont plus, le mot « Korê » reste au cœur). États : posée (payée seulement dans le 55), payée, due, assumée. Vue 25 ou 55 ; M9 suit M4 (le réglage « prégénérique » a été retiré).
+- **La Partition du savoir** : 16 faits, quatre portées (spectateur, Seed, Rob1, PERSEPHORA et la Terre). Écarts nommés par le code : ironie, suspense (si le fait porte `menace`, classement de Claude), surprise, secret (champ `cache`, écrit dans le récit).
 - **La toile des personnages** : 11 personnages, 52 relations orientées, chacune avec son plan « depuis » ; un curseur sur les 150 plans.
 
 **Règles de ces essais** :
 
-- Ils **lisent** le script, ils ne le modifient pas : le gel du monde (règle 8) tient. Aucune proposition de contenu par la machine. Les gestes de Cal (assumer une promesse, lui donner un paiement, poser un « apprend », tirer un lien) restent dans son navigateur (stockage local) ; « Copier mes choix » en fait un texte à coller dans le chat.
-- **Provenance obligatoire** dans `data/essais.json` : `src` = `docx` (citation), un autre document du script (`decoupage`, `sequencier`, `architecture`, `modules`, `propositions`, `registre` : affiché « hors docx »), `infere` (avec `pourquoi` et les plans `fonde`) ou `manquant`. `tests/essais-donnees.test.mjs` vérifie chaque citation mot pour mot dans le document nommé (pour le découpage : dans la ligne du plan). Au 16/11 : 10 éléments inférés, 4 manquants, listés sur la page d'accueil des essais.
+- Ils **lisent** le script, ils ne le modifient pas. Aucune proposition de contenu par la machine. Les gestes de Cal (assumer une promesse, lui donner un paiement, poser un « apprend », tirer un lien) restent dans son navigateur (stockage local) ; « Copier mes choix » en fait un texte à coller dans le chat.
+- **Provenance obligatoire** dans `data/essais.json` : `src` = `recit` (citation du Récit v2), un autre document du script (`decoupage`, `sequencier`, `architecture`, `modules`, `propositions`, `registre` : affiché « hors récit »), `infere` (avec `pourquoi` et les plans `fonde`) ou `manquant`. `tests/essais-donnees.test.mjs` vérifie chaque citation mot pour mot dans le document nommé (pour le découpage : dans la ligne du plan). Après le round 17 : 9 éléments inférés, 4 manquants, listés sur la page d'accueil des essais.
 - Les numéros de plan sont ceux du Découpage (statut proposé). Dans le 55, un module est posé juste après le plan de sa charnière : convention des essais.
 - Le code est écrit pour ce dépôt, d'après les fiches des essais d'origine ; rien n'est copié de l'autre projet (privé), dont le nom ne s'écrit pas sur le site.
 - Après toute modification de `data/essais.json`, de `tools/essais/` ou des documents de `docs/film/` : `node --test --test-update-snapshots`, puis relire le diff de `site/essais/`.
 
 **Non vérifié** : les pages n'ont pas été ouvertes dans un navigateur (les calculs, les gestes et le montage sont testés sous Node) ; `tools/build_site.py` modifié sans pouvoir être lancé dans la session (Python sans droit d'exécution) ; `BRIEF.html` non régénéré.
 
-**Relevé par les essais, à signaler à Cal, pas à corriger seul** : dans l'ordre du 55, cinq crochets viennent après le module qui les paie (photo d'Elena / M1, ombre 4-09 / M4, compteur 87 km / M7, mot Korê / M8, couche sombre 7-18 / M9) ; trois promesses sont dues (regard vers la mer et la fosse, drone cassé, la suite avec CAIN) ; M8 laisse ouvert « pose le caillou au bord d'un lac » alors que A08 le met dans l'alvéole H-01 à la fin ; le docx fait revoir à Rob1 « Je suis d'ici maintenant » (Rob4), scène que le récit ne montre pas.
+**Tranché au round 17** : tout ce qui suit, sauf « la suite avec CAIN », seule promesse encore due. **Relevé par les essais le 16/11 (historique)** : dans l'ordre du 55, cinq crochets viennent après le module qui les paie (photo d'Elena / M1, ombre 4-09 / M4, compteur 87 km / M7, mot Korê / M8, couche sombre 7-18 / M9) ; trois promesses sont dues (regard vers la mer et la fosse, drone cassé, la suite avec CAIN) ; M8 laisse ouvert « pose le caillou au bord d'un lac » alors que A08 le met dans l'alvéole H-01 à la fin ; le docx fait revoir à Rob1 « Je suis d'ici maintenant » (Rob4), scène que le récit ne montre pas.
 
 ---
 
@@ -348,4 +351,19 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 
 **Non vérifié** : la page n'a pas été ouverte dans un navigateur ; elle n'est pas branchée dans le site (`tools/build_site.py` non touché) ; `BRIEF.html` non régénéré. Le Récit v2 n'a pas été recompté scène par scène contre le docx.
 
-**Relevé en préparant l'outil** : le Registre écrit « ~5 semaines avec les arrêts », la Chronologie « six semaines environ : ~41 jours » ; les Écarts placent le tank « à partir de l'Acte V », il s'assemble au plan 6-11 ; le séquencier et l'Architecture parlent encore de « l'ombre du Titan » (plan 4-09), les Écarts d'un oiseau-prédateur.
+**Réponses de Cal (16/11/2026, collées dans le chat) : le round 17.** R1 oui, tel quel ; R2 balises validées ; R3 distances gardées, numéros de jour retirés ; R4 le souvenir seul, avec la phrase ; F1 à F5 validés ; C1 Titans après le col (après M4) ; C2 assumer, échos dans le 55 ; C3 une image, pas un crochet ; C4 un regard, sans suite ; V1 validé ; V2 neige blanche, rosée par endroits ; V3 100 à 115 m ; V4 Arbre-voûte 90 à 110 m ; D1 à D5 appliqués ; G1 le gel est levé. Sur F3, V4 et R3, Cal a choisi autrement que l'avis de Claude : c'est son choix qui est écrit.
+
+**Intégré le même jour** : Registre (Round 17 et questions ouvertes), Récit v2, Découpage, Séquencier, Architecture, Modules du 55, Propositions, Écarts, Journal de Rob1 (table des écrans), Chronologie (note), Glossaire, Lunes (une parenthèse), Lumière et couleurs, fiches Jungle, Massifs et Forêt ancienne, Flore (FL-MG-02) ; données `film.json`, `essais.json`, `flore.json`, `paysages.json` (ces deux-là retouchés à la main, `build_data.py` n'ayant pas pu être lancé : à relancer) ; prompt de FL-MG-02 réécrit en entier (neige blanche, plaques roses). La page de l'outil est une archive : ses citations décrivent les documents d'avant (commit 7dc9a53) ; `tests/relecture.test.mjs` vérifie à la place que les réponses sont dans les documents.
+
+**Ce que l'intégration a fait apparaître, à soumettre à Cal (pas tranché)** :
+
+- **Le totem au retour (S6, validé)** : le retour passe par les lacs salés, au sud de l'arc ; le totem est avant Rob3, au nord du massif, de l'autre côté de la boucle. M8 l'écrit « sa place sur le chemin du retour reste à écrire ».
+- **La phrase de Rob4 à l'écran (R4)** : les écrans sont en anglais (A05) ; « I AM FROM HERE NOW » est une traduction de Claude, à confirmer.
+- **La voix off de Rob1** (`docs/film/21-journal-de-rob1.md`, pour le 55 et la salle) compte encore « Jour douze », « Jour dix-sept »… R3 portait sur l'image ; la voix n'a pas été touchée.
+- **La durée du voyage** : ~5 semaines au Registre, ~6 semaines (41 jours) dans la Chronologie, restée proposée ; les phases de lune validées (round 15) sont calées sur ses jours.
+- **L'Acte X du 55** n'a plus de module (M9 est à E4) : il dure 1:00 dans les deux films ; la charnière E9 n'ouvre rien.
+- **M8 s'ouvre après le plan 8-01**, qui montre déjà les lacs ; or M8 raconte la semaine du retour et l'arrivée aux lacs. À regarder en écrivant M8.
+- **Claude Docs et le Word du Récit v2** ne portent pas le round 17 : à reporter (avec l'accord de Cal, c'est son compte), sinon un réexport écraserait l'intégration.
+- `data/arbitrages-second-earth.html` archive les rounds 1 à 16 ; le round 17 n'y est pas.
+
+**Relevé en préparant l'outil (historique, tranché depuis sauf la durée du voyage)** : le Registre écrit « ~5 semaines avec les arrêts », la Chronologie « six semaines environ : ~41 jours » ; les Écarts placent le tank « à partir de l'Acte V », il s'assemble au plan 6-11 ; le séquencier et l'Architecture parlent encore de « l'ombre du Titan » (plan 4-09), les Écarts d'un oiseau-prédateur.

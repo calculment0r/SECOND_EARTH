@@ -1,7 +1,7 @@
 <!-- Source : Claude Docs, Bible Second Earth, onglet « Lumière et couleurs », node 66fb5492-5c0a, exporté le 28/09/2026 -->
 # Lumière et couleurs
 
-Ce que l'œil voit sur Korê, déduit des points validés (étoile K5V à 4 400 K, 90 % de l'éclairement terrestre, air à 1,3 bar, 61 Cygni B à 44–124 UA, deux lunes, canopée pourpre). Proposé, pour le département image et la salle immersive.
+Ce que l'œil voit sur Korê, déduit des points validés (étoile K5V à 4 400 K, 90 % de l'éclairement terrestre, air à 1,3 bar, 61 Cygni B à 44–124 UA, deux lunes, canopée pourpre). Validé par Cal au round 17 (16/11/2026) : c'est la règle de l'image, pour le département image et la salle immersive.
 
 ## Le jour
 

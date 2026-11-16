@@ -36,7 +36,7 @@
 
   // L'axe du temps. version « 25 » : les 150 plans. version « 55 » : chaque module est posé juste après
   // le plan de sa charnière (convention de l'essai : les documents disent « le 55 ouvre ici ») ;
-  // M9 va après M4, ou en prégénérique (les deux places que les documents laissent ouvertes).
+  // M9 suit M4 à la charnière E4 (tranché au round 17) ; le troisième argument, autrefois la place de M9, n'est plus lu.
   function axe(film, version, m9) {
     var I = index(film), apres = {}, segs = [], plan = {}, mod = {}, t = 0;
     function pose(id, acte) {
@@ -45,13 +45,8 @@
     }
     if (version === '55') {
       film.charnieres.forEach(function (c) {
-        if (c.module && c.module !== 'M9') (apres[c.plan] = apres[c.plan] || []).push(c.module);
+        (c.modules || []).forEach(function (id) { (apres[c.plan] = apres[c.plan] || []).push(id); });
       });
-      if (m9 === 'pregenerique') pose('M9', film.actes[0].id);
-      else {
-        var e4 = parId(film.charnieres, 'E4');
-        (apres[e4.plan] = apres[e4.plan] || []).push('M9');
-      }
     }
     film.plans.forEach(function (p) {
       var s = { type: 'plan', n: p.n, acte: p.acte, t0: t, t1: t + p.duree_s };
@@ -62,7 +57,7 @@
       var miens = segs.filter(function (s) { return s.acte === a.id; });
       return { id: a.id, nom: a.nom, titre: a.titre, t0: miens[0].t0, t1: miens[miens.length - 1].t1 };
     });
-    return { version: version, m9: m9, total: t, segs: segs, plan: plan, module: mod, actes: actes };
+    return { version: version, total: t, segs: segs, plan: plan, module: mod, actes: actes };
   }
 
   function fenetre(ax, zoom) {
@@ -119,7 +114,7 @@
     return h;
   }
 
-  // La provenance d'un élément : docx, autre document du script, déduction, manquant, ou choix de Cal.
+  // La provenance d'un élément : le récit de référence (Récit v2), un autre document du script, déduction, manquant, ou choix de Cal.
   function prov(d, p) {
     if (!p) return '';
     if (p.src === 'choix') return '<span class="es-src es-src-choix">ton choix</span>';
@@ -130,8 +125,8 @@
     if (p.src === 'manquant') {
       return '<span class="es-src es-src-man">non écrit</span><span class="es-cit">' + esc(p.note) + (p.voir ? ' ' + prov(d, p.voir) : '') + '</span>';
     }
-    var hors = p.src !== 'docx';
-    return '<span class="es-src ' + (hors ? 'es-src-hors' : 'es-src-docx') + '">' + (hors ? 'hors docx · ' + esc(d.docs[p.src].nom) : 'docx') + '</span>' +
+    var hors = p.src !== 'recit';
+    return '<span class="es-src ' + (hors ? 'es-src-hors' : 'es-src-docx') + '">' + (hors ? 'hors récit · ' + esc(d.docs[p.src].nom) : 'récit') + '</span>' +
       '<span class="es-cit">« ' + esc(p.cit) + ' »' + (p.note ? ' ' + esc(p.note) : '') + '</span>';
   }
 
@@ -147,18 +142,13 @@
     return h + '>' + esc(label) + '</button>';
   }
 
-  // Les réglages de l'axe : 25 ou 55, la place de M9, l'acte ouvert.
+  // Les réglages de l'axe : 25 ou 55, l'acte ouvert.
   function outilsAxe(d, e, ax, fen, o) {
     o = o || {};
     var h = '<div class="es-groupe"><span class="es-et">Film</span>' +
       bouton('version', '25 min', { v: '25', presse: e.version === '25' }) +
       bouton('version', '55 min', { v: '55', presse: e.version === '55' }) + '</div>';
-    if (o.m9 && e.version === '55') {
-      h += '<div class="es-groupe"><span class="es-et">Module M9, les Titans</span>' +
-        bouton('m9', 'après le col (M4)', { v: 'apres-m4', presse: e.m9 !== 'pregenerique' }) +
-        bouton('m9', 'en prégénérique', { v: 'pregenerique', presse: e.m9 === 'pregenerique' }) + '</div>';
-    }
-    h += '<div class="es-groupe"><span class="es-et">Vue</span>' + bouton('zoom', 'Tout le film', { id: '', presse: !fen.acte, f: 'zoom-tout' });
+    h +='<div class="es-groupe"><span class="es-et">Vue</span>' + bouton('zoom', 'Tout le film', { id: '', presse: !fen.acte, f: 'zoom-tout' });
     if (fen.acte) {
       var k = ax.actes.findIndex(function (a) { return a.id === fen.acte; });
       if (k > 0) h += bouton('zoom', 'Acte précédent', { id: ax.actes[k - 1].id, f: 'zoom-prec' });

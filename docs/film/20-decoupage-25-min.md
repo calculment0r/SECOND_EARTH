@@ -3,17 +3,18 @@
 
 2026-09-27 · calculmentor
 
-Le film court plan par plan, d'après le docx (fait foi) et le séquencier du doc Script Second Earth. Master 16:9, adaptation dôme des plans marqués « dôme » (A04 tranché : les deux) ; chaque plan porte sa durée, ses étiquettes et son mode de fabrication. Proposé.
+Le film court plan par plan, d'après le récit de référence (le Récit v2 depuis le round 17 ; le docx d'origine avant) et le séquencier du doc Script Second Earth. Master 16:9, adaptation dôme des plans marqués « dôme » (A04 tranché : les deux) ; chaque plan porte sa durée, ses étiquettes et son mode de fabrication. Proposé. Intégré au round 17 (16/11/2026) : les cartons ne portent plus de numéro de jour, seulement les distances ; la phrase de Rob4 au plan 9-11 ; les fils S2, S4, S7 et S9 validés ; les corrections d'en-tête (les quatre mots, dix-neuf plans dôme).
 
 ## Conventions
 
-- **Numéros** : acte-plan (P-01 pour le prologue, 1-01, 2-01…). Les charnières E1 à E9 (doc Script, Architecture) sont marquées dans la colonne Note : c'est là que le 55 insère ses modules ; dans le 25, la charnière est le plan lui-même.
+- **Numéros** : acte-plan (P-01 pour le prologue, 1-01, 2-01…). Les charnières E1 à E9 (doc Script, Architecture) sont marquées dans la colonne Note : c'est là que le 55 insère ses modules (E4 en reçoit deux, M4 puis M9 ; E9 n'en reçoit pas : round 17) ; dans le 25, la charnière est le plan lui-même.
 - **Valeurs** : TGP très gros plan, GP gros plan, PR plan rapproché, PM plan moyen, PA plan américain, PL plan large, TPL très plan large, VS vue subjective (écran de Rob1 en surimpression), ÉCR écran seul (interface).
 - **Durées** en secondes ; le total de chaque acte est celui du séquencier (25:00 en tout, 150 plans).
 - **Étiquettes** : [25] dans le court ; [55] réutilisé tel quel dans le long (tous les plans du 25 le sont, sauf mention) ; [EXPO] réutilisable dans la salle immersive ou l'expo classique.
 - **Fabrication** : IA (pipeline génératif : personnages, jeu, émotion), Unreal (paysages, machines, temps réel partagé avec l'expo), Écran (interfaces de Rob1 et du XENOPOD), Mixte.
-- **Cadre** : 16:9 ; le film existe en deux formats (A04) : les plans marqués « dôme » sont ceux à recadrer pour la version fulldome, vingt-deux plans (action au centre bas, pas de champ-contrechamp).
-- **Les quatre mots** (QCM A02) : Rob (6-14), Seed (7-15), Korê (8-03), Je suis Seed (9-14). Aucune autre parole. Les écrans sont en anglais (A05 tranché).
+- **Cadre** : 16:9 ; le film existe en deux formats (A04) : les plans marqués « dôme » sont ceux à recadrer pour la version fulldome, dix-neuf plans (action au centre bas, pas de champ-contrechamp).
+- **Les quatre mots** (QCM A02) : Rob (6-14), Seed (7-13), Korê (8-02), Je suis Seed (9-15). Aucune autre parole.
+- **Les cartons** (round 17) : seulement les distances validées (250, 680, 1 200, 3 300, 4 800 et 5 500 km). Aucun numéro de jour à l'image : le temps passé se lit par le ciel et la lune. Les écrans sont en anglais (A05 tranché).
 
 | Acte | Plans | Durée | Charnières | Fabrication dominante |
 | --- | --- | --- | --- | --- |
@@ -41,7 +42,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | P-05 | 8 | ÉCR | Le vaisseau en croisière ; carton « 2045 → 2098 · 11,4 années-lumière · 53 ans » | Basse continue | Écran | 25 55 EXPO | Cartel Prologue (la distance) |
 | P-06 | 12 | TPL | Arrivée : l'étoile orange, sa compagne au loin, la planète ; carton « 61 Cygni Ab » | Freinage | Unreal | 25 55 EXPO | Lumière orangée sur la coque, pas rouge |
 | P-07 | 14 | PL | Le XENOPOD-01 lâché ; entrée atmosphérique ; trois trappes : les trois robopods s'écartent, un vers la jungle proche, deux vers l'horizon | Plasma, télémétrie saturée | Unreal | 25 55 EXPO | T05 validé : la géographie sans un mot ; dôme |
-| P-08 | 16 | PL | Atterrissage dans la clairière ; le mât-relais se dresse ; PERSEPHORA rallume ses propulseurs et s'éloigne | Ping vers l'espace ; carton « Jour −45 · XENOPOD-01 » (durée de gestation proposée) | Unreal | 25 55 EXPO |   |
+| P-08 | 16 | PL | Atterrissage dans la clairière ; le mât-relais se dresse ; PERSEPHORA rallume ses propulseurs et s'éloigne | Ping vers l'espace | Unreal | 25 55 EXPO |   |
 
 ## Acte I · 3:45 · 22 plans
 
@@ -50,7 +51,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 1-01 | 10 | ÉCR + PL | Trois fenêtres : Rob2 dans la grotte à guano, Rob3 sur ses roues dans la forêt bioluminescente, Rob4 qui plonge vers la fosse ; trois voyants verts | SAMPLES: P · S/FE · MARINE · OK | Mixte | 25 55 EXPO | E2 : le 55 ouvre ici M2 (Phase 1) |
 | 1-02 | 8 | PM | Rob1 réceptionne les trois drones porteurs ; les containers ; analyses | ANALYSIS: PASS | Mixte | 25 55 | Trois drones (round 11) |
 | 1-03 | 10 | PR | Le panneau coulisse ; la cuve, la lumière bleutée ; l'ovule ; première division | PHASE 1: COLLECTION COMPLETE / PHASE 2: HUMAN VIABILITY INITIALIZING | Écran + IA | 25 55 |   |
-| 1-04 | 8 | PR | Time-lapse : le corps grandit dans le fluide, six semaines en huit secondes | Cartons « Jour −42 → 0 » | IA | 25 55 | Cartel X (de quoi est fait un corps) se prépare ici |
+| 1-04 | 8 | PR | Time-lapse : le corps grandit dans le fluide, six semaines en huit secondes | — | IA | 25 55 | Cartel X (de quoi est fait un corps) se prépare ici |
 | 1-05 | 12 | PL | Nuit : le séisme ; des geysers lumineux bleu-violet-rose jaillissent des crevasses ; le XENOPOD tremble | Grondement ; alarme | Unreal | 25 55 EXPO | Lumières sismiques (Bible, proposé) ; dôme |
 | 1-06 | 6 | ÉCR | INCUBATION HALTED · SUBJECT: 15 YEARS · MEMORY TRANSFER 23 % | Bip d'erreur | Écran | 25 55 |   |
 | 1-07 | 6 | GP | Seed ouvre les yeux dans le fluide | Silence | IA | 25 55 |   |
@@ -59,7 +60,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 1-10 | 12 | PR | Seed devant l'écran : son reflet, puis la photo ; ses mains, les mains d'Elena | ELENA VASQUEZ · EXOBIOLOGIST · 34 | IA + Écran | 25 55 | Crochet de M1 |
 | 1-11 | 8 | ÉCR | Rob1 affiche | SUBJECT SEED-03 · DNA SOURCE: ELENA VASQUEZ (PARTIAL CLONE) · MEMORY 23 % · 15 YEARS APPARENT | Écran | 25 55 |   |
 | 1-12 | 8 | GP | Seed essaie de parler : un souffle rauque ; elle recule d'un pas | Souffle | IA | 25 55 | Début de l'arc de la voix |
-| 1-13 | 13 | PM | Time-lapse d'adaptation : debout, marcher, manger ; la relation avec Rob1 se noue | Cartons « Jour 1 », « Jour 2 » | IA | 25 55 |   |
+| 1-13 | 13 | PM | Time-lapse d'adaptation : debout, marcher, manger ; la relation avec Rob1 se noue | — | IA | 25 55 |   |
 | 1-14 | 18 | PL | Seed sort : la jungle au lever de l'étoile, les voûtes, la lumière magenta du sous-bois, les « fleurs » sur les arbustes | Premier son de la forêt | Unreal + IA | 25 55 EXPO | La première image de couleur ; dôme |
 | 1-15 | 6 | TGP | Le pied du XENOPOD s'enfonce de quelques millimètres | Craquement léger | Unreal | 25 55 | Cartel I (le sol qui s'ouvre) |
 | 1-16 | 10 | PM → GP | La tablette ; Seed lit ; elle regarde Rob1, le ciel ; la larme | PHASE 2 IN PROGRESS · ROLE: PROOF OF CONCEPT | IA + Écran | 25 55 |   |
@@ -68,7 +69,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 1-19 | 12 | PL | Le sinkhole s'ouvre ; le XENOPOD bascule ; les fleurs-papillons s'envolent par milliers, ralenti | Battements d'ailes, roche | Unreal + IA | 25 55 EXPO | Bullet time du docx ; dôme |
 | 1-20 | 10 | PM | Rob1 attrape le sac, bondit, atterrit près de Seed ; derrière lui le mât-relais bascule dans le trou ; le XENOPOD disparaît | Chute, puis rien | Mixte | 25 55 | T03 validé : le relais est perdu, en une image |
 | 1-21 | 18 | PL → PR | Silence, poussière ; Seed au bord ; le caillou jeté, aucun bruit ; le flare qui descend et disparaît | Le caillou qu'on n'entend jamais tomber | IA + Unreal | 25 55 |   |
-| 1-22 | 20 | PR + ÉCR | La carte de Rob1 : le XENOPOD inaccessible (communicateur, incubateur, réserves) ; les balises : Rob2 tourne en rond, Rob3 en erreur, Rob4 en mer ; Seed hoche la tête ; ils partent | BEACONS ONLY · NO COMMAND LINK | Écran + IA | 25 55 | Balises reçues, dialogue impossible (Bible) |
+| 1-22 | 20 | PR + ÉCR | La carte de Rob1 : le XENOPOD inaccessible (communicateur, incubateur, réserves) ; les balises : Rob2 tourne en rond, Rob3 en erreur, Rob4 en mer ; Seed hoche la tête ; ils partent | BEACONS ONLY · NO COMMAND LINK | Écran + IA | 25 55 | Balises reçues, dialogue impossible (Bible, validé round 17) |
 
 ## Acte II · 1:30 · 8 plans
 
@@ -77,7 +78,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 2-01 | 8 | PL | Seed porte Rob1 sur son dos le long du fleuve ; les premières tours | Pas dans l'eau | Unreal + IA | 25 55 | E3 : le 55 ouvre ici M3 (la marche) ; la relation inversée en une image |
 | 2-02 | 10 | PL | Les pitons : chaque tour une île de plantes, des rideaux de brume entre elles | Vent, gouttes | Unreal | 25 55 EXPO | K01 validé ; dôme |
 | 2-03 | 12 | PM | Seed boit au fleuve, à genoux ; Rob1 confirme | WATER: SAFE · pH 7.1 · LIMESTONE | Mixte | 25 55 | Cartel II : l'eau qu'on peut boire |
-| 2-04 | 12 | TPL | Crépuscule : les tours en silhouette ; la nuit tombe noire, 61 Cygni B n'est plus là | Carton « Jour 12 · 250 km » | Unreal | 25 55 EXPO | T04 : la saison noire commence ; dôme |
+| 2-04 | 12 | TPL | Crépuscule : les tours en silhouette ; la nuit tombe noire, 61 Cygni B n'est plus là | Carton « 250 km » | Unreal | 25 55 EXPO | T04 : la saison noire commence ; dôme |
 | 2-05 | 10 | PL | Le fleuve disparaît sous une arche de calcaire : il se perd dans les tours | L'eau qui s'enfonce | Unreal | 25 55 | K02 validé |
 | 2-06 | 12 | PM + ÉCR | La position de Rob2 : la balise, personne ; Rob1 scanne, Seed cherche | BEACON HERE · ROB2: NOT FOUND | IA + Écran | 25 55 |   |
 | 2-07 | 14 | PL | La crevasse ouverte par le séisme ; en contrebas une lueur ; le robopod de Rob2 tombé, brisé ; Rob2 qui tourne en rond | Moteur qui peine | Mixte | 25 55 | Le robopod (docx) |
@@ -106,7 +107,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 3-17 | 10 | PM | Bonds de yamakasi ; CRAC, une prise cède ; glissade ; recalcul impossible | RED RED RED | Mixte | 25 55 |   |
 | 3-18 | 12 | PR | Seed tend le bras, attrape une racine, se balance, donne l'impulsion ; Rob1/2 se rétablit | Souffle | IA | 25 55 | Humain + machine |
 | 3-19 | 12 | PL | Remontée bond après bond ; en bas, la Créature glisse contre la paroi et renonce | Rugissement qui s'éloigne | Mixte | 25 55 |   |
-| 3-20 | 14 | PL | Ils émergent : elle hors de souffle, lui surchauffé ; la nuit noire, les deux lunes | Carton « Jour 15 » | IA + Unreal | 25 55 |   |
+| 3-20 | 14 | PL | Ils émergent : elle hors de souffle, lui surchauffé ; la nuit noire, les deux lunes | — | IA + Unreal | 25 55 |   |
 
 ## Acte IV · 2:00 · 12 plans
 
@@ -114,7 +115,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 4-01 | 10 | ÉCR + PR | La carte : le cercle vert d'autonomie de Rob2 ; le XENOPOD hors du cercle ; le robopod de Rob3 presque à portée, son parasol fonctionne | RANGE: 41 % · ROBOPOD-3: SOLAR OK | Écran | 25 55 |   |
 | 4-02 | 8 | PM | Rob1 pointe Rob3 ; Seed hoche la tête | — | IA | 25 55 |   |
-| 4-03 | 12 | PL | Le Rob fusionné court, Seed dans le siège-harnais ; les herbes bleu-gris, puis les contreforts | Carton « Jour 17 · 680 km » | Unreal + IA | 25 55 EXPO | E4 : le 55 ouvre ici M4 (le col) ; dôme |
+| 4-03 | 12 | PL | Le Rob fusionné court, Seed dans le siège-harnais ; les herbes bleu-gris, puis les contreforts | Carton « 680 km » | Unreal + IA | 25 55 EXPO | E4 : le 55 ouvre ici M4 (le col), puis M9 (les Titans) ; dôme |
 | 4-04 | 8 | ÉCR | Alerte : plus tôt que prévu ; les trois raisons défilent | LOW POWER · terrain · load · ROB1 PRIORITY | Écran | 25 55 |   |
 | 4-05 | 10 | PL | Le col : les glaciers sous les deux lunes ; le froid ; le Rob ralentit | Vent, servos qui peinent | Unreal | 25 55 EXPO | Cartel IV (le froid) ; dôme |
 | 4-06 | 10 | PR | Seed sort le container ; l'organisme pulse faiblement ; elle le tend à Rob1 | La plante chante à peine | IA | 25 55 |   |
@@ -133,7 +134,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 5-02 | 8 | ÉCR | La tablette : Rob1/2 + Rob3 = le tank, schéma | ASSEMBLY 1+2+3 | Écran | 25 55 |   |
 | 5-03 | 10 | PR | Rob3 couvert de mousse ; Rob1 gratte, elle repousse ; dans le robopod, la famille de rongeurs | Petits cris | IA | 25 55 | Cartel V (ce qui colonise une machine) |
 | 5-04 | 8 | PM | Rob1/2 se branche au robopod ; recharge ; Seed apprivoise un rongeur | Charge | IA | 25 55 |   |
-| 5-05 | 14 | PL | Time-lapse : le nettoyage de Rob3 ; le coucher de l'étoile, rouge profond, long | Carton « Jour 21 · 1 200 km » | Unreal + IA | 25 55 EXPO |   |
+| 5-05 | 14 | PL | Time-lapse : le nettoyage de Rob3 ; le coucher de l'étoile, rouge profond, long | Carton « 1 200 km » | Unreal + IA | 25 55 EXPO |   |
 | 5-06 | 16 | PL | Nuit noire : la forêt à son maximum, lamelles bleu électrique ; Rob1 fait un feu à l'arc électrique | Crépitement | Unreal | 25 55 EXPO | T04 : cœur de la saison noire ; pas d'aurores (W03) ; dôme |
 | 5-07 | 16 | PM | Autour du feu, la famille vient se réchauffer ; le petit à l'oreille abîmée | Feu | IA | 25 55 |   |
 | 5-08 | 10 | GP | Le petit siffle ; Seed essaie : rien ; elle sourit | Le sifflement (motif 3) | IA | 25 55 | Arc de la voix |
@@ -169,7 +170,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 
 | N° | s | Cadre | Action | Son, écran | Fab. | Tags | Note |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 7-01 | 8 | GP | Seed se réveille, à moitié dans l'eau rouge ; la grande cascade au fond | Bruit d'eau ; carton « Jour 25 » | IA + Unreal | 25 55 |   |
+| 7-01 | 8 | GP | Seed se réveille, à moitié dans l'eau rouge ; la grande cascade au fond | Bruit d'eau | IA + Unreal | 25 55 |   |
 | 7-02 | 8 | PM | Blessée au bras et à la jambe ; elle sort de l'eau, s'adosse à l'arbre-cathédrale | Douleur | IA | 25 55 | FL-FA-01 |
 | 7-03 | 8 | PR | Le caillou blanc dans sa main ; elle regarde le ciel | — | IA | 25 55 |   |
 | 7-04 | 8 | GP | Elle siffle : cette fois ça sort ; un sourire | Le sifflement | IA | 25 55 | Arc de la voix |
@@ -182,7 +183,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 7-11 | 16 | VS | Six flashs d'Elena : la main qui écrit PERSEPHORA ; l'enfant devant les fourmis ; le diplôme, les jumeaux ; le labo ; la forêt en flammes ; la signature, don d'ADN, don de conscience | Sons de Terre | IA | 25 55 | Jamais Korê, jamais le futur (S7) ; M1 montre l'autre côté |
 | 7-12 | 12 | VS | Le parc, l'homme, l'enfant ; « Elena. » glitch « Seed. » glitch ; les deux visages superposés | La voix qui se déforme | IA | 25 55 |   |
 | 7-13 | 6 | GP | Ses lèvres : « Seed », faiblement ; elle s'endort | « Seed » | IA | 25 55 | Mot 2 |
-| 7-14 | 10 | PL | Le tank surgit des buissons, s'arrête net ; Seed immobile, couverte de plaques | Moteur, puis rien ; carton « Jour 28 » | Mixte | 25 55 |   |
+| 7-14 | 10 | PL | Le tank surgit des buissons, s'arrête net ; Seed immobile, couverte de plaques | Moteur, puis rien | Mixte | 25 55 |   |
 | 7-15 | 10 | ÉCR | Le scan ; aucun antidote ; croisement avec les données d'exploration | ALIEN TOXIN · IMMUNE SYSTEM: INCOMPATIBLE · ORGAN FAILURE: CRITICAL | Écran | 25 55 |   |
 | 7-16 | 10 | ÉCR | Le résultat ; la carte ; la distance | MATCH · ROB4 DATABASE · JK-47B · ENZYMATIC FILTRATION · 73 % · ARSENIC SEA | Écran | 25 55 |   |
 | 7-17 | 8 | PM | Seed installée sur le tank ; départ à pleine vitesse | Moteur | Mixte | 25 55 |   |
@@ -194,13 +195,13 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 7-23 | 10 | PR | Rob1 tente ses codes : rien ; Rob4 répond par la lumière ; Rob1 apprend, ajuste | Pulsations traduites : BRING HER | Mixte | 25 55 | La lumière comme langue (S4) |
 | 7-24 | 12 | PM | Rob1 porte Seed ; la membrane s'ouvre ; il la dépose ; elle se referme ; le liquide entre dans sa bouche et respire pour elle | Silence sous l'eau | IA | 25 55 | M01 validé ; cartel VII (respirer un liquide) |
 | 7-25 | 14 | PL | Nuit : Rob4, cocon de lumière dans les vagues ; les filaments travaillent ; les plaques reculent et laissent des cicatrices lumineuses | Le cœur ralenti, les pulsations | Unreal + IA | 25 55 EXPO | dôme |
-| 7-26 | 13 | PR → PL | La première aube ambrée : 61 Cygni B se lève avant l'étoile ; Seed ouvre les yeux dans le liquide, marquée ; Rob1 affiche les réserves et le XENOPOD ; ils regardent l'horizon | Carton « Jour 32 · 3 300 km » ; FOOD < 1 DAY · REPORT DUE | Mixte | 25 55 | T04 : le retour des aubes ambrées |
+| 7-26 | 13 | PR → PL | La première aube ambrée : 61 Cygni B se lève avant l'étoile ; Seed ouvre les yeux dans le liquide, marquée ; Rob1 affiche les réserves et le XENOPOD ; ils regardent l'horizon | Carton « 3 300 km » ; FOOD < 1 DAY · REPORT DUE | Mixte | 25 55 | T04 : le retour des aubes ambrées |
 
 ## Acte VIII · 0:30 · 3 plans
 
 | N° | s | Cadre | Action | Son, écran | Fab. | Tags | Note |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 8-01 | 10 | TPL | Le retour : les lacs pourpres sous une aube ambrée, le tank minuscule sur la croûte de sel | Carton « Jour 37 · 4 800 km » | Unreal | 25 55 EXPO | E8 : le 55 ouvre ici M8 (Korê) ; dôme |
+| 8-01 | 10 | TPL | Le retour : les lacs pourpres sous une aube ambrée, le tank minuscule sur la croûte de sel | Carton « 4 800 km » | Unreal | 25 55 EXPO | E8 : le 55 ouvre ici M8 (Korê) ; dôme |
 | 8-02 | 12 | PL → PR | La colonie d'oiseaux des salins décolle en criant ; Rob1 affiche le mot, il trouve ça drôle ; Seed répète | « Ko-rê » (motif 2) ; KORÊ ? · « Korê » | Mixte | 25 55 EXPO | Mot 3 ; L02 validé (une colonie entière) |
 | 8-03 | 8 | PR | Seed et Rob1 face aux lacs | Carton « KORÊ · 61 Cygni Ab » | Écran + IA | 25 55 |   |
 
@@ -208,7 +209,7 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 
 | N° | s | Cadre | Action | Son, écran | Fab. | Tags | Note |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 9-01 | 10 | PL | Le tank en vue du sinkhole ; les quatre au bord ; l'obscurité | Carton « Jour 39 · 5 500 km » | Unreal | 25 55 |   |
+| 9-01 | 10 | PL | Le tank en vue du sinkhole ; les quatre au bord ; l'obscurité | Carton « 5 500 km » | Unreal | 25 55 |   |
 | 9-02 | 8 | PM | Câbles, grappins ; Rob2/3 descendent en rappel ; Seed et Rob1 tiennent les câbles | Métal | Mixte | 25 55 |   |
 | 9-03 | 8 | ÉCR | Les minutes s'étirent ; puis | FOUND | Écran | 25 55 |   |
 | 9-04 | 12 | PL | Tension ; Seed tire de toutes ses forces ; Rob1 calcule les angles ; le XENOPOD remonte centimètre par centimètre | Effort | Mixte | 25 55 |   |
@@ -218,8 +219,8 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 | 9-08 | 10 | PL | Le parasol déployé vers l'étoile ; Seed mange enfin ; le soleil monte ; bip, bip ; le XENOPOD revit | Ventilateurs, écrans | Mixte | 25 55 |   |
 | 9-09 | 10 | ÉCR | Le message | NEW MESSAGE · FROM PERSEPHORA · PHASE 2 FAILURE ACKNOWLEDGED · PROTOCOL NOT MET · SUBJECT SEED: INCOMPLETE, NOT QUALIFIED | Écran | 25 55 |   |
 | 9-10 | 8 | ÉCR | Le texte s'efface, un autre | NEW PROTOCOL · MISSION LEADER: ROB-1 · DETERMINE PLANET VIABILITY · REPORT: YES / NO | Écran | 25 55 |   |
-| 9-11 | 12 | VS | PROCESSING : les souvenirs en vue subjective de Rob1 : Seed hors de la cuve ; elle le porte ; l'organisme qui s'éteint et le rituel ; le caillou et le sourire ; la paroi ; le sinkhole qu'il a causé ; Rob4 | PROCESSING … | Écran + IA | 25 55 | S9 : le sinkhole ajouté au flux |
-| 9-12 | 10 | ÉCR | Le rapport ; transmission | FINAL EVALUATION: NOT VIABLE · PHASE 3: ABORTED · TRANSMITTED · EARTH: RECEIPT IN 11.4 YEARS | Écran | 25 55 | La dernière ligne si A09 = A |
+| 9-11 | 12 | VS | PROCESSING : les souvenirs en vue subjective de Rob1 : Seed hors de la cuve ; elle le porte ; l'organisme qui s'éteint et le rituel ; le caillou et le sourire ; la paroi ; le sinkhole qu'il a causé ; Rob4 qui recule dans l'eau, filaments pulsants, et sa phrase à l'écran | PROCESSING … ; I AM FROM HERE NOW | Écran + IA | 25 55 | S9 : le sinkhole ajouté au flux (validé round 17) ; la phrase de Rob4, « Je suis d'ici maintenant », s'affiche sur l'écran de Rob1 comme BRING HER au plan 7-23 (round 17) : le spectateur apprend ici, par le souvenir, que Rob4 est resté |
+| 9-12 | 10 | ÉCR | Le rapport ; transmission | FINAL EVALUATION: NOT VIABLE · PHASE 3: ABORTED · TRANSMITTED · EARTH: RECEIPT IN 11.4 YEARS | Écran | 25 55 | La dernière ligne : A09 validé |
 | 9-13 | 10 | PM | Rob1 ouvre le panneau de maintenance ; circuits arrachés, antenne sectionnée ; méthodique, calme | Métal | IA | 25 55 |   |
 | 9-14 | 12 | PL → ÉCR | Rob1 ressort, silhouette sombre contre l'étoile ; Seed l'attend ; son geste : ça marche ? ; l'écran | COMMUNICATOR DAMAGED · REPAIR IM/POSSIBLE, le IM qui pulse | Mixte | 25 55 |   |
 | 9-15 | 16 | PR | Seed devant l'écran ; elle sait ; elle regarde le paysage, Rob2/3 en veille, le ciel qui vire au violet ; revient sur Rob1 ; hoche la tête ; un sourire | « Je suis Seed » | IA | 25 55 | Mot 4 |
@@ -228,9 +229,9 @@ Le film court plan par plan, d'après le docx (fait foi) et le séquencier du do
 
 | N° | s | Cadre | Action | Son, écran | Fab. | Tags | Note |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 10-01 | 8 | PL | Nuit ; Seed dort près du feu ; Rob1 se lève sans bruit | Carton « Jour 41 » | IA | 25 55 |   |
+| 10-01 | 8 | PL | Nuit ; Seed dort près du feu ; Rob1 se lève sans bruit | — | IA | 25 55 |   |
 | 10-02 | 8 | ÉCR | L'incubateur, le même écran qu'au début | C 53 % · N 51 % · P 49 % · H₂O 58 % · INSUFFICIENT FOR PHASE II → AWAITING BIOLOGICAL MATTER | Écran | 25 55 | Cartel X (de quoi est fait un corps) |
 | 10-03 | 10 | PR | Le panneau scellé ; la vapeur froide ; des milliers de boîtes ; l'alvéole vide H-01 SEED, et à côté H-02 CAIN | Souffle de vapeur | Mixte | 25 55 |   |
 | 10-04 | 12 | ÉCR | La boîte dans le lecteur | SUBJECT CAIN · MALE · EXIT AGE 35 · TERRAFORMING ENGINEER · MEMORY 100 % · 7 DAYS ; Rob1 immobile ; deux secondes du sourire de Seed au rongeur, le caillou, l'étiquette IMPORTANT (A07 tranché : B) | Écran | 25 55 | A07 |
-| 10-05 | 12 | ÉCR + PR | Il modifie ; si A08 = A, le caillou blanc posé dans l'alvéole H-01 | EXIT AGE 35 → 14 · MEMORY 100 % → 21 % · INCUBATION: AUTO · RESOURCES: SUFFICIENT | Écran + IA | 25 55 | A08 |
-| 10-06 | 10 | ÉCR | Noir, puis le carton en trois lignes | This is a fictional planet. / Earth is the only world we know. / Take care of it. | Écran | 25 55 EXPO | E9 ; le carton validé |
+| 10-05 | 12 | ÉCR + PR | Il modifie ; il pose le caillou blanc dans l'alvéole H-01 | EXIT AGE 35 → 14 · MEMORY 100 % → 21 % · INCUBATION: AUTO · RESOURCES: SUFFICIENT | Écran + IA | 25 55 | A08 |
+| 10-06 | 10 | ÉCR | Noir, puis le carton en trois lignes | This is a fictional planet. / Earth is the only world we know. / Take care of it. | Écran | 25 55 EXPO | E9 (sans module dans le 55 : round 17) ; le carton validé |

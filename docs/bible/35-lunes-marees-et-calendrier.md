@@ -55,7 +55,7 @@ Trois astres lèvent la mer, contre deux sur Terre, et deux d'entre eux sont plu
 
 ## Le calendrier de Korê
 
-Rob1 compte en jours terrestres (les cartons du récit : Jour −45, Jour 39) ; Seed vit en jours de Korê, avec deux sommeils par jour (validé, X03). Le tableau donne les deux.
+Rob1 compte en jours terrestres (ceux de la Chronologie du voyage ; depuis le round 17, ils ne s'affichent plus sur les cartons) ; Seed vit en jours de Korê, avec deux sommeils par jour (validé, X03). Le tableau donne les deux.
 
 | Unité | Valeur | Statut |
 | --- | --- | --- |

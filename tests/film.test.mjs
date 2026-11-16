@@ -40,11 +40,25 @@ test('chaque plan est complet et les débuts se suivent', () => {
   }
 });
 
-test('neuf charnières, chacune sur un plan, chacune ouvre son module', () => {
+test('neuf charnières, chacune sur un plan ; E4 ouvre M4 puis M9, E9 aucun module (round 17)', () => {
   assert.deepEqual(film.charnieres.map((c) => c.id), rang('E', 9));
   assert.deepEqual(film.plans.filter((p) => p.charniere).map((p) => p.charniere).sort(), rang('E', 9));
-  assert.deepEqual(film.charnieres.map((c) => c.module), rang('M', 9));
-  for (const c of film.charnieres) assert.ok(c.plan && c.crochet, c.id);
+  assert.deepEqual(film.charnieres.flatMap((c) => c.modules).sort(), rang('M', 9));
+  const parId = Object.fromEntries(film.charnieres.map((c) => [c.id, c]));
+  assert.deepEqual(parId.E4.modules, ['M4', 'M9']);
+  assert.deepEqual(parId.E9.modules, []);
+  for (const c of film.charnieres) {
+    assert.ok(c.plan && c.crochet, c.id);
+    if (c.id !== 'E4' && c.id !== 'E9') assert.deepEqual(c.modules, ['M' + c.id[1]], c.id);
+  }
+  assert.equal(film.modules.find((m) => m.id === 'M9').charniere, 'E4');
+});
+
+test('cartons : les six distances validées, aucun numéro de jour (round 17)', () => {
+  const cartons = film.plans.flatMap((p) => p.cartons);
+  for (const c of cartons) assert.doesNotMatch(c, /Jour/, c);
+  assert.deepEqual(cartons.filter((c) => /km$/.test(c)), ['250 km', '680 km', '1 200 km', '3 300 km', '4 800 km', '5 500 km']);
+  for (const p of film.plans) assert.doesNotMatch(p.son_ecran, /Jour\s[−-]?\d/, p.n);
 });
 
 test('neuf modules, 27:00 ; le 55 fait 52:00', () => {
@@ -56,14 +70,12 @@ test('neuf modules, 27:00 ; le 55 fait 52:00', () => {
 
 test('les quatre mots, dans l\'ordre, sur les plans de la table', () => {
   assert.deepEqual(film.mots.map((m) => m.rang), [1, 2, 3, 4]);
-  // La section Conventions du découpage annonce 7-15, 8-03 et 9-14 pour les mots 2, 3 et 4 ;
-  // la table les porte en 7-13, 8-02 et 9-15. Écart du document, à signaler à Cal : le fichier suit la table.
+  // L'en-tête du découpage est corrigé au round 17 (D4) : il suit la table.
   assert.deepEqual(film.mots.map((m) => m.plan), ['6-14', '7-13', '8-02', '9-15']);
   assert.match(film.mots[3].texte, /Je suis Seed/);
 });
 
 test('plans marqués « dôme »', () => {
-  // La section Conventions annonce vingt-deux plans ; la table en marque dix-neuf.
-  // Écart du document, à signaler à Cal : le fichier suit la table.
+  // L'en-tête du découpage est corrigé au round 17 (D4) : dix-neuf plans, comme la table.
   assert.equal(film.plans.filter((p) => p.dome).length, 19);
 });

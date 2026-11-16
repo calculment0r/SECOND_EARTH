@@ -3,7 +3,7 @@
 
 2026-09-27 · calculmentor
 
-Le récit du docx SECOND_EARTH_STORY, réécrit avec le monde de la Bible : mêmes scènes, même ordre, même fin. Ce qui change est listé en tête. Les onze parties suivent le découpage du 25 min et laissent la place des modules du 55 (marqués E1 à E9). Proposé : le docx d'origine reste la référence tant que Cal n'a pas tranché.
+Le récit du docx SECOND_EARTH_STORY, réécrit avec le monde de la Bible : mêmes scènes, même ordre, même fin. Ce qui change est listé en tête. Les onze parties suivent le découpage du 25 min et laissent la place des modules du 55 (marqués E1 à E9). Référence du récit depuis le round 17 (16/11/2026) : Cal l'a validé tel quel ; le docx d'origine devient une archive. Une retouche du même round : les cartons ne portent plus de numéro de jour, seulement les distances.
 
 ## Ce qui change par rapport au docx
 
@@ -11,11 +11,11 @@ Le récit du docx SECOND_EARTH_STORY, réécrit avec le monde de la Bible : mêm
 2. Voiles solaires et slingshot deviennent **fusion et warp subluminique**, 2045 → 2098, 11,4 années-lumière.
 3. Les trois **collecteurs XENOPOD-02, -03 et -04 (les robopods de Rob2, Rob3 et Rob4) se détachent de XENOPOD-01 pendant la descente : celui de Rob2 se pose à 250 km, ceux de Rob3 et Rob4 volent à des milliers de kilomètres. Le XENOPOD-03 du docx devient XENOPOD-01 (un seul porte-enfant)**.
 4. **Chaque collecteur envoie son drone porteur de 15 kg avec les éléments rares au XENOPOD-01 ; les drones y restent et tombent dans le sinkhole avec le module et le mât-relais** : Rob1 reçoit des balises, ne peut ni commander ni parler.
-5. Le Rob fusionné Rob1/2 **court** (30 km/h, Seed dans un harnais) ; le tank Rob1/2/3 prend le relais à partir de l'Acte V.
+5. Le Rob fusionné Rob1/2 **court** (30 km/h, Seed dans un harnais) ; le tank Rob1/2/3 prend le relais à partir de l'Acte VI, quand il s'assemble pendant la horde.
 6. La saison : le film va des dernières soirées ambrées à la **saison noire**, puis aux aubes ambrées ; pas d'aurores.
 7. L'ombre de l'Acte IV est un **oiseau-prédateur** ; le squelette de la voûte est un **Titan volant** ; l'oiseau de l'Acte VII plonge à la **confluence de l'affluent clair**.
 8. Un **Acte VIII** : le retour par les lacs salés et le nom.
-9. **Quatre mots** parlés : Rob, Seed, Korê, Je suis Seed. Des **cartons de jour** ponctuent.
+9. **Quatre mots** parlés : Rob, Seed, Korê, Je suis Seed. Des **cartons de distance** ponctuent (sans numéro de jour : round 17).
 10. Trois crochets payés : le sourire de Seed quand Rob1 lit TERRAFORMATION (A07), le **caillou blanc** dans l'alvéole de Seed (A08), la ligne « Terre : réception dans 11,4 ans » (A09) ; le carton final en trois lignes.
 
 Les emplacements du 55 sont marqués **[E1]** à **[E9]** dans le texte.
@@ -50,7 +50,7 @@ Glissade. Pivot. Strobe. Entrée atmosphérique : cocon de plasma, télémétrie
 
 PERSEPHORA rallume ses propulseurs, quitte l'orbite et reprend sa trajectoire interstellaire vers la prochaine cible.
 
-Atterrissage nominal pour XENOPOD-01 dans une clairière au cœur d'une jungle magnifique, sous des voûtes pourpres. Mât-relais érigé, ping vers l'espace. Carton : Jour −45 · XENOPOD-01.
+Atterrissage nominal pour XENOPOD-01 dans une clairière au cœur d'une jungle magnifique, sous des voûtes pourpres. Mât-relais érigé, ping vers l'espace.
 
 Au sol, le XENOPOD devient nœud de mission.
 
@@ -74,7 +74,7 @@ PHASE 1 : COLLECTE — COMPLÈTE. PHASE 2 : VIABILITÉ HUMAINE — INITIALISATIO
 
 Rob1 active la séquence. Le fluide circule. L'ovule pulse. Les premières divisions s'amorcent. Ce n'est plus une mission d'exploration robotique. Il va y avoir une naissance.
 
-En même temps que cet être grandit en accéléré, six à sept semaines, on lui transfère une mémoire. Cette femme est une exobiologiste. L'objectif : qu'elle soit la preuve que la vie est possible ici, et qu'elle puisse mener d'autres études avec son savoir. Cartons : Jour −42 → Jour 0.
+En même temps que cet être grandit en accéléré, six à sept semaines, on lui transfère une mémoire. Cette femme est une exobiologiste. L'objectif : qu'elle soit la preuve que la vie est possible ici, et qu'elle puisse mener d'autres études avec son savoir.
 
 C'est la nuit. Une des dernières nuits ambrées : la seconde étoile se couche tôt, et la fin de la nuit est noire.
 
@@ -98,7 +98,7 @@ SUJET : SEED-03. SOURCE ADN : ELENA VASQUEZ (CLONE PARTIEL). TRANSFERT MÉMOIRE 
 
 Seed recule d'un pas. Elle est Elena. Mais elle ne l'est pas. Elle a ses gènes, des fragments de ses souvenirs, des flashs incompréhensibles. Pas sa voix. Pas ses connaissances. Pas ses trente-quatre années. Elle essaie de parler. Rien ne sort. Un souffle rauque. Seed ne sait rien, même pas qui lui a donné son nom.
 
-(Période d'adaptation en time-lapse ; cartons Jour 1, Jour 2 ; une relation se noue avec Rob1.)
+(Période d'adaptation en time-lapse ; une relation se noue avec Rob1.)
 
 Seed sort du XENOPOD. La jungle au lever de l'étoile : des voûtes pourpres à cent mètres, une lumière magenta sous la canopée, et sur les arbustes, des fleurs par milliers. Elle explore avec Rob1.
 
@@ -140,7 +140,7 @@ Rob2, lui, est conçu avec des jambes puissantes, un châssis robuste. Beaucoup 
 
 (Rob1 n'est pas fait pour l'expédition à pied. Relation inversée : c'est Seed qui doit l'aider, le porter, lui tenir la main pour rejoindre Rob2.)
 
-Ils remontent le fleuve. **[E3 : dans le 55, la marche est un module : dix jours, les tours, la première nuit noire.]** Le fleuve entre dans un pays de tours de calcaire, chacune couverte de ses propres plantes, comme des îles ; des rideaux verts pendent aux parois et boivent la brume. Seed boit au fleuve, à genoux ; Rob1 confirme : l'eau est bonne, le calcaire a neutralisé la pluie. Au crépuscule, les tours en silhouette, et la nuit tombe entièrement noire : la seconde étoile est passée du côté du jour, pour un mois. Carton : Jour 12 · 250 km. Plus loin, le fleuve disparaît sous une arche et se perd dans les tours.
+Ils remontent le fleuve. **[E3 : dans le 55, la marche est un module : dix jours, les tours, la première nuit noire.]** Le fleuve entre dans un pays de tours de calcaire, chacune couverte de ses propres plantes, comme des îles ; des rideaux verts pendent aux parois et boivent la brume. Seed boit au fleuve, à genoux ; Rob1 confirme : l'eau est bonne, le calcaire a neutralisé la pluie. Au crépuscule, les tours en silhouette, et la nuit tombe entièrement noire : la seconde étoile est passée du côté du jour, pour un mois. Carton : 250 km. Plus loin, le fleuve disparaît sous une arche et se perd dans les tours.
 
 Ils arrivent là où la balise de Rob2 indique qu'il devrait se trouver. Problème : il n'y est pas.
 
@@ -194,7 +194,7 @@ Coordination parfaite. Humain + machine.
 
 Ils remontent, bond après bond, prise après prise. En bas, la Créature rugit. Elle tente de grimper mais son corps massif glisse contre la paroi. Elle abandonne, retourne dans l'obscurité.
 
-Seed et Rob1/2 émergent à la surface, hors de souffle (elle) et surchauffé (lui), sous les deux lunes d'une nuit sans seconde étoile. Carton : Jour 15.
+Seed et Rob1/2 émergent à la surface, hors de souffle (elle) et surchauffé (lui), sous les deux lunes d'une nuit sans seconde étoile.
 
 Ils ont survécu.
 
@@ -206,7 +206,7 @@ Problème : Rob2 est très faible en énergie. Rob1 évoque de retourner cherche
 
 Sur la carte, un cercle vert indique le rayon d'autonomie de Rob2 : impossible de retourner au XENOPOD. Par contre, l'autonomie n'est pas si loin de pouvoir atteindre le robopod de Rob3, dont le parasol semble fonctionner. La décision est prise d'aller vers Rob3, quitte à finir sans Rob2, et de ramener le système photovoltaïque pour le recharger.
 
-Ils se mettent en route. Rob1/2 court : trente kilomètres par heure, dix heures par jour de quarante, Seed dans un siège-harnais sur son dos. Elle dort pendant qu'il court. **[E4 : dans le 55, le col est un module : le massif, les glaciers sous les deux lunes, le froid.]** Carton : Jour 17 · 680 km.
+Ils se mettent en route. Rob1/2 court : trente kilomètres par heure, dix heures par jour de quarante, Seed dans un siège-harnais sur son dos. Elle dort pendant qu'il court. **[E4 : dans le 55, le col est un module : le massif, les glaciers sous les deux lunes, le froid ; le module des Titans le suit.]** Carton : 680 km.
 
 Mais bien avant ce qui avait été prévu, Rob2 annonce qu'il n'a bientôt plus d'énergie. Certains paramètres ont été mal estimés : la topologie, la montée au col ; le froid, qui vide les batteries ; le fait que Seed et Rob1 soient sur Rob2 ; et Rob1, branché à Rob2, devient prioritaire en batterie et en absorbe une partie.
 
@@ -238,7 +238,7 @@ En examinant Rob3, Rob1 découvre qu'il est colonisé par une mousse étrange, g
 
 Seed arrive à les apprivoiser un peu, et Rob1/2 parvient à se brancher sur le robopod pour recharger.
 
-C'est le soir. Un long coucher d'étoile, rouge profond, pour toute l'équipe qui nettoie patiemment Rob3. Carton : Jour 21 · 1 200 km. Moment de calme.
+C'est le soir. Un long coucher d'étoile, rouge profond, pour toute l'équipe qui nettoie patiemment Rob3. Carton : 1 200 km. Moment de calme.
 
 Il fait nuit et frais. Rob1 fait un feu (arc électrique et brindilles bizarres). La nuit est entièrement noire, sans seconde étoile, et c'est justement pour ça que la forêt brille : nous sommes au cœur de la saison noire, et les lamelles des arbres pulsent bleu électrique jusqu'à l'horizon. **[E5 : dans le 55, cette nuit est un module.]**
 
@@ -292,7 +292,7 @@ Seed est percutée par les buffles de tête. Le tank est percuté aussi et emmen
 
 ## Acte VII : métamorphose
 
-Bruit d'eau. Carton : Jour 25.
+Bruit d'eau.
 
 Seed se réveille sur la rive d'une rivière rouge, une immense cascade en arrière-plan. La moitié du corps dans l'eau, l'autre sur la rive. Elle aurait pu se noyer.
 
@@ -320,7 +320,7 @@ Elena avec quelqu'un, main dans la main dans un parc, un enfant aussi. Coucher d
 
 (Gros plan sur le visage de Seed.) Elle ouvre les lèvres et on l'entend dire faiblement « Seed ». Elle s'endort.
 
-Carton : Jour 28. Le tank surgit à travers les buissons. Rob1+Rob2+Rob3, assemblés en une seule machine, s'arrêtent net. Seed est là. Immobile, allongée près de la rivière rouge. Son corps est couvert de plaques violacées, les veinules noires remontent le long de ses bras. Elle respire à peine.
+Le tank surgit à travers les buissons. Rob1+Rob2+Rob3, assemblés en une seule machine, s'arrêtent net. Seed est là. Immobile, allongée près de la rivière rouge. Son corps est couvert de plaques violacées, les veinules noires remontent le long de ses bras. Elle respire à peine.
 
 Rob1 descend du tank, scanne. Toxine alien détectée. Composition inconnue. Système immunitaire humain : incompatible. Aucune défense naturelle. Défaillance organique : critique. Base médicale : rien. Aucun antidote.
 
@@ -354,7 +354,7 @@ Rob1 recule sur la plage. Les heures passent. Rob2+Rob3 en veille. La nuit tombe
 
 À l'intérieur, lentement, les plaques s'estompent. Les veinules reculent. Mais elles ne disparaissent pas complètement. Elles laissent des traces, des motifs organiques, des cicatrices lumineuses qui dessinent des veines sur sa peau. Elle est transformée. Marquée. Hybride.
 
-Et ce matin-là, pour la première fois depuis un mois, la seconde étoile se lève avant la première : une aube ambrée. Seed ouvre les yeux dans le liquide. Carton : Jour 32 · 3 300 km.
+Et ce matin-là, pour la première fois depuis un mois, la seconde étoile se lève avant la première : une aube ambrée. Seed ouvre les yeux dans le liquide. Carton : 3 300 km.
 
 Rob1 affiche la carte. La situation reste critique. Moins d'un jour de rations. Le XENOPOD est toujours au fond du sinkhole. Il faut l'extraire. Réactiver le communicateur. Envoyer le rapport à PERSEPHORA : planète viable ou non viable. Tout dépendra de ce message.
 
@@ -364,7 +364,7 @@ Seed regarde l'écran. Elle sait ce qu'ils attendent d'elle. Ils regardent l'hor
 
 **[E8 : dans le 55, le retour est un module d'une semaine ; dans le 25, un carton et deux plans.]**
 
-Le retour prend une semaine, sous des aubes de plus en plus longues : chaque matin, la seconde étoile se lève un peu plus tôt avant la première. Le tank contourne l'arc volcanique par le sud et traverse un pays de lacs. Carton : Jour 37 · 4 800 km.
+Le retour prend une semaine, sous des aubes de plus en plus longues : chaque matin, la seconde étoile se lève un peu plus tôt avant la première. Le tank contourne l'arc volcanique par le sud et traverse un pays de lacs. Carton : 4 800 km.
 
 Les lacs sont roses, puis pourpres, bordés d'une croûte de sel blanc : des bassins fermés où l'eau s'évapore et où des microbes à pigment pourpre colorent le sel. Sur les berges, une colonie d'oiseaux, des milliers, gris et roses, les pattes dans la saumure.
 
@@ -380,7 +380,7 @@ Ils repartent vers le sinkhole.
 
 ## Acte IX : signal
 
-Carton : Jour 39 · 5 500 km. Le tank arrive en vue du sinkhole. Le gouffre béant qui a avalé le XENOPOD. Seed, Rob1, Rob2, Rob3 se tiennent au bord. Regardent en bas. Toujours rien. L'obscurité.
+Carton : 5 500 km. Le tank arrive en vue du sinkhole. Le gouffre béant qui a avalé le XENOPOD. Seed, Rob1, Rob2, Rob3 se tiennent au bord. Regardent en bas. Toujours rien. L'obscurité.
 
 Rob1 déploie des câbles, des grappins. Rob2+Rob3 utilisent leur force combinée. Le plan est simple : descendre, accrocher le XENOPOD, le remonter. Ensemble. Rob2+Rob3 descendent en rappel. Seed et Rob1 restent en haut, contrôlent les câbles.
 
@@ -434,7 +434,7 @@ Elle recule d'un pas. Regarde autour d'elle. Rob2+Rob3 en veille, rechargeant pa
 
 ## Acte X : épilogue
 
-Nuit. Carton : Jour 41. Seed dort, enroulée dans une couverture thermique près d'un feu que Rob1 a fait. Rob2+Rob3 en veille.
+Nuit. Seed dort, enroulée dans une couverture thermique près d'un feu que Rob1 a fait. Rob2+Rob3 en veille.
 
 Rob1 est éveillé. Il observe Seed. Puis se lève discrètement. Il entre dans le XENOPOD. Allume l'écran de l'incubateur. Le même écran qu'au début.
 

@@ -1,6 +1,6 @@
 {
  "titre": "Second Earth · film de 25 min",
- "statut": "proposé (découpage du 27/09/2026 ; le docx fait foi pour le récit)",
+ "statut": "proposé (découpage du 27/09/2026, amendé au round 17 du 16/11/2026 ; le Récit v2 fait foi pour le récit)",
  "sources": [
   "docs/film/20-decoupage-25-min.md",
   "docs/film/11-sequencier-25-min.md",
@@ -54,7 +54,7 @@
    "nb_plans": 8,
    "debut_s": 315,
    "coeur": "Seed porte Rob1 ; le fleuve entre les tours ; l'arrivée à la position de Rob2, vide ; la crevasse",
-   "compresse": "Carton « Jour 12 · 250 km » ; la marche en un crépuscule",
+   "compresse": "Carton « 250 km » ; la marche en un crépuscule",
    "science": "Le fleuve qu'elle boit : l'eau de pluie acide est neutralisée par le calcaire (pourquoi elle pourra boire ici et pas la rivière rouge)",
    "crochet_55": "Les pitons (M3)",
    "titre": "la marche, les pitons",
@@ -88,14 +88,15 @@
    "nb_plans": 12,
    "debut_s": 585,
    "coeur": "La carte avec le cercle d'autonomie ; la décision d'aller vers Rob3 ; « bientôt plus d'énergie » ; l'analyse de l'organisme-batterie (3,7 V) ; +5 % ; le Rob fusionné qui court ; l'organisme qui s'éteint ; le rituel du totem ; la lueur sous la terre",
-   "compresse": "Carton « Jour 17 · 680 km » ; le col et le froid en deux plans ; l'ombre du Titan volant en un plan",
+   "compresse": "Carton « 680 km » ; le col et le froid en deux plans ; l'ombre d'un oiseau-prédateur en un plan",
    "science": "Une batterie vivante : lithium, phosphates, 3,7 V ; le froid qui vide les batteries",
    "crochet_55": "Le totem qui luit (M5) ; l'ombre (M4)",
    "titre": "énergie critique, l'organisme-batterie, le col",
    "modules_55": [
-    "M4"
+    "M4",
+    "M9"
    ],
-   "duree_55_s": 300,
+   "duree_55_s": 420,
    "charnieres": [
     "E4"
    ]
@@ -147,7 +148,7 @@
    "coeur": "Le réveil dans la rivière rouge ; le sifflement réussi ; l'oiseau-prédateur qui plonge à la confluence ; le fruit ; la fièvre et les veinules noires ; les visions d'Elena et le glitch Elena/Seed ; « Seed » ; le tank qui surgit ; JK-47B, 73 % ; la course ; ROB4 > 87 km ; la plage noire ; Rob4 hybride, le langage de lumière ; l'immersion ; le liquide qui respire pour elle ; les cicatrices lumineuses",
    "compresse": "Les visions réduites à six flashs ; la course à trois paysages ; la nuit d'attente en un plan ; la première aube ambrée au réveil",
    "science": "L'eau rouge (fer, acide) qu'on ne peut pas boire ; la toxine et l'incompatibilité biochimique ; la respiration liquide (fait réel, ventilation au perfluorocarbone)",
-   "crochet_55": "Le compteur 87 km (M7) ; le regard vers la mer et la fosse",
+   "crochet_55": "Le compteur 87 km (M7)",
    "titre": "rivière rouge, fruit, visions, course, Rob4",
    "modules_55": [
     "M7"
@@ -163,7 +164,7 @@
    "duree_s": 30,
    "nb_plans": 3,
    "debut_s": 1260,
-   "coeur": "Nouveau, absent du docx : carton « Jour 37 · 4 800 km » ; les lacs pourpres ; la colonie d'oiseaux des salins qui crie « Ko-rê » ; Rob1 affiche le mot ; Seed le répète",
+   "coeur": "Nouveau, absent du docx : carton « 4 800 km » ; les lacs pourpres ; la colonie d'oiseaux des salins qui crie « Ko-rê » ; Rob1 affiche le mot ; Seed le répète",
    "compresse": "Tout est court : un carton, deux plans, un mot",
    "science": "Les lacs salés colorés par des microbes pourpres",
    "crochet_55": "Le retour d'une semaine (M8)",
@@ -185,7 +186,7 @@
    "coeur": "Les câbles ; TROUVÉ ; le XENOPOD qui remonte ; la recharge ; le message de PERSEPHORA (INCOMPLET, NON QUALIFIÉ ; NEW MISSION LEADER : ROB-1) ; PROCESSING et les souvenirs en vue subjective de Rob1 ; NON VIABLE ; l'antenne sectionnée ; « Communicateur défectueux » ; IM/POSSIBLE ; « Je suis Seed »",
    "compresse": "Rien : acte clos",
    "science": "Le message met des semaines à revenir de PERSEPHORA, des années s'il venait de la Terre (11,4 ans) : un chiffre à l'écran suffit",
-   "crochet_55": "Le drone cassé au fond du sinkhole, vu en un plan",
+   "crochet_55": "Aucun : acte clos (le drone du plan 9-07 est une image, pas un crochet)",
    "titre": "l'extraction, le message, le mensonge, « Je suis Seed »",
    "modules_55": [],
    "duree_55_s": 150,
@@ -202,10 +203,8 @@
    "science": "Ce qu'il faut de matière pour faire un corps : les quatre pourcentages",
    "crochet_55": "La suite, si suite il y a",
    "titre": "CAIN, carton final",
-   "modules_55": [
-    "M9"
-   ],
-   "duree_55_s": 180,
+   "modules_55": [],
+   "duree_55_s": 60,
    "charnieres": [
     "E9"
    ]
@@ -376,7 +375,7 @@
    "duree_s": 16,
    "cadre": "PL",
    "action": "Atterrissage dans la clairière ; le mât-relais se dresse ; PERSEPHORA rallume ses propulseurs et s'éloigne",
-   "son_ecran": "Ping vers l'espace ; carton « Jour −45 · XENOPOD-01 » (durée de gestation proposée)",
+   "son_ecran": "Ping vers l'espace",
    "fab": "Unreal",
    "tags": [
     "25",
@@ -388,9 +387,7 @@
    "charniere": null,
    "mot": null,
    "crochet_de": [],
-   "cartons": [
-    "Jour −45 · XENOPOD-01"
-   ]
+   "cartons": []
   },
   {
    "n": "1-01",
@@ -464,7 +461,7 @@
    "duree_s": 8,
    "cadre": "PR",
    "action": "Time-lapse : le corps grandit dans le fluide, six semaines en huit secondes",
-   "son_ecran": "Cartons « Jour −42 → 0 »",
+   "son_ecran": "",
    "fab": "IA",
    "tags": [
     "25",
@@ -475,9 +472,7 @@
    "charniere": null,
    "mot": null,
    "crochet_de": [],
-   "cartons": [
-    "Jour −42 → 0"
-   ]
+   "cartons": []
   },
   {
    "n": "1-05",
@@ -658,7 +653,7 @@
    "duree_s": 13,
    "cadre": "PM",
    "action": "Time-lapse d'adaptation : debout, marcher, manger ; la relation avec Rob1 se noue",
-   "son_ecran": "Cartons « Jour 1 », « Jour 2 »",
+   "son_ecran": "",
    "fab": "IA",
    "tags": [
     "25",
@@ -669,10 +664,7 @@
    "charniere": null,
    "mot": null,
    "crochet_de": [],
-   "cartons": [
-    "Jour 1",
-    "Jour 2"
-   ]
+   "cartons": []
   },
   {
    "n": "1-14",
@@ -858,7 +850,7 @@
     "25",
     "55"
    ],
-   "note": "Balises reçues, dialogue impossible (Bible)",
+   "note": "Balises reçues, dialogue impossible (Bible, validé round 17)",
    "dome": false,
    "charniere": null,
    "mot": null,
@@ -937,7 +929,7 @@
    "duree_s": 12,
    "cadre": "TPL",
    "action": "Crépuscule : les tours en silhouette ; la nuit tombe noire, 61 Cygni B n'est plus là",
-   "son_ecran": "Carton « Jour 12 · 250 km »",
+   "son_ecran": "Carton « 250 km »",
    "fab": "Unreal",
    "tags": [
     "25",
@@ -950,7 +942,7 @@
    "mot": null,
    "crochet_de": [],
    "cartons": [
-    "Jour 12 · 250 km"
+    "250 km"
    ]
   },
   {
@@ -1450,7 +1442,7 @@
    "duree_s": 14,
    "cadre": "PL",
    "action": "Ils émergent : elle hors de souffle, lui surchauffé ; la nuit noire, les deux lunes",
-   "son_ecran": "Carton « Jour 15 »",
+   "son_ecran": "",
    "fab": "IA + Unreal",
    "tags": [
     "25",
@@ -1461,9 +1453,7 @@
    "charniere": null,
    "mot": null,
    "crochet_de": [],
-   "cartons": [
-    "Jour 15"
-   ]
+   "cartons": []
   },
   {
    "n": "4-01",
@@ -1515,20 +1505,20 @@
    "duree_s": 12,
    "cadre": "PL",
    "action": "Le Rob fusionné court, Seed dans le siège-harnais ; les herbes bleu-gris, puis les contreforts",
-   "son_ecran": "Carton « Jour 17 · 680 km »",
+   "son_ecran": "Carton « 680 km »",
    "fab": "Unreal + IA",
    "tags": [
     "25",
     "55",
     "EXPO"
    ],
-   "note": "E4 : le 55 ouvre ici M4 (le col) ; dôme",
+   "note": "E4 : le 55 ouvre ici M4 (le col), puis M9 (les Titans) ; dôme",
    "dome": true,
    "charniere": "E4",
    "mot": null,
    "crochet_de": [],
    "cartons": [
-    "Jour 17 · 680 km"
+    "680 km"
    ]
   },
   {
@@ -1818,7 +1808,7 @@
    "duree_s": 14,
    "cadre": "PL",
    "action": "Time-lapse : le nettoyage de Rob3 ; le coucher de l'étoile, rouge profond, long",
-   "son_ecran": "Carton « Jour 21 · 1 200 km »",
+   "son_ecran": "Carton « 1 200 km »",
    "fab": "Unreal + IA",
    "tags": [
     "25",
@@ -1831,7 +1821,7 @@
    "mot": null,
    "crochet_de": [],
    "cartons": [
-    "Jour 21 · 1 200 km"
+    "1 200 km"
    ]
   },
   {
@@ -2375,7 +2365,7 @@
    "duree_s": 8,
    "cadre": "GP",
    "action": "Seed se réveille, à moitié dans l'eau rouge ; la grande cascade au fond",
-   "son_ecran": "Bruit d'eau ; carton « Jour 25 »",
+   "son_ecran": "Bruit d'eau",
    "fab": "IA + Unreal",
    "tags": [
     "25",
@@ -2386,9 +2376,7 @@
    "charniere": null,
    "mot": null,
    "crochet_de": [],
-   "cartons": [
-    "Jour 25"
-   ]
+   "cartons": []
   },
   {
    "n": "7-02",
@@ -2652,7 +2640,7 @@
    "duree_s": 10,
    "cadre": "PL",
    "action": "Le tank surgit des buissons, s'arrête net ; Seed immobile, couverte de plaques",
-   "son_ecran": "Moteur, puis rien ; carton « Jour 28 »",
+   "son_ecran": "Moteur, puis rien",
    "fab": "Mixte",
    "tags": [
     "25",
@@ -2663,9 +2651,7 @@
    "charniere": null,
    "mot": null,
    "crochet_de": [],
-   "cartons": [
-    "Jour 28"
-   ]
+   "cartons": []
   },
   {
    "n": "7-15",
@@ -2909,7 +2895,7 @@
    "duree_s": 13,
    "cadre": "PR → PL",
    "action": "La première aube ambrée : 61 Cygni B se lève avant l'étoile ; Seed ouvre les yeux dans le liquide, marquée ; Rob1 affiche les réserves et le XENOPOD ; ils regardent l'horizon",
-   "son_ecran": "Carton « Jour 32 · 3 300 km » ; FOOD < 1 DAY · REPORT DUE",
+   "son_ecran": "Carton « 3 300 km » ; FOOD < 1 DAY · REPORT DUE",
    "fab": "Mixte",
    "tags": [
     "25",
@@ -2921,7 +2907,7 @@
    "mot": null,
    "crochet_de": [],
    "cartons": [
-    "Jour 32 · 3 300 km"
+    "3 300 km"
    ]
   },
   {
@@ -2932,7 +2918,7 @@
    "duree_s": 10,
    "cadre": "TPL",
    "action": "Le retour : les lacs pourpres sous une aube ambrée, le tank minuscule sur la croûte de sel",
-   "son_ecran": "Carton « Jour 37 · 4 800 km »",
+   "son_ecran": "Carton « 4 800 km »",
    "fab": "Unreal",
    "tags": [
     "25",
@@ -2945,7 +2931,7 @@
    "mot": null,
    "crochet_de": [],
    "cartons": [
-    "Jour 37 · 4 800 km"
+    "4 800 km"
    ]
   },
   {
@@ -3001,7 +2987,7 @@
    "duree_s": 10,
    "cadre": "PL",
    "action": "Le tank en vue du sinkhole ; les quatre au bord ; l'obscurité",
-   "son_ecran": "Carton « Jour 39 · 5 500 km »",
+   "son_ecran": "Carton « 5 500 km »",
    "fab": "Unreal",
    "tags": [
     "25",
@@ -3013,7 +2999,7 @@
    "mot": null,
    "crochet_de": [],
    "cartons": [
-    "Jour 39 · 5 500 km"
+    "5 500 km"
    ]
   },
   {
@@ -3212,14 +3198,14 @@
    "debut_s": 1380,
    "duree_s": 12,
    "cadre": "VS",
-   "action": "PROCESSING : les souvenirs en vue subjective de Rob1 : Seed hors de la cuve ; elle le porte ; l'organisme qui s'éteint et le rituel ; le caillou et le sourire ; la paroi ; le sinkhole qu'il a causé ; Rob4",
-   "son_ecran": "PROCESSING …",
+   "action": "PROCESSING : les souvenirs en vue subjective de Rob1 : Seed hors de la cuve ; elle le porte ; l'organisme qui s'éteint et le rituel ; le caillou et le sourire ; la paroi ; le sinkhole qu'il a causé ; Rob4 qui recule dans l'eau, filaments pulsants, et sa phrase à l'écran",
+   "son_ecran": "PROCESSING … ; I AM FROM HERE NOW",
    "fab": "Écran + IA",
    "tags": [
     "25",
     "55"
    ],
-   "note": "S9 : le sinkhole ajouté au flux",
+   "note": "S9 : le sinkhole ajouté au flux (validé round 17) ; la phrase de Rob4, « Je suis d'ici maintenant », s'affiche sur l'écran de Rob1 comme BRING HER au plan 7-23 (round 17) : le spectateur apprend ici, par le souvenir, que Rob4 est resté",
    "dome": false,
    "charniere": null,
    "mot": null,
@@ -3240,7 +3226,7 @@
     "25",
     "55"
    ],
-   "note": "La dernière ligne si A09 = A",
+   "note": "La dernière ligne : A09 validé",
    "dome": false,
    "charniere": null,
    "mot": null,
@@ -3318,7 +3304,7 @@
    "duree_s": 8,
    "cadre": "PL",
    "action": "Nuit ; Seed dort près du feu ; Rob1 se lève sans bruit",
-   "son_ecran": "Carton « Jour 41 »",
+   "son_ecran": "",
    "fab": "IA",
    "tags": [
     "25",
@@ -3329,9 +3315,7 @@
    "charniere": null,
    "mot": null,
    "crochet_de": [],
-   "cartons": [
-    "Jour 41"
-   ]
+   "cartons": []
   },
   {
    "n": "10-02",
@@ -3403,7 +3387,7 @@
    "debut_s": 1478,
    "duree_s": 12,
    "cadre": "ÉCR + PR",
-   "action": "Il modifie ; si A08 = A, le caillou blanc posé dans l'alvéole H-01",
+   "action": "Il modifie ; il pose le caillou blanc dans l'alvéole H-01",
    "son_ecran": "EXIT AGE 35 → 14 · MEMORY 100 % → 21 % · INCUBATION: AUTO · RESOURCES: SUFFICIENT",
    "fab": "Écran + IA",
    "tags": [
@@ -3432,7 +3416,7 @@
     "55",
     "EXPO"
    ],
-   "note": "E9 ; le carton validé",
+   "note": "E9 (sans module dans le 55 : round 17) ; le carton validé",
    "dome": false,
    "charniere": "E9",
    "mot": null,
@@ -3447,6 +3431,9 @@
    "dans_25": "Quatre plans : lanceur, dock, départ, capsules",
    "dans_55": "M1 Terre 2045, Elena signe",
    "module": "M1",
+   "modules": [
+    "M1"
+   ],
    "crochet": "La photo d'Elena sur l'écran (Acte I)",
    "plan": "P-02"
   },
@@ -3456,25 +3443,35 @@
    "dans_25": "Un plan par Rob, trois écrans verts",
    "dans_55": "M2 Phase 1 : les Robs explorent, point de vue par point de vue",
    "module": "M2",
+   "modules": [
+    "M2"
+   ],
    "crochet": "Les trois voyants verts des échantillons",
    "plan": "1-01"
   },
   {
    "id": "E3",
    "ou_docx": "Acte II, « time lapse, ellipse, plusieurs jours »",
-   "dans_25": "Carton « Jour 12 · 250 km », les pitons au crépuscule",
+   "dans_25": "Carton « 250 km », les pitons au crépuscule",
    "dans_55": "M3 La marche : les pitons, Seed qui porte Rob1",
    "module": "M3",
+   "modules": [
+    "M3"
+   ],
    "crochet": "Seed qui porte Rob1 (une image)",
    "plan": "2-01"
   },
   {
    "id": "E4",
    "ou_docx": "Acte IV, « time lapse, ellipse » puis « grosse ombre qui survole »",
-   "dans_25": "Carton « Jour 17 · 680 km », le col, l'ombre",
-   "dans_55": "M4 Le col et l'ombre du Titan : le Rob fusionné qui court, les glaciers, le froid",
+   "dans_25": "Carton « 680 km », le col, l'ombre",
+   "dans_55": "M4 Le col et l'ombre : le Rob fusionné qui court, les glaciers, le froid, l'ombre d'un oiseau-prédateur ; puis M9 Il y a 60 millions d'années : les Titans et la pluie de comètes",
    "module": "M4",
-   "crochet": "Le squelette dans la voûte (Acte III) et l'ombre",
+   "modules": [
+    "M4",
+    "M9"
+   ],
+   "crochet": "L'ombre du col ; le squelette de la voûte, la couche sombre du canyon",
    "plan": "4-03"
   },
   {
@@ -3483,6 +3480,9 @@
    "dans_25": "Le feu, le ciel noir, fondu",
    "dans_55": "M5 La nuit de la saison noire : la forêt bioluminescente au maximum, les rongeurs, le sanctuaire qui luit",
    "module": "M5",
+   "modules": [
+    "M5"
+   ],
    "crochet": "Le totem qui luit en arrière-plan",
    "plan": "5-14"
   },
@@ -3492,6 +3492,9 @@
    "dans_25": "La poussière retombe, fondu",
    "dans_55": "M6 Dans la horde : où vont Seed, le tank, le robopod ; les buffles vus de près",
    "module": "M6",
+   "modules": [
+    "M6"
+   ],
    "crochet": "Le caillou blanc dans la poche de Seed",
    "plan": "6-16"
   },
@@ -3501,25 +3504,32 @@
    "dans_25": "Trois paysages en trente secondes",
    "dans_55": "M7 La course : canyon ocre, forêts cristallines, flammes bleues, poches de CO₂",
    "module": "M7",
+   "modules": [
+    "M7"
+   ],
    "crochet": "Le compteur « ROB4 > 87 km »",
    "plan": "7-18"
   },
   {
    "id": "E8",
    "ou_docx": "Entre VII et IX, « time lapse, ellipse » (pas d'Acte VIII dans le docx)",
-   "dans_25": "Carton « Jour 37 · 4 800 km », les lacs pourpres, le cri",
-   "dans_55": "M8 Korê : le retour, la colonie d'oiseaux des salins, le nom",
+   "dans_25": "Carton « 4 800 km », les lacs pourpres, le cri",
+   "dans_55": "M8 Korê : la semaine du retour, l'arrivée aux lacs ; il se ferme quand la colonie est en vue",
    "module": "M8",
-   "crochet": "Le mot « Korê », un des quatre mots",
+   "modules": [
+    "M8"
+   ],
+   "crochet": "Les lacs pourpres sous l'aube ambrée (8-01) ; le cri et le mot « Korê » restent au cœur (8-02)",
    "plan": "8-01"
   },
   {
    "id": "E9",
    "ou_docx": "Acte X, « Nuit »",
    "dans_25": "Le compartiment CAIN",
-   "dans_55": "M9 Il y a 60 millions d'années : les Titans et la pluie de comètes, placé plus tôt (après E4) ou en prégénérique du 55",
-   "module": "M9",
-   "crochet": "Le squelette de la voûte, la couche sombre du canyon",
+   "dans_55": "Aucun module : la fin ne change pas. Les Titans, d'abord rangés ici, sont placés à E4, après le col (round 17)",
+   "module": null,
+   "modules": [],
+   "crochet": "—",
    "plan": "10-06"
   }
  ],
@@ -3530,7 +3540,7 @@
    "insere_a": "E1, prologue",
    "charniere": "E1",
    "duree_s": 180,
-   "contenu": "La Terre qui mue : giga-feux, digues, serres. Elena enfant devant les fourmis ; le laboratoire ; la signature (don d'ADN, don de conscience) ; la charte PERSEPHORA : ne rien prendre à la Terre. Sa voix off, la seule voix humaine adulte du film",
+   "contenu": "La Terre qui mue : giga-feux, digues, serres. Les six souvenirs que Seed reverra au plan 7-11, vus ici du côté d'Elena (S7, validé round 17) : Elena enfant devant les fourmis ; le diplôme, les jumeaux ; le laboratoire ; la forêt en flammes ; sa main qui écrit PERSEPHORA ; la signature (don d'ADN, don de conscience). La charte PERSEPHORA : ne rien prendre à la Terre. Sa voix off, la seule voix humaine adulte du film",
    "enjeu": "Poser la charte, pour que le mensonge de Rob1 à la fin soit un choix moral et pas une panne",
    "expo": "Cartel de la charte ; le seul module sans image de Korê"
   },
@@ -3600,15 +3610,15 @@
    "insere_a": "E8, Acte VIII",
    "charniere": "E8",
    "duree_s": 180,
-   "contenu": "Le retour d'une semaine sous les aubes ambrées ; les lacs pourpres ; la colonie d'oiseaux des salins ; le cri ; Rob1 qui trouve ça drôle, Seed qui répète ; la planète a un nom ; Seed qui pose le caillou blanc au bord d'un lac (ou le garde : à trancher)",
-   "enjeu": "La planète devient un lieu ; le troisième mot",
-   "expo": "Lacs salés pourpres ; le cri comme signature sonore de l'expo"
+   "contenu": "Le retour d'une semaine sous les aubes ambrées ; le totem revu, devenu une tache lumineuse dans la savane (S6, validé round 17 ; sa place sur le chemin du retour reste à écrire) ; le caillou blanc que Seed garde sur elle ; l'arrivée aux lacs pourpres. Le module se ferme quand la colonie d'oiseaux des salins est en vue : le cri, le mot de Seed et le nom restent aux plans 8-02 et 8-03, identiques dans les deux films (round 17)",
+   "enjeu": "La planète devient un lieu, avant d'avoir un nom ; Seed a semé sans le savoir",
+   "expo": "Lacs salés pourpres (le cri de la colonie est au plan 8-02 du cœur)"
   },
   {
    "id": "M9",
    "titre": "Il y a 60 millions d'années",
-   "insere_a": "Après M4, ou en prégénérique du 55",
-   "charniere": null,
+   "insere_a": "E4, Acte IV, à la suite de M4 (round 17)",
+   "charniere": "E4",
    "duree_s": 120,
    "contenu": "Les Titans vivants : le brouteur, le chasseur, le volant ; l'étoile de passage ; la pluie de comètes ; l'hiver ; le squelette qui se retrouve dans la voûte de la grotte",
    "enjeu": "La planète a une histoire, et cette histoire est une extinction",

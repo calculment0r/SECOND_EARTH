@@ -26,7 +26,7 @@ Une chaîne née de la collision de deux plaques, d'où descend le fleuve de la 
 Des journées douces et des nuits de 20 h qui gèlent : la vie d'altitude sur Korê doit survivre à un grand écart chaque jour.
 
 - **Rosettes géantes.** Des plantes en grandes rosettes pourpres sur un tronc gainé de feuilles mortes, qui se referment la nuit pour protéger leur cœur du gel. Jumeaux terrestres : les séneçons géants du Kilimandjaro et les *Espeletia* des Andes, qui ont inventé la même forme chacun de leur côté.
-- **Neige pourpre.** Des microbes à pigment pourpre colorent la neige des glaciers. Jumeau terrestre : la « neige pastèque », rose, colorée par des algues.
+- **Neige rose.** La neige des glaciers est blanche, rosée par endroits : des algues y forment des plaques roses (validé, round 17). Jumeau terrestre : la « neige pastèque », rose, colorée par des algues.
 - **Coussins et lichens** sur les pentes rocheuses, pollinisés par de rares insectes à poils denses.
 - **Grimpeur des cols** (nouvelle espèce). Un herbivore trapu qui broute les rosettes et se tient sur des corniches inaccessibles aux prédateurs. Jumeau terrestre : le bouquetin.
 - **Les oiseaux-prédateurs** du bestiaire nichent dans ces falaises : c'est leur ombre que le docx fait passer sur l'équipe.
@@ -46,6 +46,6 @@ Des journées douces et des nuits de 20 h qui gèlent : la vie d'altitude sur Ko
 1. **Respirer en altitude.** *Sur Terre*, au sommet de l'Everest, il reste un tiers de l'oxygène du niveau de la mer. *Sur Korê*, au plus haut sommet, il en reste autant qu'à La Paz. *Pourquoi* : l'air de Korê part de plus haut, avec 30 % d'oxygène et 1,3 bar.
 2. **Des coquillages sur les sommets.** *Sur Terre*, le sommet de l'Everest est un ancien fond marin. *Sur Korê aussi*, et c'est là que la sonde a cherché le phosphore. *Pourquoi* : quand deux plaques se heurtent, elles soulèvent ce qui dormait sous la mer.
 3. **La même forme, deux fois.** *Sur Terre*, des plantes sans parenté proche ont inventé la rosette géante sur le Kilimandjaro et dans les Andes. *Sur Korê*, une troisième fois. *Pourquoi* : le même problème (nuits glacées, jours doux) appelle la même solution.
-4. **La neige colorée.** *Sur Terre*, des algues rendent la neige rose. *Sur Korê*, elle est pourpre. *Pourquoi* : même dans la glace, la vie capte la lumière.
+4. **La neige colorée.** *Sur Terre*, des algues rendent la neige rose. *Sur Korê* aussi : elle est blanche, rosée par endroits. *Pourquoi* : même dans la glace, la vie capte la lumière.
 5. **Des montagnes plus basses.** *Sur Terre*, les plus hauts sommets approchent 8 850 m. *Sur Korê*, ~7 800 m. *Pourquoi* : plus la gravité est forte, plus une montagne s'écrase sous son propre poids.
 6. **Le froid vide les batteries.** *Sur Terre*, une voiture électrique perd de l'autonomie en hiver. *Sur Korê*, Rob2 tombe en panne au col. *Pourquoi* : le froid ralentit la chimie qui produit le courant.
