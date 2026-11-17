@@ -24,7 +24,9 @@ Une mer froide en surface et vivante en profondeur, bordée de sable noir volcan
 ## Rob4, la guérison de Seed et les cartels (validé le 26/09 : respiration liquide appuyée sur le fait réel, Rob4 hybride)
 
 - **Rob4 hybride.** Pendant son hibernation, des filaments symbiotiques ont colonisé sa membrane, comme les coques de bateaux se couvrent de vie. Ils y ont trouvé un abri et l'énergie de ses batteries ; Rob4 y a gagné un nouveau langage, la lumière.
-- **Ce que Rob4 montre.** En parlant par la lumière, il projette ce qu'il a vu dans la fosse : c'est ainsi que le film montre ce biome (validé).
+- **Ce que Rob4 montre.** En parlant par la lumière, il projette ce qu'il a vu dans la fosse : c'est ainsi que le film montre ce biome (validé). Le regard de Seed vers la mer n'annonce rien de plus : la fosse n'est vue qu'à travers Rob4 (round 17).
+- **La lumière comme langue (validé, round 17).** Les filaments de Rob4 pulsent selon le même code que les plantes-chant, la pulpe de la Créature, l'organisme-batterie et le totem. C'est ici que Rob1 l'apprend (plan 7-23).
+- **« Je suis d'ici maintenant » (round 17).** Rob4 reste dans sa mer. Sa phrase n'est vue que plus tard, dans le souvenir de Rob1 avant son mensonge (plan 9-11), affichée sur son écran : I AM FROM HERE NOW. Aucun plan n'est ajouté ici.
 - **La guérison.** Seed est plongée dans le liquide de Rob4 et respire ce liquide. Sur Terre, la respiration liquide existe : des liquides très riches en oxygène (perfluorocarbones) ont été testés pour aider les poumons de prématurés. Les filaments dégradent la toxine du fruit, comme certaines bactéries terrestres dégradent des polluants.
 - **Les cicatrices lumineuses.** Les filaments laissent des traces sous la peau de Seed : elle porte désormais un peu de Korê en elle.
 

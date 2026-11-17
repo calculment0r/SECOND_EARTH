@@ -362,7 +362,7 @@ Seed regarde l'écran. Elle sait ce qu'ils attendent d'elle. Ils regardent l'hor
 
 ## Acte VIII : Korê
 
-**[E8 : dans le 55, le retour est un module d'une semaine ; dans le 25, un carton et deux plans.]**
+**[E8 : dans le 55, le retour est un module d'une semaine, où le film revient seul au totem, loin au nord ; dans le 25, un carton et deux plans.]**
 
 Le retour prend une semaine, sous des aubes de plus en plus longues : chaque matin, la seconde étoile se lève un peu plus tôt avant la première. Le tank contourne l'arc volcanique par le sud et traverse un pays de lacs. Carton : 4 800 km.
 

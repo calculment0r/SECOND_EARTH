@@ -38,8 +38,9 @@ Des journées douces et des nuits de 20 h qui gèlent : la vie d'altitude sur Ko
 - L'équipe (Seed sur Rob1+Rob2) monte vers un col à ~4 000 m pour rejoindre Rob3 de l'autre côté.
 - La nuit de 20 h tombe au col. Le froid vide les batteries bien plus vite que Rob1 ne l'avait calculé : une batterie lithium peut perdre jusqu'à la moitié de sa capacité par grand froid.
 - Seed pense à l'organisme-batterie de la caverne ; il permet de passer le col.
-- Dans la descente, l'organisme s'éteint ; Seed l'enterre. Sous terre, il se recharge au contact des minéraux.
-- Pendant la traversée, l'ombre d'un oiseau-prédateur passe sur l'équipe.
+- Dans la descente, l'organisme s'éteint ; Seed l'enterre sous un petit cône de brindilles, le totem. Sous terre, il se recharge au contact des minéraux.
+- Pendant la traversée, l'ombre d'un oiseau-prédateur passe sur l'équipe (validé, round 17 : un oiseau vivant ; le Titan volant n'existe que comme squelette).
+- **Le totem, plus tard (17/11/2026).** Le retour ne repasse pas par ici : il contourne l'arc volcanique par le sud et reste à 680 km au moins. Dans le 55, le module M8 revient seul sur cette pente : l'organisme est devenu une tache lumineuse autour du cône de brindilles. Seed a semé sans le savoir, et ne le saura pas.
 
 **Cartels (SUR TERRE / SUR KORÊ / POURQUOI)**
 

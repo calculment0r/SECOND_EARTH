@@ -15,11 +15,12 @@ Les noms et les codes du projet, pour l'équipe (Nina, BoraBora, image, son). Un
 | XENOPOD-02, -03, -04 ; les collecteurs de Mars et de Titan | Les XENOPOD collecteurs : ils prennent la matière et les données d'un monde, sans enfant. Sur Korê, les trois robopods de Rob2, Rob3, Rob4, lâchés par le XENOPOD-01 pendant la descente ; chacun envoie son drone au XENOPOD-01. Deux autres ont été déposés sur Mars et sur Titan en 2045 : NON VIABLE | Validé (round 13) |
 | La charte | « Ne rien prendre à la Terre » : tout ce qui fera un corps humain, puis une colonie, doit venir de la planète | Validé |
 | Robopod | Le mini-campement de chaque Rob de terrain : antenne-relais, station de recharge photovoltaïque, abri (docx) | Validé (docx) |
-| Drone porteur | Aile volante de ~15 kg de charge, un par robopod ; ils ont livré les échantillons au XENOPOD-01 et sont tombés avec lui | Validé (round 11) |
+| Balise | Le signal de chaque robopod : Rob1 en reçoit une position par jour, sans pouvoir commander, parler, ni joindre PERSEPHORA tant que le relais du XENOPOD est au fond du sinkhole | Validé (round 17) |
+| Drone porteur | Aile volante de ~15 kg de charge, un par robopod ; ils ont livré les échantillons au XENOPOD-01 et sont tombés avec lui. Le drone cassé vu au fond du gouffre (plan 9-07) est une image, sans suite | Validé (rounds 11 et 17) |
 | Rob1 | 1 m, robot d'accompagnement et cerveau de la mission ; carbone, eau, azote ; le menteur de la fin | Validé |
 | Rob2 | ~2,2 m, robot de terrain à jambes puissantes ; phosphore (guano, os du Titan) ; piégé dans la caverne | Validé |
 | Rob3 | ~2 m, deux grosses roues molles ; soufre, fer, métaux ; colonisé par la mousse | Validé |
-| Rob4 | ~3 m, marin ; phosphore marin, tri phosphore/arsenic ; devenu hybride avec les filaments (JK-47B) | Validé |
+| Rob4 | ~3 m, marin ; phosphore marin, tri phosphore/arsenic ; devenu hybride avec les filaments (JK-47B). Il reste dans sa mer : « Je suis d'ici maintenant », vu seulement dans le souvenir de Rob1 (plan 9-11), à l'écran I AM FROM HERE NOW | Validé (round 17 pour la phrase) |
 | Rob1/2 | Le Rob fusionné : bipède coureur, ~30 km/h, Seed dans un siège-harnais | Validé (round 11) |
 | Rob1/2/3 | Le tank à roues, Rob1 en pilote ; il s'assemble pendant la horde (Acte VI, plan 6-11) | Validé (docx, round 17) |
 | Seed | SEED-03, alvéole H-01 ; clone partiel d'Elena Vasquez, 15 ans apparents, 23 % de mémoire transférée ; cheveux blancs ; muette jusqu'à « Rob ! » | Validé (docx) |
@@ -33,10 +34,16 @@ Les noms et les codes du projet, pour l'équipe (Nina, BoraBora, image, son). Un
 | Continents A–D, Océans 1–3, Golfes 1–2 | Les codes de mission de la carte | Validé |
 | Les Titans | Le monde de géants disparu il y a 60 Ma ; le squelette de la voûte est un Titan volant | Validé |
 | La Créature | Le prédateur de la caverne, descendant des Titans | Validé |
-| Les plantes-chant, l'organisme-batterie, le totem | La flore de la caverne ; l'échantillon qui recharge Rob2 ; le petit sanctuaire où Seed l'enterre, et qui luit | Validé (docx) |
+| Les plantes-chant, l'organisme-batterie, le totem | La flore de la caverne ; l'échantillon qui recharge Rob2 ; le petit sanctuaire où Seed l'enterre dans la descente du col, et qui luit. Le retour n'y repasse pas ; dans le 55, M8 y revient sans Seed : une tache lumineuse sur la pente | Validé (docx ; round 17 et 17/11/2026 pour M8) |
+| La lumière comme langue | Un seul code de pulsations pour les plantes-chant, la pulpe de la Créature, l'organisme-batterie, le totem et les filaments de Rob4 ; Rob1 l'apprend à la mer d'arsenic | Validé (round 17) |
+| L'arc de la voix, les trois motifs sonores | La voix de Seed monte par étapes : souffle, sifflement raté puis réussi, cri, murmure, nom, phrase. Trois sons du monde font la musique : les plantes-chant (motif 1), le cri « Ko-rê » (motif 2), le sifflement (motif 3) | Validé (round 17) |
+| Les visions d'Elena | Six souvenirs d'avant 2045, jamais Korê ni l'avenir ; M1 les montre du côté d'Elena dans le 55 | Validé (round 17) |
 | JK-47B / Symbiofilum | Les filaments symbiotiques de la mer d'arsenic qui soignent Seed dans Rob4 | Validé (docx) |
-| Le caillou blanc | Le cadeau du petit rongeur à l'oreille abîmée | Validé (docx) |
+| Le caillou blanc | Le cadeau du petit rongeur à l'oreille abîmée ; Seed le garde sur elle jusqu'au bout du retour, et Rob1 le pose dans l'alvéole H-01 à la fin | Validé (docx, A08, round 17) |
 | Les cartons de distance | « 250 km » : la ponctuation des deux films ; aucun numéro de jour à l'image | Validé (round 17) |
-| E1–E9, M1–M9 | Les neuf emplacements du 25 et les neuf modules du 55 (doc Script) | Proposé |
+| E1–E9, M1–M9 | Les neuf emplacements du 25 et les neuf modules du 55 (doc Script). Round 17 : M9 (les Titans) suit M4 à E4, E9 n'ouvre aucun module ; M8 se ferme avant le cri « Korê » | Proposé (placement de M9 et fin de M8 : validés, round 17) |
+| Crochet, écho | Un plan du 25 qui annonce un module du 55 ; dans le 55, quand ce plan arrive après son module, il le rappelle : crochet dans le 25, écho dans le 55 | Validé (round 17) |
+| Le Récit v2 | Le récit de référence depuis le round 17 : le docx réécrit avec le monde. Le docx d'origine (SECOND_EARTH_STORY) est une archive ; « docx » dans ce glossaire désigne la source d'origine d'un terme | Validé (round 17) |
+| L'ombre du col | Un oiseau-prédateur vivant, neuf mètres d'envergure (plan 4-09) ; le Titan volant n'existe que comme squelette dans la voûte | Validé (round 17) |
 | Cartel | Panneau d'expo en trois temps : SUR TERRE / SUR KORÊ / POURQUOI | Validé |
 | Le carton final | This is a fictional planet. / Earth is the only world we know. / Take care of it. | Validé |

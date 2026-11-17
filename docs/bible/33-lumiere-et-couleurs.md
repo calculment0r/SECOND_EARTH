@@ -45,3 +45,4 @@ Les deux lunes ne changent pas de saison : la grande a la taille apparente de la
 - Trois nuits, pas une : ambrée (avant et après), lunaire froide (col), noire et bioluminescente (forêt, mer). La saison noire est le cœur du film.
 - Le magenta sous la canopée est la signature de la jungle ; le bleu-vert de la bioluminescence, celle des cavernes et de la forêt ; le rouge de la rivière, celle de la forêt ancienne ; le pourpre des lacs, celle du retour.
 - Le blanc de Seed (cheveux), du caillou et des buffles albinos est le seul blanc pur du film : tout le reste est teinté par l'étoile.
+- La lumière comme langue (validé, round 17) : un seul code de pulsations, dessiné une fois et tenu dans les cinq endroits où le monde parle par la lumière : les plantes-chant, la pulpe de la Créature, l'organisme-batterie, le totem, les filaments de Rob4.

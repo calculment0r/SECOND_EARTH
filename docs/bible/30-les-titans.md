@@ -16,7 +16,7 @@ L'air de Korê porte : à 1,3 bar et 30 % d'oxygène, un animal volant a plus de
 | Titan chasseur (*Abyssoraptor primus*) | ~12 m de long | Prédateur des plaines, embuscade | Empreintes dans les plaines de lave anciennes | Créature des profondeurs (lignée passée sous terre) | Grands théropodes | Validé |
 | Titan des mers (*Thalassotitan korensis*) | ~20 m | Filtreur des mers tièdes de l'Océan 2, avant que la mer d'arsenic ne se charge | Os dans les falaises du Golfe 2, visibles depuis la mer | Aucun | Baleines à fanons, ichtyosaures | Nouveau, proposé |
 | Titan des marais (*Paludotitan lentus*) | ~10 m | Amphibie, lent, dans les deltas et les bassins fermés | Empreintes dans les évaporites des lacs salés pourpres | Aucun | Hippopotames, *Spinosaurus* | Nouveau, proposé |
-| Titan des cimes (*Dendrotitan pendulus*) | ~5 m, suspendu | Brouteur de canopée, accroché aux arbres-cathédrales de 100 m, très lent | Griffes fossiles dans les troncs pétrifiés des forêts cristallines | Paresseux-mousse (FA-01), réduit vingt fois | Paresseux géants (*Megatherium*) | Nouveau, proposé |
+| Titan des cimes (*Dendrotitan pendulus*) | ~5 m, suspendu | Brouteur de canopée, accroché aux arbres-cathédrales de 100 à 115 m, très lent | Griffes fossiles dans les troncs pétrifiés des forêts cristallines | Paresseux-mousse (FA-01), réduit vingt fois | Paresseux géants (*Megatherium*) | Nouveau, proposé |
 | Titan cuirassé (*Loricatitan clypeus*) | ~7 m, ~15 t | Herbivore blindé des lisières, solitaire | Plaques d'armure dans les lits d'os des Hautes Plaines | Aucun | Ankylosaures, glyptodons | Nouveau, proposé |
 
 ## L'extinction
@@ -31,6 +31,6 @@ Grotte de Rob2 (le volant, validé) ; canyon ocre (le brouteur et la couche somb
 
 ## Pour le film et l'expo
 
-Dans le film : le squelette de la voûte (Acte III, un plan), l'ombre d'un oiseau-prédateur au col (Acte IV), la couche sombre du canyon pendant la course (Acte VII). Dans le 55 : le module M9, deux minutes il y a 60 millions d'années. Dans la salle immersive : la séquence « extinction ».
+Dans le film : le squelette de la voûte (Acte III, un plan), l'ombre d'un oiseau-prédateur au col (Acte IV), la couche sombre du canyon pendant la course (Acte VII). Dans le 55 : le module M9, deux minutes il y a 60 millions d'années, placé après le col, à la suite de M4 (round 17) ; la couche sombre du canyon, vue ensuite pendant la course, en devient l'écho. Dans la salle immersive : la séquence « extinction ».
 
 Cartel : SUR TERRE, Chicxulub, il y a 66 millions d'années, un impact, un jour. SUR KORÊ, une étoile de passage, il y a 60 millions d'années, cent mille ans de comètes. POURQUOI : dans les deux cas la mort vient du ciel ; une étoile qui frôle un système secoue son nuage de comètes, et cela arrivera au Soleil aussi.

@@ -18,6 +18,8 @@ Une cuvette sans issue vers la mer, entre l'arc volcanique et les terres, où l'
 
 **La scène.** Seed, marquée de ses cicatrices lumineuses, marche avec les Robs sur la croûte de sel. Des milliers d'oiseaux s'envolent en criant. Rob1 enregistre le cri, le rejoue, s'en amuse ; Seed l'imite. Rob1 remplace sur son écran « 61 Cygni Ab » par « KORÊ ».
 
+**Dans les deux films (round 17).** Le cri est le deuxième motif sonore du film, et « Korê » le troisième des quatre mots de Seed. Dans le 55, le module du retour (M8) se ferme quand la colonie est en vue : le cri et le mot ne sont entendus qu'une fois, aux mêmes plans que dans le 25 (8-02 et 8-03). Seed a toujours le caillou blanc sur elle : elle ne le pose pas au bord d'un lac. Le retour ne repasse pas par le totem ; M8 y revient sans elle (17/11/2026).
+
 **Cartels (SUR TERRE / SUR KORÊ / POURQUOI)**
 
 1. **Des lacs roses et pourpres.** *Sur Terre*, les salins se colorent en rose ou en violet. *Sur Korê*, des lacs entiers sont pourpres. *Pourquoi* : des microbes qui vivent dans le sel captent la lumière avec un pigment pourpre, le rétinal.

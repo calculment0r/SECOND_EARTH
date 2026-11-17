@@ -56,7 +56,7 @@ Codes : FL- suivi du biome (JP jungle, PK pitons, TR cavernes, MG massifs, FB fo
 | FL-MA-01 · Mangroves à échasses (*Grallae maritimae*) | 10–15 m sur échasses de 4 m ; racines aériennes en cône | Feuilles pourpres, racines grises | Marée toutes les ~21 h (deux lunes, validé) : les échasses gardent la couronne au sec ; feuilles qui excrètent le sel et l'arsenic | Les côtes du Golfe 1 et du Golfe 2 ; la plage noire de Rob4 | *Rhizophora*, Sungei Buloh | Validé (biome) |
 | FL-MA-02 · Algues d'arsenic (*Phyllum arsenicum*) | Lanières de 5–10 m fixées aux rochers de la mer d'arsenic | Gris-vert métallique, comme l'eau | Stockent l'arsenic dans des vacuoles pour ne pas le confondre avec le phosphore (validé : la vie trie) | Ce qui flotte autour de Rob4 (Acte VII) | Algues du lac Mono | Proposé |
 | FL-LS-01 · Microbes pourpres du sel (*Halopurpura*) | Pas une plante : des tapis microbiens dans la saumure | Rose à pourpre, plus foncé quand le lac s'évapore | Pigments qui protègent du rayonnement dans l'eau salée (validé B/L) | La couleur des lacs (Acte VIII) | *Halobacterium*, *Dunaliella* du lac Retba | Validé |
-| FL-LS-02 · Buissons de sel (*Salsola korensis*) | Succulentes de 30–80 cm, tiges articulées | Gris-vert, rougissant en fin de saison | Halophytes : elles stockent le sel dans leurs tiges | Les berges où la colonie d'oiseaux niche ; le totem-caillou, si A08 = B | Salicorne | Proposé |
+| FL-LS-02 · Buissons de sel (*Salsola korensis*) | Succulentes de 30–80 cm, tiges articulées | Gris-vert, rougissant en fin de saison | Halophytes : elles stockent le sel dans leurs tiges | Les berges où la colonie d'oiseaux niche | Salicorne | Proposé |
 
 ## Hors trajet
 

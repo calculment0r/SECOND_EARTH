@@ -36,6 +36,8 @@ Une forêt qui ne vit pas de la lumière mais de la chimie de sources chaudes. E
 - **Le feu de Rob1.** Un arc électrique sur des brindilles suffit : avec 30 % d'oxygène, le feu prend vite et brûle fort. Rob1 doit même le contenir.
 - **Le ciel de nuit.** Pas d'aurores : 2098 est une année calme de l'étoile (validé, round 13, W03), les aurores du docx sont retirées du film. La scène tombe au cœur de la saison noire : soirées et cœur de nuit sans lune, un croissant de grande lune en fin de nuit (validé, round 15), la petite lune qui change chaque nuit ; c'est la forêt qui éclaire.
 - **Le robopod-abri.** Les rongeurs ont choisi le robopod de Rob3 parce que c'est la seule coque de métal à l'épreuve des sabots : ils savent que les hordes passent par ici.
+- **Le sifflement (validé, round 17).** Seed essaie d'imiter le petit rongeur et n'y arrive pas ; elle y arrivera dans la forêt ancienne (Acte VII). C'est une étape de l'arc de sa voix, et le troisième motif sonore du film après la musique des plantes-chant et le cri « Ko-rê ».
+- **Le caillou blanc (round 17).** Seed le met dans sa poche et le garde sur elle jusqu'au bout du retour ; Rob1 le pose à la fin dans l'alvéole H-01 (A08).
 
 **Cartels (SUR TERRE / SUR KORÊ / POURQUOI)**
 

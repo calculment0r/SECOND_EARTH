@@ -36,6 +36,8 @@ Une vallée profonde et abritée, où des arbres ont traversé les extinctions. 
 - **Le réveil au bord de l'eau.** Seed échoue à moitié dans l'eau acide ; ses plaies la brûlent. Elle a soif mais ne peut pas boire cette eau, et c'est ce qui la pousse vers le fruit.
 - **L'oiseau-prédateur.** Il pêche à la confluence de l'affluent clair et de la rivière rouge, dans la bande d'eau claire (validé). Seed le voit plonger dans la seule eau où elle pourrait boire, de l'autre côté.
 - **Le fruit.** Seed voit l'oiseau-reptile le manger, en conclut qu'il est comestible, et se trompe.
+- **Le sifflement (validé, round 17).** Seule au bord de la rivière, le caillou blanc dans la main, Seed siffle, et cette fois le son sort : l'arc de sa voix, commencé dans la forêt bioluminescente.
+- **Les visions d'Elena (validé, round 17).** Le fruit ne lui montre que des souvenirs d'Elena d'avant 2045, jamais Korê ni l'avenir : six souvenirs, que le module M1 du 55 montre du côté d'Elena.
 
 **Cartels (SUR TERRE / SUR KORÊ / POURQUOI)**
 

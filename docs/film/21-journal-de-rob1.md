@@ -82,7 +82,7 @@ Texte définitif de chaque écran, en anglais, dans l'ordre des plans. Les carto
 | 10-05 | Incubateur | EXIT AGE: 35 → 14 / MEMORY: 100 % → 21 % / INCUBATION: AUTO · RESOURCES: SUFFICIENT |
 | 10-06 | Carton | This is a fictional planet. / Earth is the only world we know. / Take care of it. |
 
-La dernière ligne de 9-12 est validée (A09). Un écran reste conditionnel : 7-23, qui n'existe que si Rob4 est traduit ; sinon, les pulsations seules. Au plan 9-11, la phrase de Rob4, « Je suis d'ici maintenant », s'affiche parmi les souvenirs (round 17) ; son texte anglais est une traduction proposée, à confirmer.
+La dernière ligne de 9-12 est validée (A09). Un écran reste conditionnel : 7-23, qui n'existe que si Rob4 est traduit ; sinon, les pulsations seules. Au plan 9-11, la phrase de Rob4, « Je suis d'ici maintenant », s'affiche parmi les souvenirs (round 17) ; son texte anglais, I AM FROM HERE NOW, est gardé (17/11/2026) : mot à mot, il tient l'écho avec « D'ici » à l'Acte X et avec la voix de M8 (« Elle est d'ici, maintenant. Rob4 aussi. »).
 
 ## La voix du 55
 

@@ -42,7 +42,7 @@ Neuf charnières, toutes déjà présentes dans le docx ou dans la Bible. Dans l
 | E5 | Fondu au noir, fin de l'Acte V | Le feu, le ciel noir, fondu | M5 La nuit de la saison noire : la forêt bioluminescente au maximum, les rongeurs, le sanctuaire qui luit | Le totem qui luit en arrière-plan |
 | E6 | Fondu au noir, fin de l'Acte VI | La poussière retombe, fondu | M6 Dans la horde : où vont Seed, le tank, le robopod ; les buffles vus de près | Le caillou blanc dans la poche de Seed |
 | E7 | Acte VII, « plan drone dynamiques, course contre la montre » | Trois paysages en trente secondes | M7 La course : canyon ocre, forêts cristallines, flammes bleues, poches de CO₂ | Le compteur « ROB4 > 87 km » |
-| E8 | Entre VII et IX, « time lapse, ellipse » (pas d'Acte VIII dans le docx) | Carton « 4 800 km », les lacs pourpres, le cri | M8 Korê : la semaine du retour, l'arrivée aux lacs ; il se ferme quand la colonie est en vue | Les lacs pourpres sous l'aube ambrée (8-01) ; le cri et le mot « Korê » restent au cœur (8-02) |
+| E8 | Entre VII et IX, « time lapse, ellipse » (pas d'Acte VIII dans le docx) | Carton « 4 800 km », les lacs pourpres, le cri | M8 Korê : la semaine du retour, le totem revu sans eux, l'arrivée aux lacs ; il se ferme quand la colonie est en vue | Les lacs pourpres sous l'aube ambrée (8-01) ; le cri et le mot « Korê » restent au cœur (8-02) |
 | E9 | Acte X, « Nuit » | Le compartiment CAIN | Aucun module : la fin ne change pas. Les Titans, d'abord rangés ici, sont placés à E4, après le col (round 17) | — |
 
 Les modules des emplacements E2, E4 (M4 et M9) et E7 sont des séquences sans Seed ou où elle est portée et dort : ce sont les modules que l'expo réutilise tels quels.

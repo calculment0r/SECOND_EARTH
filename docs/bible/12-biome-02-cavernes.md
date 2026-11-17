@@ -52,6 +52,7 @@ La grotte vit de deux énergies : la chimie de la rivière souterraine, et la no
 - **La fusion Rob1+Rob2.** Sur Terre, des laboratoires travaillent sur des robots modulaires qui s'assemblent entre eux ; PERSEPHORA en est la version aboutie.
 - **Le silence.** Les plantes-chant se taisent quand la Créature approche. Sur Terre, grenouilles et grillons font de même à l'approche d'un prédateur.
 - **L'échantillon de Seed.** Elle prélève un organisme-batterie : c'est lui qui sauvera Rob2 dans le col.
+- **La lumière comme langue (validé, round 17).** Les plantes-chant, la pulpe de la Créature et l'organisme-batterie pulsent selon un seul code de pulsations, le même que le totem et les filaments de Rob4 ; Rob1 l'apprend à la mer d'arsenic. La musique des plantes-chant est le premier des trois motifs sonores du film.
 
 **Cartels (SUR TERRE / SUR KORÊ / POURQUOI)**
 

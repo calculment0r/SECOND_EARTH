@@ -28,18 +28,19 @@ Jours terrestres depuis la naissance de Seed ; les distances sont celles de la c
 | 0 à 2 | I | Jungle, 0 km | Naissance ; lumières sismiques ; le sinkhole avale le XENOPOD, le drone et le relais radio | Soirées ambrées : B se couche tôt |
 | 2 à 12 | II | Pitons, 250 km | Seed porte Rob1 le long du fleuve, ~25 km par jour ; le fleuve se perd dans les tours | La saison noire commence au jour 3 |
 | 12 à 15 | II–III | Cavernes, 250 km | Rob2 piégé ; fusion Rob1+Rob2 ; la Créature ; le Titan volant dans la voûte | Nuit noire, caverne bioluminescente |
-| 15 à 19 | IV | Le col, 680 km | Le Rob fusionné court ; le froid vide les batteries ; l'organisme-batterie | Nuits noires, glaciers sous les deux lunes |
+| 15 à 19 | IV | Le col, 680 km | Le Rob fusionné court ; le froid vide les batteries ; l'organisme-batterie ; l'ombre d'un oiseau-prédateur ; le totem, dans la descente | Nuits noires, glaciers sous les deux lunes |
 | 19 à 23 | V | Forêt bioluminescente, 1 200 km | Rob3 colonisé par la mousse ; la famille de rongeurs ; le feu de camp | Saison noire à son cœur : la forêt à son maximum |
 | 23 à 25 | VI | Hautes Plaines, ~1 700 km | La horde de buffles albinos fuit un feu et sépare Seed des Robs | Nuits noires, feux de savane à l'horizon |
 | 25 à 28 | VII | Forêt ancienne, ~2 000 km | Seed seule ; la rivière rouge qu'elle ne peut pas boire ; le fruit ; les visions d'Elena | Nuits noires, brouillard |
 | 28 à 30 | VII | La course, canyon, cristal, arc, ~3 300 km | Le tank (Rob1/2/3, à roues, assemblé pendant la horde de l'Acte VI, comme dans le docx) la retrouve et fonce sans s'arrêter : ~1 300 km en deux jours | Flammes bleues de soufre la nuit |
 | 30 à 32 | VII | Mer d'arsenic, Rob4 | Rob4 hybride ; Seed guérie dans son liquide ; cicatrices lumineuses | Jour 32 : première aube ambrée, quand Seed se réveille guérie |
-| 32 à 39 | Retour | Lacs salés pourpres, ~4 800 km | Le cri « Korê » d'une colonie entière ; Rob1 et Seed rebaptisent la planète | Aubes ambrées de plus en plus longues |
-| 39 à 41 | IX–X | Sinkhole, ~5 500 km | Extraction du XENOPOD ; le drone cassé au fond ; le message de PERSEPHORA ; le mensonge de Rob1 ; CAIN | B se lève bien avant le soleil : la jungle retrouve ses nuits ambrées |
+| 32 à 39 | VIII, retour | Lacs salés pourpres, ~4 800 km | Le tank contourne l'arc par le sud ; Seed garde le caillou blanc ; le cri « Korê » d'une colonie entière ; Rob1 et Seed rebaptisent la planète | Aubes ambrées de plus en plus longues |
+| 39 à 41 | IX–X | Sinkhole, ~5 500 km | Extraction du XENOPOD ; le drone cassé au fond (une image, sans suite : round 17) ; le message de PERSEPHORA ; le mensonge de Rob1 ; CAIN ; le caillou blanc dans l'alvéole H-01 | B se lève bien avant le soleil : la jungle retrouve ses nuits ambrées |
 
 ## Ce que la chronologie fixe
 
 - Seed ne marche que dix jours ; ensuite elle est portée par le Rob fusionné (Rob1/2, bipède coureur) jusqu'à Rob3, dans un siège-harnais, et dort pendant qu'il court (validé, round 11) ; à partir de Rob3, par le tank à roues Rob1/2/3 du docx.
 - La course finale se fait sans arrêt : ~1 300 km en deux jours, à ~30 km/h en continu. C'est le seul moment où le tank roule aussi la nuit ; les 87 km du docx sont la dernière ligne droite.
 - Le retour prend une semaine : le temps que la planète, une fois nommée, devienne un lieu et non plus une épreuve.
+- Le retour ne repasse pas par le totem (17/11/2026) : sur la carte, le crochet coûterait au moins ~1 350 km, quatre à cinq jours de plus à ~300 km par jour. La semaine du retour et la boucle de ~5 500 km tiennent ; dans le 55, M8 montre le totem sans Seed ni les Robs.
 - Le jour de 40 h : Seed dort deux fois par jour de Korê, une longue nuit et une sieste de jour, et dans le siège-harnais pendant la course (validé, round 13).

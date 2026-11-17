@@ -5,7 +5,7 @@
 
 Toutes les décisions de worldbuilding validées par Cal, classées par thème. Un point listé ici n'est plus remis en question.
 
-**Les documents du projet (27/09)** : cette Bible (le monde) ; Phosphore, biomasse et seconde Terre (la thèse) ; Bestiaire de Korê et Flore de Korê (les espèces et les plantes) ; [la carte de Korê](https://claude.ai/artifact/PxfBWGF1dk4DJWuzUdXJvt) ; Script Second Earth (architecture 25 / 55, séquencier, modules, propositions, écarts, salle immersive) ; Découpage 25 min (150 plans) ; Journal de Rob1 (écrans, voix off, voix de la salle) ; Second Earth · Récit v2 (le docx réécrit avec le monde) ; Planches de dessin (fiches et prompts) ; Notes pour Nina (science, process IA, clips de test, dossier de décembre) ; [le QCM des arbitrages](https://claude.ai/artifact/GBg169jA4N56T1hG1jukoK) (rounds 1 à 16 tranchés au 28/09 ; round 17 tranché le 16/11 dans l'outil de relecture). Le statut de chaque point est indiqué dans les onglets (validé avec son round, ou proposé).
+**Les documents du projet (27/09)** : cette Bible (le monde) ; Phosphore, biomasse et seconde Terre (la thèse) ; Bestiaire de Korê et Flore de Korê (les espèces et les plantes) ; [la carte de Korê](https://claude.ai/artifact/PxfBWGF1dk4DJWuzUdXJvt) ; Script Second Earth (architecture 25 / 55, séquencier, modules, propositions, écarts, salle immersive) ; Découpage 25 min (150 plans) ; Journal de Rob1 (écrans, voix off, voix de la salle) ; Second Earth · Récit v2 (le docx réécrit avec le monde) ; Planches de dessin (fiches et prompts) ; Notes pour Nina (science, process IA, clips de test, dossier de décembre) ; [le QCM des arbitrages](https://claude.ai/artifact/GBg169jA4N56T1hG1jukoK) (rounds 1 à 16 tranchés au 28/09 ; round 17 tranché le 16/11 dans l'outil de relecture, ses deux suites le 17/11). Le statut de chaque point est indiqué dans les onglets (validé avec son round, ou proposé).
 
 ## Le monde
 
@@ -223,8 +223,8 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 - **Récit de référence (R1)** : le Récit v2 fait foi, tel quel ; le docx d'origine devient une archive.
 - **Balises (R2)** : validées. Rob1 reçoit une position par jour de chaque robopod, sans pouvoir commander ni parler.
 - **Cartons (R3)** : les distances restent à l'image (250, 680, 1 200, 3 300, 4 800 et 5 500 km) ; les numéros de jour en sortent, ainsi que les cartons sans distance (gestation, jours 15, 25, 28 et 41). Le temps passé se lit par le ciel et la lune. La Chronologie du voyage reste proposée, comme horloge de travail.
-- **Rob4 (R4)** : « Je suis d'ici maintenant » n'est vu que dans le souvenir de Rob1 (plan 9-11), la phrase affichée sur son écran. Aucun plan ajouté à l'Acte VII.
-- **Fils validés (F1 à F5)** : l'arc de la voix de Seed et les trois motifs sonores du monde, plantes-chant, cri « Ko-rê », sifflement (S2, P4) ; la lumière comme langue, un seul code de pulsations (S4) ; le totem revu au retour dans le 55 (S6) ; les visions d'Elena ne montrent que des souvenirs d'avant 2045, et M1 montre les mêmes scènes de son côté (S7) ; le gouffre dans les souvenirs de Rob1 avant le mensonge (S9).
+- **Rob4 (R4)** : « Je suis d'ici maintenant » n'est vu que dans le souvenir de Rob1 (plan 9-11), la phrase affichée sur son écran, en anglais comme tous les écrans (A05) : I AM FROM HERE NOW. Aucun plan ajouté à l'Acte VII.
+- **Fils validés (F1 à F5)** : l'arc de la voix de Seed et les trois motifs sonores du monde, plantes-chant, cri « Ko-rê », sifflement (S2, P4) ; la lumière comme langue, un seul code de pulsations (S4) ; le totem revu dans le 55 pendant le retour, sans Seed ni les Robs (S6, précisé le 17/11 ci-dessous) ; les visions d'Elena ne montrent que des souvenirs d'avant 2045, et M1 montre les mêmes scènes de son côté (S7) ; le gouffre dans les souvenirs de Rob1 avant le mensonge (S9).
 - **Les Titans dans le 55 (C1)** : M9 est placé après le col, à la suite de M4. L'Acte IV du 55 fait 7:00, l'Acte X 1:00 ; le total reste 52:00.
 - **Crochets et échos (C2)** : dans le 55, quatre plans du cœur arrivent après le module qu'ils annonçaient dans le 25 (photo d'Elena, ombre du col, couche sombre du canyon, compteur 87 km). C'est assumé : crochet dans le 25, écho dans le 55.
 - **Le drone cassé (C3)** : le plan 9-07 est une image, pas un crochet. **Le regard vers la mer (C4)** : un regard, sans suite ; la fosse n'est vue qu'à travers Rob4.
@@ -232,6 +232,11 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 - **La neige du col (V2)** : blanche, rosée par endroits. **Les arbres-cathédrales (V3)** : 100 à 115 m, les plus hauts de Korê. **L'Arbre-voûte de la jungle (V4)** : 90 à 110 m.
 - **Le caillou blanc (D1)** : Seed le garde sur elle pendant le retour, jusqu'à l'alvéole H-01 (A08). **L'ombre du col (D2)** : un oiseau-prédateur vivant ; le Titan volant n'existe que comme squelette. **Le mot « Korê » dans le 55 (D3)** : M8 s'arrête quand la colonie est en vue ; le cri et le mot restent aux plans 8-02 et 8-03, dits une seule fois. **Corrections d'écriture (D4)** : en-tête du découpage (les quatre mots en 6-14, 7-13, 8-02 et 9-15 ; dix-neuf plans dôme), deux notes sans conditionnel, distances de Rob3 et Rob4. **Le coureur, puis le tank (D5)** : validé.
 - **Suite (G1)** : ces choix valent corrections de relecture. Le gel du round 16 est levé : le monde et le script reprennent.
+
+**Suites du round 17 (17/11/2026).** Deux points laissés ouverts par l'intégration. Cal a demandé à Claude de les trancher au mieux, en gardant la cohérence avec l'histoire ; ce sont donc des choix de Claude, faits à sa demande.
+
+- **Le totem pendant le retour (S6)** : vérifié sur la carte v3, le retour ne peut pas repasser devant. Le totem est dans la descente du col, sur le versant nord du massif ; le retour contourne l'arc volcanique par le sud et rentre par les lacs salés. Il reste à 680 km du totem au moins, à vol d'oiseau ; y faire un crochet ajouterait au moins ~1 350 km, soit quatre à cinq jours de course, à une boucle validée de ~5 500 km et à un retour d'une semaine, et ferait repasser le massif. Choix : le tank n'y va pas. Pendant la semaine du retour, le 55 (M8) revient seul au totem : l'organisme-batterie est devenu une tache lumineuse sur la pente, vue sans Seed ni les Robs, comme la lueur du plan 4-12 et celle de M5. Seed a semé sans le savoir, et ne le saura pas. Le trajet, les distances, le 25 et la durée du retour ne bougent pas. Le calcul est gardé dans `tests/carte-trajet.test.mjs`.
+- **La phrase de Rob4 à l'écran (R4)** : I AM FROM HERE NOW est gardé. Mot à mot, la phrase tient l'écho avec « D'ici », que Rob1 pense de Seed à l'Acte X.
 
 27/09 : le découpage plan par plan du 25 min est écrit (proposé, 16:9 par défaut) : Découpage 25 min.
 
@@ -241,5 +246,6 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 - [ ] Dessin des nouvelles espèces : quatre de la jungle, le grimpeur des cols, le Titan volant, l'oiseau des salins.
 - [x] Relecture de Cal (round 16, N01) : faite au round 17 (16/11/2026), 23 décisions intégrées ; le gel est levé.
 - [ ] Durée du voyage : ~5 semaines ici, ~6 semaines (41 jours) dans la Chronologie du voyage, restée proposée.
-- [ ] Le totem au retour (S6, validé round 17) : le retour passe par les lacs salés, le totem est avant Rob3, de l'autre côté de la boucle ; sa place sur le chemin du retour reste à écrire.
-- [ ] La phrase de Rob4 à l'écran (plan 9-11) : son texte anglais (« I AM FROM HERE NOW ») est une traduction proposée.
+- [x] Le totem au retour (S6) : tranché le 17/11/2026. Le retour n'y repasse pas ; le 55 y revient sans Seed, dans M8.
+- [x] La phrase de Rob4 à l'écran (plan 9-11) : I AM FROM HERE NOW, gardé le 17/11/2026.
+- [ ] La voix off de Rob1 (55 et salle immersive) compte encore les jours (« Jour douze », « Jour dix-sept ») ; le round 17 les a retirés de l'image seulement.

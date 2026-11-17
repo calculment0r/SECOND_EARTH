@@ -1706,12 +1706,13 @@
     "25",
     "55"
    ],
-   "note": "Crochet de M5 et de la proposition S6",
+   "note": "Crochet de M5 et de M8 (S6 : le totem revu sans eux pendant le retour)",
    "dome": false,
    "charniere": null,
    "mot": null,
    "crochet_de": [
-    "M5"
+    "M5",
+    "M8"
    ],
    "cartons": []
   },
@@ -3514,7 +3515,7 @@
    "id": "E8",
    "ou_docx": "Entre VII et IX, « time lapse, ellipse » (pas d'Acte VIII dans le docx)",
    "dans_25": "Carton « 4 800 km », les lacs pourpres, le cri",
-   "dans_55": "M8 Korê : la semaine du retour, l'arrivée aux lacs ; il se ferme quand la colonie est en vue",
+   "dans_55": "M8 Korê : la semaine du retour, le totem revu sans eux, l'arrivée aux lacs ; il se ferme quand la colonie est en vue",
    "module": "M8",
    "modules": [
     "M8"
@@ -3610,9 +3611,9 @@
    "insere_a": "E8, Acte VIII",
    "charniere": "E8",
    "duree_s": 180,
-   "contenu": "Le retour d'une semaine sous les aubes ambrées ; le totem revu, devenu une tache lumineuse dans la savane (S6, validé round 17 ; sa place sur le chemin du retour reste à écrire) ; le caillou blanc que Seed garde sur elle ; l'arrivée aux lacs pourpres. Le module se ferme quand la colonie d'oiseaux des salins est en vue : le cri, le mot de Seed et le nom restent aux plans 8-02 et 8-03, identiques dans les deux films (round 17)",
+   "contenu": "Le retour d'une semaine sous les aubes ambrées, par le sud de l'arc volcanique ; pendant ce temps, loin au nord, le film revient seul au totem, sur le versant du massif où Seed l'a laissé : l'organisme-batterie est devenu une tache lumineuse qui a gagné la pente autour du cône de brindilles. Seed n'y repasse pas et ne le saura pas (S6, validé round 17 ; tranché le 17/11/2026 : sur la carte, le retour reste à 680 km du totem au moins, y aller ajouterait au moins ~1 350 km) ; le caillou blanc que Seed garde sur elle ; l'arrivée aux lacs pourpres. Le module se ferme quand la colonie d'oiseaux des salins est en vue : le cri, le mot de Seed et le nom restent aux plans 8-02 et 8-03, identiques dans les deux films (round 17)",
    "enjeu": "La planète devient un lieu, avant d'avoir un nom ; Seed a semé sans le savoir",
-   "expo": "Lacs salés pourpres (le cri de la colonie est au plan 8-02 du cœur)"
+   "expo": "Lacs salés pourpres (le cri de la colonie est au plan 8-02 du cœur) ; le totem lumineux, plan sans Seed : une de ses traces pour la salle immersive"
   },
   {
    "id": "M9",

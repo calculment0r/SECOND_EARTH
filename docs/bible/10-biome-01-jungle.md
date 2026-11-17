@@ -78,6 +78,7 @@ Avec les quatre espèces ajoutées **[validé]**, la jungle a enfin une chaîne 
 - **La clairière d'atterrissage [validé : cicatrice d'un ancien feu].** Un feu de saison sèche a dégagé une zone plate, couverte de végétation basse. Vue d'orbite, c'est le meilleur site d'atterrissage. Sous cette terre brûlée, le calcaire reste creux.
 - **Les « geysers électromagnétiques » [validé : lumières sismiques].** Des lueurs au-dessus des failles pendant les séismes : un phénomène réel, rare sur Terre et dont le mécanisme est encore débattu. Sur Korê, la tectonique plus active les rend plus fréquentes et plus intenses.
 - **Le sinkhole.** Le séisme fait céder la voûte d'une cavité sous la clairière : le sol s'effondre d'un coup. Il est très profond (le caillou qu'on n'entend pas tomber, le flare qui disparaît). Ancrage terrestre : les *tiankeng* chinois, des dolines géantes dont la plus profonde dépasse 600 m.
+- **Le gouffre dans la mémoire de Rob1 (validé, round 17).** Le XENOPOD bascule dans le gouffre à cause de son propre poids. Cette image revient dans les souvenirs de Rob1 juste avant son mensonge (plan 9-11) : sa faute est le premier maillon de son choix final. Le drone porteur cassé qu'on voit au fond, à l'extraction (plan 9-07), est une image, sans suite.
 - **L'envol des fleurs-papillons.** Le bestiaire dit qu'elles s'envolent avant les séismes. Sur Terre, de tels comportements animaux ont été rapportés sans preuve solide : à présenter comme une particularité de Korê.
 
 ## Cartels du biome

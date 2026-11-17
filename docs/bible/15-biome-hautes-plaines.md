@@ -37,6 +37,7 @@ Une prairie qui devrait devenir forêt, mais que le feu et les géants maintienn
 - **Pourquoi la horde fonce.** Un feu vient de partir au loin : la horde fuit vers les herbes à peine repoussées de l'autre côté du campement. Sur Terre, les grandes paniques de troupeaux ont souvent une cause précise, feu ou prédateur.
 - **L'annonce.** Les rongeurs réveillent Seed : ils sentent les vibrations du sol avant qu'on les entende.
 - **La séparation.** La horde emporte Seed, les Robs et le robopod dans trois directions, comme dans le docx.
+- **Le tank (validé, round 17).** Jusqu'ici, c'est Rob1/2, le bipède coureur, qui porte Seed. Le tank à roues Rob1/2/3 s'assemble pendant la horde (plan 6-11) ; il fait ensuite la course et le retour.
 
 **Cartels (SUR TERRE / SUR KORÊ / POURQUOI)**
 

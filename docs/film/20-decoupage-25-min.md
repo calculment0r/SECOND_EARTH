@@ -124,7 +124,7 @@ Le film court plan par plan, d'après le récit de référence (le Récit v2 dep
 | 4-09 | 12 | PL | Reparti, plus vite ; vue de dessus, une grande ombre passe sur eux | Cri lointain | Unreal | 25 55 EXPO | L'ombre du docx = un oiseau-prédateur (Écarts) ; dôme |
 | 4-10 | 10 | PR | Presque arrivés ; Rob1 ouvre le container : l'organisme s'éteint sous leurs yeux | BATTERY CRITICAL | IA | 25 55 |   |
 | 4-11 | 12 | PM | Seed le met en terre ; le petit tipi de brindilles ; Rob1 regarde | Silence | IA | 25 55 |   |
-| 4-12 | 10 | PL | Ils s'éloignent ; au premier plan le totem ; une faible lueur sous la terre | Rien | Unreal + IA | 25 55 | Crochet de M5 et de la proposition S6 |
+| 4-12 | 10 | PL | Ils s'éloignent ; au premier plan le totem ; une faible lueur sous la terre | Rien | Unreal + IA | 25 55 | Crochet de M5 et de M8 (S6 : le totem revu sans eux pendant le retour) |
 
 ## Acte V · 2:30 · 14 plans
 

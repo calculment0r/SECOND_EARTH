@@ -40,10 +40,10 @@
   {
    "id": "totem", "titre": "Le totem qui luit", "genre": "crochet",
    "dit": {"src": "architecture", "cit": "Le totem qui luit en arrière-plan"},
-   "posee": [{"plan": "4-12", "src": "decoupage", "cit": "Crochet de M5 et de la proposition S6"}],
+   "posee": [{"plan": "4-12", "src": "decoupage", "cit": "Crochet de M5 et de M8"}],
    "payee": [
     {"module": "M5", "src": "modules", "cit": "le totem de l'organisme-batterie qui luit sous la terre (il n'est pas mort)"},
-    {"module": "M8", "src": "modules", "cit": "le totem revu, devenu une tache lumineuse dans la savane"}
+    {"module": "M8", "src": "modules", "cit": "le film revient seul au totem, sur le versant du massif où Seed l'a laissé"}
    ]
   },
   {
