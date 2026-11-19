@@ -773,6 +773,7 @@ def home(counts):
         ('t3', 'NL—15', 'Arbitrages', 'Registre des décisions · page QCM des rounds', 'arbitrages/index.html'),
         ('t2', 'NL—16', 'Glossaire', 'Codes de mission, machines, lieux', 'bible/glossaire.html'),
         ('t1', 'NL—17', 'Titans', 'Géants éteints il y a ~60 Ma', 'bible/titans.html'),
+        ('t2', 'NL—18', 'Présentation', "L'étude : tout Second Earth, à lire en faisant défiler", 'presentation/index.html'),
     ]
     figs = [
         ('11,4', 'al', '61 Cygni A, naine orange K5V, 4 400 K, 15 % de la luminosité du Soleil', 'o'),
@@ -841,6 +842,7 @@ def main(argv):
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copytree(ASSETS, out / 'assets')
+    shutil.copytree(ROOT / 'presentation', out / 'presentation', ignore=shutil.ignore_patterns('*.py'))
     (out / '.nojekyll').write_text('', encoding='utf-8')
 
     best = load_json('bestiaire.json')

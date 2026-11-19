@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Earth · L'étude</title>
+<meta name="description" content="Second Earth raconté de bout en bout : Korê, le voyage de Seed et Rob1, les biomes, les espèces, les Titans, la science, le film, la salle immersive, l'exposition.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..700;1,7..72,200..700&family=Azeret+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="presentation.css">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('se-presentation-theme'); } catch (e) {}
+    if (!t) t = (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'clair' : 'sombre';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+</head>
+<body>
+
+<div class="progres" id="progres"></div>
+<header class="barre">
+  <a class="titre" href="../index.html" style="border:0">Second Earth</a>
+  <span class="chap" id="chap"></span>
+  <span class="droite">
+    <a href="#sommaire" style="border:0">Sommaire</a>
+    <button id="theme" type="button">Clair</button>
+  </span>
+</header>
+
+<!-- 00 · Ouverture -->
+<section class="piste" id="ouv" data-scene="ouverture" data-len="3.2" data-chap="">
+  <div class="scene">
+    <div class="mot" id="ouv-mot">SECOND<br>EARTH</div>
+    <div class="monte" id="ouv-monte">
+      <p>Il y a deux façons de raconter la découverte d'un autre monde.</p>
+      <p>La première : on arrive, on plante un drapeau, on recommence.</p>
+      <p>La seconde : on arrive, on regarde, et on se demande ce qu'on fait là.</p>
+      <p class="tiret">Second Earth raconte la deuxième.</p>
+    </div>
+    <div class="fin" id="ouv-fin">
+      <strong>Second Earth · L'étude</strong>
+      Un film de 25 minutes, puis de 55 ; une salle immersive ; une exposition par biome.<br>
+      Science Centre Singapore · Cal, NIRVALAB · avec BoraBora Studios pour la salle.
+    </div>
+    <div class="legende">Phrase d'ouverture du docx, gardée pour l'instant comme carton du 55 (E01).<br>Faites défiler.</div>
+  </div>
+</section>
+
+<section class="prose chapitre" id="sommaire">
+  <div class="num">Sommaire</div>
+  <h2>Un monde, un voyage, un film</h2>
+  <p class="chapeau">Tout ce qui suit vient des documents du projet au 28 septembre 2026. Ce qui est tranché par Cal est écrit normalement ; ce qui est encore <span class="propose">proposé</span> est souligné d'un pointillé ambre ; ce qui manque est en <span class="manque">italique pâle</span>. Chaque partie s'arrête sur une scène qui se joue à la molette.</p>
+  <ol class="sommaire" id="liste-sommaire"></ol>
+</section>
+
+<!-- 01 · Le voyage -->
+<section class="prose chapitre" data-chap="Le voyage">
+  <div class="num">01</div>
+  <h2>Cinquante-trois ans pour onze années-lumière</h2>
+  <p class="chapeau">2045 : le vaisseau-semeur PERSEPHORA quitte le système solaire. Il ne prend rien à la Terre : il porte des embryons et des machines. 2098 : il arrive à 61 Cygni A.</p>
+  <p class="petit">Environ 21 % de la vitesse de la lumière, par fusion et warp drive sous-luminique (Fuchs et al. 2024). La charte de PERSEPHORA : ne rien prendre à la Terre.</p>
+</section>
+<section class="piste" id="voy" data-scene="voyage" data-len="2.6" data-chap="Le voyage">
+  <div class="scene">
+    <div class="annee" id="voy-annee">2045</div>
+    <div class="bas">
+      <svg id="voy-svg" width="100%" height="60"></svg>
+      <div class="bornes"><span><b>Le Soleil</b>2045 · la Terre</span><span style="text-align:center"><b id="voy-al">0,0 année-lumière</b>parcourue</span><span style="text-align:right"><b>61 Cygni A</b>2098 · 11,4 années-lumière</span></div>
+    </div>
+    <div class="dit" id="voy-dit">Il porte des embryons et des machines.</div>
+  </div>
+</section>
+
+<!-- 02 · Korê en chiffres -->
+<section class="prose chapitre" data-chap="Korê en chiffres">
+  <div class="num">02</div>
+  <h2>Korê</h2>
+  <p class="chapeau">61 Cygni Ab, rebaptisée Korê d'après le cri d'un oiseau des salins. Une planète plus lourde que la Terre, plus lente, plus oxygénée, autour d'une étoile orange.</p>
+</section>
+<section class="piste" id="chi" data-scene="chiffres" data-len="6" data-chap="Korê en chiffres">
+  <div class="scene">
+    <div class="pose" id="chi-pose"></div>
+    <div class="courant" id="chi-courant"><div class="n"></div><div class="l"></div><div class="t"></div></div>
+  </div>
+</section>
+
+<!-- 03 · Le ciel -->
+<section class="prose chapitre" data-chap="Le ciel">
+  <div class="num">03</div>
+  <h2>Une année de 116 jours, un voyage de 41</h2>
+  <p class="chapeau">La compagne, 61 Cygni B, ne bouge pas dans le ciel : c'est Korê qui tourne. Selon le quart de l'orbite, elle éclaire les nuits d'ambre ou se noie dans le jour. Le voyage de Seed traverse trois de ces quarts.</p>
+  <p class="petit">Les phases de 61 Cygni B et les dates du voyage sont <span class="propose">proposées</span> (Chronologie du voyage) ; les phases de la grande lune calées sur le voyage sont validées (round 15).</p>
+</section>
+<section class="piste" id="cie" data-scene="ciel" data-len="4" data-chap="Le ciel">
+  <div class="scene">
+    <svg id="cie-svg"></svg>
+    <div class="panneau" id="cie-panneau" style="right:6vw"></div>
+  </div>
+</section>
+
+<!-- 04 · Les marées -->
+<section class="prose chapitre" data-chap="Les marées">
+  <div class="num">04</div>
+  <h2>Trois astres lèvent la mer</h2>
+  <p class="chapeau">Une grande lune huit fois plus massive que la nôtre, une étoile à 0,41 UA, une petite lune : aux vives-eaux, les marées de Korê valent sept fois celles de la Terre. Dans le Golfe 1, dix à quinze mètres ; dans la mer de Rob4, moins d'un mètre.</p>
+</section>
+<section class="piste" id="mar" data-scene="marees" data-len="3.2" data-chap="Les marées">
+  <div class="scene">
+    <svg id="mar-svg"></svg>
+    <div class="legende">Unité : la marée lunaire terrestre. Rayon des cercles proportionnel à la marée levée. Source : Lunes, marées et calendrier.</div>
+  </div>
+</section>
+
+<!-- 05 · Le trajet -->
+<section class="prose chapitre" data-chap="Le trajet">
+  <div class="num">05</div>
+  <h2>Le trajet de Seed</h2>
+  <p class="chapeau">Le chemin n'est pas choisi : il suit la position des Robs, et la géologie enchaîne les paysages. Seed marche dix jours jusqu'à Rob2 ; ensuite le Rob fusionné court et la porte. Une boucle d'environ 5 500 km.</p>
+  <p class="petit">Distances validées au round 11 d'après la carte ; jours de la Chronologie du voyage (<span class="propose">proposés</span>, ~41 jours).</p>
+</section>
+<section class="piste" id="tra" data-scene="trajet" data-len="7" data-chap="Le trajet">
+  <div class="scene">
+    <svg id="tra-svg" viewBox="230 110 1590 840" preserveAspectRatio="xMidYMid meet" class="carte"></svg>
+    <div class="compte"><div class="j" id="tra-j">Jour 0</div><div class="k" id="tra-k">0 km</div></div>
+    <div class="acte" id="tra-acte"><h3></h3><p></p></div>
+  </div>
+</section>
+<section class="frise" data-chap="Le trajet">
+  <div class="prose" style="padding:0;margin:0;max-width:760px">
+    <p class="petit">Maquette : faites glisser le curseur sur les 41 jours.</p>
+  </div>
+  <div class="jours" id="frise-jours"></div>
+  <div class="lecture" id="frise-lecture"></div>
+  <div class="espace"></div>
+</section>
+
+<!-- 06 · Les dix biomes -->
+<section class="prose chapitre" data-chap="Les biomes">
+  <div class="num">06</div>
+  <h2>Dix biomes, à la largeur des jours</h2>
+  <p class="chapeau">Chaque bande est un biome du trajet, dans l'ordre du voyage, aussi large que le temps que Seed y passe. La couleur est celle de la carte ; la phrase, celle de la palette de la Flore.</p>
+</section>
+<section class="piste" id="bio" data-scene="biomes" data-len="5" data-chap="Les biomes">
+  <div class="scene">
+    <div class="bandes" id="bio-bandes"></div>
+    <div class="texte" id="bio-texte"></div>
+  </div>
+</section>
+
+<!-- 07 · Les espèces -->
+<section class="prose chapitre" data-chap="Les espèces">
+  <div class="num">07</div>
+  <h2>Soixante-six lignes de bestiaire</h2>
+  <p class="chapeau">Les espèces du trajet, rangées par biome et par taille : plus le nom est grand, plus l'animal l'est. Du plancton lumineux de la mer d'arsenic aux oiseaux-prédateurs de huit à dix mètres d'envergure.</p>
+  <p class="petit">Règles, noms, recalages et Titans validés au round 8. Taille du nom : la plus grande dimension écrite dans la fiche, en échelle logarithmique.</p>
+</section>
+<section class="piste" id="esp" data-scene="especes" data-len="4.4" data-chap="Les espèces">
+  <div class="scene">
+    <div class="planche" id="esp-planche"></div>
+    <div class="ailleurs" id="esp-ailleurs"></div>
+  </div>
+</section>
+
+<!-- 08 · Les Titans -->
+<section class="prose chapitre" data-chap="Les Titans">
+  <div class="num">08</div>
+  <h2>Les Titans, à leur échelle</h2>
+  <p class="chapeau">Des géants éteints il y a environ soixante millions d'années par une pluie de comètes. Aucun n'est visible vivant dans le film ; il en reste un squelette dans la voûte de la grotte de Rob2, une couche sombre dans le canyon, et des descendants : les buffles albinos, la Créature des profondeurs.</p>
+</section>
+<section class="piste" id="tit" data-scene="titans" data-len="4.4" data-chap="Les Titans">
+  <div class="scene">
+    <div class="mot" id="tit-mot">60 Ma</div>
+    <div class="echelle" id="tit-echelle"></div>
+    <div class="regle" id="tit-regle"></div>
+  </div>
+</section>
+
+<!-- 09 · La science -->
+<section class="prose chapitre" data-chap="La science">
+  <div class="num">09</div>
+  <h2>Le plus rare des six</h2>
+  <p class="chapeau">Aucune cellule connue ne fonctionne sans phosphore : l'ADN, l'ATP, les membranes, les os. Il ne se fabrique pas, il ne vient pas de l'air, et il est environ mille fois moins abondant que le carbone dans l'univers.</p>
+  <p class="petit">Étude « Phosphore, biomasse et seconde Terre ». Dans le plancton marin, les atomes se trouvent dans un rapport moyen de 106 carbones et 16 azotes pour 1 phosphore (le rapport de Redfield).</p>
+</section>
+<section class="piste" id="sci" data-scene="science" data-len="3.6" data-chap="La science">
+  <div class="scene">
+    <div class="compte" id="sci-compte"></div>
+    <svg class="points" id="sci-svg"></svg>
+    <div class="dit" id="sci-dit">Sans ce 1, les 106 autres ne servent à rien.</div>
+  </div>
+</section>
+<section class="prose" data-chap="La science">
+  <p>Les briques de la vie ne se transportent pas. Une planète ne vaut que par ce qu'elle possède déjà, et c'est ce que les Robs vont vérifier : Rob1 le carbone, l'eau et l'azote autour du XENOPOD ; Rob2 le phosphore des grottes à guano ; Rob3 le soufre, le fer et les métaux de la forêt bioluminescente ; Rob4 le phosphore marin, au bord d'une mer où la vie sait trier l'arsenic du phosphore.</p>
+  <p><strong style="font-weight:500">Le retournement final.</strong> La Phase 1 réussit : la planète a tout. Peupler Korê serait possible sans rien prendre à la Terre. C'est précisément pour ça que le mensonge de Rob1 (« non viable ») pèse : il ne protège pas un monde stérile, il protège un monde complet.</p>
+  <p class="petit">Répartition des Robs et choix des sites par spectroscopie depuis l'orbite : <span class="propose">proposés</span> dans l'étude ; les sites depuis l'orbite sont validés (round 11).</p>
+  <div class="espace"></div>
+</section>
+
+<!-- 10 · Le film -->
+<section class="prose chapitre" data-chap="Le film">
+  <div class="num">10</div>
+  <h2>Vingt-cinq minutes, puis cinquante-cinq</h2>
+  <p class="chapeau">Le 25 n'est pas une bande-annonce du 55 : c'est la colonne vertébrale, complète, avec l'arc entier. Le 55 s'obtient en ouvrant des emplacements déjà prévus dans le 25, jamais en le remontant.</p>
+  <p class="petit">Architecture validée (A01) ; quatre mots parlés, rien d'autre (A02). Durées de l'onglet Architecture 25 / 55 : 25 min de cœur, 27 min de modules, 52 min, 55 avec les génériques.</p>
+</section>
+<section class="piste" id="fil" data-scene="film" data-len="7" data-chap="Le film">
+  <div class="scene">
+    <div class="duree"><div class="n" id="fil-n">0:00</div><div class="t" id="fil-t">le film de 25 minutes</div></div>
+    <div class="ruban" id="fil-ruban"><div class="mots" id="fil-mots"></div><div class="tete" id="fil-tete"></div></div>
+    <div class="lecture" id="fil-lecture"></div>
+  </div>
+</section>
+
+<!-- 11 · Le script -->
+<section class="prose chapitre" data-chap="Le script">
+  <div class="num">11</div>
+  <h2>Acte IX, le signal</h2>
+  <p class="chapeau">Le moment où tout bascule : PERSEPHORA déclare Seed incomplète et fait de Rob1 le chef de mission. Il a vu ce qu'elle est. Il écrit l'inverse de ce qu'il sait.</p>
+  <p class="petit">Texte du <span class="propose">Récit v2</span> (27/09), tel quel. Il devient la référence après la relecture de Cal ; jusque-là le docx fait foi, avec les mêmes scènes.</p>
+</section>
+<section class="piste" id="scr" data-scene="script" data-len="9" data-chap="Le script">
+  <div class="scene">
+    <div class="mot" id="scr-mot">NON VIABLE</div>
+    <div class="monte" id="scr-monte"></div>
+  </div>
+</section>
+
+<!-- 12 · Le journal de Rob1 -->
+<section class="prose chapitre" data-chap="Le journal de Rob1">
+  <div class="num">12</div>
+  <h2>Le journal de Rob1</h2>
+  <p class="chapeau">Rob1 est la seule voix du récit. Ses écrans sont des lignes de rapport ; ce qui change au fil du film, c'est le sujet des phrases. C'est tout l'arc de Rob1 en grammaire : du rapport à la personne, et un dernier rapport pour protéger la personne.</p>
+  <p class="petit">Journal de Rob1, <span class="propose">proposé</span> : les soixante écrans du 25, en anglais, dans l'ordre des plans. Les arcs relient les mots qui reviennent.</p>
+</section>
+<section class="piste" id="jou" data-scene="journal" data-len="8" data-chap="Le journal de Rob1">
+  <div class="scene">
+    <div class="sujet" id="jou-sujet"><div class="t">Le sujet des phrases</div><div class="n"></div><p></p><div class="ex"></div></div>
+    <div class="colonne" id="jou-col"></div>
+    <div class="voile h"></div><div class="voile b"></div>
+  </div>
+</section>
+
+<!-- 13 · La salle immersive -->
+<section class="prose chapitre" data-chap="La salle immersive">
+  <div class="num">13</div>
+  <h2>La salle, tout autour</h2>
+  <p class="chapeau">Une salle temps réel, développée avec BoraBora Studios dans Unreal. Le visiteur est PERSEPHORA, ou son chef de mission : il voit ce que les Robs envoient. Il ne voit jamais Seed ; il voit ses traces, et il entend le journal de Rob1.</p>
+  <p class="petit">Narration sans Seed, avec les Robs, visiteur chef de mission, contemplatif, jamais scolaire : validé. Les six temps sont une <span class="propose">esquisse</span> : rien n'est décidé.</p>
+</section>
+<section class="piste" id="sal" data-scene="salle" data-len="5" data-chap="La salle immersive">
+  <div class="scene">
+    <svg id="sal-svg"></svg>
+    <div class="centre" id="sal-centre"><div class="n">13:30</div><p>12 à 15 minutes, six temps</p></div>
+    <div class="panneau" id="sal-g"></div>
+    <div class="panneau d" id="sal-d"></div>
+  </div>
+</section>
+
+<!-- 14 · L'exposition -->
+<section class="prose chapitre" data-chap="L'exposition">
+  <div class="num">14</div>
+  <h2>Sur Terre, sur Korê, pourquoi</h2>
+  <p class="chapeau">Une exposition classique organisée par biome, qui se visite après la salle : on y retrouve ce qu'on vient de voir, expliqué. Chaque cartel a trois temps.</p>
+  <p class="petit">Six cartels tirés de l'étude Phosphore, biomasse et seconde Terre.</p>
+</section>
+<div class="cartels" id="cartels" data-chap="L'exposition"></div>
+
+<!-- Fin -->
+<section class="piste" id="fin" data-scene="fin" data-len="2.4" data-chap="Carton final">
+  <div class="scene">
+    <div class="lignes"><div>This is a fictional planet.</div><div>Earth is the only world we know.</div><div>Take care of it.</div></div>
+    <div class="legende">Carton final du film.</div>
+  </div>
+</section>
+
+<footer class="pied">
+  <p>Second Earth · contenu des documents du projet au 28/09/2026 · gel du monde en cours (relecture de Cal, round 16).</p>
+  <p><a href="../index.html">Retour au site</a> · <a href="../bible/registre.html">Registre des décisions</a> · <a href="../carte/index.html">Carte interactive</a></p>
+</footer>
+
+<script src="donnees.js"></script>
+<script src="presentation.js"></script>
+</body>
+</html>
