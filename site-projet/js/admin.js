@@ -75,7 +75,7 @@
     var r = D.reglages.lire(), s = el('section.pj-ad', { id: 'publier' }, titre('03', 'Publier', 'Un seul commit dans le dépôt GitHub ; GitHub Pages reconstruit alors le site en une à deux minutes.'));
     var depot = C.champ('Dépôt', { value: r.depot }), branche = C.champ('Branche', { value: r.branche, placeholder: 'la branche par défaut du dépôt' }, 'Vide : la branche par défaut, celle que GitHub Pages publie.');
     var ranger = el('input', { type: 'checkbox' }); ranger.checked = !!r.rangerCle;
-    function garderReglages() { D.reglages.garder({ depot: depot.entree.value.trim(), branche: branche.entree.value.trim(), rangerCle: ranger.checked }); }
+    function garderReglages() { D.reglages.garder(Object.assign(D.reglages.lire(), { depot: depot.entree.value.trim(), branche: branche.entree.value.trim(), rangerCle: ranger.checked })); }
     [depot.entree, branche.entree, ranger].forEach(function (i) { i.addEventListener('change', function () { garderReglages(); dessiner(); }); });
 
     var jet = el('div.pj-colonne');
@@ -119,22 +119,29 @@
     return s;
   }
 
-  /* ── 04 · Cloudflare ── */
+  /* ── 04 · Cloudflare R2, pour les vidéos : le chemin de NirvaLabWeb, préparé, non branché ── */
   function cloudflare() {
-    return el('section.pj-ad', { id: 'cloudflare' }, titre('04', 'Cloudflare, pour les vidéos', 'Rien n\'est branché. Les vidéos ne vont pas dans git : elles se lisent depuis une adresse.'),
+    var r = D.reglages.lire(), g = r.r2 || {}, pret = D.r2.pret();
+    var ep = C.champ('Point d\'accès S3 du compte', { value: g.endpoint || '', placeholder: 'https://<compte>.r2.cloudflarestorage.com' });
+    var bu = C.champ('Bucket', { value: g.bucket || '', placeholder: 'le nom du bucket' });
+    var pb = C.champ('Adresse publique du bucket', { value: g.publicBase || '', placeholder: 'https://pub-….r2.dev, ou un domaine à vous' }, 'Ces trois réglages ne sont pas secrets : ils restent dans ce navigateur.');
+    function garderBucket() { var x = D.reglages.lire(); x.r2 = { endpoint: ep.entree.value.trim(), bucket: bu.entree.value.trim(), publicBase: pb.entree.value.trim() }; D.reglages.garder(x); }
+    [ep.entree, bu.entree, pb.entree].forEach(function (i) { i.addEventListener('change', function () { garderBucket(); dessiner(); }); });
+    var cles = el('div.pj-colonne');
+    if (D.r2.cles()) cles.appendChild(ligne('Clés R2', 'déverrouillées pour cette session'));
+    else {
+      var id = C.champ('Identifiant de la clé R2', { type: 'password', autocomplete: 'off' }), se = C.champ('Secret de la clé R2', { type: 'password', autocomplete: 'off' }), co = C.champ('Code admin, qui sert de clé', { type: 'password', autocomplete: 'current-password' }), dit = el('p.pj-dit');
+      cles.appendChild(el('form.pj-form', { onsubmit: function (e) { e.preventDefault(); dit.textContent = 'Chiffrement…'; D.jeton.poserR2(id.entree.value, se.entree.value, co.entree.value).then(function () { C.avis('Clés R2 gardées, chiffrées avec le jeton GitHub.'); dessiner(); }, function (err) { dit.textContent = err.message; }); } },
+        el('p.ke-petit', {}, 'Une clé « Object Read & Write » limitée à ce seul bucket, jamais les clés du compte. Elle est chiffrée dans le même coffre que le jeton GitHub.'),
+        id, se, co, el('div.pj-actions', {}, el('button.ke-btn.petit', { type: 'submit' }, 'Garder les clés R2')), dit));
+    }
+    return el('section.pj-ad', { id: 'cloudflare' }, titre('04', 'Cloudflare R2, pour les vidéos', pret ? 'Réglé : à la publication, les vidéos déposées partent sur R2, le reste va dans git.' : 'Préparé, non branché : aucun compte Cloudflare n\'est relié. Les vidéos ne vont jamais dans git.'),
       el('div.pj-ad-deux', {},
-        el('div', {},
-          el('h3', {}, 'Ce qui marche dès maintenant'),
-          el('p.ke-texte', {}, 'En mode édition, chaque emplacement a un bouton « Adresse ». On y colle l\'adresse https d\'une vidéo déjà en ligne : un fichier MP4 dans un bucket R2 public, ou un lien Cloudflare Stream. La vidéo se charge par ses métadonnées seulement, joue muette et en boucle quand on la voit, s\'arrête quand elle sort de l\'écran.'),
-          el('p.ke-texte', {}, 'Une vidéo déposée à la main sur un emplacement reste dans ce navigateur, pour voir la mise en page ; elle n\'est jamais publiée.')),
-        el('div', {},
-          el('h3', {}, 'Ce que vous aurez à fournir'),
-          el('ol', {},
-            el('li', {}, 'Un compte Cloudflare, et un bucket R2 (ou Stream) créé pour le projet.'),
-            el('li', {}, 'L\'accès public du bucket : l\'adresse r2.dev, ou un domaine à vous branché dessus.'),
-            el('li', {}, 'Des fichiers MP4 (H.264, 1080p ou 21:9 équivalent, sans son ou son coupé pour les fonds), et une image d\'attente par vidéo.'),
-            el('li', {}, 'Pour envoyer les vidéos depuis ce tableau de bord plus tard : un petit Worker Cloudflare qui reçoit le fichier et l\'écrit dans R2. Il n\'existe pas encore ; sans lui, on dépose les fichiers dans R2 depuis le site de Cloudflare et on colle l\'adresse ici.')),
-          el('p.ke-petit', {}, 'Aucune clé Cloudflare ne se colle dans ce site tant que ce Worker n\'est pas écrit.'))));
+        el('div.pj-colonne', {}, ligne('État', pret ? 'prêt' : 'non branché'), ep, bu, pb,
+          el('p.ke-petit', {}, 'Le bucket doit accepter, dans ses règles CORS, une requête PUT venant de l\'adresse de ce site.')),
+        el('div.pj-colonne', {}, cles,
+          el('h3', {}, 'En attendant'),
+          el('p.ke-texte', {}, 'En mode édition, le bouton « Adresse » d\'un emplacement prend l\'adresse https d\'une vidéo déjà en ligne : un MP4 dans un bucket R2 public, ou un lien Cloudflare Stream. Une vidéo déposée à la main reste dans ce navigateur pour voir la mise en page ; sans R2 réglé, elle n\'est jamais publiée.'))));
   }
 
   /* ── 05 · ce que protègent les codes ── */
