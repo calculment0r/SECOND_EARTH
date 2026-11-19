@@ -887,7 +887,7 @@
       ctx.globalAlpha = 1;
     }
     // 2. les pages : texte lisible, puis gris typographique, puis tranches des volumes
-    var txtA = clamp((s * LH - 10) / 8, 0, 1) * (m < .02 ? 1 : 0);
+    var txtA = clamp((s * LH - 11) / 3, 0, 1) * (m < .02 ? 1 : 0);
     HZ.pages.forEach(function (p, ip) {
       var r = rectPage(ip, m, vol), x0 = X(r.x), y0 = Y(r.y), w = r.w * s, h = r.h * s;
       if (x0 > W || x0 + w < 0 || y0 > H || y0 + h < 0) return;
@@ -902,7 +902,7 @@
           var tenu = tenue && tenue.ip === ip && tenue.il === l.i;
           if (txtA < 1) {
             ctx.fillStyle = tenu ? C.or : (l.typ === 'tit' ? C.voile : C.trait);
-            ctx.globalAlpha = tenu ? 1 : (1 - txtA);
+            ctx.globalAlpha = tenu ? 1 - txtA : Math.pow(1 - txtA, 2);
             ctx.fillRect(lx, ly + lh * .32, Math.max(1, l.w * sx), Math.max(1, lh * .42));
           }
           if (txtA > 0) {
@@ -1260,7 +1260,7 @@
   function rejouer() { if (pret && window.KitEtude) KitEtude.rejouer(); ou(); }
   function demarrer() { construireTout(); pret = true; rejouer(); }
   if (document.fonts && document.fonts.load) {
-    Promise.all(['15px Literata', 'italic 15px Literata', '600 15px Literata', '13px "Chakra Petch"', '12px "Azeret Mono"'].map(function (f) { return document.fonts.load(f).catch(function () {}); }))
+    Promise.all(['15px Literata', 'italic 15px Literata', '600 15px Literata', '13px "Chakra Petch"', '12px "Azeret Mono"', '40px Norelli'].map(function (f) { return document.fonts.load(f).catch(function () {}); }))
       .then(function () { return document.fonts.ready; }).then(demarrer);
   } else addEventListener('load', demarrer);
   var minuterie = 0;
