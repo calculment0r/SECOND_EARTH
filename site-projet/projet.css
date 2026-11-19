@@ -239,3 +239,7 @@ h2.pj-p.partie{margin:16vh 0 5vh;font-size:var(--c-titre);color:var(--ink)}
 }
 @media print{.pj-bas,.pj-avis,.ke-barre{display:none}}
 .pj-colonne>.ke-champ,.pj-colonne>form{width:100%}
+
+/* Les grands titres dans la typo des noms (Norelli), en capitales : demande de Cal, 19 novembre. */
+h1,h2{font-family:var(--f-nom);font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:.98}
+h1 em,h2 em{font-style:normal;font-weight:400}

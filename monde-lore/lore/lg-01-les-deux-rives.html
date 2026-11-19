@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLARIS · Le lore, graphique · LG-01 · Les deux rives</title>
+<!-- SOLARIS · NOS RECHERCHES · LE LORE, GRAPHIQUE · LG-01 « Les deux rives » (19 novembre 2026).
+     Demande de Cal : des dataviz du lore « super belles », graphiques, qui se jouent à la molette. Le Maître des anagrammes seulement.
+     Le geste : la page s'arrête, la scène se joue au défilement, puis la page repart (conception/monde-lore/BRIEF-CAL-2026-11-18.md).
+     Charte : conception/CHARTE-INTERFACE.md (§ 4 rien de gratuit, jamais de score ; § 5 rien ne bouge au chargement ; § 7 la molette n'est jamais volée, les jetons seulement).
+     Méthode : conception/LA-METHODE.md (3.2 le grain : plein = dit, pointillé ambre = déduit, un trou = manquant ; 4.10 la typographie fait l'image).
+     La matière est vraie : la bible du monde du Maître (lg-donnees.js, recopiée de monde-court-anagrammes) et le script. -->
+<script>try{if(localStorage.getItem('supervisio.theme-v2')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="lg-commun.css">
+<link rel="stylesheet" href="lg-01-les-deux-rives.css">
+</head>
+<body>
+<header class="gx-barre">
+  <a class="marque" href="../index.html"><span class="carre" aria-hidden="true"><i></i></span><b>Solaris</b></a>
+  <nav class="ariane" aria-label="Fil d’Ariane"><a href="../index.html">Nos recherches</a> › <a href="../index.html">Le lore · essais</a> › <span class="ici">LG-01 · Les deux rives</span></nav>
+  <div class="gx-theme" role="group" aria-label="Thème"><button type="button" data-t="sombre">Sombre</button><button type="button" data-t="clair">Clair</button></div>
+</header>
+
+<section class="lg-tete">
+  <p class="rang">Le lore · Le Maître des anagrammes</p>
+  <h1>Les deux rives</h1>
+  <p class="chapo">Un film a deux temps : l’ordre où les choses arrivent, l’ordre où il les montre. Entre les deux, chaque séquence tombe comme un faisceau. Et un seul fil traverse tout.</p>
+  <p class="geste">Fais défiler : la page s’arrête, la figure se joue, puis la page repart.</p>
+</section>
+
+<div class="lg-piste" id="piste">
+  <div class="lg-scene" id="scene" role="img" aria-label="Les deux temps du Maître des anagrammes. En haut, le monde jour après jour ; en bas, le film en treize séquences. Chaque séquence relie le moment du monde qu’elle prend à la place que le film lui donne. Cinq choses sont montrées avant d’être comprises. La dédicace, écrite avant 1995, n’est lue qu’à la séquence 12.">
+    <canvas aria-hidden="true"></canvas>
+    <p class="lg-ligne" id="ligne" aria-live="polite"></p>
+    <ol class="lg-rail" id="rail" aria-hidden="true"></ol>
+  </div>
+</div>
+
+<section class="lg-fin">
+  <div>
+    <h2>Ce qui reste ouvert</h2>
+    <p>Le script ne dit ni qui a écrit la dédicace, ni quand. La bible du monde le note comme une case vide.</p><p class="ouvert">Deux faits viennent de la série et le film ne les montre jamais : Babakar choisit le livre, Babakar meurt en cellule.</p>
+  </div>
+  <div>
+    <h2>Comment lire le trait</h2>
+    <ul class="grain">
+      <li><i></i>plein : le script le dit</li>
+      <li><i class="deduit"></i>pointillé ambre : on le déduit</li>
+      <li><i class="manque"></i>un rond vide : ça manque</li>
+      <li><i class="tenu"></i>orange : ce qu’on suit</li>
+    </ul>
+  </div>
+  <div class="suite">
+    <h2>La suite</h2>
+    <a href="lg-02-les-marees.html">Les marées<span>Ce que chacun sait, séquence après séquence.</span></a>
+  </div>
+</section>
+
+<script src="lg-donnees.js"></script>
+<script src="lg-commun.js"></script>
+<script src="lg-01-les-deux-rives.js"></script>
+</body>
+</html>

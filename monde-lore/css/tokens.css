@@ -1,0 +1,251 @@
+/* ============================================================
+   SUPERVISIO — jetons de thème
+   Depuis le 9 octobre (décision de Cal), SUPERVISIO porte le thème de
+   SHOWRUNNER_TOOLS, où il sera intégré à terme. Ses règles dures sont les
+   leurs (SHOWRUNNER_TOOLS/CLAUDE.md, § Le thème) :
+     1. aucune couleur en dur — une teinte manque, on ajoute un jeton ;
+     2. deux thèmes par les seuls jetons — le SOMBRE par défaut, le clair
+        sous [data-theme="light"] ;
+     3. des filets, jamais de bordures : box-shadow: inset 0 0 0 1px ;
+     4. un seul .tb.go orange par écran — l'orange est l'action ;
+     5. les capitales sont pour la machine (mono, espacé, petit) ;
+     6. Norelli pour le seul logotype, Venus Rising pour l'affichage.
+
+   Deux étages dans ce fichier :
+     · commun/tokens.css — COPIE CONFORME de SHOWRUNNER_TOOLS/commun/tokens.css
+       (commit 6745d28). On n'y touche pas ici : une mise à jour se fait en
+       recopiant le fichier, et « cmp » dit s'il a dérivé. Deux écarts voulus, à
+       reporter chez SHOWRUNNER avant toute recopie : --f-titre-episode (21 oct.)
+       et les rayons paramétriques --r0..--r4 × --rayon (22 oct.) ;
+     · les AJOUTS de SUPERVISIO : des longueurs et la salle noire, aucune couleur.
+   Le pont des anciens noms (--engrave, --panel-1, --lift, --lime, --bad…) a
+   servi pendant le reskin et a été retiré le 12 octobre : plus aucune feuille
+   ni aucune vue ne les écrit (« npm run audit:theme » le garde à zéro).
+   ============================================================ */
+
+@import url('commun/tokens.css');
+/* LE curseur du thème — le fader couché d'ODIO, jamais un pouce rond. Posé
+   sous :where(), il habille tout input[type=range] sans classe. */
+@import url('commun/curseur.css');
+
+/* ── LES AJOUTS DE SUPERVISIO : AUCUNE COULEUR ─────────────────
+   Cal, le 10 octobre : « on garde la même couleur que pour SHOWRUNNER, les
+   conventions de direction artistique doivent être identiques. » Il n'y a donc
+   ni rouge ni lime ici : le thème n'en a pas, et chez lui l'orange porte aussi
+   l'alerte — « l'action, la voie B, l'alerte ». Une session précédente avait
+   ajouté un --bad mesuré à l'AA ; il est retiré. Les noms --bad, --on-bad,
+   --bad-bg et --line-bad du pont ci-dessous pointent sur l'orange, le temps
+   que chaque lot les remplace par --or en réécrivant sa feuille. */
+
+/* La géométrie du shell — des longueurs, pas des couleurs : un seul bloc.
+   Le header fait 56 px parce que l'onglet d'épisode est une CIBLE de 38 px :
+   c'est la navigation principale, on la clique cent fois par jour. */
+:root {
+  --rail: 250px;
+  --header-h: 56px;
+  --toolbar-h: 36px;
+  --status-h: 24px;
+  --inspector: 340px;
+}
+
+/* LE TRAIT DES BOUTONS (19 octobre, Cal : « pourquoi les traits ne sont pas tous de la même épaisseur sur les contours des boutons ?
+   … on ne fait pas du blanc pur, ça fait mal aux yeux »). Mesuré : le contour de WORLD (le filet orange) fait 1 px, et deux boutons
+   de l'en-tête portaient la bordure native du navigateur — 2 px, BLANC PUR (rgb(255,255,255)). Une épaisseur, un gris, pour tous :
+     --trait-bouton  l'épaisseur du filet ; un contour de bouton s'écrit  box-shadow: inset 0 0 0 var(--trait-bouton) <couleur> ;
+     --trait-doux    le contour d'un bouton au repos : l'encre du thème, adoucie — jamais de blanc pur. Plus de 3:1 sur --panel2.
+   L'orange (--line-or) reste l'état actif, le focus et le survol de WORLD. */
+:root { --trait-bouton: 1px; --trait-doux: rgba(198, 213, 220, .45); }
+html[data-theme="light"] { --trait-doux: rgba(22, 34, 28, .55); }
+
+/* LES IMAGES DES CARDS ET DU VISUEL (19 octobre, Cal : « en sombre trop assombries, en clair trop transparentes… on dirait un dégradé de blanc qui part du bas »).
+   Cause : l'image posée à 40 % sur --panel, puis le voile de thème (--veil, BLANC en clair, .75) du bas vers le haut sur toute la card ; au visuel, --scrim .34
+   sur toute l'image puis le même dégradé --veil. Maintenant l'image est entière (aucune opacité) et un voile RESTREINT à la zone du texte la tient lisible :
+     --voile-card / --voile-visuel  le voile de lisibilité (noir translucide dans les deux thèmes — on lit du texte clair sur une photo), --voile-0 son départ transparent ;
+     --ink-image / --ink-image2     l'encre posée SUR une image (claire dans les deux thèmes : une photo n'a pas de thème) ; --ombre-texte son ombre portée, --halo-texte son halo (une photo claire ne se lit pas sans) ;
+     --ep-fond-survol               le fond d'une card sans image, au survol ;
+     --img-repos                    le filtre de l'image d'une card au repos (plus discrète) ; au survol elle est entière ;
+     --barre-vide(-image)           la part « non traitée » de la barre de progression (le gris), éclaircie pour se lire sur une image sombre. */
+:root {
+  --voile-card:   rgba(4, 6, 5, .42);
+  --voile-visuel: rgba(4, 6, 5, .40);
+  --voile-0:      rgba(4, 6, 5, 0);
+  --ink-image:    #f4f7f5;
+  --ink-image2:   #dde4e0;
+  --ombre-texte:  rgba(4, 6, 5, .80);
+  --halo-texte:   0 0 2px var(--ombre-texte), 0 0 5px var(--ombre-texte), 0 0 10px var(--ombre-texte), 0 1px 20px var(--ombre-texte);
+  --img-repos:    saturate(.78) brightness(.80);
+  --barre-vide:   rgba(230, 234, 231, .40);   /* le gris clair translucide de la barre, sur le fond sombre d'une card */
+  --barre-vide-image: rgba(236, 240, 238, .55);   /* sur une image : le même dans les deux thèmes, cerclé d'un filet sombre */
+  --ep-fond-survol: linear-gradient(135deg, var(--panel3) 0%, var(--panel2) 100%);   /* le fond d'une card SANS image, au survol */
+}
+html[data-theme="light"] {
+  --voile-card:   rgba(22, 28, 25, .25);
+  --voile-visuel: rgba(22, 28, 25, .25);
+  --voile-0:      rgba(22, 28, 25, 0);
+  --barre-vide:   rgba(22, 34, 28, .34);
+  --ep-fond-survol: linear-gradient(135deg, var(--black) 0%, var(--panel3) 100%);
+}
+
+/* ── LA SALLE : « un espace un peu à part, thème sombre, comme si on était
+   au cinéma ». La salle est noire quel que soit le thème choisi : on y
+   regarde une image, rien ne doit la concurrencer. Le chrome qui la rend
+   pose data-salle sur <html>, et le script du <head> n'y pose jamais le
+   thème clair — elle prend donc le sombre par construction, et ce bloc
+   n'y change que le fond. (Avant le 9 octobre, cette pièce redéclarait
+   trente jetons sur body.salle, matières composées comprises ; elle n'a plus
+   besoin que de son noir.) ── */
+html[data-salle] {
+  --bg:     #050506;
+  --hdr-bg: rgba(5, 5, 6, .94);
+}
+
+/* ── LE FOND DU SCRIPT : son propre thème, dans le seul panneau (14 octobre) ──
+   Cal : « le script accordéon en blanc cassé même quand on a le thème sombre…
+   un bouton à double état avec une icône. Par défaut le script est en thème
+   clair. » Un scénario se lit comme une page de papier. Le choix vit sur
+   html[data-sc-fond] (posé par le script du <head>, avant la première image),
+   et il ne vaut QUE dans .scenario : le reste de l'écran, la poignée et le
+   menu contextuel du shell gardent le thème de l'application.
+   AUCUNE COULEUR NOUVELLE : ce sont les valeurs de commun/tokens.css, recopiées
+   nom pour nom — le clair de [data-theme="light"] (le papier : --panel #f6f7f5),
+   et pour un fond sombre demandé sous le thème clair, le sombre de :root.
+   tests/script-fond.test.mjs vérifie que chaque valeur est bien celle du thème
+   d'origine : si commun/ change, le test le dit. La salle n'est jamais concernée :
+   le <head> n'y pose pas l'attribut, et le panneau y est masqué.
+   SUR LA PAGE DU SCRIPT (`.scenario[data-grand]`, 25 octobre) le papier n'est QUE la feuille (`.sc-feuille`) : tout ce qui l'entoure — les deux côtés, le dessous, la
+   colonne des personnages, le rail, la colonne des commentaires — garde les jetons de l'application (sombre par défaut ; en thème clair, le gris doux du thème :
+   jamais une grande page blanche). Cal : « le blanc casse les yeux ». */
+html[data-sc-fond="clair"]:not([data-salle]) .scenario:not([data-grand]),
+html[data-sc-fond="clair"]:not([data-salle]) .scenario[data-grand] .sc-feuille,
+html[data-sc-fond="clair"]:not([data-salle]) .scb .scb-script {
+  color-scheme: light;
+  --bg:      #e6e9e5;
+  --panel:   #f6f7f5;
+  --panel2:  #eaede9;
+  --panel3:  #dadfda;
+  --ink:     #141a17;
+  --ink2:    #3e4944;
+  --ink3:    #4f5a55;
+  --cy:      #25586c;
+  --or:      #a8391b;
+  --grn:     #2f6b4a;
+  --grn2:    #23693f;
+  --amb:     #7f5308;
+  --line:    rgba(22, 34, 28, .16);
+  --line-cy: rgba(37, 88, 108, .75);
+  --line-or: rgba(168, 57, 27, .70);
+  --line-gr: rgba(47, 107, 74, .70);
+  --line-amb: rgba(127, 83, 8, .50);
+  --amb-bg:  rgba(214, 162, 74, .16);
+  --grn-bg:  rgba(47, 107, 74, .12);
+  --or-bg:   rgba(168, 57, 27, .08);
+  --or-bg2:  rgba(168, 57, 27, .45);
+  --cy-bg:   rgba(37, 88, 108, .09);
+  --sel-bg:  #d4e4e9;
+  --hl-amb:  rgba(236, 178, 60, .45);
+  --hl-or:   rgba(232, 120, 90, .38);
+  --hl-cy:   rgba(90, 160, 190, .30);
+  --hl-grn:  rgba(80, 170, 110, .34);
+  --drop:    rgba(20, 30, 24, .16);
+  --drop-lg: rgba(20, 30, 24, .22);
+  --on-or:   #fff5f0;
+  --on-cy:   #f2f6f8;
+  --on-grn:  #eaf4ee;
+}
+html[data-theme="light"][data-sc-fond="sombre"] .scenario:not([data-grand]),
+html[data-theme="light"][data-sc-fond="sombre"] .scenario[data-grand] .sc-feuille,
+html[data-theme="light"][data-sc-fond="sombre"] .scb .scb-script {
+  color-scheme: dark;
+  --bg:      #0a0d0b;
+  --panel:   #101413;
+  --panel2:  #151a18;
+  --panel3:  #1b211e;
+  --ink:     #e6eae7;
+  --ink2:    #9ca8a2;
+  --ink3:    #7c8884;
+  --cy:      #b9cfd8;
+  --or:      #e0674a;
+  --grn:     #2f6b4a;
+  --grn2:    #3d8a60;
+  --amb:     #d6a24a;
+  --line:    rgba(198, 213, 220, .14);
+  --line-cy: rgba(185, 207, 216, .45);
+  --line-or: rgba(224, 103, 74, .70);
+  --line-gr: rgba(47, 107, 74, .85);
+  --line-amb: rgba(214, 162, 74, .55);
+  --amb-bg:  rgba(214, 162, 74, .08);
+  --grn-bg:  rgba(47, 107, 74, .18);
+  --or-bg:   rgba(224, 103, 74, .14);
+  --or-bg2:  rgba(224, 103, 74, .55);
+  --cy-bg:   rgba(185, 207, 216, .10);
+  --sel-bg:  #122a2d;
+  --hl-amb:  rgba(214, 162, 74, .34);
+  --hl-or:   rgba(224, 103, 74, .34);
+  --hl-cy:   rgba(185, 207, 216, .26);
+  --hl-grn:  rgba(61, 138, 96, .40);
+  --drop:    rgba(0, 0, 0, .5);
+  --drop-lg: rgba(0, 0, 0, .6);
+  --on-or:   #170c08;
+  --on-cy:   #0a0d0b;
+  --on-grn:  #eaf4ee;
+}
+
+/* ============================================================
+   Base — celle de SHOWRUNNER_TOOLS/commun/base.css
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-ui);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Un lien reste un geste : il garde l'orange et perd le soulignement — les
+   cards, les onglets, les lignes de tableau sont des liens entiers, et un
+   soulignement y couperait chaque mot. */
+a { color: var(--or); text-decoration: none; }
+a:hover { color: var(--ink); }
+::selection { background: var(--or); color: var(--on-or); }
+input, textarea, select, button { font: inherit; color: inherit; }
+/* La bordure NATIVE d'un bouton (2 px, blanc pur) n'est jamais voulue : le contour est un filet (--trait-bouton). Sous :where(),
+   pour que la moindre classe de bouton la remplace. */
+:where(button) { border: 0; }
+:focus-visible { outline: 2px solid var(--or); outline-offset: 2px; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--panel3); border-radius: 999px; }
+
+@keyframes ledBlink { 50% { opacity: .3; } }
+@keyframes sPulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ── LA SALLE : ce qui n'y a rien à faire ──────────────────────
+   Le fond noir est celui de html[data-salle], plus haut. Restent les
+   surfaces qui doivent être d'un noir franc — la scène où l'image se pose,
+   le header, la barre d'état — et le sélecteur de thème, sans objet ici. */
+body.review .header, body.salle .header, body.review .status, body.salle .status { background: var(--black); }
+body.review .stage, body.salle .stage { background: var(--black); }
+body.review .hr-right .seg, body.salle .hr-right .seg { display: none; }
+
+/* L'ÉPURATION, deuxième moitié de la demande : « on épure tout pour garder que
+   les trucs de reviewing ». Dans une salle, le scénario et la bande de
+   séquences n'ont rien à faire — on ne dépouille pas pendant qu'on regarde.
+   Le header reste : c'est par lui qu'on sort. Le bac reste : composer la
+   séance EST du visionnage. On met en veille, on ne supprime pas — l'écran
+   redevient entier dès qu'on en sort. */
+body.salle .scenario, body.salle .sc-poignee, body.salle .toolbar.bande { display: none; }
+/* La bande masquée laisserait sa RANGÉE vide : c'est le jeton de hauteur qui
+   la referme, pas une réécriture de la grille — les aires du shell (nav,
+   toolbar, work, inspect, status) restent intactes. */
+body.salle:has(.toolbar.bande) { --toolbar-h: 0px; }
+body.salle .ph h2 { letter-spacing: .04em; }

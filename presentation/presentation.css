@@ -232,3 +232,7 @@
 .se-esp-lu .n { font-family: var(--f-texte); font-weight: 300; font-size: var(--c-titre); line-height: 1.05; margin: 4px 0 10px; }
 .se-esp-lu .ke-dit { font-size: clamp(19px, 1.35vw, 24px); color: var(--voile); }
 #tit .se-esp-lu { width: 34vw; }
+
+/* Les grands titres dans la typo des noms (Norelli), en capitales : demande de Cal, 19 novembre. */
+h1,h2{font-family:var(--f-nom);font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:.98}
+h1 em,h2 em{font-style:normal;font-weight:400}

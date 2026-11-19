@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLARIS · Le monde, en graphique · Le plan</title>
+<!-- SOLARIS · NOS RECHERCHES · LE MONDE, EN GRAPHIQUE · MG-01 · Le plan.
+     Un essai, une seule chose dite, très graphiquement : la page s'arrête, la scène se joue à la molette, la page repart.
+     La charte : conception/CHARTE-INTERFACE.md (jetons seulement, un seul orange, la molette jamais volée, rien ne bouge au chargement).
+     La méthode : conception/LA-METHODE.md, 4.10 (la matière dit l'état, le spectacle est la transformation). Le brief : conception/monde-lore/BRIEF-CAL-2026-11-18.md.
+     La matière : la bible de monde du court, telle quelle (mg-donnees.js, écrit par scripts/monde-graphique-donnees.mjs). -->
+<script>try{if(localStorage.getItem('supervisio.theme-v2')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="mg-commun.css">
+<link rel="stylesheet" href="mg-01-le-plan.css">
+</head>
+<body class="mg">
+<header class="gx-barre">
+  <a class="marque" href="../index.html"><span class="carre" aria-hidden="true"><i></i></span><b>Solaris</b></a>
+  <nav class="ariane" aria-label="Fil d’Ariane"><a href="../index.html">Nos recherches</a> › <a href="../index.html">Le monde, en graphique</a> › <span class="ici">Le plan</span></nav>
+  <div class="gx-theme" role="group" aria-label="Thème"><button type="button" data-t="sombre">Sombre</button><button type="button" data-t="clair">Clair</button></div>
+</header>
+
+<main>
+  <section class="mg-piste" aria-label="Le plan">
+    <div class="mg-scene">
+      <canvas role="img" aria-label="Le plan des lieux du Maître des anagrammes : chaque seconde du film est un trait, rangé dans le lieu où elle se passe. La chambre d’Assane est la plus grande masse."></canvas>
+      <div class="mg-question">
+        <span class="k">Le Maître des anagrammes · le monde</span>
+        <h1>Où passe-t-on <em>le film</em> ?</h1>
+        <p class="geste">Fais tourner la molette : les secondes du film vont se ranger dans les lieux.</p>
+      </div>
+      <p class="mg-dit" aria-live="polite"><span class="k"></span><b></b><span class="ouvert"></span></p>
+      <ul class="mg-matiere" aria-label="Les matières"><li class="dit"><i></i>dit par le texte</li><li class="deduit"><i></i>déduit</li><li class="manque"><i></i>manque</li><li class="tenu"><i></i>là où l’on est</li></ul>
+    </div>
+  </section>
+  <footer class="mg-pied">
+    <p id="mg-fin"></p>
+    <p class="petit">Le script fait foi : les durées sont celles des treize séquences. Garder n’écrit rien ici ; c’est une lecture.</p>
+    <p class="petit"><a href="../index.html">Revenir à « Nos recherches »</a></p>
+  </footer>
+</main>
+
+<script src="mg-donnees.js"></script>
+<script src="mg-commun.js"></script>
+<script src="mg-01-le-plan.js"></script>
+</body>
+</html>

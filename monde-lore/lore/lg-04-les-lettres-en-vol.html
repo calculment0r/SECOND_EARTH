@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLARIS · Le lore, graphique · LG-04 · Les lettres en vol</title>
+<!-- SOLARIS · NOS RECHERCHES · LE LORE, GRAPHIQUE · LG-04 « Les lettres en vol » (19 novembre 2026).
+     Demande de Cal : des dataviz du lore « super belles », graphiques, qui se jouent à la molette. Le Maître des anagrammes seulement.
+     Le geste : la page s'arrête, la scène se joue au défilement, puis la page repart (conception/monde-lore/BRIEF-CAL-2026-11-18.md).
+     Charte : conception/CHARTE-INTERFACE.md (§ 4 rien de gratuit, jamais de score ; § 5 rien ne bouge au chargement ; § 7 la molette n'est jamais volée, les jetons seulement).
+     Méthode : conception/LA-METHODE.md (3.2 le grain : plein = dit, pointillé ambre = déduit, un trou = manquant ; 4.10 la typographie fait l'image).
+     La matière est vraie : la bible du monde du Maître (lg-donnees.js, recopiée de monde-court-anagrammes) et le script. -->
+<script>try{if(localStorage.getItem('supervisio.theme-v2')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="lg-commun.css">
+<link rel="stylesheet" href="lg-04-les-lettres-en-vol.css">
+</head>
+<body>
+<header class="gx-barre">
+  <a class="marque" href="../index.html"><span class="carre" aria-hidden="true"><i></i></span><b>Solaris</b></a>
+  <nav class="ariane" aria-label="Fil d’Ariane"><a href="../index.html">Nos recherches</a> › <a href="../index.html">Le lore · essais</a> › <span class="ici">LG-04 · Les lettres en vol</span></nav>
+  <div class="gx-theme" role="group" aria-label="Thème"><button type="button" data-t="sombre">Sombre</button><button type="button" data-t="clair">Clair</button></div>
+</header>
+
+<section class="lg-tete">
+  <p class="rang">Le lore · Le Maître des anagrammes</p>
+  <h1>Les lettres en vol</h1>
+  <p class="chapo">Six phrases latines, six noms. Ce sont les mêmes lettres, dans un autre ordre. Chaque lettre laisse un fil derrière elle : le dessin de ses fils est la signature de l’anagramme.</p>
+  <p class="geste">Fais défiler : les lettres partent une à une, puis la page repart.</p>
+</section>
+
+<div class="lg-piste" id="piste">
+  <div class="lg-scene" id="scene" role="img" aria-label="Les six anagrammes du Maître des anagrammes. Monas hasten devient Éthan Masson ; Crator viden, Victor André ; Nuda veritas, Aude Rivants ; Ad se pianos, Assane Diop ; Liber pugna theleri, Gilbert Phinelerau puis À Hubert Pellegrini ; Spes donaia, Assane Diop. Chaque lettre vole de sa place dans la phrase à sa place dans le nom.">
+    <canvas aria-hidden="true"></canvas>
+    <p class="lg-ligne" id="ligne" aria-live="polite"></p>
+    <ol class="lg-rail" id="rail" aria-hidden="true"></ol>
+  </div>
+</div>
+
+<section class="lg-fin">
+  <div>
+    <h2>Ce qui reste ouvert</h2>
+    <p>« Spes donaia » redit le nom d’Assane, et le film ne le signale pas. C’est une lecture : on la déduit des lettres.</p><p class="ouvert">« Liber pugna theleri » a deux solutions exactes. Le script n’explique pas pourquoi la première est fausse : il passe à la seconde.</p>
+  </div>
+  <div>
+    <h2>Comment lire le trait</h2>
+    <ul class="grain">
+      <li><i></i>plein : le script le dit</li>
+      <li><i class="deduit"></i>pointillé ambre : on le déduit</li>
+      <li><i class="manque"></i>un rond vide : ça manque</li>
+      <li><i class="tenu"></i>orange : ce qu’on suit</li>
+    </ul>
+  </div>
+  <div class="suite">
+    <h2>La suite</h2>
+    <a href="lg-05-le-fil.html">Le fil<span>La dédicace, de 1995 au dernier plan.</span></a>
+  </div>
+</section>
+
+<script src="lg-donnees.js"></script>
+<script src="lg-commun.js"></script>
+<script src="lg-04-les-lettres-en-vol.js"></script>
+</body>
+</html>
