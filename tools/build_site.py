@@ -842,7 +842,7 @@ def main(argv):
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copytree(ASSETS, out / 'assets')
-    shutil.copytree(ROOT / 'presentation', out / 'presentation', ignore=shutil.ignore_patterns('*.py'))
+    shutil.copytree(ROOT / 'presentation', out / 'presentation', ignore=shutil.ignore_patterns('*.py', '*.md', 'vitrine*', 'presentation.html'))
     (out / '.nojekyll').write_text('', encoding='utf-8')
 
     best = load_json('bestiaire.json')
