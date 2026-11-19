@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Earth · Le script</title>
+<meta name="description" content="Le récit de référence de Second Earth, à lire, commenter et corriger.">
+<link rel="icon" href="../assets/icon.svg">
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="../presentation/kit/kit-etude.css">
+<link rel="stylesheet" href="projet.css">
+<script id="publie" type="application/json"><!--PUBLIE--></script>
+<script id="script-source" type="application/json"><!--SCRIPT--></script>
+<script src="../presentation/kit/kit-etude.js" defer></script>
+<script src="js/depot.js" defer></script>
+<script src="js/commun.js" defer></script>
+<script src="js/script.js" defer></script>
+</head>
+<body data-editable class="pj-page-script">
+<div class="ke-avance" aria-hidden="true"><i id="avance"></i></div>
+<header class="ke-barre">
+  <a class="ke-marque" href="index.html"><span class="carre"><i></i></span><b>Second Earth</b></a>
+  <nav class="ke-chapitres" aria-label="Les actes" id="chapitres"></nav>
+  <nav class="pj-ailleurs" aria-label="Ailleurs"><a href="index.html">Projet</a><a href="script.html" class="ici">Script</a><a href="../presentation/index.html">Présentation</a></nav>
+  <div class="ke-bascule" role="group" aria-label="Thème"><button type="button" data-t="sombre">Sombre</button><button type="button" data-t="clair">Clair</button></div>
+</header>
+<main>
+  <header class="pj-script-tete">
+    <p class="ke-sur"><b>Le script</b> Récit de référence</p>
+    <h1>Second <em>Earth</em></h1>
+    <p class="ke-chapo">Le texte du docx SECOND_EARTH_STORY, tel quel. Chaque paragraphe se commente dans la marge ; en mode édition, il se corrige sur place, et le texte d'origine reste consultable.</p>
+    <div class="pj-etat-script" id="etat-script"></div>
+  </header>
+  <div class="pj-script" id="script"></div>
+</main>
+<footer class="ke-pied">
+  <p>Second Earth · NIRVALAB · pour le Science Centre Singapore. Ce site est public ; ce qui est marqué « proposé » n'est pas tranché.</p>
+  <p><a class="ke-btn petit" href="index.html">Le projet</a> · <a class="ke-btn petit" href="script.html">Le script</a> · <a class="ke-btn petit" href="../presentation/index.html">La présentation</a> · <a class="ke-btn petit" href="../index.html">Le site de travail</a> · <a class="ke-btn petit" href="admin.html">Tableau de bord</a></p>
+</footer>
+</body>
+</html>
