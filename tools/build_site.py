@@ -923,6 +923,8 @@ def main(argv):
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copytree(ASSETS, out / 'assets')
+    (out / 'carte').mkdir(parents=True, exist_ok=True)
+    shutil.copy(ROOT / 'carte' / 'world.png', out / 'carte' / 'world.png')  # la planète entière, pour la section « L'univers » du site du projet
     shutil.copytree(ROOT / 'presentation', out / 'presentation', ignore=shutil.ignore_patterns('*.py', '*.md', 'vitrine*', 'presentation.html'))
     (out / '.nojekyll').write_text('', encoding='utf-8')
 
