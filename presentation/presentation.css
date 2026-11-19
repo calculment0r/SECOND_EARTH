@@ -1,10 +1,9 @@
 /* Second Earth · présentation « L'étude ». Tout passe par les jetons du kit (kit/kit-etude.css) :
    aucune couleur n'est écrite ici ; les couleurs des biomes sont des données de la carte. */
 
-/* Norelli (VP creativeshop) est une police achetée : elle n'est pas publiée. Si elle est installée sur
-   la machine, elle est prise ; sinon la pile du kit retombe sur Literata. */
+/* Norelli : la police des noms et des grands mots, servie depuis fonts/ (demande de Cal, 19 novembre). */
 @font-face { font-family: 'Norelli'; font-style: normal; font-weight: 400; font-display: swap;
-  src: local('Norelli'), local('Norelli Black'), local('Norelli-Black'), local('VP creativeshop'); }
+  src: url('fonts/norelli-black-complete.otf') format('opentype'); }
 
 :root { --carte-filtre: grayscale(1) brightness(.26) contrast(1.25); --carte-couleur: saturate(.85) brightness(.92); }
 [data-theme="light"] { --carte-filtre: grayscale(1) brightness(1.22) contrast(.5); --carte-couleur: saturate(.9); }
