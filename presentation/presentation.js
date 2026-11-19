@@ -74,6 +74,7 @@
      Les pistes sont celles du kit (KitEtude.piste) : chaque .ke-scene reçoit t de 0 à 1 par scene._t. */
 
   var SCENES = {};
+  var NUM = ['P', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
   var pistes = [].slice.call(document.querySelectorAll('.ke-piste[data-scene]'));
   function scene(id) { return document.querySelector('#' + id + ' .ke-scene'); }
   function largeur(id) { return scene(id).clientWidth; }
@@ -404,102 +405,171 @@
   }
 
   /* ------------------------------------------------------------------ 06 biomes */
+  // le ciel des 41 jours (Chronologie du voyage, proposé) : soirées ambrées, saison noire, aubes ambrées ;
+  // la grande lune (validé, round 15) : pleine au jour 7, nouvelle au jour 25, presque pleine au retour
+  var CIEL = [[0, 3, 'soirées ambrées'], [3, 32, 'saison noire'], [32, 41, 'aubes ambrées']];
+  var LUNES = [[7, 'pleine'], [25, 'nouvelle'], [41, 'presque pleine']];
+  function mixe(a, b, t) { return 'color-mix(in srgb, ' + a + ' ' + Math.round(t * 100) + '%, ' + b + ')'; }
   function construireBiomes() {
+    var ciel = $('#bio-ciel'); ciel.innerHTML = '';
+    CIEL.forEach(function (c) {
+      var d = el('div', { class: 'phase' + (c[2] === 'saison noire' ? ' noire' : ''), style: 'left:' + (100 * c[0] / 41) + '%;width:' + (100 * (c[1] - c[0]) / 41) + '%' }, ciel);
+      el('span', { text: c[2] }, d);
+    });
+    LUNES.forEach(function (l) { var d = el('div', { class: 'lune ' + (l[1] === 'nouvelle' ? 'nouvelle' : 'pleine'), style: 'left:' + (100 * l[0] / 41) + '%' }, ciel); el('span', { text: 'j' + l[0] + ' · ' + l[1] }, d); });
     var bb = $('#bio-bandes'); bb.innerHTML = '';
+    var pourpre = couleur('jungle'), vert = couleur('ancienne');
     BIOMES.forEach(function (b) {
       var d = el('div', { style: 'flex:' + (b.j[1] - b.j[0]) + ' 1 0' }, bb);
-      el('div', { class: 'c', style: 'background:' + couleur(b.c) }, d);
+      var c = couleur(b.c);
+      // la lumière vient d'en haut ; les deux lignées végétales : pourpre en haut, vert dessous (Bible)
+      el('div', { class: 'c', style: 'background:' +
+        'radial-gradient(ellipse 120% 40% at 50% 0%, color-mix(in srgb, var(--ink) 22%, transparent), transparent 70%),' +
+        'linear-gradient(180deg,' + mixe(pourpre, c, .45) + ' 0%,' + c + ' 26%,' + c + ' 70%,' + mixe(vert, c, .42) + ' 100%)' }, d);
       el('div', { class: 'n', text: 'j' + b.j[0] }, d);
     });
   }
   var bioCourant = -1;
-  // toutes les bandes sont là dès le début ; celle où l'on est monte à pleine hauteur
   SCENES.biomes = function (p) {
     var n = BIOMES.length, kids = $('#bio-bandes').children, cur = clamp(Math.floor(p * n), 0, n - 1);
     for (var i = 0; i < n; i++) {
       var c = $('.c', kids[i]);
-      c.style.height = (i === cur ? 100 : (i < cur ? 62 : 38)) + '%';
-      c.style.opacity = i === cur ? 1 : (i < cur ? .78 : .45);
+      c.style.height = (i === cur ? 100 : (i < cur ? 64 : 42)) + '%';
+      c.style.opacity = i === cur ? 1 : (i < cur ? .8 : .5);
       kids[i].classList.toggle('ici', i === cur);
     }
     if (cur !== bioCourant) {
       bioCourant = cur;
       var b = BIOMES[cur], pal = b.pal !== null ? SE.palette[b.pal] : null;
-      $('#bio-texte').innerHTML = '<div><p class="ke-sur"><b>' + String(cur + 1).padStart(2, '0') + '</b>jours ' + b.j[0] + ' à ' + b.j[1] + '</p><h3>' + esc(b.nom) + '</h3></div>' +
+      var ciel = CIEL.filter(function (c) { return b.j[0] >= c[0] && b.j[0] < c[1]; })[0];
+      $('#bio-texte').innerHTML = '<div><p class="ke-sur"><b>' + String(cur + 1).padStart(2, '0') + '</b>jours ' + b.j[0] + ' à ' + b.j[1] + ' · <span class="ke-deduit">' + esc(ciel ? ciel[2] : '') + '</span></p><h3>' + esc(b.nom) + '</h3></div>' +
         (pal ? '<div><p class="ke-petit">Dominante</p><p class="v">' + esc(pal.dominante) + '</p><p class="ke-petit">Accents</p><p class="v">' + esc(pal.accents) + '</p></div><div><p class="ke-petit">Mouvement</p><p class="v">' + esc(pal.mouvement) + '</p></div>'
           : '<div><p class="v">Retour au point de départ : extraction du XENOPOD, message, CAIN.</p></div><div><p class="v ke-manque">Pas de ligne de palette : c\'est la jungle du début.</p></div>');
     }
   };
 
-  /* ------------------------------------------------------------------ 07 espèces */
-  var ORDRE = ['jungle', 'pitons', 'cavernes', 'massifs', 'foret-bio', 'hautes-plaines', 'foret-ancienne', 'volcanique', 'mer-arsenic', 'lacs-sales'];
-  var TETES = { jungle: 'Jungle', pitons: 'Pitons', cavernes: 'Cavernes', massifs: 'Massifs', 'foret-bio': 'Forêt biolum.', 'hautes-plaines': 'Hautes Plaines', 'foret-ancienne': 'Forêt ancienne', volcanique: 'Course volcanique', 'mer-arsenic': "Mer d'arsenic", 'lacs-sales': 'Lacs salés' };
-  function taillePx(m) {
-    var H = hauteur('esp');
-    if (m === null) return H * .0135;
-    var t = clamp((Math.log10(m) + 3.2) / 4.4, 0, 1);
-    return H * lerp(.013, .036, t);
-  }
+  /* ------------------------------------------------------------------ 07 espèces
+     Une échelle de tailles (logarithmique, 0,1 mm à 20 m), une rangée par biome ; chaque espèce est un trait
+     de sa plus petite à sa plus grande dimension, et un point à sa taille, à la couleur de son biome. */
+  var ORDRE = ['jungle', 'pitons', 'cavernes', 'massifs', 'foret-bio', 'hautes-plaines', 'foret-ancienne', 'volcanique', 'mer-arsenic', 'lacs-sales', 'ailleurs'];
+  var TETES = { jungle: 'Jungle', pitons: 'Pitons', cavernes: 'Cavernes', massifs: 'Massifs', 'foret-bio': 'Forêt bioluminescente', 'hautes-plaines': 'Hautes Plaines', 'foret-ancienne': 'Forêt ancienne', volcanique: 'Course volcanique', 'mer-arsenic': "Mer d'arsenic", 'lacs-sales': 'Lacs salés', ailleurs: 'Hors trajet, continents' };
+  var COUL_BIOME = { jungle: 'jungle', pitons: 'pitons', cavernes: 'cavernes', massifs: 'massifs', 'foret-bio': 'biolum', 'hautes-plaines': 'plaines', 'foret-ancienne': 'ancienne', volcanique: 'canyon', 'mer-arsenic': 'arsenic', 'lacs-sales': 'sel' };
+  var LMIN = Math.log10(1e-4), LMAX = Math.log10(20);
+  var esp = {};
   function construireEspeces() {
-    var pl = $('#esp-planche'); pl.innerHTML = '';
-    ORDRE.forEach(function (b) {
-      var col = el('div', { class: 'col' }, pl);
-      el('div', { class: 'tete', text: TETES[b] }, col);
-      SE.especes.filter(function (e) { return e.biome === b; })
-        .sort(function (x, y) { return (y.m || 0) - (x.m || 0); })
-        .forEach(function (e) {
-          var n = el('div', { class: 'nm', style: 'font-size:' + taillePx(e.m) + 'px' + (e.m === null ? ';font-style:italic' : '') }, col);
-          n.innerHTML = esc(e.nom) + '<small>' + esc(e.taille) + '</small>';
-        });
+    var s = $('#esp-svg'); s.innerHTML = '';
+    var W = largeur('esp'), H = hauteur('esp');
+    s.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var x0 = W * .2, x1 = W * .93, y0 = H * .3, y1 = H * .9, rh = (y1 - y0) / ORDRE.length;
+    function X(m) { return x0 + (Math.log10(m) - LMIN) / (LMAX - LMIN) * (x1 - x0); }
+    esp.X = X; esp.x0 = x0; esp.x1 = x1;
+    // graduations : chaque trait multiplie par dix
+    [[1e-4, '0,1 mm'], [1e-3, '1 mm'], [1e-2, '1 cm'], [.1, '10 cm'], [1, '1 m'], [10, '10 m']].forEach(function (g) {
+      sv('line', { x1: X(g[0]), x2: X(g[0]), y1: y0 - 14, y2: y1, stroke: css('--line'), 'stroke-width': 1 }, s);
+      var t = sv('text', { x: X(g[0]), y: y1 + 22, 'text-anchor': 'middle', class: 'cote' }, s); t.textContent = g[1];
     });
-    var ht = SE.especes.filter(function (e) { return e.biome === 'hors-trajet'; }).length;
-    var co = SE.especes.filter(function (e) { return /^continent/.test(e.biome); }).length;
-    var tx = SE.especes.filter(function (e) { return e.biome === 'transversal'; }).length;
-    $('#esp-ailleurs').innerHTML = 'Et ailleurs sur Korê : <b>' + ht + '</b> espèces hors trajet (sans statut dans le Bestiaire), <b>' + co + '</b> sur les continents B, C, D (validées, round 15), <b>' + tx + '</b> transversales. <b>' + SE.titans.length + '</b> Titans éteints, <b>' + SE.flore.length + '</b> plantes à la Flore.';
+    // Rob1, ~75 cm : la mesure de la page
+    sv('line', { x1: X(.75), x2: X(.75), y1: y0 - 30, y2: y1, stroke: css('--or'), 'stroke-width': 1, 'stroke-dasharray': '2 4', opacity: .8 }, s);
+    var tr = sv('text', { x: X(.75) + 6, y: y0 - 34, class: 'cote cote-or' }, s); tr.textContent = 'Rob1 · 75 cm';
+    esp.marques = [];
+    ORDRE.forEach(function (b, r) {
+      var y = y0 + rh * (r + .5);
+      var lab = sv('text', { x: x0 - 22, y: y + 4, 'text-anchor': 'end', class: 'cote-f' }, s); lab.textContent = TETES[b];
+      var liste = SE.especes.filter(function (e) { return b === 'ailleurs' ? !COUL_BIOME[e.biome] : e.biome === b; })
+        .filter(function (e) { return e.b && e.b[1] !== null; }).sort(function (a2, b2) { return a2.b[1] - b2.b[1]; });
+      var dernier = -1e9, rang = 0;
+      liste.forEach(function (e) {
+        var xa = X(e.b[0]), xb = X(e.b[1]);
+        rang = (xb - dernier < 16) ? rang + 1 : 0; dernier = xb;
+        var dy = [0, -9, 9, -17, 17][rang % 5], col = COUL_BIOME[b] ? couleur(COUL_BIOME[b]) : css('--pale');
+        var rr = 2.5 + 7.5 * (Math.log10(e.b[1]) - LMIN) / (LMAX - LMIN);
+        var g = sv('g', {}, s);
+        if (xb - xa > 1) sv('line', { x1: xa, x2: xb, y1: y + dy, y2: y + dy, stroke: col, 'stroke-width': 2, 'stroke-linecap': 'round', opacity: .75 }, g);
+        var c = sv('circle', { cx: xb, cy: y + dy, r: rr, fill: col, 'fill-opacity': .85, stroke: css('--bg'), 'stroke-width': 1 }, g);
+        esp.marques.push({ e: e, g: g, c: c, x: xb, y: y + dy, r: rr, b: b });
+      });
+    });
+    // ce qui manque : pas de taille en mètres dans la fiche
+    var manque = SE.especes.filter(function (e) { return !e.b || e.b[1] === null; }).map(function (e) { return e.nom + ' (' + e.taille.toLowerCase() + ')'; });
+    var tm = sv('text', { x: x1, y: y1 + 52, 'text-anchor': 'end', class: 'cote', 'font-style': 'italic' }, s); tm.textContent = 'sans mesure : ' + manque.join(', ');
+    esp.curseur = sv('line', { y1: y0 - 14, y2: y1 + 6, stroke: css('--ink'), 'stroke-width': 1 }, s);
+    esp.etiq = sv('g', {}, s);
+    esp.cur = null;
   }
-  // toute la planche est là dès le début ; la colonne où l'on est s'allume
   SCENES.especes = function (p) {
-    var cols = $('#esp-planche').children, cur = clamp(Math.floor(p * cols.length), 0, cols.length - 1);
-    for (var i = 0; i < cols.length; i++) { cols[i].classList.toggle('ici', i === cur); }
+    var lm = lerp(LMIN + .15, LMAX - .02, p), m = Math.pow(10, lm), x = esp.X(m);
+    esp.curseur.setAttribute('x1', x); esp.curseur.setAttribute('x2', x);
+    // la marque la plus proche du curseur est celle qu'on lit
+    var best = null, bd = 1e9;
+    esp.marques.forEach(function (o) { var d = Math.abs(o.x - x); if (d < bd) { bd = d; best = o; } });
+    esp.marques.forEach(function (o) {
+      var proche = Math.abs(o.x - x) < 40;
+      o.c.setAttribute('stroke', o === best ? css('--or') : css('--bg'));
+      o.c.setAttribute('stroke-width', o === best ? 2.5 : 1);
+      o.g.setAttribute('opacity', proche ? 1 : .55);
+    });
+    if (best !== esp.cur) {
+      esp.cur = best;
+      var b = $('#esp-lu');
+      $('.ke-sur', b).innerHTML = '<b>' + esc(best.e.code) + '</b>' + esc(TETES[best.b] || '');
+      $('.n', b).textContent = best.e.nom;
+      $('.ke-dit', b).textContent = best.e.taille;
+      esp.etiq.innerHTML = '';
+      var t = sv('text', { x: best.x, y: best.y - best.r - 8, 'text-anchor': 'middle', class: 'cote-f' }, esp.etiq); t.textContent = best.e.nom;
+    }
   };
 
-  /* ------------------------------------------------------------------ 08 titans */
+  /* ------------------------------------------------------------------ 08 titans
+     Des longueurs debout, toutes à la même échelle, posées sur un même sol : la plus grande derrière, la plus
+     petite devant ; Rob1, 75 cm, tout devant. Le dôme dit une longueur, pas une forme d'animal. */
   var tit = {};
   function construireTitans() {
-    var e = $('#tit-echelle'); e.innerHTML = '';
-    var items = [
-      { nom: 'Rob1', m: .75, q: '~75 cm, le casque sous la hanche de Seed', k: 'robot' },
-      { nom: 'Rob1/2, le Rob fusionné', m: 2.5, q: 'bipède coureur, ~2,5 m', k: 'robot' }
-    ];
-    var desc = SE.especes.filter(function (x) { return x.code === 'HP-01' || x.code === 'TR-01'; });
-    desc.forEach(function (x) { items.push({ nom: x.nom, m: x.m, q: x.taille + ' · descendant', k: '' }); });
-    SE.titans.forEach(function (t) { items.push({ nom: t.nom, m: t.m, q: t.taille, k: 'titan' }); });
-    items.sort(function (a, b) { return a.m - b.m; });
-    var H = e.getBoundingClientRect().height, n = items.length;
+    var s = $('#tit-svg'); s.innerHTML = '';
+    var W = largeur('tit'), H = hauteur('tit');
+    s.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var items = [{ nom: 'Rob1', m: .75, q: '~75 cm, le casque sous la hanche de Seed', k: 'robot' }, { nom: 'Rob1/2, le Rob fusionné', m: 2.5, q: 'bipède coureur, ~2,5 m', k: 'robot' }];
+    SE.especes.filter(function (x) { return x.code === 'HP-01' || x.code === 'TR-01'; }).forEach(function (x) { items.push({ nom: x.nom, m: x.m, q: x.taille + ' · descendant', k: 'desc' }); });
+    SE.titans.forEach(function (t) { items.push({ nom: t.nom, m: t.m, q: t.taille + ' · ' + t.descendant, k: 'titan' }); });
+    items.sort(function (a, b) { return b.m - a.m; });
+    var x0 = W * .3, sol = H * .78, k = (W * .9 - x0) / 21;
+    tit.k = k; tit.x0 = x0; tit.sol = sol;
+    sv('line', { x1: x0 - 40, x2: W * .93, y1: sol, y2: sol, stroke: css('--trait-vu'), 'stroke-width': 1 }, s);
+    for (var m = 0; m <= 20; m += 5) {
+      sv('line', { x1: x0 + m * k, x2: x0 + m * k, y1: sol, y2: sol + 8, stroke: css('--trait-vu') }, s);
+      var tg = sv('text', { x: x0 + m * k, y: sol + 26, 'text-anchor': 'middle', class: 'cote' }, s); tg.textContent = m + ' m';
+    }
+    var defs = sv('defs', {}, s);
     tit.items = items.map(function (it, i) {
-      var y = H * (i + .5) / n;
-      var l = el('div', { class: 'ligne ' + it.k, style: 'top:' + y + 'px;width:0' }, e);
-      var lab = el('div', { class: 'etq', style: 'top:' + y + 'px', html: esc(it.nom) + '<small>' + esc(it.q) + '</small>' }, e);
-      lab.style.right = 'calc(100% + 18px)';
-      var v = el('div', { class: 'val', style: 'top:' + y + 'px' }, e);
-      return { it: it, l: l, lab: lab, v: v };
+      var L = it.m * k, h = L * .34;
+      var id = 'tg' + i, gr = sv('linearGradient', { id: id, x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+      var c0 = it.k === 'robot' ? css('--or') : css('--ink');
+      sv('stop', { offset: 0, 'stop-color': c0, 'stop-opacity': it.k === 'robot' ? .7 : .22 }, gr);
+      sv('stop', { offset: 1, 'stop-color': c0, 'stop-opacity': it.k === 'robot' ? .35 : .04 }, gr);
+      var d = 'M' + x0 + ' ' + sol + ' C ' + x0 + ' ' + (sol - h * 1.33) + ', ' + (x0 + L) + ' ' + (sol - h * 1.33) + ', ' + (x0 + L) + ' ' + sol + ' Z';
+      var pth = sv('path', { d: d, fill: 'url(#' + id + ')', stroke: it.k === 'robot' ? css('--or') : css('--voile'), 'stroke-width': it.k === 'titan' ? 1 : 1.2, 'stroke-opacity': .7 }, s);
+      return { it: it, p: pth, L: L, h: h };
     });
-    tit.W = e.getBoundingClientRect().width; tit.regle = false;
+    tit.etq = sv('g', {}, s);
+    tit.cur = -1;
   }
-  // une seule échelle, de 0 à 20 m : tout est là dès le début ; on monte d'un être à l'autre
   SCENES.titans = function (p) {
-    var W = tit.W, maxV = 21, n = tit.items.length, cur = clamp(Math.floor(p * n), 0, n - 1);
+    var n = tit.items.length, cur = clamp(n - 1 - Math.floor(p * n), 0, n - 1);   // du plus petit au plus grand
+    cur = n - 1 - clamp(Math.floor(p * n), 0, n - 1);
     tit.items.forEach(function (o, i) {
-      var w = o.it.m / maxV * W, ici = i === cur;
-      o.l.style.width = w + 'px';
-      o.l.classList.toggle('ici', ici); o.lab.classList.toggle('ici', ici); o.v.classList.toggle('ici', ici);
-      o.v.style.left = w + 'px';
-      o.v.textContent = fr(o.it.m, o.it.m < 1 ? 2 : (o.it.m % 1 ? 1 : 0)) + ' m' + (ici && i > 0 ? ' · ' + fr(o.it.m / .75, 0) + ' fois Rob1' : '');
+      var ici = i === cur;
+      o.p.setAttribute('stroke', ici ? css('--or') : (o.it.k === 'robot' ? css('--or') : css('--voile')));
+      o.p.setAttribute('stroke-width', ici ? 2.5 : 1);
+      o.p.setAttribute('stroke-opacity', ici ? 1 : .55);
     });
-    if (!tit.regle) {
-      tit.regle = true;
-      var r = $('#tit-regle'); r.innerHTML = '';
-      for (var x = 0; x <= 20; x += 5) { el('i', { style: 'left:' + x / maxV * W + 'px' }, r); el('span', { style: 'left:' + x / maxV * W + 'px', text: x + ' m' }, r); }
+    if (cur !== tit.cur) {
+      tit.cur = cur;
+      var o = tit.items[cur], b = $('#tit-lu');
+      $('.ke-sur', b).innerHTML = '<b>' + (n - cur) + ' / ' + n + '</b>' + esc(o.it.k === 'titan' ? 'Titan, éteint il y a ~60 Ma' : (o.it.k === 'robot' ? 'machine' : 'descendant vivant'));
+      $('.n', b).textContent = o.it.nom;
+      $('.ke-dit', b).textContent = o.it.q + (cur < n - 1 ? ' · ' + fr(o.it.m / .75, 0) + ' fois Rob1' : '');
+      tit.etq.innerHTML = '';
+      var t = sv('text', { x: tit.x0 + o.L, y: tit.sol - o.h - 14, 'text-anchor': 'middle', class: 'cote-f cote-or' }, tit.etq);
+      t.textContent = fr(o.it.m, o.it.m < 1 ? 2 : (o.it.m % 1 ? 1 : 0)) + ' m';
     }
   };
 
@@ -566,74 +636,96 @@
   var MOTS = [['VI', '« Rob ! »'], ['VII', '« Seed »'], ['VIII', '« Korê »'], ['IX', '« Je suis Seed »']];
   var fil = {};
   function mmss(m) { var s = Math.round(m * 60); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+  // échelle de plan : du très gros plan (1) au très plan large (6)
+  var CADRE = { TGP: 1, GP: 2, 'ÉCR': 2.4, VS: 2.8, PR: 3, PM: 4, PA: 4.4, PL: 5, TPL: 6, 'Alterné': 3.5 };
+  function hauteurCadre(c) { var k = c.split(/[ →+]/)[0]; return CADRE[k] || 3.5; }
+  var PLANS_MOTS = { '6-14': '« Rob ! »', '7-15': '« Seed »', '8-03': '« Korê »', '9-14': '« Je suis Seed »' };
+  function acteDePlan(n) { var a = n.split('-')[0]; return a === 'P' ? 0 : +a; }
   function construireFilm() {
-    var r = $('#fil-ruban');
-    [].slice.call(r.querySelectorAll('.seg,.graduation')).forEach(function (x) { x.remove(); });
-    fil.segs = [];
-    ACTES.forEach(function (a) {
-      var s = el('div', { class: 'seg coeur' }, r); el('span', { text: a.a }, s);
-      fil.segs.push({ el: s, d: a.c, coeur: true, a: a });
-      a.mods.forEach(function (m) {
-        var s2 = el('div', { class: 'seg module' }, r); el('span', { text: m[0] }, s2);
-        fil.segs.push({ el: s2, d: m[2], coeur: false, a: a, m: m });
-      });
+    var s = $('#fil-svg'); s.innerHTML = '';
+    var W = largeur('fil'), H = hauteur('fil');
+    s.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    fil.W = W; fil.x0 = W * .06; fil.x1 = W * .92; fil.base = H * .56; fil.hmax = H * .2;
+    // chaque plan : un trait vertical, large comme sa durée, haut comme son échelle de plan
+    var t = 0;
+    fil.plans = SE.plans.map(function (pl) {
+      var o = { pl: pl, t0: t, t1: t + pl.s, a: acteDePlan(pl.n), h: hauteurCadre(pl.cadre) };
+      t += pl.s; return o;
     });
-    fil.W = r.getBoundingClientRect().width;
-    var mots = $('#fil-mots'); mots.innerHTML = '';
-    fil.mots = MOTS.map(function (m) { return { a: m[0], el: el('div', { class: 'm', text: m[1] }, mots) }; });
-    fil.grads = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50].map(function (v) { return { v: v, el: el('div', { class: 'graduation', text: v + ' min' }, r) }; });
+    fil.total = t;
+    var fab = { IA: '--ink', Unreal: '--voile', 'Écran': '--pale', Mixte: '--trait-vu' };
+    fil.g = sv('g', {}, s);
+    fil.plans.forEach(function (o) {
+      var k = o.pl.fab.split(' ')[0];
+      o.rect = sv('rect', { fill: PLANS_MOTS[o.pl.n] ? css('--or') : css(fab[k] || '--pale') }, fil.g);
+      if (/\bE\d\b/.test(o.pl.note)) o.e = o.pl.note.match(/\bE\d\b/)[0];
+    });
+    // les modules du 55 : des volumes creux qui s'ouvrent aux charnières E1 à E9
+    fil.mods = [['E1', 'M1', 180], ['E2', 'M2', 300], ['E3', 'M3', 180], ['E4', 'M4', 180], ['E4', 'M9', 120], ['E5', 'M5', 180], ['E6', 'M6', 120], ['E7', 'M7', 180], ['E8', 'M8', 180]].map(function (m) {
+      var g = sv('g', {}, s);
+      var r = sv('rect', { fill: css('--releve'), stroke: css('--voile'), 'stroke-width': 1, 'stroke-dasharray': '2 3' }, g);
+      var tx = sv('text', { class: 'cote', 'text-anchor': 'middle' }, g); tx.textContent = m[1];
+      return { e: m[0], nom: m[1], s: m[2], g: g, r: r, tx: tx };
+    });
+    fil.marques = sv('g', {}, s);
+    fil.tete = sv('line', { stroke: css('--or'), 'stroke-width': 2 }, s);
     fil.cur = null;
   }
   SCENES.film = function (p) {
-    var grow = ease(seg(p, .58, .9));
-    var tot = 0;
-    fil.segs.forEach(function (s) { s.w = s.coeur ? s.d : s.d * grow; tot += s.w; });
-    var k = fil.W / Math.max(25, tot), x = 0;
-    fil.segs.forEach(function (s) {
-      s.x = x; s.el.style.left = x * k + 'px'; s.el.style.width = s.w * k + 'px';
-      s.el.style.display = s.w < .01 ? 'none' : '';
-      x += s.w;
+    var grow = ease(seg(p, .6, .92)), tot = fil.total + 1620 * grow;
+    var k = (fil.x1 - fil.x0) / tot, x = fil.x0, base = fil.base, hm = fil.hmax;
+    var vus = {}, posE = {};
+    fil.marques.innerHTML = '';
+    var acteVu = -1;
+    fil.plans.forEach(function (o) {
+      // un module s'insère juste après le plan qui porte sa charnière
+      o.x = x; var w = o.pl.s * k;
+      var h = hm * o.h / 6;
+      o.rect.setAttribute('x', x); o.rect.setAttribute('width', Math.max(.6, w - .8));
+      o.rect.setAttribute('y', base - h); o.rect.setAttribute('height', h);
+      if (o.a !== acteVu) {
+        acteVu = o.a;
+        var tA = sv('text', { x: x, y: base + 26, class: 'cote-f' }, fil.marques); tA.textContent = NUM[o.a];
+      }
+      x += w;
+      if (o.e && !vus[o.e]) {
+        vus[o.e] = 1; posE[o.e] = x;
+        var le = sv('line', { x1: x, x2: x, y1: base - hm - 30, y2: base + 6, stroke: css('--amb'), 'stroke-dasharray': '2 3', 'stroke-width': 1 }, fil.marques);
+        var te = sv('text', { x: x, y: base - hm - 36, 'text-anchor': 'middle', class: 'cote' }, fil.marques); te.textContent = o.e;
+        fil.mods.forEach(function (md) {
+          if (md.e !== o.e) return;
+          var mw = md.s * k * grow;
+          md.r.setAttribute('x', x + 2); md.r.setAttribute('width', Math.max(0, mw - 4)); md.r.setAttribute('y', base - hm * .7); md.r.setAttribute('height', hm * .7);
+          md.tx.setAttribute('x', x + mw / 2); md.tx.setAttribute('y', base - hm * .7 + 18);
+          md.g.setAttribute('opacity', grow > .02 ? grow : 0);
+          x += mw;
+        });
+      }
+      if (PLANS_MOTS[o.pl.n]) {
+        var tm = sv('text', { x: o.x + w / 2, y: base - h - 14, 'text-anchor': 'middle', class: 'cote-f cote-or' }, fil.marques); tm.textContent = PLANS_MOTS[o.pl.n];
+      }
     });
-    fil.grads.forEach(function (g) { g.el.style.left = g.v * k + 'px'; g.el.style.opacity = g.v <= tot + .01 ? 1 : 0; });
-    // tête de lecture sur le 25, puis sur le 55 qui grandit
-    var tete, actCur = null, modCur = null;
-    fil.segs.forEach(function (s) { s.el.classList.remove('ici'); });
-    if (p < .55) {
-      var tm = 25 * ease(seg(p, .03, .52)), acc = 0;
-      fil.segs.forEach(function (s) { if (!s.coeur) return; if (tm >= acc - 1e-6) actCur = s; acc += s.d; });
-      tete = 0; var a2 = 0;
-      fil.segs.forEach(function (s) { if (s.coeur) { var u = clamp(tm - a2, 0, s.d); if (tm > a2) tete = s.x + u; a2 += s.d; } });
-      $('#fil-n').textContent = mmss(tm);
-      $('#fil-t').textContent = 'le film de 25 minutes';
-      fil.mots.forEach(function (m) {
-        var s = fil.segs.filter(function (q) { return q.coeur && q.a.a === m.a; })[0];
-        var acc3 = 0; fil.segs.forEach(function (q) { if (q.coeur && q.x < s.x) acc3 += q.d; });
-        m.el.style.left = (s.x + s.w / 2) * k + 'px';
-        m.el.classList.toggle('dit', tm >= acc3 + s.d / 2);
-      });
-    } else {
-      tete = x * seg(p, .58, .9);
-      fil.segs.forEach(function (s) { if (s.x <= tete + 1e-6) { if (s.coeur) actCur = s; else modCur = s; if (s.coeur) modCur = null; } });
-      $('#fil-n').textContent = mmss(tot);
-      $('#fil-t').textContent = grow < .02 ? 'le film de 25 minutes' : '25 minutes de cœur, ' + mmss(tot - 25) + ' de modules';
-      fil.mots.forEach(function (m) {
-        var s = fil.segs.filter(function (q) { return q.coeur && q.a.a === m.a; })[0];
-        m.el.style.left = (s.x + s.w / 2) * k + 'px'; m.el.classList.add('dit');
-      });
-    }
-    $('#fil-tete').style.left = tete * k + 'px';
-    if (actCur && !modCur) actCur.el.classList.add('ici'); else if (modCur) modCur.el.classList.add('ici');
-    var cle = (actCur ? actCur.a.a : '') + '|' + (modCur ? modCur.m[0] : '') + '|' + (p < .55);
+    // la tête de lecture parcourt le 25 plan à plan
+    var tt = fil.total * seg(p, .02, .56), cur = fil.plans[0];
+    fil.plans.forEach(function (o) { if (tt >= o.t0) cur = o; });
+    var xt = grow > 0 ? x : cur.x + (tt - cur.t0) * k;
+    fil.tete.setAttribute('x1', xt); fil.tete.setAttribute('x2', xt); fil.tete.setAttribute('y1', base - hm - 50); fil.tete.setAttribute('y2', base + 40);
+    fil.plans.forEach(function (o) { o.rect.setAttribute('opacity', grow > 0 ? .9 : (o === cur ? 1 : (o.t0 < tt ? .85 : .4))); });
+    $('#fil-n').textContent = grow > 0 ? mmss(tot / 60) : mmss(tt / 60);
+    $('#fil-t').textContent = grow > 0 ? '25 minutes de cœur, ' + mmss((tot - fil.total) / 60) + ' de modules' : 'le film de 25 minutes · 150 plans';
+    var cle = grow > 0 ? 'm' + Math.round(grow * 9) : cur.pl.n;
     if (cle !== fil.cur) {
       fil.cur = cle;
-      var a = actCur ? actCur.a : ACTES[0];
-      var html = '<div><p class="ke-sur"><b>' + (a.a === 'Prologue' ? 'P' : a.a) + '</b>' + (a.a === 'Prologue' ? 'Prologue' : 'Acte ' + a.a) + ' · ' + mmss(a.c) + '</p><h3>' + esc(a.t) + '</h3></div>';
-      if (p < .55) {
-        html += '<div><p class="ke-petit">Science en image</p><p class="v">' + esc(SCIENCE[a.a]) + '</p></div>';
-        html += '<div><p class="ke-petit">Modules du 55 à cet endroit</p><p class="v">' + (a.mods.length ? a.mods.map(function (m) { return esc(m[0] + ' · ' + m[1]); }).join('<br>') : '<span class="ke-manque">Aucun : la scène est écrite une fois, à sa longueur définitive.</span>') + '</p></div>';
+      var html;
+      if (grow > 0) {
+        html = '<div><p class="ke-sur"><b>55</b>Le film long</p><h3>Neuf modules, aux charnières E1 à E9</h3></div>' +
+          '<div><p class="ke-petit">La règle</p><p class="v">Le 55 s\'obtient par ajout, jamais par remontage : chaque module s\'ouvre à une charnière déjà présente dans le 25. Les actes I, III et IX n\'en reçoivent aucun.</p></div>' +
+          '<div><p class="ke-petit">Les durées</p><p class="v">25 min de cœur, 27 min de modules : 52 min, 55 avec les génériques.</p></div>';
       } else {
-        html += '<div><p class="ke-petit">Ajouté dans le 55</p><p class="v">' + (modCur ? esc(modCur.m[0] + ' · ' + modCur.m[1] + ' · ' + mmss(modCur.m[2])) : '<span class="ke-manque">Rien : séquence-cœur, la même dans les deux films.</span>') + '</p></div>';
-        html += '<div><p class="ke-petit">La règle</p><p class="v">Le 55 s\'obtient par ajout, jamais par remontage. Les actes I, III et IX ne reçoivent aucun module.</p></div>';
+        var pl = cur.pl;
+        html = '<div><p class="ke-sur"><b>' + esc(pl.n) + '</b>' + pl.s + ' s · ' + esc(pl.cadre) + ' · ' + esc(pl.fab) + '</p><h3>' + esc(ACTES[cur.a].t) + '</h3></div>' +
+          '<div><p class="ke-petit">Le plan</p><p class="v">' + esc(pl.action) + '</p></div>' +
+          '<div><p class="ke-petit">Son, écran</p><p class="v">' + esc(pl.son) + '</p>' + (pl.note ? '<p class="ke-petit" style="margin-top:12px">Note</p><p class="v">' + esc(pl.note) + '</p>' : '') + '</div>';
       }
       $('#fil-lecture').innerHTML = html;
     }
@@ -666,6 +758,332 @@
     var mot = $('#scr-mot');
     mot.style.color = chaud ? 'color-mix(in srgb, var(--or) 16%, var(--panel))' : '';
     mot.style.transform = 'translate(-50%,-50%) translateY(' + lerp(6, -6, p) + 'vh)';
+  };
+
+  /* ------------------------------------------------------------------ 11 le script en hauteur
+     Une seule matière (le Récit v2, mis en page ligne à ligne) et une seule caméra :
+     le texte -> la page -> les pages en bande -> les actes en volumes (largeur = durée) -> les arches
+     -> le film de 25 puis 55 minutes -> la salle. La plongée refait le chemin à l'envers. */
+  var PW = 600, PH = 860, MG = 70, LH = 19, FS = 15.5, GP = 60, GA = 200, NL = Math.floor((PH - 2 * MG) / LH);
+  var DUREES = [1.5, 3.75, 1.5, 3, 2, 2.5, 2.5, 4.25, .5, 2.5, 1];
+  // modules du 55 (architecture 25 / 55) : après quel acte ils s'insèrent
+  var MODULES = [[0, 'M1', 3], [0, 'M2', 5], [2, 'M3', 3], [4, 'M4', 3], [4, 'M9', 2], [5, 'M5', 3], [6, 'M6', 2], [7, 'M7', 3], [8, 'M8', 3]];
+  // la salle (esquisse) : six temps, et les modules ou actes qu'ils reprennent
+  var SALLE = [['L’orbite', 1.5, []], ['Phase 1', 4, ['M2']], ['Le sinkhole', 1, ['I']], ['La lumière', 3, ['M5']], ['60 Ma', 2, ['M9']], ['Korê', 2, ['M7', 'M8']]];
+  // les arches : ce qui se répond d'un acte à l'autre (indices d'acte) ; d = lecture proposée ; pend = ne se referme pas
+  var ARCHES = [
+    { nom: 'les quatre mots de Seed', a: [6, 7, 8, 9], mots: ['« Rob ! »', '« Seed »', '« Korê »', '« Je suis Seed »'], tenue: true },
+    { nom: 'les quatre Robs retrouvés', a: [1, 3, 5, 7] },
+    { nom: 'le XENOPOD : il tombe, il remonte', a: [1, 9], haut: 1.12 },
+    { nom: 'Elena : la photo, les visions', a: [1, 7], haut: .78 },
+    { nom: 'le caillou blanc', a: [5, 10], d: true },
+    { nom: '« the subject » devient Seed, puis I, puis we', a: [5, 7, 9], d: true },
+    { nom: 'le rapport de Rob1, du premier au mensonge', a: [1, 9], d: true, haut: 1.42 },
+    { nom: 'le phosphore : Rob2, Rob4, 49 %', a: [3, 7, 10], d: true },
+    { nom: 'CAIN', a: [10], pend: true }
+  ];
+  var HZ = { pret: false };
+
+  function typer(par) {
+    if (/^\(/.test(par)) return 'did';
+    if (/^«/.test(par)) return 'dia';
+    if (/^Carton/.test(par) || /^\d{4}( |$)/.test(par)) return 'car';
+    return 'act';
+  }
+  function mettreEnPage() {
+    var c = document.createElement('canvas').getContext('2d');
+    var pages = [], actes = [], page = null, x = 0;
+    function nouvellePage(ia) { page = { acte: ia, lignes: [], x: x }; pages.push(page); x += PW + GP; }
+    function ligne(txt, ind, typ, ia) {
+      if (page.lignes.length >= NL) nouvellePage(ia);
+      page.lignes.push({ t: txt, ind: ind, typ: typ, w: 0, i: page.lignes.length });
+      return page.lignes[page.lignes.length - 1];
+    }
+    SE.recit.forEach(function (a, ia) {
+      if (ia) x += GA - GP;
+      nouvellePage(ia);
+      var debut = pages.length - 1;
+      var titre = a.titre.toUpperCase();
+      c.font = '600 ' + FS + 'px Literata';
+      var l0 = ligne(titre, 0, 'tit', ia); l0.w = c.measureText(titre).width;
+      ligne('', 0, 'vide', ia);
+      a.pars.forEach(function (par) {
+        var typ = typer(par), ind = typ === 'dia' ? 110 : (typ === 'did' ? 60 : 0), larg = typ === 'dia' ? 300 : (typ === 'did' ? 400 : PW - 2 * MG);
+        c.font = (typ === 'did' || typ === 'car' ? 'italic ' : '') + FS + 'px Literata';
+        var mots = par.split(/\s+/), cur = '';
+        mots.forEach(function (m) {
+          var essai = cur ? cur + ' ' + m : m;
+          if (c.measureText(essai).width > larg && cur) { var l = ligne(cur, ind, typ, ia); l.w = c.measureText(cur).width; cur = m; } else cur = essai;
+        });
+        if (cur) { var l2 = ligne(cur, ind, typ, ia); l2.w = c.measureText(cur).width; }
+        if (page.lignes.length < NL) ligne('', 0, 'vide', ia);
+      });
+      actes.push({ titre: a.titre, nom: (a.titre.split(' : ')[1] || a.titre), p0: debut, p1: pages.length - 1 });
+    });
+    HZ.pages = pages; HZ.actes = actes; HZ.TWrow = x - GP;
+    // rangée : centre de chaque acte
+    actes.forEach(function (a) { a.cxRow = (pages[a.p0].x + pages[a.p1].x + PW) / 2; });
+  }
+  // la ligne qu'on tient : la première ligne qui contient le motif, dans l'acte donné
+  function trouver(ia, motif) {
+    var res = null;
+    HZ.pages.forEach(function (p, ip) { if (p.acte !== ia || res) return; p.lignes.forEach(function (l) { if (!res && l.t.indexOf(motif) >= 0) res = { ip: ip, il: l.i }; }); });
+    return res;
+  }
+  // la disposition en volumes : largeur = durée ; g (0 à 1) fait entrer les modules du 55
+  var TWV = 9000;
+  function volumes(g) {
+    var tot = 25 + 27 * g, k = TWV / tot, x = -TWV / 2, out = { actes: [], mods: [] };
+    for (var i = 0; i < 11; i++) {
+      out.actes.push({ x: x, w: DUREES[i] * k - 14 }); x += DUREES[i] * k;
+      MODULES.forEach(function (m) { if (m[0] === i) { var w = m[2] * k * g; out.mods.push({ nom: m[1], x: x, w: Math.max(0, w - 14), apres: i }); x += w; } });
+    }
+    return out;
+  }
+  // le rectangle d'une page : m = 0 en bande, m = 1 debout dans son volume
+  function rectPage(ip, m, vol) {
+    var p = HZ.pages[ip], a = HZ.actes[p.acte], n = a.p1 - a.p0 + 1, k = ip - a.p0;
+    var xr = p.x - HZ.TWrow / 2, v = vol.actes[p.acte];
+    var xv = v.x + v.w * k / n, wv = v.w / n;
+    return { x: lerp(xr, xv, m), y: 0, w: lerp(PW, wv, m), h: PH };
+  }
+
+  function preparer(id) {
+    var cv = $('#' + id + '-canvas'), r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
+    return { cv: cv, ctx: cv.getContext('2d'), W: r.width, H: r.height, dpr: dpr };
+  }
+  function couleurs() {
+    return { ink: css('--ink'), voile: css('--voile'), pale: css('--pale'), trait: css('--trait-vu'), fant: css('--fantome-scene'), or: css('--or'), amb: css('--amb'), releve: css('--releve'), line: css('--line') };
+  }
+  function construireHauteur() {
+    if (!SE.recit) return;
+    mettreEnPage();
+    HZ.tenueE = trouver(8, 'Korê. »');
+    HZ.tenueP = trouver(9, 'NON VIABLE');
+    HZ.ele = preparer('ele'); HZ.plo = preparer('plo'); HZ.c = couleurs(); HZ.pret = true;
+  }
+
+  // dessine une hauteur : cam {s, cx, cy}, m (morph), a (arches), g (modules), sl (salle), tenue {ip, il}
+  function dessinerHauteur(V, cam, m, a, g, sl, tenue, opts) {
+    var ctx = V.ctx, C = HZ.c, W = V.W, H = V.H, s = cam.s;
+    ctx.setTransform(V.dpr, 0, 0, V.dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    function X(x) { return (x - cam.cx) * s + W / 2; }
+    function Y(y) { return (y - cam.cy) * s + H / 2; }
+    var vol = volumes(g);
+    // 1. le titre de l'acte, immense, derrière, à une autre vitesse
+    var aT = clamp(Math.min((s - .05) / .1, (1.6 - s) / .9), 0, 1) * (1 - m * .85);
+    if (aT > 0.01) {
+      ctx.fillStyle = C.fant; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      var fs = clamp(PH * s * 1.15, 120, H * .62);
+      ctx.font = '300 ' + fs + 'px ' + '"Norelli", Literata, serif';
+      ctx.globalAlpha = aT;
+      HZ.actes.forEach(function (ac) {
+        var cx = lerp(ac.cxRow - HZ.TWrow / 2, vol.actes[HZ.actes.indexOf(ac)].x + vol.actes[HZ.actes.indexOf(ac)].w / 2, m);
+        var sx = (cx - cam.cx) * s * .62 + W / 2;
+        if (sx < -W || sx > 2 * W) return;
+        ctx.fillText(ac.nom.toUpperCase(), sx, Y(PH / 2) + (cam.cy - PH / 2) * s * .2);
+      });
+      ctx.globalAlpha = 1;
+    }
+    // 2. les pages : texte lisible, puis gris typographique, puis tranches des volumes
+    var txtA = clamp((s * LH - 11) / 3, 0, 1) * (m < .02 ? 1 : 0);
+    HZ.pages.forEach(function (p, ip) {
+      var r = rectPage(ip, m, vol), x0 = X(r.x), y0 = Y(r.y), w = r.w * s, h = r.h * s;
+      if (x0 > W || x0 + w < 0 || y0 > H || y0 + h < 0) return;
+      ctx.fillStyle = C.releve; ctx.globalAlpha = .9 * (1 - m * .6); ctx.fillRect(x0, y0, w, h); ctx.globalAlpha = 1;
+      var sx = w / PW, sy = h / PH, lh = LH * sy;
+      if (lh < 1.1) { ctx.fillStyle = C.trait; ctx.globalAlpha = .9; ctx.fillRect(x0 + MG * sx, y0 + MG * sy, (PW - 2 * MG) * sx, p.lignes.length * lh); ctx.globalAlpha = 1; }
+      else {
+        p.lignes.forEach(function (l) {
+          if (l.typ === 'vide') return;
+          var ly = y0 + (MG + l.i * LH) * sy, lx = x0 + (MG + l.ind) * sx;
+          if (ly > H || ly + lh < 0) return;
+          var tenu = tenue && tenue.ip === ip && tenue.il === l.i;
+          if (txtA < 1) {
+            ctx.fillStyle = tenu ? C.or : (l.typ === 'tit' ? C.voile : C.trait);
+            ctx.globalAlpha = tenu ? 1 - txtA : Math.pow(1 - txtA, 2);
+            ctx.fillRect(lx, ly + lh * .32, Math.max(1, l.w * sx), Math.max(1, lh * .42));
+          }
+          if (txtA > 0) {
+            ctx.globalAlpha = txtA;
+            ctx.fillStyle = tenu ? C.or : (l.typ === 'did' ? C.pale : (l.typ === 'tit' ? C.ink : C.voile));
+            ctx.font = (l.typ === 'tit' ? '600 ' : (l.typ === 'did' || l.typ === 'car' ? 'italic ' : '')) + (FS * sy) + 'px Literata';
+            ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+            ctx.fillText(l.t, lx, ly + lh * .1);
+          }
+          ctx.globalAlpha = 1;
+        });
+      }
+      if (tenue && tenue.ip === ip && lh < 1.1) { ctx.fillStyle = C.or; ctx.fillRect(x0, y0 + (MG + tenue.il * LH) * sy, Math.max(2, w), Math.max(2, lh * 2)); }
+    });
+    // 3. le rayon, les numéros d'acte, les durées
+    if (m > 0.02) {
+      ctx.globalAlpha = m; ctx.fillStyle = C.line; ctx.fillRect(X(-TWV / 2 - 200), Y(PH) + 1, (TWV + 400) * s, 1);
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+      vol.actes.forEach(function (v, i) {
+        ctx.fillStyle = (opts.focusActe === i) ? C.or : C.ink; ctx.font = '400 ' + clamp(150 * s, 11, 22) + 'px Literata';
+        ctx.fillText(NUM[i], X(v.x + v.w / 2), Y(PH) + 12);
+        ctx.fillStyle = C.pale; ctx.font = clamp(110 * s, 10, 14) + 'px "Chakra Petch", sans-serif';
+        if (v.w * s > 34) ctx.fillText(mmssZ(DUREES[i]), X(v.x + v.w / 2), Y(PH) + 12 + clamp(150 * s, 11, 22) + 6);
+      });
+      ctx.globalAlpha = 1;
+    }
+    // 4. les modules du 55 : des volumes creux qui s'insèrent sans rien remonter
+    if (g > 0.01) {
+      vol.mods.forEach(function (md) {
+        if (md.w < 1) return;
+        var x0 = X(md.x), w = md.w * s;
+        ctx.globalAlpha = g; ctx.strokeStyle = C.voile; ctx.lineWidth = 1; ctx.strokeRect(x0 + .5, Y(PH * .18) + .5, w, (PH * .82) * s);
+        ctx.fillStyle = C.releve; ctx.fillRect(x0 + .5, Y(PH * .18) + .5, w, (PH * .82) * s);
+        ctx.fillStyle = C.voile; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.font = clamp(120 * s, 10, 15) + 'px "Azeret Mono", monospace';
+        if (w > 18) ctx.fillText(md.nom, x0 + w / 2, Y(PH * .18) + 8);
+        ctx.globalAlpha = 1;
+      });
+    }
+    // 5. les arches
+    if (a > 0.01) {
+      var lab = [];
+      ARCHES.forEach(function (ar, k) {
+        var t = clamp(a * ARCHES.length * .5 - k * .35, 0, 1); if (t <= 0) return;
+        var col = ar.tenue ? C.or : (ar.d ? C.amb : C.voile);
+        ctx.strokeStyle = col; ctx.lineWidth = ar.tenue ? 1.8 : 1.1; ctx.setLineDash(ar.d ? [2, 4] : []);
+        ctx.globalAlpha = (opts.archesPales ? .35 : 1) * (1 - .55 * sl);
+        function cx(i) { var v = vol.actes[i]; return v.x + v.w / 2; }
+        if (ar.pend) {
+          // CAIN : l'arche monte de l'Acte X et s'arrête dans le vide
+          var x1 = cx(ar.a[0]), h0 = 1100, xe = x1 + 700 * t, ye = -h0 * .55;
+          ctx.beginPath(); ctx.moveTo(X(x1), Y(0));
+          ctx.bezierCurveTo(X(x1), Y(-h0), X(x1 + 700), Y(-h0), X(xe), Y(ye));
+          ctx.stroke();
+          ctx.setLineDash([]); ctx.fillStyle = col; ctx.beginPath(); ctx.arc(X(xe), Y(ye), 2.5, 0, 7); ctx.fill();
+          lab.push([X(xe) - 10, Y(ye) - 14, 'CAIN : l’arche ne se referme pas', col, 'right']);
+        } else {
+          for (var j = 0; j < ar.a.length - 1; j++) {
+            var xa = cx(ar.a[j]), xb = cx(ar.a[j + 1]), d = Math.abs(xb - xa), hh = Math.min(1900, 260 + d * .36) * (ar.haut || 1);
+            var u = clamp(t * (ar.a.length - 1) - j, 0, 1); if (u <= 0) continue;
+            ctx.beginPath(); ctx.moveTo(X(xa), Y(0));
+            // une arche en Bézier, tracée jusqu'à u
+            var p0 = [xa, 0], p1 = [xa, -hh], p2 = [xb, -hh], p3 = [xb, 0], N = 40;
+            for (var q = 1; q <= N * u; q++) {
+              var tt = q / N, mt = 1 - tt;
+              var bx = mt * mt * mt * p0[0] + 3 * mt * mt * tt * p1[0] + 3 * mt * tt * tt * p2[0] + tt * tt * tt * p3[0];
+              var by = mt * mt * mt * p0[1] + 3 * mt * mt * tt * p1[1] + 3 * mt * tt * tt * p2[1] + tt * tt * tt * p3[1];
+              ctx.lineTo(X(bx), Y(by));
+            }
+            ctx.stroke();
+            if (j === 0) lab.push([X((xa + xb) / 2), Y(-hh * .75) - 8, ar.nom, col, 'center']);
+          }
+          // les quatre mots, sous le rayon, en orange, à l'aplomb de leur acte
+          if (ar.mots) ar.mots.forEach(function (mt2, i) { ctx.globalAlpha = t * (1 - (opts.archesPales ? .6 : 0)); ctx.fillStyle = C.or; ctx.font = 'italic ' + clamp(140 * s, 12, 19) + 'px Literata'; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillText(mt2, X(cx(ar.a[i])), Y(PH) + 58 + (i % 2) * 22); });
+        }
+        ctx.setLineDash([]); ctx.globalAlpha = 1;
+      });
+      if (!opts.archesPales) lab.forEach(function (l) { ctx.globalAlpha = a; ctx.fillStyle = l[3]; ctx.font = '13px "Chakra Petch", sans-serif'; ctx.textAlign = l[4]; ctx.textBaseline = 'bottom'; ctx.fillText(l[2], l[0], l[1]); ctx.globalAlpha = 1; });
+    }
+    // 6. la salle : un troisième étage, six temps, reliés aux modules qu'ils reprennent
+    if (sl > 0.01) {
+      var tot = 13.5, ws = TWV * .62, xs = -ws / 2, ys = -3300;
+      ctx.globalAlpha = sl;
+      SALLE.forEach(function (tp) {
+        var w = tp[1] / tot * ws;
+        ctx.fillStyle = C.trait; ctx.fillRect(X(xs) + 1, Y(ys), w * s - 3, 120 * s);
+        ctx.fillStyle = C.ink; ctx.font = 'italic ' + clamp(120 * s, 11, 17) + 'px Literata'; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+        ctx.fillText(tp[0], X(xs + w / 2), Y(ys) - 8);
+        tp[2].forEach(function (cible) {
+          var tx = null;
+          vol.mods.forEach(function (md) { if (md.nom === cible) tx = md.x + md.w / 2; });
+          var ia = NUM.indexOf(cible); if (ia >= 0) tx = vol.actes[ia].x + vol.actes[ia].w / 2;
+          if (tx === null) return;
+          ctx.strokeStyle = C.amb; ctx.setLineDash([2, 4]); ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(X(xs + w / 2), Y(ys + 120)); ctx.bezierCurveTo(X(xs + w / 2), Y(ys + 900), X(tx), Y(-1200), X(tx), Y(PH * .18)); ctx.stroke(); ctx.setLineDash([]);
+        });
+        xs += w;
+      });
+      ctx.fillStyle = C.pale; ctx.font = '13px "Chakra Petch", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+      ctx.fillText('la salle immersive · 12 à 15 minutes · esquisse', X(0), Y(ys) - 40);
+      ctx.globalAlpha = 1;
+    }
+  }
+  function mmssZ(m) { var s = Math.round(m * 60); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+  // la position monde de la ligne tenue, pour la caméra
+  function posTenue(tenue, m, g) {
+    var r = rectPage(tenue.ip, m, volumes(g));
+    return { x: r.x + (MG + 120) * r.w / PW, y: r.y + (MG + tenue.il * LH) * r.h / PH };
+  }
+  // interpolation de caméra entre deux états (échelle géométrique)
+  function cameraEntre(A, B, u) {
+    u = ease(clamp(u, 0, 1));
+    return { s: Math.exp(lerp(Math.log(A.s), Math.log(B.s), u)), cx: lerp(A.cx, B.cx, u), cy: lerp(A.cy, B.cy, u) };
+  }
+  function chemin(K, t) {
+    for (var i = 1; i < K.length; i++) if (t <= K[i].t) return cameraEntre(K[i - 1], K[i], (t - K[i - 1].t) / (K[i].t - K[i - 1].t));
+    return K[K.length - 1];
+  }
+  function dire(id, sait, ouvert, ici) {
+    var b = $('#' + id + '-sait'), cle = sait + ouvert;
+    if (b._cle === cle) return; b._cle = cle;
+    $('.ke-petit', b).textContent = ici; $('.ke-dit', b).textContent = sait; $('.ouvert', b).textContent = ouvert ? 'ouvert : ' + ouvert : '';
+  }
+
+  SCENES.elevation = function (t) {
+    if (!HZ.pret) return;
+    var V = HZ.ele, W = V.W, H = V.H, te = HZ.tenueE;
+    var m = ease(seg(t, .4, .55)), a = seg(t, .57, .74), g = ease(seg(t, .76, .88)), sl = seg(t, .9, .98);
+    var pt0 = posTenue(te, 0, 0), pg = HZ.pages[te.ip], ac = HZ.actes[pg.acte];
+    var sRow = W * .9 / HZ.TWrow, sVol = W * .8 / TWV;
+    var K = [
+      { t: 0, s: 2.3, cx: pt0.x + 140, cy: pt0.y },
+      { t: .08, s: 2.3, cx: pt0.x + 140, cy: pt0.y },
+      { t: .2, s: H * .78 / PH, cx: pg.x - HZ.TWrow / 2 + PW / 2, cy: PH / 2 },
+      { t: .3, s: W * .8 / ((ac.p1 - ac.p0 + 1) * (PW + GP) + 1600), cx: ac.cxRow - HZ.TWrow / 2, cy: PH / 2 },
+      { t: .4, s: sRow, cx: 0, cy: PH / 2 },
+      { t: .55, s: sVol, cx: 0, cy: PH * .2 },
+      { t: .72, s: sVol * .92, cx: 0, cy: -520 },
+      { t: .88, s: sVol * .92, cx: 0, cy: -520 },
+      { t: 1, s: sVol * .76, cx: 0, cy: -1150 }
+    ];
+    var cam = chemin(K, t);
+    dessinerHauteur(V, cam, m, a, g, sl, te, { focusActe: 8 });
+    var niv = t < .14 ? 0 : t < .34 ? 1 : t < .56 ? 2 : t < .75 ? 3 : t < .9 ? 4 : 5;
+    var TXT = [
+      ['le texte', 'Une ligne : Seed dit « Korê », presque comme le cri de l’oiseau.', 'le Récit v2 attend la relecture de Cal'],
+      ['la page', 'Une page de l’Acte VIII, la partie la plus courte du film : trente secondes.', 'Acte VIII absent du docx, ajouté depuis la Bible'],
+      ['les actes', 'Onze parties, de 0:30 à 4:15 ; la durée fait la largeur, le texte fait la matière.', ''],
+      ['les arches', 'Ce qui se répond d’un acte à l’autre ; l’orange suit les quatre mots de Seed.', 'CAIN : l’arche ne se referme pas dans le 25'],
+      ['le film', '25 minutes, puis 52 : neuf modules s’insèrent, rien n’est remonté.', 'format de projection du 25 : dôme ou salle'],
+      ['la salle', 'La salle reprend les modules sans Seed, construits une fois dans Unreal.', 'les six temps de la salle sont une esquisse']
+    ][niv];
+    dire('ele', TXT[1], TXT[2], TXT[0]);
+  };
+
+  SCENES.plongee = function (t) {
+    if (!HZ.pret) return;
+    var V = HZ.plo, W = V.W, H = V.H, tp = HZ.tenueP;
+    // à l'envers : du film (volumes) vers la ligne
+    var m = 1 - ease(seg(t, .18, .36)), g = 0, a = 1 - seg(t, .02, .18);
+    var pg = HZ.pages[tp.ip], ac = HZ.actes[pg.acte], vol = volumes(0), v9 = vol.actes[9];
+    var sVol = W * .8 / TWV, sRow = W * .9 / HZ.TWrow, pt = posTenue(tp, 0, 0);
+    var K = [
+      { t: 0, s: sVol * .92, cx: 0, cy: -520 },
+      { t: .18, s: sVol, cx: 0, cy: PH * .3 },
+      { t: .36, s: sRow, cx: 0, cy: PH / 2 },
+      { t: .52, s: W * .8 / ((ac.p1 - ac.p0 + 1) * (PW + GP) + 1600), cx: ac.cxRow - HZ.TWrow / 2, cy: PH / 2 },
+      { t: .68, s: H * .78 / PH, cx: pg.x - HZ.TWrow / 2 + PW / 2, cy: PH / 2 },
+      { t: .86, s: 2.5, cx: pt.x + 150, cy: pt.y + 90 },
+      { t: 1, s: 2.5, cx: pt.x + 150, cy: pt.y + 90 }
+    ];
+    // pendant la descente, la caméra suit l'acte IX en volume, puis la page en bande
+    var cam = chemin(K, t);
+    dessinerHauteur(V, cam, m, a, g, 0, tp, { focusActe: 9, archesPales: true });
+    var niv = t < .25 ? 0 : t < .5 ? 1 : t < .75 ? 2 : 3;
+    var TXT = [
+      ['le film', 'Le film entier ; l’Acte IX, 2:30, porte le rapport de Rob1.', ''],
+      ['l’acte IX', 'Le signal : PERSEPHORA déclare Seed incomplète et fait de Rob1 le chef de mission.', ''],
+      ['la page', 'La page où Rob1 rédige son message, dans la langue des rapports.', ''],
+      ['la ligne', 'Mot pour mot : ÉVALUATION FINALE : NON VIABLE. Il protège un monde complet.', 'le Récit v2 attend la relecture de Cal']
+    ][niv];
+    dire('plo', TXT[1], TXT[2], TXT[0]);
   };
 
   /* ------------------------------------------------------------------ 12 journal */
@@ -831,7 +1249,7 @@
     construireVoyage(); construireChiffres(); chiCourant = -1; construireCiel(); construireMarees();
     construireTrajet(); traActe = null; construireFrise(); construireBiomes(); bioCourant = -1;
     construireEspeces(); construireTitans(); construireScience(); construireFilm();
-    construireScript(); construireJournal(); construireSalle(); construireCartels();
+    construireScript(); construireHauteur(); construireJournal(); construireSalle(); construireCartels();
   }
   // chaque scène se branche sur la piste du kit
   pistes.forEach(function (pi) {
@@ -841,7 +1259,10 @@
   var pret = false;
   function rejouer() { if (pret && window.KitEtude) KitEtude.rejouer(); ou(); }
   function demarrer() { construireTout(); pret = true; rejouer(); }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(demarrer); else addEventListener('load', demarrer);
+  if (document.fonts && document.fonts.load) {
+    Promise.all(['15px Literata', 'italic 15px Literata', '600 15px Literata', '13px "Chakra Petch"', '12px "Azeret Mono"', '40px Norelli'].map(function (f) { return document.fonts.load(f).catch(function () {}); }))
+      .then(function () { return document.fonts.ready; }).then(demarrer);
+  } else addEventListener('load', demarrer);
   var minuterie = 0;
   addEventListener('resize', function () { clearTimeout(minuterie); minuterie = setTimeout(function () { if (pret) { construireTout(); rejouer(); } }, 150); });
   document.addEventListener('ke:theme', function () { if (pret) { construireTout(); rejouer(); } });

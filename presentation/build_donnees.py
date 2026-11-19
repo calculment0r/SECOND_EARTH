@@ -38,6 +38,18 @@ def trail():
 UNIT = {'mm': 0.001, 'cm': 0.01, 'm': 1.0}
 
 
+def bornes(taille):
+    """(plus petite, plus grande) dimension écrite en tête de la taille, en mètres (« 1,5–3 m » -> 1,5 et 3)."""
+    m = re.search(r'(\d+(?:,\d+)?)(?:\s*(mm|cm|m)?\s*(?:[–-]|à)\s*(\d+(?:,\d+)?))?\s*(mm|cm|m)\b', taille)
+    if not m:
+        return None, None
+    u2 = UNIT[m.group(4)]
+    u1 = UNIT[m.group(2)] if m.group(2) else u2
+    a = float(m.group(1).replace(',', '.')) * u1
+    b = float(m.group(3).replace(',', '.')) * u2 if m.group(3) else a
+    return a, b
+
+
 def metres(taille):
     """Plus grande dimension écrite en tête de la taille (« 1,5–3 m » -> 3)."""
     m = re.search(r'(\d+(?:,\d+)?)(?:\s*[–-]\s*(\d+(?:,\d+)?))?\s*(mm|cm|m)\b', taille)
@@ -64,10 +76,40 @@ def acte_ix():
     return [p.strip() for p in txt[debut:fin].split('\n\n') if p.strip()]
 
 
+def recit():
+    """Le Récit v2, partie par partie, en paragraphes (les marques [E…] du 55 et l'avant-propos retirés)."""
+    txt = (ROOT / 'docs/film/00-recit-v2.md').read_text(encoding='utf-8')
+    parts = re.split(r'^## ', txt, flags=re.M)[1:]
+    actes = []
+    for p in parts:
+        titre, _, corps = p.partition('\n')
+        if titre.startswith('Ce qui change'):
+            continue
+        pars = []
+        for q in corps.split('\n\n'):
+            q = q.strip()
+            if not q or q.startswith('**[E') or q.startswith('<!--'):
+                continue
+            q = re.sub(r'\*\*|\*', '', q)
+            pars.append(q)
+        actes.append({'titre': titre.strip(), 'pars': pars})
+    return actes
+
+
+def decoupage():
+    """Les 150 plans du découpage 25 min : numéro, durée en secondes, cadre, action, fabrication, note."""
+    plans = []
+    for line in (ROOT / 'docs/film/20-decoupage-25-min.md').read_text(encoding='utf-8').splitlines():
+        c = [x.strip() for x in line.split('|')]
+        if len(c) > 9 and re.match(r'^[P0-9]+-\d+$', c[1]) and c[2].isdigit():
+            plans.append({'n': c[1], 's': int(c[2]), 'cadre': c[3], 'action': c[4], 'son': c[5], 'fab': c[6], 'tags': c[7], 'note': c[8]})
+    return plans
+
+
 def main():
     meta = load('carte/map_meta.json')
     best = load('data/bestiaire.json')
-    especes = [{'code': b['code'], 'nom': b['nom'], 'taille': b['taille'], 'm': metres(b['taille']),
+    especes = [{'code': b['code'], 'nom': b['nom'], 'taille': b['taille'], 'm': metres(b['taille']), 'b': bornes(b['taille']),
                 'biome': b['biome_id'], 'statut': b['statut']} for b in best]
     titans = [{'code': t['code'], 'nom': t['nom'], 'taille': t['taille'], 'm': metres(t['taille']),
                'descendant': t['descendant'], 'vestiges': t['vestiges'], 'statut': t['statut']} for t in load('data/titans.json')]
@@ -82,6 +124,8 @@ def main():
         'flore': flore,
         'journal': journal(),
         'acte_ix': acte_ix(),
+        'recit': recit(),
+        'plans': decoupage(),
     }
     OUT.write_text('// Produit par presentation/build_donnees.py, ne pas modifier à la main.\nwindow.SE = '
                    + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8')

@@ -150,6 +150,7 @@
 </section>
 <div class="ke-piste" id="bio" data-scene="biomes" data-pas="11" data-course="40" data-chapitre="biomes">
   <figure class="ke-scene">
+    <div class="se-ciel" id="bio-ciel"></div>
     <div class="se-bandes" id="bio-bandes"></div>
     <div class="se-bio-texte" id="bio-texte"></div>
   </figure>
@@ -160,14 +161,14 @@
   <div class="ke-col">
     <p class="ke-sur"><b>07</b> Les espèces</p>
     <h2>Soixante-six lignes de <em>bestiaire</em></h2>
-    <p class="ke-chapo">Les espèces du trajet, rangées par biome et par taille : plus le nom est grand, plus l'animal l'est. Du plancton lumineux de la mer d'arsenic aux oiseaux-prédateurs de huit à dix mètres d'envergure.</p>
-    <p class="ke-petit" style="margin-top:28px">Règles, noms, recalages et Titans validés au round 8. Taille du nom : la plus grande dimension écrite dans la fiche, en échelle logarithmique.</p>
+    <p class="ke-chapo">Chaque espèce du Bestiaire est une marque posée à sa taille, sur une échelle qui va du dixième de millimètre à vingt mètres, à la couleur de son biome. Le défilement la parcourt, du plancton lumineux aux oiseaux-prédateurs.</p>
+    <p class="ke-petit" style="margin-top:28px">Règles, noms, recalages et Titans validés au round 8. Chaque trait va de la plus petite à la plus grande dimension écrite dans la fiche ; l'échelle est logarithmique : chaque graduation multiplie par dix.</p>
   </div>
 </section>
-<div class="ke-piste" id="esp" data-scene="especes" data-pas="10" data-course="40" data-chapitre="especes">
+<div class="ke-piste" id="esp" data-scene="especes" data-pas="5" data-course="80" data-niveaux="le millimètre|le centimètre|la main|le corps|l’envergure" data-chapitre="especes">
   <figure class="ke-scene">
-    <div class="se-planche" id="esp-planche"></div>
-    <p class="se-ailleurs ke-petit" id="esp-ailleurs"></p>
+    <svg class="se-plein" id="esp-svg"></svg>
+    <div class="se-esp-lu" id="esp-lu"><p class="ke-sur"></p><div class="n"></div><p class="ke-dit"></p></div>
   </figure>
 </div>
 
@@ -181,8 +182,8 @@
 </section>
 <div class="ke-piste" id="tit" data-scene="titans" data-pas="11" data-course="36" data-chapitre="titans">
   <figure class="ke-scene" data-titre="60 Ma">
-    <div class="se-echelle" id="tit-echelle"></div>
-    <div class="se-regle" id="tit-regle"></div>
+    <svg class="se-plein" id="tit-svg"></svg>
+    <div class="se-esp-lu" id="tit-lu"><p class="ke-sur"></p><div class="n"></div><p class="ke-dit"></p></div>
   </figure>
 </div>
 
@@ -220,19 +221,37 @@
 <div class="ke-piste" id="fil" data-scene="film" data-pas="2" data-course="260" data-niveaux="le 25|le 55" data-chapitre="film">
   <figure class="ke-scene">
     <div class="se-duree"><div class="n" id="fil-n">0:00</div><div class="t ke-petit" id="fil-t">le film de 25 minutes</div></div>
-    <div class="se-ruban" id="fil-ruban"><div class="mots" id="fil-mots"></div><div class="tete" id="fil-tete"></div></div>
+    <svg class="se-plein" id="fil-svg"></svg>
     <div class="se-lecture" id="fil-lecture"></div>
   </figure>
 </div>
 
 <!-- ═══ 11 · LE SCRIPT ═══ -->
-<section class="ke-chapitre" id="script" data-chapitre="script" data-nom="Le script" data-mot="Signal">
+<section class="ke-chapitre" id="script" data-chapitre="script" data-nom="Le script" data-mot="Script">
   <div class="ke-col">
     <p class="ke-sur"><b>11</b> Le script</p>
-    <h2>Acte IX, le <em>signal</em></h2>
-    <p class="ke-chapo">Le moment où tout bascule : PERSEPHORA déclare Seed incomplète et fait de Rob1 le chef de mission. Il a vu ce qu'elle est. Il écrit l'inverse de ce qu'il sait.</p>
-    <p class="ke-petit" style="margin-top:28px">Texte du <span class="ke-deduit">Récit v2</span> (27/09), tel quel. Il devient la référence après la relecture de Cal ; jusque-là le docx fait foi, avec les mêmes scènes.</p>
+    <h2>De la ligne au film, et <em>retour</em></h2>
+    <p class="ke-chapo">Une seule matière, le texte du récit, qui change de hauteur. Tout en bas, une ligne qu'on lit ; on s'élève : la page, les pages en bande, les onze parties debout à la largeur de leur durée, les fils qui relient ce qui se répond, le film de 25 puis de 55 minutes, la salle.</p>
+    <p class="ke-petit" style="margin-top:28px">Texte du <span class="ke-deduit">Récit v2</span> (27/09), mis en page ligne à ligne ; il devient la référence après la relecture de Cal. Durées : séquencier et architecture 25 / 55 (validée, A01). Les arches en pointillé ambre sont des lectures, <span class="ke-deduit">proposées</span>.</p>
   </div>
+</section>
+<div class="ke-piste" id="ele" data-scene="elevation" data-pas="6" data-course="110" data-niveaux="le texte|la page|les actes|les arches|le film|la salle" data-chapitre="script">
+  <figure class="ke-scene">
+    <canvas class="se-zoom" id="ele-canvas"></canvas><div class="se-voile b"></div>
+    <div class="se-sait" id="ele-sait"><p class="ke-petit"></p><p class="ke-dit"></p><p class="ouvert"></p></div>
+  </figure>
+</div>
+<section class="ke-col se-suite" data-chapitre="script">
+  <p class="ke-texte">Puis la plongée inverse : on part du film entier et on descend sur un seul moment, le rapport de Rob1, jusqu'à la ligne du script, mot pour mot.</p>
+</section>
+<div class="ke-piste" id="plo" data-scene="plongee" data-pas="4" data-course="110" data-niveaux="le film|l'acte IX|la page|la ligne" data-chapitre="script">
+  <figure class="ke-scene">
+    <canvas class="se-zoom" id="plo-canvas"></canvas><div class="se-voile b"></div>
+    <div class="se-sait" id="plo-sait"><p class="ke-petit"></p><p class="ke-dit"></p><p class="ouvert"></p></div>
+  </figure>
+</div>
+<section class="ke-col se-suite" data-chapitre="script">
+  <p class="ke-texte">Et le passage entier, qui monte devant le mot qu'il écrit.</p>
 </section>
 <div class="ke-piste" id="scr" data-scene="script" data-pas="4" data-course="200" data-chapitre="script">
   <figure class="ke-scene">
