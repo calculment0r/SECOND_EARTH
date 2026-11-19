@@ -183,6 +183,7 @@ tools/
   build_site.py            construit tout le site dans _site/ (section 10)
   build_prompts.py         construit l'outil de prompts (appelé par build_site.py)
   site/prompts.html        gabarit de l'outil de prompts
+site-projet/               le site du projet par catégories, éditable en ligne (section 12 ; lire site-projet/LIRE.md)
 site/assets/               thème Verdant du site : site.css, site.js, icon.svg, fonts/venus-rising.otf
 theme/showrunner-ui-kit/   le kit d'interface fourni par Cal (référence visuelle du thème)
 video/seedance/            séquences vidéo Seedance 2.5 : prompts/ (10 séquences de 30 s, 4 plans de 15 s), references.json
@@ -297,3 +298,17 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 - Option brouillon 480p (`--draft true`), finalisable sept jours : à proposer pour tester un découpage.
 
 **Ouvert** : relancer les séquences avec la planche d'échelle (une seule d'abord, avec l'accord de Cal et le coût annoncé) ; placer les 27 animaux de ses images en rencontres ; S09 : ses lacs (image 38) sont vert acide, la Bible les dit rose et pourpre (signalé, non tranché).
+
+---
+
+## 12. Le site du projet, éditable en ligne (19/11/2026)
+
+**Demande de Cal (19/11/2026)** : pouvoir éditer le script et avoir les commentaires ; une présentation par catégories « comme pour faire le site de Second Earth » (logline, synopsis…), très visuelle (vidéos, grandes images horizontales, carrousels), sur le principe de son site NirvaLabWeb où il édite en ligne ; hébergée dans ce dépôt pour l'instant ; les vidéos sur Cloudflare.
+
+- Dossier `site-projet/`, publié sous `/projet/` par `tools/build_site.py`. Lire `site-projet/LIRE.md` avant d'y toucher.
+- Trois pages : `index.html` (dix-sept sections : accueil, logline, pitch, synopsis, note d'intention, univers, personnages, voyage, bestiaire et flore, science, film, script, salle immersive, exposition, équipe, calendrier et financement, contact), `script.html` (le récit de référence, à corriger et à commenter), `admin.html` (tableau de bord).
+- Le contenu de départ a été préparé par `tools/prepa_site_projet.py` à partir du dépôt. La logline, le pitch, les synopsis et la note d'intention sont **proposés** (rien de tel n'était écrit) ; le contact est vide. Dès que Cal publie, `site-projet/content/site-content.json` est sa version : ne pas relancer le script de préparation.
+- Aucune image de Cal n'est dans le dépôt : les emplacements disent ce qui doit venir et à quel format. Seules la carte et le corridor (déjà publiés) sont affichés.
+- Cal choisit lui-même son code admin à la première ouverture du tableau de bord et y colle son jeton GitHub. Ne jamais écrire de code ni de jeton dans le dépôt ou dans un message. Le site est public : les codes sont un voile, le jeton est la seule protection de la publication.
+- Jamais publié pour de vrai au 19/11/2026 : seulement testé à blanc.
+

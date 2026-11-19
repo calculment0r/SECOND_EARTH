@@ -1,0 +1,1524 @@
+{
+ "version": 1,
+ "prepare_le": "19/11/2026",
+ "sections": [
+  {
+   "id": "accueil",
+   "nom": "Second Earth",
+   "blocs": [
+    {
+     "id": "ouv-001",
+     "type": "ouverture",
+     "sur": "Un film, une salle immersive, une exposition · Science Centre Singapore",
+     "titre": "Second Earth",
+     "chapo": "Un film de 25 minutes, puis de 55. Une planète inventée, Korê, construite comme un système physique avant d'être un décor.",
+     "media": {
+      "src": "",
+      "genre": "video",
+      "attendu": "ici : l'image du film. Seed et Rob1 devant un paysage de Korê, vue large, 21:9 (ou la vidéo d'ouverture, muette, en boucle)",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "statut": ""
+    }
+   ]
+  },
+  {
+   "id": "logline",
+   "nom": "Logline",
+   "blocs": [
+    {
+     "id": "txt-002",
+     "type": "texte",
+     "sur": "Logline",
+     "titre": "",
+     "corps": "Sur une planète inconnue, à 11,4 années-lumière de la Terre, une adolescente née d'une machine et un petit robot traversent un monde entier pour retrouver trois robots perdus. Au bout du voyage, le robot ment à la Terre pour protéger ce qu'ils ont trouvé.",
+     "statut": "proposé",
+     "source": "Rédigée à partir du résumé du brief (CLAUDE.md, section 2). Aucune logline n'est écrite dans les documents du projet."
+    }
+   ]
+  },
+  {
+   "id": "pitch",
+   "nom": "Pitch",
+   "blocs": [
+    {
+     "id": "txt-003",
+     "type": "texte",
+     "sur": "",
+     "titre": "Le pitch",
+     "corps": "2045 : le vaisseau-semeur PERSEPHORA quitte le système solaire. Il ne prend rien à la Terre : il porte des embryons et des machines. 2098 : il arrive à 61 Cygni A.\n\nQuatre robots, les Robs, vérifient que la planète possède toutes les briques de la vie. Seed naît : quinze ans apparents, cheveux blancs, presque muette. Sa capsule tombe dans un gouffre. Avec Rob1, elle part chercher les trois autres robots à travers le continent.\n\nIls donnent un nom à la planète : Korê, le cri d'un oiseau des salins. La mission réussit : Korê a tout. Rob1 envoie pourtant « NON VIABLE » vers la Terre.",
+     "statut": "proposé",
+     "source": "Rédigé à partir du résumé du brief (CLAUDE.md, section 2) et du récit de référence. Aucun pitch n'est écrit dans les documents du projet."
+    },
+    {
+     "id": "med-004",
+     "type": "media",
+     "media": {
+      "src": "",
+      "genre": "image",
+      "attendu": "ici : PERSEPHORA en approche de 61 Cygni A, l'étoile orange, vue large, 21:9",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "legende": "PERSEPHORA, la semeuse"
+    }
+   ]
+  },
+  {
+   "id": "synopsis",
+   "nom": "Synopsis",
+   "blocs": [
+    {
+     "id": "txt-016",
+     "type": "texte",
+     "sur": "",
+     "titre": "Synopsis court",
+     "corps": "2045 : le vaisseau-semeur PERSEPHORA quitte le système solaire. Il ne prend rien à la Terre : il porte des embryons et des machines. 2098 : il arrive à 61 Cygni A, à 11,4 années-lumière. Il largue le XENOPOD-01, la capsule qui porte l'embryon, et des collecteurs. Quatre robots, les Robs, vérifient en une seule sortie que la planète possède toutes les briques de la vie : carbone, eau, azote, phosphore, soufre, métaux.\n\nSeed naît : quinze ans apparents, cheveux blancs, presque muette. Quatre mots dans tout le film : « Rob ! », « Seed », « Korê », « Je suis Seed ». Le XENOPOD tombe dans un sinkhole. Seed et Rob1 partent chercher Rob2, Rob3 et Rob4, rebaptisent la planète Korê d'après le cri d'un oiseau des salins, puis reviennent.\n\nLa Phase 1 réussit : Korê a tout. Rob1 envoie pourtant « NON VIABLE » vers la Terre : « Terre : réception dans 11,4 ans ». Son mensonge protège un monde complet. Puis il modifie le protocole du second embryon, CAIN, ingénieur de terraformation de 35 ans, ramené à 14 ans et à 21 % de mémoire transférée.",
+     "statut": "proposé",
+     "source": "Le résumé du brief (CLAUDE.md, section 2), découpé en trois paragraphes. Le récit de référence (docx) fait foi."
+    },
+    {
+     "id": "car-017",
+     "type": "carrousel",
+     "titre": "Synopsis long, acte par acte",
+     "format": "21:9",
+     "statut": "proposé",
+     "source": "Les séquences-cœur du Séquencier 25 min (docs/film/11), reprises telles quelles, avec leur durée.",
+     "items": [
+      {
+       "id": "tu-005",
+       "sur": "1:30",
+       "titre": "Prologue",
+       "texte": "Voix d'Elena sur la Terre qui lutte (une phrase) ; le départ de PERSEPHORA ; 2098 : le XENOPOD-01 lâché sur le corridor d'entrée, les trois collecteurs (XENOPOD-02, -03, -04, les robopods) qui s'en détachent (deux vers l'horizon, un vers la jungle)",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image du prologue, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-006",
+       "sur": "3:45",
+       "titre": "Acte I",
+       "texte": "Les trois voyants verts ; l'incubateur ; la nuit du séisme et des geysers lumineux ; l'incubation qui s'arrête à 15 ans ; Seed devant la photo d'Elena (CLONE PARTIEL, 23 %) ; la larme ; le pied du XENOPOD qui s'enfonce ; les fleurs-papillons qui s'envolent ; le sinkhole ; le flare qui tombe sans fin ; la carte des trois Robs",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte I, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-007",
+       "sur": "1:30",
+       "titre": "Acte II",
+       "texte": "Seed porte Rob1 ; le fleuve entre les tours ; l'arrivée à la position de Rob2, vide ; la crevasse",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte II, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-008",
+       "sur": "3:00",
+       "titre": "Acte III",
+       "texte": "La caverne et les plantes-chant ; Rob1 grimpe sur Rob2, la fusion ; l'échantillon prélevé ; le silence ; la Créature et sa pulpe lumineuse ; « Grimpe ! » ; la paroi en vue subjective (vert, vert, rouge) ; la racine que Seed attrape ; la Créature qui ne grimpe pas",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte III, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-009",
+       "sur": "2:00",
+       "titre": "Acte IV",
+       "texte": "La carte avec le cercle d'autonomie ; la décision d'aller vers Rob3 ; « bientôt plus d'énergie » ; l'analyse de l'organisme-batterie (3,7 V) ; +5 % ; le Rob fusionné qui court ; l'organisme qui s'éteint ; le rituel du totem ; la lueur sous la terre",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte IV, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-010",
+       "sur": "2:30",
+       "titre": "Acte V",
+       "texte": "Rob3 éteint, la mousse ; les rongeurs ; la recharge ; le feu ; le petit à l'oreille abîmée ; le caillou blanc ; OBSERVATION COMPORTEMENTALE, étiquette IMPORTANT ; RESSOURCES : CRITIQUE ; Rob1 referme le sac",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte V, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-011",
+       "sur": "2:30",
+       "titre": "Acte VI",
+       "texte": "Le réveil par les rongeurs ; le nuage de poussière ; la horde ; les trois équipes vues de dessus à 120° ; Seed qui fait demi-tour pour le petit ; le robopod qui vole au-dessus d'elle ; « RooOOOB ! » ; tout le monde emporté ; noir",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte VI, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-012",
+       "sur": "4:15",
+       "titre": "Acte VII",
+       "texte": "Le réveil dans la rivière rouge ; le sifflement réussi ; l'oiseau-prédateur qui plonge à la confluence ; le fruit ; la fièvre et les veinules noires ; les visions d'Elena et le glitch Elena/Seed ; « Seed » ; le tank qui surgit ; JK-47B, 73 % ; la course ; ROB4 > 87 km ; la plage noire ; Rob4 hybride, le langage de lumière ; l'immersion ; le liquide qui respire pour elle ; les cicatrices lumineuses",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte VII, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-013",
+       "sur": "0:30",
+       "titre": "Acte VIII",
+       "texte": "Nouveau, absent du docx : carton « Jour 37 · 4 800 km » ; les lacs pourpres ; la colonie d'oiseaux des salins qui crie « Ko-rê » ; Rob1 affiche le mot ; Seed le répète",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte VIII, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-014",
+       "sur": "2:30",
+       "titre": "Acte IX",
+       "texte": "Les câbles ; TROUVÉ ; le XENOPOD qui remonte ; la recharge ; le message de PERSEPHORA (INCOMPLET, NON QUALIFIÉ ; NEW MISSION LEADER : ROB-1) ; PROCESSING et les souvenirs en vue subjective de Rob1 ; NON VIABLE ; l'antenne sectionnée ; « Communicateur défectueux » ; IM/POSSIBLE ; « Je suis Seed »",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte IX, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-015",
+       "sur": "1:00",
+       "titre": "Acte X",
+       "texte": "Nuit ; RESSOURCES 53 / 51 / 49 / 58 % ; le compartiment cryogénique ; H-01 SEED, H-02 CAIN ; 35 ans → 14 ans, 100 % → 21 % ; le carton en trois lignes",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : une image de l'acte X, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "intention",
+   "nom": "Note d'intention",
+   "blocs": [
+    {
+     "id": "txt-018",
+     "type": "texte",
+     "sur": "",
+     "titre": "Note d'intention",
+     "corps": "Second Earth est une fiction, et le film le dit dans son dernier carton. Mais chaque élément du monde tient sur un fait, une extrapolation déclarée ou un choix de fiction assumé.\n\nCe que le film ne prétend pas : que 61 Cygni ait une planète, qu'un warp existe, qu'un clone puisse recevoir une mémoire. Ce que le film affirme : que les éléments de la vie sont les mêmes partout, que le phosphore est rare et fini, et que la Terre est le seul monde que nous connaissons.\n\nLa charte de PERSEPHORA : ne rien prendre à la Terre. Tout ce qui fera un corps humain, puis une colonie, doit venir de la planète.\n\nQuatre mots parlés, pas un de plus : Rob, Seed, Korê, Je suis Seed. L'autre, soi, le monde, soi dans le monde. Pas de doublage, pas de synchro labiale : un film qui voyage tel quel.",
+     "statut": "proposé",
+     "source": "Assemblée à partir des Notes pour Nina (note science), du Registre (la charte) et de l'Architecture 25 / 55 (règle 3). Cal n'a pas écrit de note d'intention dans le dépôt : celle-ci tient la place."
+    },
+    {
+     "id": "cit-019",
+     "type": "citation",
+     "texte": "This is a fictional planet. Earth is the only world we know. Take care of it.",
+     "source": "Carton final du film"
+    }
+   ]
+  },
+  {
+   "id": "univers",
+   "nom": "L'univers",
+   "blocs": [
+    {
+     "id": "ouv-020",
+     "type": "ouverture",
+     "sur": "L'univers",
+     "titre": "Korê",
+     "chapo": "61 Cygni Ab, à 11,4 années-lumière. Une naine orange, deux lunes, un air de Carbonifère, deux lignées végétales : pourpre en haut, vert dessous.",
+     "media": {
+      "src": "",
+      "genre": "image",
+      "attendu": "ici : Korê vue de l'orbite, la grande lune et l'étoile orange, 21:9",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "statut": ""
+    },
+    {
+     "id": "chi-021",
+     "type": "chiffres",
+     "source": "Chiffres validés (Registre des décisions), sauf la lumière, proposée.",
+     "items": [
+      {
+       "id": "c-022",
+       "v": "11,4",
+       "u": "années-lumière",
+       "t": "61 Cygni A, naine orange K5V, 4 400 K, 15 % de la luminosité du Soleil"
+      },
+      {
+       "id": "c-023",
+       "v": "1,13",
+       "u": "g",
+       "t": "~1,5 masse terrestre ; sauts ~12 % moins hauts, chutes ~6 % plus rapides"
+      },
+      {
+       "id": "c-024",
+       "v": "30",
+       "u": "% O₂",
+       "t": "Air de type Carbonifère : 30 % O₂, 2 % CO₂, 1,3 bar"
+      },
+      {
+       "id": "c-025",
+       "v": "~40",
+       "u": "heures",
+       "t": "Le jour de Korê ; Seed dort deux fois par jour"
+      },
+      {
+       "id": "c-026",
+       "v": "~116",
+       "u": "jours",
+       "t": "L'année : orbite ~0,41 UA, 69,6 jours de Korê"
+      },
+      {
+       "id": "c-027",
+       "v": "~40",
+       "u": "% d'eau",
+       "t": "Déserts ~30 % des terres, jungles ~4 à 5 %"
+      },
+      {
+       "id": "c-028",
+       "v": "2",
+       "u": "lunes",
+       "t": "La grande : même diamètre apparent que l'étoile ; la petite : une seconde marée"
+      },
+      {
+       "id": "c-029",
+       "v": "~60",
+       "u": "millions d'années",
+       "t": "Les Titans éteints par une pluie de comètes"
+      }
+     ]
+    },
+    {
+     "id": "med-030",
+     "type": "media",
+     "media": {
+      "src": "../carte/world.png",
+      "genre": "image",
+      "attendu": "",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "legende": "La planète entière : continents A à D, océans 1 à 3. Carte du projet."
+    },
+    {
+     "id": "lie-031",
+     "type": "liens",
+     "items": [
+      {
+       "id": "l-032",
+       "nom": "La carte interactive",
+       "href": "../carte/index.html",
+       "texte": "La planète et le corridor de Seed, les plaques, les biomes"
+      },
+      {
+       "id": "l-033",
+       "nom": "La Bible",
+       "href": "../bible/index.html",
+       "texte": "Le registre des décisions, la planète, les Titans, le glossaire"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "personnages",
+   "nom": "Les personnages",
+   "blocs": [
+    {
+     "id": "txt-041",
+     "type": "texte",
+     "sur": "",
+     "titre": "Les personnages",
+     "corps": "Seed, quatre robots, un embryon qui attend, et le vaisseau qui les a semés. La relation de Seed et de Rob1 tient le film.",
+     "statut": "",
+     "source": "Silhouettes : Planches de dessin (document au statut proposé) ; CAIN : Glossaire, validé (docx)."
+    },
+    {
+     "id": "car-042",
+     "type": "carrousel",
+     "titre": "",
+     "format": "4:5",
+     "statut": "proposé",
+     "source": "",
+     "items": [
+      {
+       "id": "tu-034",
+       "sur": "personnage",
+       "titre": "Seed",
+       "texte": "1,60 m, quinze ans apparents, fine sans être frêle ; cheveux blancs mi-longs, souvent en désordre, qui font la silhouette à eux seuls. Debout, légèrement penchée en avant, comme quelqu'un qui écoute. Elle porte Rob1 sur le dos à l'Acte II : la silhouette double (une tête, deux sacs) est à tenir.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la planche de Seed, portrait en pied, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-035",
+       "sur": "personnage",
+       "titre": "Rob1",
+       "texte": "1 m, un petit enfant de métal : tête-écran large, torse compact, gros sac à dos cylindrique intégré (l'unité de calcul), bras longs et précis, petites jambes courtes. En ombre chinoise : une tête rectangulaire arrondie sur un corps en poire, un cylindre dans le dos.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la planche de Rob1, portrait en pied, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-036",
+       "sur": "personnage",
+       "titre": "Rob2",
+       "texte": "~2,2 m, un robot de terrain : jambes puissantes à genoux inversés, châssis large et bas, petits bras atrophiés terminés par des outils de forage et de minage, une plateforme plate sur le dos (là où Rob1 s'assemble). Pas de tête : un bloc capteurs à l'avant.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la planche de Rob2, portrait en pied, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-037",
+       "sur": "personnage",
+       "titre": "Rob3",
+       "texte": "~2 m, un gros bloc-ventre suspendu entre deux grands bras qui descendent jusqu'au sol, chacun terminé par une grosse roue molle. En mouvement, une bascule.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la planche de Rob3, portrait en pied, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-038",
+       "sur": "personnage",
+       "titre": "Rob4",
+       "texte": "(avant) ~3 m, hydrodynamique, un fuseau à coque transparente sur ossature rigide, nageoires-stabilisateurs, pas de membres. / (après, hybride) La même ossature, mais la coque est devenue une membrane souple et transparente, gonflée d'un liquide lumineux bleu-violet-rose, où flottent des milliers de filaments qui pulsent vert-orange-rouge et s'entrelacent dans la structure comme des racines. Une section de la membrane s'ouvre comme une lèvre.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la planche de Rob4, portrait en pied, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-040",
+       "sur": "embryon, alvéole H-02",
+       "titre": "CAIN",
+       "texte": "Ingénieur de terraformation, 35 ans, mémoire transférée à 100 % ; Rob1 le ramène à 14 ans et à 21 % à la fin.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : le compartiment cryogénique, les alvéoles H-01 et H-02, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-039",
+       "sur": "machine",
+       "titre": "PERSEPHORA",
+       "texte": "~200 m, une semeuse : architecture modulaire en épi, baies ventrales où sont sanglés les XENOPOD (deux vides, un plein), antennes longue base, et à l'arrière l'anneau du moteur à fusion, entouré de la structure du warp.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la planche de PERSEPHORA, portrait en pied, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "voyage",
+   "nom": "Le voyage",
+   "blocs": [
+    {
+     "id": "ouv-053",
+     "type": "ouverture",
+     "sur": "Le voyage",
+     "titre": "Dix biomes",
+     "chapo": "Environ 5 500 km à travers le continent A, de la jungle de la naissance aux lacs salés où la planète reçoit son nom.",
+     "media": {
+      "src": "",
+      "genre": "image",
+      "attendu": "ici : Seed qui porte Rob1 sur le dos, le fleuve entre les pitons au crépuscule, 21:9",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "statut": ""
+    },
+    {
+     "id": "car-054",
+     "type": "carrousel",
+     "titre": "Dans l'ordre du trajet",
+     "format": "21:9",
+     "statut": "",
+     "source": "Fiches de biome de la Bible (première phrase de chaque fiche) et palette de la Flore (couleur dominante).",
+     "items": [
+      {
+       "id": "tu-043",
+       "sur": "01 · Pourpre sombre de la canopée, magenta du sous-bois",
+       "titre": "Jungle primordiale",
+       "texte": "La jungle pousse sur une plaine calcaire traversée par un grand fleuve . Sur une planète à 40 % d'eau, c'est le fleuve et ses crues qui apportent l'humidité : sans lui, la plaine serait sèche.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : jungle primordiale, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-044",
+       "sur": "02 · Blanc-gris des tours, pourpre délavé des sommets",
+       "titre": "Pitons karstiques",
+       "texte": "En amont de la jungle, le même calcaire a été rongé jusqu'à ne laisser que des tours. Le fleuve serpente entre elles.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : pitons karstiques, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-045",
+       "sur": "03 · Noir, bleu-vert des plantes-chant",
+       "titre": "Terres rocheuses et cavernes",
+       "texte": "Un massif calcaire creusé de grottes géantes, en amont de la jungle, là où le fleuve sort des pitons. Le séisme de l'Acte I y a ouvert une crevasse qui a englouti Rob2 et son robopod.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : terres rocheuses et cavernes, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-046",
+       "sur": "04 · Blanc, gris, noir des coussinets",
+       "titre": "Massifs et glaciers",
+       "texte": "Une chaîne née de la collision de deux plaques, d'où descend le fleuve de la jungle. On y respire mieux que sur les sommets terrestres, mais on y gèle.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : massifs et glaciers, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-047",
+       "sur": "05 · Bleu électrique sur blanc crème, nuit noire",
+       "titre": "Forêt bioluminescente",
+       "texte": "Une forêt qui ne vit pas de la lumière mais de la chimie de sources chaudes. Elle est donc lente, clairsemée et très ancienne.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : forêt bioluminescente, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-048",
+       "sur": "06 · Bleu-gris des herbes, doré des herbes sèches",
+       "titre": "Hautes Plaines",
+       "texte": "Une prairie qui devrait devenir forêt, mais que le feu et les géants maintiennent ouverte.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : hautes plaines, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-049",
+       "sur": "07 · Roux des écorces, pourpre profond, brouillard",
+       "titre": "Forêt ancienne",
+       "texte": "Une vallée profonde et abritée, où des arbres ont traversé les extinctions. C'est là que la horde a emporté Seed.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : forêt ancienne, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-050",
+       "sur": "08 · Ocre rayé du canyon, noir des laves, irisations des arbres cristallins",
+       "titre": "Course vers la mer",
+       "texte": "En quelques minutes de film, le tank remonte l'histoire de Korê dans les parois du canyon, puis traverse les volcans qui ont fait la mer d'arsenic.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : course vers la mer, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-051",
+       "sur": "09 · Gris-vert métallique de l'eau, noir du sable",
+       "titre": "Mer d'arsenic et fosse",
+       "texte": "Une mer froide en surface et vivante en profondeur, bordée de sable noir volcanique, avec au large une fosse de plus de dix kilomètres.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : mer d'arsenic et fosse, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-052",
+       "sur": "10 · Rose à pourpre de la saumure, blanc du sel",
+       "titre": "Lacs salés pourpres",
+       "texte": "Une cuvette sans issue vers la mer, entre l'arc volcanique et les terres, où l'eau arrive mais ne repart qu'en s'évaporant. Le sel s'accumule, et des microbes pourpres colorent les lacs.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : lacs salés pourpres, vue large, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      }
+     ]
+    },
+    {
+     "id": "med-055",
+     "type": "media",
+     "media": {
+      "src": "../presentation/img/corridor.jpg",
+      "genre": "image",
+      "attendu": "",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "legende": "Le corridor de Seed. Carte du projet."
+    },
+    {
+     "id": "lie-056",
+     "type": "liens",
+     "items": [
+      {
+       "id": "l-057",
+       "nom": "Les dix biomes, fiche par fiche",
+       "href": "../biomes/index.html",
+       "texte": "Le milieu, les espèces, les scènes, les cartels"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "especes",
+   "nom": "Le bestiaire et la flore",
+   "blocs": [
+    {
+     "id": "txt-078",
+     "type": "texte",
+     "sur": "",
+     "titre": "Le bestiaire et la flore",
+     "corps": "66 lignes au Bestiaire, 42 plantes, sept Titans éteints. Chaque espèce a un jumeau terrestre et une raison d'être là. Ici, la première espèce de chaque biome du trajet.",
+     "statut": "",
+     "source": "Bestiaire de Korê (règles, noms latins et Titans validés au round 8) ; Flore de Korê. Extraits pris dans l'ordre des documents, sans choix."
+    },
+    {
+     "id": "car-079",
+     "type": "carrousel",
+     "titre": "Animaux",
+     "format": "4:5",
+     "statut": "",
+     "source": "",
+     "items": [
+      {
+       "id": "tu-058",
+       "sur": "JP-01 · 5–8 cm d'envergure",
+       "titre": "Fleurs-papillons",
+       "texte": "Au repos, une fleur violette fermée sur une tige. En vol, ailes membraneuses pourpres à reflets or, corps minuscule, six pattes fines.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : fleurs-papillons, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-059",
+       "sur": "PK-01 · 5–8 cm",
+       "titre": "Escargot-tour",
+       "texte": "Coquille conique pourpre à spirale serrée ; la couleur des bandes change d'une tour à l'autre.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : escargot-tour, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-060",
+       "sur": "TR-01 · 4–5 m de long, 2 m de haut",
+       "titre": "Créature des profondeurs",
+       "texte": "Carapace noire luisante, segmentée ; six membres trop longs qui raclent le sol ; pas d'yeux ; gueule large d'où coule une pulpe bleu-vert lumineuse.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : créature des profondeurs, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-061",
+       "sur": "MG-01 · 1,2 m au garrot, ~120 kg",
+       "titre": "Grimpeur des cols",
+       "texte": "Trapu, encolure épaisse, toison pourpre-brun à sous-poil dense, cornes courtes recourbées, sabots fendus à coussinets élastiques.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : grimpeur des cols, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-062",
+       "sur": "FB-01 · 20–30 cm, queue 10 cm",
+       "titre": "Rongeurs de Korê",
+       "texte": "Fourrure brun-gris à reflets bleutés (pas albinos), grands yeux noirs, oreilles rondes mobiles, six pattes (quatre pour courir, deux pour saisir), queue semi-préhensile. Individu : le jeune à l'oreille abîmée.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : rongeurs de korê, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-063",
+       "sur": "HP-01 · 3–4 m au garrot, ~4 t",
+       "titre": "Buffles albinos",
+       "texte": "Laine blanche épaisse, yeux bleu électrique, cornes larges incurvées, pattes en colonne comme un éléphant, épaules hypertrophiées, tête basse.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : buffles albinos, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-064",
+       "sur": "FA-01 · 60–80 cm",
+       "titre": "Paresseux-mousse",
+       "texte": "Une touffe de mousse verte qui bouge : fourrure entièrement colonisée, six membres lents à longues griffes, face aplatie aux yeux mi-clos.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : paresseux-mousse, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-065",
+       "sur": "ZT-01 · 20–30 cm",
+       "titre": "Lézards-solaires",
+       "texte": "Corps aplati aux écailles noir mat, collerette déployable plus claire, membrane teintée sur les yeux, quatre pattes robustes.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : lézards-solaires, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-066",
+       "sur": "MA-01 · 30–80 cm, tentacules jusqu'à 3 m",
+       "titre": "Méduses-aurore",
+       "texte": "Ombrelle translucide pulsante, couleurs qui courent du bleu au violet, au rose et au vert ; tentacules fins lumineux.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : méduses-aurore, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-067",
+       "sur": "LS-01 · 1,4 m de haut, 2,2 m d'envergure",
+       "titre": "Oiseau des salins",
+       "texte": "Échassier au cou long et sinueux, bec recourbé qui filtre l'eau, plumage pourpre (pigment tiré de la nourriture), pattes grises, ailes bordées de noir.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : oiseau des salins, planche ou image en situation, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      }
+     ]
+    },
+    {
+     "id": "car-080",
+     "type": "carrousel",
+     "titre": "Plantes",
+     "format": "4:5",
+     "statut": "",
+     "source": "",
+     "items": [
+      {
+       "id": "tu-068",
+       "sur": "FL-JP-01 · Canopée pourpre sombre, écorce gris rosé, dessous des feuilles argenté",
+       "titre": "Arbre-voûte",
+       "texte": "90–110 m, tronc évasé en cloche avec contreforts de 10 m, branches basses qui se rejoignent en voûtes",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : arbre-voûte, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-069",
+       "sur": "FL-PK-01 · Pourpre délavé, écorce blanche",
+       "titre": "Arbres-nains des tours",
+       "texte": "1–3 m, tordus par le vent, accrochés aux sommets des pitons",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : arbres-nains des tours, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-070",
+       "sur": "FL-TR-01 · Gel bleu-vert lumineux",
+       "titre": "Plantes-chant",
+       "texte": "Touffes de tiges translucides, 30 cm à 2 m ; membranes qui vibrent",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : plantes-chant, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-071",
+       "sur": "FL-MG-01 · Pourpre presque noir",
+       "titre": "Coussinets d'altitude",
+       "texte": "Coussins de 1–3 m de large, 20 cm de haut, très denses",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : coussinets d'altitude, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-072",
+       "sur": "FL-FB-01 · Tronc blanc crème, lamelles bleu électrique la nuit",
+       "titre": "Arbres-cheminées",
+       "texte": "20–30 m, troncs creux autour des sources tièdes, sans feuilles : des lamelles en éventail",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : arbres-cheminées, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-073",
+       "sur": "FL-HP-01 · Bleu-gris (couche de cire), dorées quand elles sèchent",
+       "titre": "Herbes cireuses",
+       "texte": "Herbes de 1–2 m, feuilles épaisses en gouttière",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : herbes cireuses, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-074",
+       "sur": "FL-FA-01 · Pourpre profond, écorce rousse fibreuse",
+       "titre": "Arbres-cathédrales",
+       "texte": "100–115 m, les plus hauts de Korê ; contreforts en nef, branches en arcs",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : arbres-cathédrales, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-075",
+       "sur": "FL-VC-01 · Écorce vitreuse qui réfracte la lumière : irisations ; feuilles gris-vert",
+       "titre": "Arbres cristallins",
+       "texte": "10–25 m, troncs à facettes, feuilles rigides en aiguilles",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : arbres cristallins, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-076",
+       "sur": "FL-MA-01 · Feuilles pourpres, racines grises",
+       "titre": "Mangroves à échasses",
+       "texte": "10–15 m sur échasses de 4 m ; racines aériennes en cône",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : mangroves à échasses, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-077",
+       "sur": "FL-LS-01 · Rose à pourpre, plus foncé quand le lac s'évapore",
+       "titre": "Microbes pourpres du sel",
+       "texte": "Pas une plante : des tapis microbiens dans la saumure",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : microbes pourpres du sel, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      }
+     ]
+    },
+    {
+     "id": "lie-081",
+     "type": "liens",
+     "items": [
+      {
+       "id": "l-082",
+       "nom": "Le Bestiaire entier",
+       "href": "../bestiaire/index.html",
+       "texte": "Toutes les fiches, par biome"
+      },
+      {
+       "id": "l-083",
+       "nom": "La Flore entière",
+       "href": "../flore/index.html",
+       "texte": "Pourpre en haut, vert dessous"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "science",
+   "nom": "La science",
+   "blocs": [
+    {
+     "id": "ouv-084",
+     "type": "ouverture",
+     "sur": "La science",
+     "titre": "Le phosphore",
+     "chapo": "Les briques de la vie ne se transportent pas. Une planète ne vaut que par ce qu'elle possède déjà, et c'est ce que les Robs vont vérifier.",
+     "media": {
+      "src": "",
+      "genre": "image",
+      "attendu": "ici : Rob2 dans la grotte, le guano et les os du Titan dans la voûte, 21:9",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "statut": ""
+    },
+    {
+     "id": "txt-085",
+     "type": "texte",
+     "sur": "",
+     "titre": "La thèse",
+     "corps": "Le phosphore est irremplaçable, rare dans le cosmos, en quantité fixe sur Terre, et il plafonne la biomasse sur le temps long.\n\nAucune cellule connue ne fonctionne sans phosphore : l'ossature de l'ADN, l'ATP, les membranes, les os. Dans l'univers, il est environ mille fois moins abondant que le carbone.\n\nCe qui manque à Mars, c'est surtout l'azote et l'atmosphère.",
+     "statut": "",
+     "source": "Étude « Phosphore, biomasse et seconde Terre » (résumé)."
+    },
+    {
+     "id": "chi-086",
+     "type": "chiffres",
+     "source": "Étude Phosphore ; Cartels par acte.",
+     "items": [
+      {
+       "id": "c-087",
+       "v": "106 : 16 : 1",
+       "u": "",
+       "t": "Carbone, azote, phosphore dans le plancton marin (rapport de Redfield)"
+      },
+      {
+       "id": "c-088",
+       "v": "~1 000",
+       "u": "fois",
+       "t": "Le phosphore est plus rare que le carbone dans le cosmos"
+      },
+      {
+       "id": "c-089",
+       "v": "500",
+       "u": "g",
+       "t": "Le phosphore dans un corps de 50 kg"
+      },
+      {
+       "id": "c-090",
+       "v": "11,4",
+       "u": "ans",
+       "t": "Le temps que met le rapport de Rob1 pour atteindre la Terre"
+      }
+     ]
+    },
+    {
+     "id": "lie-091",
+     "type": "liens",
+     "items": [
+      {
+       "id": "l-092",
+       "nom": "L'étude entière",
+       "href": "../science/index.html",
+       "texte": "Les sources, les verdicts, ce que cela change pour Korê"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "film",
+   "nom": "Le film",
+   "blocs": [
+    {
+     "id": "ouv-093",
+     "type": "ouverture",
+     "sur": "Le film",
+     "titre": "25, puis 55",
+     "chapo": "Le 25 minutes est la colonne vertébrale, complète, avec l'arc entier. Le 55 s'obtient en ouvrant des emplacements déjà prévus dans le 25, jamais en le remontant.",
+     "media": {
+      "src": "",
+      "genre": "video",
+      "attendu": "ici : une image du film, plan large, 21:9 (ou un extrait vidéo)",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "statut": ""
+    },
+    {
+     "id": "chi-094",
+     "type": "chiffres",
+     "source": "Architecture 25 / 55 ; Découpage 25 min.",
+     "items": [
+      {
+       "id": "c-095",
+       "v": "25:00",
+       "u": "",
+       "t": "Le cœur : dix actes, 150 plans au découpage"
+      },
+      {
+       "id": "c-096",
+       "v": "27:00",
+       "u": "",
+       "t": "Neuf modules ajoutés aux charnières"
+      },
+      {
+       "id": "c-097",
+       "v": "52:00",
+       "u": "",
+       "t": "Le format long ; 55 avec les génériques"
+      },
+      {
+       "id": "c-098",
+       "v": "4",
+       "u": "mots",
+       "t": "Rob, Seed, Korê, Je suis Seed"
+      }
+     ]
+    },
+    {
+     "id": "txt-099",
+     "type": "texte",
+     "sur": "",
+     "titre": "Une colonne vertébrale et des modules",
+     "corps": "Chaque acte du 25 est fait de séquences-cœur, fixes, séparées par des charnières : un fondu au noir, une ellipse, un carton de jour. Dans le 25, une charnière dure 20 à 40 secondes. Dans le 55, la même charnière s'ouvre sur un module de 2 à 5 minutes.\n\nLes actes I, III et IX ne reçoivent aucun module : ce sont les trois scènes où tout se joue entre Seed et Rob1 dans un lieu clos.\n\nDeux chaînes de fabrication, une direction artistique : les séquences avec Seed passent par le pipeline génératif de NIRVALAB ; les séquences sans Seed sont construites dans Unreal avec BoraBora.",
+     "statut": "",
+     "source": "Architecture 25 / 55 (A01 validé) ; Notes pour Nina."
+    },
+    {
+     "id": "lie-100",
+     "type": "liens",
+     "items": [
+      {
+       "id": "l-101",
+       "nom": "Architecture 25 / 55",
+       "href": "../film/architecture-25-55.html",
+       "texte": "Les neuf emplacements, les durées, la production"
+      },
+      {
+       "id": "l-102",
+       "nom": "Séquencier 25 min",
+       "href": "../film/sequencier-25-min.html",
+       "texte": "Acte par acte"
+      },
+      {
+       "id": "l-103",
+       "nom": "Découpage 25 min",
+       "href": "../film/decoupage-25-min.html",
+       "texte": "150 plans"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "script",
+   "nom": "Le script",
+   "blocs": [
+    {
+     "id": "txt-104",
+     "type": "texte",
+     "sur": "",
+     "titre": "Le script",
+     "corps": "Le récit de référence de Cal, mis en page pour être lu, annoté dans la marge et corrigé sur place.",
+     "statut": "",
+     "source": "SECOND_EARTH_STORY (docx), qui fait foi."
+    },
+    {
+     "id": "lie-105",
+     "type": "liens",
+     "items": [
+      {
+       "id": "l-106",
+       "nom": "Lire, commenter, corriger le script",
+       "href": "script.html",
+       "texte": "Chaque paragraphe se commente ; en mode édition, il se corrige"
+      },
+      {
+       "id": "l-107",
+       "nom": "Récit v2",
+       "href": "../film/recit-v2.html",
+       "texte": "Le récit réécrit avec le monde, en attente de relecture"
+      },
+      {
+       "id": "l-108",
+       "nom": "Journal de Rob1",
+       "href": "../film/journal-de-rob1.html",
+       "texte": "La seule voix du film"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "salle",
+   "nom": "La salle immersive",
+   "blocs": [
+    {
+     "id": "ouv-115",
+     "type": "ouverture",
+     "sur": "La salle immersive",
+     "titre": "Chef de mission",
+     "chapo": "Temps réel dans Unreal, avec BoraBora Studios. Le visiteur voit ce que les Robs envoient. Il ne voit jamais Seed : il voit ses traces, et il entend le journal de Rob1.",
+     "media": {
+      "src": "",
+      "genre": "video",
+      "attendu": "ici : la salle, le public devant la projection à 360 degrés, 21:9",
+      "poster": "",
+      "cadre": "50% 50%"
+     },
+     "statut": ""
+    },
+    {
+     "id": "car-116",
+     "type": "carrousel",
+     "titre": "Six temps, 12 à 15 minutes",
+     "format": "21:9",
+     "statut": "proposé",
+     "source": "Salle immersive, esquisse (rien n'est décidé ; les principes sont validés : sans Seed, chef de mission, contemplatif).",
+     "items": [
+      {
+       "id": "tu-109",
+       "sur": "1:30",
+       "titre": "1 · L'orbite",
+       "texte": "La planète entière, les codes de mission, les quatre signatures qui s'allument sur le continent A ; les capsules qui descendent",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : l'orbite, vue de la salle, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-110",
+       "sur": "4:00",
+       "titre": "2 · Phase 1",
+       "texte": "Les Robs explorent, point de vue par point de vue : la grotte à guano, la forêt bioluminescente, la fosse ; les drones qui reviennent",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : phase 1, vue de la salle, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-111",
+       "sur": "1:00",
+       "titre": "3 · Le sinkhole",
+       "texte": "Le sol qui cède, le mât-relais qui bascule ; le silence ; les balises des robopods qui clignotent seules",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : le sinkhole, vue de la salle, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-112",
+       "sur": "3:00",
+       "titre": "4 · La lumière comme langue",
+       "texte": "La caverne des plantes-chant, puis la forêt bioluminescente en saison noire",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la lumière comme langue, vue de la salle, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-113",
+       "sur": "2:00",
+       "titre": "5 · Il y a 60 millions d'années",
+       "texte": "Les Titans vivants, l'étoile de passage, la pluie de comètes, le squelette qui finit dans la voûte",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : il y a 60 millions d'années, vue de la salle, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-114",
+       "sur": "2:00",
+       "titre": "6 · Korê",
+       "texte": "La course volcanique vue du tank, la mer d'arsenic, Rob4 qui remonte ; puis les lacs pourpres, la colonie qui décolle",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : korê, vue de la salle, 21:9",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "exposition",
+   "nom": "L'exposition",
+   "blocs": [
+    {
+     "id": "txt-123",
+     "type": "texte",
+     "sur": "",
+     "titre": "L'exposition",
+     "corps": "Une exposition organisée par biome. Chaque cartel se lit en trois temps : SUR TERRE, SUR KORÊ, POURQUOI. La Terre en premier, la planète en contraste, la raison en dernier.",
+     "statut": "",
+     "source": "Registre (format validé) ; Cartels par acte (textes proposés, round 12)."
+    },
+    {
+     "id": "car-124",
+     "type": "carrousel",
+     "titre": "Six cartels sur quatorze",
+     "format": "4:5",
+     "statut": "proposé",
+     "source": "",
+     "items": [
+      {
+       "id": "tu-117",
+       "sur": "Prologue",
+       "titre": "La distance",
+       "texte": "SUR TERRE. Les sondes Voyager, à 17 km/s, mettraient plus de 200 000 ans pour parcourir 11,4 années-lumière\n\nSUR KORÊ. PERSEPHORA a mis 53 ans, à un cinquième de la vitesse de la lumière\n\nPOURQUOI. Les étoiles sont si loin que même la lumière met des années ; rien ne va plus vite qu'elle",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la distance, image du cartel, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-118",
+       "sur": "Acte I",
+       "titre": "La gravité et le corps",
+       "texte": "SUR TERRE. 9,81 m/s² ; le cœur pompe le sang vers le haut, l'oreille interne sent la verticale\n\nSUR KORÊ. 11,1 m/s² : les chutes sont 6 % plus rapides, les sauts 12 % plus bas ; née ici, Seed n'y pense jamais\n\nPOURQUOI. La gravité vient de la masse : Korê a une fois et demie la masse de la Terre pour un rayon à peine plus grand",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la gravité et le corps, image du cartel, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-119",
+       "sur": "Acte I",
+       "titre": "Le sol qui s'ouvre",
+       "texte": "SUR TERRE. Dolines de Floride et du Yucatán : la pluie dissout le calcaire et le sol s'effondre\n\nSUR KORÊ. La pluie de Korê est dix fois plus acide (pH 4,7) : le karst se creuse plus vite, le XENOPOD tombe\n\nPOURQUOI. Le CO₂ de l'air (2 %) et le soufre des volcans acidifient la pluie ; le calcaire fond",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : le sol qui s'ouvre, image du cartel, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-120",
+       "sur": "Acte II",
+       "titre": "L'eau qu'on peut boire",
+       "texte": "SUR TERRE. Les rivières des Causses : une pluie acide qui traverse le calcaire ressort neutre\n\nSUR KORÊ. Le fleuve de la jungle se boit ; la rivière rouge de la forêt ancienne, qui coule sur du fer, non\n\nPOURQUOI. Le calcaire neutralise l'acide ; le fer et le soufre l'entretiennent",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : l'eau qu'on peut boire, image du cartel, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-121",
+       "sur": "Acte III",
+       "titre": "La vie sans lumière",
+       "texte": "SUR TERRE. Les sources hydrothermales, découvertes en 1977 : des vers géants nourris par des bactéries qui mangent la chimie de la roche\n\nSUR KORÊ. Les plantes-chant de la caverne vivent de la même façon, sans soleil\n\nPOURQUOI. L'énergie de la vie peut venir des minéraux, pas seulement de la lumière",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : la vie sans lumière, image du cartel, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-122",
+       "sur": "Acte III",
+       "titre": "Le phosphore",
+       "texte": "SUR TERRE. Le guano des îles Chincha a été épuisé en quarante ans ; 68 % des réserves mondiales sont au Maroc ; aucun substitut\n\nSUR KORÊ. Rob2 le cherche dans le guano des chauves-souris et les os du Titan\n\nPOURQUOI. Sans phosphore, pas d'ADN ni d'os : c'est l'élément rare de la vie, mille fois plus rare que le carbone dans l'univers",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : le phosphore, image du cartel, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      }
+     ]
+    },
+    {
+     "id": "lie-125",
+     "type": "liens",
+     "items": [
+      {
+       "id": "l-126",
+       "nom": "Les quatorze cartels",
+       "href": "../expo/cartels-par-acte.html",
+       "texte": "Dans l'ordre du film"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "equipe",
+   "nom": "L'équipe et les partenaires",
+   "blocs": [
+    {
+     "id": "txt-127",
+     "type": "texte",
+     "sur": "",
+     "titre": "L'équipe et les partenaires",
+     "corps": "",
+     "statut": "",
+     "source": ""
+    },
+    {
+     "id": "car-132",
+     "type": "carrousel",
+     "titre": "",
+     "format": "4:5",
+     "statut": "",
+     "source": "Brief du projet (CLAUDE.md, section 2).",
+     "items": [
+      {
+       "id": "tu-128",
+       "sur": "auteur et réalisateur",
+       "titre": "Cal · NIRVALAB",
+       "texte": "Écriture et réalisation. Pipeline génératif de NIRVALAB pour les séquences avec Seed. Écriture et conception avec Medhi Mejri (d'après Cal).",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : portrait ou logo, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-129",
+       "sur": "commanditaire",
+       "titre": "Science Centre Singapore",
+       "texte": "Le film de 25 minutes, puis de 55 ; la salle immersive ; l'exposition.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : le Science Centre, ou son logo, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-130",
+       "sur": "porte le projet à Singapour",
+       "titre": "Nina Albani · aïo Creative Group",
+       "texte": "aïo Creative Group, Singapour.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : portrait ou logo, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      },
+      {
+       "id": "tu-131",
+       "sur": "salle immersive, temps réel",
+       "titre": "BoraBora Studios",
+       "texte": "La salle immersive dans Unreal ; les séquences sans Seed du film : paysages, Robs, Titans, course.",
+       "media": {
+        "src": "",
+        "genre": "image",
+        "attendu": "ici : logo ou image du studio, 4:5",
+        "poster": "",
+        "cadre": "50% 50%"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "calendrier",
+   "nom": "Le calendrier et le financement",
+   "blocs": [
+    {
+     "id": "txt-133",
+     "type": "texte",
+     "sur": "",
+     "titre": "Le calendrier et le financement",
+     "corps": "Un film de 25 minutes maintenant, puis un film de 55 minutes fabriqué par ajout.\n\nFinancement visé : une aide IA singapourienne qui ouvre en décembre, d'environ 120 k€, combinée à une licence anticipée du Science Centre (d'après Cal). Les documents parlent de l'« aide IA ~120 k€ » et du « dossier de décembre ».\n\nLe calendrier est à écrire : il dépend du format de projection (master 16:9 et adaptation dôme, validé A04) et de BoraBora.",
+     "statut": "",
+     "source": "Propositions (P6), Notes pour Nina, brief du projet. Aucun calendrier n'est écrit dans le dépôt."
+    }
+   ]
+  },
+  {
+   "id": "contact",
+   "nom": "Contact",
+   "blocs": [
+    {
+     "id": "txt-134",
+     "type": "texte",
+     "sur": "",
+     "titre": "Contact",
+     "corps": "",
+     "statut": "manque",
+     "source": "Aucun contact n'est écrit dans le dépôt : à remplir par Cal en mode édition (nom, adresse, lien)."
+    },
+    {
+     "id": "lie-135",
+     "type": "liens",
+     "items": [
+      {
+       "id": "l-136",
+       "nom": "La présentation à la molette",
+       "href": "../presentation/index.html",
+       "texte": "Tout Second Earth, à lire en faisant défiler"
+      },
+      {
+       "id": "l-137",
+       "nom": "Le site de travail",
+       "href": "../index.html",
+       "texte": "La Bible, les espèces, la carte, les outils"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

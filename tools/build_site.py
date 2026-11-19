@@ -774,6 +774,7 @@ def home(counts):
         ('t2', 'NL—16', 'Glossaire', 'Codes de mission, machines, lieux', 'bible/glossaire.html'),
         ('t1', 'NL—17', 'Titans', 'Géants éteints il y a ~60 Ma', 'bible/titans.html'),
         ('t2', 'NL—18', 'Présentation', "L'étude : tout Second Earth, à lire en faisant défiler", 'presentation/index.html'),
+        ('t3', 'NL—19', 'Le projet', 'Logline, synopsis, personnages, film, script à commenter · éditable en ligne', 'projet/index.html'),
     ]
     figs = [
         ('11,4', 'al', '61 Cygni A, naine orange K5V, 4 400 K, 15 % de la luminosité du Soleil', 'o'),
@@ -828,6 +829,86 @@ def home(counts):
     body = '<div class="home">%s</div>' % ''.join(out)
     return page('Second Earth', '', 'home', body,
                 description="Second Earth : film, salle immersive et exposition pour le Science Centre Singapore. Korê, une planète inventée autour de 61 Cygni A.")
+
+
+# ---------------------------------------------------------------------------
+# Le site du projet (site-projet/) : pages visuelles, éditables en ligne
+# ---------------------------------------------------------------------------
+
+PROJET = ROOT / 'site-projet'
+
+
+def script_paragraphes(path):
+    """Découpe le récit de référence en paragraphes à identité stable.
+
+    Le texte n'est pas touché. L'identité d'un paragraphe = sa partie + une empreinte de son texte :
+    elle ne change pas si l'on ajoute ou retire un paragraphe ailleurs. Le genre (dialogue, didascalie,
+    écran, carton) ne sert qu'à la mise en page.
+    """
+    import hashlib
+    out, partie, vus, n, debut = [], 0, {}, 0, True
+    for line in path.read_text(encoding='utf-8').splitlines():
+        t = line.strip()
+        if not t or t.startswith('<!--') or t.startswith('# '):
+            continue
+        if debut and t.startswith('Le texte du docx'):   # la note d'export, pas le récit
+            continue
+        debut = False
+        t = re.sub(r'\\([-*_#.>])', r'\1', t)          # échappements Markdown de l'export
+        if t.startswith('## '):
+            partie += 1
+            t, genre = t[3:].strip(), 'partie'
+        elif partie == 0:
+            genre = 'exergue'
+        elif t[0] in '“«"':
+            genre = 'dialogue'
+        elif t[0] == '(':
+            genre = 'didascalie'
+        elif len(t) < 90 and re.match(r'^\d{4}\b', t):
+            genre = 'carton'
+        elif len(t) >= 3 and t.upper() == t and not t.endswith('.') and re.search(r'[A-ZÉÈÀ]{3}', t):
+            genre = 'ecran'
+        else:
+            genre = 'p'
+        cle = 's%02d-%s' % (partie, hashlib.sha1(t.encode('utf-8')).hexdigest()[:8])
+        vus[cle] = vus.get(cle, 0) + 1
+        if vus[cle] > 1:
+            cle += '-%d' % vus[cle]
+        if genre != 'partie':
+            n += 1
+        out.append({'id': cle, 'n': '' if genre == 'partie' else '%03d' % n, 'genre': genre, 'texte': t})
+    return out
+
+
+def json_inline(o):
+    """JSON à poser dans une balise <script> : rien ne peut y fermer la balise."""
+    return json.dumps(o, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
+
+
+def build_projet(out):
+    """Copie site-projet/ dans _site/projet/ et pose le contenu publié dans chaque page."""
+    dest = out / 'projet'
+    shutil.copytree(PROJET, dest, ignore=shutil.ignore_patterns('*.md', '*.html'))
+    cont = PROJET / 'content'
+
+    def lire(nom, defaut):
+        p = cont / nom
+        return json.loads(p.read_text(encoding='utf-8')) if p.exists() else defaut
+
+    publie = {'contenu': lire('site-content.json', {'sections': []}), 'modifs': lire('script-modifs.json', {}),
+              'commentaires': lire('commentaires.json', {'fils': []}), 'acces': lire('acces.json', {}),
+              'cle': lire('deploy-key.json', None)}
+    script = script_paragraphes(DOCS / 'film' / '01-recit-docx.md')
+    pages = []
+    for nom in ('index.html', 'script.html', 'admin.html'):
+        h = (PROJET / nom).read_text(encoding='utf-8')
+        pub = dict(publie)
+        if nom != 'index.html':          # le contenu des catégories ne sert qu'à sa page et au tableau de bord
+            pub = dict(publie, contenu=publie['contenu'] if nom == 'admin.html' else None)
+        h = h.replace('<!--PUBLIE-->', json_inline(pub)).replace('<!--SCRIPT-->', json_inline(script))
+        (dest / nom).write_text(h, encoding='utf-8')
+        pages.append('projet/' + nom)
+    return pages
 
 
 # ---------------------------------------------------------------------------
@@ -1031,6 +1112,7 @@ def main(argv):
     counts = {'bestiaire': len(best), 'titans': len(titans), 'flore': len(flore), 'planches': len(planches),
               'bible': len(SECTIONS['bible']['pages']), 'fiches': len(best) + len(flore) + len(titans) + len(paysages) + 11}
     write('index.html', home(counts))
+    written.extend(build_projet(out))
     write('404.html', page('Page introuvable', '/SECOND_EARTH/', '',
                            '<div class="head accent"><h1>Page introuvable</h1><p class="lede">Cette adresse ne correspond à aucune page du site.</p>'
                            '<div class="meta"><a class="lbl" href="/SECOND_EARTH/index.html">Retour à l\'accueil</a></div></div>'))
