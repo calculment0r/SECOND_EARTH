@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit étude · peu de marques, tout tenir</title>
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="kit-etude.css">
+<link rel="stylesheet" href="vitrine.css">
+<script src="kit-etude.js" defer></script>
+<script src="vitrine.js" defer></script>
+</head>
+<body>
+<div class="ke-avance" aria-hidden="true"><i id="avance"></i></div>
+<header class="ke-barre">
+  <a class="ke-marque" href="#ouverture"><span class="carre"><i></i></span><b>Kit étude</b></a>
+  <nav class="ke-chapitres" aria-label="Les chapitres">
+    <a href="#ouverture" data-c="ouverture">Ouverture</a>
+    <a href="#lettres" data-c="lettres"><b>01</b><span>Les lettres</span></a><a href="#couleurs" data-c="couleurs"><b>02</b><span>Les couleurs</span></a><a href="#boutons" data-c="boutons"><b>03</b><span>Les boutons</span></a><a href="#champs" data-c="champs"><b>04</b><span>Les champs</span></a><a href="#curseurs" data-c="curseurs"><b>05</b><span>Les curseurs</span></a><a href="#potards" data-c="potards"><b>06</b><span>Les potards</span></a><a href="#console" data-c="console"><b>07</b><span>La console</span></a><a href="#naviguer" data-c="naviguer"><b>08</b><span>Naviguer</span></a><a href="#dire" data-c="dire"><b>09</b><span>Dire</span></a><a href="#temps" data-c="temps"><b>10</b><span>Le temps</span></a><a href="#schema" data-c="schema"><b>11</b><span>Le schéma</span></a><a href="#canevas" data-c="canevas"><b>12</b><span>Le canevas</span></a><a href="#chiffres" data-c="chiffres"><b>13</b><span>Les chiffres</span></a><a href="#piste" data-c="piste"><b>14</b><span>La piste</span></a><a href="#diapos" data-c="diapos"><b>15</b><span>Les diapositives</span></a>
+  </nav>
+  <div class="ke-bascule" role="group" aria-label="Thème"><button type="button" data-t="sombre">Sombre</button><button type="button" data-t="clair">Clair</button></div>
+</header>
+
+<main>
+<!-- ═══ OUVERTURE ═══ -->
+<section class="ke-ouverture" id="ouverture" data-chapitre="ouverture" data-mot="Étude">
+  <div class="ke-col">
+    <p class="ke-sur">Un kit d’interface · sombre et clair</p>
+    <h1>Peu de marques.<br>Tout <em>tenir.</em></h1>
+    <p class="ke-chapo">Un mot immense, de petites phrases pâles, beaucoup de noir. Aucun cadre. <strong>Un seul orange : ce qu’on tient.</strong> L’ambre en pointillé pour ce qui est déduit, l’italique pâle pour ce qui manque.</p>
+    <p class="ke-chiffres v-chiffres"><span><b>15</b>familles de composants</span><span><b>2</b>thèmes, par les seuls jetons</span><span><b>1</b>bouton plein par écran</span><span><b>0</b>cadre, 0 bordure</span></p>
+  </div>
+  <p class="v-descendre">Quinze chapitres, du mot au schéma <span aria-hidden="true">↓</span></p>
+</section>
+
+<!-- ═══ 01 · LES LETTRES ═══ -->
+<section class="ke-chapitre" id="lettres" data-chapitre="lettres" data-mot="Lettres">
+  <div class="ke-col">
+    <p class="ke-sur"><b>01</b> Les lettres et l’échelle</p>
+    <h2>Deux corps très <em>éloignés</em></h2>
+    <p class="ke-chapo">Le très grand à côté du très fin, et rien de taille moyenne. La taille d’un mot dit déjà son rang : on n’a pas besoin d’un cadre pour le dire.</p>
+  </div>
+  <div class="ke-planche">
+    <div class="v-echelle">
+      <p class="ke-petit">l’immense · Literata 300 · 64 à 128 px</p><p class="ke-h1">Dire <em>peu.</em></p>
+      <p class="ke-petit">le titre · Literata 330 · 40 à 70 px</p><p class="ke-h2">Une chose par écran</p>
+      <p class="ke-petit">ce qui est dit · Literata italique · 22 à 28 px</p><p class="ke-dit">« Je voudrais que ça respire, qu’on ait le temps de regarder. »</p>
+      <p class="ke-petit">ce qui se lit · Literata 380 · 19 px</p><p class="ke-texte" style="margin:0">Le texte courant tient dans une colonne étroite, soixante-dix signes au plus. <strong>Ce qui compte est en encre pleine</strong>, le reste un ton dessous.</p>
+      <p class="ke-petit">un nom · Norelli · capitales</p><p class="ke-nom" style="margin:0;font-size:30px">La ville endormie</p>
+      <p class="ke-petit">l’indication · Chakra Petch · 13,5 px</p><p class="ke-petit">une petite phrase pâle, sous ce qu’elle accompagne</p>
+      <p class="ke-petit">la machine · Azeret Mono · 10 px</p><p class="ke-machine">Sombre · Clair · 01 · 02</p>
+    </div>
+    <h3 class="ke-sous">D’où vient chaque chose</h3>
+    <p class="ke-dit" style="max-width:26em">Le train part <span class="ke-tenu">à minuit</span>, d’une gare <span class="ke-deduit">du Nord</span>, vers <span class="ke-manque">une ville qu’on ne nomme pas encore</span>.</p>
+    <p class="ke-petit" style="margin-top:18px"><span class="ke-tenu">orange</span> : ce qu’on tient · <span class="ke-deduit">ambre pointillé</span> : ce qui est déduit · <span class="ke-manque">italique pâle</span> : ce qui manque</p>
+  </div>
+</section>
+
+<!-- ═══ 02 · LES COULEURS ═══ -->
+<section class="ke-chapitre" id="couleurs" data-chapitre="couleurs" data-mot="Couleurs">
+  <div class="ke-col">
+    <p class="ke-sur"><b>02</b> Les couleurs et les jetons</p>
+    <h2>Du noir actif, et un seul <em>orange</em></h2>
+    <p class="ke-chapo">Quatre fonds qui se relèvent à peine, trois encres, un accent. Tout composant passe par un jeton : changer de thème, c’est changer de valeurs, jamais de règles.</p>
+  </div>
+  <div class="ke-planche large ke-deux-themes" id="jetons"></div>
+</section>
+
+<!-- ═══ 03 · LES BOUTONS ═══ -->
+<section class="ke-chapitre" id="boutons" data-chapitre="boutons" data-mot="Boutons">
+  <div class="ke-col">
+    <p class="ke-sur"><b>03</b> Les boutons</p>
+    <h2>Un seul bouton <em>plein</em></h2>
+    <p class="ke-chapo">Le plein est l’acte qui compte sur cet écran : il n’y en a qu’un. Tous les autres sont des mots, soulignés d’un filet. Choisi, le mot passe en italique et son filet à l’orange.</p>
+  </div>
+  <div class="ke-planche">
+    <p class="ke-petit">le bouton plein · un par écran (ici, ses états côte à côte pour la démonstration)</p>
+    <div class="ke-etats">
+      <div><p class="ke-petit">repos</p><button type="button" class="ke-btn plein">Garder</button></div>
+      <div><p class="ke-petit">survol</p><button type="button" class="ke-btn plein est-survol">Garder</button></div>
+      <div><p class="ke-petit">clavier</p><button type="button" class="ke-btn plein est-focus">Garder</button></div>
+      <div><p class="ke-petit">appuyé</p><button type="button" class="ke-btn plein est-actif">Garder</button></div>
+      <div><p class="ke-petit">désactivé</p><button type="button" class="ke-btn plein" disabled>Garder</button></div>
+      <div><p class="ke-petit">en cours</p><button type="button" class="ke-btn plein" aria-busy="true">Garder</button></div>
+    </div>
+    <p class="ke-petit ke-sous">le mot souligné · tous les autres gestes</p>
+    <div class="ke-etats">
+      <div><p class="ke-petit">repos</p><button type="button" class="ke-btn">Revenir</button></div>
+      <div><p class="ke-petit">survol</p><button type="button" class="ke-btn est-survol">Revenir</button></div>
+      <div><p class="ke-petit">clavier</p><button type="button" class="ke-btn est-focus">Revenir</button></div>
+      <div><p class="ke-petit">choisi</p><button type="button" class="ke-btn" aria-pressed="true">Revenir</button></div>
+      <div><p class="ke-petit">désactivé</p><button type="button" class="ke-btn" disabled>Revenir</button></div>
+      <div><p class="ke-petit">en cours</p><button type="button" class="ke-btn" aria-busy="true">Revenir</button></div>
+    </div>
+    <p class="ke-petit ke-sous">avec un compte · petit · discret</p>
+    <div class="ke-rang">
+      <button type="button" class="ke-btn">les scènes de nuit<i>12</i></button>
+      <button type="button" class="ke-btn petit">voir la suite</button>
+      <button type="button" class="ke-btn discret">plus tard</button>
+      <button type="button" class="ke-btn petit" data-bulle="Il manque une date : choisis-la d’abord." aria-disabled="true">envoyer</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 · LES CHAMPS ═══ -->
+<section class="ke-chapitre" id="champs" data-chapitre="champs" data-mot="Champs">
+  <div class="ke-col">
+    <p class="ke-sur"><b>04</b> Les champs, les listes, les cases, les interrupteurs</p>
+    <h2>Écrire sur une <em>ligne</em></h2>
+    <p class="ke-chapo">Un champ est une ligne sur laquelle on écrit, pas une boîte. Ce qu’on n’a pas encore écrit est en italique pâle. Le filet passe à l’orange quand on y est.</p>
+  </div>
+  <div class="ke-planche">
+    <div class="ke-etats v-champs">
+      <label class="ke-champ"><span class="ke-petit">repos</span><input type="text" value="Une nuit d’hiver"></label>
+      <label class="ke-champ"><span class="ke-petit">vide</span><input type="text" placeholder="le titre, quand tu l’auras"></label>
+      <label class="ke-champ est-survol"><span class="ke-petit">survol</span><input type="text" value="Une nuit d’hiver"></label>
+      <label class="ke-champ est-focus"><span class="ke-petit">on y écrit</span><input type="text" value="Une nuit d’hiver"></label>
+      <label class="ke-champ"><span class="ke-petit">désactivé</span><input type="text" value="Une nuit d’hiver" disabled></label>
+      <label class="ke-champ" aria-busy="true"><span class="ke-petit">en cours</span><input type="text" value="Une nuit d’hiver" readonly></label>
+      <label class="ke-champ a-revoir"><span class="ke-petit">à revoir</span><input type="text" value="31 février"><em>Ce jour n’existe pas. Le 28, ou le 1ᵉʳ mars ?</em></label>
+      <label class="ke-champ deduit"><span class="ke-petit">déduit, pas encore gardé</span><input type="text" value="Gare du Nord"><em>proposé d’après « le train de minuit »</em></label>
+    </div>
+    <div class="ke-deux ke-sous">
+      <label class="ke-champ" style="max-width:none"><span class="ke-petit">un texte long</span><textarea rows="3">Elle attend sur le quai. Le train n’attend pas.</textarea></label>
+      <div>
+        <div class="ke-choix" id="choix-saison"><span class="ke-petit">une liste de choix</span>
+          <button type="button" aria-haspopup="listbox">L’hiver</button>
+          <ul class="ke-menu-liste ke-flotte" role="listbox" hidden>
+            <li role="option" aria-selected="false">Le printemps</li><li role="option" aria-selected="false">L’été</li><li role="option" aria-selected="false">L’automne</li><li role="option" aria-selected="true">L’hiver</li>
+            <li role="option" aria-disabled="true">Une cinquième saison<kbd>à inventer</kbd></li>
+          </ul>
+        </div>
+        <div class="ke-choix" style="margin-left:44px"><span class="ke-petit">désactivée</span><button type="button" disabled>Aucun lieu</button><ul class="ke-menu-liste ke-flotte" role="listbox" hidden><li role="option">—</li></ul></div>
+      </div>
+    </div>
+    <div class="ke-trois ke-sous">
+      <div class="v-pile">
+        <p class="ke-petit">les cases</p>
+        <label class="ke-case"><input type="checkbox"><i></i><span>repos</span></label>
+        <label class="ke-case"><input type="checkbox" checked><i></i><span>cochée</span></label>
+        <label class="ke-case est-survol"><input type="checkbox"><i></i><span>survol</span></label>
+        <label class="ke-case est-focus"><input type="checkbox" checked><i></i><span>clavier</span></label>
+        <label class="ke-case"><input type="checkbox" class="v-partiel"><i></i><span>en partie</span></label>
+        <label class="ke-case"><input type="checkbox" checked disabled><i></i><span>désactivée</span></label>
+      </div>
+      <div class="v-pile" role="radiogroup" aria-label="Un seul choix">
+        <p class="ke-petit">un seul choix</p>
+        <label class="ke-case rond"><input type="radio" name="r1" checked><i></i><span>le jour</span></label>
+        <label class="ke-case rond"><input type="radio" name="r1"><i></i><span>la nuit</span></label>
+        <label class="ke-case rond est-survol"><input type="radio" name="r1"><i></i><span>l’aube (survol)</span></label>
+        <label class="ke-case rond"><input type="radio" name="r1" disabled><i></i><span>l’heure bleue</span></label>
+      </div>
+      <div class="v-pile">
+        <p class="ke-petit">les interrupteurs</p>
+        <label class="ke-inter"><input type="checkbox" role="switch"><i></i><span>éteint</span></label>
+        <label class="ke-inter"><input type="checkbox" role="switch" checked><i></i><span>allumé</span></label>
+        <label class="ke-inter est-survol"><input type="checkbox" role="switch"><i></i><span>survol</span></label>
+        <label class="ke-inter est-focus"><input type="checkbox" role="switch" checked><i></i><span>clavier</span></label>
+        <label class="ke-inter"><input type="checkbox" role="switch" disabled><i></i><span>désactivé</span></label>
+        <label class="ke-inter" aria-busy="true"><input type="checkbox" role="switch"><i></i><span>en cours</span></label>
+      </div>
+    </div>
+    <p class="ke-petit ke-sous">une liste à choisir · flèches et Entrée</p>
+    <ul class="ke-liste" role="listbox" aria-label="Les lieux">
+      <li role="option" aria-selected="false">Le quai<span>3 scènes</span></li>
+      <li role="option" aria-selected="true">La salle d’attente<span>choisie</span></li>
+      <li role="option" aria-selected="false">Le wagon de queue<span>5 scènes</span></li>
+      <li role="option" aria-selected="false" aria-disabled="true">Le buffet<span>pas encore écrit</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ 05 · LES CURSEURS ═══ -->
+<section class="ke-chapitre" id="curseurs" data-chapitre="curseurs" data-mot="Curseurs">
+  <div class="ke-col">
+    <p class="ke-sur"><b>05</b> Les curseurs</p>
+    <h2>Un réglage continu, plutôt qu’un choix parmi <em>trois</em></h2>
+    <p class="ke-chapo">Une voie d’un pixel, une prise ronde qu’on voit au repos. Elle grossit et s’allume sous la main. La valeur s’écrit en grand, à côté.</p>
+  </div>
+  <div class="ke-planche">
+    <p class="ke-geste">Tire la prise, ou clique sur la voie. Au clavier : les flèches, Page précédente et suivante, Début, Fin. Double-clic : la valeur de départ.</p>
+    <div class="ke-deux">
+      <div class="v-pile large">
+        <div class="ke-reglage"><p class="ke-petit"><span>simple · la durée</span><output></output></p><div class="ke-curseur" data-min="0" data-max="120" data-valeur="42" data-unite="s" aria-label="La durée"></div></div>
+        <div class="ke-reglage"><p class="ke-petit"><span>à deux poignées · la plage</span><output></output></p><div class="ke-curseur" data-min="0" data-max="24" data-valeur="6" data-valeur2="19" data-unite="h" aria-label="La plage"></div></div>
+        <div class="ke-reglage"><p class="ke-petit"><span>à crans · la force</span><output></output></p><div class="ke-curseur" data-min="0" data-max="100" data-pas="25" data-valeur="50" data-crans="0,25,50,75,100" aria-label="La force"></div></div>
+      </div>
+      <div class="ke-etats" style="grid-template-columns:1fr 1fr;align-items:start">
+        <div><p class="ke-petit">survol</p><div class="ke-curseur" data-valeur="35" data-etat="survol" aria-label="survol"></div></div>
+        <div><p class="ke-petit">clavier</p><div class="ke-curseur" data-valeur="60" data-etat="focus" aria-label="clavier"></div></div>
+        <div><p class="ke-petit">tenu</p><div class="ke-curseur est-tenu" data-valeur="72" data-etat="tenu" aria-label="tenu"></div></div>
+        <div><p class="ke-petit">désactivé</p><div class="ke-curseur" data-valeur="45" aria-disabled="true" aria-label="désactivé"></div></div>
+        <div><p class="ke-petit">en cours</p><div class="ke-curseur" data-valeur="20" aria-busy="true" aria-label="en cours"></div></div>
+      </div>
+    </div>
+    <p class="ke-petit ke-sous">verticaux</p>
+    <div class="ke-rang" style="gap:64px">
+      <div class="ke-reglage v-vertical"><div class="ke-curseur" data-vertical data-min="0" data-max="100" data-valeur="64" aria-label="La lumière"></div><p class="ke-petit"><span>la lumière</span><output></output></p></div>
+      <div class="ke-reglage v-vertical"><div class="ke-curseur" data-vertical data-min="-12" data-max="12" data-valeur="-4" data-valeur2="6" aria-label="L’écart"></div><p class="ke-petit"><span>l’écart</span><output></output></p></div>
+      <div class="ke-reglage v-vertical"><div class="ke-curseur" data-vertical data-min="0" data-max="4" data-pas="1" data-valeur="3" data-crans="0,1,2,3,4" aria-label="Le plan"></div><p class="ke-petit"><span>le plan</span><output></output></p></div>
+      <div class="ke-reglage v-vertical"><div class="ke-curseur" data-vertical data-valeur="30" aria-disabled="true" aria-label="désactivé"></div><p class="ke-petit"><span>désactivé</span><output></output></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 · LES POTARDS ═══ -->
+<section class="ke-chapitre" id="potards" data-chapitre="potards" data-mot="Potards">
+  <div class="ke-col">
+    <p class="ke-sur"><b>06</b> Les potards rotatifs</p>
+    <h2>La valeur au <em>centre</em></h2>
+    <p class="ke-chapo">Un arc d’un pixel, une prise sur l’arc, le nombre écrit au milieu. On n’a dessiné aucun bouton de machine : la lettre fait l’objet.</p>
+  </div>
+  <div class="ke-planche">
+    <p class="ke-geste">Tire vers le haut ou le bas. Maj affine. Au clavier : les flèches. La molette règle le potard qui a le focus. Double-clic : la valeur de départ.</p>
+    <div class="ke-potards">
+      <div class="ke-potard grand" data-min="0" data-max="100" data-valeur="68" data-unite="%"><span class="ke-petit">le grain</span></div>
+      <div class="ke-potard" data-min="20" data-max="200" data-valeur="96" data-pas="1"><span class="ke-petit">le tempo</span></div>
+      <div class="ke-potard" data-min="-50" data-max="50" data-valeur="-18" data-centre><span class="ke-petit">la balance · part du milieu</span></div>
+      <div class="ke-potard" data-min="1" data-max="7" data-pas="1" data-valeur="3" data-crans="7"><span class="ke-petit">sept crans</span></div>
+    </div>
+    <p class="ke-petit ke-sous">plusieurs, en rangée</p>
+    <div class="ke-potards" style="gap:26px 34px">
+      <div class="ke-potard petit" data-valeur="12"><span class="ke-petit">attaque</span></div>
+      <div class="ke-potard petit" data-valeur="40"><span class="ke-petit">chute</span></div>
+      <div class="ke-potard petit" data-valeur="75"><span class="ke-petit">tenue</span></div>
+      <div class="ke-potard petit" data-valeur="30"><span class="ke-petit">relâche</span></div>
+      <div class="ke-potard petit" data-valeur="55" data-crans="11"><span class="ke-petit">couleur</span></div>
+      <div class="ke-potard petit" data-min="-12" data-max="12" data-valeur="4" data-centre><span class="ke-petit">grave</span></div>
+      <div class="ke-potard petit" data-min="-12" data-max="12" data-valeur="-3" data-centre><span class="ke-petit">aigu</span></div>
+    </div>
+    <p class="ke-petit ke-sous">les états</p>
+    <div class="ke-etats">
+      <div><p class="ke-petit">repos</p><div class="ke-potard" data-valeur="50"></div></div>
+      <div><p class="ke-petit">survol</p><div class="ke-potard est-survol" data-valeur="50"></div></div>
+      <div><p class="ke-petit">clavier</p><div class="ke-potard est-focus est-survol" data-valeur="50"></div></div>
+      <div><p class="ke-petit">tenu</p><div class="ke-potard est-tenu" data-valeur="62"></div></div>
+      <div><p class="ke-petit">désactivé</p><div class="ke-potard" data-valeur="50" aria-disabled="true"></div></div>
+      <div><p class="ke-petit">en cours</p><div class="ke-potard" data-valeur="50" aria-busy="true"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 · LA CONSOLE ═══ -->
+<section class="ke-chapitre" id="console" data-chapitre="console" data-mot="Console">
+  <div class="ke-col">
+    <p class="ke-sur"><b>07</b> Les faders et les vu-mètres</p>
+    <h2>Une console, sans la <em>machine</em></h2>
+    <p class="ke-chapo">Des tranches que rien n’encadre : un nom, un fader couché sur son trait, un vu-mètre fait de traits. L’encre pour ce qui sonne, l’orange pour ce qui dépasse.</p>
+  </div>
+  <div class="ke-planche">
+    <p class="ke-geste">Tire un fader (Maj affine), ou les flèches. « muet » et « seul » sont des mots. <button type="button" class="ke-btn petit" id="console-jouer" aria-pressed="false">faire sonner</button></p>
+    <div class="ke-console" id="console-demo"></div>
+    <p class="ke-petit ke-sous">le vu-mètre seul, couché · au repos, il ne bouge pas</p>
+    <div style="max-width:520px"><div class="ke-vu couche" data-traits="64" data-niveau=".72,.9" aria-label="Niveau : gauche 72 %, droite 90 %"></div></div>
+  </div>
+</section>
+
+<!-- ═══ 08 · NAVIGUER ═══ -->
+<section class="ke-chapitre" id="naviguer" data-chapitre="naviguer" data-mot="Naviguer">
+  <div class="ke-col">
+    <p class="ke-sur"><b>08</b> Les onglets, le rail, les menus, les infobulles</p>
+    <h2>Savoir où l’on <em>est</em></h2>
+    <p class="ke-chapo">Là où l’on est se lit en romain et en carré. Le reste attend en italique pâle. Un menu est le seul plan qui se relève, et il ne porte aucune bordure.</p>
+  </div>
+  <div class="ke-planche">
+    <p class="ke-petit">les onglets · flèches, Début, Fin</p>
+    <div class="ke-onglets" role="tablist" aria-label="Les saisons">
+      <button type="button" role="tab" id="o1" aria-selected="true" aria-controls="p1">Le printemps<i>6</i></button>
+      <button type="button" role="tab" id="o2" aria-selected="false" aria-controls="p2">L’été<i>8</i></button>
+      <button type="button" role="tab" id="o3" aria-selected="false" aria-controls="p3" class="est-survol">L’automne<i>5</i></button>
+      <button type="button" role="tab" id="o4" aria-selected="false" aria-disabled="true">L’hiver<i>à venir</i></button>
+    </div>
+    <p class="ke-dit" id="p1" role="tabpanel" aria-labelledby="o1">Six lieux s’ouvrent quand la neige part.</p>
+    <p class="ke-dit" id="p2" role="tabpanel" aria-labelledby="o2" hidden>Huit lieux, tous dehors, tous tard le soir.</p>
+    <p class="ke-dit" id="p3" role="tabpanel" aria-labelledby="o3" hidden>Cinq lieux, et la gare qui se vide.</p>
+    <div class="ke-trois ke-sous" style="align-items:start">
+      <div>
+        <p class="ke-petit" style="margin-bottom:22px">le rail nommé · sur le bord droit</p>
+        <nav class="ke-rail" aria-label="Exemple de rail" style="align-items:flex-start">
+          <button type="button" class="passe" style="flex-direction:row-reverse">le début<i></i></button>
+          <button type="button" class="ici" aria-current="true" style="flex-direction:row-reverse">le milieu<i></i></button>
+          <button type="button" style="flex-direction:row-reverse">la fin<i></i></button>
+          <button type="button" class="est-survol" style="flex-direction:row-reverse">après (survol)<i></i></button>
+        </nav>
+        <p class="ke-petit" style="margin:34px 0 18px">sans nom · des traits</p>
+        <div class="ke-rail traits" style="align-items:flex-start;transform:scaleX(-1);width:30px"><b class="passe"></b><b class="passe"></b><b class="ici"></b><b></b><b></b></div>
+      </div>
+      <div>
+        <p class="ke-petit" style="margin-bottom:22px">un menu · flèches, Entrée, Échap</p>
+        <div class="ke-menu" id="menu-demo">
+          <button type="button" class="ke-btn" aria-haspopup="menu">Ranger par…</button>
+          <ul class="ke-menu-liste ke-flotte" role="menu" hidden>
+            <li class="ke-petit" role="presentation">ranger par</li>
+            <li role="menuitemradio" aria-checked="true">l’ordre du récit<kbd>choisi</kbd></li>
+            <li role="menuitemradio" aria-checked="false">le lieu</li>
+            <li role="menuitemradio" aria-checked="false">la durée</li>
+            <li class="filet" role="separator"></li>
+            <li role="menuitemcheckbox" aria-checked="false">montrer ce qui manque</li>
+            <li role="menuitem" aria-disabled="true">tout effacer<kbd>rien à effacer</kbd></li>
+          </ul>
+        </div>
+        <ul class="ke-menu-liste ke-flotte pose" style="margin-top:26px;max-width:320px" aria-hidden="true">
+          <li class="ke-petit">ouvert, posé pour l’exemple</li>
+          <li role="menuitem" tabindex="-1">Dupliquer<kbd>Ctrl D</kbd></li>
+          <li role="menuitem" tabindex="-1" class="est-survol">Renommer<kbd>F2</kbd></li>
+          <li role="menuitem" tabindex="-1" aria-checked="true">Épingler<kbd>fait</kbd></li>
+          <li class="filet"></li>
+          <li role="menuitem" tabindex="-1" aria-disabled="true">Retirer<kbd>tenu ailleurs</kbd></li>
+        </ul>
+      </div>
+      <div>
+        <p class="ke-petit" style="margin-bottom:22px">les infobulles · au survol et au clavier, la même</p>
+        <p class="ke-texte">Le train part à <button type="button" class="ke-btn" style="font-size:inherit" data-bulle="Dit page 4 : « le dernier train, minuit moins deux ».">minuit moins deux</button>, et personne ne le sait.</p>
+        <p class="ke-texte" style="margin-top:70px">Une bulle <button type="button" class="ke-btn est-survol" style="font-size:inherit" data-bulle="Montrée ici pour l’exemple.">ouverte</button>, pour la voir.</p>
+        <p class="ke-texte" style="margin-top:44px"><button type="button" class="ke-btn petit" data-bulle="Dessous, quand la place manque au-dessus." data-bulle-bas>une bulle dessous</button></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 09 · DIRE ═══ -->
+<section class="ke-chapitre" id="dire" data-chapitre="dire" data-mot="Dire">
+  <div class="ke-col">
+    <p class="ke-sur"><b>09</b> Les notes, les avis, les tableaux, les cartes</p>
+    <h2>Prévenir sans <em>crier</em></h2>
+    <p class="ke-chapo">Aucune couleur d’alarme. Une note est une phrase, tenue par un filet sur sa gauche. Le filet dit sa nature : plein, orange, pointillé d’ambre, ou presque rien.</p>
+  </div>
+  <div class="ke-planche">
+    <div class="ke-deux">
+      <div class="ke-note"><p class="ke-petit">une note</p><p>La scène du quai est plus longue que les deux suivantes réunies.</p></div>
+      <div class="ke-note tenu"><p class="ke-petit">ce qui demande ta main</p><p>Deux scènes se passent à minuit, dans deux villes.</p><button type="button" class="ke-btn">voir les deux</button></div>
+      <div class="ke-note deduit"><p class="ke-petit">déduit, pas encore gardé</p><p>Le train viendrait du Nord : c’est le seul qui roule la nuit.</p><button type="button" class="ke-btn">c’est voulu</button></div>
+      <div class="ke-note manque"><p class="ke-petit">ce qui manque</p><p>On ne sait pas encore qui l’attend à l’arrivée.</p></div>
+    </div>
+    <p class="ke-petit ke-sous">un avis, après un geste · il offre le retour</p>
+    <div class="ke-avis ke-flotte" role="status"><span>La scène 4 est passée après la 7.</span><button type="button" class="ke-btn">Annuler</button></div>
+
+    <p class="ke-petit ke-sous">un tableau léger</p>
+    <table class="ke-table">
+      <thead><tr><th>le lieu</th><th>quand</th><th>d’où on le sait</th><th class="n">scènes</th><th class="n">durée</th></tr></thead>
+      <tbody>
+        <tr tabindex="0"><td>Le quai</td><td>minuit moins deux</td><td><small>dit, page 4</small></td><td class="n">3</td><td class="n">4 min 10</td></tr>
+        <tr tabindex="0" class="tenu"><td>La salle d’attente</td><td>juste avant</td><td><small>tenu en ce moment</small></td><td class="n">2</td><td class="n">2 min 40</td></tr>
+        <tr tabindex="0"><td>Le wagon de queue</td><td><span class="ke-deduit">après le départ</span></td><td><small>déduit de la scène 6</small></td><td class="n">5</td><td class="n">7 min 05</td></tr>
+        <tr tabindex="0"><td>Le buffet</td><td><span class="ke-manque">on ne sait pas</span></td><td><small>manque</small></td><td class="n"><span class="ke-manque">aucune</span></td><td class="n"><span class="ke-manque">—</span></td></tr>
+      </tbody>
+    </table>
+
+    <p class="ke-petit ke-sous">des cartes de texte, sans cadre</p>
+    <div class="ke-cartes">
+      <a class="ke-carte" href="#dire"><span class="ke-petit"><b>01</b>le départ</span><b>Elle rate le train</b><span>Que fait-on d’une nuit qu’on n’avait pas prévue ?</span></a>
+      <a class="ke-carte est-survol" href="#dire"><span class="ke-petit"><b>02</b>la nuit · survol</span><b>La ville endormie</b><span>Qui reste éveillé, et pourquoi le lui dire ?</span></a>
+      <div class="ke-carte manque"><span class="ke-petit">03 · à venir</span><b>Le premier train</b><span>Pas encore écrit.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 10 · LE TEMPS ═══ -->
+<section class="ke-chapitre" id="temps" data-chapitre="temps" data-mot="Le temps">
+  <div class="ke-col">
+    <p class="ke-sur"><b>10</b> La frise, le montage, la lecture, la forme d’onde</p>
+    <h2>Le temps est un <em>trait</em></h2>
+    <p class="ke-chapo">Une ligne, des crans, un seul repère orange : là où l’on est. Ce qui est passé s’éclaircit, ce qui vient reste pâle.</p>
+  </div>
+  <div class="ke-planche">
+    <p class="ke-petit">la frise</p>
+    <div class="ke-frise" id="frise-demo" style="--t:.5"></div>
+
+    <p class="ke-petit ke-sous">le journal · ce qui s’est décidé, dans l’ordre</p>
+    <div class="ke-journal">
+      <div class="tenu"><span class="q">lundi, 9 h</span><span class="t">Le train part à minuit moins deux.</span><span class="o">écrit</span></div>
+      <div class="raye"><span class="q">lundi, 11 h</span><span class="t">Elle arrive en avance.</span><span class="o">retiré</span></div>
+      <div class="corrige"><span class="q">mardi, 15 h</span><span class="t">Elle arrive trop tard, de deux minutes.</span><span class="o">de ta main</span></div>
+      <div class="deduit"><span class="q">mardi, 15 h</span><span class="t">La scène du buffet n’a donc plus lieu.</span><span class="o">déduit, à confirmer</span></div>
+    </div>
+
+    <p class="ke-petit ke-sous">la lecture et la forme d’onde</p>
+    <p class="ke-geste">Clique ou tire dans l’onde. Au clavier : Espace lit, les flèches avancent de cinq secondes.</p>
+    <div class="ke-lecture" data-duree="190" data-depart="62">
+      <p class="ke-l-temps" style="margin:0"><small>sur 3:10</small></p>
+      <div class="ke-onde" data-traits="170" data-graine="11" aria-label="Position dans le morceau"></div>
+      <div class="ke-l-mots"><button type="button" class="ke-btn" data-ke-lire aria-pressed="false">Lire</button></div>
+    </div>
+    <div class="ke-deux ke-sous" style="align-items:end">
+      <div><p class="ke-petit" style="margin-bottom:14px">l’onde fine, pour une ligne de liste</p><div class="ke-lecture" data-duree="42" data-depart="12" style="display:block"><div class="ke-onde fine" data-traits="90" data-graine="5" aria-label="Position dans l’extrait"></div></div></div>
+      <div><p class="ke-petit" style="margin-bottom:14px">la tête de lecture seule</p><div class="ke-lecture" data-duree="100" data-depart="38" style="display:block"><div class="ke-defile" aria-label="Position"></div></div></div>
+      <div><p class="ke-petit" style="margin-bottom:14px">en cours de chargement</p><div class="ke-onde fine" id="onde-attente" aria-busy="true" aria-label="La forme d’onde se prépare"></div></div>
+    </div>
+
+    <p class="ke-petit ke-sous">le montage</p>
+    <p class="ke-geste">Tire un bloc dans le temps, ou les flèches. Tire dans la règle pour déplacer la tête. Ctrl + molette zoome le temps sous le pointeur.</p>
+    <div class="ke-montage" id="montage-demo"></div>
+    <p class="ke-lu" id="montage-lu" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ═══ 11 · LE SCHÉMA ═══ -->
+<section class="ke-chapitre" id="schema" data-chapitre="schema" data-mot="Schéma">
+  <div class="ke-col">
+    <p class="ke-sur"><b>11</b> Le schéma nodal</p>
+    <h2>Des fils, mais un seul qui <em>compte</em></h2>
+    <p class="ke-chapo">Au repos, les câbles se taisent. Prends un nœud : les siens s’allument. Tire un câble : il attend en pointillé d’ambre, son port de départ reste marqué, et les ports qui peuvent le recevoir se montrent.</p>
+    <p class="ke-geste" style="margin-top:34px">Tire d’un port à un autre. Glisse un nœud, ou le fond. Ctrl + molette zoome sous le pointeur. Au clavier : Tab, Entrée sur un port pour le tenir, Entrée sur un port allumé pour brancher, Échap revient, Suppr retire.</p>
+  </div>
+  <div class="ke-planche large" style="margin-left:var(--s8)">
+    <div class="ke-nodal" id="nodal-demo" data-titre="Signal" aria-label="Schéma : cinq nœuds et leurs câbles"></div>
+  </div>
+</section>
+
+<!-- ═══ 12 · LE CANEVAS ═══ -->
+<section class="ke-chapitre" id="canevas" data-chapitre="canevas" data-mot="Canevas">
+  <div class="ke-col">
+    <p class="ke-sur"><b>12</b> Le canevas infini à zoom sémantique</p>
+    <h2>La même matière, à trois <em>hauteurs</em></h2>
+    <p class="ke-chapo">De loin, un trait par chose. On descend : les traits s’écartent et deviennent des noms. Plus bas encore, chaque nom dit sa phrase. Rien ne s’ajoute : c’est la même matière qui se transforme.</p>
+    <p class="ke-geste" style="margin-top:34px">Ctrl + molette, ou pince. Ce que tu vises reste sous le pointeur. Glisse le fond. Le rail à droite fait un bond d’une hauteur à l’autre. Au clavier : 1, 2, 3, + et −, les flèches.</p>
+  </div>
+  <div class="ke-planche large" style="margin-left:var(--s8)">
+    <div class="ke-canevas" id="canevas-demo" aria-label="Canevas : une ville, quatre saisons"></div>
+  </div>
+</section>
+
+<!-- ═══ 13 · LES CHIFFRES ═══ -->
+<section class="ke-chapitre" id="chiffres" data-chapitre="chiffres" data-mot="Chiffres">
+  <div class="ke-col">
+    <p class="ke-sur"><b>13</b> Les rangées de traits, les arches, les barres fines</p>
+    <h2>Contenir, plutôt que <em>montrer</em></h2>
+    <p class="ke-chapo">Une planche dit une chose, avec peu de marques, et se lit sans mode d’emploi. Une seule teinte : l’encre. L’orange désigne ce qu’on vise. Les nombres s’écrivent en lettres d’encre, jamais dans la couleur de la marque.</p>
+  </div>
+  <div class="ke-planche">
+    <p class="ke-petit">une rangée de traits · un trait par scène, sa hauteur dit sa durée</p>
+    <div class="ke-traits" id="traits-demo" style="margin-top:20px" aria-label="Les scènes"></div>
+    <p class="ke-lu" id="traits-lu" aria-live="polite"></p>
+
+    <p class="ke-petit ke-sous">des arches · ce qui se répond d’une scène à l’autre</p>
+    <div id="arches-demo" aria-label="Ce qui se répond"></div>
+    <p class="ke-lu" id="arches-lu" aria-live="polite"><small>survole une arche</small>Une promesse et le moment où elle est tenue.</p>
+
+    <p class="ke-petit ke-sous">des barres fines · le temps passé dans chaque lieu</p>
+    <div class="ke-barres" id="barres-demo"></div>
+
+    <div class="ke-deux ke-sous" style="align-items:end">
+      <div><p class="ke-petit" style="margin-bottom:20px">une ligne · les pages écrites, semaine après semaine ; la suite est déduite</p><div class="ke-ligne" id="ligne-demo" aria-label="Pages écrites par semaine"></div></div>
+      <div><p class="ke-petit" style="margin-bottom:20px">des cases · ce qui est fait, ce qui est vu, ce qu’on tient</p><div class="ke-traits cases" id="cases-demo"></div>
+        <p class="ke-petit" style="margin-top:16px">encre pleine : écrit · gris : commencé · orange : celle qu’on tient</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 14 · LA PISTE ═══ -->
+<section class="ke-chapitre" id="piste" data-chapitre="piste" data-mot="Piste">
+  <div class="ke-col">
+    <p class="ke-sur"><b>14</b> La scène qui se joue au défilement</p>
+    <h2>La page s’arrête, la scène <em>se joue</em></h2>
+    <p class="ke-chapo">Rien ne bouge au chargement. Une piste est plus haute que l’écran ; la scène y reste collée, et le défilement la fait avancer de zéro à un. Au bout, la page repart.</p>
+    <p class="ke-texte" style="margin-top:34px">Ci-dessous, une seule matière : une phrase. Ses mots descendent sur leurs lignes, puis se rangent en traits. Un seul reste allumé.</p>
+  </div>
+  <div class="ke-piste" data-pas="4" data-niveaux="la phrase|les mots|les traits|ce qui reste">
+    <figure class="ke-scene" id="scene-demo" data-titre="Phrase"></figure>
+  </div>
+  <div class="ke-col">
+    <p class="ke-texte">La scène reçoit son avancement dans une variable, <span class="ke-nom" style="font-size:15px">t</span>, et le pas où l’on est. Un élément peut n’apparaître qu’à partir d’un pas. Le rail nommé se pose seul sur le bord droit.</p>
+  </div>
+</section>
+
+<!-- ═══ 15 · LES DIAPOSITIVES ═══ -->
+<section class="ke-chapitre" id="diapos" data-chapitre="diapos" data-mot="Diapos">
+  <div class="ke-col">
+    <p class="ke-sur"><b>15</b> Les diapositives de présentation</p>
+    <h2>Six gabarits, une idée par <em>page</em></h2>
+    <p class="ke-chapo">Titre, chapitre, citation, chiffre seul, deux colonnes, image pleine. Tout s’y mesure à la largeur de la diapositive : elle tient pareil sur un mur et dans une vignette.</p>
+    <p class="ke-texte" style="margin-top:34px"><a class="ke-btn" href="presentation.html">Ouvrir la présentation en plein écran</a></p>
+  </div>
+  <div class="ke-planche large v-diapos" style="margin-left:var(--s8)">
+    <figure><div class="ke-diapo"><section class="ke-d titre" data-mot="Nuit"><p class="sur">Un projet · novembre</p><h1>Une nuit<br>de <em>trop.</em></h1><p class="chapo">Elle rate le dernier train. La ville, elle, ne dort pas tout à fait.</p><p class="pied"><span>Le nom du projet</span><span>1 / 6</span></p></section></div><figcaption class="ke-petit">titre</figcaption></figure>
+    <figure><div class="ke-diapo"><section class="ke-d chapitre" data-mot="Deux"><p class="num">Deuxième partie</p><h2>Ceux qui restent éveillés</h2><p class="pied"><span>Le nom du projet</span><span>2 / 6</span></p></section></div><figcaption class="ke-petit">chapitre</figcaption></figure>
+    <figure><div class="ke-diapo"><figure class="ke-d citation" style="margin:0"><blockquote>« On ne rate jamais un train. On en prend un <em>autre.</em> »</blockquote><figcaption>Le veilleur<span>scène 9</span></figcaption><p class="pied"><span>Le nom du projet</span><span>3 / 6</span></p></figure></div><figcaption class="ke-petit">citation</figcaption></figure>
+    <figure><div class="ke-diapo"><section class="ke-d chiffre"><p class="nombre">7<small>heures</small></p><p class="chapo">entre le dernier train et le premier. <em>Tout le film tient là.</em></p><p class="pied"><span>Le nom du projet</span><span>4 / 6</span></p></section></div><figcaption class="ke-petit">chiffre seul</figcaption></figure>
+    <figure><div class="ke-diapo"><section class="ke-d colonnes"><div><p class="sur"><b>03</b>Ce qu’on sait</p><h2>Trois lieux, une seule <em>nuit</em></h2></div><ul><li><b>minuit</b>Le quai, vide</li><li class="tenu"><b>trois heures</b>Le buffet, encore ouvert</li><li><b>six heures</b>Le premier train</li></ul><p class="pied"><span>Le nom du projet</span><span>5 / 6</span></p></section></div><figcaption class="ke-petit">deux colonnes</figcaption></figure>
+    <figure><div class="ke-diapo"><section class="ke-d image"><div class="vue v-image"></div><div class="legende"><p>Le quai, à minuit moins deux.</p><span>ton image ici · la légende reste dessous, jamais dessus</span></div></section></div><figcaption class="ke-petit">image pleine</figcaption></figure>
+  </div>
+</section>
+</main>
+
+<footer class="ke-pied">
+  <p>Kit étude · une feuille, un script, des polices. Le mode d’emploi est dans LIRE.md, à côté de cette page.</p>
+</footer>
+</body>
+</html>
