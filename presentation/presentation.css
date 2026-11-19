@@ -51,7 +51,7 @@
 /* ---- 01 voyage ---- */
 .se-grand { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); font-size: clamp(160px, 17vw, 360px); }
 .se-voy-bas { position: absolute; left: 9vw; right: 9vw; top: 69%; }
-.se-bornes { display: flex; justify-content: space-between; margin-top: 16px; font-family: var(--f-ui); font-size: var(--c-petit); color: var(--pale); }
+.se-bornes { display: flex; justify-content: space-between; margin-top: 16px; font-family: var(--f-texte); font-style: italic; font-size: 15px; color: var(--pale); }
 .se-bornes b { display: block; font-family: var(--f-texte); font-weight: 400; color: var(--ink); font-size: 19px; }
 
 /* ---- 02 chiffres ---- */
@@ -63,15 +63,15 @@
 .se-pose div.ici b, .se-pose div.ici span { color: var(--or); }
 .se-courant { position: absolute; left: 46vw; right: 6vw; top: 50%; transform: translateY(-50%); }
 .se-courant .n { font-size: clamp(150px, 13vw, 300px); white-space: nowrap; }
-.se-courant .n .u { font-family: var(--f-ui); font-size: 26px; color: var(--pale); margin-left: .3em; letter-spacing: 0; }
+.se-courant .n .u { font-family: var(--f-texte); font-style: italic; font-weight: 300; font-size: 34px; color: var(--pale); margin-left: .3em; letter-spacing: 0; }
 .se-courant .l { font-size: var(--c-dit); font-style: italic; margin-top: 26px; }
-.se-courant .t { font-family: var(--f-ui); font-size: 15px; color: var(--pale); margin-top: 10px; max-width: 34em; line-height: 1.5; }
+.se-courant .t { font-family: var(--f-texte); font-size: 17px; color: var(--pale); margin-top: 10px; max-width: 34em; line-height: 1.5; }
 
 /* ---- 05 trajet ---- */
 #tra .se-carte { position: absolute; top: 0; left: 26vw; width: 72vw; height: 100%; overflow: visible; }
 .se-compte { position: absolute; left: 6vw; top: 8vh; }
 .se-compte .j { font-size: clamp(90px, 7vw, 150px); }
-.se-compte .k { font-family: var(--f-ui); font-size: 18px; color: var(--pale); margin-top: 10px; font-variant-numeric: tabular-nums; }
+.se-compte .k { font-family: var(--f-texte); font-size: 20px; color: var(--pale); margin-top: 10px; font-variant-numeric: tabular-nums; }
 .se-acte { position: absolute; left: 6vw; bottom: 9vh; width: 27vw; }
 .se-acte .ke-sur { margin-bottom: 12px; }
 .marque { cursor: pointer; }
@@ -89,7 +89,7 @@
 .se-frise .lecture .gros { font-weight: 200; font-size: 64px; line-height: 1; font-variant-numeric: tabular-nums; }
 
 /* ---- 06 biomes ---- */
-.se-bandes { position: absolute; left: 6vw; right: 7vw; top: 12vh; bottom: 34vh; display: flex; gap: 3px; align-items: flex-end; }
+.se-bandes { position: absolute; left: 6vw; right: 7vw; top: 19vh; bottom: 34vh; display: flex; gap: 3px; align-items: flex-end; }
 .se-bandes > div { position: relative; height: 100%; }
 .se-bandes .c { position: absolute; left: 0; right: 0; bottom: 0; transition: height .6s var(--ease), opacity .4s; }
 .se-bandes .n { position: absolute; left: 0; bottom: -28px; font-family: var(--f-mono); font-size: var(--c-machine); letter-spacing: .12em; color: var(--ink3); white-space: nowrap; }
@@ -128,7 +128,7 @@
 /* ---- 09 science ---- */
 .se-points { position: absolute; left: 56%; top: 46%; transform: translate(-50%, -50%); }
 .se-sci-compte { position: absolute; left: 6vw; top: 46%; transform: translateY(-50%); }
-.se-sci-compte div { font-family: var(--f-ui); font-size: 15px; color: var(--pale); margin: 0 0 18px; }
+.se-sci-compte div { font-family: var(--f-texte); font-style: italic; font-size: 18px; color: var(--pale); margin: 0 0 18px; }
 .se-sci-compte b { display: inline-block; min-width: 2.1em; margin-right: 12px; text-align: right; font-family: var(--f-texte); font-weight: 200; font-size: 64px; line-height: 1; color: var(--voile); vertical-align: -6px; transition: color .4s; }
 .se-sci-compte div.ici b { color: var(--ink); }
 .se-sci-compte div.p b { color: var(--or); }
@@ -209,3 +209,27 @@
   .se-echelle, .se-regle { left: 38vw; }
   .ke-scene > .ke-rail { display: none; }
 }
+
+/* ---- 11 le script en hauteur : élévation et plongée ---- */
+.se-zoom { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.se-sait { position: absolute; left: 6vw; bottom: 3.5vh; width: min(520px, 30vw); pointer-events: none; }
+.se-sait .ke-petit { margin-bottom: 8px; }
+.se-sait .ke-dit { font-size: clamp(19px, 1.3vw, 24px); }
+.se-sait .ouvert { margin: 10px 0 0; font-family: var(--f-texte); font-style: italic; font-size: 15px; color: var(--amb); }
+#ele .se-voile.b, #plo .se-voile.b { height: 30vh; background: linear-gradient(transparent, color-mix(in srgb, var(--bg) 70%, transparent) 55%, var(--bg)); }
+
+/* ---- 06 le ciel des 41 jours, au-dessus des bandes ---- */
+.se-ciel { position: absolute; left: 6vw; right: 7vw; top: 9vh; height: 6vh; }
+.se-ciel .phase { position: absolute; top: 0; bottom: 0; background: linear-gradient(180deg, color-mix(in srgb, var(--amb) 42%, transparent), color-mix(in srgb, var(--amb) 6%, transparent)); }
+.se-ciel .phase.noire { background: linear-gradient(180deg, color-mix(in srgb, var(--black) 70%, transparent), transparent); }
+.se-ciel .phase span { position: absolute; left: 8px; top: 6px; font-family: var(--f-texte); font-style: italic; font-size: 14px; color: var(--voile); white-space: nowrap; }
+.se-ciel .lune { position: absolute; top: calc(100% + 8px); width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--ink); }
+.se-ciel .lune.pleine { background: var(--ink); }
+.se-ciel .lune span { position: absolute; left: 18px; top: -3px; font-family: var(--f-ui); font-size: 12px; color: var(--pale); white-space: nowrap; }
+.se-ciel .lune:last-child span { left: auto; right: 18px; }
+
+/* ---- 07, 08 ce qu'on lit ---- */
+.se-esp-lu { position: absolute; left: 6vw; top: 7vh; width: 40vw; }
+.se-esp-lu .n { font-family: var(--f-texte); font-weight: 300; font-size: var(--c-titre); line-height: 1.05; margin: 4px 0 10px; }
+.se-esp-lu .ke-dit { font-size: clamp(19px, 1.35vw, 24px); color: var(--voile); }
+#tit .se-esp-lu { width: 34vw; }
