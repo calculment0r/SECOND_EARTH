@@ -10,7 +10,7 @@
   var P = 'se-projet.';                     // préfixe des clés locales
   var CHEMIN = 'site-projet/content/';      // où vit le contenu dans le dépôt
   var ITER = 310000;                        // PBKDF2-SHA-256
-  var LONG_ADMIN = 20, LONG_INVITE = 8;
+  var LONG_ADMIN = 1, LONG_INVITE = 1;   // Cal, 19/11 : pas de longueur imposée
 
   var publie = { contenu: null, modifs: {}, commentaires: { fils: [] }, acces: {}, cle: null };
   try {

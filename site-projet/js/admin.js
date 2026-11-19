@@ -13,7 +13,7 @@
   function acces() {
     var s = el('section.pj-ad', { id: 'acces' }, titre('01', 'Les accès'));
     if (!D.acces.adminDefini()) {
-      var a = C.champ('Choisir le code admin', { type: 'password', autocomplete: 'new-password' }, 'Une phrase longue : ' + D.LONG_ADMIN + ' caractères au moins. Elle n\'est écrite nulle part en clair ; seule son empreinte est gardée.');
+      var a = C.champ('Choisir le code admin', { type: 'password', autocomplete: 'new-password' }, 'Elle n\'est écrite nulle part en clair ; seule son empreinte est gardée.');
       var b = C.champ('Le redonner', { type: 'password', autocomplete: 'new-password' }), dit = el('p.pj-dit');
       s.appendChild(el('form.pj-form', {
         onsubmit: function (e) {
