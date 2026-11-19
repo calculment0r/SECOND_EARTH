@@ -1,0 +1,106 @@
+/* Second Earth · site du projet · l'éditeur sur la page (js/editeur.js).
+   Comme projet.css : aucune couleur écrite ici, seulement les jetons du kit étude. */
+
+/* ── ce qui se voit aussi hors édition : les polices et la mise en page posées par l'éditeur ── */
+.pj-f-texte{font-family:var(--f-texte)}
+.pj-f-nom{font-family:var(--f-nom);font-weight:400}
+.pj-f-ui{font-family:var(--f-ui)}
+.pj-f-mono{font-family:var(--f-mono)}
+.pj-t{white-space:pre-line}
+.pj-mis{position:relative}
+.pj-mis.pj-decale,.pj-mis[data-para]{transform:translate(var(--mx,0px),calc(var(--my,0px) + var(--para,0px)))}
+.pj-bloc[data-type="media"]>.pj-mis,.pj-bloc[data-type="carrousel"]>.pj-mis{margin-left:auto;margin-right:auto}
+
+/* les éléments libres : un texte ou une image posés dans un bloc ; le texte passe toujours au-dessus */
+.pj-libres{position:absolute;inset:0;pointer-events:none;z-index:3}
+.pj-libre{position:absolute;pointer-events:auto}
+.pj-libre[data-genre="image"]{z-index:1}
+.pj-libre[data-genre="texte"]{z-index:2}
+.pj-libre[data-para]{transform:translateY(var(--para,0px))}
+.pj-libre-texte{font-size:var(--c-texte);line-height:1.5;color:var(--ink);text-wrap:pretty}
+.pj-media.libre{position:absolute;inset:0;height:100%;aspect-ratio:auto}
+.pj-media.libre .pj-format{font-size:clamp(40px,6vw,110px)}
+.pj-media.libre .pj-attendu{padding:8px 12px;gap:8px}
+.pj-media.libre .pj-attendu p{font-size:15px}
+
+/* le format partagé d'un carrousel, réglé à la poignée */
+.pj-carrousel.regle .pj-tuile{width:calc(var(--car-h) * var(--car-r))}
+.pj-carrousel.regle .pj-tuile>.pj-media{aspect-ratio:auto;height:var(--car-h)}
+.pj-carrousel.regle .pj-tuile.pj-ajout{width:260px}
+
+/* ── le mode édition ── */
+.pj-edition .pj-bloc:hover{box-shadow:inset 0 0 0 1px var(--line-amb)}
+.pj-edition .pj-bloc.pj-choisi{box-shadow:inset 0 0 0 1px var(--line-or)}
+.pj-edition .pj-bloc.pj-choisi::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:24;outline:1px dashed var(--or);outline-offset:-3px}
+.pj-edition .pj-libre{outline:1px dashed var(--line-cy);outline-offset:2px}
+.pj-edition .pj-libre.pj-choisi{outline:1px dashed var(--or)}
+.pj-edition .pj-media:not(.vide) img,.pj-edition .pj-media:not(.vide) video{cursor:grab}
+.pj-edition .pj-media.cadre-en-cours img,.pj-edition .pj-media.cadre-en-cours video{cursor:grabbing}
+.pj-tire,.pj-tire *{cursor:grabbing !important;user-select:none !important}
+.pj-edition .pj-media:not(.vide) .pj-outils-media{opacity:0;transition:opacity var(--vite)}
+.pj-edition .pj-media:hover .pj-outils-media,.pj-edition .pj-outils-media:focus-within{opacity:1}
+.pj-outils-media{align-items:baseline;flex-wrap:wrap;max-width:calc(100% - 28px)}
+.pj-geste{align-self:center}
+.pj-media.libre .pj-outils-media{top:auto;bottom:8px;left:8px;gap:10px;padding:4px 8px}
+.pj-media.libre .pj-geste{display:none}
+.pj-media.libre .pj-outils-media .ke-btn.petit{font-size:12.5px}
+
+/* la poignée de bloc : ✥ ▲ ▼ A− A+ ↺ ⧉ ⇅ ✕, dans le cadre (jamais à cheval sur le bord, où vit la ligne d'insertion) */
+.pj-chrome{position:absolute;top:12px;right:14px;z-index:30;display:flex;align-items:center;gap:1px;padding:3px;background:var(--hdr-bg);box-shadow:0 0 0 1px var(--line),0 8px 22px var(--drop);opacity:0;pointer-events:none;transition:opacity var(--vite)}
+.pj-bloc:hover>.pj-chrome,.pj-bloc.pj-choisi>.pj-chrome,.pj-chrome:focus-within,.pj-libre:hover>.pj-chrome,.pj-libre.pj-choisi>.pj-chrome{opacity:1;pointer-events:auto}
+.pj-bloc[data-type="ouverture"]>.pj-chrome{top:calc(var(--barre-h) + 4px)}
+.pj-chrome-libre{top:auto;bottom:calc(100% + 4px);right:auto;left:-4px}
+.pj-chrome-libre::before{content:"";position:absolute;left:0;right:0;top:100%;height:8px}
+.pj-ch-nom{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);padding:0 10px 0 7px;white-space:nowrap}
+.pj-ch-b,.pj-ch-h{display:grid;place-items:center;min-width:29px;height:29px;padding:0 6px;font-family:var(--f-ui);font-size:14px;line-height:1;color:var(--ink2);background:none}
+.pj-ch-b:hover,.pj-ch-b:focus-visible{color:var(--ink);background:var(--panel3)}
+.pj-ch-b.x:hover{color:var(--or)}
+.pj-ch-b.actif,.pj-ch-b[aria-pressed="true"]{color:var(--or)}
+.pj-ch-h{cursor:grab;font-size:17px;color:var(--ink);touch-action:none}
+.pj-ch-h:hover{background:var(--panel3)}
+.pj-chrome[data-v]::after,.pj-grip[data-v]::after{content:attr(data-v);position:absolute;top:calc(100% + 6px);right:0;padding:3px 8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;white-space:nowrap;color:var(--on-or);background:var(--or)}
+
+/* poignées de bord et de coin */
+.pj-grip{position:absolute;z-index:31;opacity:0;transition:opacity var(--vite);background:var(--or);touch-action:none}
+.pj-bloc:hover>.pj-mis>.pj-grip,.pj-bloc.pj-choisi>.pj-mis>.pj-grip,.pj-libre:hover>.pj-grip,.pj-libre.pj-choisi>.pj-grip,.pj-tuile:hover .pj-grip,.pj-grip[data-v]{opacity:.9}
+.pj-grip:hover{opacity:1}
+.pj-grip-e{top:50%;right:-4px;width:8px;height:56px;margin-top:-28px;cursor:ew-resize}
+.pj-grip-s{left:50%;bottom:-4px;width:56px;height:8px;margin-left:-28px;cursor:ns-resize}
+.pj-grip-se{right:-5px;bottom:-5px;width:14px;height:14px;cursor:nwse-resize}
+.pj-car-grip-e{top:50%;right:0;width:8px;height:64px;margin-top:-32px;cursor:ew-resize}
+.pj-car-grip-s{left:50%;bottom:0;width:64px;height:8px;margin-left:-32px;cursor:ns-resize}
+.pj-grip-s[data-v]::after,.pj-car-grip-s[data-v]::after{right:auto;left:0}
+
+/* la ligne d'insertion entre deux blocs */
+.pj-insert{position:absolute;left:0;right:0;top:-10px;height:20px;z-index:26;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pj-insert i{position:absolute;left:0;right:0;top:9px;height:2px;background:var(--amb);opacity:0;transition:opacity var(--vite)}
+.pj-insert span{position:relative;padding:2px 10px;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-or);background:var(--amb);opacity:0;transition:opacity var(--vite)}
+.pj-insert:hover i,.pj-insert:hover span,.pj-insert:focus-visible i,.pj-insert:focus-visible span{opacity:1}
+.pj-insert:focus-visible{outline:none}
+.pj-insert-fin{position:relative;top:0;height:26px}
+.pj-insert-fin i{top:12px}
+
+/* le menu (ligne d'insertion, clic droit, « + Ajouter ») */
+.pj-menu{position:fixed;z-index:70;display:flex;flex-direction:column;align-items:stretch;min-width:250px;padding:8px 0;background:var(--panel3);box-shadow:0 0 0 1px var(--line),0 16px 40px var(--drop)}
+.pj-menu p{padding:10px 16px 4px}
+.pj-menu p:first-child{padding-top:4px}
+.pj-menu button{text-align:left;padding:7px 16px;font-family:var(--f-ui);font-size:14.5px;color:var(--ink)}
+.pj-menu button:hover,.pj-menu button:focus-visible{background:var(--or-bg);outline:none}
+
+/* la barre typographique, au-dessus du texte qu'on écrit */
+.pj-typo{position:fixed;z-index:60;display:flex;align-items:center;gap:4px;padding:5px 8px;background:var(--panel3);box-shadow:0 0 0 1px var(--line),0 12px 30px var(--drop)}
+.pj-typo[hidden]{display:none}
+.pj-typo select,.pj-typo input{height:28px;padding:0 6px;font-family:var(--f-ui);font-size:13px;color:var(--ink);background:var(--panel);border:0;border-radius:0;box-shadow:inset 0 0 0 1px var(--line)}
+.pj-typo .ke-machine{margin:0 2px 0 -2px}
+.pj-ty-s{width:60px}
+.pj-ty-b{display:grid;place-items:center;min-width:26px;height:28px;padding:0 5px;font-family:var(--f-ui);font-size:14px;color:var(--ink2)}
+.pj-ty-b:hover{color:var(--ink);background:var(--panel2)}
+.pj-ty-c{display:flex;align-items:center;gap:6px;margin-left:6px;padding-left:10px;box-shadow:inset 1px 0 0 var(--line)}
+.pj-ty-pastille{width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px var(--trait-vu)}
+.pj-ty-pastille:hover{box-shadow:0 0 0 2px var(--ink)}
+.pj-ty-sans{font-size:12px}
+
+/* la tuile d'ajout d'un carrousel */
+.pj-tuile.pj-ajout{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.pj-tuile.pj-ajout.depot{box-shadow:inset 0 0 0 2px var(--or)}
+.pj-ajouter{font-weight:500}

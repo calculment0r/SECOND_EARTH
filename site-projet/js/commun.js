@@ -88,6 +88,7 @@
       barre.appendChild(el('span.ke-machine', {}, r === 'admin' ? 'admin' : 'invité'));
       if (r === 'admin') {
         barre.appendChild(el('a.ke-btn.petit', { href: 'admin.html' }, 'Tableau de bord'));
+        if (enEdition() && window.Editeur) barre.appendChild(window.Editeur.boutonAjouter());
         if (document.body.hasAttribute('data-editable')) barre.appendChild(el('button.ke-btn.plein.pj-editer', { type: 'button', 'aria-pressed': enEdition() ? 'true' : 'false', onclick: function () { basculerEdition(); } }, enEdition() ? 'Finir l\'édition' : 'Éditer la page'));
       }
       barre.appendChild(bouton('Sortir', function () { D.acces.sortir(); basculerEdition(false); }, 'discret'));

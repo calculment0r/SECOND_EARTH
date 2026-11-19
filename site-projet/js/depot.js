@@ -1,7 +1,7 @@
 /* Second Earth · site du projet · le dépôt local.
    Ce fichier tient : le contenu publié (inliné dans la page), le brouillon local (localStorage, IndexedDB
    pour les médias), les rôles (invité, admin) par code, le jeton GitHub chiffré, et la publication.
-   Écrit pour ce dépôt, sur le principe du site NirvaLabWeb de Cal (aucun fichier n'en est recopié).
+   Écrit pour ce dépôt, sur le principe du site NirvaLabWeb de Cal ; la signature Cloudflare R2 en est reprise (store.js).
 
    Rappel affiché partout où il le faut : le site est public. Les codes sont un voile, pas une serrure.
    La seule vraie protection de la publication est le jeton GitHub. */
@@ -223,22 +223,90 @@
     poser: function (valeur, code) {
       valeur = (valeur || '').trim();
       if (!/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(valeur)) return Promise.reject(new Error('Ceci ne ressemble pas à un jeton GitHub (il commence par github_pat_).'));
-      return verifier(code, acces.table().admin).then(function (ok) {
-        if (!ok) throw new Error('Le code admin ne correspond pas.');
-        var sel = alea(16), iv = alea(12);
-        return cleAes(code, sel).then(function (k) { return crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, k, new TextEncoder().encode(valeur)); })
-          .then(function (c) { ecrire('cle', { sel: b64(sel), iv: b64(iv), iter: ITER, donnees: b64(c) }); session('jeton', valeur); signaler(); });
-      });
+      return coffre(code, valeur, session('r2'));
     },
-    oublier: function () { ecrire('cle', null); session('jeton', null); signaler(); },
+    /* les clés R2 vont dans le même coffre que le jeton GitHub (comme dans NirvaLabWeb) */
+    poserR2: function (id, secret, code) {
+      id = (id || '').trim(); secret = (secret || '').trim();
+      if (!id || !secret) return Promise.reject(new Error('Il faut l\'identifiant et le secret de la clé R2.'));
+      return coffre(code, session('jeton') || '', { accessKeyId: id, secretAccessKey: secret });
+    },
+    oublier: function () { ecrire('cle', null); session('jeton', null); session('r2', null); signaler(); },
     valeur: function () { return session('jeton'); },
     chiffre: function () { return lire('cle', null) || publie.cle; }
   };
+  /* le coffre : le jeton seul (ancienne forme, une chaîne), ou {gh, r2} quand des clés R2 l'accompagnent */
+  function coffre(code, gh, r2) {
+    return verifier(code, acces.table().admin).then(function (ok) {
+      if (!ok) throw new Error('Le code admin ne correspond pas.');
+      var clair = r2 && r2.accessKeyId ? JSON.stringify({ gh: gh, r2: r2 }) : gh, sel = alea(16), iv = alea(12);
+      return cleAes(code, sel).then(function (k) { return crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, k, new TextEncoder().encode(clair)); })
+        .then(function (c) { ecrire('cle', { sel: b64(sel), iv: b64(iv), iter: ITER, donnees: b64(c) }); session('jeton', gh || null); session('r2', r2 && r2.accessKeyId ? r2 : null); signaler(); });
+    });
+  }
   function deverrouiller(code) {
     var c = jeton.chiffre(); if (!c || !c.donnees) return Promise.resolve(false);
     return cleAes(code, deb64(c.sel), c.iter).then(function (k) { return crypto.subtle.decrypt({ name: 'AES-GCM', iv: deb64(c.iv) }, k, deb64(c.donnees)); })
-      .then(function (clair) { session('jeton', new TextDecoder().decode(clair)); return true; }, function () { return false; });
+      .then(function (clair) {
+        var t = new TextDecoder().decode(clair), o = null;
+        if (t.charAt(0) === '{') { try { o = JSON.parse(t); } catch (e) { o = null; } }
+        session('jeton', o ? (o.gh || null) : t); session('r2', o && o.r2 ? o.r2 : null);
+        return true;
+      }, function () { return false; });
   }
+
+  /* ── Cloudflare R2 : préparé, non branché ──
+     Repris de NirvaLabWeb (store.js, « Cloudflare R2 ») : la signature AWS V4 d'un seul PUT, la charge envoyée
+     non signée. Les coordonnées du bucket ne sont pas secrètes (réglages de ce navigateur) ; la paire de clés
+     l'est, et va dans le coffre chiffré. Aucun compte n'est relié au 19/11/2026 : ce code n'a jamais parlé à un
+     vrai bucket. */
+  var R2_REGION = 'auto';
+  function octets(t) { return new TextEncoder().encode(t); }
+  function hexDe(buf) { return hex(buf); }
+  function sha256Hex(t) { return crypto.subtle.digest('SHA-256', octets(t)).then(hexDe); }
+  function hmac(cle, msg) {
+    return crypto.subtle.importKey('raw', cle, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'])
+      .then(function (k) { return crypto.subtle.sign('HMAC', k, octets(msg)); }).then(function (s) { return new Uint8Array(s); });
+  }
+  function uriEnc(t) { return encodeURIComponent(t).replace(/[!'()*]/g, function (c) { return '%' + c.charCodeAt(0).toString(16).toUpperCase(); }); }
+  function signerR2(cfg, cle, type, quand) {
+    var now = quand || new Date(), amz = now.toISOString().replace(/[:-]/g, '').replace(/\.\d{3}/, ''), jour = amz.slice(0, 8);
+    var hote = String(cfg.endpoint).replace(/^https?:\/\//, '').replace(/\/.*$/, ''), charge = 'UNSIGNED-PAYLOAD';
+    var uri = '/' + uriEnc(cfg.bucket) + '/' + String(cle).split('/').map(uriEnc).join('/');
+    var entetes = 'content-type:' + type + '\nhost:' + hote + '\nx-amz-content-sha256:' + charge + '\nx-amz-date:' + amz + '\n';
+    var signes = 'content-type;host;x-amz-content-sha256;x-amz-date';
+    var requete = ['PUT', uri, '', entetes, signes, charge].join('\n'), portee = jour + '/' + R2_REGION + '/s3/aws4_request';
+    return sha256Hex(requete).then(function (h) {
+      var aSigner = ['AWS4-HMAC-SHA256', amz, portee, h].join('\n');
+      return hmac(octets('AWS4' + cfg.secretAccessKey), jour).then(function (k) { return hmac(k, R2_REGION); })
+        .then(function (k) { return hmac(k, 's3'); }).then(function (k) { return hmac(k, 'aws4_request'); })
+        .then(function (k) { return hmac(k, aSigner); }).then(function (sig) {
+          return { url: cfg.endpoint.replace(/\/+$/, '') + uri, entetes: {
+            'Authorization': 'AWS4-HMAC-SHA256 Credential=' + cfg.accessKeyId + '/' + portee + ', SignedHeaders=' + signes + ', Signature=' + hexDe(sig),
+            'Content-Type': type, 'x-amz-content-sha256': charge, 'x-amz-date': amz } };
+        });
+    });
+  }
+  var r2 = {
+    reglages: function () { return reglages.lire().r2 || {}; },
+    cles: function () { return !!session('r2'); },
+    config: function () {
+      var g = r2.reglages(), k = session('r2');
+      if (!g.endpoint || !g.bucket || !g.publicBase || !k) return null;
+      return { endpoint: g.endpoint, bucket: g.bucket, publicBase: String(g.publicBase).replace(/\/+$/, ''), accessKeyId: k.accessKeyId, secretAccessKey: k.secretAccessKey };
+    },
+    pret: function () { return !!r2.config(); },
+    envoyer: function (cle, blob) {
+      var cfg = r2.config(); if (!cfg) return Promise.reject(new Error('R2 n\'est pas réglé.'));
+      var type = blob.type || 'application/octet-stream';
+      return signerR2(cfg, cle, type).then(function (s) { return fetch(s.url, { method: 'PUT', headers: s.entetes, body: blob }); })
+        .then(function (rep) {
+          if (rep.ok) return cfg.publicBase + '/' + cle;
+          return rep.text().then(function (t) { var m = /<Message>([^<]*)<\/Message>/.exec(t || ''); throw new Error('R2 ' + rep.status + (m ? ' : ' + m[1] : '')); });
+        });
+    },
+    signer: signerR2
+  };
 
   /* ── la publication : un seul commit, par l'API Git de GitHub ── */
   function depotParDefaut() {
@@ -246,12 +314,12 @@
     return h && seg ? h[1] + '/' + seg : 'calculment0r/SECOND_EARTH';
   }
   var reglages = {
-    lire: function () { return Object.assign({ depot: depotParDefaut(), branche: '', rangerCle: false }, lire('reglages', {})); },
+    lire: function () { return Object.assign({ depot: depotParDefaut(), branche: '', rangerCle: false, r2: {} }, lire('reglages', {})); },
     garder: function (r) { ecrire('reglages', r); }
   };
 
   function parcourirMedias(c, f) {
-    (c.sections || []).forEach(function (s) { (s.blocs || []).forEach(function (b) { if (b.media) f(b.media); (b.items || []).forEach(function (i) { if (i.media) f(i.media); }); }); });
+    (c.sections || []).forEach(function (s) { (s.blocs || []).forEach(function (b) { if (b.media) f(b.media); (b.items || []).forEach(function (i) { if (i.media) f(i.media); }); (b.libres || []).forEach(function (a) { if (a.media) f(a.media); }); }); });
   }
 
   /* ce qui attend : pour la pastille et le tableau de bord */
@@ -266,7 +334,7 @@
   function manques() {
     var m = [];
     if (role() !== 'admin') m.push(acces.adminDefini() ? 'la connexion admin (entrer le code admin)' : 'un code admin (à choisir dans le tableau de bord)');
-    if (!jeton.present()) m.push(jeton.range() ? 'le jeton GitHub : il est rangé mais verrouillé, se reconnecter en admin' : 'le jeton GitHub (à coller une fois dans le tableau de bord)');
+    if (!jeton.present()) m.push(jeton.range() && role() !== 'admin' ? 'le jeton GitHub : il est rangé mais verrouillé, se reconnecter en admin' : 'le jeton GitHub (à coller une fois dans le tableau de bord)');
     if (!/^[\w.-]+\/[\w.-]+$/.test(reglages.lire().depot)) m.push('le nom du dépôt, sous la forme propriétaire/dépôt');
     return m;
   }
@@ -292,14 +360,26 @@
     dire = dire || function () {};
     var m = manques();
     if (m.length && !aBlanc) return Promise.reject(Object.assign(new Error('Il manque : ' + m.join(' ; ') + '.'), { manques: m }));
-    var r = reglages.lire(), c = clone(contenu.brouillon() || publie.contenu), fichiers = [], enAttente = {}, videos = 0, auteur = nom() || 'admin';
+    var r = reglages.lire(), c = clone(contenu.brouillon() || publie.contenu), fichiers = [], enAttente = {}, videos = 0, videosR2 = 0, enR2 = {}, auteur = nom() || 'admin';
     var locaux = [];
     parcourirMedias(c, function (md) { if ((md.src || '').indexOf('local:') === 0) locaux.push(md); });
     dire('Préparation : ' + locaux.length + ' média(s) déposé(s) à regarder.');
     return locaux.reduce(function (p, md) {
       return p.then(function () {
         var id = md.src.slice(6);
-        if (md.genre === 'video') { videos++; md.src = ''; md.attendu = (md.attendu || '') + ' (vidéo déposée en local : à mettre sur Cloudflare, puis coller son adresse)'; return null; }
+        if (md.genre === 'video') {
+          videos++;
+          if (r2.pret()) {
+            if (aBlanc) { dire('Vidéo ' + (md.nom || id) + ' : partirait sur Cloudflare R2.'); md.src = ''; return null; }
+            return medias.prendre(id).then(function (blob) {
+              if (!blob) { md.src = ''; return null; }
+              var ext = ((md.nom || '').match(/\.(mp4|webm|mov|m4v)$/i) || [0, 'mp4'])[1].toLowerCase();
+              dire('Envoi sur R2 : ' + (md.nom || id));
+              return r2.envoyer('second-earth/' + id + '.' + ext, blob).then(function (url) { md.src = url; enR2[id] = url; videosR2++; delete md.poids; delete md.nom; });
+            });
+          }
+          md.src = ''; md.attendu = (md.attendu || '') + ' (vidéo déposée en local : à mettre sur Cloudflare, puis coller son adresse)'; return null;
+        }
         return medias.prendre(id).then(function (blob) {
           if (!blob) { md.src = ''; return null; }
           var chemin = 'content/media/' + id + '.webp';
@@ -314,7 +394,8 @@
       fichiers.push({ path: CHEMIN + 'commentaires.json', b64: texteEnB64(j(commentaires.fusion())) });
       fichiers.push({ path: CHEMIN + 'acces.json', b64: texteEnB64(j(acces.table())) });
       if (r.rangerCle && jeton.chiffre()) fichiers.push({ path: CHEMIN + 'deploy-key.json', b64: texteEnB64(j(jeton.chiffre())) });
-      if (videos) dire(videos + ' vidéo(s) déposée(s) en local : elles ne partent pas dans git. Elles restent dans le brouillon, à héberger sur Cloudflare.');
+      if (videos && !r2.pret()) dire(videos + ' vidéo(s) déposée(s) en local : elles ne partent pas dans git. Cloudflare R2 n\'est pas réglé : elles restent dans le brouillon, à héberger sur Cloudflare.');
+      if (videosR2) dire(videosR2 + ' vidéo(s) envoyée(s) sur Cloudflare R2.');
       dire(fichiers.length + ' fichier(s) à écrire dans ' + r.depot + '.');
       if (aBlanc) {
         if (m.length) dire('Essai à blanc : rien n\'est envoyé. Il manque : ' + m.join(' ; ') + '.'); else dire('Essai à blanc : rien n\'est envoyé. Tout est prêt.');
@@ -338,7 +419,7 @@
           /* tout est parti : le brouillon devient « publié, en attente de déploiement » */
           ecrire('medias-publies', Object.assign(lire('medias-publies', {}), enAttente));
           var reste = contenu.brouillon();
-          if (reste) { parcourirMedias(reste, function (md) { var id = (md.src || '').slice(6); Object.keys(enAttente).forEach(function (ch) { if (enAttente[ch] === id && md.genre !== 'video') { md.src = ch; delete md.poids; delete md.nom; } }); }); ecrire('brouillon', reste); }
+          if (reste) { parcourirMedias(reste, function (md) { var id = (md.src || '').slice(6); Object.keys(enAttente).forEach(function (ch) { if (enAttente[ch] === id && md.genre !== 'video') { md.src = ch; delete md.poids; delete md.nom; } }); if (enR2[id]) { md.src = enR2[id]; delete md.poids; delete md.nom; } }); ecrire('brouillon', reste); }
           var fm = modifs.fusion(auteur), fc = commentaires.fusion();
           ecrire('envoye', { le: maintenant(), commit: nc.sha, contenu: JSON.stringify(c), modifs: JSON.stringify(fm), commentaires: JSON.stringify(fc) });
           ecrire('modifs-envoyees', fm); ecrire('commentaires-envoyes', fc);
@@ -374,7 +455,7 @@
   function signaler() { ecouteurs.forEach(function (f) { try { f(); } catch (e) { console.error(e); } }); }
 
   window.Depot = {
-    contenu: contenu, modifs: modifs, commentaires: commentaires, medias: medias, acces: acces, jeton: jeton, reglages: reglages,
+    contenu: contenu, modifs: modifs, r2: r2, commentaires: commentaires, medias: medias, acces: acces, jeton: jeton, reglages: reglages,
     role: role, nom: nom, bilan: bilan, manques: manques, publier: publier, preparerFichier: preparerFichier,
     enAttenteDeDeploiement: function () { return lire('envoye', null); },
     quand: function (f) { ecouteurs.push(f); }, uid: uid, clone: clone, dateFr: dateFr,
