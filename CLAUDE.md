@@ -100,6 +100,8 @@ Ces règles viennent de ses demandes répétées. Elles priment sur toute habitu
    - **ne jamais lancer une génération payante sans l'accord explicite de Cal pour ce lancement**, annoncer le coût avant (`higgsfield generate cost`), et **tester une seule séquence** avant tout lot ;
    - ne jamais suggérer que Cal n'a pas été clair ; une vérification partielle de l'historique n'est pas une preuve.
 
+16. **Mots simples, jamais de jargon (Cal, 20/11/2026 : « c'est incompréhensible, du jargon en permanence, c'est infernal »)** : dans le chat, les pages et les QCM, écrire des phrases courtes et simples, comme à quelqu'un qui n'est pas du métier. Pas de codes internes (A02, S9, M6, E1…) sans dire en clair ce qu'ils sont, pas de mots techniques du cinéma ou de l'informatique sans nécessité (didascalie, beat, découpage, module, workflow, commit…) ; si un mot du métier est utile, l'expliquer en quelques mots. Dans un QCM, chaque réponse dit **ce qu'elle change** et **ce qu'elle apporte**, et chaque question porte **mon conseil** et pourquoi, en mots simples (champ `conseil`, options marquées `r:true`, bouton « Cocher tous mes conseils » : voir `data/revision-script-doctor.html`).
+
 ### Charte des interfaces (détail : `site-spec/charte.md`)
 
 - **Site : thème « Verdant »** (Showrunner UI Kit, fourni par Cal le 28/09/2026 avec la demande de l'appliquer au site ; référence dans `theme/showrunner-ui-kit/`). Il remplace pour le site le thème « Oblivion clair » ci-dessous. Pas de bascule clair / sombre.
@@ -318,5 +320,5 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 ## 13. Rapport de script-doctor (20/11/2026)
 
 - `docs/film/rapport-script-doctor.html` : copie telle quelle du rapport apporté par Cal. `docs/film/rapport-script-doctor-verification.html` : la note de vérification (point par point contre le docx et le Registre), insérée en tête du rapport par `build_site.py` (onglet « Vérification ») ; publié sous `film/rapport-script-doctor.html`.
-- `data/revision-script-doctor.html` : le QCM de révision (25 décisions D01 à D25, groupes A à F, clé de stockage `se-revision-script-doctor-r1`), publié sous `film/qcm-script-doctor.html`. Ce qui est déjà tranché est dans `DONE`. Règle 8 : les réponses de Cal disent ce qui sera écrit après sa relecture ; rien n'est appliqué au récit avant.
+- `data/revision-script-doctor.html` : le QCM de révision (25 décisions D01 à D25, groupes A à F, clé de stockage `se-revision-script-doctor-r2` ; réécrit le 20/11 en mots simples avec mon conseil par question, règle 16), publié sous `film/qcm-script-doctor.html`. Ce qui est déjà tranché est dans `DONE`. Règle 8 : les réponses de Cal disent ce qui sera écrit après sa relecture ; rien n'est appliqué au récit avant.
 - Le rapport lit bien le docx de référence (Proxima, Elena, 23 %) ; ses numéros de ligne sont décalés de 0 à 8 par rapport à `docs/film/01-recit-docx.md`. Le QCM cite les lignes du site.

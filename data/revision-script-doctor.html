@@ -99,6 +99,8 @@ section.group{display:flex;flex-direction:column;gap:22px;scroll-margin-top:24px
 .opt:has(input:focus-visible){outline:2px solid var(--or);outline-offset:2px}
 .opt.on{border-color:var(--or);background:var(--or-soft)}
 .opt.on .k{background:var(--or);border-color:var(--or);color:var(--ink)}
+.advice{margin:0;font-size:13px;line-height:1.55;max-width:70ch;padding:10px 14px;border-left:3px solid var(--or);background:var(--or-soft)}
+.advice b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:3px}
 .note{display:flex;flex-direction:column;gap:6px}
 .note label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .note textarea{font-family:var(--mono);font-size:13px;line-height:1.55;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:3px;padding:10px 12px;min-height:64px;resize:vertical;width:100%;box-sizing:border-box}
@@ -141,6 +143,7 @@ footer.out p{margin:0;color:var(--muted);font-size:12.5px}
     <nav aria-label="Groupes de décisions"><ol id="nav"></ol></nav>
     <div class="actions">
       <button class="primary" type="button" data-copy>Copier mes réponses</button>
+      <button type="button" id="advise">Cocher tous mes conseils</button>
       <button class="ghost" type="button" id="reset">Tout effacer</button>
       <div class="toast" id="toast" role="status"></div>
     </div>
@@ -148,9 +151,9 @@ footer.out p{margin:0;color:var(--muted);font-size:12.5px}
 
   <main>
     <header class="intro">
-      <span class="eyebrow">Rapport de script-doctor · points ouverts</span>
-      <h2>Ce que le rapport propose, point par point. Tu tranches.</h2>
-      <p>Chaque point a été vérifié contre le récit de référence (le docx) et le Registre : ce qui est déjà tranché est rangé dans la liste repliée et n’est pas redemandé. Le monde et le script restent gelés jusqu’aux corrections de ta relecture : une réponse ici dit ce qui sera écrit ensuite, elle ne modifie rien aujourd’hui. Les numéros de ligne sont ceux du récit de référence sur le site. Le champ sous chaque décision sert à préciser, combiner ou remplacer. Le bouton « Copier mes réponses » met tout au format texte, à coller dans le chat. Tes saisies restent dans ce navigateur si tu fermes la page. <a href="rapport-script-doctor.html">Lire le rapport et la note de vérification</a> · <a href="recit-docx.html">Lire le récit de référence</a>.</p>
+      <span class="eyebrow">Rapport de script-doctor · ce qui reste à décider</span>
+      <h2>25 questions. Pour chacune : ce que ça change, ce que ça apporte, et mon conseil.</h2>
+      <p>Chaque réponse dit ce qu’elle change dans le film et ce qu’elle apporte. Le cadre orange donne mon conseil et pourquoi. Le bouton « Cocher tous mes conseils » coche mes réponses là où tu n’as pas encore répondu ; tu changes ensuite ce que tu veux. Le champ sous chaque question sert à écrire autre chose. « Copier mes réponses » met tout en texte, à coller dans le chat. Rien ne bouge dans l’histoire avant tes corrections de relecture. <a href="rapport-script-doctor.html">Lire le rapport</a> · <a href="recit-docx.html">Lire ton récit</a>.</p>
       <details class="done">
         <summary><span class="t"><b>Déjà tranché</b> · <span id="dn"></span> blocs, ne seront plus redemandés</span><span class="hint">afficher</span></summary>
         <ul id="donelist"></ul>
@@ -175,204 +178,226 @@ footer.out p{margin:0;color:var(--muted);font-size:12.5px}
 <script>
 (function(){
 const DONE = [
-  "Décor : Proxima Centauri et la lumière rouge du docx sont remplacés par 61 Cygni A, la planète 61 Cygni Ab dite Korê, lumière orange (Registre, Le monde ; Écarts docx / Bible)",
-  "Acte VIII : il existe, Korê, le retour par les lacs salés et le cri de la colonie (oiseau des salins validé, rounds 6 à 10 ; Écarts docx / Bible) ; la transition VII → IX passe par lui",
-  "Quatre mots parlés dans tout le film, rien d'autre : Rob (VI), Seed (VII), Korê (VIII), Je suis Seed (IX) (A02, round 13) ; Seed reste muette ailleurs",
-  "Échelle géographique : ~250 km à pied jusqu'à Rob2, Rob fusionné à ~30 km/h, boucle de ~5 500 km, quelques semaines (rounds 10 et 11)",
-  "Le sens de la fin : la Phase 1 réussit, Korê a tout, le mensonge de Rob1 protège un monde complet (Registre) ; ligne « Terre : réception dans 11,4 ans » (A09)",
-  "Sinkhole : ~80 m, XENOPOD au fond, intact, sur un cône d'éboulis (Géologie et plaques, validé au round 15)",
-  "Rob1 change CAIN après un flash du sourire de Seed, pas de la charte (A07) ; le caillou blanc est posé dans l'alvéole H-01 à la fin (A08)",
-  "Colonne vertébrale + neuf modules : le 55 s'ouvre aux ellipses du docx (A01) ; les didascalies de voyage répétées sont ces emplacements",
-  "Carton final en trois lignes : This is a fictional planet. / Earth is the only world we know. / Take care of it.",
-  "Épigraphe : la phrase du docx est gardée pour l'instant (E01) ; rien n'est proposé à sa place",
-  "Règle 8 : le monde et le script restent gelés jusqu'aux corrections de ta relecture ; ce QCM décide de ce qui sera écrit ensuite, il ne modifie rien aujourd'hui"
+  "La planète s'appelle Korê, autour de l'étoile 61 Cygni A (et non plus Proxima, qui est dans ton ancien texte), lumière orange",
+  "L'acte qui manquait existe : le retour par les lacs roses, où les oiseaux crient « Korê »",
+  "Seed ne dit que quatre mots dans tout le film : Rob, Seed, Korê, Je suis Seed",
+  "Les distances et la durée du voyage : environ 250 km à pied, puis le robot qui court, quelques semaines en tout",
+  "La planète a tout ce qu'il faut ; Rob1 ment pour la protéger ; ligne « Terre : réception dans 11,4 ans »",
+  "Le trou fait environ 80 m ; le XENOPOD est au fond, intact",
+  "Rob1 change Cain après avoir revu le sourire de Seed ; le caillou blanc finit dans la case vide de Seed",
+  "Le film de 55 min ajoute ses scènes aux endroits où le 25 min dit « ils marchent plusieurs jours »",
+  "Le carton de fin en trois lignes, et la phrase d'ouverture de ton texte, gardée",
+  "Rien n'est changé dans l'histoire avant tes corrections de relecture : tes réponses disent ce qu'on fera après"
 ];
 const GROUPS = [
-  {id:"A", name:"Structure et thème"},
+  {id:"A", name:"Le milieu du film"},
   {id:"B", name:"Seed"},
   {id:"C", name:"Rob1"},
-  {id:"D", name:"Secondaires et fils plantés"},
-  {id:"E", name:"Cohérences"},
-  {id:"F", name:"La fin"}
+  {id:"D", name:"Les autres personnages et les fils à finir"},
+  {id:"E", name:"Les petites incohérences"},
+  {id:"F", name:"La fin avec CAIN"}
 ];
 const Q = [
-  {id:"D01", g:"A", t:"Faire vivre le thème (personne ou outil ?) pendant la quête, actes II à VI",
-   ctx:"Rapport, sections 00, 01, 09 (priorité 1). Le thème est posé à l'Acte I (« Rôle : preuve de concept. Cobaye. », l.172) et revient à l'Acte IX. Seed fait déjà des choix au milieu : l'échantillon (III), l'idée de l'organisme-batterie (IV), le rituel (IV), le retour pour le rongeur (VI).",
+  {id:"D01", g:"A", t:"Au milieu du film, Seed doit-elle encore se demander si elle est une personne ou un outil ?",
+   ctx:"Ce que dit le rapport : au début, Seed apprend qu'elle est un cobaye. Ensuite, pendant tout le voyage, on ne parle que de batteries et de robots, et la question revient seulement à la fin.",
+   conseil:"A. Seed fait déjà quatre choses à elle pendant le voyage : elle garde la plante lumineuse, elle a l'idée de s'en servir comme batterie, elle enterre l'organisme, elle retourne sauver le petit rongeur. Il suffit de les filmer comme des choix à elle. On règle le reproche principal du rapport sans réécrire l'histoire.",
    o:[
-    {k:"A", l:"Rendre lisibles les choix qui existent", d:"Aucun beat ajouté. Au découpage, les quatre choix de Seed sont cadrés comme des refus de son rôle de cobaye (elle agit pour un être vivant, pas pour la mission). Le récit ne change pas."},
-    {k:"B", l:"Ajouter un ou deux choix actifs liés au thème", d:"Un ou deux beats nouveaux entre II et VI où Seed s'approprie quelque chose contre sa fonction. Ils seraient rédigés après ta relecture et soumis en QCM ; le séquencier et le découpage du 25 bougent."},
-    {k:"C", l:"Garder la quête telle quelle", d:"Le thème dort au milieu et revient en IX par le choix de Rob1. Rien ne change."}
+    {k:"A", r:true, l:"Mettre en avant ce qu'elle fait déjà", d:"Ce que ça change : rien dans l'histoire. Au tournage, ses quatre gestes sont filmés comme des moments où elle agit pour elle, pas pour la mission. Ce que ça apporte : la question reste présente au milieu du film, sans travail d'écriture."},
+    {k:"B", l:"Ajouter une ou deux scènes", d:"Ce que ça change : une ou deux scènes nouvelles où Seed refuse son rôle de cobaye, à écrire après ta relecture. Ce que ça apporte : le thème plus fort. Ce que ça coûte : réécrire et refaire le plan du film de 25 min."},
+    {k:"C", l:"Ne rien changer", d:"Ce que ça change : rien. Ce que ça laisse : le milieu reste une aventure, et la question revient seulement à la fin."}
    ]},
-  {id:"D02", g:"A", t:"Compresser la quête de 30 à 40 % ?",
-   ctx:"Rapport, section 06. Dans le 25, les actes II à VI font 11 min 30 sur 25 (Architecture 25 / 55). Les ellipses répétées du docx sont les emplacements des modules du 55 (A01, validé) : les supprimer retire les modules M3 à M6.",
+  {id:"D02", g:"A", t:"Faut-il raccourcir le voyage ?",
+   ctx:"Dans le film de 25 min, le voyage (de Rob2 jusqu'à la horde) dure 11 min 30, presque la moitié du film. Le rapport conseille de couper 30 à 40 %. Déjà décidé : les passages « ils marchent plusieurs jours » sont les endroits où le film de 55 min ajoutera ses scènes.",
+   conseil:"A. Le voyage, c'est aussi ce qui montre les paysages et les animaux, et le Science Centre et l'expo en ont besoin. Le film de 25 min est déjà resserré : les longues marches y deviennent un simple carton « Jour 12 · 250 km ».",
    o:[
-    {k:"A", l:"Pas de compression supplémentaire", d:"Le 25 est déjà condensé ; les ellipses deviennent des cartons de jour (S10) ; les modules du 55 restent à leur place."},
-    {k:"B", l:"Compresser le 25 seulement", d:"Les actes II à VI passent de 11 min 30 à environ 8 min ; le temps gagné va aux actes I, VII et IX. Le séquencier et le découpage (150 plans) sont à refaire ; les modules du 55 restent."},
-    {k:"C", l:"Compresser le 25 et le 55", d:"Une ou deux traversées au lieu de quatre dans les deux films ; un ou plusieurs modules disparaissent (M3, M4 ou M5) : l'architecture A01 est à revoir."}
+    {k:"A", r:true, l:"Ne pas raccourcir plus", d:"Ce que ça change : rien ; les marches deviennent des cartons de jour. Ce que ça apporte : on garde les paysages et le plan du film ne bouge pas."},
+    {k:"B", l:"Raccourcir le film de 25 min", d:"Ce que ça change : le voyage passe de 11 min 30 à environ 8 min ; les 3 min 30 gagnées vont à la naissance, à la maladie de Seed et à la fin. Ce que ça apporte : plus de temps pour Seed et Rob1. Ce que ça coûte : refaire le plan du film (les 150 plans)."}
    ]},
-  {id:"D03", g:"A", t:"Le milieu : épreuve ou contemplation ?",
-   ctx:"Rapport, section 09 (« aligner le cadrage et le récit »). L'épigraphe du docx reste (E01) ; la question porte seulement sur le ton du milieu.",
+  {id:"D03", g:"A", t:"Le milieu du film : de l'action, ou du calme pour regarder ?",
+   ctx:"Le rapport dit que la phrase d'ouverture (« on arrive, on regarde ») annonce un film calme, alors que le milieu est plein d'action. La phrase d'ouverture reste, c'est déjà décidé.",
+   conseil:"B. C'est ce qui est déjà prévu : rien à faire. Le film court garde son rythme, et le film long donne le temps de regarder.",
    o:[
-    {k:"A", l:"Le milieu reste une épreuve", d:"Batteries, Créature, horde : l'action tient le milieu. L'épigraphe annonce « on regarde » et le film y arrive à la fin."},
-    {k:"B", l:"Épreuve dans le 25, contemplation dans les modules du 55", d:"Ce que l'architecture prévoit déjà : M3 La marche, M4 Le col, M5 La nuit noire sont des temps de regard. Rien ne change dans le 25."},
-    {k:"C", l:"Ralentir aussi le 25", d:"Des plans de regard prennent du temps à l'action dans les actes II à VI ; à combiner avec D02."}
+    {k:"A", l:"De l'action partout", d:"Ce que ça change : rien. Ce que ça donne : le film reste rythmé, et on « regarde » seulement à la fin."},
+    {k:"B", r:true, l:"De l'action dans le 25 min, du calme dans le 55 min", d:"Ce que ça change : rien, c'est déjà prévu (la marche, le col, la nuit lumineuse sont des scènes calmes du 55 min). Ce que ça apporte : les deux films ont chacun leur rôle."},
+    {k:"C", l:"Ralentir aussi le 25 min", d:"Ce que ça change : des plans calmes prennent la place d'un peu d'action. Ce que ça coûte : moins de tension dans un film court."}
    ]},
-  {id:"D04", g:"B", t:"Le nom « Seed » (Acte VII) : murmure de fièvre ou choix ?",
-   ctx:"Rapport, sections 02 et 09. Dans le docx, le glitch Elena / Seed se joue dans la fièvre et Seed murmure « Seed » en s'endormant (l.672). Le mot fait partie des quatre (A02) : il peut changer de place, pas s'ajouter.",
+  {id:"D04", g:"B", t:"Le moment où Seed dit son nom : dans la fièvre, ou réveillée ?",
+   ctx:"Aujourd'hui, Seed murmure « Seed » à moitié inconsciente, pendant la fièvre du fruit. Le rapport dit : le moment où elle devient elle-même arrive quand elle ne contrôle rien. Le mot reste un des quatre mots du film ; il peut changer de place, pas s'ajouter.",
+   conseil:"B. Le mot ne change pas, il change seulement de moment. Elle le dit guérie, les yeux ouverts : son nom devient un choix, et la fièvre garde le mélange des visages Elena / Seed.",
    o:[
-    {k:"A", l:"Garder le murmure dans la fièvre", d:"Le choix conscient reste « Je suis Seed » à l'Acte IX. Rien ne change."},
-    {k:"B", l:"Déplacer le mot au réveil dans Rob4", d:"Le glitch reste dans la fièvre, sans mot ; Seed dit « Seed » les yeux ouverts, guérie, dans le liquide. Toujours quatre mots ; le nom devient choisi."},
-    {k:"C", l:"Préparer le choix par un geste plus tôt", d:"Le murmure reste ; un geste conscient avant la fièvre (par exemple devant la photo d'Elena) annonce qu'elle n'est pas Elena. Un beat ajouté à l'Acte I, V ou VII."}
+    {k:"A", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : son vrai choix arrive seulement à la fin (« Je suis Seed »)."},
+    {k:"B", r:true, l:"Elle le dit réveillée, guérie", d:"Ce que ça change : dans la fièvre, on voit les visages se mélanger sans le mot ; elle dit « Seed » en se réveillant dans le cocon de Rob4. Ce que ça apporte : son nom devient un choix conscient. Toujours quatre mots."},
+    {k:"C", l:"Un geste plus tôt pour préparer", d:"Ce que ça change : le murmure reste, et on ajoute avant un geste où elle montre qu'elle n'est pas Elena (par exemple devant la photo). Ce que ça coûte : une petite scène de plus."}
    ]},
-  {id:"D05", g:"B", t:"La langue entre Seed et Rob1",
-   ctx:"Rapport, sections 02 et 05 (incohérence 8). Le docx dit « elle semble comprendre ce que Rob1 lui dit » (l.116), puis « Grimpe ! » (l.328) et « elle ne comprend pas le signal » (l.330). Validé : quatre mots parlés en tout (A02), écrans en anglais (A05). Le Récit v2 écrit « GRIMPE, dit l'écran » (proposé).",
+  {id:"D05", g:"B", t:"Comment Seed et Rob1 se parlent-ils ?",
+   ctx:"Le texte hésite : à un endroit Rob1 « parle » à Seed, à un autre il crie « Grimpe ! », puis on dit qu'elle ne comprend pas son signal. Déjà décidé : il n'y a que quatre mots parlés dans le film, ceux de Seed, et les écrans de Rob1 sont en anglais. Tu peux cocher plusieurs réponses.",
+   conseil:"A et C ensemble. A donne une règle simple qu'on ne casse jamais. C relie la mer de Rob4 à la fin et ne demande aucun mot.",
    multi:true,
    o:[
-    {k:"A", l:"Règle fixe : Rob1 ne parle jamais", d:"Il écrit sur son écran-visage et fait des gestes ; Seed lit et répond par gestes. À corriger : l.116 (« lui dit ») et l.328."},
-    {k:"B", l:"Un code de sons de Rob1", d:"Bips et tons que Seed apprend au fil du film : une grammaire qui grandit avec l'éveil de Rob1. Le son porte une partie de la relation."},
-    {k:"C", l:"La lumière comme langue (S4)", d:"Rob1 apprend le code de Rob4 à la mer d'arsenic et s'en sert avec Seed ensuite ; ses cicatrices lumineuses le portent. Relie VII, VIII et IX."}
+    {k:"A", r:true, l:"Rob1 ne parle jamais, il écrit et il fait des gestes", d:"Ce que ça change : deux phrases du texte à corriger. Ce que ça apporte : une règle claire pour tout le film ; Seed lit son écran et lui répond par des gestes."},
+    {k:"B", l:"Rob1 a des petits sons", d:"Ce que ça change : des bips et des sons que Seed apprend à comprendre au fil du voyage. Ce que ça apporte : la relation passe aussi par le son."},
+    {k:"C", r:true, l:"Rob1 apprend à parler en lumière", d:"Ce que ça change : à la mer, Rob1 apprend le langage de lumière de Rob4, puis il s'en sert avec Seed. Ce que ça apporte : un fil sans parole jusqu'à la fin, et les marques lumineuses sur la peau de Seed prennent un sens."}
    ]},
-  {id:"D06", g:"B", t:"Les didascalies d'intériorité (« une larme coule », « elle sait »)",
-   ctx:"Rapport, section 02. Une didascalie dit ce qu'on voit et entend ; une intériorité écrite (« elle réalise », « elle sait ») ne se filme pas telle quelle et doit devenir une action, un regard ou un objet au découpage.",
+  {id:"D06", g:"B", t:"Les phrases qui disent ce que Seed pense (« elle réalise », « elle sait »)",
+   ctx:"Une caméra ne filme pas une pensée. Ces phrases devront devenir des choses visibles : un geste, un regard, un objet.",
+   conseil:"A. Le récit reste agréable à lire. On transforme ces phrases en images au moment de préparer les plans, sans retoucher ton texte.",
    o:[
-    {k:"A", l:"Le récit garde ses intériorités", d:"Le récit reste un texte de lecture ; c'est le découpage technique qui les traduit en actions et en valeurs de plan."},
-    {k:"B", l:"Une version de tournage après la relecture", d:"Une continuité (didascalies seulement, quatre mots) où chaque intériorité devient une action visible ; le récit de référence ne change pas."},
-    {k:"C", l:"Réécrire le récit lui-même", d:"Le docx de référence (ou le Récit v2) est corrigé ligne à ligne : plus aucune intériorité écrite."}
+    {k:"A", r:true, l:"Garder le texte, traduire en images au moment des plans", d:"Ce que ça change : rien dans le récit. Ce que ça apporte : le texte reste lisible pour Nina et les partenaires."},
+    {k:"B", l:"Écrire une version « à tourner » après ta relecture", d:"Ce que ça change : un deuxième texte où chaque pensée devient un geste visible. Ce que ça coûte : un document de plus à tenir à jour."},
+    {k:"C", l:"Réécrire le récit lui-même", d:"Ce que ça change : ton texte est corrigé ligne à ligne. Ce que ça coûte : le texte devient plus sec à lire."}
    ]},
-  {id:"D07", g:"C", t:"Pourquoi Rob1 s'éveille, et pas les autres",
-   ctx:"Rapport, section 03 (« le trou le plus grave »). Le docx dit seulement « le plus évolué des Robs » (l.66) et « conçu comme robot d'accompagnement pour Seed » (l.246). Rob4 change lui aussi, par symbiose.",
+  {id:"D07", g:"C", t:"Pourquoi Rob1 devient-il conscient, et pas les autres robots ?",
+   ctx:"Le rapport dit que c'est le plus gros trou de l'histoire. Le texte dit seulement que Rob1 est « le plus évolué » et qu'il a été fait pour accompagner Seed. Rob4, lui, change aussi, en vivant avec les organismes de la mer.",
+   conseil:"C. On n'a rien à expliquer avec des mots : Rob4 change à cause de la mer, Rob1 change à cause de Seed. Ça explique aussi pourquoi Rob2 et Rob3, restés seuls, ne changent pas.",
    o:[
-    {k:"A", l:"Par la relation", d:"Il est le seul Rob qui vit avec Seed ; l'éveil naît du contact et se montre par des micro-signes (voir D08). Aucune explication technique à l'écran."},
-    {k:"B", l:"Par sa fonction", d:"Son unité de calcul a été conçue pour accompagner et apprendre un humain pendant la Phase 2 ; un écran de l'Acte I le pose. L'éveil devient un effet de conception."},
-    {k:"C", l:"En miroir de Rob4", d:"Chaque Rob devient ce que son monde fait de lui : Rob4 par la mer (« Je suis d'ici maintenant »), Rob1 par Seed. Rob2 et Rob3, sans compagnon, restent des machines."},
-    {k:"D", l:"Laisser ouvert", d:"Le film ne répond pas ; le spectateur voit l'éveil sans en connaître la cause."}
+    {k:"A", l:"À cause de Seed", d:"Ce que ça change : rien d'écrit ; on le montre par de petits signes. Ce que ça apporte : c'est la relation qui l'éveille."},
+    {k:"B", l:"Parce qu'il a été conçu pour", d:"Ce que ça change : un écran au début dit que son cerveau est fait pour apprendre d'un humain. Ce que ça coûte : son éveil devient une option d'usine, moins émouvant."},
+    {k:"C", r:true, l:"Comme Rob4 : chacun devient ce que sa vie fait de lui", d:"Ce que ça change : rien à écrire ; on rapproche les deux transformations. Rob4 dit « Je suis d'ici maintenant » ; Rob1 devient quelqu'un à cause de Seed. Ce que ça apporte : une explication sans un mot."},
+    {k:"D", l:"Ne pas l'expliquer", d:"Ce que ça change : rien. Ce que ça laisse : la question du rapport reste ouverte."}
    ]},
-  {id:"D08", g:"C", t:"Les micro-signes de l'éveil de Rob1, jusqu'au « IM-POSSIBLE »",
-   ctx:"Rapport, section 03. Le docx en a déjà : IMPORTANT (l.494), il cache les rations (l.506), « pour la première fois il est très agité » (l.558). Le Récit v2 ajoute « le journal écrit son nom à la place de sujet » (proposé).",
+  {id:"D08", g:"C", t:"Les petits signes qui montrent que Rob1 s'éveille",
+   ctx:"Il y en a déjà trois : il range le sourire de Seed comme « IMPORTANT », il lui cache que la nourriture manque, il est « très agité » pendant la horde. Le rapport en voudrait plus, pour que son choix final (mentir) ne tombe pas du ciel.",
+   conseil:"C. Deux ou trois signes de plus suffisent pour qu'on sente qu'il change, sans charger le film.",
    o:[
-    {k:"A", l:"Ceux qui existent suffisent", d:"On les rend lisibles au découpage (gros plans d'écran, un temps). Rien n'est ajouté."},
-    {k:"B", l:"Un signe par acte, de II à VIII", d:"Une liste de signes (écrans, gestes) proposée en QCM après ta relecture ; la montée jusqu'au IM-POSSIBLE devient continue."},
-    {k:"C", l:"Deux ou trois signes de plus", d:"Placés aux actes II, IV et VIII ; le reste ne bouge pas."}
+    {k:"A", l:"Ceux qui existent suffisent", d:"Ce que ça change : rien ; on les filme bien en gros plan. Ce que ça laisse : la montée reste courte."},
+    {k:"B", l:"Un signe à chaque étape du voyage", d:"Ce que ça change : une liste de signes à te proposer après ta relecture. Ce que ça coûte : risque d'en faire trop."},
+    {k:"C", r:true, l:"Deux ou trois de plus", d:"Ce que ça change : quelques secondes d'écran ou de geste au début, au milieu et au retour. Ce que ça apporte : on voit Rob1 changer pas à pas jusqu'à son mensonge."}
    ]},
-  {id:"D09", g:"C", t:"La culpabilité du sinkhole",
-   ctx:"Rapport, section 03. « Rob1 réalise que tout est de sa faute » (l.204), jamais repris dans le docx. S9 (proposé, écrit dans le Récit v2) met le XENOPOD qui bascule dans le flux PROCESSING de l'Acte IX.",
+  {id:"D09", g:"C", t:"Rob1 se sent coupable de la chute du XENOPOD : faut-il le rappeler ?",
+   ctx:"Au début, Rob1 comprend que la chute est de sa faute (c'est son poids qui a fait basculer le XENOPOD). Ensuite le texte n'en parle plus. Le Récit v2 ajoute déjà un flash de la chute à la fin, quand il prend sa décision.",
+   conseil:"B. Un flash de deux secondes au milieu, quand Seed est en danger, donne une raison simple à sa façon de la protéger : il lui a déjà tout fait perdre une fois.",
    o:[
-    {k:"A", l:"S9 suffit", d:"La faute revient une fois, au moment du choix. Le Récit v2 l'a déjà."},
-    {k:"B", l:"S9 et un rappel au milieu", d:"Un flash de la chute quand Seed est en danger (VI ou VII) : sa faute devient le moteur de sa protection."},
-    {k:"C", l:"Ne pas la rappeler", d:"Retirer S9 du Récit v2 ; la culpabilité reste implicite."}
+    {k:"A", l:"Seulement le flash de la fin", d:"Ce que ça change : rien de plus que le Récit v2. Ce que ça laisse : la culpabilité revient une seule fois."},
+    {k:"B", r:true, l:"Le flash de la fin, plus un rappel au milieu", d:"Ce que ça change : deux secondes de souvenir pendant la horde ou la maladie. Ce que ça apporte : on comprend pourquoi il la protège autant."},
+    {k:"C", l:"Ne pas en parler", d:"Ce que ça change : on retire le flash du Récit v2. Ce que ça laisse : sa faute reste sous-entendue."}
    ]},
-  {id:"D10", g:"C", t:"La rébellion de Rob1 (mentir, condamner, saboter) en un seul acte",
-   ctx:"Rapport, section 03. L'Acte IX ne reçoit aucun module : il est écrit une fois, à sa longueur définitive (Architecture 25 / 55). Il fait 2 min 30 dans le 25.",
+  {id:"D10", g:"C", t:"Rob1 ment, abandonne les humains et casse l'émetteur, tout en une seule scène : trop d'un coup ?",
+   ctx:"Le rapport trouve que c'est énorme et trop rapide. Cette scène dure 2 min 30 dans le film de 25 min.",
+   conseil:"B. On ne rallonge pas la scène : on la prépare avant. S'il a déjà caché des choses à Seed pendant le voyage, son grand mensonge paraît logique.",
    o:[
-    {k:"A", l:"Garder la compression", d:"Le choix tombe d'un bloc, dans le PROCESSING ; c'est la forme du docx."},
-    {k:"B", l:"Préparer plus tôt", d:"Le mensonge commence avant : il cache déjà (rations, V) ; au retour (VIII), il regarde le communicateur. Le sabotage reste en IX."},
-    {k:"C", l:"Allonger l'Acte IX dans le 25", d:"De 2 min 30 à environ 3 min 30, pris sur la quête (voir D02)."}
+    {k:"A", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : le choix tombe d'un bloc."},
+    {k:"B", r:true, l:"Le préparer plus tôt", d:"Ce que ça change : pendant le voyage il cache déjà des choses (c'est le cas pour la nourriture), et au retour il regarde l'émetteur un instant. Ce que ça apporte : la fin paraît venir de lui, sans rallonger le film."},
+    {k:"C", l:"Rallonger la scène", d:"Ce que ça change : 1 min de plus, prise sur le voyage (voir D02). Ce que ça coûte : refaire le plan du film."}
    ]},
-  {id:"D11", g:"C", t:"Rob1 nommé chef de mission après l'échec de la Phase 2",
-   ctx:"Rapport, incohérence 5. « NEW MISSION LEADER : ROB-1 » (l.894).",
+  {id:"D11", g:"C", t:"Pourquoi le vaisseau nomme-t-il Rob1 chef après l'échec ?",
+   ctx:"Le message du vaisseau dit « NEW MISSION LEADER : ROB-1 ». Le rapport demande pourquoi on donne le pouvoir au robot dont la mission a raté.",
+   conseil:"A. Une seule ligne sur l'écran répond à la question et le spectateur ne bute pas dessus.",
    o:[
-    {k:"A", l:"Une ligne d'écran le justifie", d:"Par exemple « UNITÉ RESTANTE : ROB-1 » : PERSEPHORA délègue au seul système encore en ligne. Une ligne ajoutée à l'écran."},
-    {k:"B", l:"Garder tel quel", d:"Le protocole n'a pas à se justifier ; l'ironie est voulue."}
+    {k:"A", r:true, l:"Ajouter une ligne d'écran", d:"Ce que ça change : l'écran dit aussi « SEULE UNITÉ ACTIVE : ROB-1 ». Ce que ça apporte : c'est logique, il ne reste que lui."},
+    {k:"B", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : la question du rapport."}
    ]},
-  {id:"D12", g:"D", t:"L'assemblage des Robs « prévu par PERSEPHORA »",
-   ctx:"Rapport, section 04. « L'organisation du PERSEPHORA avait tout prévu » (l.292) ; Rob1/2/3 aussi prévu (l.450). Le Rob fusionné et le tank sont validés (rounds 10 et 11), pas qui les a conçus.",
+  {id:"D12", g:"D", t:"Les robots s'assemblent « comme le vaisseau l'avait prévu » : on garde ?",
+   ctx:"Le rapport dit : si tout était prévu, il n'y a plus de suspense, ils suivent juste le mode d'emploi.",
+   conseil:"B. On garde ton idée (les robots sont faits pour s'assembler), mais chaque assemblage leur coûte quelque chose. Le suspense revient sans rien casser.",
    o:[
-    {k:"A", l:"Garder le plan d'usine", d:"La fusion est prévue ; la tension vient d'ailleurs (énergie, Créature, horde)."},
-    {k:"B", l:"Prévu, mais chaque fusion coûte", d:"La première fusion coûte l'énergie de Rob2 (la batterie parasite, D17) ; la seconde coûte le parasol, resté sur le robopod. Le plan existe, le prix n'était pas prévu."},
-    {k:"C", l:"Rob1 improvise", d:"La fusion n'est pas au programme : il la bricole. À corriger : l.292 et l.450."}
+    {k:"A", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : l'assemblage ne fait pas peur."},
+    {k:"B", r:true, l:"Prévu, mais chaque assemblage coûte", d:"Ce que ça change : le premier vide la batterie de Rob2 (voir D17), le second leur fait perdre leur chargeur solaire. Ce que ça apporte : chaque assemblage devient un vrai pari."},
+    {k:"C", l:"Rob1 invente l'assemblage", d:"Ce que ça change : ce n'était pas prévu, il bricole. Deux phrases à corriger. Ce que ça apporte : Rob1 encore plus inventif."}
    ]},
-  {id:"D13", g:"D", t:"Rob2 et Rob3, sans arc",
-   ctx:"Rapport, section 04. Rob2 tourne en boucle dans la caverne (l.266), Rob3 est couvert de mousse (l.452). Rob4 a son arc (hybride).",
+  {id:"D13", g:"D", t:"Rob2 et Rob3 n'évoluent pas : on leur donne une histoire ?",
+   ctx:"Rob2 tourne en rond dans la grotte, Rob3 est couvert de mousse. Après, ce sont surtout des pièces de l'assemblage.",
+   conseil:"A. Deux robots changent (Rob1, Rob4), deux non : la différence dit quelque chose, et ça va avec la réponse C de la question D07.",
    o:[
-    {k:"A", l:"Ils restent des machines", d:"Le contraste avec Rob1 et Rob4 est le sens : deux Robs changent, deux non."},
-    {k:"B", l:"Un trait chacun, repris une fois", d:"La boucle de Rob2, la mousse de Rob3 reviennent dans une scène (par exemple à l'extraction). Un plan ou deux de plus."}
+    {k:"A", r:true, l:"Ils restent des machines", d:"Ce que ça change : rien. Ce que ça apporte : on voit mieux ce qui rend Rob1 et Rob4 différents."},
+    {k:"B", l:"Un petit trait chacun", d:"Ce que ça change : un plan ou deux où Rob2 refait sa boucle, ou la mousse de Rob3 repousse. Ce que ça apporte : un peu de vie en plus."}
    ]},
-  {id:"D14", g:"D", t:"Le rongeur à l'oreille cassée",
-   ctx:"Rapport, section 04. Validé : le caillou blanc dans l'alvéole H-01 à la fin (A08). Proposé : le module M6 du 55 montre le robopod des rongeurs intact. Dans le 25, son sort reste ouvert.",
+  {id:"D14", g:"D", t:"Le petit rongeur à l'oreille cassée : on sait s'il survit ?",
+   ctx:"Déjà décidé : le caillou blanc qu'il a donné finit dans la case vide de Seed. Prévu pour le film de 55 min : on y verra que son abri a survécu. Dans le film de 25 min, on ne le sait pas.",
+   conseil:"A. Trois secondes suffisent pour que le public sache qu'il est vivant. C'est le premier ami de Seed, et le public va se poser la question.",
    o:[
-    {k:"A", l:"Un plan dans le 25", d:"Le robopod intact, vu au passage du tank ou au retour (VIII). Quelques secondes de plus."},
-    {k:"B", l:"Ouvert dans le 25, payé dans le 55", d:"M6 montre la famille sauvée ; le 25 garde le doute et le caillou."},
-    {k:"C", l:"Le sifflement suffit", d:"Seed reproduit son sifflement à l'Acte VII : c'est le paiement émotionnel. Rien n'est ajouté."}
+    {k:"A", r:true, l:"Un plan dans le 25 min", d:"Ce que ça change : quelques secondes où l'on voit son abri intact. Ce que ça apporte : le public est rassuré."},
+    {k:"B", l:"Seulement dans le 55 min", d:"Ce que ça change : rien dans le 25 min. Ce que ça laisse : un doute dans le film court."},
+    {k:"C", l:"Le sifflement suffit", d:"Ce que ça change : rien. Seed refait son sifflement plus tard, c'est le souvenir qui compte."}
    ]},
-  {id:"D15", g:"D", t:"L'organisme enterré qui luit",
-   ctx:"Rapport, section 04. Le docx montre la lueur sous terre (l.442). Proposés : S6 (le totem qui luit) et M5.",
+  {id:"D15", g:"D", t:"L'organisme enterré qui brille encore sous la terre",
+   ctx:"Seed croit l'avoir tué et l'enterre ; le public voit qu'il brille encore. Ensuite on ne le revoit plus. Déjà proposé : un plan de la lueur dans le 25 min, et dans le 55 min le retour repasse devant.",
+   conseil:"A. C'est déjà écrit et ça suffit : le public sait, Seed ne sait pas, et le film long le montre une deuxième fois.",
    o:[
-    {k:"A", l:"S6 tel quel", d:"Un plan dans le 25 ; dans le 55, le retour repasse devant le totem devenu une tache lumineuse."},
-    {k:"B", l:"Grâce ouverte", d:"Seul le spectateur le sait ; aucun retour. Retirer le retour du 55."},
-    {k:"C", l:"Seed le revoit au retour", d:"Dans le 25, à l'Acte VIII, elle passe devant le totem qui luit. Un plan avec Seed."}
+    {k:"A", r:true, l:"Comme prévu", d:"Ce que ça change : rien de plus. Ce que ça apporte : un petit secret partagé avec le public."},
+    {k:"B", l:"On ne le revoit jamais", d:"Ce que ça change : on retire le retour du 55 min. Ce que ça laisse : un mystère."},
+    {k:"C", l:"Seed le revoit au retour", d:"Ce que ça change : un plan avec Seed devant la lueur dans le 25 min. Ce que ça apporte : elle apprend qu'il vit."}
    ]},
-  {id:"D16", g:"D", t:"Elena et l'écho des jumeaux",
-   ctx:"Rapport, section 04. Le docx (l.636) : « Ses parents dans le public, fiers. Ses jumeaux — un frère et une sœur — qui l'applaudissent. » La phrase peut désigner ses enfants ou un frère et une sœur jumeaux. Le docx ne dit pas que CAIN vient de l'ADN d'Elena. Proposé : M1 Elena dans le 55.",
+  {id:"D16", g:"D", t:"Elena et « ses jumeaux » : qui sont-ils ?",
+   ctx:"Dans les souvenirs : « Ses parents dans le public, fiers. Ses jumeaux, un frère et une sœur, qui l'applaudissent. » On peut lire ses enfants, ou son frère et sa sœur qui sont jumeaux. Le rapport y voit un écho avec Seed et Cain.",
+   conseil:"Pas de conseil : c'est ce que tu as voulu dire qui compte. Si tu hésites, C ne change rien.",
    o:[
-    {k:"A", l:"Ce sont ses enfants", d:"L'écho avec Seed et CAIN existe ; il peut être activé dans M1 et à l'Acte X."},
-    {k:"B", l:"Ce sont son frère et sa sœur, jumeaux", d:"Pas d'écho voulu ; la phrase est à préciser dans le récit."},
-    {k:"C", l:"Elena reste en éclats", d:"Les visions de l'Acte VII et M1 suffisent ; pas d'écho activé."}
+    {k:"A", l:"Ce sont ses enfants", d:"Ce que ça change : l'écho avec Seed et Cain (un frère et une sœur) peut être montré dans le film de 55 min."},
+    {k:"B", l:"Ce sont son frère et sa sœur", d:"Ce que ça change : on précise la phrase pour qu'elle ne se lise que d'une façon."},
+    {k:"C", l:"On n'y touche pas", d:"Ce que ça change : rien ; Elena reste en souvenirs rapides."}
    ]},
-  {id:"D17", g:"E", t:"La batterie parasite (Rob1 prioritaire sur l'énergie de Rob2)",
-   ctx:"Rapport, incohérence 2. « Quand Rob1 se branche à Rob2, il devient prioritaire en batterie » (l.388). Le Récit v2 la garde et ajoute le froid du col.",
+  {id:"D17", g:"E", t:"Rob1 « mange » la batterie de Rob2 quand ils sont assemblés",
+   ctx:"Cette règle apparaît juste au moment où il faut une panne. Le rapport dit qu'elle tombe du ciel.",
+   conseil:"A. On garde ta panne, on la montre juste un peu plus tôt, au moment où ils s'assemblent. Plus personne ne se dit que c'est pratique.",
    o:[
-    {k:"A", l:"L'établir dès la fusion", d:"À l'Acte III, l'écran de la fusion montre la priorité d'énergie de Rob1. La règle existe avant la crise."},
-    {k:"B", l:"La retirer", d:"L'énergie manque par la topologie, le col, le froid et le poids de Seed. La l.388 disparaît."},
-    {k:"C", l:"Garder telle quelle", d:"Rien ne change."}
+    {k:"A", r:true, l:"La montrer dès l'assemblage", d:"Ce que ça change : un écran pendant l'assemblage indique que Rob1 prend l'énergie en premier. Ce que ça apporte : la panne devient logique."},
+    {k:"B", l:"L'enlever", d:"Ce que ça change : la batterie se vide à cause de la montée, du froid et du poids. Une phrase en moins."},
+    {k:"C", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien."}
    ]},
-  {id:"D18", g:"E", t:"Le sinkhole « sans fond » et les ~80 m de la Géologie",
-   ctx:"Rapport, incohérence 1. Le docx : le caillou ne fait aucun bruit, le flare disparaît (l.212 à 222). La Géologie (validée) : ~80 m, XENOPOD intact sur un cône d'éboulis. Le Récit v2 garde l'image du docx.",
+  {id:"D18", g:"E", t:"Le trou « sans fond » qu'on arrive pourtant à remonter avec des câbles",
+   ctx:"Au début, la lumière qu'ils jettent dans le trou disparaît sans toucher le fond. À la fin, ils remontent le XENOPOD avec des câbles. Déjà décidé : le trou fait environ 80 m.",
+   conseil:"A. On garde la peur du trou, mais on voit le fond : le XENOPOD est là, trop loin pour eux deux. Les câbles de la fin deviennent logiques.",
    o:[
-    {k:"A", l:"Le flare se pose, loin", d:"Il tombe sur l'éboulis, petit point rouge au fond, le XENOPOD hors de vue. Le désespoir vient de l'inaccessible, pas de l'abîme ; le câble de l'Acte IX devient plausible."},
-    {k:"B", l:"Le fond est masqué", d:"Corniche ou poussière : le flare disparaît derrière une avancée de roche. L'image du docx reste, les 80 m aussi."},
-    {k:"C", l:"Garder le docx", d:"La licence est assumée ; l'incohérence reste."}
+    {k:"A", r:true, l:"La lumière touche le fond, tout en bas", d:"Ce que ça change : un tout petit point rouge au fond. Ce que ça apporte : on comprend qu'ils ne peuvent pas descendre seuls, et que c'est possible plus tard à quatre."},
+    {k:"B", l:"Un rebord cache le fond", d:"Ce que ça change : la lumière passe derrière un rocher. Ce que ça apporte : l'image du début reste la même."},
+    {k:"C", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : l'incohérence."}
    ]},
-  {id:"D19", g:"E", t:"Rendre visible que la planète est viable et que Rob1 ment",
-   ctx:"Rapport, incohérence 4. Intention tranchée (Registre, « Le sens de la fin » ; A09). Reste ce que le spectateur lit à l'écran.",
+  {id:"D19", g:"E", t:"Le public comprend-il que la planète est vivable et que Rob1 ment ?",
+   ctx:"Déjà décidé : la planète a tout ce qu'il faut, Rob1 ment pour la protéger, et une ligne dit « Terre : réception dans 11,4 ans ». Reste à être sûr que le public voit le mensonge.",
+   conseil:"B. Une seule image suffit : le public voit « OUI » devenir « NON ». Plus aucun doute, sans un mot.",
    o:[
-    {k:"A", l:"Ce qui est validé suffit", d:"« Phase 1 : OK » à l'Acte I, Seed qui mange, boit et guérit, puis la ligne des 11,4 ans."},
-    {k:"B", l:"Un écran dans le PROCESSING", d:"Rob1 affiche « VIABILITÉ : OUI », puis réécrit NON. Une ligne d'écran ajoutée à l'Acte IX."}
+    {k:"A", l:"Ce qui existe suffit", d:"Ce que ça change : rien. Ce que ça laisse : certains spectateurs peuvent rater le mensonge."},
+    {k:"B", r:true, l:"Rob1 efface « VIVABLE : OUI » et écrit « NON »", d:"Ce que ça change : un écran de plus dans la scène du rapport. Ce que ça apporte : tout le monde comprend qu'il ment."}
    ]},
-  {id:"D20", g:"E", t:"Seed survit à la horde",
-   ctx:"Rapport, incohérence 6. Percutée par les buffles de tête (l.574), elle se réveille blessée sur la rive de la rivière rouge (l.584). Le noir de la fin de l'Acte VI est le module M6 du 55 (proposé).",
+  {id:"D20", g:"E", t:"Seed est renversée par la horde et survit : comment ?",
+   ctx:"Elle est percutée par les buffles géants, puis se réveille blessée au bord d'une rivière. Le rapport dit que ça devrait la tuer.",
+   conseil:"B. Un plan de deux secondes où elle tombe dans la rivière explique pourquoi elle survit et pourquoi elle se réveille dans l'eau.",
    o:[
-    {k:"A", l:"Montrer comment, dans le 55", d:"M6 la montre projetée hors de la horde, puis emportée par l'eau. Le 25 garde le noir."},
-    {k:"B", l:"Un plan dans le 25 aussi", d:"Un plan bref avant le noir : elle bascule dans une ravine ou dans l'eau. Quelques secondes de plus."},
-    {k:"C", l:"Garder la convention", d:"Rien ne change ; la fable l'admet."}
+    {k:"A", l:"Le montrer seulement dans le 55 min", d:"Ce que ça change : rien dans le 25 min."},
+    {k:"B", r:true, l:"Un plan dans le 25 min aussi", d:"Ce que ça change : juste avant le noir, elle bascule dans la rivière. Ce que ça apporte : sa survie devient crédible."},
+    {k:"C", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien ; c'est un conte."}
    ]},
-  {id:"D21", g:"E", t:"Le réveil de Rob3 au moment de la horde",
-   ctx:"Rapport, incohérence 10. Nettoyé à l'Acte V (l.458), il se réveille à l'Acte VI (l.542).",
+  {id:"D21", g:"E", t:"Rob3 se réveille pile quand la horde arrive",
+   ctx:"Ils le nettoient le soir, il ne se réveille que le lendemain, juste au bon moment. Le rapport trouve ça trop pratique.",
+   conseil:"A. Il s'allume le soir après le nettoyage : on comprend qu'il est prêt, et ce moment devient un petit bonheur du soir.",
    o:[
-    {k:"A", l:"Le réveil arrive plus tôt", d:"À la fin de l'Acte V, Rob3 s'allume au coucher du soleil puis passe en veille de recharge. À l'Acte VI, il est prêt."},
-    {k:"B", l:"La horde le réveille", d:"Les vibrations du sol le sortent de veille ; une ligne d'écran le dit."},
-    {k:"C", l:"Garder tel quel", d:"Rien ne change."}
+    {k:"A", r:true, l:"Il se réveille le soir", d:"Ce que ça change : il s'allume au coucher du soleil, puis se met en recharge. Ce que ça apporte : plus de hasard."},
+    {k:"B", l:"C'est la horde qui le réveille", d:"Ce que ça change : le sol qui tremble le réveille ; une ligne d'écran le dit."},
+    {k:"C", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien."}
    ]},
-  {id:"D22", g:"E", t:"23 % pour Seed, 21 % pour CAIN",
-   ctx:"Rapport, incohérence 7. Seed : TRANSFERT MÉMOIRE 23 % (l.144) ; CAIN : 100 % > 21 % (l.1068). Les deux chiffres sont repris dans tous les documents ; aucun round n'a tranché l'écart.",
+  {id:"D22", g:"E", t:"Seed a 23 % de la mémoire d'Elena, Cain en reçoit 21 % : c'est voulu ?",
+   ctx:"Les deux chiffres sont dans ton texte. Personne n'a encore dit si la différence est voulue.",
+   conseil:"A. La différence devient un sens : Rob1 donne à Cain un peu moins qu'à Seed, elle reste la grande sœur. Il suffit d'un regard sur l'écran.",
    o:[
-    {k:"A", l:"Garder l'écart et le rendre voulu", d:"Rob1 regarde les 23 % de Seed avant d'écrire 21 % : Seed sera l'aînée. Un plan d'écran ajouté à l'Acte X."},
-    {k:"B", l:"Aligner CAIN sur Seed : 23 %", d:"Un égal exact. À corriger : l.1068 du docx et tous les documents qui disent 21 %."},
-    {k:"C", l:"Garder sans le souligner", d:"Rien ne change ; l'écart reste lisible pour qui le cherche."}
+    {k:"A", r:true, l:"C'est voulu, on le montre", d:"Ce que ça change : Rob1 regarde « 23 % » (Seed) avant de taper « 21 % ». Ce que ça apporte : Seed reste l'aînée."},
+    {k:"B", l:"Même chiffre pour les deux (23 %)", d:"Ce que ça change : on corrige 21 % partout. Ce que ça apporte : Cain est exactement son égal."},
+    {k:"C", l:"On garde sans le montrer", d:"Ce que ça change : rien."}
    ]},
-  {id:"D23", g:"E", t:"Qui a nommé Seed et CAIN ?",
-   ctx:"Rapport, incohérence 9 et section 07. « Seed ne sait rien, même pas qui lui a donné son nom » (l.156) ; l'écran dit SEED-03 (l.140) ; les boîtes disent H-01 / SEED et H-02 / CAIN (l.1030, 1032).",
+  {id:"D23", g:"E", t:"Qui a donné les noms « Seed » et « Cain » ?",
+   ctx:"Seed ne sait pas qui l'a nommée. Les boîtes portent « SEED » et « CAIN ».",
+   conseil:"A. C'est le plus simple : le vaisseau s'appelle « la semeuse » et le premier bébé « la graine ». Rien à ajouter.",
    o:[
-    {k:"A", l:"Des noms de code du programme", d:"PERSEPHORA la semeuse, SEED la graine : le programme nomme ses embryons. Rien à ajouter ; le 55 peut le montrer dans M1."},
-    {k:"B", l:"Elena les a nommés", d:"Elle choisit les noms en signant (M1 dans le 55). Un beat ajouté au module M1."},
-    {k:"C", l:"Laisser la question sans réponse", d:"Le film ne le dit pas."}
+    {k:"A", r:true, l:"Ce sont des noms de code de la mission", d:"Ce que ça change : rien. Ce que ça apporte : c'est cohérent avec le nom du vaisseau."},
+    {k:"B", l:"C'est Elena qui les a choisis", d:"Ce que ça change : une scène dans le film de 55 min où elle les choisit en signant."},
+    {k:"C", l:"On ne le dit pas", d:"Ce que ça change : rien ; la question reste ouverte."}
    ]},
-  {id:"D24", g:"F", t:"Le ton du choix de CAIN",
-   ctx:"Rapport, section 07. Validé : Rob1 change CAIN après un flash du sourire de Seed (A07). Le rapport : Rob1 fait volontairement à CAIN ce que le bug a fait à Seed, sans son consentement.",
+  {id:"D24", g:"F", t:"La fin avec Cain : douce, ou un peu inquiétante ?",
+   ctx:"Rob1 rajeunit Cain (de 35 à 14 ans) et lui retire de la mémoire, sans lui demander son avis. Déjà décidé : il le fait après avoir revu le sourire de Seed. Le rapport dit : il refait volontairement à Cain ce que l'accident a fait à Seed.",
+   conseil:"B. La fin reste douce, mais on voit en un plan ce que Rob1 enlève à Cain. Le public repart avec une petite question, sans que la fin devienne sombre.",
    o:[
-    {k:"A", l:"Tendre", d:"La lecture actuelle : un frère pour Seed. Rien ne change."},
-    {k:"B", l:"Tendre et troublant", d:"Un détail d'écran laisse voir ce que Rob1 retire (par exemple la ligne PROFESSION qui s'efface). Le spectateur sent le prix ; une ligne d'écran à l'Acte X."},
-    {k:"C", l:"Troublant assumé", d:"La fin laisse affleurer l'inquiétude (musique, durée du plan). Le ton du dernier plan change."}
+    {k:"A", l:"Douce", d:"Ce que ça change : rien. Ce que ça donne : un frère pour Seed, point."},
+    {k:"B", r:true, l:"Douce, avec une petite ombre", d:"Ce que ça change : un plan d'écran où l'on voit s'effacer « INGÉNIEUR ». Ce que ça apporte : on comprend ce que ça coûte à Cain."},
+    {k:"C", l:"Franchement inquiétante", d:"Ce que ça change : musique et dernier plan plus sombres. Ce que ça coûte : la fin perd sa douceur."}
    ]},
-  {id:"D25", g:"F", t:"Le nom CAIN",
-   ctx:"Rapport, section 07 : le nom porte le premier fratricide et promet un conflit ; la fin est apaisée. Le nom vient de ton docx.",
+  {id:"D25", g:"F", t:"Le nom « Cain »",
+   ctx:"Dans la Bible, Caïn tue son frère. Le rapport dit que le nom annonce de la violence, alors que la fin est douce.",
+   conseil:"A, si tu choisis B à la question D24 : le nom et la petite ombre vont ensemble et préparent une suite. Si tu veux une fin toute douce, C.",
    o:[
-    {k:"A", l:"Garder et assumer", d:"Une graine sombre, un crochet pour la suite."},
-    {k:"B", l:"Garder sans le souligner", d:"Rien ne change."},
-    {k:"C", l:"Changer de nom", d:"Des noms seraient proposés en QCM après ta relecture ; tous les documents sont à corriger."}
+    {k:"A", r:true, l:"On garde, c'est voulu", d:"Ce que ça change : rien. Ce que ça apporte : une petite inquiétude pour la suite."},
+    {k:"B", l:"On garde sans y penser", d:"Ce que ça change : rien. Ce que ça laisse : certains spectateurs y verront une menace."},
+    {k:"C", l:"On change le nom", d:"Ce que ça change : je te propose des noms après ta relecture ; tous les documents sont à corriger."}
    ]}
-
 ];
-const KEY = "se-revision-script-doctor-r1";
+const KEY = "se-revision-script-doctor-r2";
 
 let state = {};
 try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
@@ -398,10 +423,11 @@ GROUPS.forEach(g => {
     html += '<div class="qtop"><span class="qid">'+q.id+'</span><span class="chip" data-chip="'+q.id+'">à trancher</span>'+(q.multi ? '<span class="multi">plusieurs choix possibles</span>' : '')+'</div>';
     html += '<h4>'+esc(q.t)+'</h4>';
     html += '<p class="ctx">'+esc(q.ctx)+'</p>';
+    if(q.conseil) html += '<p class="advice"><b>Mon conseil</b>'+esc(q.conseil)+'</p>';
     html += '<div class="opts" role="'+(q.multi ? "group" : "radiogroup")+'" aria-label="'+esc(q.t)+'">';
     q.o.forEach(o => {
       const iid = q.id+"-"+o.k;
-      html += '<label class="opt" for="'+iid+'"><input type="'+type+'" name="'+q.id+'" id="'+iid+'" value="'+o.k+'" data-q="'+q.id+'"><span class="k">'+o.k+'</span><span><span class="l">'+esc(o.l)+(o.r ? '<span class="rec">recommandé</span>' : '')+'</span><span class="d">'+esc(o.d)+'</span></span></label>';
+      html += '<label class="opt" for="'+iid+'"><input type="'+type+'" name="'+q.id+'" id="'+iid+'" value="'+o.k+'" data-q="'+q.id+'"><span class="k">'+o.k+'</span><span><span class="l">'+esc(o.l)+(o.r ? '<span class="rec">mon conseil</span>' : '')+'</span><span class="d">'+esc(o.d)+'</span></span></label>';
     });
     html += '</div>';
     html += '<div class="note"><label for="note-'+q.id+'">Ta réponse ou précision</label><textarea id="note-'+q.id+'" data-note="'+q.id+'" rows="2" placeholder="Précise, combine ou remplace les options…"></textarea></div>';
@@ -450,7 +476,7 @@ function buildText(){
     qs.forEach(q => {
       const s = state[q.id];
       t += "\n["+q.id+"] "+q.t+"\n";
-      s.sel.slice().sort().forEach(k => { const o = q.o.find(x => x.k === k); if(o) t += "→ "+k+" · "+o.l+"\n"; });
+      s.sel.slice().sort().forEach(k => { const o = q.o.find(x => x.k === k); if(o) t += "→ "+k+" · "+o.l+(o.r ? " (conseil de Claude)" : "")+"\n"; });
       if(s.note.trim()) t += "Précision : "+s.note.trim().replace(/\n+/g, " / ")+"\n";
     });
   });
@@ -524,6 +550,15 @@ reset.addEventListener("click", () => {
   save(); update(); say("Réponses effacées.");
 });
 
+document.getElementById("advise").addEventListener("click", () => {
+  Q.forEach(q => {
+    const rec = q.o.filter(o => o.r).map(o => o.k);
+    if(!rec.length || state[q.id].sel.length) return;
+    state[q.id].sel = q.multi ? rec : [rec[0]];
+    rec.forEach(k => { const i = document.getElementById(q.id+"-"+k); if(i && (q.multi || k === rec[0])) i.checked = true; });
+  });
+  save(); update(); say("Mes conseils sont cochés là où tu n'avais pas encore répondu. Change ce que tu veux.");
+});
 update();
 })();
 </script>
