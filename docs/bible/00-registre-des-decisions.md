@@ -218,7 +218,7 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 - **Arc et fosse (G04)** : une subduction plane. La plaque de l'Océan 2 plonge en pente très douce ; l'arc volcanique s'ouvre ~1 200 km en arrière de la fosse ; le Golfe 2 est un bassin posé au-dessus de la plaque qui plonge. Rob4, la fosse et les distances du trajet ne bougent pas.
 - **Suite (N01)** : Cal relit et corrige ; rien n'avance tant que ses corrections ne sont pas passées.
 
-**Round 17 · révision du récit après le rapport de script-doctor (20/11/2026), décisions de Cal** (QCM `film/qcm-script-doctor.html`). À écrire dans le Récit v2 quand les corrections de la relecture de Cal (round 16) seront passées ; rien n'est encore appliqué au texte.
+**Round 17 · révision du récit après le rapport de script-doctor (20/11/2026), décisions de Cal** (QCM `film/qcm-script-doctor.html`). Écrit dans le Récit v2 le 20/11/2026 à la demande de Cal (« pourquoi tu me donnes pas tout d'un coup ») : les passages sont marqués [R17]. Cal n'a pas de corrections de relecture en attente pour le récit.
 
 - **D01 (Milieu du film)** : on met en avant les quatre choix que Seed fait déjà pendant le voyage (garder la plante, l'idée de la batterie vivante, enterrer l'organisme, sauver le rongeur) ; pas de scène ajoutée.
 - **D02 (Voyage)** : pas de raccourci de plus ; les longues marches deviennent des cartons de jour.
@@ -253,4 +253,4 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 - [ ] Épigraphe du 55 : la phrase du docx est gardée pour l'instant (round 14) ; à revoir plus tard, à la demande de Cal.
 - [ ] Dessin des nouvelles espèces : quatre de la jungle, le grimpeur des cols, le Titan volant, l'oiseau des salins.
 - [ ] Relecture de Cal (round 16, N01) : en attente de ses corrections avant toute suite.
-- [ ] Round 17 (révision du récit) : tranché le 20/11, à écrire dans le Récit v2 après la relecture.
+- [x] Round 17 (révision du récit) : tranché et écrit dans le Récit v2 le 20/11.
