@@ -1,0 +1,529 @@
+<title>Révision du récit</title>
+<meta name="color-scheme" content="only light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{
+  color-scheme: only light;
+  --bg:#f1f1f4; --bg2:#ffffff; --bg3:#e7e7ec; --field:#fafafc;
+  --line:#d8d8e0; --line2:#bcbcca;
+  --ink:#0d0d11; --muted:#55556a; --dim:#8b8b9f;
+  --or:#ff5200; --or-soft:#fff0e8; --or-line:#ffb48f;
+  --ok:#2c7a4b; --ok-soft:#e6f3eb;
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --mono:"DM Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+html,body{background-color:var(--bg)!important;color:var(--ink)}
+body{margin:0;font-family:var(--mono);font-size:13px;line-height:1.6;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0;background-color:var(--bg);z-index:-1}
+.shell,aside,main,header,section,footer,.wrap{background-color:var(--bg)}
+@media (prefers-color-scheme:dark){
+  html,body{background-color:var(--bg)!important;color:var(--ink)}
+  .shell,aside,main,header,section,footer,.wrap{background-color:var(--bg)}
+  .q,.done,.out{background-color:var(--bg2)}
+}
+@media (forced-colors:active){*{forced-color-adjust:none}}
+@media (inverted-colors:inverted){html{filter:invert(1) hue-rotate(180deg)} img,video,canvas{filter:invert(1) hue-rotate(180deg)}}
+
+.shell{display:grid;grid-template-columns:272px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding-inline:24px;padding-block:28px 64px}
+
+/* ---- sidebar ---- */
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;display:flex;flex-direction:column;gap:22px;max-height:calc(100vh - 40px);overflow:auto}
+.brand{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.brand h1{font-family:var(--serif);font-weight:400;font-size:40px;line-height:1;margin:0;letter-spacing:-.01em}
+.brand .meta{font-size:11.5px;color:var(--dim)}
+.prog{display:flex;flex-direction:column;gap:8px}
+.prog .num{font-family:var(--serif);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.prog .num small{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:6px}
+.bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--or);transition:width .25s ease}
+nav ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+nav a{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;border-radius:3px;color:var(--ink);text-decoration:none;font-size:12.5px}
+nav a:hover{background:var(--bg3)}
+nav a:focus-visible{outline:2px solid var(--or);outline-offset:1px}
+nav a .c{color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}
+nav a.full .c{color:var(--ok)}
+.actions{display:flex;flex-direction:column;gap:8px}
+button{font-family:var(--mono);font-size:12.5px;cursor:pointer;border-radius:3px;padding:10px 14px;border:1px solid var(--line2);background:var(--bg2);color:var(--ink);text-align:center}
+button:hover{border-color:var(--ink)}
+button:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+button.primary{background:var(--or);border-color:var(--or);color:var(--ink);font-weight:500;letter-spacing:.02em}
+button.primary:hover{border-color:var(--ink)}
+button.ghost{background:transparent;border-color:transparent;color:var(--muted);padding:6px 10px}
+button.ghost:hover{color:var(--ink);border-color:var(--line2)}
+button.armed{border-color:#c0392b;color:#c0392b}
+.toast{min-height:20px;font-size:12px;color:var(--ok)}
+.toast.warn{color:#a3470c}
+
+/* ---- main ---- */
+main{display:flex;flex-direction:column;gap:48px;min-width:0}
+header.intro{display:flex;flex-direction:column;gap:14px;max-width:68ch}
+header.intro h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,44px);line-height:1.05;margin:0;text-wrap:balance}
+header.intro p{margin:0;color:var(--muted);font-size:13.5px}
+.done{background:var(--bg2);border:1px solid var(--line);border-radius:4px}
+.done summary{cursor:pointer;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;list-style:none}
+.done summary::-webkit-details-marker{display:none}
+.done summary .t{font-size:12.5px}
+.done summary .t b{font-weight:500}
+.done summary .hint{color:var(--dim);font-size:11.5px}
+.done ul{margin:0;padding:4px 16px 16px 34px;display:grid;gap:6px;color:var(--muted);font-size:12.5px}
+.done li::marker{color:var(--ok)}
+
+section.group{display:flex;flex-direction:column;gap:22px;scroll-margin-top:24px}
+.ghead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line2);padding-bottom:10px}
+.ghead h3{font-family:var(--serif);font-weight:400;font-size:30px;margin:0;line-height:1.1}
+.ghead .gl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or);font-weight:500}
+.ghead .gc{margin-left:auto;color:var(--dim);font-size:11.5px;font-variant-numeric:tabular-nums}
+
+.q{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:22px 22px 20px;display:flex;flex-direction:column;gap:14px;scroll-margin-top:24px}
+.q.answered{border-color:var(--line2)}
+.qtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.qid{font-size:11px;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+.chip{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:2px;border:1px solid var(--line2);color:var(--muted)}
+.q.answered .chip{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.multi{font-size:10.5px;color:var(--dim);letter-spacing:.06em}
+.q h4{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.15;margin:0;text-wrap:balance}
+.ctx{margin:0;color:var(--muted);font-size:12.5px;max-width:70ch}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:3px;cursor:pointer;background:var(--bg2);transition:border-color .12s,background-color .12s}
+.opt:hover{border-color:var(--line2);background:var(--field)}
+.opt input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.opt .k{width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line2);border-radius:2px;font-size:12px;font-weight:500;color:var(--muted);background:var(--bg2)}
+.opt .l{font-family:var(--serif);font-size:19px;line-height:1.2;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.opt .d{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
+.opt .rec{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--or);border:1px solid var(--or-line);padding:0 6px;border-radius:2px;line-height:17px}
+.opt:has(input:checked){border-color:var(--or);background:var(--or-soft)}
+.opt:has(input:checked) .k{background:var(--or);border-color:var(--or);color:var(--ink)}
+.opt:has(input:focus-visible){outline:2px solid var(--or);outline-offset:2px}
+.opt.on{border-color:var(--or);background:var(--or-soft)}
+.opt.on .k{background:var(--or);border-color:var(--or);color:var(--ink)}
+.note{display:flex;flex-direction:column;gap:6px}
+.note label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.note textarea{font-family:var(--mono);font-size:13px;line-height:1.55;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:3px;padding:10px 12px;min-height:64px;resize:vertical;width:100%;box-sizing:border-box}
+.note textarea::placeholder{color:var(--dim)}
+.note textarea:focus{outline:2px solid var(--or);outline-offset:0;border-color:var(--or)}
+
+footer.out{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+footer.out h3{font-family:var(--serif);font-weight:400;font-size:24px;margin:0}
+footer.out p{margin:0;color:var(--muted);font-size:12.5px}
+#out{font-family:var(--mono);font-size:12px;line-height:1.55;width:100%;box-sizing:border-box;min-height:220px;border:1px solid var(--line);border-radius:3px;background:var(--field);color:var(--ink);padding:12px;resize:vertical}
+
+.mbar{display:none}
+
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:28px;padding-inline:16px;padding-block:20px 0}
+  aside{position:static;max-height:none;overflow:visible}
+  nav ol{flex-direction:row;flex-wrap:wrap;gap:6px}
+  nav a{border:1px solid var(--line);padding:5px 9px}
+  .brand h1{font-size:34px}
+  .actions .primary{display:none}
+  .q{padding:18px 16px}
+  .q h4{font-size:23px}
+  .mbar{display:flex;position:sticky;bottom:0;z-index:5;gap:10px;align-items:center;justify-content:space-between;background:var(--bg);border-top:1px solid var(--line2);padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));margin-top:8px}
+  .mbar .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="shell">
+  <aside aria-label="Navigation et actions">
+    <div class="brand">
+      <span class="eyebrow">Second Earth · script-doctor</span>
+      <h1>Révision du récit</h1>
+      <span class="meta">25 décisions · 20.11.2026</span>
+    </div>
+    <div class="prog" aria-live="polite">
+      <div class="num"><span id="pn">0</span><small>/ <span id="pt">0</span> répondues</small></div>
+      <div class="bar"><i id="pb"></i></div>
+    </div>
+    <nav aria-label="Groupes de décisions"><ol id="nav"></ol></nav>
+    <div class="actions">
+      <button class="primary" type="button" data-copy>Copier mes réponses</button>
+      <button class="ghost" type="button" id="reset">Tout effacer</button>
+      <div class="toast" id="toast" role="status"></div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="intro">
+      <span class="eyebrow">Rapport de script-doctor · points ouverts</span>
+      <h2>Ce que le rapport propose, point par point. Tu tranches.</h2>
+      <p>Chaque point a été vérifié contre le récit de référence (le docx) et le Registre : ce qui est déjà tranché est rangé dans la liste repliée et n’est pas redemandé. Le monde et le script restent gelés jusqu’aux corrections de ta relecture : une réponse ici dit ce qui sera écrit ensuite, elle ne modifie rien aujourd’hui. Les numéros de ligne sont ceux du récit de référence sur le site. Le champ sous chaque décision sert à préciser, combiner ou remplacer. Le bouton « Copier mes réponses » met tout au format texte, à coller dans le chat. Tes saisies restent dans ce navigateur si tu fermes la page. <a href="rapport-script-doctor.html">Lire le rapport et la note de vérification</a> · <a href="recit-docx.html">Lire le récit de référence</a>.</p>
+      <details class="done">
+        <summary><span class="t"><b>Déjà tranché</b> · <span id="dn"></span> blocs, ne seront plus redemandés</span><span class="hint">afficher</span></summary>
+        <ul id="donelist"></ul>
+      </details>
+    </header>
+
+    <div id="groups" style="display:contents"></div>
+
+    <footer class="out" id="apercu">
+      <h3>Texte copié</h3>
+      <p>Ce qui part dans le presse-papier. Si la copie est bloquée par l'application, le texte est sélectionné ici : Ctrl+C ou Cmd+C.</p>
+      <textarea id="out" readonly aria-label="Texte de réponses à copier"></textarea>
+    </footer>
+
+    <div class="mbar">
+      <span class="n"><span id="mn">0</span> / <span id="mt">0</span> répondues</span>
+      <button class="primary" type="button" data-copy>Copier mes réponses</button>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+const DONE = [
+  "Décor : Proxima Centauri et la lumière rouge du docx sont remplacés par 61 Cygni A, la planète 61 Cygni Ab dite Korê, lumière orange (Registre, Le monde ; Écarts docx / Bible)",
+  "Acte VIII : il existe, Korê, le retour par les lacs salés et le cri de la colonie (oiseau des salins validé, rounds 6 à 10 ; Écarts docx / Bible) ; la transition VII → IX passe par lui",
+  "Quatre mots parlés dans tout le film, rien d'autre : Rob (VI), Seed (VII), Korê (VIII), Je suis Seed (IX) (A02, round 13) ; Seed reste muette ailleurs",
+  "Échelle géographique : ~250 km à pied jusqu'à Rob2, Rob fusionné à ~30 km/h, boucle de ~5 500 km, quelques semaines (rounds 10 et 11)",
+  "Le sens de la fin : la Phase 1 réussit, Korê a tout, le mensonge de Rob1 protège un monde complet (Registre) ; ligne « Terre : réception dans 11,4 ans » (A09)",
+  "Sinkhole : ~80 m, XENOPOD au fond, intact, sur un cône d'éboulis (Géologie et plaques, validé au round 15)",
+  "Rob1 change CAIN après un flash du sourire de Seed, pas de la charte (A07) ; le caillou blanc est posé dans l'alvéole H-01 à la fin (A08)",
+  "Colonne vertébrale + neuf modules : le 55 s'ouvre aux ellipses du docx (A01) ; les didascalies de voyage répétées sont ces emplacements",
+  "Carton final en trois lignes : This is a fictional planet. / Earth is the only world we know. / Take care of it.",
+  "Épigraphe : la phrase du docx est gardée pour l'instant (E01) ; rien n'est proposé à sa place",
+  "Règle 8 : le monde et le script restent gelés jusqu'aux corrections de ta relecture ; ce QCM décide de ce qui sera écrit ensuite, il ne modifie rien aujourd'hui"
+];
+const GROUPS = [
+  {id:"A", name:"Structure et thème"},
+  {id:"B", name:"Seed"},
+  {id:"C", name:"Rob1"},
+  {id:"D", name:"Secondaires et fils plantés"},
+  {id:"E", name:"Cohérences"},
+  {id:"F", name:"La fin"}
+];
+const Q = [
+  {id:"D01", g:"A", t:"Faire vivre le thème (personne ou outil ?) pendant la quête, actes II à VI",
+   ctx:"Rapport, sections 00, 01, 09 (priorité 1). Le thème est posé à l'Acte I (« Rôle : preuve de concept. Cobaye. », l.172) et revient à l'Acte IX. Seed fait déjà des choix au milieu : l'échantillon (III), l'idée de l'organisme-batterie (IV), le rituel (IV), le retour pour le rongeur (VI).",
+   o:[
+    {k:"A", l:"Rendre lisibles les choix qui existent", d:"Aucun beat ajouté. Au découpage, les quatre choix de Seed sont cadrés comme des refus de son rôle de cobaye (elle agit pour un être vivant, pas pour la mission). Le récit ne change pas."},
+    {k:"B", l:"Ajouter un ou deux choix actifs liés au thème", d:"Un ou deux beats nouveaux entre II et VI où Seed s'approprie quelque chose contre sa fonction. Ils seraient rédigés après ta relecture et soumis en QCM ; le séquencier et le découpage du 25 bougent."},
+    {k:"C", l:"Garder la quête telle quelle", d:"Le thème dort au milieu et revient en IX par le choix de Rob1. Rien ne change."}
+   ]},
+  {id:"D02", g:"A", t:"Compresser la quête de 30 à 40 % ?",
+   ctx:"Rapport, section 06. Dans le 25, les actes II à VI font 11 min 30 sur 25 (Architecture 25 / 55). Les ellipses répétées du docx sont les emplacements des modules du 55 (A01, validé) : les supprimer retire les modules M3 à M6.",
+   o:[
+    {k:"A", l:"Pas de compression supplémentaire", d:"Le 25 est déjà condensé ; les ellipses deviennent des cartons de jour (S10) ; les modules du 55 restent à leur place."},
+    {k:"B", l:"Compresser le 25 seulement", d:"Les actes II à VI passent de 11 min 30 à environ 8 min ; le temps gagné va aux actes I, VII et IX. Le séquencier et le découpage (150 plans) sont à refaire ; les modules du 55 restent."},
+    {k:"C", l:"Compresser le 25 et le 55", d:"Une ou deux traversées au lieu de quatre dans les deux films ; un ou plusieurs modules disparaissent (M3, M4 ou M5) : l'architecture A01 est à revoir."}
+   ]},
+  {id:"D03", g:"A", t:"Le milieu : épreuve ou contemplation ?",
+   ctx:"Rapport, section 09 (« aligner le cadrage et le récit »). L'épigraphe du docx reste (E01) ; la question porte seulement sur le ton du milieu.",
+   o:[
+    {k:"A", l:"Le milieu reste une épreuve", d:"Batteries, Créature, horde : l'action tient le milieu. L'épigraphe annonce « on regarde » et le film y arrive à la fin."},
+    {k:"B", l:"Épreuve dans le 25, contemplation dans les modules du 55", d:"Ce que l'architecture prévoit déjà : M3 La marche, M4 Le col, M5 La nuit noire sont des temps de regard. Rien ne change dans le 25."},
+    {k:"C", l:"Ralentir aussi le 25", d:"Des plans de regard prennent du temps à l'action dans les actes II à VI ; à combiner avec D02."}
+   ]},
+  {id:"D04", g:"B", t:"Le nom « Seed » (Acte VII) : murmure de fièvre ou choix ?",
+   ctx:"Rapport, sections 02 et 09. Dans le docx, le glitch Elena / Seed se joue dans la fièvre et Seed murmure « Seed » en s'endormant (l.672). Le mot fait partie des quatre (A02) : il peut changer de place, pas s'ajouter.",
+   o:[
+    {k:"A", l:"Garder le murmure dans la fièvre", d:"Le choix conscient reste « Je suis Seed » à l'Acte IX. Rien ne change."},
+    {k:"B", l:"Déplacer le mot au réveil dans Rob4", d:"Le glitch reste dans la fièvre, sans mot ; Seed dit « Seed » les yeux ouverts, guérie, dans le liquide. Toujours quatre mots ; le nom devient choisi."},
+    {k:"C", l:"Préparer le choix par un geste plus tôt", d:"Le murmure reste ; un geste conscient avant la fièvre (par exemple devant la photo d'Elena) annonce qu'elle n'est pas Elena. Un beat ajouté à l'Acte I, V ou VII."}
+   ]},
+  {id:"D05", g:"B", t:"La langue entre Seed et Rob1",
+   ctx:"Rapport, sections 02 et 05 (incohérence 8). Le docx dit « elle semble comprendre ce que Rob1 lui dit » (l.116), puis « Grimpe ! » (l.328) et « elle ne comprend pas le signal » (l.330). Validé : quatre mots parlés en tout (A02), écrans en anglais (A05). Le Récit v2 écrit « GRIMPE, dit l'écran » (proposé).",
+   multi:true,
+   o:[
+    {k:"A", l:"Règle fixe : Rob1 ne parle jamais", d:"Il écrit sur son écran-visage et fait des gestes ; Seed lit et répond par gestes. À corriger : l.116 (« lui dit ») et l.328."},
+    {k:"B", l:"Un code de sons de Rob1", d:"Bips et tons que Seed apprend au fil du film : une grammaire qui grandit avec l'éveil de Rob1. Le son porte une partie de la relation."},
+    {k:"C", l:"La lumière comme langue (S4)", d:"Rob1 apprend le code de Rob4 à la mer d'arsenic et s'en sert avec Seed ensuite ; ses cicatrices lumineuses le portent. Relie VII, VIII et IX."}
+   ]},
+  {id:"D06", g:"B", t:"Les didascalies d'intériorité (« une larme coule », « elle sait »)",
+   ctx:"Rapport, section 02. Une didascalie dit ce qu'on voit et entend ; une intériorité écrite (« elle réalise », « elle sait ») ne se filme pas telle quelle et doit devenir une action, un regard ou un objet au découpage.",
+   o:[
+    {k:"A", l:"Le récit garde ses intériorités", d:"Le récit reste un texte de lecture ; c'est le découpage technique qui les traduit en actions et en valeurs de plan."},
+    {k:"B", l:"Une version de tournage après la relecture", d:"Une continuité (didascalies seulement, quatre mots) où chaque intériorité devient une action visible ; le récit de référence ne change pas."},
+    {k:"C", l:"Réécrire le récit lui-même", d:"Le docx de référence (ou le Récit v2) est corrigé ligne à ligne : plus aucune intériorité écrite."}
+   ]},
+  {id:"D07", g:"C", t:"Pourquoi Rob1 s'éveille, et pas les autres",
+   ctx:"Rapport, section 03 (« le trou le plus grave »). Le docx dit seulement « le plus évolué des Robs » (l.66) et « conçu comme robot d'accompagnement pour Seed » (l.246). Rob4 change lui aussi, par symbiose.",
+   o:[
+    {k:"A", l:"Par la relation", d:"Il est le seul Rob qui vit avec Seed ; l'éveil naît du contact et se montre par des micro-signes (voir D08). Aucune explication technique à l'écran."},
+    {k:"B", l:"Par sa fonction", d:"Son unité de calcul a été conçue pour accompagner et apprendre un humain pendant la Phase 2 ; un écran de l'Acte I le pose. L'éveil devient un effet de conception."},
+    {k:"C", l:"En miroir de Rob4", d:"Chaque Rob devient ce que son monde fait de lui : Rob4 par la mer (« Je suis d'ici maintenant »), Rob1 par Seed. Rob2 et Rob3, sans compagnon, restent des machines."},
+    {k:"D", l:"Laisser ouvert", d:"Le film ne répond pas ; le spectateur voit l'éveil sans en connaître la cause."}
+   ]},
+  {id:"D08", g:"C", t:"Les micro-signes de l'éveil de Rob1, jusqu'au « IM-POSSIBLE »",
+   ctx:"Rapport, section 03. Le docx en a déjà : IMPORTANT (l.494), il cache les rations (l.506), « pour la première fois il est très agité » (l.558). Le Récit v2 ajoute « le journal écrit son nom à la place de sujet » (proposé).",
+   o:[
+    {k:"A", l:"Ceux qui existent suffisent", d:"On les rend lisibles au découpage (gros plans d'écran, un temps). Rien n'est ajouté."},
+    {k:"B", l:"Un signe par acte, de II à VIII", d:"Une liste de signes (écrans, gestes) proposée en QCM après ta relecture ; la montée jusqu'au IM-POSSIBLE devient continue."},
+    {k:"C", l:"Deux ou trois signes de plus", d:"Placés aux actes II, IV et VIII ; le reste ne bouge pas."}
+   ]},
+  {id:"D09", g:"C", t:"La culpabilité du sinkhole",
+   ctx:"Rapport, section 03. « Rob1 réalise que tout est de sa faute » (l.204), jamais repris dans le docx. S9 (proposé, écrit dans le Récit v2) met le XENOPOD qui bascule dans le flux PROCESSING de l'Acte IX.",
+   o:[
+    {k:"A", l:"S9 suffit", d:"La faute revient une fois, au moment du choix. Le Récit v2 l'a déjà."},
+    {k:"B", l:"S9 et un rappel au milieu", d:"Un flash de la chute quand Seed est en danger (VI ou VII) : sa faute devient le moteur de sa protection."},
+    {k:"C", l:"Ne pas la rappeler", d:"Retirer S9 du Récit v2 ; la culpabilité reste implicite."}
+   ]},
+  {id:"D10", g:"C", t:"La rébellion de Rob1 (mentir, condamner, saboter) en un seul acte",
+   ctx:"Rapport, section 03. L'Acte IX ne reçoit aucun module : il est écrit une fois, à sa longueur définitive (Architecture 25 / 55). Il fait 2 min 30 dans le 25.",
+   o:[
+    {k:"A", l:"Garder la compression", d:"Le choix tombe d'un bloc, dans le PROCESSING ; c'est la forme du docx."},
+    {k:"B", l:"Préparer plus tôt", d:"Le mensonge commence avant : il cache déjà (rations, V) ; au retour (VIII), il regarde le communicateur. Le sabotage reste en IX."},
+    {k:"C", l:"Allonger l'Acte IX dans le 25", d:"De 2 min 30 à environ 3 min 30, pris sur la quête (voir D02)."}
+   ]},
+  {id:"D11", g:"C", t:"Rob1 nommé chef de mission après l'échec de la Phase 2",
+   ctx:"Rapport, incohérence 5. « NEW MISSION LEADER : ROB-1 » (l.894).",
+   o:[
+    {k:"A", l:"Une ligne d'écran le justifie", d:"Par exemple « UNITÉ RESTANTE : ROB-1 » : PERSEPHORA délègue au seul système encore en ligne. Une ligne ajoutée à l'écran."},
+    {k:"B", l:"Garder tel quel", d:"Le protocole n'a pas à se justifier ; l'ironie est voulue."}
+   ]},
+  {id:"D12", g:"D", t:"L'assemblage des Robs « prévu par PERSEPHORA »",
+   ctx:"Rapport, section 04. « L'organisation du PERSEPHORA avait tout prévu » (l.292) ; Rob1/2/3 aussi prévu (l.450). Le Rob fusionné et le tank sont validés (rounds 10 et 11), pas qui les a conçus.",
+   o:[
+    {k:"A", l:"Garder le plan d'usine", d:"La fusion est prévue ; la tension vient d'ailleurs (énergie, Créature, horde)."},
+    {k:"B", l:"Prévu, mais chaque fusion coûte", d:"La première fusion coûte l'énergie de Rob2 (la batterie parasite, D17) ; la seconde coûte le parasol, resté sur le robopod. Le plan existe, le prix n'était pas prévu."},
+    {k:"C", l:"Rob1 improvise", d:"La fusion n'est pas au programme : il la bricole. À corriger : l.292 et l.450."}
+   ]},
+  {id:"D13", g:"D", t:"Rob2 et Rob3, sans arc",
+   ctx:"Rapport, section 04. Rob2 tourne en boucle dans la caverne (l.266), Rob3 est couvert de mousse (l.452). Rob4 a son arc (hybride).",
+   o:[
+    {k:"A", l:"Ils restent des machines", d:"Le contraste avec Rob1 et Rob4 est le sens : deux Robs changent, deux non."},
+    {k:"B", l:"Un trait chacun, repris une fois", d:"La boucle de Rob2, la mousse de Rob3 reviennent dans une scène (par exemple à l'extraction). Un plan ou deux de plus."}
+   ]},
+  {id:"D14", g:"D", t:"Le rongeur à l'oreille cassée",
+   ctx:"Rapport, section 04. Validé : le caillou blanc dans l'alvéole H-01 à la fin (A08). Proposé : le module M6 du 55 montre le robopod des rongeurs intact. Dans le 25, son sort reste ouvert.",
+   o:[
+    {k:"A", l:"Un plan dans le 25", d:"Le robopod intact, vu au passage du tank ou au retour (VIII). Quelques secondes de plus."},
+    {k:"B", l:"Ouvert dans le 25, payé dans le 55", d:"M6 montre la famille sauvée ; le 25 garde le doute et le caillou."},
+    {k:"C", l:"Le sifflement suffit", d:"Seed reproduit son sifflement à l'Acte VII : c'est le paiement émotionnel. Rien n'est ajouté."}
+   ]},
+  {id:"D15", g:"D", t:"L'organisme enterré qui luit",
+   ctx:"Rapport, section 04. Le docx montre la lueur sous terre (l.442). Proposés : S6 (le totem qui luit) et M5.",
+   o:[
+    {k:"A", l:"S6 tel quel", d:"Un plan dans le 25 ; dans le 55, le retour repasse devant le totem devenu une tache lumineuse."},
+    {k:"B", l:"Grâce ouverte", d:"Seul le spectateur le sait ; aucun retour. Retirer le retour du 55."},
+    {k:"C", l:"Seed le revoit au retour", d:"Dans le 25, à l'Acte VIII, elle passe devant le totem qui luit. Un plan avec Seed."}
+   ]},
+  {id:"D16", g:"D", t:"Elena et l'écho des jumeaux",
+   ctx:"Rapport, section 04. Le docx (l.636) : « Ses parents dans le public, fiers. Ses jumeaux — un frère et une sœur — qui l'applaudissent. » La phrase peut désigner ses enfants ou un frère et une sœur jumeaux. Le docx ne dit pas que CAIN vient de l'ADN d'Elena. Proposé : M1 Elena dans le 55.",
+   o:[
+    {k:"A", l:"Ce sont ses enfants", d:"L'écho avec Seed et CAIN existe ; il peut être activé dans M1 et à l'Acte X."},
+    {k:"B", l:"Ce sont son frère et sa sœur, jumeaux", d:"Pas d'écho voulu ; la phrase est à préciser dans le récit."},
+    {k:"C", l:"Elena reste en éclats", d:"Les visions de l'Acte VII et M1 suffisent ; pas d'écho activé."}
+   ]},
+  {id:"D17", g:"E", t:"La batterie parasite (Rob1 prioritaire sur l'énergie de Rob2)",
+   ctx:"Rapport, incohérence 2. « Quand Rob1 se branche à Rob2, il devient prioritaire en batterie » (l.388). Le Récit v2 la garde et ajoute le froid du col.",
+   o:[
+    {k:"A", l:"L'établir dès la fusion", d:"À l'Acte III, l'écran de la fusion montre la priorité d'énergie de Rob1. La règle existe avant la crise."},
+    {k:"B", l:"La retirer", d:"L'énergie manque par la topologie, le col, le froid et le poids de Seed. La l.388 disparaît."},
+    {k:"C", l:"Garder telle quelle", d:"Rien ne change."}
+   ]},
+  {id:"D18", g:"E", t:"Le sinkhole « sans fond » et les ~80 m de la Géologie",
+   ctx:"Rapport, incohérence 1. Le docx : le caillou ne fait aucun bruit, le flare disparaît (l.212 à 222). La Géologie (validée) : ~80 m, XENOPOD intact sur un cône d'éboulis. Le Récit v2 garde l'image du docx.",
+   o:[
+    {k:"A", l:"Le flare se pose, loin", d:"Il tombe sur l'éboulis, petit point rouge au fond, le XENOPOD hors de vue. Le désespoir vient de l'inaccessible, pas de l'abîme ; le câble de l'Acte IX devient plausible."},
+    {k:"B", l:"Le fond est masqué", d:"Corniche ou poussière : le flare disparaît derrière une avancée de roche. L'image du docx reste, les 80 m aussi."},
+    {k:"C", l:"Garder le docx", d:"La licence est assumée ; l'incohérence reste."}
+   ]},
+  {id:"D19", g:"E", t:"Rendre visible que la planète est viable et que Rob1 ment",
+   ctx:"Rapport, incohérence 4. Intention tranchée (Registre, « Le sens de la fin » ; A09). Reste ce que le spectateur lit à l'écran.",
+   o:[
+    {k:"A", l:"Ce qui est validé suffit", d:"« Phase 1 : OK » à l'Acte I, Seed qui mange, boit et guérit, puis la ligne des 11,4 ans."},
+    {k:"B", l:"Un écran dans le PROCESSING", d:"Rob1 affiche « VIABILITÉ : OUI », puis réécrit NON. Une ligne d'écran ajoutée à l'Acte IX."}
+   ]},
+  {id:"D20", g:"E", t:"Seed survit à la horde",
+   ctx:"Rapport, incohérence 6. Percutée par les buffles de tête (l.574), elle se réveille blessée sur la rive de la rivière rouge (l.584). Le noir de la fin de l'Acte VI est le module M6 du 55 (proposé).",
+   o:[
+    {k:"A", l:"Montrer comment, dans le 55", d:"M6 la montre projetée hors de la horde, puis emportée par l'eau. Le 25 garde le noir."},
+    {k:"B", l:"Un plan dans le 25 aussi", d:"Un plan bref avant le noir : elle bascule dans une ravine ou dans l'eau. Quelques secondes de plus."},
+    {k:"C", l:"Garder la convention", d:"Rien ne change ; la fable l'admet."}
+   ]},
+  {id:"D21", g:"E", t:"Le réveil de Rob3 au moment de la horde",
+   ctx:"Rapport, incohérence 10. Nettoyé à l'Acte V (l.458), il se réveille à l'Acte VI (l.542).",
+   o:[
+    {k:"A", l:"Le réveil arrive plus tôt", d:"À la fin de l'Acte V, Rob3 s'allume au coucher du soleil puis passe en veille de recharge. À l'Acte VI, il est prêt."},
+    {k:"B", l:"La horde le réveille", d:"Les vibrations du sol le sortent de veille ; une ligne d'écran le dit."},
+    {k:"C", l:"Garder tel quel", d:"Rien ne change."}
+   ]},
+  {id:"D22", g:"E", t:"23 % pour Seed, 21 % pour CAIN",
+   ctx:"Rapport, incohérence 7. Seed : TRANSFERT MÉMOIRE 23 % (l.144) ; CAIN : 100 % > 21 % (l.1068). Les deux chiffres sont repris dans tous les documents ; aucun round n'a tranché l'écart.",
+   o:[
+    {k:"A", l:"Garder l'écart et le rendre voulu", d:"Rob1 regarde les 23 % de Seed avant d'écrire 21 % : Seed sera l'aînée. Un plan d'écran ajouté à l'Acte X."},
+    {k:"B", l:"Aligner CAIN sur Seed : 23 %", d:"Un égal exact. À corriger : l.1068 du docx et tous les documents qui disent 21 %."},
+    {k:"C", l:"Garder sans le souligner", d:"Rien ne change ; l'écart reste lisible pour qui le cherche."}
+   ]},
+  {id:"D23", g:"E", t:"Qui a nommé Seed et CAIN ?",
+   ctx:"Rapport, incohérence 9 et section 07. « Seed ne sait rien, même pas qui lui a donné son nom » (l.156) ; l'écran dit SEED-03 (l.140) ; les boîtes disent H-01 / SEED et H-02 / CAIN (l.1030, 1032).",
+   o:[
+    {k:"A", l:"Des noms de code du programme", d:"PERSEPHORA la semeuse, SEED la graine : le programme nomme ses embryons. Rien à ajouter ; le 55 peut le montrer dans M1."},
+    {k:"B", l:"Elena les a nommés", d:"Elle choisit les noms en signant (M1 dans le 55). Un beat ajouté au module M1."},
+    {k:"C", l:"Laisser la question sans réponse", d:"Le film ne le dit pas."}
+   ]},
+  {id:"D24", g:"F", t:"Le ton du choix de CAIN",
+   ctx:"Rapport, section 07. Validé : Rob1 change CAIN après un flash du sourire de Seed (A07). Le rapport : Rob1 fait volontairement à CAIN ce que le bug a fait à Seed, sans son consentement.",
+   o:[
+    {k:"A", l:"Tendre", d:"La lecture actuelle : un frère pour Seed. Rien ne change."},
+    {k:"B", l:"Tendre et troublant", d:"Un détail d'écran laisse voir ce que Rob1 retire (par exemple la ligne PROFESSION qui s'efface). Le spectateur sent le prix ; une ligne d'écran à l'Acte X."},
+    {k:"C", l:"Troublant assumé", d:"La fin laisse affleurer l'inquiétude (musique, durée du plan). Le ton du dernier plan change."}
+   ]},
+  {id:"D25", g:"F", t:"Le nom CAIN",
+   ctx:"Rapport, section 07 : le nom porte le premier fratricide et promet un conflit ; la fin est apaisée. Le nom vient de ton docx.",
+   o:[
+    {k:"A", l:"Garder et assumer", d:"Une graine sombre, un crochet pour la suite."},
+    {k:"B", l:"Garder sans le souligner", d:"Rien ne change."},
+    {k:"C", l:"Changer de nom", d:"Des noms seraient proposés en QCM après ta relecture ; tous les documents sont à corriger."}
+   ]}
+
+];
+const KEY = "se-revision-script-doctor-r1";
+
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
+Q.forEach(q => { if(!state[q.id]) state[q.id] = {sel:[], note:""}; });
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function answered(id){ const s = state[id]; return s && (s.sel.length > 0 || s.note.trim() !== ""); }
+
+// déjà tranché
+document.getElementById("dn").textContent = DONE.length;
+document.getElementById("donelist").innerHTML = DONE.map(d => "<li>"+esc(d)+"</li>").join("");
+
+// groupes + questions
+const host = document.getElementById("groups");
+let html = "";
+GROUPS.forEach(g => {
+  const qs = Q.filter(q => q.g === g.id);
+  html += '<section class="group" id="g-'+g.id+'" aria-labelledby="h-'+g.id+'">';
+  html += '<div class="ghead"><span class="gl">'+g.id+'</span><h3 id="h-'+g.id+'">'+esc(g.name)+'</h3><span class="gc" data-gc="'+g.id+'"></span></div>';
+  qs.forEach(q => {
+    const type = q.multi ? "checkbox" : "radio";
+    html += '<article class="q" id="'+q.id+'" data-q="'+q.id+'">';
+    html += '<div class="qtop"><span class="qid">'+q.id+'</span><span class="chip" data-chip="'+q.id+'">à trancher</span>'+(q.multi ? '<span class="multi">plusieurs choix possibles</span>' : '')+'</div>';
+    html += '<h4>'+esc(q.t)+'</h4>';
+    html += '<p class="ctx">'+esc(q.ctx)+'</p>';
+    html += '<div class="opts" role="'+(q.multi ? "group" : "radiogroup")+'" aria-label="'+esc(q.t)+'">';
+    q.o.forEach(o => {
+      const iid = q.id+"-"+o.k;
+      html += '<label class="opt" for="'+iid+'"><input type="'+type+'" name="'+q.id+'" id="'+iid+'" value="'+o.k+'" data-q="'+q.id+'"><span class="k">'+o.k+'</span><span><span class="l">'+esc(o.l)+(o.r ? '<span class="rec">recommandé</span>' : '')+'</span><span class="d">'+esc(o.d)+'</span></span></label>';
+    });
+    html += '</div>';
+    html += '<div class="note"><label for="note-'+q.id+'">Ta réponse ou précision</label><textarea id="note-'+q.id+'" data-note="'+q.id+'" rows="2" placeholder="Précise, combine ou remplace les options…"></textarea></div>';
+    html += '</article>';
+  });
+  html += '</section>';
+});
+host.innerHTML = html;
+
+// nav
+document.getElementById("nav").innerHTML = GROUPS.map(g =>
+  '<li><a href="#g-'+g.id+'" data-nav="'+g.id+'"><span>'+g.id+' · '+esc(g.name)+'</span><span class="c" data-navc="'+g.id+'"></span></a></li>'
+).join("");
+
+// restaurer l'état
+Q.forEach(q => {
+  state[q.id].sel.forEach(k => { const el = document.getElementById(q.id+"-"+k); if(el) el.checked = true; });
+  const ta = document.getElementById("note-"+q.id); if(ta) ta.value = state[q.id].note;
+});
+
+// interactions
+host.addEventListener("click", e => {
+  const inp = e.target.closest("input[data-q]"); if(!inp) return;
+  const id = inp.dataset.q, k = inp.value, q = Q.find(x => x.id === id), s = state[id];
+  if(q.multi){
+    s.sel = inp.checked ? Array.from(new Set(s.sel.concat(k))) : s.sel.filter(x => x !== k);
+  } else {
+    if(s.sel[0] === k){ inp.checked = false; s.sel = []; } else { s.sel = [k]; }
+  }
+  save(); update();
+});
+host.addEventListener("input", e => {
+  const ta = e.target.closest("textarea[data-note]"); if(!ta) return;
+  state[ta.dataset.note].note = ta.value; save(); update();
+});
+
+function buildText(){
+  const d = new Date();
+  const date = d.toLocaleDateString("fr-FR");
+  const n = Q.filter(q => answered(q.id)).length;
+  let t = "SECOND EARTH · Révision script-doctor ("+date+")\nRépondu : "+n+" / "+Q.length+"\n";
+  GROUPS.forEach(g => {
+    const qs = Q.filter(q => q.g === g.id && answered(q.id));
+    if(!qs.length) return;
+    t += "\n== "+g.id+" · "+g.name+" ==\n";
+    qs.forEach(q => {
+      const s = state[q.id];
+      t += "\n["+q.id+"] "+q.t+"\n";
+      s.sel.slice().sort().forEach(k => { const o = q.o.find(x => x.k === k); if(o) t += "→ "+k+" · "+o.l+"\n"; });
+      if(s.note.trim()) t += "Précision : "+s.note.trim().replace(/\n+/g, " / ")+"\n";
+    });
+  });
+  const miss = Q.filter(q => !answered(q.id)).map(q => q.id);
+  if(miss.length) t += "\nSans réponse : "+miss.join(", ")+"\n";
+  return t;
+}
+
+function update(){
+  const total = Q.length, n = Q.filter(q => answered(q.id)).length;
+  document.getElementById("pn").textContent = n;
+  document.getElementById("pt").textContent = total;
+  document.getElementById("mn").textContent = n;
+  document.getElementById("mt").textContent = total;
+  document.getElementById("pb").style.width = (total ? n/total*100 : 0)+"%";
+  Q.forEach(q => {
+    const a = answered(q.id);
+    const card = document.getElementById(q.id);
+    card.classList.toggle("answered", a);
+    card.querySelector("[data-chip]").textContent = a ? "répondu" : "à trancher";
+    card.querySelectorAll(".opt").forEach(l => { const i = l.querySelector("input"); l.classList.toggle("on", i.checked); });
+  });
+  GROUPS.forEach(g => {
+    const qs = Q.filter(q => q.g === g.id), m = qs.filter(q => answered(q.id)).length;
+    const lbl = m+" / "+qs.length;
+    document.querySelector('[data-gc="'+g.id+'"]').textContent = lbl;
+    const nc = document.querySelector('[data-navc="'+g.id+'"]'); nc.textContent = lbl;
+    document.querySelector('[data-nav="'+g.id+'"]').classList.toggle("full", m === qs.length);
+  });
+  document.getElementById("out").value = buildText();
+}
+
+// copie
+const toast = document.getElementById("toast");
+let tt;
+function say(msg, warn){ toast.textContent = msg; toast.classList.toggle("warn", !!warn); clearTimeout(tt); tt = setTimeout(() => { toast.textContent = ""; }, 6000); }
+function fallback(text){
+  const out = document.getElementById("out");
+  out.value = text;
+  out.scrollIntoView({block:"center"});
+  out.focus(); out.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch(e){ ok = false; }
+  if(ok) say("Copié. Colle-le dans le chat.");
+  else say("Copie bloquée par l'application : le texte est sélectionné en bas de page, fais Ctrl+C ou Cmd+C.", true);
+}
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+  const text = buildText();
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(() => {
+      say("Copié. Colle-le dans le chat.");
+      b.textContent = "Copié";
+      setTimeout(() => { b.textContent = "Copier mes réponses"; }, 1800);
+    }).catch(() => fallback(text));
+  } else { fallback(text); }
+}));
+
+// réinitialisation avec confirmation dans la page
+const reset = document.getElementById("reset");
+let armed = false, at;
+reset.addEventListener("click", () => {
+  if(!armed){
+    armed = true; reset.classList.add("armed"); reset.textContent = "Confirmer l'effacement";
+    at = setTimeout(() => { armed = false; reset.classList.remove("armed"); reset.textContent = "Tout effacer"; }, 4000);
+    return;
+  }
+  clearTimeout(at); armed = false; reset.classList.remove("armed"); reset.textContent = "Tout effacer";
+  Q.forEach(q => { state[q.id] = {sel:[], note:""}; });
+  document.querySelectorAll("input[data-q]").forEach(i => { i.checked = false; });
+  document.querySelectorAll("textarea[data-note]").forEach(t => { t.value = ""; });
+  save(); update(); say("Réponses effacées.");
+});
+
+update();
+})();
+</script>

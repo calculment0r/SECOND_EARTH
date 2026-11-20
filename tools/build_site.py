@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Construit le site Second Earth (GitHub Pages) dans _site/.
 
-Entrées : docs/**/*.md, data/*.json, carte/carte-kore.html, data/arbitrages-second-earth.html,
+Entrées : docs/**/*.md, data/*.json, carte/carte-kore.html, data/arbitrages-second-earth.html, data/revision-script-doctor.html, docs/film/rapport-script-doctor*.html,
 site/assets/ (thème Verdant), tools/site/prompts.html (outil de prompts, via tools/build_prompts.py).
 Bibliothèque standard seulement. Usage : python3 tools/build_site.py [--out _site]
 """
@@ -984,6 +984,12 @@ def main(argv):
         extra_bottom = ''
         extra_top = ''
         if key == 'film':
+            extra_top = ('<div class="stack">'
+                         '<a class="blk k4" href="rapport-script-doctor.html"><span class="ref">SD</span><span class="main"><span class="name">Rapport de script-doctor</span>'
+                         '<span class="sub">Diagnostic ligne à ligne du récit de référence · avec la note de vérification du 20/11/2026</span></span><span class="val">Lire</span></a>'
+                         '<a class="blk k2" href="qcm-script-doctor.html"><span class="ref">QCM</span><span class="main"><span class="name">Révision du récit, QCM</span>'
+                         '<span class="sub">Les points encore ouverts du rapport, une décision par point · à trancher par Cal</span></span><span class="val">Ouvrir</span></a>'
+                         '</div>')
             extra_bottom = '<section class="quote"><p>This is a fictional planet. Earth is the only world we know. Take care of it.</p></section>'
         if key == 'expo':
             extra_top = ('<div class="duo"><div class="panel"><span class="lbl or">Principe des cartels</span><h3>Sur Terre / Sur Korê / Pourquoi</h3>'
@@ -991,6 +997,25 @@ def main(argv):
                          '<div class="panel"><span class="lbl or">Salle immersive</span><h3>Temps réel, avec BoraBora Studios</h3>'
                          "<p>Narration sans Seed, avec les Robs ; le visiteur est chef de mission, un peu d'interaction, surtout contemplatif, jamais scolaire.</p></div></div>")
         write('%s/index.html' % key, section_index(key, SECTIONS[key], all_docs[key], extra_top, extra_bottom))
+
+    # rapport de script-doctor (copie de Cal) avec la note de vérification en tête, et son QCM
+    rap = (DOCS / 'film' / 'rapport-script-doctor.html').read_text(encoding='utf-8')
+    verif = (DOCS / 'film' / 'rapport-script-doctor-verification.html').read_text(encoding='utf-8')
+    verif = re.sub(r'^<!--.*?-->\s*', '', verif, flags=re.S)
+    rap = rap.replace('<section class="panel active" id="p0"', verif + '\n    <section class="panel" id="p0"', 1)
+    rap = rap.replace('<button role="tab" aria-selected="true"  data-target="p0">',
+                      '<button role="tab" aria-selected="true" data-target="pv"><span class="idx mono">V</span><span class="lbl">Vérification</span></button>\n'
+                      '      <button role="tab" aria-selected="false" data-target="p0">', 1)
+    rap = rap.replace("activate('p0',false)", "activate('pv',false)", 1)
+    rap = rap.replace('MÉTHODE <span>LECTURE LIGNE À LIGNE</span>',
+                      'MÉTHODE <span>LECTURE LIGNE À LIGNE</span><br><br>'
+                      '<a href="qcm-script-doctor.html" style="color:inherit">QCM de révision</a><br>'
+                      '<a href="index.html" style="color:inherit">Retour au site</a>', 1)
+    assert 'id="pv"' in rap and "activate('pv',false)" in rap
+    write('film/rapport-script-doctor.html', rap)
+    rev_src = (DATA / 'revision-script-doctor.html').read_text(encoding='utf-8')
+    write('film/qcm-script-doctor.html', verdantize(rev_src, '../assets/fonts/venus-rising.otf',
+                                                     backlink='<a class="backlink" href="index.html">Retour au site</a>'))
 
     # biomes : index avec palettes
     pal_by_order = palette[:10]

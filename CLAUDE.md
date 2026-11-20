@@ -313,3 +313,10 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 - Jamais publié pour de vrai au 19/11/2026 : seulement testé à blanc.
 - **Éditeur porté de NirvaLabWeb (19/11/2026, demande de Cal : « les mêmes fonctions d'édition », pour fine-tuner)** : branche `claude/editeur-nirva`. `site-projet/js/editeur.js` et `editeur.css` portent les gestes du tableau de GUIDE.md (partie 3) de NirvaLabWeb : barre typographique (polices du kit, px, couleurs du kit sur les mots sélectionnés), ✥ / poignées de bord et de coin / A− A+ / ↺, ligne d'insertion, clic droit (texte ou image à l'endroit du clic), « + Ajouter », recadrage au glisser et zoom Alt + molette, double-clic et dépôt, ⧉ / Ctrl+D / Ctrl+C-V, parallaxe ⇅, format et hauteur des carrousels. Le chemin Cloudflare R2 de NirvaLabWeb est dans `depot.js` et le tableau de bord, préparé mais non branché (aucun compte). Le tableau des gestes, le format des données et ce qui n'est pas porté : `site-projet/LIRE.md`. Le dépôt NirvaLabWeb peut se lire (outil `add_repo`, accès « read ») ; ne jamais en copier `content/deploy-key.json`, les empreintes de `auth.js` ni un jeton.
 
+---
+
+## 13. Rapport de script-doctor (20/11/2026)
+
+- `docs/film/rapport-script-doctor.html` : copie telle quelle du rapport apporté par Cal. `docs/film/rapport-script-doctor-verification.html` : la note de vérification (point par point contre le docx et le Registre), insérée en tête du rapport par `build_site.py` (onglet « Vérification ») ; publié sous `film/rapport-script-doctor.html`.
+- `data/revision-script-doctor.html` : le QCM de révision (25 décisions D01 à D25, groupes A à F, clé de stockage `se-revision-script-doctor-r1`), publié sous `film/qcm-script-doctor.html`. Ce qui est déjà tranché est dans `DONE`. Règle 8 : les réponses de Cal disent ce qui sera écrit après sa relecture ; rien n'est appliqué au récit avant.
+- Le rapport lit bien le docx de référence (Proxima, Elena, 23 %) ; ses numéros de ligne sont décalés de 0 à 8 par rapport à `docs/film/01-recit-docx.md`. Le QCM cite les lignes du site.
