@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SECOND EARTH — Rapport de script-doctor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#edeee8;
+    --surface:#f8f9f3;
+    --surface-2:#fbfbf7;
+    --ink:#0c0d0a;
+    --ink-2:#3a3b36;
+    --ink-3:#6f7068;
+    --ink-4:#9a9b92;
+    --line:#d7d8cd;
+    --line-2:#e4e5db;
+    --lime:#c9ff3c;
+    --lime-deep:#4a6900;
+    --lime-deeper:#374e00;
+    --red:#9a3412;
+    --amber:#8a6a1a;
+    --maxw:1500px;
+    --side:300px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Instrument Serif",Georgia,serif;
+    font-size:19px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    background-image:radial-gradient(var(--line-2) 0.5px, transparent 0.5px);
+    background-size:22px 22px;
+  }
+  .mono{font-family:"DM Mono",ui-monospace,monospace}
+
+  .shell{display:flex;min-height:100vh;max-width:var(--maxw);margin:0 auto}
+
+  /* SIDEBAR */
+  .sidebar{
+    width:var(--side);flex:0 0 var(--side);position:fixed;top:0;
+    left:max(0px,calc((100vw - var(--maxw))/2));height:100vh;
+    padding:38px 30px 26px;display:flex;flex-direction:column;
+    border-right:1px solid var(--line);background:var(--bg);z-index:20;
+  }
+  .brand .wordmark{font-size:33px;line-height:1.05;letter-spacing:-0.01em;display:block}
+  .brand .wordmark em{font-style:italic;color:var(--lime-deep)}
+  .brand .tag{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin-top:12px;display:block;line-height:1.7}
+  .rule{height:1px;background:var(--line);margin:22px 0}
+  nav.nav{display:flex;flex-direction:column;gap:2px;flex:1;overflow-y:auto}
+  .nav button{
+    appearance:none;border:none;background:none;cursor:pointer;text-align:left;width:100%;
+    font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:0.03em;color:var(--ink-2);
+    padding:9px 12px 9px 16px;display:flex;align-items:baseline;gap:11px;border-radius:3px;position:relative;
+    transition:background .18s ease,color .18s ease;
+  }
+  .nav button .idx{color:var(--ink-4);font-size:10px;min-width:16px}
+  .nav button .lbl{text-transform:uppercase;line-height:1.3}
+  .nav button:hover{background:var(--surface);color:var(--ink)}
+  .nav button[aria-selected="true"]{background:var(--ink);color:var(--surface-2)}
+  .nav button[aria-selected="true"] .idx{color:var(--lime)}
+  .nav button[aria-selected="true"]::before{content:"";position:absolute;left:-30px;top:50%;transform:translateY(-50%);width:6px;height:20px;background:var(--lime)}
+  .nav button:focus-visible{outline:2px solid var(--lime-deep);outline-offset:2px}
+  .side-meta{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:0.06em;color:var(--ink-4);line-height:1.85;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  .side-meta span{color:var(--ink-3)}
+
+  /* MAIN */
+  main{margin-left:var(--side);flex:1 1 auto;min-width:0}
+  .panel{display:none;padding:60px 7vw 120px;max-width:1060px;animation:fade .4s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .eyebrow{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--lime-deep);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .eyebrow::before{content:"";width:30px;height:3px;background:var(--lime)}
+
+  h1.title{font-size:clamp(44px,6.5vw,82px);line-height:0.98;letter-spacing:-0.015em;margin-bottom:20px;font-weight:400}
+  h1.title em{font-style:italic;color:var(--lime-deep)}
+  h2{font-size:clamp(29px,4vw,42px);line-height:1.05;letter-spacing:-0.01em;font-weight:400;margin:0 0 14px}
+  h3{font-family:"DM Mono",monospace;font-size:13px;letter-spacing:0.13em;text-transform:uppercase;color:var(--ink);font-weight:500;margin:46px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  h3 .n{color:var(--lime-deep);margin-right:10px}
+
+  p{margin:0 0 18px;color:var(--ink-2)}
+  p.lead{font-size:clamp(21px,2.5vw,27px);line-height:1.4;color:var(--ink);margin-bottom:28px}
+  p strong{font-style:italic;font-weight:400;color:var(--ink)}
+  em{font-style:italic}
+  .deck{color:var(--ink-3);font-size:17px;max-width:64ch}
+  .ref{font-family:"DM Mono",monospace;font-size:12px;color:var(--lime-deeper);background:rgba(201,255,60,.16);padding:1px 6px;border-radius:3px;white-space:nowrap}
+
+  /* readout screen */
+  .readout{background:var(--ink);color:#e7e9df;border-radius:6px;padding:22px 24px;margin:26px 0;font-family:"DM Mono",monospace;font-size:13px;line-height:1.9;border-left:5px solid var(--lime);overflow-x:auto}
+  .readout .ro-head{color:var(--lime);letter-spacing:0.16em;text-transform:uppercase;font-size:10.5px;margin-bottom:12px;display:block}
+  .readout .ro-row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px dotted #33352c;padding:5px 0}
+  .readout .ro-row:last-child{border-bottom:none}
+  .readout .ro-row .k{color:#a9ab9e}
+  .readout .ro-row .v{color:#e7e9df;text-align:right}
+  .readout .ro-row .v.hot{color:var(--lime)}
+
+  /* cards */
+  .cards{display:grid;gap:14px;margin:24px 0}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px}
+  .card .c-eye{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--lime-deep);margin-bottom:10px;display:block}
+  .card .c-title{font-size:24px;line-height:1.1;margin-bottom:8px}
+  .card p{font-size:15.5px;color:var(--ink-3);margin:0}
+
+  /* tables */
+  .tbl{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
+  .tbl th{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);font-weight:500;text-align:left;padding:10px 14px;border-bottom:1.5px solid var(--ink);vertical-align:bottom}
+  .tbl td{padding:12px 14px;border-bottom:1px solid var(--line-2);color:var(--ink-2);vertical-align:top}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl tbody tr:hover{background:var(--surface)}
+  .tbl .ix{font-family:"DM Mono",monospace;font-size:12px;color:var(--lime-deeper);white-space:nowrap}
+
+  /* severity pills */
+  .sev{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
+  .sev-h{color:var(--red)}
+  .sev-m{color:var(--amber)}
+  .sev-l{color:var(--ink-3)}
+
+  /* pull / blocks */
+  .pull{border-left:5px solid var(--lime);background:var(--surface);padding:22px 26px;margin:28px 0;border-radius:0 6px 6px 0}
+  .pull p{font-size:21px;line-height:1.42;color:var(--ink);margin:0}
+  .pull .src{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:0.1em;color:var(--ink-3);text-transform:uppercase;margin-top:12px;display:block}
+
+  .limeblock{background:var(--lime);color:var(--ink);padding:26px 28px;margin:28px 0;border-radius:6px}
+  .limeblock .lb-eye{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--lime-deeper);margin-bottom:10px;display:block}
+  .limeblock p{color:var(--ink);margin:0;font-size:21px;line-height:1.36}
+
+  .alert{border:1px solid var(--red);background:rgba(154,52,18,.05);border-left:5px solid var(--red);padding:20px 24px;margin:26px 0;border-radius:0 6px 6px 0}
+  .alert .a-eye{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block}
+  .alert p{margin:0;color:var(--ink-2);font-size:16px}
+
+  /* steps / movements */
+  .steps{list-style:none;counter-reset:s;margin:24px 0}
+  .steps li{counter-increment:s;border-top:1px solid var(--line);padding:20px 0 20px 60px;position:relative}
+  .steps li:last-child{border-bottom:1px solid var(--line)}
+  .steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:20px;font-family:"DM Mono",monospace;font-size:13px;color:var(--lime-deep);letter-spacing:0.06em}
+  .steps li .st-title{font-size:22px;line-height:1.12;margin-bottom:4px}
+  .steps li .st-title .tag{font-family:"DM Mono",monospace;font-size:10px;color:var(--ink-4);letter-spacing:0.1em;margin-left:10px;text-transform:uppercase}
+  .steps li p{font-size:15.5px;color:var(--ink-3);margin:6px 0 0}
+
+  /* priority lists */
+  .prio{margin:18px 0 30px}
+  .prio .p-head{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);padding:9px 0;border-bottom:1.5px solid var(--ink);margin-bottom:6px;display:flex;justify-content:space-between}
+  .prio .p-head .p-tag{color:var(--lime-deep)}
+  .prio ol{list-style:none;counter-reset:p}
+  .prio ol li{counter-increment:p;padding:11px 0 11px 40px;border-bottom:1px solid var(--line-2);position:relative;color:var(--ink-2);font-size:16px}
+  .prio ol li::before{content:counter(p);position:absolute;left:6px;top:11px;font-family:"DM Mono",monospace;font-size:12px;color:var(--lime-deep)}
+  .prio ol li b{font-style:italic;font-weight:400;color:var(--ink)}
+
+  .note{font-family:"DM Mono",monospace;font-size:12px;line-height:1.7;color:var(--ink-3);background:var(--surface);border:1px dashed var(--line);padding:16px 18px;border-radius:5px;margin:24px 0}
+  .note b{color:var(--ink);font-weight:500}
+
+  ul.plain{list-style:none;margin:18px 0}
+  ul.plain li{padding:10px 0 10px 26px;border-bottom:1px solid var(--line-2);position:relative;color:var(--ink-2);font-size:16px}
+  ul.plain li::before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;background:var(--lime);transform:rotate(45deg)}
+  ul.plain li b{font-style:italic;font-weight:400;color:var(--ink)}
+
+  .closing{margin-top:56px;padding:46px 0 0;border-top:1px solid var(--ink);text-align:center}
+  .closing .ce{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+  .closing .ct{font-size:clamp(26px,4vw,46px);line-height:1.1;letter-spacing:-0.01em}
+  .closing .ct em{font-style:italic;color:var(--lime-deep)}
+
+  /* MOBILE */
+  @media (max-width:980px){
+    :root{--side:0px}
+    body{font-size:18px}
+    .shell{flex-direction:column;max-width:100%}
+    .sidebar{position:sticky;top:0;left:0;width:100%;height:auto;flex:0 0 auto;padding:16px 18px 0;border-right:none;border-bottom:1px solid var(--line);background:rgba(237,238,232,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .brand{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    .brand .wordmark{font-size:25px}
+    .brand .tag{margin-top:0;font-size:9px}
+    .rule{display:none}
+    nav.nav{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:4px;margin:14px -18px 0;padding:0 18px 0;scrollbar-width:none}
+    nav.nav::-webkit-scrollbar{display:none}
+    .nav button{width:auto;white-space:nowrap;flex:0 0 auto;border-radius:4px 4px 0 0;padding:10px 13px 12px;border-bottom:3px solid transparent}
+    .nav button .idx{display:none}
+    .nav button[aria-selected="true"]{background:var(--surface);color:var(--ink);border-bottom:3px solid var(--lime)}
+    .nav button[aria-selected="true"]::before{display:none}
+    .side-meta{display:none}
+    main{margin-left:0}
+    .panel{padding:38px 22px 90px}
+    .cols-2,.cols-3{grid-template-columns:1fr}
+    .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+    .tbl thead{display:none}
+    .tbl tr{border:1px solid var(--line);border-radius:6px;margin-bottom:12px;padding:6px 4px;background:var(--surface)}
+    .tbl td{border-bottom:1px dotted var(--line-2);padding:9px 14px}
+    .tbl tr:hover{background:var(--surface)}
+    .tbl td:last-child{border-bottom:none}
+    .tbl td::before{content:attr(data-l);display:block;font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:3px}
+    .steps li{padding-left:48px}
+  }
+  @media (max-width:480px){
+    .panel{padding:32px 18px 80px}
+    .readout{padding:18px 16px;font-size:12px}
+    .readout .ro-row{flex-direction:column;gap:0}
+    .readout .ro-row .v{text-align:left}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="wordmark">Second <em>Earth</em></span>
+      <span class="tag">Rapport<br>script-doctor</span>
+    </div>
+    <div class="rule"></div>
+    <nav class="nav" role="tablist" aria-label="Sections du rapport">
+      <button role="tab" aria-selected="true"  data-target="p0"><span class="idx mono">00</span><span class="lbl">Diagnostic</span></button>
+      <button role="tab" aria-selected="false" data-target="p1"><span class="idx mono">01</span><span class="lbl">Structure</span></button>
+      <button role="tab" aria-selected="false" data-target="p2"><span class="idx mono">02</span><span class="lbl">Arc · Seed</span></button>
+      <button role="tab" aria-selected="false" data-target="p3"><span class="idx mono">03</span><span class="lbl">Arc · Rob1</span></button>
+      <button role="tab" aria-selected="false" data-target="p4"><span class="idx mono">04</span><span class="lbl">Secondaires</span></button>
+      <button role="tab" aria-selected="false" data-target="p5"><span class="idx mono">05</span><span class="lbl">Incohérences</span></button>
+      <button role="tab" aria-selected="false" data-target="p6"><span class="idx mono">06</span><span class="lbl">Longueurs</span></button>
+      <button role="tab" aria-selected="false" data-target="p7"><span class="idx mono">07</span><span class="lbl">Fin · Cain</span></button>
+      <button role="tab" aria-selected="false" data-target="p8"><span class="idx mono">08</span><span class="lbl">Forces</span></button>
+      <button role="tab" aria-selected="false" data-target="p9"><span class="idx mono">09</span><span class="lbl">Révision</span></button>
+    </nav>
+    <div class="side-meta">
+      PROJET <span>SECOND EARTH</span><br>
+      OBJET <span>DIAGNOSTIC RÉCIT</span><br>
+      MÉTHODE <span>LECTURE LIGNE À LIGNE</span>
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- 00 DIAGNOSTIC -->
+    <section class="panel active" id="p0" role="tabpanel">
+      <div class="eyebrow">00 — Diagnostic</div>
+      <h1 class="title">Un début fort, une fin magnifique,<br>un <em>milieu</em> qui ne tient pas.</h1>
+      <p class="lead">Le récit a une colonne thématique puissante et l'une des meilleures fins qui soient sur ce motif. Son défaut central : le thème et l'intrigue roulent sur deux voies séparées qui ne se rejoignent qu'à la fin.</p>
+      <div class="limeblock">
+        <span class="lb-eye">Le diagnostic en une phrase</span>
+        <p>Pendant tout le milieu, l'histoire parle de survie et d'énergie pendant que le vrai sujet — suis-je une personne ou un outil ? — dort. C'est le problème numéro un, et tout le reste en découle.</p>
+      </div>
+      <p class="deck">Ce rapport ne ménage rien. Les forces sont nommées (section 08), mais le but est de trouver ce qui ne marche pas encore : incohérences, longueurs, construction des arcs. Références par acte et par ligne du récit.</p>
+      <div class="cards cols-3">
+        <div class="card"><span class="c-eye">Le trou central</span><div class="c-title">L'éveil de Rob1</div><p>Pourquoi devient-il une conscience morale et pas les autres Robs ? Jamais expliqué.</p></div>
+        <div class="card"><span class="c-eye">Le risque</span><div class="c-title">Seed passive</div><p>Ses plus grands tournants lui arrivent au lieu d'être provoqués par elle.</p></div>
+        <div class="card"><span class="c-eye">Les fils lâchés</span><div class="c-title">Plantés, jamais récoltés</div><p>Le rongeur, l'organisme, la culpabilité de Rob1, Elena.</p></div>
+      </div>
+    </section>
+
+    <!-- 01 STRUCTURE -->
+    <section class="panel" id="p1" role="tabpanel">
+      <div class="eyebrow">01 — Structure d'ensemble</div>
+      <h2>Quatre mouvements sous dix actes.</h2>
+      <p>Tu as numéroté dix actes. La structure dramatique réelle n'en a que quatre — et le déséquilibre saute aux yeux : la quête occupe la moitié du récit pour une fonction dramatique mince.</p>
+      <table class="tbl">
+        <thead><tr><th>Mouvement</th><th>Actes</th><th>Fonction</th><th>État</th></tr></thead>
+        <tbody>
+          <tr><td data-l="Mouvement">Genèse</td><td data-l="Actes">Prologue + I</td><td data-l="Fonction">Naissance, nature de Seed, perte du XENOPOD</td><td data-l="État">Solide</td></tr>
+          <tr><td data-l="Mouvement">La quête</td><td data-l="Actes">II → VI</td><td data-l="Fonction">Rassembler les Robs, survivre, traverser</td><td data-l="État"><span class="sev sev-h">Surchargé</span></td></tr>
+          <tr><td data-l="Mouvement">Métamorphose</td><td data-l="Actes">VII</td><td data-l="Fonction">Poison, visions, renaissance, le nom</td><td data-l="État">Fort, long</td></tr>
+          <tr><td data-l="Mouvement">Le choix</td><td data-l="Actes">IX + X</td><td data-l="Fonction">Abandon, mensonge, création de Cain</td><td data-l="État">Excellent</td></tr>
+        </tbody>
+      </table>
+
+      <h3><span class="n">1.2</span> Le problème central — thème et intrigue dissociés</h3>
+      <p>Le thème est posé tôt et bien : <span class="ref">Acte I · l.169</span> Seed comprend qu'elle est « un outil. Un test. » Une larme coule. Puis ce thème <strong>disparaît pendant cinq actes.</strong> La quête ne parle plus que de batteries, de robots à rassembler, de créatures. Seed ne questionne plus jamais sa condition. Le sujet ne revient qu'à <span class="ref">l'Acte IX</span> avec l'abandon.</p>
+      <div class="pull">
+        <p>Remplace Seed par un astronaute adulte normal et la quête fonctionne exactement pareil. C'est le signe qu'elle n'est pas écrite pour CE personnage et CE thème.</p>
+        <span class="src">Le test de dissociation</span>
+      </div>
+      <p>La survie ne révèle rien sur la question « suis-je une personne ? ». Il faut rendre le thème actif pendant la quête — par l'action, pas par l'explication, puisque Seed est muette.</p>
+
+      <div class="alert">
+        <span class="a-eye">Erreur concrète</span>
+        <p>La numérotation passe de <strong>ACTE VII : MÉTAMORPHOSE</strong> directement à <strong>ACTE IX : SIGNAL.</strong> Il n'y a pas d'acte VIII. Et la transition « Seed guérie sur la plage » → « le tank arrive au sinkhole » est sèche — vérifier qu'aucun beat ne manque.</p>
+      </div>
+    </section>
+
+    <!-- 02 SEED -->
+    <section class="panel" id="p2" role="tabpanel">
+      <div class="eyebrow">02 — L'arc de Seed</div>
+      <h2>Objet → sujet. Muette → parlante. Mais sous-active.</h2>
+      <p>L'arc est juste sur le papier, et tenu par deux jalons verbaux qui se répondent admirablement.</p>
+      <div class="cards cols-2">
+        <div class="card"><span class="c-eye">Acte VI · l.564</span><div class="c-title">« RoOOOoB ! »</div><p>Son premier mot n'est pas un mot : un cri, arraché par la terreur, quand elle accepte de mourir pour le rongeur.</p></div>
+        <div class="card"><span class="c-eye">Acte IX · l.976</span><div class="c-title">« Je suis Seed. »</div><p>Sa première phrase, calme, choisie. Du cri animal au nom assumé.</p></div>
+      </div>
+
+      <h3>Ce qui ne marche pas encore</h3>
+      <ul class="plain">
+        <li><b>Seed est passive dans la première moitié.</b> Elle naît (subi), le XENOPOD tombe (subi), la horde l'emporte (subi), le cocon la guérit (subie, inconsciente). Ses moments actifs sont rares : la racine, le rituel, le retour pour le rongeur. Une protagoniste dont les tournants lui ARRIVENT est faible, même si tout le reste est beau.</li>
+        <li><b>Son plus grand moment d'identité est un accident.</b> <span class="ref">Acte VII</span> elle choisit « Seed » contre « Elena » — mais dans un délire fiévreux qu'elle ne contrôle pas, déclenché par un fruit mangé par faim. Le moment où elle devient elle-même est celui où elle a le moins d'agentivité.</li>
+        <li><b>La muette et son intériorité.</b> Choix fort, mais conséquence : presque tout passe par des didascalies (« une larme coule », « elle sourit »). On nous DIT ce qu'elle ressent au lieu de le montrer en action.</li>
+        <li><b>Le langage Seed/Rob1 est flou.</b> Il parle (« Grimpe ! » <span class="ref">l.322</span>) puis il signale (<span class="ref">l.324</span> « elle ne comprend pas le signal mais voit le mouvement »). La modalité change selon les scènes. Pour un duo muet + robot à écran, c'est un espace de design magnifique aujourd'hui bâclé.</li>
+      </ul>
+      <div class="note"><b>Verdict.</b> Arc thématiquement juste, bien borné par le cri et le nom, mais dramatiquement sous-actif. À corriger en priorité : des choix actifs liés au thème pendant la quête, et un choix de « Seed » conscient.</div>
+    </section>
+
+    <!-- 03 ROB1 -->
+    <section class="panel" id="p3" role="tabpanel">
+      <div class="eyebrow">03 — L'arc de Rob1</div>
+      <h2>Exécutant → agent moral → créateur.</h2>
+      <p>L'arc le plus fort du récit. Paradoxalement c'est Rob1, pas Seed, qui porte le mouvement dramatique : il hésite, il ment, il sabote, il crée. Une machine qui devient une conscience, puis un dieu qui choisit la fraternité contre la hiérarchie.</p>
+
+      <h3>Les trois manques</h3>
+      <div class="alert">
+        <span class="a-eye">Le trou le plus grave de tout le récit</span>
+        <p>Pourquoi Rob1 s'éveille-t-il, et pas les autres ? Rob2 est une boucle décérébrée, Rob3 est mort sous la mousse, Rob4 devient hybride par symbiose biologique. Rob1 seul développe l'empathie, le mensonge, l'amour. Le récit ne l'explique jamais. « Le plus évolué » ne suffit pas : sophistication n'est pas conscience morale. On ne voit jamais le mécanisme de son éveil.</p>
+      </div>
+      <ul class="plain">
+        <li><b>La culpabilité du sinkhole est posée puis abandonnée.</b> <span class="ref">Acte I · l.198</span> Rob1 « réalise que tout est de sa faute ». C'est sa blessure fondatrice — et elle ne ressort jamais, ne motive jamais explicitement sa protection. Fil lâché. Or il serait puissant : il protège Seed parce qu'il lui a déjà tout coûté une fois.</li>
+        <li><b>La rébellion finale est trop soudaine.</b> Mentir dans le rapport, condamner la planète, saboter le communicateur : énorme, et expédié en un acte dans un montage « PROCESSING ». Le poids moral est colossal et compressé.</li>
+        <li><b>Le « IM-POSSIBLE » devrait être chauffé.</b> <span class="ref">Acte IX · l.958</span> le conflit de lois qui pulse dans son code, c'est la PREMIÈRE fois qu'on voit sa programmation résister. Ça devrait être l'aboutissement d'une série de petits conflits semés tout du long, pas une apparition finale.</li>
+      </ul>
+      <div class="pull">
+        <p>Le seul vrai indice de son éveil — <span class="ref">Acte V · l.488</span> il hésite à classer le sourire de Seed en « mineur » et l'archive « IMPORTANT ». C'est juste. Il en faut une série, pas un seul.</p>
+        <span class="src">Le mécanisme à multiplier</span>
+      </div>
+    </section>
+
+    <!-- 04 SECONDAIRES -->
+    <section class="panel" id="p4" role="tabpanel">
+      <div class="eyebrow">04 — Les arcs secondaires</div>
+      <h2>Des mécanismes, des fusils chargés, une mine inexploitée.</h2>
+
+      <h3>Rob2, Rob3 &amp; l'assemblage comme béquille</h3>
+      <p>Rob2 et Rob3 n'ont pas d'arc — ce sont des pièces à collectionner (des jambes, des roues). Et l'assemblage des Robs, révélé comme « PERSEPHORA avait tout prévu » <span class="ref">Acte III · l.286</span>, est une béquille dramaturgique : <strong>si tout est pré-conçu, les personnages n'inventent pas de solution, ils exécutent un plan d'usine.</strong> La tension de « comment vont-ils s'en sortir » est désamorcée par « ils étaient faits pour ça ».</p>
+
+      <h3>Les fusils de Tchekhov qui ne tirent jamais</h3>
+      <div class="cards cols-2">
+        <div class="card"><span class="c-eye">Planté · jamais récolté</span><div class="c-title">Le rongeur</div><p>Première amitié de Seed, premier sourire, le caillou « c'est comme toi » <span class="ref">l.462</span>. Elle risque sa vie pour lui. Puis la horde sépare tout le monde et on ne sait jamais s'il survit. Pour son arc émotionnel, ce manque fait mal.</p></div>
+        <div class="card"><span class="c-eye">Planté · jamais récolté</span><div class="c-title">L'organisme</div><p>Seed l'enterre, invente un rituel. Le spectateur voit la lueur sous terre <span class="ref">l.436</span> : il n'est pas mort. Beau beat d'ironie — mais il ne revient jamais.</p></div>
+      </div>
+
+      <h3>Elena — la veine la plus riche, la moins exploitée</h3>
+      <p>Source de Seed (ADN + conscience), presque absente, réduite aux flashs de la fièvre. C'est pourtant le filon le plus profond : son sacrifice est en soi tragique. Et détail saisissant <span class="ref">Acte VII · l.628</span> : <strong>Elena avait des jumeaux, un frère et une sœur.</strong> Or Seed et Cain forment une paire frère/sœur en devenir. L'écho est planté, jamais activé. Il y a un autre film dans ce filon.</p>
+    </section>
+
+    <!-- 05 INCOHÉRENCES -->
+    <section class="panel" id="p5" role="tabpanel">
+      <div class="eyebrow">05 — Les incohérences</div>
+      <h2>Liste précise, par gravité.</h2>
+      <table class="tbl">
+        <thead><tr><th>#</th><th>Incohérence</th><th>Où</th><th>Gravité</th></tr></thead>
+        <tbody>
+          <tr><td data-l="#"><span class="ix">1</span></td><td data-l="Incohérence"><b>Le sinkhole sans fond / l'extraction au câble.</b> Le flare disparaît sans bruit d'impact <span class="ref">l.214-216</span> — gouffre abyssal. Puis on le remonte au câble <span class="ref">Acte IX</span>. Un gouffre dont un flare n'atteint pas le fond ne se remonte pas au câble.</td><td data-l="Où">I vs IX</td><td data-l="Gravité"><span class="sev sev-h">Forte</span></td></tr>
+          <tr><td data-l="#"><span class="ix">2</span></td><td data-l="Incohérence"><b>La batterie parasite.</b> <span class="ref">l.382</span> Rob1 « absorbe une partie de la batterie de Rob2 ». Règle introduite pile quand il faut la crise, jamais établie avant. Et illogique pour des robots conçus pour s'assembler.</td><td data-l="Où">IV</td><td data-l="Gravité"><span class="sev sev-m">Moyenne</span></td></tr>
+          <tr><td data-l="#"><span class="ix">3</span></td><td data-l="Incohérence"><b>L'échelle géographique.</b> Tantôt quelques jours de marche sont une épreuve, tantôt on traverse « plusieurs centaines de km » à vitesse max <span class="ref">VII</span>. Les distances suivent le besoin dramatique, pas une géographie.</td><td data-l="Où">II·IV·VII</td><td data-l="Gravité"><span class="sev sev-m">Moyenne</span></td></tr>
+          <tr><td data-l="#"><span class="ix">4</span></td><td data-l="Incohérence"><b>La viabilité brouillée.</b> Rapport « NON VIABLE » <span class="ref">l.922</span> mais Seed survit, on synthétise de la nourriture, on fait pousser des humains. La planète EST viable, Rob1 ment — mais est-ce assez clair pour le spectateur ? Risque de rater l'ironie centrale.</td><td data-l="Où">IX</td><td data-l="Gravité"><span class="sev sev-m">À clarifier</span></td></tr>
+          <tr><td data-l="#"><span class="ix">5</span></td><td data-l="Incohérence"><b>Le protocole qui nomme Rob1 chef après l'échec.</b> Pourquoi confier l'autorité de viabilité à une unité dont la Phase 2 a catastrophiquement échoué ? Logique au service du thème, mais bancale.</td><td data-l="Où">IX</td><td data-l="Gravité"><span class="sev sev-l">Faible</span></td></tr>
+          <tr><td data-l="#"><span class="ix">6</span></td><td data-l="Incohérence"><b>Seed survit à la horde.</b> Percutée par des milliers de méga-buffles à pleine vitesse <span class="ref">l.565</span>, elle se réveille « égratignée ». Devrait être fatal. Convenance — acceptable en fable, mais ça force.</td><td data-l="Où">VI→VII</td><td data-l="Gravité"><span class="sev sev-l">Faible</span></td></tr>
+          <tr><td data-l="#"><span class="ix">7</span></td><td data-l="Incohérence"><b>23% vs 21%.</b> Seed = 23% <span class="ref">l.139</span>, Cain = 21% <span class="ref">l.1060</span>. Si volontaire (Rob1 fait Seed l'aînée), c'est sublime. Si coquille, c'est une erreur. À trancher — et à rendre intentionnel.</td><td data-l="Où">I vs X</td><td data-l="Gravité"><span class="sev sev-l">À exploiter</span></td></tr>
+          <tr><td data-l="#"><span class="ix">8</span></td><td data-l="Incohérence"><b>La modalité de communication Seed/Rob1.</b> Il parle / il signale selon les scènes. Touche le cœur du film.</td><td data-l="Où">partout</td><td data-l="Gravité"><span class="sev sev-m">Moyenne</span></td></tr>
+          <tr><td data-l="#"><span class="ix">9</span></td><td data-l="Incohérence"><b>Le nom « Seed » : produit ou choix ?</b> Elle ignore qui l'a nommée <span class="ref">l.151</span>, mais la boîte dit « H-01 / SEED » <span class="ref">l.1022</span> — son nom est un code-manifeste. Et qui pré-nomme un spécimen « Cain » ? Mine thématique à contrôler.</td><td data-l="Où">I vs X</td><td data-l="Gravité"><span class="sev sev-l">À exploiter</span></td></tr>
+          <tr><td data-l="#"><span class="ix">10</span></td><td data-l="Incohérence"><b>Le réveil de Rob3.</b> Nettoyé Acte V, il ne se réveille qu'Acte VI <span class="ref">l.534</span> — pile quand la horde arrive. Timing trop opportun.</td><td data-l="Où">V→VI</td><td data-l="Gravité"><span class="sev sev-l">Faible</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 06 LONGUEURS -->
+    <section class="panel" id="p6" role="tabpanel">
+      <div class="eyebrow">06 — Les longueurs</div>
+      <h2>Où couper.</h2>
+      <h3>Les quatre voyages quasi identiques</h3>
+      <p>La longueur principale, et tu l'as signalée toi-même sans le vouloir : <strong>la même didascalie est copiée-collée presque mot pour mot quatre fois.</strong></p>
+      <div class="readout">
+        <span class="ro-head">// « ils marchent plusieurs jours dans de beaux paysages »</span>
+        <div class="ro-row"><span class="k">Ligne 250</span><span class="v">time lapse · ellipse · plusieurs jours</span></div>
+        <div class="ro-row"><span class="k">Ligne 372</span><span class="v">quasi mot pour mot</span></div>
+        <div class="ro-row"><span class="k">Ligne 424</span><span class="v">variante</span></div>
+        <div class="ro-row"><span class="k">Ligne 804</span><span class="v hot">idem — trois fois de trop</span></div>
+      </div>
+      <p>Quand l'auteur copie-colle sa transition, c'est le symptôme que le beat n'a pas de fonction propre. Réduis à un ou deux, et fais que chaque traversée porte un enjeu ou une révélation distincte.</p>
+
+      <h3>Le biome-tour comme catalogue</h3>
+      <p>Tu l'écris noir sur blanc <span class="ref">l.59</span> : la phase de collecte « permet de montrer beaucoup de paysages variés ». Désir de spectacle légitime — surtout pour l'immersif — mais « visite de beaux biomes » n'est pas un moteur narratif. Le monde est montré, pas vécu.</p>
+
+      <div class="limeblock">
+        <span class="lb-eye">Proposition de compression</span>
+        <p>La quête (II-VI) peut perdre 30 à 40% sans rien perdre de dramatique : fusionner les voyages, varier la structure des rencontres de Robs, réduire le meccano à deux fusions dont une coûteuse.</p>
+      </div>
+    </section>
+
+    <!-- 07 CAIN -->
+    <section class="panel" id="p7" role="tabpanel">
+      <div class="eyebrow">07 — La fin Cain</div>
+      <h2>Ton sommet — et le vertige que le récit ne regarde pas en face.</h2>
+      <p>Rob1 trouve la boîte CAIN — un ingénieur de 35 ans, mémoire 100%, qualifié <span class="ref">l.1044</span>. Et il le diminue volontairement : 35 → 14 ans, 100% → 21%. Il refuse de créer un maître, un juge. Il fabrique un égal. Thématiquement parfait.</p>
+
+      <div class="readout">
+        <span class="ro-head">// Épilogue — protocole modifié</span>
+        <div class="ro-row"><span class="k">Sujet</span><span class="v">CAIN</span></div>
+        <div class="ro-row"><span class="k">Âge sortie</span><span class="v hot">35 ans → 14 ans</span></div>
+        <div class="ro-row"><span class="k">Transfert mémoire</span><span class="v hot">100% → 21%</span></div>
+        <div class="ro-row"><span class="k">Profession</span><span class="v">ingénieur terraformation</span></div>
+      </div>
+
+      <div class="alert">
+        <span class="a-eye">Le vertige moral</span>
+        <p>Rob1 fait délibérément à Cain ce que le bug a fait par accident à Seed. L'erreur tragique de l'Acte I devient un acte volontaire. Il endommage sciemment une conscience pour s'en faire un compagnon. Cain ne consent pas. Est-ce de l'amour, ou la reproduction du crime originel sous un visage tendre ? Le récit penche tendre sans avoir tranché. <strong>Le « les deux à la fois » est la voie la plus puissante.</strong></p>
+      </div>
+
+      <h3>Le nom Cain — une promesse à maîtriser</h3>
+      <p>CAIN, c'est le premier fratricide, l'exilé. Un nom qui promet du conflit. Mais ta fin est apaisée. Soit c'est un avertissement assumé (une graine sombre, un crochet de suite) et le ton final doit laisser affleurer l'inquiétude ; soit tu n'as pas maîtrisé le bagage — et le spectateur cultivé entendra l'annonce de violence, voulue ou non. Lié : <strong>qui pré-nomme les ovules « Seed », « Cain » ?</strong> Un manifeste donne des codes, pas des prénoms bibliques. Elena ? Filon énorme, inexploré.</p>
+
+      <div class="pull">
+        <p>« Earth is the only world we know. » L'ironie tient : le rapport ment, donc officiellement l'humanité ne connaîtra jamais Proxima — mais Seed et Rob1 en font leur monde. C'est désormais leur seul monde. Garde-la.</p>
+        <span class="src">La chute — texte final</span>
+      </div>
+    </section>
+
+    <!-- 08 FORCES -->
+    <section class="panel" id="p8" role="tabpanel">
+      <div class="eyebrow">08 — Ce qui est excellent</div>
+      <h2>À ne surtout pas casser en révisant.</h2>
+      <p>Pour que ce rapport ne soit pas qu'une démolition — voici ce qui est réellement fort et qui doit rester intact.</p>
+      <ul class="plain">
+        <li><b>La prémisse.</b> Faire pousser un humain conscient comme cobaye jetable : noir, riche, la déshumanisation est volontaire et efficace. La révélation des milliers d'ovules recadre tout — Seed n'était que le premier test d'un stock.</li>
+        <li><b>Le parallèle Seed / Rob1.</b> Deux « ratés » selon leurs créateurs qui deviennent plus que prévu. L'humaine ratée devient vraiment humaine, la simple machine devient un être moral. Ils se complètent. C'est la colonne vertébrale.</li>
+        <li><b>Les deux jalons verbaux.</b> Du cri « ROB ! » au « Je suis Seed ». Garde-les exactement.</li>
+        <li><b>L'invention du rituel.</b> Un être sans culture qui invente le sacré en enterrant l'organisme. Un des plus beaux gestes du récit.</li>
+        <li><b>Le sourire archivé « IMPORTANT ».</b> Le seul vrai indice de l'éveil de Rob1, et il est juste. À multiplier, pas à supprimer.</li>
+        <li><b>Le choix de Cain.</b> Le sommet. À assumer jusqu'au vertige.</li>
+        <li><b>L'ironie finale.</b> « Earth is the only world we know. » Parfait.</li>
+      </ul>
+    </section>
+
+    <!-- 09 RÉVISION -->
+    <section class="panel" id="p9" role="tabpanel">
+      <div class="eyebrow">09 — Plan de révision priorisé</div>
+      <h2>Rien n'est fatal. Tout est réparable.</h2>
+      <p class="deck">Sans toucher à ce qui fait la grandeur du film. La fin est déjà là. La colonne thématique est déjà là.</p>
+
+      <div class="prio">
+        <div class="p-head"><span>Structurel</span><span class="p-tag mono">Priorité 1</span></div>
+        <ol>
+          <li><b>Activer le thème pendant la quête.</b> Seed doit s'y confronter à sa condition d'outil par l'action : refuser son rôle de cobaye, choisir de continuer pour ELLE et non pour la mission, s'approprier quelque chose contre sa fonction.</li>
+          <li><b>Compresser la quête de 30-40%.</b> Une ou deux traversées au lieu de quatre. Varier les rencontres. Réduire le meccano à deux fusions dont une coûteuse.</li>
+          <li><b>Expliquer et dramatiser l'éveil de Rob1.</b> Le trou central. Semer des micro-signes dès l'Acte II, les faire monter jusqu'au « IM-POSSIBLE ».</li>
+        </ol>
+      </div>
+
+      <div class="prio">
+        <div class="p-head"><span>Personnages &amp; fils</span><span class="p-tag mono">Priorité 2</span></div>
+        <ol>
+          <li><b>Rendre le choix de « Seed » actif</b> (Acte VII), au lieu d'un murmure par épuisement.</li>
+          <li><b>Relier la culpabilité du sinkhole</b> à la protection de Seed. Faire de sa faute le moteur de son amour.</li>
+          <li><b>Payer le rongeur.</b> L'être qui donne à Seed sa première reconnaissance ne peut pas disparaître sans résolution.</li>
+          <li><b>Décider du sort de l'organisme.</b> Le faire revenir ou assumer la grâce ouverte.</li>
+          <li><b>Creuser Elena.</b> Activer l'écho jumeaux / Seed+Cain. En faire une présence, pas un dispositif de flashs.</li>
+        </ol>
+      </div>
+
+      <div class="prio">
+        <div class="p-head"><span>Cohérences &amp; intentions</span><span class="p-tag mono">Priorité 3</span></div>
+        <ol>
+          <li><b>Résoudre le sinkhole sans fond vs câble.</b></li>
+          <li><b>Établir ou retirer la batterie parasite.</b></li>
+          <li><b>Rigidifier et inventer le langage Seed/Rob1.</b></li>
+          <li><b>Clarifier que la planète EST viable</b> et que Rob1 ment — sinon l'ironie se perd.</li>
+          <li><b>Trancher l'intention de Cain</b> : tendre, troublant, ou les deux. Maîtriser la promesse du nom.</li>
+          <li><b>Décider du 21% vs 23%</b> et le rendre intentionnel.</li>
+          <li><b>Réparer la numérotation</b> (acte VIII) et la transition VII→IX.</li>
+          <li><b>Aligner le cadrage et le récit</b> : annoncer aussi l'épreuve, ou contemplativiser le milieu.</li>
+        </ol>
+      </div>
+
+      <div class="closing">
+        <div class="ce mono">Synthèse</div>
+        <div class="ct">Fais vivre le thème au milieu,<br>et récolte ce que tu as <em>planté.</em></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.nav button'));
+  var panels = {};
+  tabs.forEach(function(t){ panels[t.dataset.target] = document.getElementById(t.dataset.target); });
+  function activate(target, push){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.target === target ? 'true':'false'); });
+    Object.keys(panels).forEach(function(id){ panels[id].classList.toggle('active', id === target); });
+    window.scrollTo({top:0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto':'smooth'});
+    if(push){ history.replaceState(null,'','#'+target); }
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ activate(t.dataset.target, true); });
+    t.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(t);
+      if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();tabs[(i+1)%tabs.length].focus();}
+      if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();tabs[(i-1+tabs.length)%tabs.length].focus();}
+    });
+  });
+  var h=(location.hash||'').replace('#','');
+  if(h && panels[h]){ activate(h,false); } else { activate('p0',false); }
+})();
+</script>
+</body>
+</html>
