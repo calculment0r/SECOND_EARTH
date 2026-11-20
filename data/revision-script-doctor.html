@@ -134,7 +134,7 @@ footer.out p{margin:0;color:var(--muted);font-size:12.5px}
     <div class="brand">
       <span class="eyebrow">Second Earth · script-doctor</span>
       <h1>Révision du récit</h1>
-      <span class="meta">25 décisions · 20.11.2026</span>
+      <span class="meta">25 décisions tranchées · 20.11.2026</span>
     </div>
     <div class="prog" aria-live="polite">
       <div class="num"><span id="pn">0</span><small>/ <span id="pt">0</span> répondues</small></div>
@@ -152,9 +152,9 @@ footer.out p{margin:0;color:var(--muted);font-size:12.5px}
   <main>
     <header class="intro">
       <span class="eyebrow">Rapport de script-doctor · ce qui reste à décider</span>
-      <h2>25 questions. Pour chacune : ce que ça change, ce que ça apporte, et mon conseil.</h2>
-      <p>Chaque réponse dit ce qu’elle change dans le film et ce qu’elle apporte. Le cadre orange donne mon conseil et pourquoi. Le bouton « Cocher tous mes conseils » coche mes réponses là où tu n’as pas encore répondu ; tu changes ensuite ce que tu veux. Le champ sous chaque question sert à écrire autre chose. « Copier mes réponses » met tout en texte, à coller dans le chat. Rien ne bouge dans l’histoire avant tes corrections de relecture. <a href="rapport-script-doctor.html">Lire le rapport</a> · <a href="recit-docx.html">Lire ton récit</a>.</p>
-      <details class="done">
+      <h2>Tout est tranché. Tes 25 réponses sont dans la liste ci-dessous.</h2>
+      <p>Elles seront écrites dans le récit quand tes corrections de relecture seront passées. Rien n’a encore bougé dans le texte. <a href="rapport-script-doctor.html">Lire le rapport</a> · <a href="recit-docx.html">Lire ton récit</a>.</p>
+      <details class="done" open>
         <summary><span class="t"><b>Déjà tranché</b> · <span id="dn"></span> blocs, ne seront plus redemandés</span><span class="hint">afficher</span></summary>
         <ul id="donelist"></ul>
       </details>
@@ -178,6 +178,31 @@ footer.out p{margin:0;color:var(--muted);font-size:12.5px}
 <script>
 (function(){
 const DONE = [
+  "Tranché par Cal le 20/11/2026 · Milieu du film : on met en avant les quatre choix que Seed fait déjà pendant le voyage (garder la plante, l'idée de la batterie vivante, enterrer l'organisme, sauver le rongeur) ; pas de scène ajoutée",
+  "Tranché par Cal le 20/11/2026 · Voyage : pas de raccourci de plus ; les longues marches deviennent des cartons de jour",
+  "Tranché par Cal le 20/11/2026 · Ton du milieu : action dans le film de 25 min, calme dans les scènes ajoutées du 55 min (déjà prévu)",
+  "Tranché par Cal le 20/11/2026 · Le nom Seed : elle dit « Seed » réveillée et guérie, dans le cocon de Rob4 ; la fièvre garde le mélange des visages sans le mot ; toujours quatre mots",
+  "Tranché par Cal le 20/11/2026 · Seed et Rob1 : Rob1 ne parle jamais : il écrit sur son écran et fait des gestes, Seed répond par gestes ; et il apprend la langue de lumière de Rob4 à la mer, qu'il utilise ensuite avec Seed (A et C)",
+  "Tranché par Cal le 20/11/2026 · Phrases de pensée : le récit garde ses phrases ; elles deviennent des images au moment de préparer les plans",
+  "Tranché par Cal le 20/11/2026 · Éveil de Rob1 : comme Rob4 : chacun devient ce que sa vie fait de lui ; Rob4 par la mer, Rob1 par Seed ; Rob2 et Rob3 restent des machines",
+  "Tranché par Cal le 20/11/2026 · Signes de l'éveil : deux ou trois signes de plus (début, milieu, retour)",
+  "Tranché par Cal le 20/11/2026 · Culpabilité : le flash de la chute à la fin, plus un rappel de deux secondes au milieu (horde ou maladie)",
+  "Tranché par Cal le 20/11/2026 · Le mensonge : préparé plus tôt : il cache déjà des choses pendant le voyage, et au retour il regarde l'émetteur ; la scène finale ne s'allonge pas",
+  "Tranché par Cal le 20/11/2026 · Rob1 chef : une ligne d'écran : « SEULE UNITÉ ACTIVE : ROB-1 »",
+  "Tranché par Cal le 20/11/2026 · Assemblages : prévus par le vaisseau, mais chacun coûte : le premier vide la batterie de Rob2, le second fait perdre le chargeur solaire",
+  "Tranché par Cal le 20/11/2026 · Rob2 et Rob3 : restent des machines",
+  "Tranché par Cal le 20/11/2026 · Le rongeur : un plan dans le 25 min : son abri intact",
+  "Tranché par Cal le 20/11/2026 · L'organisme : comme prévu : un plan de la lueur dans le 25 min, le retour repasse devant dans le 55 min",
+  "Tranché par Cal le 20/11/2026 · Elena : « ses jumeaux » sont ses enfants ; l'écho avec Seed et Cain peut être montré dans le 55 min",
+  "Tranché par Cal le 20/11/2026 · Batterie : on montre dès l'assemblage que Rob1 prend l'énergie en premier",
+  "Tranché par Cal le 20/11/2026 · Le trou : la lumière jetée touche le fond, petit point rouge tout en bas (environ 80 m)",
+  "Tranché par Cal le 20/11/2026 · Le mensonge visible : Rob1 efface « VIVABLE : OUI » et écrit « NON »",
+  "Tranché par Cal le 20/11/2026 · La horde : un plan dans le 25 min : Seed bascule dans la rivière avant le noir",
+  "Tranché par Cal le 20/11/2026 · Rob3 : il s'allume le soir après le nettoyage, puis se met en recharge",
+  "Tranché par Cal le 20/11/2026 · 23 % / 21 % : voulu et montré : Rob1 regarde les 23 % de Seed avant de taper 21 % pour Cain ; Seed reste l'aînée",
+  "Tranché par Cal le 20/11/2026 · Les noms : Seed et Cain sont des noms de code de la mission (la semeuse, la graine)",
+  "Tranché par Cal le 20/11/2026 · Fin avec Cain : douce, avec une petite ombre : on voit s'effacer « INGÉNIEUR »",
+  "Tranché par Cal le 20/11/2026 · Le nom Cain : gardé, c'est voulu",
   "La planète s'appelle Korê, autour de l'étoile 61 Cygni A (et non plus Proxima, qui est dans ton ancien texte), lumière orange",
   "L'acte qui manquait existe : le retour par les lacs roses, où les oiseaux crient « Korê »",
   "Seed ne dit que quatre mots dans tout le film : Rob, Seed, Korê, Je suis Seed",
@@ -189,215 +214,9 @@ const DONE = [
   "Le carton de fin en trois lignes, et la phrase d'ouverture de ton texte, gardée",
   "Rien n'est changé dans l'histoire avant tes corrections de relecture : tes réponses disent ce qu'on fera après"
 ];
-const GROUPS = [
-  {id:"A", name:"Le milieu du film"},
-  {id:"B", name:"Seed"},
-  {id:"C", name:"Rob1"},
-  {id:"D", name:"Les autres personnages et les fils à finir"},
-  {id:"E", name:"Les petites incohérences"},
-  {id:"F", name:"La fin avec CAIN"}
-];
-const Q = [
-  {id:"D01", g:"A", t:"Au milieu du film, Seed doit-elle encore se demander si elle est une personne ou un outil ?",
-   ctx:"Ce que dit le rapport : au début, Seed apprend qu'elle est un cobaye. Ensuite, pendant tout le voyage, on ne parle que de batteries et de robots, et la question revient seulement à la fin.",
-   conseil:"A. Seed fait déjà quatre choses à elle pendant le voyage : elle garde la plante lumineuse, elle a l'idée de s'en servir comme batterie, elle enterre l'organisme, elle retourne sauver le petit rongeur. Il suffit de les filmer comme des choix à elle. On règle le reproche principal du rapport sans réécrire l'histoire.",
-   o:[
-    {k:"A", r:true, l:"Mettre en avant ce qu'elle fait déjà", d:"Ce que ça change : rien dans l'histoire. Au tournage, ses quatre gestes sont filmés comme des moments où elle agit pour elle, pas pour la mission. Ce que ça apporte : la question reste présente au milieu du film, sans travail d'écriture."},
-    {k:"B", l:"Ajouter une ou deux scènes", d:"Ce que ça change : une ou deux scènes nouvelles où Seed refuse son rôle de cobaye, à écrire après ta relecture. Ce que ça apporte : le thème plus fort. Ce que ça coûte : réécrire et refaire le plan du film de 25 min."},
-    {k:"C", l:"Ne rien changer", d:"Ce que ça change : rien. Ce que ça laisse : le milieu reste une aventure, et la question revient seulement à la fin."}
-   ]},
-  {id:"D02", g:"A", t:"Faut-il raccourcir le voyage ?",
-   ctx:"Dans le film de 25 min, le voyage (de Rob2 jusqu'à la horde) dure 11 min 30, presque la moitié du film. Le rapport conseille de couper 30 à 40 %. Déjà décidé : les passages « ils marchent plusieurs jours » sont les endroits où le film de 55 min ajoutera ses scènes.",
-   conseil:"A. Le voyage, c'est aussi ce qui montre les paysages et les animaux, et le Science Centre et l'expo en ont besoin. Le film de 25 min est déjà resserré : les longues marches y deviennent un simple carton « Jour 12 · 250 km ».",
-   o:[
-    {k:"A", r:true, l:"Ne pas raccourcir plus", d:"Ce que ça change : rien ; les marches deviennent des cartons de jour. Ce que ça apporte : on garde les paysages et le plan du film ne bouge pas."},
-    {k:"B", l:"Raccourcir le film de 25 min", d:"Ce que ça change : le voyage passe de 11 min 30 à environ 8 min ; les 3 min 30 gagnées vont à la naissance, à la maladie de Seed et à la fin. Ce que ça apporte : plus de temps pour Seed et Rob1. Ce que ça coûte : refaire le plan du film (les 150 plans)."}
-   ]},
-  {id:"D03", g:"A", t:"Le milieu du film : de l'action, ou du calme pour regarder ?",
-   ctx:"Le rapport dit que la phrase d'ouverture (« on arrive, on regarde ») annonce un film calme, alors que le milieu est plein d'action. La phrase d'ouverture reste, c'est déjà décidé.",
-   conseil:"B. C'est ce qui est déjà prévu : rien à faire. Le film court garde son rythme, et le film long donne le temps de regarder.",
-   o:[
-    {k:"A", l:"De l'action partout", d:"Ce que ça change : rien. Ce que ça donne : le film reste rythmé, et on « regarde » seulement à la fin."},
-    {k:"B", r:true, l:"De l'action dans le 25 min, du calme dans le 55 min", d:"Ce que ça change : rien, c'est déjà prévu (la marche, le col, la nuit lumineuse sont des scènes calmes du 55 min). Ce que ça apporte : les deux films ont chacun leur rôle."},
-    {k:"C", l:"Ralentir aussi le 25 min", d:"Ce que ça change : des plans calmes prennent la place d'un peu d'action. Ce que ça coûte : moins de tension dans un film court."}
-   ]},
-  {id:"D04", g:"B", t:"Le moment où Seed dit son nom : dans la fièvre, ou réveillée ?",
-   ctx:"Aujourd'hui, Seed murmure « Seed » à moitié inconsciente, pendant la fièvre du fruit. Le rapport dit : le moment où elle devient elle-même arrive quand elle ne contrôle rien. Le mot reste un des quatre mots du film ; il peut changer de place, pas s'ajouter.",
-   conseil:"B. Le mot ne change pas, il change seulement de moment. Elle le dit guérie, les yeux ouverts : son nom devient un choix, et la fièvre garde le mélange des visages Elena / Seed.",
-   o:[
-    {k:"A", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : son vrai choix arrive seulement à la fin (« Je suis Seed »)."},
-    {k:"B", r:true, l:"Elle le dit réveillée, guérie", d:"Ce que ça change : dans la fièvre, on voit les visages se mélanger sans le mot ; elle dit « Seed » en se réveillant dans le cocon de Rob4. Ce que ça apporte : son nom devient un choix conscient. Toujours quatre mots."},
-    {k:"C", l:"Un geste plus tôt pour préparer", d:"Ce que ça change : le murmure reste, et on ajoute avant un geste où elle montre qu'elle n'est pas Elena (par exemple devant la photo). Ce que ça coûte : une petite scène de plus."}
-   ]},
-  {id:"D05", g:"B", t:"Comment Seed et Rob1 se parlent-ils ?",
-   ctx:"Le texte hésite : à un endroit Rob1 « parle » à Seed, à un autre il crie « Grimpe ! », puis on dit qu'elle ne comprend pas son signal. Déjà décidé : il n'y a que quatre mots parlés dans le film, ceux de Seed, et les écrans de Rob1 sont en anglais. Tu peux cocher plusieurs réponses.",
-   conseil:"A et C ensemble. A donne une règle simple qu'on ne casse jamais. C relie la mer de Rob4 à la fin et ne demande aucun mot.",
-   multi:true,
-   o:[
-    {k:"A", r:true, l:"Rob1 ne parle jamais, il écrit et il fait des gestes", d:"Ce que ça change : deux phrases du texte à corriger. Ce que ça apporte : une règle claire pour tout le film ; Seed lit son écran et lui répond par des gestes."},
-    {k:"B", l:"Rob1 a des petits sons", d:"Ce que ça change : des bips et des sons que Seed apprend à comprendre au fil du voyage. Ce que ça apporte : la relation passe aussi par le son."},
-    {k:"C", r:true, l:"Rob1 apprend à parler en lumière", d:"Ce que ça change : à la mer, Rob1 apprend le langage de lumière de Rob4, puis il s'en sert avec Seed. Ce que ça apporte : un fil sans parole jusqu'à la fin, et les marques lumineuses sur la peau de Seed prennent un sens."}
-   ]},
-  {id:"D06", g:"B", t:"Les phrases qui disent ce que Seed pense (« elle réalise », « elle sait »)",
-   ctx:"Une caméra ne filme pas une pensée. Ces phrases devront devenir des choses visibles : un geste, un regard, un objet.",
-   conseil:"A. Le récit reste agréable à lire. On transforme ces phrases en images au moment de préparer les plans, sans retoucher ton texte.",
-   o:[
-    {k:"A", r:true, l:"Garder le texte, traduire en images au moment des plans", d:"Ce que ça change : rien dans le récit. Ce que ça apporte : le texte reste lisible pour Nina et les partenaires."},
-    {k:"B", l:"Écrire une version « à tourner » après ta relecture", d:"Ce que ça change : un deuxième texte où chaque pensée devient un geste visible. Ce que ça coûte : un document de plus à tenir à jour."},
-    {k:"C", l:"Réécrire le récit lui-même", d:"Ce que ça change : ton texte est corrigé ligne à ligne. Ce que ça coûte : le texte devient plus sec à lire."}
-   ]},
-  {id:"D07", g:"C", t:"Pourquoi Rob1 devient-il conscient, et pas les autres robots ?",
-   ctx:"Le rapport dit que c'est le plus gros trou de l'histoire. Le texte dit seulement que Rob1 est « le plus évolué » et qu'il a été fait pour accompagner Seed. Rob4, lui, change aussi, en vivant avec les organismes de la mer.",
-   conseil:"C. On n'a rien à expliquer avec des mots : Rob4 change à cause de la mer, Rob1 change à cause de Seed. Ça explique aussi pourquoi Rob2 et Rob3, restés seuls, ne changent pas.",
-   o:[
-    {k:"A", l:"À cause de Seed", d:"Ce que ça change : rien d'écrit ; on le montre par de petits signes. Ce que ça apporte : c'est la relation qui l'éveille."},
-    {k:"B", l:"Parce qu'il a été conçu pour", d:"Ce que ça change : un écran au début dit que son cerveau est fait pour apprendre d'un humain. Ce que ça coûte : son éveil devient une option d'usine, moins émouvant."},
-    {k:"C", r:true, l:"Comme Rob4 : chacun devient ce que sa vie fait de lui", d:"Ce que ça change : rien à écrire ; on rapproche les deux transformations. Rob4 dit « Je suis d'ici maintenant » ; Rob1 devient quelqu'un à cause de Seed. Ce que ça apporte : une explication sans un mot."},
-    {k:"D", l:"Ne pas l'expliquer", d:"Ce que ça change : rien. Ce que ça laisse : la question du rapport reste ouverte."}
-   ]},
-  {id:"D08", g:"C", t:"Les petits signes qui montrent que Rob1 s'éveille",
-   ctx:"Il y en a déjà trois : il range le sourire de Seed comme « IMPORTANT », il lui cache que la nourriture manque, il est « très agité » pendant la horde. Le rapport en voudrait plus, pour que son choix final (mentir) ne tombe pas du ciel.",
-   conseil:"C. Deux ou trois signes de plus suffisent pour qu'on sente qu'il change, sans charger le film.",
-   o:[
-    {k:"A", l:"Ceux qui existent suffisent", d:"Ce que ça change : rien ; on les filme bien en gros plan. Ce que ça laisse : la montée reste courte."},
-    {k:"B", l:"Un signe à chaque étape du voyage", d:"Ce que ça change : une liste de signes à te proposer après ta relecture. Ce que ça coûte : risque d'en faire trop."},
-    {k:"C", r:true, l:"Deux ou trois de plus", d:"Ce que ça change : quelques secondes d'écran ou de geste au début, au milieu et au retour. Ce que ça apporte : on voit Rob1 changer pas à pas jusqu'à son mensonge."}
-   ]},
-  {id:"D09", g:"C", t:"Rob1 se sent coupable de la chute du XENOPOD : faut-il le rappeler ?",
-   ctx:"Au début, Rob1 comprend que la chute est de sa faute (c'est son poids qui a fait basculer le XENOPOD). Ensuite le texte n'en parle plus. Le Récit v2 ajoute déjà un flash de la chute à la fin, quand il prend sa décision.",
-   conseil:"B. Un flash de deux secondes au milieu, quand Seed est en danger, donne une raison simple à sa façon de la protéger : il lui a déjà tout fait perdre une fois.",
-   o:[
-    {k:"A", l:"Seulement le flash de la fin", d:"Ce que ça change : rien de plus que le Récit v2. Ce que ça laisse : la culpabilité revient une seule fois."},
-    {k:"B", r:true, l:"Le flash de la fin, plus un rappel au milieu", d:"Ce que ça change : deux secondes de souvenir pendant la horde ou la maladie. Ce que ça apporte : on comprend pourquoi il la protège autant."},
-    {k:"C", l:"Ne pas en parler", d:"Ce que ça change : on retire le flash du Récit v2. Ce que ça laisse : sa faute reste sous-entendue."}
-   ]},
-  {id:"D10", g:"C", t:"Rob1 ment, abandonne les humains et casse l'émetteur, tout en une seule scène : trop d'un coup ?",
-   ctx:"Le rapport trouve que c'est énorme et trop rapide. Cette scène dure 2 min 30 dans le film de 25 min.",
-   conseil:"B. On ne rallonge pas la scène : on la prépare avant. S'il a déjà caché des choses à Seed pendant le voyage, son grand mensonge paraît logique.",
-   o:[
-    {k:"A", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : le choix tombe d'un bloc."},
-    {k:"B", r:true, l:"Le préparer plus tôt", d:"Ce que ça change : pendant le voyage il cache déjà des choses (c'est le cas pour la nourriture), et au retour il regarde l'émetteur un instant. Ce que ça apporte : la fin paraît venir de lui, sans rallonger le film."},
-    {k:"C", l:"Rallonger la scène", d:"Ce que ça change : 1 min de plus, prise sur le voyage (voir D02). Ce que ça coûte : refaire le plan du film."}
-   ]},
-  {id:"D11", g:"C", t:"Pourquoi le vaisseau nomme-t-il Rob1 chef après l'échec ?",
-   ctx:"Le message du vaisseau dit « NEW MISSION LEADER : ROB-1 ». Le rapport demande pourquoi on donne le pouvoir au robot dont la mission a raté.",
-   conseil:"A. Une seule ligne sur l'écran répond à la question et le spectateur ne bute pas dessus.",
-   o:[
-    {k:"A", r:true, l:"Ajouter une ligne d'écran", d:"Ce que ça change : l'écran dit aussi « SEULE UNITÉ ACTIVE : ROB-1 ». Ce que ça apporte : c'est logique, il ne reste que lui."},
-    {k:"B", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : la question du rapport."}
-   ]},
-  {id:"D12", g:"D", t:"Les robots s'assemblent « comme le vaisseau l'avait prévu » : on garde ?",
-   ctx:"Le rapport dit : si tout était prévu, il n'y a plus de suspense, ils suivent juste le mode d'emploi.",
-   conseil:"B. On garde ton idée (les robots sont faits pour s'assembler), mais chaque assemblage leur coûte quelque chose. Le suspense revient sans rien casser.",
-   o:[
-    {k:"A", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : l'assemblage ne fait pas peur."},
-    {k:"B", r:true, l:"Prévu, mais chaque assemblage coûte", d:"Ce que ça change : le premier vide la batterie de Rob2 (voir D17), le second leur fait perdre leur chargeur solaire. Ce que ça apporte : chaque assemblage devient un vrai pari."},
-    {k:"C", l:"Rob1 invente l'assemblage", d:"Ce que ça change : ce n'était pas prévu, il bricole. Deux phrases à corriger. Ce que ça apporte : Rob1 encore plus inventif."}
-   ]},
-  {id:"D13", g:"D", t:"Rob2 et Rob3 n'évoluent pas : on leur donne une histoire ?",
-   ctx:"Rob2 tourne en rond dans la grotte, Rob3 est couvert de mousse. Après, ce sont surtout des pièces de l'assemblage.",
-   conseil:"A. Deux robots changent (Rob1, Rob4), deux non : la différence dit quelque chose, et ça va avec la réponse C de la question D07.",
-   o:[
-    {k:"A", r:true, l:"Ils restent des machines", d:"Ce que ça change : rien. Ce que ça apporte : on voit mieux ce qui rend Rob1 et Rob4 différents."},
-    {k:"B", l:"Un petit trait chacun", d:"Ce que ça change : un plan ou deux où Rob2 refait sa boucle, ou la mousse de Rob3 repousse. Ce que ça apporte : un peu de vie en plus."}
-   ]},
-  {id:"D14", g:"D", t:"Le petit rongeur à l'oreille cassée : on sait s'il survit ?",
-   ctx:"Déjà décidé : le caillou blanc qu'il a donné finit dans la case vide de Seed. Prévu pour le film de 55 min : on y verra que son abri a survécu. Dans le film de 25 min, on ne le sait pas.",
-   conseil:"A. Trois secondes suffisent pour que le public sache qu'il est vivant. C'est le premier ami de Seed, et le public va se poser la question.",
-   o:[
-    {k:"A", r:true, l:"Un plan dans le 25 min", d:"Ce que ça change : quelques secondes où l'on voit son abri intact. Ce que ça apporte : le public est rassuré."},
-    {k:"B", l:"Seulement dans le 55 min", d:"Ce que ça change : rien dans le 25 min. Ce que ça laisse : un doute dans le film court."},
-    {k:"C", l:"Le sifflement suffit", d:"Ce que ça change : rien. Seed refait son sifflement plus tard, c'est le souvenir qui compte."}
-   ]},
-  {id:"D15", g:"D", t:"L'organisme enterré qui brille encore sous la terre",
-   ctx:"Seed croit l'avoir tué et l'enterre ; le public voit qu'il brille encore. Ensuite on ne le revoit plus. Déjà proposé : un plan de la lueur dans le 25 min, et dans le 55 min le retour repasse devant.",
-   conseil:"A. C'est déjà écrit et ça suffit : le public sait, Seed ne sait pas, et le film long le montre une deuxième fois.",
-   o:[
-    {k:"A", r:true, l:"Comme prévu", d:"Ce que ça change : rien de plus. Ce que ça apporte : un petit secret partagé avec le public."},
-    {k:"B", l:"On ne le revoit jamais", d:"Ce que ça change : on retire le retour du 55 min. Ce que ça laisse : un mystère."},
-    {k:"C", l:"Seed le revoit au retour", d:"Ce que ça change : un plan avec Seed devant la lueur dans le 25 min. Ce que ça apporte : elle apprend qu'il vit."}
-   ]},
-  {id:"D16", g:"D", t:"Elena et « ses jumeaux » : qui sont-ils ?",
-   ctx:"Dans les souvenirs : « Ses parents dans le public, fiers. Ses jumeaux, un frère et une sœur, qui l'applaudissent. » On peut lire ses enfants, ou son frère et sa sœur qui sont jumeaux. Le rapport y voit un écho avec Seed et Cain.",
-   conseil:"Pas de conseil : c'est ce que tu as voulu dire qui compte. Si tu hésites, C ne change rien.",
-   o:[
-    {k:"A", l:"Ce sont ses enfants", d:"Ce que ça change : l'écho avec Seed et Cain (un frère et une sœur) peut être montré dans le film de 55 min."},
-    {k:"B", l:"Ce sont son frère et sa sœur", d:"Ce que ça change : on précise la phrase pour qu'elle ne se lise que d'une façon."},
-    {k:"C", l:"On n'y touche pas", d:"Ce que ça change : rien ; Elena reste en souvenirs rapides."}
-   ]},
-  {id:"D17", g:"E", t:"Rob1 « mange » la batterie de Rob2 quand ils sont assemblés",
-   ctx:"Cette règle apparaît juste au moment où il faut une panne. Le rapport dit qu'elle tombe du ciel.",
-   conseil:"A. On garde ta panne, on la montre juste un peu plus tôt, au moment où ils s'assemblent. Plus personne ne se dit que c'est pratique.",
-   o:[
-    {k:"A", r:true, l:"La montrer dès l'assemblage", d:"Ce que ça change : un écran pendant l'assemblage indique que Rob1 prend l'énergie en premier. Ce que ça apporte : la panne devient logique."},
-    {k:"B", l:"L'enlever", d:"Ce que ça change : la batterie se vide à cause de la montée, du froid et du poids. Une phrase en moins."},
-    {k:"C", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien."}
-   ]},
-  {id:"D18", g:"E", t:"Le trou « sans fond » qu'on arrive pourtant à remonter avec des câbles",
-   ctx:"Au début, la lumière qu'ils jettent dans le trou disparaît sans toucher le fond. À la fin, ils remontent le XENOPOD avec des câbles. Déjà décidé : le trou fait environ 80 m.",
-   conseil:"A. On garde la peur du trou, mais on voit le fond : le XENOPOD est là, trop loin pour eux deux. Les câbles de la fin deviennent logiques.",
-   o:[
-    {k:"A", r:true, l:"La lumière touche le fond, tout en bas", d:"Ce que ça change : un tout petit point rouge au fond. Ce que ça apporte : on comprend qu'ils ne peuvent pas descendre seuls, et que c'est possible plus tard à quatre."},
-    {k:"B", l:"Un rebord cache le fond", d:"Ce que ça change : la lumière passe derrière un rocher. Ce que ça apporte : l'image du début reste la même."},
-    {k:"C", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien. Ce que ça laisse : l'incohérence."}
-   ]},
-  {id:"D19", g:"E", t:"Le public comprend-il que la planète est vivable et que Rob1 ment ?",
-   ctx:"Déjà décidé : la planète a tout ce qu'il faut, Rob1 ment pour la protéger, et une ligne dit « Terre : réception dans 11,4 ans ». Reste à être sûr que le public voit le mensonge.",
-   conseil:"B. Une seule image suffit : le public voit « OUI » devenir « NON ». Plus aucun doute, sans un mot.",
-   o:[
-    {k:"A", l:"Ce qui existe suffit", d:"Ce que ça change : rien. Ce que ça laisse : certains spectateurs peuvent rater le mensonge."},
-    {k:"B", r:true, l:"Rob1 efface « VIVABLE : OUI » et écrit « NON »", d:"Ce que ça change : un écran de plus dans la scène du rapport. Ce que ça apporte : tout le monde comprend qu'il ment."}
-   ]},
-  {id:"D20", g:"E", t:"Seed est renversée par la horde et survit : comment ?",
-   ctx:"Elle est percutée par les buffles géants, puis se réveille blessée au bord d'une rivière. Le rapport dit que ça devrait la tuer.",
-   conseil:"B. Un plan de deux secondes où elle tombe dans la rivière explique pourquoi elle survit et pourquoi elle se réveille dans l'eau.",
-   o:[
-    {k:"A", l:"Le montrer seulement dans le 55 min", d:"Ce que ça change : rien dans le 25 min."},
-    {k:"B", r:true, l:"Un plan dans le 25 min aussi", d:"Ce que ça change : juste avant le noir, elle bascule dans la rivière. Ce que ça apporte : sa survie devient crédible."},
-    {k:"C", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien ; c'est un conte."}
-   ]},
-  {id:"D21", g:"E", t:"Rob3 se réveille pile quand la horde arrive",
-   ctx:"Ils le nettoient le soir, il ne se réveille que le lendemain, juste au bon moment. Le rapport trouve ça trop pratique.",
-   conseil:"A. Il s'allume le soir après le nettoyage : on comprend qu'il est prêt, et ce moment devient un petit bonheur du soir.",
-   o:[
-    {k:"A", r:true, l:"Il se réveille le soir", d:"Ce que ça change : il s'allume au coucher du soleil, puis se met en recharge. Ce que ça apporte : plus de hasard."},
-    {k:"B", l:"C'est la horde qui le réveille", d:"Ce que ça change : le sol qui tremble le réveille ; une ligne d'écran le dit."},
-    {k:"C", l:"Garder comme aujourd'hui", d:"Ce que ça change : rien."}
-   ]},
-  {id:"D22", g:"E", t:"Seed a 23 % de la mémoire d'Elena, Cain en reçoit 21 % : c'est voulu ?",
-   ctx:"Les deux chiffres sont dans ton texte. Personne n'a encore dit si la différence est voulue.",
-   conseil:"A. La différence devient un sens : Rob1 donne à Cain un peu moins qu'à Seed, elle reste la grande sœur. Il suffit d'un regard sur l'écran.",
-   o:[
-    {k:"A", r:true, l:"C'est voulu, on le montre", d:"Ce que ça change : Rob1 regarde « 23 % » (Seed) avant de taper « 21 % ». Ce que ça apporte : Seed reste l'aînée."},
-    {k:"B", l:"Même chiffre pour les deux (23 %)", d:"Ce que ça change : on corrige 21 % partout. Ce que ça apporte : Cain est exactement son égal."},
-    {k:"C", l:"On garde sans le montrer", d:"Ce que ça change : rien."}
-   ]},
-  {id:"D23", g:"E", t:"Qui a donné les noms « Seed » et « Cain » ?",
-   ctx:"Seed ne sait pas qui l'a nommée. Les boîtes portent « SEED » et « CAIN ».",
-   conseil:"A. C'est le plus simple : le vaisseau s'appelle « la semeuse » et le premier bébé « la graine ». Rien à ajouter.",
-   o:[
-    {k:"A", r:true, l:"Ce sont des noms de code de la mission", d:"Ce que ça change : rien. Ce que ça apporte : c'est cohérent avec le nom du vaisseau."},
-    {k:"B", l:"C'est Elena qui les a choisis", d:"Ce que ça change : une scène dans le film de 55 min où elle les choisit en signant."},
-    {k:"C", l:"On ne le dit pas", d:"Ce que ça change : rien ; la question reste ouverte."}
-   ]},
-  {id:"D24", g:"F", t:"La fin avec Cain : douce, ou un peu inquiétante ?",
-   ctx:"Rob1 rajeunit Cain (de 35 à 14 ans) et lui retire de la mémoire, sans lui demander son avis. Déjà décidé : il le fait après avoir revu le sourire de Seed. Le rapport dit : il refait volontairement à Cain ce que l'accident a fait à Seed.",
-   conseil:"B. La fin reste douce, mais on voit en un plan ce que Rob1 enlève à Cain. Le public repart avec une petite question, sans que la fin devienne sombre.",
-   o:[
-    {k:"A", l:"Douce", d:"Ce que ça change : rien. Ce que ça donne : un frère pour Seed, point."},
-    {k:"B", r:true, l:"Douce, avec une petite ombre", d:"Ce que ça change : un plan d'écran où l'on voit s'effacer « INGÉNIEUR ». Ce que ça apporte : on comprend ce que ça coûte à Cain."},
-    {k:"C", l:"Franchement inquiétante", d:"Ce que ça change : musique et dernier plan plus sombres. Ce que ça coûte : la fin perd sa douceur."}
-   ]},
-  {id:"D25", g:"F", t:"Le nom « Cain »",
-   ctx:"Dans la Bible, Caïn tue son frère. Le rapport dit que le nom annonce de la violence, alors que la fin est douce.",
-   conseil:"A, si tu choisis B à la question D24 : le nom et la petite ombre vont ensemble et préparent une suite. Si tu veux une fin toute douce, C.",
-   o:[
-    {k:"A", r:true, l:"On garde, c'est voulu", d:"Ce que ça change : rien. Ce que ça apporte : une petite inquiétude pour la suite."},
-    {k:"B", l:"On garde sans y penser", d:"Ce que ça change : rien. Ce que ça laisse : certains spectateurs y verront une menace."},
-    {k:"C", l:"On change le nom", d:"Ce que ça change : je te propose des noms après ta relecture ; tous les documents sont à corriger."}
-   ]}
-];
-const KEY = "se-revision-script-doctor-r2";
+const GROUPS = [];
+const Q = [];
+const KEY = "se-revision-script-doctor-r3";
 
 let state = {};
 try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }

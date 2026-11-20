@@ -218,6 +218,34 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 - **Arc et fosse (G04)** : une subduction plane. La plaque de l'Océan 2 plonge en pente très douce ; l'arc volcanique s'ouvre ~1 200 km en arrière de la fosse ; le Golfe 2 est un bassin posé au-dessus de la plaque qui plonge. Rob4, la fosse et les distances du trajet ne bougent pas.
 - **Suite (N01)** : Cal relit et corrige ; rien n'avance tant que ses corrections ne sont pas passées.
 
+**Round 17 · révision du récit après le rapport de script-doctor (20/11/2026), décisions de Cal** (QCM `film/qcm-script-doctor.html`). À écrire dans le Récit v2 quand les corrections de la relecture de Cal (round 16) seront passées ; rien n'est encore appliqué au texte.
+
+- **D01 (Milieu du film)** : on met en avant les quatre choix que Seed fait déjà pendant le voyage (garder la plante, l'idée de la batterie vivante, enterrer l'organisme, sauver le rongeur) ; pas de scène ajoutée.
+- **D02 (Voyage)** : pas de raccourci de plus ; les longues marches deviennent des cartons de jour.
+- **D03 (Ton du milieu)** : action dans le film de 25 min, calme dans les scènes ajoutées du 55 min (déjà prévu).
+- **D04 (Le nom Seed)** : elle dit « Seed » réveillée et guérie, dans le cocon de Rob4 ; la fièvre garde le mélange des visages sans le mot ; toujours quatre mots.
+- **D05 (Seed et Rob1)** : Rob1 ne parle jamais : il écrit sur son écran et fait des gestes, Seed répond par gestes ; et il apprend la langue de lumière de Rob4 à la mer, qu'il utilise ensuite avec Seed (A et C).
+- **D06 (Phrases de pensée)** : le récit garde ses phrases ; elles deviennent des images au moment de préparer les plans.
+- **D07 (Éveil de Rob1)** : comme Rob4 : chacun devient ce que sa vie fait de lui ; Rob4 par la mer, Rob1 par Seed ; Rob2 et Rob3 restent des machines.
+- **D08 (Signes de l'éveil)** : deux ou trois signes de plus (début, milieu, retour).
+- **D09 (Culpabilité)** : le flash de la chute à la fin, plus un rappel de deux secondes au milieu (horde ou maladie).
+- **D10 (Le mensonge)** : préparé plus tôt : il cache déjà des choses pendant le voyage, et au retour il regarde l'émetteur ; la scène finale ne s'allonge pas.
+- **D11 (Rob1 chef)** : une ligne d'écran : « SEULE UNITÉ ACTIVE : ROB-1 ».
+- **D12 (Assemblages)** : prévus par le vaisseau, mais chacun coûte : le premier vide la batterie de Rob2, le second fait perdre le chargeur solaire.
+- **D13 (Rob2 et Rob3)** : restent des machines.
+- **D14 (Le rongeur)** : un plan dans le 25 min : son abri intact.
+- **D15 (L'organisme)** : comme prévu : un plan de la lueur dans le 25 min, le retour repasse devant dans le 55 min.
+- **D16 (Elena)** : « ses jumeaux » sont ses enfants ; l'écho avec Seed et Cain peut être montré dans le 55 min.
+- **D17 (Batterie)** : on montre dès l'assemblage que Rob1 prend l'énergie en premier.
+- **D18 (Le trou)** : la lumière jetée touche le fond, petit point rouge tout en bas (environ 80 m).
+- **D19 (Le mensonge visible)** : Rob1 efface « VIVABLE : OUI » et écrit « NON ».
+- **D20 (La horde)** : un plan dans le 25 min : Seed bascule dans la rivière avant le noir.
+- **D21 (Rob3)** : il s'allume le soir après le nettoyage, puis se met en recharge.
+- **D22 (23 % / 21 %)** : voulu et montré : Rob1 regarde les 23 % de Seed avant de taper 21 % pour Cain ; Seed reste l'aînée.
+- **D23 (Les noms)** : Seed et Cain sont des noms de code de la mission (la semeuse, la graine).
+- **D24 (Fin avec Cain)** : douce, avec une petite ombre : on voit s'effacer « INGÉNIEUR ».
+- **D25 (Le nom Cain)** : gardé, c'est voulu.
+
 27/09 : le découpage plan par plan du 25 min est écrit (proposé, 16:9 par défaut) : Découpage 25 min.
 
 ## Questions ouvertes
@@ -225,3 +253,4 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 - [ ] Épigraphe du 55 : la phrase du docx est gardée pour l'instant (round 14) ; à revoir plus tard, à la demande de Cal.
 - [ ] Dessin des nouvelles espèces : quatre de la jungle, le grimpeur des cols, le Titan volant, l'oiseau des salins.
 - [ ] Relecture de Cal (round 16, N01) : en attente de ses corrections avant toute suite.
+- [ ] Round 17 (révision du récit) : tranché le 20/11, à écrire dans le Récit v2 après la relecture.
