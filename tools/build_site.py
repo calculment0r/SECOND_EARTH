@@ -1017,6 +1017,8 @@ def main(argv):
     write('film/qcm-script-doctor.html', verdantize(rev_src, '../assets/fonts/venus-rising.otf',
                                                      backlink='<a class="backlink" href="index.html">Retour au site</a>'))
 
+    write('briefs-site.html', (DOCS / 'site' / 'briefs.html').read_text(encoding='utf-8'))
+
     # biomes : index avec palettes
     pal_by_order = palette[:10]
     sec = SECTIONS['biomes']

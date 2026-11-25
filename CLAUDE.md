@@ -323,3 +323,13 @@ Adresse : https://calculment0r.github.io/SECOND_EARTH/ . GitHub Pages activé pa
 - `data/revision-script-doctor.html` : le QCM de révision (25 décisions D01 à D25, groupes A à F, clé de stockage `se-revision-script-doctor-r2` ; réécrit le 20/11 en mots simples avec mon conseil par question, règle 16), publié sous `film/qcm-script-doctor.html`. Ce qui est déjà tranché est dans `DONE`. Règle 8 : les réponses de Cal disent ce qui sera écrit après sa relecture ; rien n'est appliqué au récit avant.
 - Le rapport lit bien le docx de référence (Proxima, Elena, 23 %) ; ses numéros de ligne sont décalés de 0 à 8 par rapport à `docs/film/01-recit-docx.md`. Le QCM cite les lignes du site.
 - **Tranché par Cal le 20/11/2026 (round 17)** : ses 25 réponses (presque toutes mes conseils ; D05 = A et C ; D16 = les jumeaux sont les enfants d'Elena) sont dans le Registre, section « Round 17 ». La page QCM est passée en archive (`GROUPS = []`, `Q = []`, réponses dans `DONE`). **Écrit dans le Récit v2 le 20/11** (`docs/film/00-recit-v2.md`, passages marqués [ajout du 20/11]) à la demande de Cal, qui veut tout d'un coup, sans attendre : il n'a pas de corrections de relecture en attente pour le récit. Le docx v2 (`sources/`, hors dépôt) et le document Claude Docs « Récit v2 » ne sont pas encore mis à jour.
+
+---
+
+## 14. Le nouveau site (25/11/2026)
+
+Cal a acheté un nom de domaine et veut un site très beau, fait avec Claude Design, avec ses vidéos 21:9 (trois dossiers : faune / flore, Seed, SPACE) et ses images panoramiques. Ces fichiers sont sur son ordinateur : la session cloud ne les voit pas (pas de Google Drive branché, dossiers d'Ally non ouvrables, stockage Cloudflare `r2.dev` bloqué par le réseau). Ne pas lui redemander où ils sont : il lance une session locale pour l'inventaire.
+- `docs/site/BRIEF-INVENTAIRE-MEDIAS.md` : brief de la session locale (livre `media/inventaire/`).
+- `docs/site/BRIEF-CLAUDE-DESIGN.md` : brief de Claude Design (deux pistes : très graphique / sobre ; planète interactive).
+- `docs/site/briefs.html` : les deux briefs avec un bouton Copier, publié sous `briefs-site.html` (à régénérer si un brief change).
+- La planète interactive existe : `assets/js/vendor/continuum-globe.js` dans NirvaLabWeb (three.js r152, note `GLOBE-ENGINE.md`) ; elle est réglée sur Proxima, à passer sur Korê. NirvaLabWeb a aussi 12 images Second Earth et 3 vidéos sur R2.

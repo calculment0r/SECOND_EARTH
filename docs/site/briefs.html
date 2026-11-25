@@ -1,0 +1,125 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Briefs du site</title>
+<style>body{margin:0;background:#0a0d0b;color:#e8ece9;font:16px/1.6 system-ui,sans-serif}main{max-width:900px;margin:0 auto;padding:40px 20px 80px}
+h1{font-size:34px;margin:0 0 8px}h2{font-size:22px;margin:40px 0 6px}p{color:#b9cfd8;margin:0 0 12px}
+button{background:#e0674a;color:#0a0d0b;border:0;border-radius:6px;padding:12px 18px;font:600 15px system-ui;cursor:pointer;margin:6px 0 12px}
+textarea{width:100%;height:320px;box-sizing:border-box;background:#111614;color:#e8ece9;border:1px solid #2a332e;border-radius:6px;padding:14px;font:13px/1.5 ui-monospace,monospace}
+a{color:#f0b49b}.ok{color:#7fd6a4;margin-left:10px}</style><main>
+<h1>Les deux briefs du site</h1><p>Un bouton copie le texte. Tu le colles dans la session concernée.</p>
+<h2>1. Pour ta session locale : faire la liste des images et des vidéos</h2><p>À coller dans la session lancée sur ton ordinateur, là où sont tes dossiers.</p>
+<button data-c="t1">Copier ce brief</button><span class="ok"></span><textarea id="t1" readonly># Brief · inventaire des images et des vidéos de Second Earth (session locale, sur l&#x27;ordinateur de Cal)
+
+Pour une session Claude lancée sur l&#x27;ordinateur de Cal, là où sont les fichiers. La session cloud ne peut pas les voir.
+Lire d&#x27;abord `CLAUDE.md` (règles 2, 3, 5, 16 : français, pas d&#x27;émoticône, pas de jugement de valeur dans les réponses à Cal, pages HTML pour lui, mots simples).
+
+## But
+
+Une liste complète de tout le matériel image et vidéo, pour construire le site de Second Earth. Cal doit pouvoir la parcourir d&#x27;un coup d&#x27;œil, et Claude Design doit savoir ce qui est utilisable.
+
+## Où chercher
+
+Demander à Cal les chemins s&#x27;ils ne sont pas donnés au lancement. Il y a :
+- trois dossiers de vidéos en 21:9 : **faune / flore**, **Seed**, **SPACE** (PERSEPHORA et MOTHER) ;
+- des images panoramiques (Midjourney, très larges), et d&#x27;autres à venir ; Cal extraira aussi des panoramiques des vidéos ;
+- les 100 images du dossier « seedance input » ;
+- les 5 planches de personnages (Seed, Rob1, grand robot, planche d&#x27;échelle, XENOPOD-01).
+
+Déjà connu côté cloud : 12 images dans le dépôt NirvaLabWeb (`assets/images/projects/second-earth/`, `assets/uploads/second-earth/`) et 3 vidéos sur le stockage Cloudflare de Cal (`VIDEO_HERO/Second_Earth.mp4` et deux fichiers `assets/uploads/second-earth/b-*.mp4`).
+
+## Ce qu&#x27;il faut relever
+
+Pour **chaque vidéo** (avec `ffprobe`) : dossier, nom du fichier, durée, largeur × hauteur, format (21:9, 16:9…), images par seconde, poids, son ou pas.
+Puis la regarder (extraire une image toutes les 2 secondes avec `ffmpeg`, les lire) et noter :
+- ce qu&#x27;on voit, en une phrase simple ;
+- **un seul plan ou plusieurs plans** (multi-shot) ; si plusieurs : le minutage de chaque plan ;
+- qui est à l&#x27;écran : Seed, Rob1, grand robot, XENOPOD, PERSEPHORA, MOTHER, animal, plante, paysage seul ;
+- le lieu, rattaché à un biome de la Bible si c&#x27;est clair (`docs/bible/`) ;
+- les couleurs dominantes ;
+- **l&#x27;état : bon / bon en partie (dire de quelle seconde à quelle seconde) / raté** et pourquoi (Rob1 qui change de taille, visage déformé, mouvement cassé, texte parasite, objet en trop…) ;
+- les meilleurs moments pour en tirer une image fixe panoramique (minutage) ;
+- usage possible sur le site : grande vidéo d&#x27;ouverture, fond de section, carrousel, vignette.
+
+Pour **chaque image** : dossier, nom, largeur × hauteur, format, poids, ce qu&#x27;on voit, biome, couleurs, état, usage possible (bandeau très large, carrousel, fiche).
+
+Ne rien inventer : si un plan n&#x27;est pas clair, l&#x27;écrire.
+
+## Ce qu&#x27;il faut livrer
+
+1. `media/inventaire/inventaire.json` : une entrée par fichier, avec tous les champs ci-dessus.
+2. `media/inventaire/vignettes/` : une vignette légère par fichier (JPEG, 640 px de large, moins de 80 Ko) ; pour une vidéo, une planche de 6 à 8 images.
+3. `media/inventaire/index.html` : la page pour Cal. Vignettes, filtres (dossier, état, personnage, biome, un plan / plusieurs plans), compteur par état, mots simples. Thème du site (voir `site/assets/site.css`).
+4. Un résumé en tête de page : combien de vidéos et d&#x27;images, combien de bonnes, ce qui manque pour le site (par exemple : aucune bonne vidéo de tel moment de l&#x27;histoire).
+
+**Ne pas mettre les vidéos ni les grandes images dans git** (trop lourd) : seulement le JSON, les vignettes et la page. Les vidéos iront sur Cloudflare.
+Pousser sur la branche `claude/beautiful-goldberg-x0to5u` du dépôt `calculment0r/SECOND_EARTH`, puis donner le lien à Cal. La session cloud ajoutera la page au site et s&#x27;en servira pour le brief de Claude Design.
+
+## Organisation
+
+Trois sous-agents en parallèle, un par dossier de vidéos, plus un pour les images. Même grille pour tous. Un seul fichier JSON à la fin.
+Aucune génération payante, aucun envoi vers un service extérieur.
+</textarea>
+<h2>2. Pour Claude Design : dessiner le site</h2><p>À coller dans Claude Design. Il reste cinq choix pour toi à la fin (partie 8).</p>
+<button data-c="t2">Copier ce brief</button><span class="ok"></span><textarea id="t2" readonly># Brief pour Claude Design · le site de Second Earth
+
+## 1. Le projet
+
+**Second Earth** : un film de 25 minutes (puis 55), une salle immersive et une exposition, pour le Science Centre Singapore. Auteur et réalisateur : Cal (NIRVALAB). Productrice : Nina Albani (aïo Creative Group, Singapour).
+
+L&#x27;histoire en quatre phrases. En 2098, un vaisseau-semeur dépose une capsule sur une planète lointaine. Une adolescente y naît, Seed, cheveux blancs, presque muette, avec un petit robot, Rob1. Ils traversent la planète pour retrouver trois autres robots et lui donnent un nom : Korê. À la fin, Rob1 ment à la Terre pour protéger ce monde.
+
+Dernière phrase du film : « This is a fictional planet. Earth is the only world we know. Take care of it. »
+
+## 2. À quoi sert le site
+
+Présenter le projet à des partenaires : le Science Centre, des financeurs, des studios, des diffuseurs. Il doit donner envie en dix secondes et rester clair pour quelqu&#x27;un qui ne connaît rien au projet.
+Adresse : un nom de domaine acheté par Cal (à préciser par lui).
+Langues : français et anglais (public de Singapour).
+
+## 3. Ce que Cal veut
+
+- Un site **très beau**, où l&#x27;image est reine : grandes vidéos en 21:9, images panoramiques très larges, carrousels.
+- Il hésite entre deux directions et veut les voir côte à côte :
+  - **Piste A, très graphique** : typographie forte, grilles visibles, étiquettes et chiffres de mission, données de la planète mises en scène ;
+  - **Piste B, sobre** : presque rien autour des images, beaucoup de vide, texte discret, la typographie s&#x27;efface.
+- Il ne sait pas encore s&#x27;il garde les directions artistiques déjà faites. Les deux existent dans le dépôt et peuvent servir de point de départ ou être abandonnées :
+  - le thème sombre « Verdant » du site actuel (fond presque noir, corail et vert profond ; `site/assets/site.css`, `theme/showrunner-ui-kit/`) ;
+  - le « kit étude » de la présentation (clair, Literata pour le texte, Norelli en capitales pour les titres ; `presentation/kit/`).
+- **Une planète interactive** au cœur du site. Elle existe déjà : le globe 3D de la page CONTINUUM du site NirvaLab (un seul fichier, `assets/js/vendor/continuum-globe.js` du dépôt NirvaLabWeb, avec three.js ; note de reprise : `GLOBE-ENGINE.md`). À prévoir dans la maquette comme un grand bloc plein écran : la planète Korê, ses quatre continents, le trajet de Seed en douze étapes, un clic sur une étape ouvre son paysage et ses animaux. La carte en deux échelles existe aussi (`carte/carte-kore.html`).
+
+## 4. Le matériel
+
+- Vidéos 21:9 en trois familles : la faune et la flore ; Seed et Rob1 ; l&#x27;espace (le vaisseau PERSEPHORA et MOTHER). Certaines ont plusieurs plans, certaines sont ratées : n&#x27;utiliser que celles marquées « bon » dans l&#x27;inventaire.
+- Images panoramiques (rapports de 2:1 à 3,3:1), d&#x27;autres à venir, dont des images tirées des vidéos.
+- L&#x27;inventaire complet avec vignettes : `media/inventaire/` (en cours ; s&#x27;il n&#x27;est pas encore là, travailler avec des emplacements au bon format).
+- Les couleurs de la planète : étoile orange, végétation pourpre en haut et verte dessous, lumière magenta sous les arbres, déserts ocre, mer gris-vert, lacs roses, nuits lumineuses bleues. Les images actuelles sont dominées par le rouge corail, le blanc et les brumes pâles.
+- Les vidéos seront servies depuis Cloudflare, pas depuis le dépôt.
+
+## 5. Le contenu
+
+Tout est écrit dans le dépôt `calculment0r/SECOND_EARTH` ; ne rien inventer. Le site éditable actuel a déjà dix-sept parties (`site-projet/`, contenu dans `site-projet/content/site-content.json`) :
+accueil, logline, pitch, synopsis, note d&#x27;intention, univers, personnages, voyage, bestiaire et flore, science, film, script, salle immersive, exposition, équipe, calendrier et financement, contact.
+La logline, le pitch, les synopsis et la note d&#x27;intention sont des propositions à valider par Cal. L&#x27;équipe et le contact sont vides.
+Sources : `CLAUDE.md` (résumé et chiffres de la planète), `docs/bible/`, `docs/film/00-recit-v2.md`, `data/bestiaire.json` (66 animaux), `data/flore.json` (42 plantes), `data/titans.json`.
+
+## 6. Ce qu&#x27;on attend de toi
+
+1. **Deux maquettes de la page d&#x27;accueil**, piste A et piste B, sur grand écran, avec les mêmes images, pour comparer.
+2. Pour la piste retenue : la page d&#x27;accueil complète, une page « Le voyage » avec la planète interactive, une page « Bestiaire et flore », une page « Le film », une page courte « Contact et équipe ».
+3. Le système : couleurs, deux ou trois polices, tailles, espacements, boutons, étiquettes, la façon de poser une vidéo 21:9 et un panoramique (plein écran, bandeau, carrousel), les mouvements (défilement, apparitions, lecture des vidéos).
+4. Une version téléphone simple de la page d&#x27;accueil.
+
+## 7. Contraintes
+
+- Le site est en HTML, CSS et JavaScript simples, sans étape de fabrication, hébergé en pages statiques.
+- Cal doit pouvoir modifier lui-même textes et images en ligne, comme sur son site NirvaLab : penser la page comme une pile de bandes horizontales, chacune avec ses textes et ses images (voir `site-projet/LIRE.md` et, dans NirvaLabWeb, `DESIGN-BRIEF.md`).
+- Vidéos sans son au départ, lecture automatique, image fixe de remplacement, poids maîtrisé.
+- Aucune émoticône. Ne reproduire aucun film, aucune marque, aucun personnage existant. Pas de vocabulaire technique dans les textes visibles.
+- Le texte doit rester lisible sur les images : contraste vérifié.
+
+## 8. Questions ouvertes pour Cal
+
+Le nom de domaine ; la piste (A, B ou un mélange) ; garder ou non Verdant ou le kit étude ; français d&#x27;abord ou anglais d&#x27;abord ; ce qui reste privé (script, budget).
+</textarea>
+<p><a href="index.html">Retour au site</a></p></main>
+<script>document.querySelectorAll('button').forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c);t.select();
+(navigator.clipboard?navigator.clipboard.writeText(t.value):Promise.reject()).catch(function(){document.execCommand('copy')});
+b.nextElementSibling.textContent='Copié';}});</script></html>
