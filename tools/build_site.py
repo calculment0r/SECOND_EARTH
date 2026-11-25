@@ -926,6 +926,8 @@ def main(argv):
     (out / 'carte').mkdir(parents=True, exist_ok=True)
     shutil.copy(ROOT / 'carte' / 'world.png', out / 'carte' / 'world.png')  # la planète entière, pour la section « L'univers » du site du projet
     shutil.copytree(ROOT / 'presentation', out / 'presentation', ignore=shutil.ignore_patterns('*.py', '*.md', 'vitrine*', 'presentation.html'))
+    if (ROOT / 'media' / 'inventaire' / 'index.html').exists():  # inventaire des images et vidéos (session locale du 25/11/2026)
+        shutil.copytree(ROOT / 'media' / 'inventaire', out / 'inventaire-medias')
     (out / '.nojekyll').write_text('', encoding='utf-8')
 
     best = load_json('bestiaire.json')
