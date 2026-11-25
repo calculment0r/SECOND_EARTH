@@ -236,7 +236,9 @@
     "grande vidéo d'ouverture",
     "fond de section"
    ],
-   "incertitudes": "Le nom MOTHER est lu sur la station à l'image. Le nom PERSEPHORA pour le vaisseau à voile est déduit (il est écrit sur la coque dans depart_45s, pas dans cette vidéo). Après 23,6 s les changements de plan sont des fondus non détectés automatiquement : ceux de 29 s et 39,2 s ont été vérifiés à l'œil, ceux de 36,3 s et 41,3 s sont estimés à une demi-seconde près. Le mouvement entre 20 et 22 s n'a pas été vérifié image par image. Le fichier est rangé dans faune / flore mais ne montre ni animal ni plante."
+   "incertitudes": "Le nom MOTHER est lu sur la station à l'image. Le nom PERSEPHORA pour le vaisseau à voile est déduit (il est écrit sur la coque dans depart_45s, pas dans cette vidéo). Après 23,6 s les changements de plan sont des fondus non détectés automatiquement : ceux de 29 s et 39,2 s ont été vérifiés à l'œil, ceux de 36,3 s et 41,3 s sont estimés à une demi-seconde près. Le mouvement entre 20 et 22 s n'a pas été vérifié image par image. Le fichier est rangé dans faune / flore mais ne montre ni animal ni plante.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/2depart-45s.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/2depart-45s.jpg"
   },
   {
    "id": "faune-flore--c",
@@ -324,7 +326,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Les noms PERSEPHORA et XENOPOD sont déduits (rien n'est écrit à l'image ici). Aucune coupe n'était détectée dans la liste : j'ai vérifié à l'œil un fondu vers 3,3 s, une coupe nette à 7,6 s et une coupe nette à 13,7 s. Ces images sont les mêmes que arrivee_45s de 15 à 30 s. Le fichier est rangé dans faune / flore mais ne montre ni animal ni plante."
+   "incertitudes": "Les noms PERSEPHORA et XENOPOD sont déduits (rien n'est écrit à l'image ici). Aucune coupe n'était détectée dans la liste : j'ai vérifié à l'œil un fondu vers 3,3 s, une coupe nette à 7,6 s et une coupe nette à 13,7 s. Ces images sont les mêmes que arrivee_45s de 15 à 30 s. Le fichier est rangé dans faune / flore mais ne montre ni animal ni plante.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/c.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/c.jpg"
   },
   {
    "id": "faune-flore--araignee-bronze",
@@ -416,7 +420,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La Bible cite des araignées-architectes en forêt ancienne, mais le décor ne permet pas de rattacher la vidéo à ce biome. Nombre de pattes non compté. On ne sait pas si les formes pâles sont des plantes ou des champignons."
+   "incertitudes": "La Bible cite des araignées-architectes en forêt ancienne, mais le décor ne permet pas de rattacher la vidéo à ce biome. Nombre de pattes non compté. On ne sait pas si les formes pâles sont des plantes ou des champignons.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/araignee-bronze.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/araignee-bronze.jpg"
   },
   {
    "id": "faune-flore--arrivee-30s",
@@ -540,7 +546,9 @@
     "grande vidéo d'ouverture",
     "carrousel"
    ],
-   "incertitudes": "Les noms PERSEPHORA et XENOPOD sont déduits. Le robot est noté Rob1 par défaut (yeux bleus, corps sombre) mais sa taille et sa tête blanche ne correspondent pas ; ce pourrait être un autre robot. Le lieu d'atterrissage ne ressemble pas à la jungle décrite dans la Bible, d'où biome « Pas clair ». Le fichier est rangé dans faune / flore ; seules des plantes de décor sont visibles à la fin."
+   "incertitudes": "Les noms PERSEPHORA et XENOPOD sont déduits. Le robot est noté Rob1 par défaut (yeux bleus, corps sombre) mais sa taille et sa tête blanche ne correspondent pas ; ce pourrait être un autre robot. Le lieu d'atterrissage ne ressemble pas à la jungle décrite dans la Bible, d'où biome « Pas clair ». Le fichier est rangé dans faune / flore ; seules des plantes de décor sont visibles à la fin.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/arrivee-30s.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/arrivee-30s.jpg"
   },
   {
    "id": "faune-flore--arrivee-45s",
@@ -666,7 +674,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Les noms PERSEPHORA et XENOPOD sont déduits. La planète colorée est sans doute Korê, ce n'est pas écrit à l'image. Coupes absentes de la liste et vues à l'œil : fondu vers 18,3 s, coupes à 22,7 s, 28,9 s et 30,6 s. Vers 35 s le fond passe du noir au ciel bleu dans le même plan, sans coupe (vérifié sur 6 images). Biome noté « Espace » car la plus grande partie s'y passe ; le lieu d'atterrissage ne correspond à aucun biome de façon claire. Un seul passage utilisable a pu être noté dans les champs ; 30,6 s à la fin l'est aussi."
+   "incertitudes": "Les noms PERSEPHORA et XENOPOD sont déduits. La planète colorée est sans doute Korê, ce n'est pas écrit à l'image. Coupes absentes de la liste et vues à l'œil : fondu vers 18,3 s, coupes à 22,7 s, 28,9 s et 30,6 s. Vers 35 s le fond passe du noir au ciel bleu dans le même plan, sans coupe (vérifié sur 6 images). Biome noté « Espace » car la plus grande partie s'y passe ; le lieu d'atterrissage ne correspond à aucun biome de façon claire. Un seul passage utilisable a pu être noté dans les champs ; 30,6 s à la fin l'est aussi.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/arrivee-45s.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/arrivee-45s.jpg"
   },
   {
    "id": "faune-flore--bete-mousse",
@@ -751,7 +761,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La Bible place le paresseux-mousse en forêt ancienne ; ici le décor est volcanique, le biome est donc choisi d'après le décor seulement. La nature des filaments cuivrés au sol n'est pas claire (lave, racines ou plante). Mouvement des bras vers 8 à 9 s vérifié sur 6 images seulement."
+   "incertitudes": "La Bible place le paresseux-mousse en forêt ancienne ; ici le décor est volcanique, le biome est donc choisi d'après le décor seulement. La nature des filaments cuivrés au sol n'est pas claire (lave, racines ou plante). Mouvement des bras vers 8 à 9 s vérifié sur 6 images seulement.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/bete-mousse.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/bete-mousse.jpg"
   },
   {
    "id": "faune-flore--bleue-pois",
@@ -838,7 +850,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Dans le dernier plan la silhouette paraît plus dressée, avec des bras tombants, que dans les deux premiers plans : même animal ou non, pas sûr. Tête peu visible dans tous les plans. Aucun biome de la Bible ne correspond clairement à ce décor."
+   "incertitudes": "Dans le dernier plan la silhouette paraît plus dressée, avec des bras tombants, que dans les deux premiers plans : même animal ou non, pas sûr. Tête peu visible dans tous les plans. Aucun biome de la Bible ne correspond clairement à ce décor.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/bleue-pois.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/bleue-pois.jpg"
   },
   {
    "id": "faune-flore--canide-oreilles-serie2",
@@ -929,7 +943,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Mouvement des pattes pendant la course non vérifié image par image. Animal non trouvé sous ce nom dans les fiches biomes lues ; biome choisi d'après les volcans."
+   "incertitudes": "Mouvement des pattes pendant la course non vérifié image par image. Animal non trouvé sous ce nom dans les fiches biomes lues ; biome choisi d'après les volcans.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/canide-oreilles-serie2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/canide-oreilles-serie2.jpg"
   },
   {
    "id": "faune-flore--canide-oreilles-serie3",
@@ -1018,7 +1034,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La liste ne donnait aucune coupe ; j'en vois trois (3,3 s, 7,1 s, 13,7 s). On ne sait pas si le cône est un volcan couvert de plantes ou une seule plante géante. Les petites formes au pied du cône entre 3,5 et 7 s ne sont pas identifiées. Tête de l'animal peu lisible pendant la course (12 à 13 s), non vérifiée."
+   "incertitudes": "La liste ne donnait aucune coupe ; j'en vois trois (3,3 s, 7,1 s, 13,7 s). On ne sait pas si le cône est un volcan couvert de plantes ou une seule plante géante. Les petites formes au pied du cône entre 3,5 et 7 s ne sont pas identifiées. Tête de l'animal peu lisible pendant la course (12 à 13 s), non vérifiée.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/canide-oreilles-serie3.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/canide-oreilles-serie3.jpg"
   },
   {
    "id": "faune-flore--carapace-noire-serie2",
@@ -1109,7 +1127,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La liste donnait une seule coupe (12,9 s) ; j'en vois aussi à 5,2 s et 9,6 s. La vitesse à laquelle l'animal s'éloigne de 13 à 15 s n'a pas été vérifiée image par image. Les lueurs font penser à la forêt bioluminescente, mais le sol sombre peut aussi être volcanique : biome laissé « Pas clair »."
+   "incertitudes": "La liste donnait une seule coupe (12,9 s) ; j'en vois aussi à 5,2 s et 9,6 s. La vitesse à laquelle l'animal s'éloigne de 13 à 15 s n'a pas été vérifiée image par image. Les lueurs font penser à la forêt bioluminescente, mais le sol sombre peut aussi être volcanique : biome laissé « Pas clair ».",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/carapace-noire-serie2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/carapace-noire-serie2.jpg"
   },
   {
    "id": "faune-flore--colosse-blanc-rouge-serie1",
@@ -1206,7 +1226,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La liste ne donnait pas la coupe à 7,1 s. On ne sait pas si les arches sont de la roche, des os ou une plante. Le sol blanc peut évoquer les lacs salés, sans certitude. Mouvement de marche non vérifié image par image."
+   "incertitudes": "La liste ne donnait pas la coupe à 7,1 s. On ne sait pas si les arches sont de la roche, des os ou une plante. Le sol blanc peut évoquer les lacs salés, sans certitude. Mouvement de marche non vérifié image par image.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/colosse-blanc-rouge-serie1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/colosse-blanc-rouge-serie1.jpg"
   },
   {
    "id": "faune-flore--cornes-v",
@@ -1309,7 +1331,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La liste ne donnait pas les coupes à 2,1 s et 9,9 s. Le mouvement des cornes pendant que l'animal se tourne (2 à 4 s) n'a pas été vérifié image par image. La cascade et la gorge font penser à la forêt ancienne, les teintes violettes à la jungle : rien de clair."
+   "incertitudes": "La liste ne donnait pas les coupes à 2,1 s et 9,9 s. Le mouvement des cornes pendant que l'animal se tourne (2 à 4 s) n'a pas été vérifié image par image. La cascade et la gorge font penser à la forêt ancienne, les teintes violettes à la jungle : rien de clair.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/cornes-v.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/cornes-v.jpg"
   },
   {
    "id": "faune-flore--cornes-v-blanc-serie1",
@@ -1402,7 +1426,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La différence de forme des cornes entre profil et face peut venir de l'angle de vue ou être un défaut ; pas tranché. L'animal bouge très peu : le mouvement n'a pas été vérifié. La Bible cite des buffles albinos sur les Hautes Plaines, mais le décor (sol pâle, champignons rouges) ne correspond pas clairement."
+   "incertitudes": "La différence de forme des cornes entre profil et face peut venir de l'angle de vue ou être un défaut ; pas tranché. L'animal bouge très peu : le mouvement n'a pas été vérifié. La Bible cite des buffles albinos sur les Hautes Plaines, mais le décor (sol pâle, champignons rouges) ne correspond pas clairement.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/cornes-v-blanc-serie1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/cornes-v-blanc-serie1.jpg"
   },
   {
    "id": "faune-flore--cou-rouge",
@@ -1479,7 +1505,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "L'animal bouge très peu ; mouvement non vérifié. Le ciel est d'un bleu franc, alors que la Bible décrit un ciel plus pâle. Aucun biome ne correspond clairement."
+   "incertitudes": "L'animal bouge très peu ; mouvement non vérifié. Le ciel est d'un bleu franc, alors que la Bible décrit un ciel plus pâle. Aucun biome ne correspond clairement.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/cou-rouge.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/cou-rouge.jpg"
   },
   {
    "id": "faune-flore--crabe-nacre",
@@ -1571,7 +1599,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les arches translucides font penser aux récifs de silice des biomes hors trajet, et la Bible cite des crabes-cristal en mer d'arsenic (sable noir) : aucun des deux n'est sûr, d'où « Pas clair ». Nombre de pattes et mouvement de marche non vérifiés image par image."
+   "incertitudes": "Les arches translucides font penser aux récifs de silice des biomes hors trajet, et la Bible cite des crabes-cristal en mer d'arsenic (sable noir) : aucun des deux n'est sûr, d'où « Pas clair ». Nombre de pattes et mouvement de marche non vérifiés image par image.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/crabe-nacre.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/crabe-nacre.jpg"
   },
   {
    "id": "faune-flore--depart-45s",
@@ -1724,7 +1754,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Le nom PERSEPHORA est lu à l'image. Le nom MOTHER pour la station est déduit (il est écrit dans 2depart_45s, pas ici). Beaucoup de plans courts (moins de 2 s) : non vérifiés image par image. Le passage utilisable 0 à 16,8 s existe aussi, un seul a pu être noté dans les champs. Le fichier est rangé dans faune / flore mais ne montre ni animal ni plante."
+   "incertitudes": "Le nom PERSEPHORA est lu à l'image. Le nom MOTHER pour la station est déduit (il est écrit dans 2depart_45s, pas ici). Beaucoup de plans courts (moins de 2 s) : non vérifiés image par image. Le passage utilisable 0 à 16,8 s existe aussi, un seul a pu être noté dans les champs. Le fichier est rangé dans faune / flore mais ne montre ni animal ni plante.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/depart-45s.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/depart-45s.jpg"
   },
   {
    "id": "faune-flore--dos-bleu-perle",
@@ -1816,7 +1848,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La liste ne donnait pas la coupe à 3,3 s. Le nombre de pattes n'a pas pu être compté et peut changer d'un plan à l'autre : non vérifié. Les coupes blanches sont notées comme plantes sans certitude (champignons possibles). Lueurs proches de la forêt bioluminescente ou d'un sol volcanique : pas clair."
+   "incertitudes": "La liste ne donnait pas la coupe à 3,3 s. Le nombre de pattes n'a pas pu être compté et peut changer d'un plan à l'autre : non vérifié. Les coupes blanches sont notées comme plantes sans certitude (champignons possibles). Lueurs proches de la forêt bioluminescente ou d'un sol volcanique : pas clair.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/dos-bleu-perle.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/dos-bleu-perle.jpg"
   },
   {
    "id": "faune-flore--echassier-crete-serie1",
@@ -1909,7 +1943,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La Bible décrit pour les lacs salés un grand échassier au plumage pourpre ; celui-ci est crème tacheté, donc pas de rattachement. On ne sait pas si les grandes formes blanches et roses sont des plantes, des champignons ou de la roche. Mouvement des pattes pendant la marche non vérifié image par image."
+   "incertitudes": "La Bible décrit pour les lacs salés un grand échassier au plumage pourpre ; celui-ci est crème tacheté, donc pas de rattachement. On ne sait pas si les grandes formes blanches et roses sont des plantes, des champignons ou de la roche. Mouvement des pattes pendant la marche non vérifié image par image.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/echassier-crete-serie1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/echassier-crete-serie1.jpg"
   },
   {
    "id": "faune-flore--echassier-rose",
@@ -2001,7 +2037,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Biome non reconnu dans la Bible (désert rouge à bassins)."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Biome non reconnu dans la Bible (désert rouge à bassins).",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/echassier-rose.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/echassier-rose.jpg"
   },
   {
    "id": "faune-flore--elephant-blanc-variee",
@@ -2093,7 +2131,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 4,8 s n'était pas dans la liste : repérée à l'œil, à 0,3 s près. Biome non reconnu dans la Bible."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 4,8 s n'était pas dans la liste : repérée à l'œil, à 0,3 s près. Biome non reconnu dans la Bible.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/elephant-blanc-variee.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/elephant-blanc-variee.jpg"
   },
   {
    "id": "faune-flore--epines-turquoise-variee",
@@ -2186,7 +2226,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Biome non reconnu avec certitude (canyon ocre). Le petit animal debout à 11 à 12,5 s : posture non vérifiée image par image."
+   "incertitudes": "Biome non reconnu avec certitude (canyon ocre). Le petit animal debout à 11 à 12,5 s : posture non vérifiée image par image.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/epines-turquoise-variee.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/epines-turquoise-variee.jpg"
   },
   {
    "id": "faune-flore--escargot-verre",
@@ -2278,7 +2320,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 6,9 s n'était pas dans la liste : repérée à l'œil. Biome non reconnu dans la Bible (collines vertes, pas de pourpre)."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 6,9 s n'était pas dans la liste : repérée à l'œil. Biome non reconnu dans la Bible (collines vertes, pas de pourpre).",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/escargot-verre.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/escargot-verre.jpg"
   },
   {
    "id": "faune-flore--geant-plumes-serie1",
@@ -2371,7 +2415,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 7,3 s n'était pas dans la liste : repérée à l'œil. Les colonnes pâles au fond : plantes ou roches, pas clair. Biome non reconnu."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 7,3 s n'était pas dans la liste : repérée à l'œil. Les colonnes pâles au fond : plantes ou roches, pas clair. Biome non reconnu.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/geant-plumes-serie1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/geant-plumes-serie1.jpg"
   },
   {
    "id": "faune-flore--geant-zebre-variee",
@@ -2469,7 +2515,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les arches : roche, os ou champignons géants, pas clair. Le combat (1,4 s) est court : contact des cornes non vérifié image par image. Biome non reconnu."
+   "incertitudes": "Les arches : roche, os ou champignons géants, pas clair. Le combat (1,4 s) est court : contact des cornes non vérifié image par image. Biome non reconnu.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/geant-zebre-variee.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/geant-zebre-variee.jpg"
   },
   {
    "id": "faune-flore--griffon",
@@ -2562,7 +2610,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 3,3 s n'était pas dans la liste : repérée à l'œil. Les cornes dressées de 5,5 s sont peut-être des plumes de la crête : pas tranché. Biome non reconnu."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 3,3 s n'était pas dans la liste : repérée à l'œil. Les cornes dressées de 5,5 s sont peut-être des plumes de la crête : pas tranché. Biome non reconnu.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/griffon.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/griffon.jpg"
   },
   {
    "id": "faune-flore--mammouth",
@@ -2629,7 +2679,9 @@
     "vignette",
     "carrousel"
    ],
-   "incertitudes": "On ne voit jamais l'animal entier : trompe ou non, pas clair ; deux formes claires en bas semblent être des défenses. Lieu et biome pas clairs."
+   "incertitudes": "On ne voit jamais l'animal entier : trompe ou non, pas clair ; deux formes claires en bas semblent être des défenses. Lieu et biome pas clairs.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/mammouth.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/mammouth.jpg"
   },
   {
    "id": "faune-flore--mastodonte",
@@ -2728,7 +2780,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 9,0 s n'était pas dans la liste : repérée à l'œil. La forme près des pattes arrière (6 à 9 s) est peut-être une queue en pointe : pas tranché. Biome non reconnu (cristaux roses)."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. La coupe vers 9,0 s n'était pas dans la liste : repérée à l'œil. La forme près des pattes arrière (6 à 9 s) est peut-être une queue en pointe : pas tranché. Biome non reconnu (cristaux roses).",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/mastodonte.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/mastodonte.jpg"
   },
   {
    "id": "faune-flore--oiseau-lama",
@@ -2834,7 +2888,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Le nombre d'animaux change selon les plans (un, quatre, puis quatre de dos) : pas forcément un défaut. Sol blanc : sable, sel ou neige, pas clair. Biome non reconnu."
+   "incertitudes": "Le nombre d'animaux change selon les plans (un, quatre, puis quatre de dos) : pas forcément un défaut. Sol blanc : sable, sel ou neige, pas clair. Biome non reconnu.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/oiseau-lama.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/oiseau-lama.jpg"
   },
   {
    "id": "faune-flore--oiseau-pois",
@@ -2934,7 +2990,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Entre 3,8 et 5 s l'oiseau de droite se retourne plumes dressées : le sens du corps n'est pas sûr sur chaque image. Biome non reconnu."
+   "incertitudes": "Entre 3,8 et 5 s l'oiseau de droite se retourne plumes dressées : le sens du corps n'est pas sûr sur chaque image. Biome non reconnu.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/oiseau-pois.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/oiseau-pois.jpg"
   },
   {
    "id": "faune-flore--oreilles-ailes",
@@ -3027,7 +3085,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les formes sombres du ciel au premier plan : nuages, tornades ou arbres géants, pas clair. Pattes en course non vérifiées image par image. Biome non reconnu."
+   "incertitudes": "Les formes sombres du ciel au premier plan : nuages, tornades ou arbres géants, pas clair. Pattes en course non vérifiées image par image. Biome non reconnu.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/oreilles-ailes.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/oreilles-ailes.jpg"
   },
   {
    "id": "faune-flore--ours-rouge-blanc",
@@ -3137,7 +3197,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Dans le premier plan, de petites formes sombres près de l'animal au loin : rochers ou autre chose, pas vérifié. L'herbe bleu-gris rappelle les Hautes Plaines de la Bible, mais les arches de roche rouge n'y sont pas décrites : biome laissé à Pas clair."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Dans le premier plan, de petites formes sombres près de l'animal au loin : rochers ou autre chose, pas vérifié. L'herbe bleu-gris rappelle les Hautes Plaines de la Bible, mais les arches de roche rouge n'y sont pas décrites : biome laissé à Pas clair.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/ours-rouge-blanc.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/ours-rouge-blanc.jpg"
   },
   {
    "id": "faune-flore--petit-vert-eau",
@@ -3241,7 +3303,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Le saut du fond vers 4,0 s est peut-être une coupe non détectée. Même décor que escargot_verre. Biome non reconnu."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Le saut du fond vers 4,0 s est peut-être une coupe non détectée. Même décor que escargot_verre. Biome non reconnu.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/petit-vert-eau.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/petit-vert-eau.jpg"
   },
   {
    "id": "faune-flore--reptile-volant",
@@ -3341,7 +3405,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les dômes roses : roches, œufs ou plantes, pas clair. Battements d'ailes non vérifiés image par image. Sable ou sel, pas clair. Biome non reconnu."
+   "incertitudes": "Les dômes roses : roches, œufs ou plantes, pas clair. Battements d'ailes non vérifiés image par image. Sable ou sel, pas clair. Biome non reconnu.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/reptile-volant.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/reptile-volant.jpg"
   },
   {
    "id": "faune-flore--rhino",
@@ -3439,7 +3505,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Le changement de cadre vers 10,3 s n'était pas dans la liste : coupe ou saut, repéré à l'œil. Le sol plat, clair et mouillé rappelle les Lacs salés pourpres, mais l'eau n'est pas pourpre : biome laissé à Pas clair."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Le changement de cadre vers 10,3 s n'était pas dans la liste : coupe ou saut, repéré à l'œil. Le sol plat, clair et mouillé rappelle les Lacs salés pourpres, mais l'eau n'est pas pourpre : biome laissé à Pas clair.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/rhino.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/rhino.jpg"
   },
   {
    "id": "faune-flore--rouge-noir-cornes",
@@ -3536,7 +3604,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Les coupes vers 5,9 s et 11,9 s n'étaient pas dans la liste : repérées à l'œil. Biome non reconnu (herbe rose, la Bible décrit des herbes bleu-gris pour les Hautes Plaines)."
+   "incertitudes": "Les minutages viennent des coupes détectées et d'une planche plus serrée (2 images par seconde) ; les heures incrustées sur les planches de lecture sont en avance d'environ 1 s sur certaines images. Les coupes vers 5,9 s et 11,9 s n'étaient pas dans la liste : repérées à l'œil. Biome non reconnu (herbe rose, la Bible décrit des herbes bleu-gris pour les Hautes Plaines).",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/rouge-noir-cornes.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/rouge-noir-cornes.jpg"
   },
   {
    "id": "faune-flore--singe-yack",
@@ -3640,7 +3710,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "L'ombre de 4,9 à 7,5 s a une forme à deux pointes : animal volant ou autre, pas clair. Même décor que ours_rouge_blanc. L'herbe bleu-gris rappelle les Hautes Plaines, mais les arches rouges n'y sont pas décrites : biome laissé à Pas clair."
+   "incertitudes": "L'ombre de 4,9 à 7,5 s a une forme à deux pointes : animal volant ou autre, pas clair. Même décor que ours_rouge_blanc. L'herbe bleu-gris rappelle les Hautes Plaines, mais les arches rouges n'y sont pas décrites : biome laissé à Pas clair.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/singe-yack.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/singe-yack.jpg"
   },
   {
    "id": "seed--01-seed-sort-du-xenopod",
@@ -3731,7 +3803,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Je nomme la capsule XENOPOD d'après le nom du fichier. Je ne sais pas ce que sont les deux dômes blancs du dernier plan (capsule vue autrement, œufs, abris). Le biome n'est pas clair : la plaine blanche fait penser à du sel mais rien n'est pourpre. Les mains n'ont pas été vues de près."
+   "incertitudes": "Je nomme la capsule XENOPOD d'après le nom du fichier. Je ne sais pas ce que sont les deux dômes blancs du dernier plan (capsule vue autrement, œufs, abris). Le biome n'est pas clair : la plaine blanche fait penser à du sel mais rien n'est pourpre. Les mains n'ont pas été vues de près.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/01-seed-sort-du-xenopod.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/01-seed-sort-du-xenopod.jpg"
   },
   {
    "id": "seed--02-trio-dans-la-foret-rouge",
@@ -3822,7 +3896,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Le biome n'est pas clair : forêt rouge en plein soleil, pas de lumière magenta sous les arbres comme dans la jungle de la Bible. Visage et mains de Seed trop petits à l'image pour être jugés. Marche du grand robot non vérifiée image par image."
+   "incertitudes": "Le biome n'est pas clair : forêt rouge en plein soleil, pas de lumière magenta sous les arbres comme dans la jungle de la Bible. Visage et mains de Seed trop petits à l'image pour être jugés. Marche du grand robot non vérifiée image par image.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/02-trio-dans-la-foret-rouge.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/02-trio-dans-la-foret-rouge.jpg"
   },
   {
    "id": "seed--03-rencontre-geant-zebre",
@@ -3917,7 +3993,9 @@
     "vignette",
     "fond de section"
    ],
-   "incertitudes": "Le biome n'est pas clair. Je ne sais pas à quelle espèce de la Bible correspond l'animal rayé. Les lignes orange sur l'animal vers 10,5 s restent à juger par quelqu'un qui connaît l'intention. Le passage où Seed se baisse (4,5 à 6 s) a été vérifié sur des images serrées : pas de coupe, Rob1 la tire par la main, images floues par le mouvement."
+   "incertitudes": "Le biome n'est pas clair. Je ne sais pas à quelle espèce de la Bible correspond l'animal rayé. Les lignes orange sur l'animal vers 10,5 s restent à juger par quelqu'un qui connaît l'intention. Le passage où Seed se baisse (4,5 à 6 s) a été vérifié sur des images serrées : pas de coupe, Rob1 la tire par la main, images floues par le mouvement.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/03-rencontre-geant-zebre.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/03-rencontre-geant-zebre.jpg"
   },
   {
    "id": "seed--04-lagon-de-nacre",
@@ -4012,7 +4090,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La taille de Rob1 est difficile à juger car les deux sont accroupis ; dans le dernier plan il paraît un peu gros par rapport à Seed accroupie, sans certitude. Le plan du reflet est à l'envers : cela semble voulu. Le visage de Seed n'est vu que dans le reflet et de loin. Le biome n'est pas clair (les formes blanches font penser à des récifs, sans preuve)."
+   "incertitudes": "La taille de Rob1 est difficile à juger car les deux sont accroupis ; dans le dernier plan il paraît un peu gros par rapport à Seed accroupie, sans certitude. Le plan du reflet est à l'envers : cela semble voulu. Le visage de Seed n'est vu que dans le reflet et de loin. Le biome n'est pas clair (les formes blanches font penser à des récifs, sans preuve).",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/04-lagon-de-nacre.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/04-lagon-de-nacre.jpg"
   },
   {
    "id": "seed--05-canyon-jaune-rob2",
@@ -4107,7 +4187,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La coupe vers 5,5 s n'est pas dans la liste : je la vois sur des images serrées (le cadre change d'un coup), à un quart de seconde près. Le geste du grand robot qui soulève Rob1 n'a pas été vérifié en mouvement. Une troisième petite silhouette est visible à gauche du chemin dans la première vue large, je ne sais pas ce que c'est. Le biome n'est pas clair : un canyon ocre existe dans la Bible (course volcanique) mais celui-ci est jaune et sans bandes rouges et grises nettes."
+   "incertitudes": "La coupe vers 5,5 s n'est pas dans la liste : je la vois sur des images serrées (le cadre change d'un coup), à un quart de seconde près. Le geste du grand robot qui soulève Rob1 n'a pas été vérifié en mouvement. Une troisième petite silhouette est visible à gauche du chemin dans la première vue large, je ne sais pas ce que c'est. Le biome n'est pas clair : un canyon ocre existe dans la Bible (course volcanique) mais celui-ci est jaune et sans bandes rouges et grises nettes.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/05-canyon-jaune-rob2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/05-canyon-jaune-rob2.jpg"
   },
   {
    "id": "seed--06-coucher-de-soleil-final",
@@ -4192,7 +4274,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Le dernier plan est le même décor que la fin de la vidéo 01 ; je ne sais pas ce que sont les deux dômes blancs. Dans le plan rapproché Rob1 est plus près de nous que Seed, ce qui le grossit un peu, mais pas assez pour expliquer l'écart. Le biome n'est pas clair."
+   "incertitudes": "Le dernier plan est le même décor que la fin de la vidéo 01 ; je ne sais pas ce que sont les deux dômes blancs. Dans le plan rapproché Rob1 est plus près de nous que Seed, ce qui le grossit un peu, mais pas assez pour expliquer l'écart. Le biome n'est pas clair.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/06-coucher-de-soleil-final.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/06-coucher-de-soleil-final.jpg"
   },
   {
    "id": "seed--07-etablissement-crete",
@@ -4269,7 +4353,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Le biome n'est pas clair : la Bible parle de forêts cristallines (course volcanique) et de plaines d'herbe, mais je ne peux pas rattacher ces cristaux rouges géants à l'un ou l'autre. L'ombre qui passe sur la plaine vers 10 s peut être voulue (nuage). Visages trop petits pour être jugés."
+   "incertitudes": "Le biome n'est pas clair : la Bible parle de forêts cristallines (course volcanique) et de plaines d'herbe, mais je ne peux pas rattacher ces cristaux rouges géants à l'un ou l'autre. L'ombre qui passe sur la plaine vers 10 s peut être voulue (nuage). Visages trop petits pour être jugés.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/07-etablissement-crete.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/07-etablissement-crete.jpg"
   },
   {
    "id": "seed--08-grande-aventure-drone",
@@ -4347,7 +4433,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Le début du vol est très rapide, avec des roches floues au premier plan : je n'ai pas vérifié si le mouvement est régulier. Le biome n'est pas clair : les roches rayées font penser au canyon ocre de la Bible (course volcanique), sans certitude. Mains non vues de près."
+   "incertitudes": "Le début du vol est très rapide, avec des roches floues au premier plan : je n'ai pas vérifié si le mouvement est régulier. Le biome n'est pas clair : les roches rayées font penser au canyon ocre de la Bible (course volcanique), sans certitude. Mains non vues de près.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/08-grande-aventure-drone.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/08-grande-aventure-drone.jpg"
   },
   {
    "id": "seed--09-entre-les-geants",
@@ -4435,7 +4523,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La taille de Rob1 est difficile à juger car Seed est penchée : il est peut-être un peu trop grand. Le biome n'est pas clair : la scène ressemble à la horde des Hautes Plaines, mais la Bible parle de buffles albinos et d'herbe, ici les animaux sont rouges avec des défenses et le sol est nu. La marche des animaux n'a pas été vérifiée en mouvement."
+   "incertitudes": "La taille de Rob1 est difficile à juger car Seed est penchée : il est peut-être un peu trop grand. Le biome n'est pas clair : la scène ressemble à la horde des Hautes Plaines, mais la Bible parle de buffles albinos et d'herbe, ici les animaux sont rouges avec des défenses et le sol est nu. La marche des animaux n'a pas été vérifiée en mouvement.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/09-entre-les-geants.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/09-entre-les-geants.jpg"
   },
   {
    "id": "seed--10-le-cri",
@@ -4520,7 +4610,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "L'écart de taille de Rob1 est modéré et dépend de la position exacte des deux personnages : à faire confirmer. Le biome n'est pas clair : l'herbe bleue fait penser aux Hautes Plaines, le titre du fichier au cri des lacs salés, rien ne tranche. L'animal est trop loin pour être décrit."
+   "incertitudes": "L'écart de taille de Rob1 est modéré et dépend de la position exacte des deux personnages : à faire confirmer. Le biome n'est pas clair : l'herbe bleue fait penser aux Hautes Plaines, le titre du fichier au cri des lacs salés, rien ne tranche. L'animal est trop loin pour être décrit.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/10-le-cri.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/10-le-cri.jpg"
   },
   {
    "id": "seed--11-la-charge",
@@ -4604,7 +4696,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La course de Seed et de Rob1 n'a pas été vérifiée image par image (jambes, éclaboussures). Le visage de Seed est petit ou caché pendant presque toute la vidéo. Le biome n'est pas clair : sol blanc et fine couche d'eau font penser aux lacs salés, mais l'eau n'est pas pourpre."
+   "incertitudes": "La course de Seed et de Rob1 n'a pas été vérifiée image par image (jambes, éclaboussures). Le visage de Seed est petit ou caché pendant presque toute la vidéo. Le biome n'est pas clair : sol blanc et fine couche d'eau font penser aux lacs salés, mais l'eau n'est pas pourpre.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/11-la-charge.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/11-la-charge.jpg"
   },
   {
    "id": "seed--12-le-doute",
@@ -4681,7 +4775,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Dans la vue large, les deux silhouettes semblent avoir presque la même hauteur, ce qui ne colle pas avec un Rob1 de 75 cm ; elles sont trop petites pour en être sûr. Dans le plan rapproché Rob1 est plus près de nous que Seed, ce qui le grossit un peu. Le biome n'est pas clair (plaine d'herbe, mais rose et non bleu-gris)."
+   "incertitudes": "Dans la vue large, les deux silhouettes semblent avoir presque la même hauteur, ce qui ne colle pas avec un Rob1 de 75 cm ; elles sont trop petites pour en être sûr. Dans le plan rapproché Rob1 est plus près de nous que Seed, ce qui le grossit un peu. Le biome n'est pas clair (plaine d'herbe, mais rose et non bleu-gris).",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/12-le-doute.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/12-le-doute.jpg"
   },
   {
    "id": "seed--13-nuit-dans-l-arbre",
@@ -4766,7 +4862,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La liste n'indique aucune coupe, mais je vois trois plans ; les minutages 7,5 s et 11,5 s sont lus sur des images prises toutes les demi-secondes, donc à une demi-seconde près. Dans le premier plan Rob1 est sombre et peu lisible : sa taille et sa forme n'ont pas pu être vérifiées. Le biome n'est pas clair (même forêt rouge que la vidéo 02). Je ne sais pas à quelle espèce de la Bible correspondent les animaux."
+   "incertitudes": "La liste n'indique aucune coupe, mais je vois trois plans ; les minutages 7,5 s et 11,5 s sont lus sur des images prises toutes les demi-secondes, donc à une demi-seconde près. Dans le premier plan Rob1 est sombre et peu lisible : sa taille et sa forme n'ont pas pu être vérifiées. Le biome n'est pas clair (même forêt rouge que la vidéo 02). Je ne sais pas à quelle espèce de la Bible correspondent les animaux.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/13-nuit-dans-l-arbre.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/13-nuit-dans-l-arbre.jpg"
   },
   {
    "id": "seed--14-escalade",
@@ -4853,7 +4951,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Mains et visage de Seed trop petits pour être jugés pendant l'escalade. Tout à la fin (vers 14,5 s) une forme rose apparaît en bas de l'image, peut-être sa main : non vérifié de près. Le biome n'est pas clair (même roche jaune que la vidéo 05)."
+   "incertitudes": "Mains et visage de Seed trop petits pour être jugés pendant l'escalade. Tout à la fin (vers 14,5 s) une forme rose apparaît en bas de l'image, peut-être sa main : non vérifié de près. Le biome n'est pas clair (même roche jaune que la vidéo 05).",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/14-escalade.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/14-escalade.jpg"
   },
   {
    "id": "seed--15-grotte-bioluminescente",
@@ -5006,7 +5106,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Dans le premier plan Seed et Rob1 sont petits et mêlés à la fourrure : la taille de Rob1 est mesurée à peu près. Biome « Massifs et glaciers » déduit du froid, du vent et des pics, et du nom du fichier ; on voit peu de neige. Le visage est flou vers 12 s, sans doute à cause du mouvement."
+   "incertitudes": "Dans le premier plan Seed et Rob1 sont petits et mêlés à la fourrure : la taille de Rob1 est mesurée à peu près. Biome « Massifs et glaciers » déduit du froid, du vent et des pics, et du nom du fichier ; on voit peu de neige. Le visage est flou vers 12 s, sans doute à cause du mouvement.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/16-neige-et-vent.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/16-neige-et-vent.jpg"
   },
   {
    "id": "seed--16b-neige-et-rochers-bleus",
@@ -5082,7 +5184,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Dans la vue large la silhouette est trop petite pour dire si Seed porte Rob1 ; je note Rob1 à l'écran à cause du casque vu dans le plan rapproché. Le manteau à capuche n'est pas le même vêtement que la fourrure de la vidéo 16."
+   "incertitudes": "Dans la vue large la silhouette est trop petite pour dire si Seed porte Rob1 ; je note Rob1 à l'écran à cause du casque vu dans le plan rapproché. Le manteau à capuche n'est pas le même vêtement que la fourrure de la vidéo 16.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/16b-neige-et-rochers-bleus.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/16b-neige-et-rochers-bleus.jpg"
   },
   {
    "id": "seed--17-glissade-neige",
@@ -5157,7 +5261,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "La liste n'indique aucune coupe, mais je vois un changement de plan vers 7,5 s (vérifié sur des images plus serrées). Taille de Rob1 difficile à juger : il est roulé en boule puis assis, et Seed est allongée ; assis, il paraît assez haut par rapport à la longueur de Seed, sans certitude. Les roulades de Rob1 n'ont pas été vérifiées en mouvement. Biome non rattaché : le sol blanc ressemble à de la neige (nom du fichier) mais il y a des fleurs et un champignon tout près."
+   "incertitudes": "La liste n'indique aucune coupe, mais je vois un changement de plan vers 7,5 s (vérifié sur des images plus serrées). Taille de Rob1 difficile à juger : il est roulé en boule puis assis, et Seed est allongée ; assis, il paraît assez haut par rapport à la longueur de Seed, sans certitude. Les roulades de Rob1 n'ont pas été vérifiées en mouvement. Biome non rattaché : le sol blanc ressemble à de la neige (nom du fichier) mais il y a des fleurs et un champignon tout près.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/17-glissade-neige.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/17-glissade-neige.jpg"
   },
   {
    "id": "seed--18-la-musique-de-rob1",
@@ -5308,7 +5414,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Dans le premier plan Rob1 est plus près de nous que Seed : l'écart de taille est estimé, pas mesuré. Entre 6,6 et 8 s la tête de Seed sort du cadre pendant qu'elle se baisse ; ce passage n'a pas été vérifié image par image. Le biome n'est pas clair : paysage très vert, alors que la Bible dit que le vert est rare sur Korê."
+   "incertitudes": "Dans le premier plan Rob1 est plus près de nous que Seed : l'écart de taille est estimé, pas mesuré. Entre 6,6 et 8 s la tête de Seed sort du cadre pendant qu'elle se baisse ; ce passage n'a pas été vérifié image par image. Le biome n'est pas clair : paysage très vert, alors que la Bible dit que le vert est rare sur Korê.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/19-la-bouderie.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/19-la-bouderie.jpg"
   },
   {
    "id": "seed--20-feu-de-camp",
@@ -5388,7 +5496,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Biome déduit du feu de camp et des petits rongeurs cités par la Bible pour la forêt bioluminescente ; le décor ressemble aussi à une jungle à feuilles vertes. Le casque de Rob1 est clair, pas sombre. Mouvement entre les images non vérifié. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Biome déduit du feu de camp et des petits rongeurs cités par la Bible pour la forêt bioluminescente ; le décor ressemble aussi à une jungle à feuilles vertes. Le casque de Rob1 est clair, pas sombre. Mouvement entre les images non vérifié. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/20-feu-de-camp.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/20-feu-de-camp.jpg"
   },
   {
    "id": "seed--21-le-grand-timide",
@@ -5467,7 +5577,9 @@
     "vignette",
     "fond de section"
    ],
-   "incertitudes": "Biome non identifiable (sol rose et plantes bleues, aucun repère de la Bible). Mouvement entre les images non vérifié. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Biome non identifiable (sol rose et plantes bleues, aucun repère de la Bible). Mouvement entre les images non vérifié. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/21-le-grand-timide.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/21-le-grand-timide.jpg"
   },
   {
    "id": "seed--22-la-flore",
@@ -5544,7 +5656,9 @@
     "vignette",
     "carrousel"
    ],
-   "incertitudes": "Feuillage vert : la Bible décrit une jungle à canopée pourpre, donc biome laissé à Pas clair. Le casque de Rob1 est blanc ici. Cadrages serrés, peu adaptés à une image panoramique. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Feuillage vert : la Bible décrit une jungle à canopée pourpre, donc biome laissé à Pas clair. Le casque de Rob1 est blanc ici. Cadrages serrés, peu adaptés à une image panoramique. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/22-la-flore.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/22-la-flore.jpg"
   },
   {
    "id": "seed--23-rob1-refuse-qu-on-le-porte",
@@ -5622,7 +5736,9 @@
     "vignette",
     "fond de section"
    ],
-   "incertitudes": "Les piliers de roche et la rivière peuvent évoquer les pitons karstiques, mais la roche est rouge et les boules roses ne sont pas décrites : laissé à Pas clair. Nature des boules roses (plante ou autre) non sûre. Mains de Seed petites à l'image, non vérifiées de près. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Les piliers de roche et la rivière peuvent évoquer les pitons karstiques, mais la roche est rouge et les boules roses ne sont pas décrites : laissé à Pas clair. Nature des boules roses (plante ou autre) non sûre. Mains de Seed petites à l'image, non vérifiées de près. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/23-rob1-refuse-qu-on-le-porte.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/23-rob1-refuse-qu-on-le-porte.jpg"
   },
   {
    "id": "seed--24-foret-de-coraux-ocean",
@@ -5706,7 +5822,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Les colonnes ressemblent à des coraux géants hors de l'eau : plante ou animal, pas clair. Peut rappeler les récifs de silice (hors trajet), sans certitude. Dans la vue de haut on ne distingue qu'une petite silhouette, Rob1 non visible avec certitude. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Les colonnes ressemblent à des coraux géants hors de l'eau : plante ou animal, pas clair. Peut rappeler les récifs de silice (hors trajet), sans certitude. Dans la vue de haut on ne distingue qu'une petite silhouette, Rob1 non visible avec certitude. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/24-foret-de-coraux-ocean.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/24-foret-de-coraux-ocean.jpg"
   },
   {
    "id": "seed--25-terrasses-de-travertin",
@@ -5789,7 +5907,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Sources chaudes en terrasses : pourrait relever de l'arc volcanique (geysers) ou des lacs salés, rien de clair dans la Bible. Dans le plan 3 le casque de Rob1 est gris, rond, vu de côté, forme un peu différente des autres vidéos. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Sources chaudes en terrasses : pourrait relever de l'arc volcanique (geysers) ou des lacs salés, rien de clair dans la Bible. Dans le plan 3 le casque de Rob1 est gris, rond, vu de côté, forme un peu différente des autres vidéos. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/25-terrasses-de-travertin.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/25-terrasses-de-travertin.jpg"
   },
   {
    "id": "seed--26-dunes-noires-arches",
@@ -5871,7 +5991,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Biome choisi pour la lave noire et les coulées (plaines de lave de l'arc volcanique) ; le ciel violet et l'arche ne sont pas décrits dans la Bible. Dans le plan 2 la taille de Rob1 ne peut pas être jugée (il est plus près et plus bas sur la pente). Coupe à 5,0 s non détectée automatiquement, vue sur la planche dense. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Biome choisi pour la lave noire et les coulées (plaines de lave de l'arc volcanique) ; le ciel violet et l'arche ne sont pas décrits dans la Bible. Dans le plan 2 la taille de Rob1 ne peut pas être jugée (il est plus près et plus bas sur la pente). Coupe à 5,0 s non détectée automatiquement, vue sur la planche dense. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/26-dunes-noires-arches.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/26-dunes-noires-arches.jpg"
   },
   {
    "id": "seed--c10-ravin-ver-bleu-geant",
@@ -5973,7 +6095,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Biome non identifiable (relief de montagne sans neige). Les coupes vers 12,5 s et 18,5 s ne sont pas détectées automatiquement, minutage à 0,5 s près. Dans les gros plans le casque de Rob1 est plus gros que la tête de Seed et à la même hauteur : Seed semble accroupie, taille de Rob1 non jugeable là. Nature des points lumineux orange pas claire. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Biome non identifiable (relief de montagne sans neige). Les coupes vers 12,5 s et 18,5 s ne sont pas détectées automatiquement, minutage à 0,5 s près. Dans les gros plans le casque de Rob1 est plus gros que la tête de Seed et à la même hauteur : Seed semble accroupie, taille de Rob1 non jugeable là. Nature des points lumineux orange pas claire. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c10-ravin-ver-bleu-geant.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c10-ravin-ver-bleu-geant.jpg"
   },
   {
    "id": "seed--c12-colonne-de-lave-meduses",
@@ -6072,7 +6196,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les formes en dôme sur tiges (« méduses » du nom de fichier) : animal ou plante, pas clair, immobiles sur les images. Dans la Bible ce biome se traverse en tank avec Seed empoisonnée ; ici elle court à pied. Coupes à 6,67 s (non détectée) et vers 15,5 s (peut être un seul plan qui s'élargit, non tranché). Seed marche sur des rebords de lave : cohérence physique non jugée. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Les formes en dôme sur tiges (« méduses » du nom de fichier) : animal ou plante, pas clair, immobiles sur les images. Dans la Bible ce biome se traverse en tank avec Seed empoisonnée ; ici elle court à pied. Coupes à 6,67 s (non détectée) et vers 15,5 s (peut être un seul plan qui s'élargit, non tranché). Seed marche sur des rebords de lave : cohérence physique non jugée. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c12-colonne-de-lave-meduses.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c12-colonne-de-lave-meduses.jpg"
   },
   {
    "id": "seed--c13-spheres-et-bassins-rouille",
@@ -6160,7 +6286,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Biome non identifiable. Nature des sphères (plante, champignon, minéral) pas claire ; noté plante sans certitude. Dans la vue de haut, Rob1 fait environ 65 % de Seed mais les silhouettes sont trop petites pour trancher. Un changement de cadre vers 15,5 s peut être une coupe non détectée. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Biome non identifiable. Nature des sphères (plante, champignon, minéral) pas claire ; noté plante sans certitude. Dans la vue de haut, Rob1 fait environ 65 % de Seed mais les silhouettes sont trop petites pour trancher. Un changement de cadre vers 15,5 s peut être une coupe non détectée. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c13-spheres-et-bassins-rouille.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c13-spheres-et-bassins-rouille.jpg"
   },
   {
    "id": "seed--c14-lac-turquoise-coraux-givres",
@@ -6258,7 +6386,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "La liste annonce Seed et Rob1, mais le robot principal est un grand marcheur à corps rond. Une petite tête casquée à yeux bleus avec un petit corps sombre est visible sur son dos de 8 à 16 s : cela ressemble à Rob1 perché ou fixé dessus, sans certitude ; sa taille n'est pas jugeable. Le grand robot ne ressemble pas exactement à celui de la vidéo 20 (corps rond, un gros œil central à 21,6 s). Coupes à 8,04 s et 16,12 s non détectées au seuil d'origine ; coupe vers 17,5 s et peut-être vers 21,3 s vues à l'œil. Coussins givrés : plante ou minéral, pas clair. Biome non identifiable. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "La liste annonce Seed et Rob1, mais le robot principal est un grand marcheur à corps rond. Une petite tête casquée à yeux bleus avec un petit corps sombre est visible sur son dos de 8 à 16 s : cela ressemble à Rob1 perché ou fixé dessus, sans certitude ; sa taille n'est pas jugeable. Le grand robot ne ressemble pas exactement à celui de la vidéo 20 (corps rond, un gros œil central à 21,6 s). Coupes à 8,04 s et 16,12 s non détectées au seuil d'origine ; coupe vers 17,5 s et peut-être vers 21,3 s vues à l'œil. Coussins givrés : plante ou minéral, pas clair. Biome non identifiable. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c14-lac-turquoise-coraux-givres.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c14-lac-turquoise-coraux-givres.jpg"
   },
   {
    "id": "seed--c15-montagne-suspendue-racines",
@@ -6351,7 +6481,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Le nom de fichier parle de montagne suspendue et de racines ; à l'image la masse tient sur un pied, et les pointes peuvent être des racines ou de la roche. Plaine rouge ouverte : pourrait évoquer les Hautes Plaines, mais l'herbe n'est pas bleu-gris, laissé à Pas clair. Mains non lisibles pendant la course (flou). Le champ ne permet qu'un passage : le second passage utilisable est 22,7 à 30 s. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Le nom de fichier parle de montagne suspendue et de racines ; à l'image la masse tient sur un pied, et les pointes peuvent être des racines ou de la roche. Plaine rouge ouverte : pourrait évoquer les Hautes Plaines, mais l'herbe n'est pas bleu-gris, laissé à Pas clair. Mains non lisibles pendant la course (flou). Le champ ne permet qu'un passage : le second passage utilisable est 22,7 à 30 s. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c15-montagne-suspendue-racines.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c15-montagne-suspendue-racines.jpg"
   },
   {
    "id": "seed--c17-vallee-arbres-champignons",
@@ -6446,7 +6578,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Décor sec de type désert : pourrait relever des grands déserts hors trajet, sans repère sûr, laissé à Pas clair. Arbres ou champignons géants, pas clair. Mouvement de course non vérifié image par image. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Décor sec de type désert : pourrait relever des grands déserts hors trajet, sans repère sûr, laissé à Pas clair. Arbres ou champignons géants, pas clair. Mouvement de course non vérifié image par image. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c17-vallee-arbres-champignons.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c17-vallee-arbres-champignons.jpg"
   },
   {
    "id": "seed--c19-riviere-rouge-champignons-geants",
@@ -6538,7 +6672,9 @@
     "fond de section",
     "carrousel"
    ],
-   "incertitudes": "Le jugement sur la taille de Rob1 porté sur le dos est à la limite (Seed est penchée, pieds dans l'eau) ; le dernier plan (23,9 à 30 s) semble sans défaut, Rob1 debout arrive plus bas que Seed penchée. Biome choisi pour la rivière rouge et les arbres géants ; dans la Bible Seed y est seule et l'eau brûle la peau, et le sol y est de mousse, pas de sable. Coupes à 8,0 s et 23,92 s non détectées au seuil d'origine. Fond bleu derrière les troncs : ciel ou feuillage, pas clair. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue."
+   "incertitudes": "Le jugement sur la taille de Rob1 porté sur le dos est à la limite (Seed est penchée, pieds dans l'eau) ; le dernier plan (23,9 à 30 s) semble sans défaut, Rob1 debout arrive plus bas que Seed penchée. Biome choisi pour la rivière rouge et les arbres géants ; dans la Bible Seed y est seule et l'eau brûle la peau, et le sol y est de mousse, pas de sable. Coupes à 8,0 s et 23,92 s non détectées au seuil d'origine. Fond bleu derrière les troncs : ciel ou feuillage, pas clair. Les minutages incrustés sur les planches _lecture sont étiquetés 2 s trop tôt (sauf « apres coupe ») ; les minutages donnés ici sont déjà justes : ils viennent des coupes détectées et de planches denses refaites avec ffmpeg (une image par seconde ou demi-seconde, temps réel), pas de ces étiquettes. Planche __debut lue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c19-riviere-rouge-champignons-geants.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c19-riviere-rouge-champignons-geants.jpg"
   },
   {
    "id": "seed--c20-foret-arbres-rouges-champignons-blancs",
@@ -6633,7 +6769,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Biome : arbres rouges et brume, ce pourrait être la Jungle (canopée pourpre de la Bible) mais ce n'est pas sûr. La forme sombre dans la brume (18 à 23 s) n'est pas identifiable : animal, arbre ou défaut. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Biome : arbres rouges et brume, ce pourrait être la Jungle (canopée pourpre de la Bible) mais ce n'est pas sûr. La forme sombre dans la brume (18 à 23 s) n'est pas identifiable : animal, arbre ou défaut. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c20-foret-arbres-rouges-champignons-blancs.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c20-foret-arbres-rouges-champignons-blancs.jpg"
   },
   {
    "id": "seed--c21-tempete-tornades-plaine-rouge",
@@ -6722,7 +6860,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les changements de plan à 8 s et 15 s n'ont pas été détectés automatiquement ; je les ai placés à l'œil, à une demi-seconde près (coupes franches, pas des fondus). La forme du grand robot semble varier un peu entre 8 et 15 s (non vérifié image par image). Biome non rattaché : plaine rouge, pas d'herbe bleu-gris. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Les changements de plan à 8 s et 15 s n'ont pas été détectés automatiquement ; je les ai placés à l'œil, à une demi-seconde près (coupes franches, pas des fondus). La forme du grand robot semble varier un peu entre 8 et 15 s (non vérifié image par image). Biome non rattaché : plaine rouge, pas d'herbe bleu-gris. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c21-tempete-tornades-plaine-rouge.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c21-tempete-tornades-plaine-rouge.jpg"
   },
   {
    "id": "seed--m1-fuite-1",
@@ -6797,7 +6937,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Mouvement du coup de branche (2,5 à 3,5 s) vu sur deux images seulement. Biome non rattaché (herbe bleue et roche rouge). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Mouvement du coup de branche (2,5 à 3,5 s) vu sur deux images seulement. Biome non rattaché (herbe bleue et roche rouge). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m1-fuite-1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m1-fuite-1.jpg"
   },
   {
    "id": "seed--m1-fuite-2",
@@ -6868,7 +7010,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Aucune coupe détectée ; il peut y avoir des coupes cachées dans le flou vers 1,5-2 s et vers 7 s, je ne peux pas le dire sur images fixes. Mouvement de la roulade non vérifié. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Aucune coupe détectée ; il peut y avoir des coupes cachées dans le flou vers 1,5-2 s et vers 7 s, je ne peux pas le dire sur images fixes. Mouvement de la roulade non vérifié. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m1-fuite-2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m1-fuite-2.jpg"
   },
   {
    "id": "seed--m1-fuite-30s",
@@ -6953,7 +7097,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Le raccord à 15,08 s tombe au milieu de la course : il se voit peu sur les images fixes, non vérifié en lecture. Biome non rattaché. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Le raccord à 15,08 s tombe au milieu de la course : il se voit peu sur les images fixes, non vérifié en lecture. Biome non rattaché. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m1-fuite-30s.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m1-fuite-30s.jpg"
   },
   {
    "id": "seed--m2-attaques-1",
@@ -7030,7 +7176,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "A 6-7 s on ne voit pas les jambes : si Seed est à genoux, la taille de Rob1 serait moins fausse, mais rien ne le montre. Entre 7 et 7,5 s il peut y avoir une coupe cachée dans le mouvement, non vérifié. Biome non rattaché (sol blanc : peut-être du sel, pas sûr). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "A 6-7 s on ne voit pas les jambes : si Seed est à genoux, la taille de Rob1 serait moins fausse, mais rien ne le montre. Entre 7 et 7,5 s il peut y avoir une coupe cachée dans le mouvement, non vérifié. Biome non rattaché (sol blanc : peut-être du sel, pas sûr). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m2-attaques-1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m2-attaques-1.jpg"
   },
   {
    "id": "seed--m2-attaques-2",
@@ -7118,7 +7266,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Biome : un troupeau qui charge fait penser aux Hautes Plaines, mais le sol est rouge et les animaux sont rouges, pas albinos ; je n'ai pas rattaché. De 1 à 5 s le visage de Seed est un peu flou (mise au point sur le sol) : choix d'image ou défaut, je ne sais pas. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Biome : un troupeau qui charge fait penser aux Hautes Plaines, mais le sol est rouge et les animaux sont rouges, pas albinos ; je n'ai pas rattaché. De 1 à 5 s le visage de Seed est un peu flou (mise au point sur le sol) : choix d'image ou défaut, je ne sais pas. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m2-attaques-2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m2-attaques-2.jpg"
   },
   {
    "id": "seed--m2-attaques-30s",
@@ -7217,7 +7367,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les deux parties n'ont pas le même lieu ni les mêmes couleurs : le passage à 15,08 s est un changement net de décor. Biome non rattaché. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Les deux parties n'ont pas le même lieu ni les mêmes couleurs : le passage à 15,08 s est un changement net de décor. Biome non rattaché. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m2-attaques-30s.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m2-attaques-30s.jpg"
   },
   {
    "id": "seed--m3-rob2-1",
@@ -7311,7 +7463,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Taille de Rob1 dans la course (4,8 à 10,9 s) : les deux personnages sont petits à l'image et dans des postures différentes, je ne peux pas mesurer ; il semble dépasser 75 cm. Biome : pitons jaunes, peut-être les dépôts de soufre de la Course volcanique ou les Pitons karstiques, pas sûr. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Taille de Rob1 dans la course (4,8 à 10,9 s) : les deux personnages sont petits à l'image et dans des postures différentes, je ne peux pas mesurer ; il semble dépasser 75 cm. Biome : pitons jaunes, peut-être les dépôts de soufre de la Course volcanique ou les Pitons karstiques, pas sûr. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m3-rob2-1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m3-rob2-1.jpg"
   },
   {
    "id": "seed--m3-rob2-2",
@@ -7399,7 +7553,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Mouvement de la descente de Seed (5 à 6,5 s) vu sur quatre images seulement. Biome non rattaché (pitons jaunes). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Mouvement de la descente de Seed (5 à 6,5 s) vu sur quatre images seulement. Biome non rattaché (pitons jaunes). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m3-rob2-2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m3-rob2-2.jpg"
   },
   {
    "id": "seed--m3-rob2-30s",
@@ -7511,7 +7667,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Biome non rattaché (pitons jaunes : Course volcanique ou Pitons karstiques, pas sûr). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Biome non rattaché (pitons jaunes : Course volcanique ou Pitons karstiques, pas sûr). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m3-rob2-30s.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m3-rob2-30s.jpg"
   },
   {
    "id": "seed--x1-entree-vue-de-derriere",
@@ -7592,7 +7750,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Je nomme la capsule XENOPOD d'après le nom du fichier (X1, entrée) : aucun nom n'est lisible sur la coque. Les morceaux blancs à 3,5-4,5 s : débris voulus ou objet en trop, je ne peux pas trancher. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "Je nomme la capsule XENOPOD d'après le nom du fichier (X1, entrée) : aucun nom n'est lisible sur la coque. Les morceaux blancs à 3,5-4,5 s : débris voulus ou objet en trop, je ne peux pas trancher. Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/x1-entree-vue-de-derriere.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/x1-entree-vue-de-derriere.jpg"
   },
   {
    "id": "seed--x2c-interieur-rob1-calme",
@@ -7673,7 +7833,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "« XENOPOD » à l'écran : c'est l'intérieur de la cabine et le mot écrit sur le casque, pas la capsule vue du dehors. Biome « Espace » déduit des hublots orange (entrée dans l'atmosphère, d'après le nom du fichier), pas montré. Le trait orange sur la visière : reflet du hublot ou défaut, je ne peux pas trancher. Aucune comparaison de taille possible (Rob1 seul). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches."
+   "incertitudes": "« XENOPOD » à l'écran : c'est l'intérieur de la cabine et le mot écrit sur le casque, pas la capsule vue du dehors. Biome « Espace » déduit des hublots orange (entrée dans l'atmosphère, d'après le nom du fichier), pas montré. Le trait orange sur la visière : reflet du hublot ou défaut, je ne peux pas trancher. Aucune comparaison de taille possible (Rob1 seul). Minutages pris sur mes propres extractions (2 images par seconde, fichiers extra\\<id>_d*.jpg) et sur la détection ffmpeg, pas sur les étiquettes des planches : ils tiennent donc déjà compte du décalage de 2 s signalé sur les planches.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/x2c-interieur-rob1-calme.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/x2c-interieur-rob1-calme.jpg"
   },
   {
    "id": "space--a",
@@ -7754,7 +7916,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Les noms MOTHER et PERSEPHORA sont déduits : ils sont peints sur les coques dans les vidéos O et d2, pas dans celle-ci. Le passage de 13 à 14 s (fondu ou transformation) n'a été vu que sur des images fixes. Sur les planches, les images sans mention « apres coupe » montrent en fait l'instant situé 2 s plus tard que le minutage affiché ; j'ai corrigé avec mes propres extractions."
+   "incertitudes": "Les noms MOTHER et PERSEPHORA sont déduits : ils sont peints sur les coques dans les vidéos O et d2, pas dans celle-ci. Le passage de 13 à 14 s (fondu ou transformation) n'a été vu que sur des images fixes. Sur les planches, les images sans mention « apres coupe » montrent en fait l'instant situé 2 s plus tard que le minutage affiché ; j'ai corrigé avec mes propres extractions.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/a.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/a.jpg"
   },
   {
    "id": "space--b",
@@ -7842,7 +8006,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Aucune coupe détectée automatiquement, mais la vue change nettement vers 5,5 s, 8,5 s et 10,5 s : coupes ou fondus non vérifiés en mouvement, minutage à 0,5 s près. Noms PERSEPHORA et MOTHER déduits."
+   "incertitudes": "Aucune coupe détectée automatiquement, mais la vue change nettement vers 5,5 s, 8,5 s et 10,5 s : coupes ou fondus non vérifiés en mouvement, minutage à 0,5 s près. Noms PERSEPHORA et MOTHER déduits.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/b.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/b.jpg"
   },
   {
    "id": "space--d",
@@ -7940,7 +8106,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Le nom XENOPOD pour la capsule est déduit, rien n'est écrit dessus. Le début (0 à 4,7 s) est dans l'espace ou la haute atmosphère, la suite au sol. Sol blanc et flaque font penser aux lacs salés, mais les dômes roses ne sont pas dans ce que j'ai lu de la Bible : biome laissé à « Pas clair ». La coupe vers 4,7 s n'a pas été détectée automatiquement, placée à l'œil à 0,5 s près."
+   "incertitudes": "Le nom XENOPOD pour la capsule est déduit, rien n'est écrit dessus. Le début (0 à 4,7 s) est dans l'espace ou la haute atmosphère, la suite au sol. Sol blanc et flaque font penser aux lacs salés, mais les dômes roses ne sont pas dans ce que j'ai lu de la Bible : biome laissé à « Pas clair ». La coupe vers 4,7 s n'a pas été détectée automatiquement, placée à l'œil à 0,5 s près.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d.jpg"
   },
   {
    "id": "space--o",
@@ -8017,7 +8185,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Le nom MOTHER est ici écrit sur la coque. Que la planète soit la Terre est déduit de son aspect."
+   "incertitudes": "Le nom MOTHER est ici écrit sur la coque. Que la planète soit la Terre est déduit de son aspect.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/o.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/o.jpg"
   },
   {
    "id": "space--p",
@@ -8094,7 +8264,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Nom PERSEPHORA déduit. La planète colorée est sans doute Korê, déduit de ses couleurs. L'apparition de la planète entre 8 et 9 s (fondu ou mouvement de vue) n'a pas été vérifiée en mouvement."
+   "incertitudes": "Nom PERSEPHORA déduit. La planète colorée est sans doute Korê, déduit de ses couleurs. L'apparition de la planète entre 8 et 9 s (fondu ou mouvement de vue) n'a pas été vérifiée en mouvement.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/p.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/p.jpg"
   },
   {
    "id": "space--v1",
@@ -8167,7 +8339,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Nom PERSEPHORA déduit. Aucune coupe détectée automatiquement : le passage vers 9 s est un fondu vu sur une seule image, minutage à 0,5 s près."
+   "incertitudes": "Nom PERSEPHORA déduit. Aucune coupe détectée automatiquement : le passage vers 9 s est un fondu vu sur une seule image, minutage à 0,5 s près.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/v1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/v1.jpg"
   },
   {
    "id": "space--v2",
@@ -8244,7 +8418,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Nom PERSEPHORA déduit. Aucune coupe détectée automatiquement : les changements de vue vers 8,5 s et 11 s sont placés à l'œil à 0,5 s près. Le mouvement d'ouverture de la voile n'a été jugé que sur des images fixes."
+   "incertitudes": "Nom PERSEPHORA déduit. Aucune coupe détectée automatiquement : les changements de vue vers 8,5 s et 11 s sont placés à l'œil à 0,5 s près. Le mouvement d'ouverture de la voile n'a été jugé que sur des images fixes.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/v2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/v2.jpg"
   },
   {
    "id": "space--v3",
@@ -8323,7 +8499,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Nom PERSEPHORA déduit. Aucune coupe détectée automatiquement : le passage vers 11,5 s est un fondu vu sur une image, minutage à 0,5 s près."
+   "incertitudes": "Nom PERSEPHORA déduit. Aucune coupe détectée automatiquement : le passage vers 11,5 s est un fondu vu sur une image, minutage à 0,5 s près.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/v3.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/v3.jpg"
   },
   {
    "id": "space--a1",
@@ -8416,7 +8594,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Noms PERSEPHORA et XENOPOD déduits, rien n'est écrit à l'écran. Le passage de la capsule lâchée à la capsule en feu (vers 10 s) n'a pas été détecté comme coupe ; vu sur images fixes seulement. Le dernier plan ressemble au début de la vidéo D."
+   "incertitudes": "Noms PERSEPHORA et XENOPOD déduits, rien n'est écrit à l'écran. Le passage de la capsule lâchée à la capsule en feu (vers 10 s) n'a pas été détecté comme coupe ; vu sur images fixes seulement. Le dernier plan ressemble au début de la vidéo D.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/a1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/a1.jpg"
   },
   {
    "id": "space--a2",
@@ -8522,7 +8702,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Nom XENOPOD déduit. Je ne suis pas sûr que le robot soit Rob1 : même casque et mêmes yeux bleus, mais il n'y a pas Seed à côté pour mesurer, la taille est jugée par rapport à la porte et à l'échelle. Biome : sol blanc et mare font penser aux lacs salés, mais les dômes roses ne sont pas dans ce que j'ai lu de la Bible. La vidéo se passe au sol et dans le ciel, pas dans l'espace. Plusieurs plans sont les mêmes que dans la vidéo D."
+   "incertitudes": "Nom XENOPOD déduit. Je ne suis pas sûr que le robot soit Rob1 : même casque et mêmes yeux bleus, mais il n'y a pas Seed à côté pour mesurer, la taille est jugée par rapport à la porte et à l'échelle. Biome : sol blanc et mare font penser aux lacs salés, mais les dômes roses ne sont pas dans ce que j'ai lu de la Bible. La vidéo se passe au sol et dans le ciel, pas dans l'espace. Plusieurs plans sont les mêmes que dans la vidéo D.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/a2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/a2.jpg"
   },
   {
    "id": "space--d1",
@@ -8616,7 +8798,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Noms MOTHER et PERSEPHORA déduits. L'ouverture de la voile (11,6 à 14 s) n'a été jugée que sur des images fixes. Les plans 2 et 3 sont proches de ceux de la vidéo A."
+   "incertitudes": "Noms MOTHER et PERSEPHORA déduits. L'ouverture de la voile (11,6 à 14 s) n'a été jugée que sur des images fixes. Les plans 2 et 3 sont proches de ceux de la vidéo A.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d1.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d1.jpg"
   },
   {
    "id": "space--d2",
@@ -8721,7 +8905,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Le nom PERSEPHORA est ici écrit sur la coque. Le nom MOTHER pour la station est déduit. La disparition du vaisseau (éclair à 13 s) n'a été vue que sur des images fixes."
+   "incertitudes": "Le nom PERSEPHORA est ici écrit sur la coque. Le nom MOTHER pour la station est déduit. La disparition du vaisseau (éclair à 13 s) n'a été vue que sur des images fixes.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d2.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d2.jpg"
   },
   {
    "id": "space--dv",
@@ -8818,7 +9004,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Nom PERSEPHORA déduit. Le changement de vue vers 6 s n'a pas été détecté comme coupe : placé à l'œil à 0,5 s près. La planète du dernier plan ressemble à la Terre, déduit de son aspect."
+   "incertitudes": "Nom PERSEPHORA déduit. Le changement de vue vers 6 s n'a pas été détecté comme coupe : placé à l'œil à 0,5 s près. La planète du dernier plan ressemble à la Terre, déduit de son aspect.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/dv.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/dv.jpg"
   },
   {
    "id": "pano-video--11-la-charge-2550x640",
@@ -8902,7 +9090,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Biome : la plaine blanche avec eau miroir fait penser aux lacs salés pourpres, la charge d'un animal albinos fait penser aux Hautes Plaines ; pas tranché. Le raccord des bords n'a été jugé que sur des images fixes : un scintillement ou un décalage en mouvement peut m'avoir échappé. La limite exacte entre l'image d'origine et les bords ajoutés n'est pas connue. La taille de Rob1 est jugée en tenant compte qu'il court un peu en avant de Seed."
+   "incertitudes": "Biome : la plaine blanche avec eau miroir fait penser aux lacs salés pourpres, la charge d'un animal albinos fait penser aux Hautes Plaines ; pas tranché. Le raccord des bords n'a été jugé que sur des images fixes : un scintillement ou un décalage en mouvement peut m'avoir échappé. La limite exacte entre l'image d'origine et les bords ajoutés n'est pas connue. La taille de Rob1 est jugée en tenant compte qu'il court un peu en avant de Seed.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/pano-video/11-la-charge-2550x640.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/pano-video/11-la-charge-2550x640.jpg"
   },
   {
    "id": "pano-video--outpaint-00003",
@@ -8988,7 +9178,9 @@
     "carrousel",
     "vignette"
    ],
-   "incertitudes": "Biome non reconnu dans ce que j'ai lu de la Bible. Le bas jaune de Seed n'est visible qu'en bord d'image dans le plan de dos. Les mains ne sont visibles qu'en petit à 10,5 s, pas vérifiées de près. Le raccord des bords n'a été jugé que sur des images fixes ; la limite exacte entre l'image d'origine et les bords ajoutés n'est pas connue."
+   "incertitudes": "Biome non reconnu dans ce que j'ai lu de la Bible. Le bas jaune de Seed n'est visible qu'en bord d'image dans le plan de dos. Les mains ne sont visibles qu'en petit à 10,5 s, pas vérifiées de près. Le raccord des bords n'a été jugé que sur des images fixes ; la limite exacte entre l'image d'origine et les bords ajoutés n'est pas connue.",
+   "video_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/pano-video/outpaint-00003.mp4",
+   "affiche_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/pano-video/outpaint-00003.jpg"
   },
   {
    "id": "pano-images--01-1-etendre",
