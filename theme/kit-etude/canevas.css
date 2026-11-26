@@ -1,0 +1,252 @@
+/* KIT ÉTUDE · le canevas infini et sa famille de cartes. Les jetons de kit-etude.css seulement, aucune couleur écrite.
+   Une carte n'a pas de cadre : un filet en haut, un plan à peine relevé, une ombre douce. Un seul orange : la carte tenue.
+   Le zoom sémantique passe par quatre variables posées sur le canevas, de 0 à 1 :
+     --t1  du trait au titre      --t2  du titre à la carte      --t3  de la carte à la carte ouverte
+     --kt  l'échelle du titre (il garde sa taille à l'écran tant que la carte est loin)      --ik  1 / zoom (un pixel d'écran)
+   Hors canevas (la planche à plat), les mêmes variables se posent à la main : une carte se montre à n'importe quelle hauteur. */
+.ke-canevas2,.cv-plat{--t1:1;--t2:1;--t3:0;--kt:1;--ik:1;--k:1}
+
+/* ════ La page ════ */
+.cv-entete{display:flex;align-items:baseline;gap:var(--s8);padding:34px var(--s8) 22px}
+.cv-entete h1{font-size:clamp(34px,3vw,54px);font-weight:300;line-height:1}
+.cv-entete .ke-petit{max-width:70em}
+.cv-section{padding:90px var(--s8) 0}
+.cv-section>h2{font-size:clamp(30px,2.6vw,46px);margin-bottom:10px}
+.cv-section>.ke-petit{margin-bottom:44px}
+.cv-plat{display:grid;grid-template-columns:repeat(auto-fill,320px);gap:54px 44px;align-items:start}
+.cv-plat.etats{gap:44px 40px}
+.cv-plat.hauteurs{grid-template-columns:110px 150px 320px 320px;gap:48px 56px;padding-bottom:40px}
+.cv-plat .cv-carte{position:relative;width:auto;cursor:default}
+.cv-plat>div>.ke-petit{margin-bottom:14px}
+.cv-fin{height:120px}
+
+/* ════ Le canevas ════ */
+.ke-canevas2{position:relative;height:max(620px,calc(100vh - var(--barre-h) - 130px));margin:0 var(--s6);overflow:hidden;background:var(--scene);touch-action:none;user-select:none;cursor:grab;outline-offset:-1px}
+.ke-canevas2:focus-visible{outline:none}
+.ke-canevas2:focus-visible::before{box-shadow:inset 0 2px 0 var(--or)}
+.ke-canevas2.glisse{cursor:grabbing}
+.ke-canevas2.cadre{cursor:crosshair}
+.ke-canevas2.plein{position:fixed;inset:0;z-index:40;height:auto;margin:0}
+.cv-monde{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0;will-change:transform}
+.cv-liens{position:absolute;left:0;top:0;width:1px;height:1px;overflow:visible;pointer-events:none}
+
+/* le nom d'un groupe : immense et pâle derrière ses cartes ; de loin, c'est lui qu'on lit */
+.cv-groupe{position:absolute;margin:0;font-family:var(--f-nom);font-size:200px;line-height:.9;letter-spacing:.01em;text-transform:uppercase;white-space:nowrap;color:var(--ink);opacity:calc(.8 - .735 * var(--t2));transform-origin:0 100%;transform:translateY(-100%) scale(min(var(--kg,1),var(--kmax,9)));pointer-events:auto;cursor:grab;transition:color .2s}
+.cv-groupe.nomme{opacity:.9;color:var(--ink);cursor:text;user-select:text;outline:none;box-shadow:inset 0 -.04em 0 var(--or)}
+.cv-groupe.cible{color:var(--amb);opacity:.5}
+.cv-groupe.visee{color:var(--or);opacity:.85}
+
+/* ════ La carte ════ */
+.cv-carte{position:absolute;left:0;top:0;width:var(--w,300px);padding:16px 18px 18px;isolation:isolate;color:var(--ink);cursor:grab;outline:none}
+.cv-carte::before{content:'';position:absolute;inset:0;z-index:-2;background:var(--panel2);box-shadow:inset 0 1px 0 var(--ink3),0 14px 40px var(--drop);opacity:var(--t2);transition:box-shadow var(--vite)}
+.cv-carte::after{content:'';position:absolute;left:0;right:0;top:0;height:calc(5px * var(--ik));z-index:-1;background:var(--ink3);opacity:calc(1 - var(--t1));pointer-events:none;transition:background-color var(--vite)}   /* de très loin : un trait, de la largeur de la carte */
+.cv-carte:hover::before,.cv-carte.est-survol::before{background-color:var(--releve);box-shadow:inset 0 1px 0 var(--ink),0 18px 46px var(--drop)}
+.cv-carte:focus-visible::before,.cv-carte.est-focus::before{box-shadow:inset 0 2px 0 var(--or),0 0 0 calc(1px * var(--ik)) var(--line-or),0 14px 40px var(--drop)}
+.cv-carte.choisie::before{box-shadow:inset 0 2px 0 var(--or),0 14px 40px var(--drop)}
+.cv-carte.choisie::after,.cv-carte:focus-visible::after{background:var(--or)}
+.cv-carte.tenue{cursor:grabbing;z-index:5}
+.cv-carte.tenue::before{box-shadow:inset 0 2px 0 var(--or),0 34px 80px var(--drop),0 6px 16px var(--drop)}
+.cv-carte.depart::before{box-shadow:inset 0 2px 0 var(--amb),0 14px 40px var(--drop)}            /* le départ reste marqué pendant tout le geste */
+.cv-carte.cible::before{box-shadow:inset 0 1px 0 var(--ink),0 0 0 calc(1px * var(--ik)) var(--line-cy),0 14px 40px var(--drop)}
+.cv-carte.visee::before{box-shadow:inset 0 2px 0 var(--or),0 0 0 calc(1.5px * var(--ik)) var(--or),0 14px 40px var(--drop)}
+/* en attente : posée, pas encore gardée */
+.cv-carte.attente::before{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--amb) 26%,transparent) 0 1px,transparent 1px 11px),var(--panel2);box-shadow:inset 0 2px 0 var(--amb),0 14px 40px var(--drop)}
+.cv-carte.attente .cv-sur::after{content:'en attente';color:var(--amb);white-space:nowrap}
+.cv-carte.attente .cv-sur b{display:none}
+.cv-carte[aria-disabled="true"]{cursor:default}
+.cv-carte[aria-disabled="true"]>*:not(.cv-poignee){opacity:.42}
+.cv-carte[aria-disabled="true"] .cv-poignee{display:none}
+.cv-carte[aria-disabled="true"] .cv-titre{font-style:italic}
+.cv-carte[aria-disabled="true"]::before{box-shadow:inset 0 1px 0 var(--line)}
+/* en cours : le filet du haut file, le corps attend en traits */
+.cv-carte[aria-busy="true"]::before{box-shadow:0 14px 40px var(--drop);background:repeating-linear-gradient(90deg,var(--ink2) 0 6px,transparent 6px 14px) 0 0/28px 1px repeat-x,var(--panel2);animation:ke-file .7s linear infinite}
+.cv-carte[aria-busy="true"] .cv-vue{opacity:.3}
+.cv-carte[aria-busy="true"] .cv-corps{position:relative;min-height:66px}
+.cv-carte[aria-busy="true"] .cv-corps>*{visibility:hidden}
+.cv-carte[aria-busy="true"] .cv-corps::before{content:'';position:absolute;left:0;right:0;top:8px;height:50px;background:linear-gradient(var(--trait),var(--trait)) 0 0/100% 6px no-repeat,linear-gradient(var(--trait),var(--trait)) 0 22px/82% 6px no-repeat,linear-gradient(var(--trait),var(--trait)) 0 44px/56% 6px no-repeat}
+
+.cv-avant{opacity:var(--t2)}
+.cv-sur{display:flex;justify-content:space-between;gap:14px;margin:0;font-family:var(--f-ui);font-size:12.5px;line-height:1.3;color:var(--pale);opacity:var(--t2)}
+.cv-sur b{font-weight:400;color:var(--or)}
+/* le petit carré de la marque, devant la nature de la carte : il s'allume quand on la tient */
+.cv-sur>span:first-child::before{content:'';display:inline-block;width:5px;height:5px;margin:0 9px 1px 0;background:var(--ink3);transition:background-color var(--vite)}
+.cv-carte.choisie .cv-sur>span:first-child::before,.cv-carte:focus-visible .cv-sur>span:first-child::before,.cv-carte.est-focus .cv-sur>span:first-child::before{background:var(--or)}
+.cv-carte.proposee .cv-sur>span:first-child::before,.cv-carte.attente .cv-sur>span:first-child::before{background:var(--amb)}
+.cv-carte.manque .cv-sur>span:first-child::before{background:none;box-shadow:inset 0 0 0 1px var(--ink3)}
+.cv-titre{margin:8px 0 0;width:calc(100% / var(--kt));font-family:var(--f-texte);font-weight:400;font-size:24px;line-height:1.16;letter-spacing:-.005em;color:var(--ink);text-wrap:balance;opacity:var(--t1);transform-origin:0 0;transform:translateY(var(--dy,0px)) scale(var(--kt))}
+.cv-corps{margin-top:12px;opacity:var(--t2)}
+.cv-corps p{margin:0;font-size:17px;line-height:1.45;color:var(--voile);text-wrap:pretty}
+.cv-corps .ke-petit{font-size:12.5px}
+/* la carte ouverte : ce qu'elle sait de plus se déplie dessous, sur le même plan */
+.cv-plus{position:absolute;left:0;right:0;top:100%;z-index:-2;padding:0 18px 14px;background:var(--panel2);box-shadow:0 20px 40px var(--drop);opacity:var(--t3);pointer-events:none}
+.cv-plus dl{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;margin:0;padding-top:10px;box-shadow:inset 0 1px 0 var(--line)}
+.cv-plus dt{font-family:var(--f-ui);font-size:11.5px;color:var(--pale)}
+.cv-plus dd{margin:0;font-size:14px;line-height:1.35;color:var(--voile)}
+.cv-plus dd.deduit{color:var(--amb);text-decoration:underline dotted var(--line-amb);text-underline-offset:4px}
+.cv-plus dd.manque{font-style:italic;color:var(--pale)}
+
+/* les poignées : visibles sur la carte choisie, rondes, seize pixels d'écran ; elles grossissent et s'allument */
+.cv-poignee{position:absolute;z-index:3;width:16px;height:16px;border-radius:50%;background:var(--ink);opacity:0;transform:scale(var(--ik));transition:background-color var(--vite),opacity var(--vite);pointer-events:none}
+.cv-poignee::before{content:'';position:absolute;inset:-8px}
+.cv-poignee.lien{right:-8px;top:calc(50% - 8px);cursor:crosshair}
+.cv-poignee.taille{right:-8px;bottom:-8px;border-radius:0;cursor:nwse-resize}
+.cv-carte.choisie .cv-poignee,.cv-carte:focus-within .cv-poignee,.cv-carte.est-focus .cv-poignee{opacity:calc(var(--t2));pointer-events:auto}
+.cv-poignee:hover,.cv-poignee.tenue{background:var(--or);transform:scale(calc(var(--ik) * 1.35))}
+
+/* ── les vues : des « images » faites des seuls jetons ── */
+.cv-vue{position:relative;display:block;aspect-ratio:16/10;margin:-16px -18px 14px;background:var(--panel3);overflow:hidden}
+.cv-vue{--v0:color-mix(in srgb,var(--ink) 5%,var(--bg));--v1:color-mix(in srgb,var(--ink) 11%,var(--bg));--v2:color-mix(in srgb,var(--ink) 20%,var(--bg));--v3:color-mix(in srgb,var(--ink) 38%,var(--bg));--lampe:color-mix(in srgb,var(--amb) 46%,transparent)}
+/* v1 le quai : un ciel, une lampe, deux rails qui fuient */
+.cv-vue.v1{background:radial-gradient(circle at 71% 47%,var(--amb) 0 1.1%,transparent 1.5%),radial-gradient(ellipse 26% 40% at 71% 50%,var(--lampe),transparent 70%),linear-gradient(101deg,transparent 0 37.6%,var(--v3) 37.6% 38%,transparent 38%) 0 100%/100% 39% no-repeat,linear-gradient(79deg,transparent 0 61.8%,var(--v3) 61.8% 62.2%,transparent 62.2%) 0 100%/100% 39% no-repeat,linear-gradient(180deg,var(--v0) 0 60%,var(--v3) 60% 60.6%,var(--v1) 60.6%)}
+/* v2 une façade : des fenêtres, deux allumées */
+.cv-vue.v2{background:linear-gradient(var(--lampe),var(--lampe)) 31% 34%/7% 13% no-repeat,linear-gradient(var(--lampe),var(--lampe)) 69% 62%/7% 13% no-repeat,repeating-linear-gradient(90deg,var(--v1) 0 9%,transparent 9% 14.2%) 3% 0/100% 100%,repeating-linear-gradient(180deg,var(--v1) 0 14%,transparent 14% 28%),var(--v2)}
+/* v3 la nuit : une lune, une colline */
+.cv-vue.v3{background:radial-gradient(circle at 26% 30%,var(--v3) 0 5.5%,transparent 6%),radial-gradient(circle at 62% 18%,var(--v3) 0 .5%,transparent .8%),radial-gradient(circle at 84% 40%,var(--v3) 0 .4%,transparent .7%),radial-gradient(circle at 48% 44%,var(--v2) 0 .4%,transparent .7%),radial-gradient(ellipse 70% 46% at 68% 112%,var(--v1) 0 99%,transparent 100%),radial-gradient(ellipse 60% 34% at 12% 110%,var(--v2) 0 99%,transparent 100%),linear-gradient(180deg,var(--v0),var(--v1))}
+/* v4 les toits : des lignes qui se croisent */
+.cv-vue.v4{background:linear-gradient(118deg,var(--v2) 0 34%,transparent 34.2%),linear-gradient(64deg,transparent 0 58%,var(--v1) 58.2%),linear-gradient(118deg,transparent 0 61.6%,var(--v3) 61.6% 62%,transparent 62%),linear-gradient(180deg,var(--v0),var(--v1))}
+/* v5 le buffet : une lumière chaude derrière un store */
+.cv-vue.v5{background:repeating-linear-gradient(180deg,var(--v0) 0 7%,transparent 7% 11%),radial-gradient(ellipse 62% 80% at 50% 38%,var(--lampe),transparent 72%),var(--v1)}
+/* v6 un intérieur : un angle, une porte */
+.cv-vue.v6{background:linear-gradient(var(--v3),var(--v3)) 74% 100%/13% 62% no-repeat,linear-gradient(var(--lampe),var(--lampe)) 74% 100%/11.6% 60% no-repeat,linear-gradient(90deg,var(--v1) 0 46%,var(--v2) 46% 46.4%,var(--v0) 46.4%)}
+.cv-grille{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:-16px -18px 14px}
+.cv-grille .cv-vue{margin:0;aspect-ratio:1}
+.cv-bande{display:flex;gap:3px;margin:-16px -18px 14px}
+.cv-bande>span{flex:1;position:relative}
+.cv-bande .cv-vue{margin:0;aspect-ratio:4/3}
+.cv-bande b{display:block;margin-top:5px;padding-left:2px;font-family:var(--f-ui);font-weight:400;font-size:11px;color:var(--pale)}
+.cv-bande span.ici b{color:var(--or)}
+.cv-bande span.ici .cv-vue{box-shadow:inset 0 -2px 0 var(--or)}
+/* la tête de lecture d'une vidéo, la forme d'onde d'un son */
+.cv-tete{--t:.3;position:relative;height:18px;margin:-8px 0 0;cursor:pointer}
+.cv-tete::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line-cy)}
+.cv-tete u{position:absolute;left:0;top:50%;height:2px;margin-top:-1px;width:calc(var(--t) * 100%);background:var(--ink)}
+.cv-tete b{position:absolute;left:calc(var(--t) * 100%);top:2px;bottom:2px;width:1px;background:var(--or)}
+.cv-tete b::before{content:'';position:absolute;left:-3px;top:-2px;width:7px;height:7px;background:var(--or)}
+.cv-temps{display:flex;justify-content:space-between;font-family:var(--f-ui);font-size:12px;color:var(--pale);font-variant-numeric:tabular-nums}
+.cv-temps b{font-family:var(--f-texte);font-weight:330;font-size:22px;line-height:1;color:var(--ink)}
+.cv-onde{--t:.3;position:relative;display:flex;align-items:center;gap:2px;height:56px;margin:2px 0 8px;cursor:pointer}
+.cv-onde i{flex:1;height:calc(var(--h) * 100%);background:var(--trait-vu)}
+.cv-onde i.lu{background:var(--ink)}
+.cv-onde::after{content:'';position:absolute;left:calc(var(--t) * 100%);top:-4px;bottom:-4px;width:1px;background:var(--or)}
+.cv-tete:focus-visible,.cv-onde:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+
+/* ── chaque nature de carte ── */
+.cv-carte.citation .cv-titre{font-style:italic;font-weight:300;font-size:29px;line-height:1.2}
+.cv-qui{display:flex;align-items:baseline;gap:12px}
+.cv-qui b{font-family:var(--f-nom);font-weight:400;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2)}
+.cv-qui span{font-family:var(--f-ui);font-size:12.5px;color:var(--pale)}
+.cv-carte.personne{overflow:visible}
+.cv-initiale{position:absolute;right:10px;top:-6px;z-index:-1;font-family:var(--f-nom);font-size:150px;line-height:1;color:var(--fantome-scene);opacity:var(--t2);pointer-events:none;text-transform:uppercase}
+.cv-carte.personne .cv-initiale{color:color-mix(in srgb,var(--ink) 9%,var(--panel2))}
+.cv-carte.personne .cv-titre{font-family:var(--f-nom);font-size:25px;letter-spacing:.035em;text-transform:uppercase;margin-top:34px}
+.cv-carte.personne .cv-corps p{font-style:italic}
+.cv-plan{display:block;margin:-16px -18px 14px;aspect-ratio:16/9;background:var(--panel)}
+.cv-plan svg{display:block;width:100%;height:100%}
+.cv-plan .niveau{fill:none;stroke:var(--ink3);stroke-width:1;opacity:.5}
+.cv-plan .eau{fill:none;stroke:var(--cy);stroke-width:1.2;opacity:.7}
+.cv-plan .voie{fill:none;stroke:var(--ink);stroke-width:1.4}
+.cv-plan .voie.deduit{stroke:var(--amb);stroke-dasharray:1 5;stroke-linecap:round}
+.cv-plan .point{fill:var(--or)}
+.cv-plan .halo{fill:none;stroke:var(--or);stroke-width:1;opacity:.5}
+.cv-teintes{display:flex;margin:-16px -18px 12px;height:84px}
+.cv-teintes i{flex:1;background:var(--c)}
+.cv-teintes i:first-child{flex:2.2}
+.cv-noms{display:flex;flex-wrap:wrap;gap:2px 14px;font-family:var(--f-ui);font-size:12px;color:var(--pale)}
+.cv-carte.lien .cv-titre{text-decoration:underline;text-decoration-color:var(--line-cy);text-decoration-thickness:1px;text-underline-offset:6px}
+.cv-carte.lien .cv-corps p{font-style:italic;font-size:15.5px;color:var(--pale)}
+.cv-points{display:flex;flex-direction:column;gap:9px}
+.cv-points .ke-case{font-size:17px;gap:12px}
+.cv-points .ke-case input:checked~span{color:var(--pale);text-decoration:line-through;text-decoration-color:var(--line-cy)}
+.cv-avance{display:flex;gap:3px;margin-top:14px;height:3px}
+.cv-avance i{flex:1;background:var(--trait-vu)}
+.cv-avance i.fait{background:var(--ink)}
+.cv-nombre{margin:0;font-weight:250;font-size:104px;line-height:.86;letter-spacing:-.03em;color:var(--ink);opacity:var(--t2);font-variant-numeric:tabular-nums}
+.cv-nombre small{font-size:.24em;font-weight:330;letter-spacing:0;color:var(--pale);margin-left:8px}
+.cv-carte.chiffre .cv-titre{font-size:19px;font-style:italic;color:var(--voile);margin-top:14px}
+.cv-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.cv-table td{padding:7px 12px 7px 0;font-size:15.5px;line-height:1.25;color:var(--voile);box-shadow:inset 0 -1px 0 var(--line)}
+.cv-table td:first-child{color:var(--ink)}
+.cv-table td:last-child{text-align:right;padding-right:0}
+.cv-table tr.tenu td:first-child{color:var(--or);font-style:italic}
+.cv-table .ke-manque{font-size:15px}
+.cv-voix{display:flex;flex-direction:column;gap:12px}
+.cv-voix div b{display:block;font-family:var(--f-nom);font-weight:400;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.cv-voix div p{font-style:italic;font-size:16px;line-height:1.36;color:var(--voile)}
+.cv-voix div.toi b{color:var(--or)}
+.cv-voix div.toi p{color:var(--ink)}
+.cv-doc{display:grid;grid-template-columns:86px 1fr;gap:18px;align-items:start}
+.cv-page{aspect-ratio:3/4;padding:10px 9px;background:var(--panel3);box-shadow:0 6px 18px var(--drop);display:flex;flex-direction:column;gap:5px}
+.cv-page i{display:block;height:2px;background:var(--trait-vu)}
+.cv-page i.t{height:4px;width:60%;background:var(--ink2);margin-bottom:4px}
+.cv-page i.c{width:72%}
+.cv-sommaire{list-style:none;margin:0;padding:0;counter-reset:s}
+.cv-sommaire li{counter-increment:s;display:flex;gap:10px;padding:5px 0;font-size:15.5px;line-height:1.25;color:var(--voile);box-shadow:inset 0 -1px 0 var(--line)}
+.cv-sommaire li::before{content:counter(s);font-family:var(--f-ui);font-size:12px;color:var(--pale);padding-top:2px}
+.cv-sommaire li.ici{color:var(--ink)}
+.cv-sommaire li.ici::before{color:var(--or)}
+.cv-code{margin:0;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;color:var(--ink2);white-space:pre-wrap;tab-size:2}
+.cv-code b{font-weight:400;color:var(--ink)}
+.cv-code i{font-style:normal;color:var(--pale)}
+.cv-code u{text-decoration:none;color:var(--or)}
+.cv-formule{margin:0;font-style:italic;font-weight:300;font-size:30px;line-height:1.3;color:var(--ink)}
+/* la place vide : ce qui manque, avec sa question */
+.cv-carte.manque::before{background:none;box-shadow:inset 0 1px 0 var(--line)}
+.cv-carte.manque:hover::before{box-shadow:inset 0 1px 0 var(--ink3)}
+.cv-carte.manque.choisie::before,.cv-carte.manque:focus-visible::before{box-shadow:inset 0 2px 0 var(--or)}
+.cv-carte.manque::after{background:none;box-shadow:inset 0 0 0 calc(1px * var(--ik)) var(--ink3)}
+.cv-carte.manque .cv-titre{font-style:italic;font-weight:340;color:var(--pale)}
+.cv-carte.manque .cv-corps p{font-style:italic;color:var(--pale);font-size:15.5px}
+/* la carte proposée : en pointillé d'ambre, tant qu'on ne l'a pas gardée */
+.cv-carte.proposee::before{box-shadow:0 14px 40px var(--drop);background:repeating-linear-gradient(90deg,var(--amb) 0 2px,transparent 2px 7px) 0 0/100% 1.5px no-repeat,repeating-linear-gradient(90deg,var(--amb) 0 2px,transparent 2px 7px) 0 100%/100% 1.5px no-repeat,repeating-linear-gradient(180deg,var(--amb) 0 2px,transparent 2px 7px) 0 0/1.5px 100% no-repeat,repeating-linear-gradient(180deg,var(--amb) 0 2px,transparent 2px 7px) 100% 0/1.5px 100% no-repeat,var(--amb-bg)}
+.cv-carte.proposee::after{background:var(--amb)}
+.cv-carte.proposee .cv-sur>span:first-child{color:var(--amb)}
+.cv-carte.proposee .cv-titre{color:var(--voile)}
+.cv-choix{display:flex;gap:22px;margin-top:14px}
+.cv-choix .ke-btn{font-size:17px}
+.cv-choix .ke-btn:first-child{box-shadow:inset 0 -1px 0 var(--amb);color:var(--ink)}
+
+/* ════ Les liens : au repos presque rien ; ceux de la carte tenue s'allument ════ */
+.cv-lien{fill:none;stroke:var(--ink3);stroke-width:calc(1px * var(--ik));opacity:.2;transition:opacity .2s,stroke .2s}
+.cv-lien.vif{stroke:var(--ink);opacity:.9}
+.cv-lien.choisi{stroke:var(--or);opacity:1;stroke-width:calc(1.5px * var(--ik))}
+.cv-lien.attente,.cv-lien.fantome{stroke:var(--amb);opacity:1;stroke-width:calc(1.5px * var(--ik));stroke-dasharray:calc(2px * var(--ik)) calc(6px * var(--ik));stroke-linecap:round}
+.cv-lien.fantome.pret{stroke:var(--or);stroke-dasharray:none}
+.cv-lien-prise{fill:none;stroke:transparent;stroke-width:calc(16px * var(--ik));pointer-events:stroke;cursor:pointer;outline:none}
+.cv-bout{fill:var(--ink3);opacity:.3}
+.cv-bout.vif{fill:var(--ink);opacity:1}
+.cv-bout.choisi{fill:var(--or);opacity:1}
+.cv-bout.attente{fill:var(--amb);opacity:1}
+
+/* ════ Ce qui se pose par-dessus : les outils en mots, le rail, la mini-carte, la phrase, l'attente ════ */
+.cv-outils{position:absolute;left:26px;top:20px;z-index:8;display:flex;gap:26px;align-items:baseline;cursor:default}
+.cv-outils .ke-btn{font-family:var(--f-ui);font-size:14px;color:var(--ink2);box-shadow:none}
+.cv-outils .ke-btn:hover{color:var(--ink)}
+.cv-outils .ke-btn[aria-pressed="true"]{font-style:normal;color:var(--ink);box-shadow:inset 0 -1px 0 var(--or)}
+.cv-outils .ke-btn[aria-disabled="true"]{color:var(--pale);opacity:.5}
+.cv-outils .ke-menu-liste{top:calc(100% + 12px);columns:2;column-gap:0;min-width:420px}
+.cv-outils .ke-menu-liste li{break-inside:avoid}
+.ke-canevas2>.ke-rail{position:absolute;right:8px;top:50%;z-index:8;transform:translateY(-50%);padding:18px 16px 18px 20px;background:var(--hdr-bg);cursor:default}
+/* en haut, sous les outils en mots, les cartes s'effacent aussi */
+.ke-canevas2::before{content:'';position:absolute;left:0;right:0;top:0;height:96px;z-index:7;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 92%,transparent) 40%,transparent);pointer-events:none}
+/* la marge de droite : sous le rail et la mini-carte, les cartes s'effacent ; aucun cadrage ne les y pose */
+.ke-canevas2::after{content:'';position:absolute;top:0;right:0;bottom:0;width:300px;z-index:7;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--bg) 88%,transparent) 64%);pointer-events:none}
+.cv-mini{position:absolute;right:24px;bottom:22px;z-index:8;width:190px;height:118px;cursor:pointer;box-shadow:inset 0 0 0 1px var(--line);background:var(--hdr-bg)}
+.cv-mini i{position:absolute;background:var(--ink3);min-width:2px;min-height:2px}
+.cv-mini i.choisie{background:var(--or)}
+.cv-mini b{position:absolute;box-shadow:inset 0 0 0 1px var(--ink);background:color-mix(in srgb,var(--ink) 8%,transparent);pointer-events:none}
+.cv-mini:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.cv-zoom{position:absolute;right:226px;bottom:22px;z-index:8;font-family:var(--f-ui);font-size:13px;color:var(--ink3);font-variant-numeric:tabular-nums;pointer-events:none}
+.cv-dit{position:absolute;left:26px;bottom:22px;z-index:8;width:min(40%,620px);pointer-events:none}
+.cv-dit::before{content:'';position:absolute;inset:-70px -160px -40px -60px;z-index:-1;background:radial-gradient(ellipse 60% 70% at 26% 62%,var(--bg) 18%,transparent 74%);opacity:.9}
+.cv-dit small{display:block;margin-bottom:6px;font-family:var(--f-ui);font-size:13px;color:var(--ink3)}
+.cv-dit p{margin:0;font-style:italic;font-weight:360;font-size:clamp(19px,1.35vw,25px);line-height:1.3;color:var(--ink);text-wrap:balance}
+.cv-attente{position:absolute;left:50%;bottom:26px;z-index:9;transform:translateX(-50%);display:flex;align-items:center;gap:26px;padding:10px 12px 10px 24px;cursor:default}
+.cv-attente span{font-size:18px;color:var(--ink);white-space:nowrap}
+.cv-attente .ke-btn.plein{height:40px;padding:0 22px}
+.cv-attente .ke-btn:not(.plein){font-size:18px}
+.cv-guide{position:absolute;z-index:7;background:var(--line-or);pointer-events:none}
+.cv-guide.v{top:0;bottom:0;width:1px}
+.cv-guide.h{left:0;right:0;height:1px}
+.cv-cadre{position:absolute;z-index:7;background:var(--or-bg);box-shadow:inset 0 0 0 1px var(--line-or);pointer-events:none}
+.ke-canevas2>.ke-menu-liste{position:absolute;z-index:12;min-width:230px;cursor:default}
+

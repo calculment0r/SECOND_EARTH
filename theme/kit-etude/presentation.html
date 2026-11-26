@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit étude · une présentation</title>
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="kit-etude.css">
+<script src="kit-etude.js" defer></script>
+</head>
+<body>
+<!-- Un gabarit de présentation : recopie ce fichier, remplace les textes. Une section .ke-d par diapositive ; data-nom la nomme dans le rail.
+     → ↓ Espace : suivante · ← ↑ : précédente · Début, Fin · F : plein écran · un clic à droite avance, à gauche recule. -->
+<main class="ke-presentation" aria-label="Présentation">
+  <div class="ke-avance" aria-hidden="true"><i></i></div>
+  <div class="ke-bascule" role="group" aria-label="Thème"><button type="button" data-t="sombre">Sombre</button><button type="button" data-t="clair">Clair</button></div>
+  <div class="ke-diapo">
+
+    <section class="ke-d titre" data-nom="le titre" data-mot="Nuit">
+      <p class="sur">Un projet · novembre</p>
+      <h1>Une nuit<br>de <em>trop.</em></h1>
+      <p class="chapo">Elle rate le dernier train. La ville, elle, ne dort pas tout à fait.</p>
+      <p class="pied"><span>Le nom du projet</span></p>
+    </section>
+
+    <section class="ke-d chapitre" data-nom="première partie" data-mot="Un">
+      <p class="num">Première partie</p>
+      <h2>Le quai, à minuit moins deux</h2>
+      <p class="pied"><span>Le nom du projet</span></p>
+    </section>
+
+    <section class="ke-d colonnes" data-nom="ce qu’on sait">
+      <div><p class="sur"><b>01</b>Ce qu’on sait</p><h2>Trois lieux, une seule <em>nuit</em></h2></div>
+      <ul><li><b>minuit</b>Le quai, vide</li><li class="tenu"><b>trois heures</b>Le buffet, encore ouvert</li><li><b>six heures</b>Le premier train</li></ul>
+      <p class="pied"><span>Le nom du projet</span></p>
+    </section>
+
+    <section class="ke-d chiffre" data-nom="le chiffre">
+      <p class="nombre">7<small>heures</small></p>
+      <p class="chapo">entre le dernier train et le premier. <em>Tout le film tient là.</em></p>
+      <p class="pied"><span>Le nom du projet</span></p>
+    </section>
+
+    <figure class="ke-d citation" data-nom="une voix" style="margin:0">
+      <blockquote>« On ne rate jamais un train. On en prend un <em>autre.</em> »</blockquote>
+      <figcaption>Le veilleur<span>scène 9</span></figcaption>
+      <p class="pied"><span>Le nom du projet</span></p>
+    </figure>
+
+    <section class="ke-d image" data-nom="une image">
+      <!-- une vraie image : <img src="…" alt="…"> dans .vue, ou style="--image:url(…)" ; la légende reste dessous, jamais dessus -->
+      <div class="vue" style="--image:radial-gradient(ellipse 30% 46% at 72% 58%,var(--amb-bg),transparent 70%),linear-gradient(180deg,var(--bg),var(--panel2))"></div>
+      <div class="legende"><p>Le quai, à minuit moins deux.</p><span>ton image ici</span></div>
+    </section>
+
+    <section class="ke-d chapitre" data-nom="la suite" data-mot="Fin">
+      <p class="num">Et ensuite</p>
+      <h2>Ce qu’il reste à <em>écrire</em></h2>
+      <p class="pied"><span>Le nom du projet</span></p>
+    </section>
+
+  </div>
+</main>
+</body>
+</html>

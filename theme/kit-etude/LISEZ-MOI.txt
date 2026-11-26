@@ -1,0 +1,14 @@
+KIT ÉTUDE · version statique, autonome
+
+Ouvrir : servir ce dossier avec n'importe quel serveur de fichiers, puis ouvrir index.html.
+  python3 -m http.server 8000      puis   http://localhost:8000/index.html
+(Le double-clic sur index.html marche pour la plupart des pages, mais la page « Trois dimensions »
+charge three.js en module ES : les navigateurs le refusent depuis file://. Passer par un serveur.)
+
+Contenu : huit pages reliées par la barre du haut (Les bases, Musique, HUD, Cartes, Dataviz,
+Trois dimensions, Canevas, Zoom) et presentation.html, un gabarit de présentation plein écran.
+Aucun réseau, aucun CDN : les polices sont dans fonts/, three.js dans vendor/three/.
+Le mode d'emploi complet est dans LIRE.md.
+
+Source : dépôt calculment0r/SOLARIS, branche claude/kit-ui-etude, dossier public/kit-etude/
+(dans le dépôt, les polices et three.js sont dans ../fonts/ et ../vendor/three/ ; ici ils ont été ramenés dans le dossier).

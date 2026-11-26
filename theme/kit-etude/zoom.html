@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit étude · le zoom sémantique</title>
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="kit-etude.css">
+<link rel="stylesheet" href="zoom.css">
+<script src="nav.js" defer></script>
+<script src="kit-etude.js" defer></script>
+<script src="zoom.js" defer></script>
+</head>
+<body>
+<header class="ke-barre" data-page="zoom"></header>
+<main>
+<section class="zm-ouverture">
+  <h1>Un seul geste : <em>la hauteur.</em></h1>
+  <p class="ke-petit">Ctrl + molette sur ce que tu vises, ou pince, ou tire la prise du rail à droite. Au clavier : + et −, les chiffres, les flèches pour changer ce qu’on tient. Double-clic : un cran plus bas. Hors Ctrl, la molette fait défiler la page. Tous les contenus sont des exemples écrits pour la page.</p>
+  <nav class="zm-sommaire" aria-label="Les huit navigations">
+    <a class="ke-btn" href="#livre">Le livre</a><a class="ke-btn" href="#liste">La liste</a><a class="ke-btn" href="#plan">Le plan</a><a class="ke-btn" href="#calendrier">Le calendrier</a><a class="ke-btn" href="#tissu">Le tissu</a><a class="ke-btn" href="#chacun">Chacun son échelle</a><a class="ke-btn" href="#sous">Sous la ligne</a><a class="ke-btn" href="#savoir">Ce que chacun sait</a><a class="ke-btn" href="#lettres">Les lettres</a><a class="ke-btn" href="#planche">La planche</a>
+  </nav>
+</section>
+
+<section class="zm-sec" id="livre">
+  <p class="zm-titre"><i>01</i><b>Le livre</b><span>du livre entier en traits jusqu’au mot, et ce qui est dessous · la phrase soulignée est celle qu’on tient</span></p>
+  <div id="z-livre" aria-label="Le livre. Cinq hauteurs : le livre, le chapitre, la page, la phrase, le mot."></div>
+</section>
+
+<section class="zm-sec" id="liste">
+  <p class="zm-titre"><i>02</i><b>La liste</b><span>des lignes deviennent des cases, puis leur largeur dit la durée</span></p>
+  <div id="z-liste" aria-label="La liste. Quatre hauteurs : la liste, les cases, le temps, un morceau."></div>
+</section>
+
+<section class="zm-sec" id="plan">
+  <p class="zm-titre"><i>03</i><b>Le plan</b><span>la salle vue de dessus, les tables, une table, une place · les fils partent de la personne tenue</span></p>
+  <div id="z-plan" aria-label="Le plan de salle. Quatre hauteurs : la salle, les tables, une table, une place."></div>
+</section>
+
+<section class="zm-sec" id="calendrier">
+  <p class="zm-titre"><i>04</i><b>Le calendrier</b><span>l’année en cases, le mois, la semaine, le jour, l’heure · la matière dit l’état</span></p>
+  <div id="z-cal" aria-label="Le calendrier. Cinq hauteurs : l’année, le mois, la semaine, le jour, l’heure."></div>
+</section>
+
+<section class="zm-sec" id="tissu">
+  <p class="zm-titre"><i>05</i><b>Le tissu</b><span>les lignes sont la trame ; les fils, des mots qui reviennent et passent dessus ou dessous · la perle tenue devient le soulignement</span></p>
+  <div id="z-tissu" aria-label="Le tissu. Trois hauteurs : le tissu, la trame, la page."></div>
+</section>
+
+<section class="zm-sec" id="chacun">
+  <p class="zm-titre"><i>06</i><b>Chacun son échelle</b><span>quatre morceaux côte à côte, chacun à sa hauteur · Ctrl + molette sur l’un ne descend que lui</span></p>
+  <div id="z-chacun"></div>
+</section>
+
+<section class="zm-sec" id="sous">
+  <p class="zm-titre"><i>07</i><b>Sous la ligne</b><span>on descend sur une ligne : celles du dessous s’écartent d’un bloc, le papier s’ouvre</span></p>
+  <div id="z-sous" aria-label="Sous la ligne. Deux hauteurs : la page, sous la ligne."></div>
+</section>
+
+<section class="zm-sec" id="savoir">
+  <p class="zm-titre"><i>08</i><b>Ce que chacun sait</b><span>approche-toi d’un nom : les phrases se trient, puis ce qu’il est seul à savoir vient au centre</span></p>
+  <div id="z-savoir" aria-label="Ce que chacun sait. Trois hauteurs : tout le monde, un nom, lui seul."></div>
+</section>
+
+<section class="zm-sec" id="lettres">
+  <p class="zm-titre"><i>09</i><b>Les lettres</b><span>les lettres communes voyagent, celles de trop tombent, celles qui manquent montent · tire le curseur, ou les flèches</span></p>
+  <div class="zm-mots" id="z-lettres"></div>
+</section>
+
+<section class="zm-sec" id="planche">
+  <p class="zm-titre"><i>10</i><b>La planche</b><span>les cinq hauteurs du livre, figées côte à côte, pour une diapositive</span></p>
+  <div id="z-planche"></div>
+</section>
+</main>
+<footer class="zm-pied"><p>D’après les protos : La descente, Les cases prennent leur temps, Chacun son échelle, Le plan de salle, Le tissu, La saison, Sous la ligne, Ce que chacun sait.</p></footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+/* KIT ÉTUDE · la boîte à rythmes. Les jetons du kit et de musique.css, aucune couleur écrite.
+   Sa silhouette : onze rangées de seize pas. Un pas posé est gris d'encre, un pas accentué est d'encre pleine et dépasse vers le haut ;
+   la colonne qui sonne passe à l'orange. */
+.mu-rythmes-motifs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 26px;margin-bottom:18px}
+.mu-rythmes-motif{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:16px;align-items:end;padding:12px 0 0;box-shadow:inset 0 1px 0 var(--line);text-align:left;transition:box-shadow var(--vite)}
+.mu-rythmes-motif b{grid-row:1/3;align-self:center;font-family:var(--f-texte);font-weight:300;font-size:58px;line-height:.9;color:var(--pale);transition:color var(--vite)}
+.mu-rythmes-motif svg{display:block;width:100%;height:auto;overflow:visible}
+.mu-rythmes-motif svg .pose{fill:var(--ink3)}
+.mu-rythmes-motif svg .fort{fill:var(--ink)}
+.mu-rythmes-motif svg .tete{fill:var(--or);opacity:.55}
+.mu-rythmes-motif small{font-family:var(--f-ui);font-size:12px;color:var(--pale);margin-top:6px}
+.mu-rythmes-motif:hover{box-shadow:inset 0 1px 0 var(--ink)}
+.mu-rythmes-motif:hover b{color:var(--ink)}
+.mu-rythmes-motif[aria-pressed="true"]{box-shadow:inset 0 2px 0 var(--or)}
+.mu-rythmes-motif[aria-pressed="true"] b{font-style:italic;color:var(--or)}
+.mu-rythmes-motif.attente{box-shadow:none;background:repeating-linear-gradient(90deg,var(--amb) 0 2px,transparent 2px 7px) 0 0/100% 2px no-repeat}
+.mu-rythmes-motif.attente b{color:var(--amb)}
+.mu-rythmes-motif.attente small::after{content:' · à la mesure';color:var(--amb)}
+.mu-rythmes-ecran{width:300px;min-height:118px}
+.mu-rythmes-ecran .grand{margin-top:6px;font-style:italic;font-size:30px;line-height:1.05}
+.mu-rythmes-ecran .ligne{font-style:normal;font-family:var(--f-ui);font-size:13px;color:var(--voile);margin-top:10px}
+.mu-rythmes-ecran .petit:last-child{margin-top:3px}
+.mu-rythmes-gestes{display:grid;grid-template-columns:auto auto;gap:10px 26px;justify-items:start;align-content:start}
+
+.mu-rythmes-grille{margin-top:30px;padding-top:20px;box-shadow:inset 0 1px 0 var(--line)}
+.mu-rythmes-rang{display:grid;grid-template-columns:178px 150px 40px minmax(0,1fr);column-gap:22px;align-items:center;height:52px;box-shadow:inset 0 -1px 0 var(--line)}
+.mu-rythmes-rang:last-child{box-shadow:none}
+.mu-rythmes-rang.entete{height:26px;align-items:end;box-shadow:none}
+.mu-rythmes-rang.entete .mu-pas-nums{margin:0 0 6px;text-align:center}
+.mu-rythmes-nom{position:relative;padding-left:16px;text-align:left;font-family:var(--f-nom);font-size:13.5px;letter-spacing:.05em;text-transform:uppercase;line-height:1.15;color:var(--ink3);transition:color var(--vite)}
+.mu-rythmes-nom::before{content:'';position:absolute;left:0;top:50%;width:6px;height:6px;margin-top:-3px;background:var(--trait-vu);transition:background-color var(--vite)}
+.mu-rythmes-nom:hover{color:var(--ink)}
+.mu-rythmes-rang.tenue .mu-rythmes-nom{color:var(--ink)}
+.mu-rythmes-rang.tenue .mu-rythmes-nom::before{background:var(--or)}
+.mu-rythmes-regs{display:grid;grid-template-columns:repeat(3,44px);gap:0 9px}
+.mu-rythmes-reg{display:grid;justify-items:center;gap:1px}
+.mu-rythmes-reg .ke-potard{--d:28px;gap:0}
+.mu-rythmes-reg .ke-potard output{display:none}
+.mu-rythmes-reg .ke-p-prise{r:10px}
+.mu-rythmes-reg .ke-potard:focus-visible{outline-offset:3px}
+.mu-rythmes-reg span{font-family:var(--f-ui);font-size:10.5px;line-height:1.1;color:var(--pale);white-space:nowrap}
+.mu-rythmes-rang.tenue .mu-rythmes-reg span{color:var(--ink2)}
+.mu-rythmes-frappe{width:32px;height:32px;aspect-ratio:auto;justify-self:center;background:none;box-shadow:inset 0 0 0 1px var(--ink3)}
+.mu-rythmes-frappe:hover{background:none;box-shadow:inset 0 0 0 1px var(--or)}
+.mu-rythmes-rang.tenue .mu-rythmes-frappe{box-shadow:inset 0 0 0 1px var(--ink)}
+.mu-rythmes-frappe.frappe{background:var(--or);box-shadow:none}
+.mu-rythmes-pas>button{height:30px;background:var(--mu-creux);transition:background-color .06s}
+.mu-rythmes-pas>button:hover{background:var(--trait-vu)}
+.mu-rythmes-pas>button[aria-pressed="true"]{background:var(--mu-pose)}
+.mu-rythmes-pas>button.fort[aria-pressed="true"]{background:var(--ink);box-shadow:0 -5px 0 var(--ink)}
+.mu-rythmes-pas>button.ici{background:var(--trait-vu);box-shadow:none}
+.mu-rythmes-pas>button.ici[aria-pressed="true"]{background:var(--or);box-shadow:none}
+.mu-rythmes-pas>button.ici.fort[aria-pressed="true"]{box-shadow:0 -5px 0 var(--or)}
+@media (max-width:1500px){.mu-rythmes-ecran{width:240px}.mu-rythmes-rang{grid-template-columns:150px 150px 36px minmax(0,1fr);column-gap:16px}.mu-rythmes-motif b{font-size:46px}}
+/* seize pas en quatre temps : un petit vide entre les temps, des pas tous de la même largeur */
+.mu-rythmes-pas,.mu-rythmes-rang.entete .mu-pas-nums{grid-template-columns:repeat(4,minmax(0,1fr)) 6px repeat(4,minmax(0,1fr)) 6px repeat(4,minmax(0,1fr)) 6px repeat(4,minmax(0,1fr))}

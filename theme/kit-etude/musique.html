@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit étude · la musique</title>
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="kit-etude.css">
+<link rel="stylesheet" href="musique.css">
+<link rel="stylesheet" href="musique-mono.css"><link rel="stylesheet" href="musique-acide.css"><link rel="stylesheet" href="musique-poly.css">
+<link rel="stylesheet" href="musique-rythmes.css"><link rel="stylesheet" href="musique-groove.css"><link rel="stylesheet" href="musique-grille.css">
+<link rel="stylesheet" href="musique-fm.css"><link rel="stylesheet" href="musique-modulaire.css"><link rel="stylesheet" href="musique-orgue.css">
+<link rel="stylesheet" href="musique-surface.css">
+<script src="nav.js" defer></script>
+<script src="kit-etude.js" defer></script>
+<script src="son.js" defer></script>
+<script src="musique.js" defer></script>
+<script src="musique-percus.js" defer></script>
+<script src="musique-mono.js" defer></script><script src="musique-acide.js" defer></script><script src="musique-poly.js" defer></script>
+<script src="musique-rythmes.js" defer></script><script src="musique-groove.js" defer></script><script src="musique-grille.js" defer></script>
+<script src="musique-fm.js" defer></script><script src="musique-modulaire.js" defer></script><script src="musique-orgue.js" defer></script>
+<script src="musique-surface.js" defer></script>
+</head>
+<body>
+<header class="ke-barre" data-page="musique"></header>
+<main class="mu-page">
+  <div class="mu-ouverture">
+    <div><p class="ke-sur">La musique · dix instruments</p><h1>Ils <em>jouent.</em></h1>
+      <p class="ke-petit">Rien ne sonne sans la main. Touche un instrument : il devient l’instrument actif, et le clavier de l’ordinateur le joue (la rangée du milieu pour les touches blanches, celle du dessus pour les noires). « Lire » lance l’horloge commune : tous les séquenceurs la suivent.</p></div>
+    <nav class="mu-sommaire" id="mu-sommaire" aria-label="Les instruments"></nav>
+  </div>
+  <div class="mu-transport" id="mu-transport"></div>
+
+  <section class="mu-instrument" id="i-rythmes" data-instrument="rythmes" data-nom="la boîte à rythmes"></section>
+  <section class="mu-instrument" id="i-acide" data-instrument="acide" data-nom="la ligne de basse"></section>
+  <section class="mu-instrument" id="i-mono" data-instrument="mono" data-nom="le mono"></section>
+  <section class="mu-instrument" id="i-poly" data-instrument="poly" data-nom="le poly"></section>
+  <section class="mu-instrument" id="i-fm" data-instrument="fm" data-nom="le six opérateurs"></section>
+  <section class="mu-instrument" id="i-groove" data-instrument="groove" data-nom="la boîte à boucles"></section>
+  <section class="mu-instrument" id="i-grille" data-instrument="grille" data-nom="la grille"></section>
+  <section class="mu-instrument" id="i-modulaire" data-instrument="modulaire" data-nom="le modulaire"></section>
+  <section class="mu-instrument" id="i-orgue" data-instrument="orgue" data-nom="l’orgue à tirettes"></section>
+  <section class="mu-instrument" id="i-surface" data-instrument="surface" data-nom="la surface et l’écho"></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* KIT ÉTUDE · la dataviz en trois dimensions (three.js). Les jetons de kit-etude.css, aucune couleur écrite.
+   Une scène = une affiche plein écran : un titre en haut à gauche, la lecture en bas à gauche, les réglages en bas à droite.
+   Le texte reste en DOM, posé sur la scène ; la scène elle-même ne dessine que des traits, des points et des plans. */
+html{scroll-behavior:smooth}
+.v3{position:relative;margin:0;height:calc(100vh - var(--barre-h));min-height:600px;overflow:hidden;background:var(--scene);box-shadow:inset 0 -1px 0 var(--line);scroll-margin-top:var(--barre-h)}
+.v3[data-mot]::before{content:attr(data-mot);position:absolute;left:50%;top:50%;transform:translate(-50%,-56%);font-family:var(--f-nom);font-size:clamp(200px,24vw,460px);line-height:1;text-transform:uppercase;white-space:nowrap;color:var(--fantome-scene);pointer-events:none}
+.v3-vue{position:absolute;inset:0;outline:none;touch-action:none;cursor:grab;user-select:none}
+.v3.glisse .v3-vue{cursor:grabbing}
+.v3.prise .v3-vue{cursor:ew-resize}
+.v3-vue canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.v3-vue:focus-visible,.v3.clavier .v3-vue{outline:1px solid var(--line-or);outline-offset:-1px}
+.v3-noms{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.v3-nom{position:absolute;left:0;top:0;margin:0;white-space:nowrap;will-change:transform,opacity;font-family:var(--f-ui);font-size:12.5px;line-height:1.2;color:var(--pale)}
+.v3-nom.nom{font-family:var(--f-nom);font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2)}
+.v3-nom.dit{font-family:var(--f-texte);font-style:italic;font-size:17px;color:var(--ink)}
+.v3-nom.val{font-family:var(--f-texte);font-weight:300;font-size:clamp(26px,2.1vw,38px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.v3-nom.val small{font-family:var(--f-ui);font-size:12.5px;color:var(--pale);margin-left:6px}
+.v3-nom.lieu{color:var(--ink2)}
+.v3-nom.or{color:var(--or)}
+.v3-nom.amb{color:var(--amb)}
+.v3-tete{position:absolute;left:5%;top:7%;max-width:44%;pointer-events:none}
+.v3-tete .ke-sur{margin:0 0 14px}
+.v3-tete h2{font-size:clamp(40px,4.1vw,68px)}
+.v3-tete .ke-petit{margin-top:16px;max-width:30em}
+.v3-lu{position:absolute;left:5%;bottom:6%;width:min(42%,620px);pointer-events:none}
+.v3-lu small{display:block;margin-bottom:6px;font-family:var(--f-ui);font-size:13px;color:var(--ink3)}
+.v3-lu p{margin:0;font-style:italic;font-weight:360;font-size:clamp(19px,1.4vw,26px);line-height:1.32;color:var(--ink);text-wrap:balance}
+.v3-reglages{position:absolute;right:max(9%,150px);bottom:6%;width:min(24%,360px);display:flex;flex-direction:column;gap:18px}
+.v3-reglages .ke-rang{gap:8px 26px;justify-content:flex-end}
+.v3-reglages .ke-btn{font-family:var(--f-ui);font-size:14px}
+.v3-reglages .ke-reglage output{font-size:22px}
+.v3-sans{position:absolute;left:5%;right:5%;top:46%;margin:0;font-style:italic;font-size:var(--c-dit);color:var(--pale)}
+.v3-rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:20}
+.v3-rail a{font-size:14px}
+@media (max-width:1100px){.v3-rail{display:none}.v3-tete{max-width:80%}.v3-reglages{right:5%;width:40%}}

@@ -1,0 +1,29 @@
+/* KIT ÉTUDE · LE MONO. Sa silhouette : trois rangs d'oscillateurs numérotés en très grand, un mélangeur à bascules, un clavier court. Jetons seulement. */
+.mu-mono .mu-rangee{margin:0 -18px;justify-content:space-between}
+.mu-mono .mu-bloc{padding:0 18px}
+.mu-mono .ke-potard{gap:5px}
+.mu-mono .ke-potard>.ke-petit:empty{display:none}
+.mu-mono .ke-potard>.ke-petit{font-size:12px}
+.mu-mono-org{display:grid;justify-items:center;gap:6px}
+.mu-mono-col{display:grid;justify-items:center;gap:18px}
+.mu-mono-col .mu-bascule{justify-self:start}
+/* les oscillateurs : un numéro immense et pâle, puis trois organes par rang */
+.mu-mono-oscs{display:grid;grid-template-columns:auto repeat(3,auto);grid-auto-rows:104px;gap:6px 14px;align-items:center;justify-items:center}
+.mu-mono-oscs>.mu-etiq,.mu-mono-oscs>span{grid-row:1;align-self:end;height:18px}
+.mu-mono-oscs{grid-template-rows:18px}
+.mu-mono-num{font-family:var(--f-texte);font-weight:250;font-size:64px;line-height:1;color:var(--pale);width:.7em;text-align:left}
+.mu-mono-mel{display:grid;grid-template-columns:auto auto;grid-template-rows:18px;grid-auto-rows:104px;gap:6px 10px;align-items:center;justify-items:center}
+.mu-mono-mel>.mu-etiq{align-self:end;height:18px}
+.mu-mono-deux{display:flex;gap:18px;align-items:flex-start}
+.mu-mono-bruit{display:grid;gap:18px;justify-items:start;padding-top:24px}
+.mu-mono-trois{display:grid;grid-template-columns:repeat(3,auto);gap:22px 16px;justify-content:start;justify-items:center;align-items:end}
+.mu-mono-ecran{grid-column:span 2;align-self:stretch;width:0;min-width:100%}
+.mu-mono-ecran .grand{margin:4px 0 6px;font-size:34px}
+.mu-mono-bas{align-items:stretch}
+.mu-mono-molettes{display:flex;gap:18px;height:100%;align-items:flex-end}
+.mu-mono-molettes .mu-molette{height:146px}
+.mu-mono-bas .mu-bloc:first-child .mu-titre,.mu-mono-bas .mu-bloc .mu-titre:empty{display:none}
+.mu-mono .mu-selecteur output{padding-bottom:9%;font-size:14px}
+.mu-mono .mu-selecteur text{font-size:14px}
+.mu-mono-col .mu-mono-org{justify-items:start}
+.mu-mono-trois>.mu-mono-col{align-self:start;gap:12px}

@@ -1,0 +1,207 @@
+/* KIT ÉTUDE · LA CARTOGRAPHIE. Les jetons de kit-etude.css seulement ; filets en box-shadow ; angles droits (les repères et les prises sont ronds).
+   La carte : .carto (un canvas pour le fond, un SVG pour les tracés, des boutons pour ce qui se touche). */
+.carto-page{overflow-x:hidden}
+.carto{position:relative;overflow:hidden;background:var(--bg);touch-action:none;cursor:grab;user-select:none}
+.carto.glisse{cursor:grabbing}
+.carto:focus-visible{outline:1px solid var(--line-or);outline-offset:-1px}
+.carto-fond{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.carto::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 78% 82% at 50% 48%,transparent 52%,var(--bg) 100%)}
+.carto-dessus{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;overflow:visible}
+.carto-reperes,.carto-poignees{position:absolute;left:0;top:0;z-index:3}
+.carto>.carto-cartouche,.carto>.carto-recherche,.carto>.carto-legende,.carto>.carto-pied,.carto>.carto-rose,.carto>.carto-mini,.carto>.ke-rail,.carto>.carto-zoom,.carto>.carto-fiche{z-index:4}
+.carto-mire{display:none;position:absolute;left:50%;top:50%;z-index:3;width:21px;height:21px;margin:-10.5px 0 0 -10.5px;pointer-events:none;background:linear-gradient(var(--or),var(--or)) 50% 50%/100% 1px no-repeat,linear-gradient(var(--or),var(--or)) 50% 50%/1px 100% no-repeat}
+.carto.outil:focus-visible>.carto-mire{display:block}
+
+/* ── la une : la carte prend l'écran ── */
+.carto-une{position:relative}
+.carto-une>.carto{height:calc(100vh - var(--barre-h));min-height:640px}
+.carto-geste{position:absolute;left:50%;top:22px;z-index:5;transform:translateX(-50%);margin:0;font-family:var(--f-ui);font-size:var(--c-petit);color:var(--pale);white-space:nowrap;pointer-events:none;text-shadow:0 0 6px var(--bg),0 0 12px var(--bg),0 0 18px var(--bg)}
+
+/* ── les repères ── */
+.carto-repere{position:absolute;left:0;top:0;width:0;height:0;padding:0;background:none;color:var(--ink);cursor:pointer}
+.carto-repere::before{content:'';position:absolute;left:-16px;top:-16px;width:32px;height:32px}   /* la cible est plus grande que la marque */
+.carto-repere i{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 2.5px var(--bg);font-style:normal;transition:transform var(--vite) var(--ease),background-color var(--vite),border-radius var(--vite)}
+.carto-repere span{position:absolute;left:15px;top:-11px;white-space:nowrap;font-family:var(--f-texte);font-size:15.5px;line-height:22px;color:var(--ink);opacity:0;pointer-events:none;text-shadow:0 0 3px var(--bg),0 0 6px var(--bg),0 0 10px var(--bg);transition:opacity var(--vite),color var(--vite)}
+.carto-repere.nomme span,.carto-repere:hover span,.carto-repere:focus-visible span,.carto-repere[aria-pressed="true"] span,.carto-repere.est-survol span{opacity:1}
+.carto-repere.anneau i{left:-6px;top:-6px;width:12px;height:12px;background:var(--bg);box-shadow:inset 0 0 0 1.6px var(--ink),0 0 0 2px var(--bg)}
+.carto-repere.estime i{left:-7px;top:-7px;width:14px;height:14px;box-shadow:none;background:repeating-conic-gradient(var(--amb) 0 20deg,transparent 20deg 40deg);-webkit-mask:radial-gradient(circle,transparent 4.6px,var(--ink) 5.2px);mask:radial-gradient(circle,transparent 4.6px,var(--ink) 5.2px)}
+.carto-repere.estime span{color:var(--amb);font-style:italic}
+.carto-repere.manque i{left:-6px;top:-6px;width:12px;height:12px;background:none;box-shadow:inset 0 0 0 1px var(--ink3)}
+.carto-repere.manque span{color:var(--pale);font-style:italic}
+.carto-repere.groupe i{left:-14px;top:-14px;width:28px;height:28px;display:grid;place-items:center;background:var(--bg);box-shadow:inset 0 0 0 1.4px var(--ink);font-family:var(--f-texte);font-size:14.5px;font-weight:420;line-height:1;color:var(--ink)}
+.carto-repere.groupe span{left:22px;font-family:var(--f-ui);font-size:12.5px;color:var(--pale)}
+.carto-repere:hover i,.carto-repere:focus-visible i,.carto-repere.est-survol i{transform:scale(1.35);background:var(--or)}
+.carto-repere.anneau:hover i,.carto-repere.anneau:focus-visible i{box-shadow:inset 0 0 0 1.6px var(--or),0 0 0 2px var(--bg);background:var(--bg)}
+.carto-repere.groupe:hover i,.carto-repere.groupe:focus-visible i{transform:scale(1.15);background:var(--bg);box-shadow:inset 0 0 0 1.6px var(--or);color:var(--or)}
+.carto-repere.estime:hover i,.carto-repere.estime:focus-visible i{background:repeating-conic-gradient(var(--or) 0 20deg,transparent 20deg 40deg)}
+.carto-repere.manque:hover i,.carto-repere.manque:focus-visible i{background:none;box-shadow:inset 0 0 0 1.4px var(--or)}
+.carto-repere[aria-pressed="true"] i{left:-6px;top:-6px;width:12px;height:12px;border-radius:0;background:var(--or);box-shadow:0 0 0 2.5px var(--bg);-webkit-mask:none;mask:none;transform:none}
+.carto-repere[aria-pressed="true"] span{color:var(--or);font-style:normal}
+.carto-repere:focus-visible,.carto-repere.est-focus{outline:none}
+.carto-repere:focus-visible::before,.carto-repere.est-focus::before{left:-13px;top:-13px;width:26px;height:26px;box-shadow:0 0 0 2px var(--or)}
+.carto-repere:disabled{cursor:default;opacity:.38}
+.carto-repere:disabled i{transform:none;background:var(--ink)}
+.carto-repere.pose{position:relative;display:inline-block;width:auto;height:22px;margin-left:12px}   /* hors carte, pour un exemple */
+.carto-repere.pose span{position:static;display:inline-block;margin-left:17px;text-shadow:none}
+.carto-repere.pose i{top:6px}.carto-repere.pose.anneau i,.carto-repere.pose.manque i,.carto-repere.pose[aria-pressed="true"] i{top:5px}.carto-repere.pose.estime i{top:4px}.carto-repere.pose.groupe i{top:-3px}
+.carto-repere.pose::before{top:-5px}.carto-repere.pose:focus-visible::before,.carto-repere.pose.est-focus::before{top:-2px}
+
+/* ── la fiche de lieu : contre le repère, un filet au-dessus, aucun cadre ── */
+.carto-fiche{position:absolute;left:0;top:0;width:0;height:0;cursor:default}
+.carto-fiche::before{content:'';position:absolute;left:11px;top:0;width:25px;height:1px;background:var(--or)}
+.carto-fiche-corps{position:absolute;left:36px;top:-24px;width:330px;padding:16px 20px 18px;background:var(--panel2);box-shadow:inset 0 2px 0 var(--or),0 20px 46px var(--drop)}
+.carto-fiche.gauche .carto-fiche-corps{left:auto;right:36px}
+.carto-fiche.gauche::before{left:-36px}
+.carto-fiche-corps .ke-petit{margin:0}
+.carto-fiche-nom{margin:6px 0 0;font-family:var(--f-nom);font-size:21px;line-height:1.15;letter-spacing:.035em;text-transform:uppercase;color:var(--ink)}
+.carto-fiche-dit{margin:8px 0 12px;font-style:italic;font-size:17px;line-height:1.36;color:var(--voile);text-decoration-thickness:1.2px}
+.carto-fiche-dit.ke-deduit{display:inline-block;margin-bottom:14px}
+.carto-fiche-gestes{display:flex;gap:22px;margin:14px 0 0}
+
+/* ── l'habillage ── */
+.carto>.carto-cartouche{position:absolute;left:34px;top:28px;pointer-events:none}
+.carto-cartouche .ke-petit{margin:0}
+.carto-titre{margin:4px 0 2px;white-space:nowrap;font-family:var(--f-nom);font-size:clamp(30px,2.5vw,44px);line-height:1.05;letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.carto-sous{margin:0;display:flex;align-items:baseline;gap:14px}
+.carto-sous output{font-family:var(--f-texte);font-weight:330;font-size:19px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.carto-sous em{font-style:italic;font-size:17px;color:var(--pale)}
+.carto>.carto-recherche{position:absolute;left:34px;top:150px;width:290px;cursor:auto}
+.carto-recherche .ke-champ input{font-size:18px}
+.carto-recherche .ke-menu-liste{position:static;margin-top:8px;min-width:0}
+.carto-recherche .ke-menu-liste [role="option"][aria-selected="true"]{font-style:normal;color:var(--ink);background:var(--releve);box-shadow:inset 2px 0 0 var(--or)}
+.carto>.carto-legende{position:absolute;left:34px;bottom:104px;pointer-events:none}
+.carto-legende{list-style:none;margin:0;padding:0;font-family:var(--f-ui);font-size:12.5px;line-height:1;color:var(--pale)}
+.carto-legende li{display:flex;align-items:center;gap:12px;height:21px}
+.carto-legende i{flex:none;position:relative;width:26px;height:12px}
+.carto-legende i::before{content:'';position:absolute;left:50%;top:50%}
+.carto-legende .capitale::before{width:7px;height:7px;margin:-3.5px;background:var(--ink);box-shadow:0 0 0 2px var(--bg),0 0 0 3.2px var(--ink)}
+.carto-legende .ville::before{width:7px;height:7px;margin:-3.5px;border-radius:50%;background:var(--ink)}
+.carto-legende .route::before{left:0;width:26px;height:3px;margin-top:-1.5px;background:linear-gradient(var(--bg),var(--bg)) 0 50%/100% 1px no-repeat,var(--ink2)}
+.carto-legende .fleuve::before{left:0;width:26px;height:2px;margin-top:-1px;background:var(--cy)}
+.carto-legende .courbe::before{left:0;width:26px;height:9px;margin-top:-5px;border-radius:50%;box-shadow:inset 0 1px 0 var(--ink3),inset 0 -1px 0 var(--ink3)}
+.carto-legende .estime::before{left:0;width:26px;height:2px;margin-top:-1px;background:repeating-linear-gradient(90deg,var(--amb) 0 2px,transparent 2px 6px)}
+.carto-legende .tenu::before{width:9px;height:9px;margin:-4.5px;background:var(--or)}
+.carto>.carto-pied{position:absolute;left:34px;right:270px;bottom:26px;display:flex;align-items:flex-end;gap:54px;pointer-events:none}
+.carto-pied>*{pointer-events:auto}
+.carto-echelle{--l:150px;position:relative;width:var(--l);height:34px;flex:none}
+.carto-echelle i{position:absolute;left:0;bottom:0;width:100%;height:5px;background:linear-gradient(90deg,var(--ink) 0 25%,transparent 25% 50%,var(--ink) 50% 75%,transparent 75%);box-shadow:inset 0 0 0 1px var(--ink)}
+.carto-echelle b,.carto-echelle span,.carto-echelle output{position:absolute;bottom:11px;font-family:var(--f-ui);font-weight:400;font-size:12px;line-height:1;color:var(--pale);white-space:nowrap}
+.carto-echelle b{left:0}.carto-echelle span{left:50%;transform:translateX(-50%)}
+.carto-echelle output{right:0;transform:translateX(50%);font-family:var(--f-texte);font-size:17px;color:var(--ink);bottom:10px}
+.carto-coords{margin:0;display:flex;flex-direction:column;gap:5px;flex:none;min-width:270px}
+.carto-coords output{font-family:var(--f-texte);font-weight:330;font-size:17px;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink);white-space:pre}
+.carto-coords span{font-family:var(--f-ui);font-size:12.5px;line-height:1;color:var(--pale)}
+.carto-couches{display:flex;flex-wrap:wrap;gap:6px 20px}
+.carto-couches .ke-btn{color:var(--pale);box-shadow:none}
+.carto-couches .ke-btn:hover{color:var(--ink)}
+.carto-couches .ke-btn[aria-pressed="true"]{font-style:normal;color:var(--ink);box-shadow:inset 0 -1px 0 var(--ink2)}
+.carto>.carto-rose{position:absolute;right:38px;top:34px;pointer-events:none}
+.carto-rose{width:124px;height:124px}
+.carto-rose svg{display:block;width:100%;height:100%;overflow:visible}
+.carto-rose .cercle{fill:none;stroke:var(--ink3);stroke-width:1}
+.carto-rose .cercle.fin{stroke:var(--line-cy);stroke-dasharray:1 3}
+.carto-rose .cran{stroke:var(--ink3);stroke-width:.8}
+.carto-rose .cran.fort{stroke:var(--ink);stroke-width:1.1}
+.carto-rose .aiguille{fill:var(--bg);stroke:var(--ink2);stroke-width:.9}
+.carto-rose .aiguille.fine{fill:none;stroke:var(--ink3)}
+.carto-rose .nord{fill:var(--ink);stroke:var(--ink);stroke-width:.9}
+.carto-rose text{font-family:var(--f-nom);font-size:9.5px;fill:var(--pale);text-anchor:middle}
+.carto-rose text.n{font-size:13px;fill:var(--ink)}
+.carto>.ke-rail{position:absolute;right:30px;top:50%;transform:translateY(-50%)}
+.carto .ke-rail>*{text-shadow:0 0 6px var(--bg),0 0 12px var(--bg)}
+.carto>.carto-zoom{position:absolute;right:30px;top:calc(50% + 118px);display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.carto-zoom .ke-btn{box-shadow:none;color:var(--pale)}
+.carto-zoom .ke-btn:hover{color:var(--ink)}
+.carto>.carto-mini{position:absolute;right:30px;bottom:26px;width:208px;height:130px;cursor:crosshair;background:var(--hdr-bg);box-shadow:0 0 0 1px var(--line)}
+.carto-mini canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
+.carto-mini i{position:absolute;box-shadow:inset 0 0 0 1.4px var(--or);pointer-events:none}
+.carto-mini i.point{width:13px;height:13px;margin:-6.5px;box-shadow:none;background:linear-gradient(var(--or),var(--or)) 50% 50%/100% 1.4px no-repeat,linear-gradient(var(--or),var(--or)) 50% 50%/1.4px 100% no-repeat}
+
+/* ── les tracés : le trajet, la zone, les isochrones, les prises ── */
+.carto-trajet-fond{fill:none;stroke:var(--bg);stroke-width:7;stroke-linejoin:round;stroke-linecap:round;opacity:.85}
+.carto-trajet{fill:none;stroke:var(--or);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.carto-trajet.estime{stroke:var(--amb);stroke-width:1.8;stroke-dasharray:2 5}
+.carto-trajet-ici{fill:var(--bg);stroke:var(--or);stroke-width:2}
+.carto-zone{fill:var(--or-bg);stroke:var(--or);stroke-width:1.6;stroke-linejoin:round}
+.carto-iso{fill:none;stroke:var(--amb);stroke-width:1.7;stroke-dasharray:1 6;stroke-linecap:round}
+.carto-iso-nom{font-family:var(--f-texte);font-style:italic;font-size:15px;fill:var(--amb);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.carto-poignee{position:absolute;left:0;top:0;width:0;height:0;padding:0;cursor:grab;touch-action:none}
+.carto-poignee::before{content:'';position:absolute;left:-16px;top:-16px;width:32px;height:32px}
+.carto-poignee::after{content:'';position:absolute;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 2.5px var(--bg);transition:transform var(--vite) var(--ease),background-color var(--vite)}
+.carto-poignee.depart::after{border-radius:0}
+.carto-poignee.arrivee::after{background:var(--bg);box-shadow:inset 0 0 0 3px var(--ink),0 0 0 2.5px var(--bg)}
+.carto-poignee.centre::after{background:var(--amb)}
+.carto-poignee:hover::after,.carto-poignee:focus-visible::after,.carto-poignee.tenu::after{transform:scale(1.3);background:var(--or)}
+.carto-poignee.arrivee:hover::after,.carto-poignee.arrivee:focus-visible::after,.carto-poignee.arrivee.tenu::after{background:var(--bg);box-shadow:inset 0 0 0 3px var(--or),0 0 0 2.5px var(--bg)}
+.carto-poignee.tenu{cursor:grabbing}
+.carto-poignee:focus-visible{outline:none}
+.carto-poignee:focus-visible::before{left:-13px;top:-13px;width:26px;height:26px;border-radius:50%;box-shadow:0 0 0 2px var(--or)}
+
+/* ── le profil du trajet ── */
+.carto-profil{position:relative;margin-top:26px;cursor:crosshair}
+.carto-profil svg{display:block;width:100%;height:150px;overflow:visible}
+.carto-profil .aire{fill:var(--trait);opacity:.55}
+.carto-profil .sol{stroke:var(--ink3);stroke-width:1}
+.carto-profil .trace{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round}
+.carto-profil .etape{stroke:var(--ink2);stroke-width:1}
+.carto-profil text{font-family:var(--f-ui);font-size:12px;fill:var(--pale)}
+.carto-profil text.haut{font-family:var(--f-texte);font-size:16px;fill:var(--ink)}
+.carto-profil .viseur{stroke:var(--ink3);stroke-width:1;opacity:0}
+.carto-profil .point{fill:var(--or);opacity:0}
+.carto-profil.vise .viseur,.carto-profil.vise .point,.carto-profil:focus-visible .viseur,.carto-profil:focus-visible .point{opacity:1}
+.carto-profil-lu{margin:10px 0 0;font-family:var(--f-ui);font-size:var(--c-petit);color:var(--pale)}
+.carto-profil-lu b{font-family:var(--f-texte);font-weight:330;font-size:21px;color:var(--ink);margin-right:4px}
+
+/* ── les planches de la page ── */
+.carto-planche{padding:120px var(--s8) 0}
+.carto-planche:last-child{padding-bottom:140px}
+.carto-tete{margin:0 0 44px;max-width:1100px}
+.carto-tete .ke-sur{margin-bottom:14px}
+.carto-tete h2{font-size:clamp(40px,3.6vw,62px)}
+.carto-tete .ke-geste{margin:18px 0 0;max-width:62em}
+.carto-specimens{display:grid;gap:20px 34px;margin:0}
+.carto-specimens.six{grid-template-columns:repeat(6,minmax(0,1fr))}
+.carto-specimens.etats{grid-template-columns:repeat(7,minmax(0,1fr));margin-top:70px}
+.carto-specimens figure{margin:0;padding-top:26px;box-shadow:inset 0 1px 0 var(--line)}
+.carto-specimens.six figure{padding-top:44px}
+.carto-specimens.six .carto-repere{transform:scale(2.2);transform-origin:0 50%;margin-left:14px}
+.carto-specimens figcaption{margin-top:30px;font-family:var(--f-ui);font-size:var(--c-petit);line-height:1.4;color:var(--pale)}
+.carto-specimens.six figcaption{margin-top:44px}
+.carto-specimens figcaption b{display:block;font-family:var(--f-texte);font-weight:380;font-size:21px;color:var(--ink)}
+.carto-duo{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:54px;align-items:start}
+.carto.moyenne{height:600px}
+.carto-lecture .ke-petit{margin:26px 0 4px}
+.carto-lecture .ke-petit:first-child{margin-top:0}
+.carto-grand{margin:0;font-weight:300;font-size:clamp(44px,3.6vw,62px);line-height:1;letter-spacing:-.012em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.carto-moyen{margin:0 0 6px;font-weight:340;font-size:23px;line-height:1.25;font-variant-numeric:tabular-nums;color:var(--ink)}
+.carto-modes{display:flex;flex-wrap:wrap;gap:6px 20px;margin:12px 0 0}
+.carto-modes .ke-btn[aria-pressed="true"]{font-style:normal}
+.carto-note{display:inline-block;margin:16px 0 0;font-style:italic;font-size:16px;color:var(--amb)}
+.carto-pieces{display:grid;grid-template-columns:1.25fr 1.2fr .7fr .8fr 1.3fr;gap:44px;align-items:start}
+.carto-pieces figure{margin:0;padding-top:30px;min-height:250px;display:flex;flex-direction:column;box-shadow:inset 0 1px 0 var(--line)}
+.carto-pieces figcaption{margin-top:auto;padding-top:30px;font-family:var(--f-ui);font-size:var(--c-petit);color:var(--pale)}
+.carto-pieces .echelles>div{margin:0 30px 30px 0}
+.carto-fonds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
+.carto-fonds figure{margin:0}
+.carto-fonds figcaption{margin-top:12px;font-family:var(--f-ui);font-size:var(--c-petit);color:var(--pale)}
+.carto-fondu{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--scene)}
+.carto-fondu>canvas{position:absolute;inset:0;width:100%;height:100%}
+.carto-fond-titre{position:absolute;left:7%;bottom:9%;margin:0;font-weight:300;font-size:clamp(28px,2.6vw,46px);line-height:1.02;letter-spacing:-.01em;color:var(--ink);text-shadow:0 0 14px var(--bg),0 0 30px var(--bg)}
+.carto-fond-titre em{display:block;font-style:italic;color:var(--or)}
+.carto-flux-planche{margin-top:70px;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:54px;align-items:end}
+.carto-flux-planche .ke-lu{margin:0 0 30px}
+.carto-flux{aspect-ratio:auto;height:640px}
+.carto-flux-arcs{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.carto-flux-arcs .arc{fill:none;stroke:var(--ink2);stroke-linecap:round;opacity:.5;transition:opacity var(--vite),stroke var(--vite)}
+.carto-flux-arcs .arc.vif{stroke:var(--or);opacity:1}
+.carto-flux-arcs.vise .arc:not(.vif){opacity:.16}
+.carto-flux-arcs .prise{fill:none;stroke:transparent;stroke-width:20;pointer-events:stroke;cursor:pointer}
+.carto-flux-arcs .prise:focus-visible{outline:none}
+.carto-flux-arcs .lieu{fill:var(--ink);stroke:var(--bg);stroke-width:2}
+.carto-flux-arcs text{font-family:var(--f-texte);font-size:15.5px;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+@media (max-width:1300px){.carto-specimens.six,.carto-specimens.etats{grid-template-columns:repeat(3,1fr)}.carto-duo,.carto-flux-planche{grid-template-columns:1fr}.carto-pieces{grid-template-columns:1fr 1fr}.carto-fonds{grid-template-columns:1fr}}
+/* l'habillage reste lisible sur un plan chargé : un halo de la couleur du fond, jamais un cartouche opaque */
+.carto>.carto-cartouche,.carto>.carto-legende,.carto>.carto-pied,.carto>.carto-zoom,.carto>.carto-recherche input{text-shadow:0 0 4px var(--bg),0 0 9px var(--bg),0 0 16px var(--bg),0 0 26px var(--bg)}
+.carto>.carto-cartouche::before,.carto>.carto-pied::before{content:'';position:absolute;inset:-26px -60px -30px -40px;z-index:-1;background:radial-gradient(ellipse 60% 62% at 42% 50%,var(--bg) 0%,transparent 100%);opacity:.72;pointer-events:none}
+.carto-mini:focus-visible{outline:none;box-shadow:0 0 0 1px var(--line),0 0 0 3px var(--or)}
+.carto-mini i.cadre{box-shadow:inset 0 0 0 1.4px var(--ink)}

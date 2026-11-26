@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit étude · les HUD</title>
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="kit-etude.css">
+<link rel="stylesheet" href="hud.css">
+<script src="nav.js" defer></script>
+<script src="kit-etude.js" defer></script>
+<script src="hud.js" defer></script>
+<script src="hud-vitrine.js" defer></script>
+</head>
+<body>
+<header class="ke-barre" data-page="hud"></header>
+<main class="hud-page">
+  <div class="hud-tete">
+    <h1>Les <em>HUD</em></h1>
+    <p class="ke-petit">La souris porte le réticule. Tire pour tourner. Un clic verrouille la cible visée. Flèches, + et −, Tab d’une cible à l’autre, Entrée, Échap, Espace ; Ctrl + molette : la focale.</p>
+  </div>
+
+  <!-- ═══ 10 · LE VISEUR, d'abord ═══ -->
+  <section class="hud-planche" id="viseur" style="margin-top:0">
+    <div class="hud-viseur" id="le-viseur" data-hud="viseur"></div>
+  </section>
+
+  <!-- ═══ 01 · LES CADRES ═══ -->
+  <section class="hud-planche" id="cadres">
+    <p class="hud-titre"><i>01</i><b>Les cadres de visée</b><span>Un clic tient le cadre : ses repères passent à l’orange.</span></p>
+    <div class="hud-grille hud-cadres">
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="coins" aria-pressed="false"><span>Les coins<i>repos</i></span></button>
+      <button type="button" class="hud-cadre est-survol" data-hud="cadre" data-type="crochets" aria-pressed="false"><span>Les crochets<i>survol</i></span></button>
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="mires" aria-pressed="true"><span>Les mires<i>tenu</i></span></button>
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="graticule" aria-pressed="false"><span>Le graticule<i></i></span></button>
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="regles" aria-pressed="false"><span>Les règles de bord<i></i></span></button>
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="tiers" aria-pressed="false"><span>Les tiers<i></i></span></button>
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="or" aria-pressed="false"><span>Le nombre d’or<i></i></span></button>
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="zones" aria-pressed="false"><span>Les zones sûres<i></i></span></button>
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="points" aria-pressed="false"><span>La mise au point<i></i></span></button>
+      <button type="button" class="hud-cadre" data-hud="cadre" data-type="formats" aria-pressed="false"><span>Les formats<i></i></span></button>
+    </div>
+  </section>
+
+  <!-- ═══ 02 · LES RÉTICULES ═══ -->
+  <section class="hud-planche" id="reticules">
+    <p class="hud-titre"><i>02</i><b>Les réticules</b><span>Survolé, il se resserre un peu. Cliqué, il verrouille : il se ferme et passe à l’orange.</span></p>
+    <div class="hud-grille hud-reticules">
+      <button type="button" class="hud-reticule" data-hud="reticule" data-type="croix" aria-pressed="false"><span>La croix fine</span><em></em></button>
+      <button type="button" class="hud-reticule est-survol" data-hud="reticule" data-type="point" aria-pressed="false"><span>Le point</span><em data-repos="visé"></em></button>
+      <button type="button" class="hud-reticule" data-hud="reticule" data-type="tele" aria-pressed="false"><span>Le télémètre</span><em></em></button>
+      <button type="button" class="hud-reticule" data-hud="reticule" data-type="crans" aria-pressed="false"><span>À crans</span><em></em></button>
+      <button type="button" class="hud-reticule" data-hud="reticule" data-type="suivi" aria-pressed="false"><span>De suivi</span><em></em></button>
+      <button type="button" class="hud-reticule" data-hud="reticule" data-type="verrou" aria-pressed="true"><span>De verrouillage</span><em></em></button>
+      <button type="button" class="hud-reticule" data-hud="reticule" data-type="duplex" aria-pressed="false"><span>Le duplex</span><em></em></button>
+      <button type="button" class="hud-reticule" data-hud="reticule" data-type="chevron" aria-pressed="false"><span>Le chevron</span><em></em></button>
+    </div>
+  </section>
+
+  <!-- ═══ 03 · LA CIBLE SUIVIE ═══ -->
+  <section class="hud-planche" id="suivi">
+    <p class="hud-titre"><i>03</i><b>La cible suivie</b><span>Le cadre suit le point. Sa route prévue est en pointillé d’ambre, son étiquette au bout d’un filet.</span><button type="button" class="ke-btn petit" data-hud-lancer aria-pressed="false">lancer</button></p>
+    <div class="hud-suivi" data-hud="suivi"></div>
+  </section>
+
+  <!-- ═══ 04 · L'ATTITUDE ═══ -->
+  <section class="hud-planche" id="attitude">
+    <p class="hud-titre"><i>04</i><b>L’horizon, le cap, les rubans</b><span>Tout se tire, tout se règle aux flèches (Maj : plus vite). Double-clic : la valeur de départ. Le repère orange est la consigne.</span></p>
+    <div class="hud-grille hud-attitude">
+      <div class="hud-horizon" data-hud="horizon" data-roulis="-12" data-tangage="4"></div>
+      <div>
+        <div class="hud-cap" data-hud="cap" data-cap="47" data-consigne="62" data-prevu="54"></div>
+        <p class="hud-leg" style="margin-top:20px"><b>Le ruban de cap</b>la consigne en orange, le cap prévu en ambre</p>
+        <div class="hud-regleh" style="max-width:520px;margin-top:44px" data-hud="regle" data-min="-50" data-max="50" data-valeur="12" data-consigne="0" data-prevu="4" data-unite="‰"></div>
+        <p class="hud-leg"><b>La règle</b>l’échelle reste, l’index glisse</p>
+      </div>
+      <div class="hud-ruban" data-hud="ruban" data-nom="Vitesse" data-unite="nœuds" data-valeur="142" data-cote="gauche" data-consigne="150" data-prevu="147" data-k="3.4" data-pas="5" data-gros="25" data-min="0"></div>
+      <div class="hud-ruban" data-hud="ruban" data-nom="Altitude" data-unite="mètres" data-valeur="2480" data-consigne="2600" data-prevu="2530" data-k="1.1" data-pas="20" data-gros="100" data-pas-clavier="10"></div>
+    </div>
+  </section>
+
+  <!-- ═══ 05 · LE RADAR ═══ -->
+  <section class="hud-planche" id="radar">
+    <p class="hud-titre"><i>05</i><b>Le radar</b><span>Clique un écho, ou Tab puis Entrée : sa route s’allonge en pointillé. + et − changent la portée.</span><button type="button" class="ke-btn petit" data-hud-lancer aria-pressed="false">balayer</button></p>
+    <div class="hud-radar-zone">
+      <div><div class="hud-radar" id="le-radar" data-hud="radar" data-portee="20" data-tenu="1"></div>
+        <div class="hud-portees" role="group" aria-label="La portée" id="portees"><button type="button" class="ke-btn petit" data-p="10">10 km</button><button type="button" class="ke-btn petit" data-p="20" aria-pressed="true">20 km</button><button type="button" class="ke-btn petit" data-p="40">40 km</button></div></div>
+      <div aria-live="polite" id="fiche-echo"></div>
+    </div>
+  </section>
+
+  <!-- ═══ 06 · LES JAUGES ═══ -->
+  <section class="hud-planche" id="jauges">
+    <p class="hud-titre"><i>06</i><b>Les jauges</b><span>En arc, en segments, à crans, à bulle, en rose. Toutes se tirent et se règlent aux flèches.</span></p>
+    <div class="hud-grille hud-jauges">
+      <div><div class="hud-arc" data-hud="arc" data-nom="Régime" data-unite="tours × 100" data-valeur="46" data-consigne="60" data-limite="85"></div><p class="hud-leg">repos</p></div>
+      <div><div class="hud-arc est-survol" data-hud="arc" data-nom="Pression" data-unite="bars" data-min="0" data-max="12" data-dec="1" data-valeur="7.4" data-limite="10"></div><p class="hud-leg">survol</p></div>
+      <div><div class="hud-arc est-tenu" data-hud="arc" data-nom="Charge" data-unite="pour cent" data-valeur="72" data-consigne="80"></div><p class="hud-leg">tenu</p></div>
+      <div><div class="hud-arc" data-hud="arc" data-nom="Température" data-unite="degrés" data-min="-20" data-max="60" data-valeur="18" data-prevu="31"></div><p class="hud-leg">avec le prévu</p></div>
+      <div><div class="hud-arc" data-hud="arc" data-etat="chargement" data-nom="Débit" data-unite="litres" data-valeur="30"></div><p class="hud-leg">en chargement</p></div>
+      <div><div class="hud-arc" data-hud="arc" data-etat="perdu" data-nom="Débit" data-unite="litres" data-valeur="30"></div><p class="hud-leg">signal perdu</p></div>
+      <div><div class="hud-arc" data-hud="arc" data-etat="arret" data-nom="Réserve" data-unite="heures" data-valeur="50"></div><p class="hud-leg">hors service</p></div>
+    </div>
+    <div class="hud-grille" style="grid-template-columns:minmax(0,1.2fr) auto auto minmax(0,260px) minmax(0,300px);margin-top:64px;align-items:center;gap:44px 64px">
+      <div class="hud-pile">
+        <div class="hud-segments" data-hud="segments" data-valeur="62" data-consigne="75" data-prevu="70" data-unite="%" aria-label="Niveau, avec consigne et prévu"></div>
+        <div class="hud-segments est-tenu" data-hud="segments" data-valeur="38" data-unite="%" aria-label="Niveau tenu"></div>
+        <div class="hud-segments" data-hud="segments" data-etat="chargement" data-valeur="0" data-unite="%" aria-label="En chargement"></div>
+        <div class="hud-segments" data-hud="segments" data-etat="perdu" data-valeur="20" data-unite="%" aria-label="Signal perdu"></div>
+        <div class="hud-segments" data-hud="segments" data-etat="arret" data-valeur="0" data-unite="%" aria-label="Hors service"></div>
+        <p class="hud-leg" style="margin:0"><b>Les segments</b>consigne, prévu, tenu, chargement, perdu, hors service</p>
+      </div>
+      <div class="hud-crans" data-hud="crans" data-nom="Gain" data-unite="décibels" data-min="0" data-max="20" data-valeur="11.5" data-consigne="14" data-prevu="13" data-limite="17"></div>
+      <div class="hud-crans" data-hud="crans" data-nom="Dose" data-unite="millisieverts" data-min="0" data-max="10" data-valeur="3.2"></div>
+      <div><div class="hud-niveau" data-hud="niveau" data-x="1.2" data-y="-0.6"></div>
+        <div class="hud-niveau" style="margin-top:22px" data-hud="niveau" data-forme="long" data-x="-0.8"></div></div>
+      <div class="hud-boussole" data-hud="boussole" data-cap="47" data-consigne="110" data-prevu="72"></div>
+    </div>
+  </section>
+
+  <!-- ═══ 07 · LA TÉLÉMÉTRIE ═══ -->
+  <section class="hud-planche" id="telemetrie">
+    <p class="hud-titre"><i>07</i><b>La télémétrie</b><span>Les nombres s’alignent sur la virgule. Tenu en orange, prédit en ambre, perdu en italique pâle.</span><button type="button" class="ke-btn petit" data-hud-lancer aria-pressed="false">lancer</button></p>
+    <div class="hud-tele-zone">
+      <div class="hud-tele" id="la-tele" data-hud="tele"></div>
+      <div>
+        <div class="hud-oscillo" id="oscillo" data-hud="oscillo" data-frequence="3" data-amplitude="0.6"></div>
+        <div class="hud-reglages">
+          <div class="ke-reglage"><p class="ke-petit"><span>fréquence</span><output></output></p><div class="ke-curseur" id="osc-f" data-min="100" data-max="900" data-pas="10" data-valeur="300" data-unite="Hz" aria-label="Fréquence"></div></div>
+          <div class="ke-reglage"><p class="ke-petit"><span>amplitude</span><output></output></p><div class="ke-curseur" id="osc-a" data-min="0" data-max="1" data-pas="0.01" data-valeur="0.6" data-unite="V" aria-label="Amplitude"></div></div>
+        </div>
+        <div class="hud-spectre" data-hud="spectre" data-traits="64"></div>
+        <p class="hud-spectre-pied"><span>40 Hz</span><span>crête à <b></b></span><span>20 kHz</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 08 · LE TEMPS ═══ -->
+  <section class="hud-planche" id="temps">
+    <p class="hud-titre"><i>08</i><b>Le temps</b><span>Code temporel, compte à rebours, anneau, chronologie. Tire, ou les flèches. Rien ne tourne avant « lancer ».</span><button type="button" class="ke-btn petit" data-hud-lancer aria-pressed="false">lancer</button></p>
+    <div class="hud-grille hud-temps">
+      <div><div class="hud-code" data-hud="code" data-depart="4367.33"></div><p class="hud-leg" style="margin-top:20px"><b>Le code temporel</b>24 images par seconde</p></div>
+      <div><div class="hud-code" data-hud="code" data-rebours data-depart="8.4"></div><p class="hud-leg" style="margin-top:20px"><b>Le compte à rebours</b>passé zéro, il compte en orange</p></div>
+      <div class="hud-anneau" data-hud="anneau" data-valeur="22" data-total="60" data-prevu="41"></div>
+      <div class="hud-anneau petit est-tenu" data-hud="anneau" data-valeur="47" data-total="60"></div>
+      <div class="hud-anneau petit" data-hud="anneau" data-etat="perdu" data-valeur="12" data-total="60"></div>
+      <div class="hud-anneau petit" data-hud="anneau" data-etat="arret" data-valeur="0" data-total="60"></div>
+    </div>
+    <div class="hud-chrono" id="la-chrono" data-hud="chrono"></div>
+    <p class="hud-dit" id="chrono-dit" aria-live="polite"></p>
+  </section>
+
+  <!-- ═══ 09 · LES APPELS ═══ -->
+  <section class="hud-planche" id="appels">
+    <p class="hud-titre"><i>09</i><b>Les appels</b><span>Étiquettes à filet de rappel, cotes, angles, cartouches, bandeaux, menu radial. Survol et clavier disent la même chose.</span></p>
+    <div class="hud-appels">
+      <div class="hud-figure" id="la-figure"></div>
+      <div>
+        <div class="hud-grille" style="grid-template-columns:1fr 1fr;gap:34px">
+          <div class="hud-cartouche"><b>Relevé 14</b><em>versant nord</em><span>altitude</span><strong>2 480 m</strong><span>pente</span><strong>31°</strong><span>exposition</span><strong>NNE</strong></div>
+          <div class="hud-cartouche tenu"><b>Relevé 15</b><em>tenu en ce moment</em><span>altitude</span><strong>2 612 m</strong><span>pente</span><strong>38°</strong><span>exposition</span><strong>N</strong></div>
+        </div>
+        <div class="hud-bandeaux">
+          <p class="hud-bandeau" style="margin:0"><small>calme</small>Tous les relevés sont à jour.</p>
+          <p class="hud-bandeau tenu" style="margin:0"><small>tenu</small>Le relevé 15 attend ta main.</p>
+          <p class="hud-bandeau predit" style="margin:0"><small>prédit</small>La crête serait atteinte dans douze minutes.</p>
+          <p class="hud-bandeau perdu" style="margin:0"><small>perdu</small>Le relevé 9 ne répond plus.</p>
+        </div>
+        <div style="display:flex;gap:44px;align-items:center;margin-top:34px">
+          <div class="hud-radial" id="le-radial" data-hud="radial" aria-label="Menu radial"></div>
+          <p class="hud-leg" style="max-width:14em;margin:0"><b>Le menu radial</b>flèches pour tourner, Entrée pour choisir ; un secteur éteint dit pourquoi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 10 · LES ÉTATS ═══ -->
+  <section class="hud-planche" id="etats">
+    <p class="hud-titre"><i>10</i><b>Les états</b><span>Chaque famille, figée dans chacun de ses états.</span></p>
+    <div class="hud-etats" id="les-etats"></div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit étude · les cartes</title>
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="kit-etude.css">
+<link rel="stylesheet" href="carto.css">
+<script src="nav.js" defer></script>
+<script src="kit-etude.js" defer></script>
+<script src="carto.js" defer></script>
+</head>
+<body class="carto-page">
+<header class="ke-barre" data-page="carto"></header>
+<main>
+
+<!-- ═══ LA CARTE : cinq hauteurs, un seul geste ═══ -->
+<section class="carto-une" aria-label="La carte">
+  <div id="carte" aria-label="Carte des Terres du Levant. Flèches pour se déplacer, + et − pour changer de hauteur, 1 à 5 pour y sauter, Entrée pour tenir un bâtiment."></div>
+  <p class="carto-geste">Tire pour te déplacer · Ctrl + molette, ou pince, pour descendre · double-clic · 1 à 5 · le rail à droite</p>
+</section>
+
+<!-- ═══ LES REPÈRES ═══ -->
+<section class="carto-planche" id="reperes">
+  <header class="carto-tete"><p class="ke-sur"><b>01</b>Les repères</p><h2>Six <em>formes</em></h2><p class="ke-geste">La forme dit la nature du lieu, jamais sa couleur. Sur la carte, ils se regroupent quand on monte.</p></header>
+  <div class="carto-specimens six">
+    <figure><span class="carto-repere point pose nomme"><i></i></span><figcaption><b>le point</b>un lieu sûr</figcaption></figure>
+    <figure><span class="carto-repere anneau pose nomme"><i></i></span><figcaption><b>l’anneau</b>un lieu ouvert</figcaption></figure>
+    <figure><span class="carto-repere point pose nomme" aria-pressed="true"><i></i></span><figcaption><b>le carré</b>celui qu’on tient</figcaption></figure>
+    <figure><span class="carto-repere estime pose nomme"><i></i></span><figcaption><b>le pointillé</b>un lieu estimé</figcaption></figure>
+    <figure><span class="carto-repere groupe pose nomme"><i>7</i></span><figcaption><b>le groupe</b>sept lieux, de haut</figcaption></figure>
+    <figure><span class="carto-repere manque pose nomme"><i></i></span><figcaption><b>le creux</b>on sait qu’il existe, pas où</figcaption></figure>
+  </div>
+  <div class="carto-specimens etats">
+    <figure><button type="button" class="carto-repere point pose nomme"><i></i><span>Halle aux grains</span></button><figcaption>repos</figcaption></figure>
+    <figure><button type="button" class="carto-repere point pose nomme est-survol"><i></i><span>Halle aux grains</span></button><figcaption>survol</figcaption></figure>
+    <figure><button type="button" class="carto-repere point pose nomme est-focus"><i></i><span>Halle aux grains</span></button><figcaption>clavier</figcaption></figure>
+    <figure><button type="button" class="carto-repere point pose nomme" aria-pressed="true"><i></i><span>Halle aux grains</span></button><figcaption>tenu</figcaption></figure>
+    <figure><button type="button" class="carto-repere point pose nomme" disabled><i></i><span>Halle aux grains</span></button><figcaption>désactivé</figcaption></figure>
+    <figure><button type="button" class="carto-repere estime pose nomme"><i></i><span>Observatoire</span></button><figcaption>estimé</figcaption></figure>
+    <figure><button type="button" class="carto-repere manque pose nomme"><i></i><span>Les Abattoirs</span></button><figcaption>manquant</figcaption></figure>
+  </div>
+</section>
+
+<!-- ═══ LE TRAJET ═══ -->
+<section class="carto-planche" id="trajet">
+  <header class="carto-tete"><p class="ke-sur"><b>02</b>Le trajet</p><h2>Poser des <em>points</em></h2><p class="ke-geste">Clique pour poser un point, tire un rond pour le déplacer, double-clic pour le retirer. Au clavier : Entrée pose au centre, Retour arrière retire, les flèches déplacent le point tenu.</p></header>
+  <div class="carto-duo">
+    <div id="carte-trajet" class="moyenne" aria-label="Carte du trajet"></div>
+    <aside class="carto-lecture">
+      <p class="ke-petit">distance</p><p class="carto-grand" id="trajet-dist" aria-live="polite"></p>
+      <p class="ke-petit">durée</p><p class="carto-grand" id="trajet-duree"></p>
+      <p class="carto-modes"><button type="button" class="ke-btn petit" data-mode="0" aria-pressed="true">à pied</button><button type="button" class="ke-btn petit" data-mode="1" aria-pressed="false">à vélo</button><button type="button" class="ke-btn petit" data-mode="2" aria-pressed="false">en voiture</button></p>
+      <p class="ke-petit">dénivelé</p><p class="carto-moyen" id="trajet-denivele"></p>
+      <p class="carto-moyen" id="trajet-etapes"></p>
+      <p class="carto-modes"><button type="button" class="ke-btn petit" id="trajet-revenir">revenir d’un point</button><button type="button" class="ke-btn petit discret" id="trajet-effacer">tout effacer</button></p>
+    </aside>
+  </div>
+  <div id="profil-trajet"></div>
+</section>
+
+<!-- ═══ LES ZONES ═══ -->
+<section class="carto-planche" id="zones">
+  <header class="carto-tete"><p class="ke-sur"><b>03</b>Les zones</p><h2>Une aire, des <em>courbes</em></h2><p class="ke-geste">Tire les sommets de l’aire, clique pour en ajouter un. Le rond d’ambre est le départ des isochrones : tire-le, les courbes suivent les routes, la pente ralentit, la mer arrête.</p></header>
+  <div class="carto-duo">
+    <div id="carte-zone" class="moyenne" aria-label="Carte des zones"></div>
+    <aside class="carto-lecture">
+      <p class="ke-petit">surface</p><p class="carto-grand" id="zone-aire" aria-live="polite"></p>
+      <p class="ke-petit">tour</p><p class="carto-moyen" id="zone-tour"></p>
+      <p class="ke-petit">la densité</p>
+      <p class="carto-modes"><button type="button" class="ke-btn petit" data-dens="points" aria-pressed="true">en points</button><button type="button" class="ke-btn petit" data-dens="hachures" aria-pressed="false">en hachures</button><button type="button" class="ke-btn petit" data-dens="" aria-pressed="false">aucune</button></p>
+      <p class="ke-petit">le temps de trajet</p>
+      <p class="carto-modes"><button type="button" class="ke-btn petit" id="zone-iso" aria-pressed="true">les isochrones</button></p>
+      <p class="carto-note">en voiture sur les routes, puis à pied : une, deux, trois fois le pas</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══ L'HABILLAGE ═══ -->
+<section class="carto-planche" id="habillage">
+  <header class="carto-tete"><p class="ke-sur"><b>04</b>L’habillage</p><h2>Ce qui tient la <em>carte</em></h2><p class="ke-geste">Chaque pièce sert seule : l’échelle qui suit la hauteur, la rose, le cartouche, la légende, les couches.</p></header>
+  <div class="carto-pieces">
+    <figure><div id="cartouche-seul"></div><figcaption>le cartouche</figcaption></figure>
+    <figure class="echelles"><div id="ech-1"></div><div id="ech-2"></div><div id="ech-3"></div><figcaption>l’échelle, à trois hauteurs</figcaption></figure>
+    <figure><div id="rose-seule"></div><figcaption>la rose</figcaption></figure>
+    <figure><ul id="legende-seule"></ul><figcaption>la légende</figcaption></figure>
+    <figure><div id="couches-seules"></div><p class="carto-coords" style="margin-top:34px"><output>46° 12′ 08″ N   4° 31′ 40″ E</output><span>altitude, 412 m</span></p><figcaption>les couches · le pointeur</figcaption></figure>
+  </div>
+</section>
+
+<!-- ═══ LES FONDS ET LES FLUX ═══ -->
+<section class="carto-planche" id="fonds">
+  <header class="carto-tete"><p class="ke-sur"><b>05</b>Les fonds et les flux</p><h2>Pour une <em>diapositive</em></h2><p class="ke-geste">Trois fonds prêts à poser derrière un titre, et une carte de flux : survole un arc.</p></header>
+  <div class="carto-fonds">
+    <figure><div data-carto-fond="points"><p class="carto-fond-titre">Le monde<em>en points</em></p></div><figcaption>le monde en points</figcaption></figure>
+    <figure><div data-carto-fond="latitudes"><p class="carto-fond-titre">Le monde<em>en parallèles</em></p></div><figcaption>le monde en traits de latitude</figcaption></figure>
+    <figure><div data-carto-fond="niveaux"><p class="carto-fond-titre">Une région<em>en courbes</em></p></div><figcaption>la région en courbes de niveau</figcaption></figure>
+  </div>
+  <div class="carto-flux-planche">
+    <div id="flux" aria-label="Carte de flux"></div>
+    <p class="ke-lu" id="flux-lu" aria-live="polite"><small>les flux depuis Port-Clair</small>L’épaisseur dit le volume.</p>
+  </div>
+</section>
+</main>
+</body>
+</html>

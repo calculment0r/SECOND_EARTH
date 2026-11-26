@@ -1,0 +1,162 @@
+/* KIT ÉTUDE · LA DATAVIZ EN DEUX DIMENSIONS. Les jetons de kit-etude.css seulement, aucune couleur écrite.
+   La grammaire : une seule teinte, l'encre, en cinq valeurs (--dv-1 à --dv-5) ; l'orange désigne ce qu'on vise ou ce qu'on tient ;
+   l'ambre en pointillé, ce qui est déduit ou prévu ; les hachures, ce qu'on ne sait pas. Le texte porte les encres, jamais la couleur
+   de la marque. Les séries se distinguent par la valeur d'encre, l'épaisseur, le pointillé, la place et l'étiquette posée contre elles. */
+:root,[data-theme="dark"],[data-theme="light"]{
+  --dv-1:color-mix(in srgb,var(--ink) 9%,var(--bg));
+  --dv-2:color-mix(in srgb,var(--ink) 19%,var(--bg));
+  --dv-3:color-mix(in srgb,var(--ink) 34%,var(--bg));
+  --dv-4:color-mix(in srgb,var(--ink) 56%,var(--bg));
+  --dv-5:var(--ink);
+  --dv-bande:color-mix(in srgb,var(--ink) 6%,var(--bg));
+}
+
+/* ── la page : une grille dense de planches ── */
+.dv-tete{position:relative;padding:9vh var(--s8) 6vh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:var(--s8);align-items:end}
+.dv-tete h1{font-size:clamp(64px,7vw,124px)}
+.dv-tete .ke-sur{margin-bottom:22px}
+.dv-gram{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 30px;margin:0;padding:0;list-style:none}
+.dv-gram li{padding-top:12px;box-shadow:inset 0 1px 0 var(--line)}
+.dv-gram svg{display:block;width:100%;height:34px;overflow:visible}
+.dv-gram b{display:block;margin-top:10px;font-weight:380;font-size:19px;line-height:1.2}
+.dv-gram span{display:block;font-family:var(--f-ui);font-size:12.5px;line-height:1.35;color:var(--pale)}
+.dv-famille{position:relative;padding:11vh var(--s8) 0}
+.dv-famille>header{position:relative;display:flex;align-items:baseline;gap:22px;margin-bottom:34px}
+.dv-famille>header h2{font-family:var(--f-nom);font-weight:400;font-size:34px;letter-spacing:.03em;text-transform:uppercase;line-height:1}
+.dv-famille>header p{margin:0;font-family:var(--f-ui);font-size:var(--c-petit);color:var(--pale)}
+.dv-famille[data-mot]::before{left:auto;right:-1vw;top:3vh;font-size:clamp(140px,17vw,300px)}
+.dv-grille{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:64px 54px;align-items:start}
+.dv-p{grid-column:span var(--l,6);min-width:0;padding-top:14px;box-shadow:inset 0 1px 0 var(--line)}
+.dv-p>header{display:grid;grid-template-columns:1fr auto;gap:2px 20px;align-items:baseline;margin-bottom:20px}
+.dv-p>header .ke-petit{grid-column:1/-1}
+.dv-p>header h3{font-weight:340;font-size:clamp(22px,1.6vw,28px);line-height:1.15;letter-spacing:-.005em}
+.dv-geste{margin:0;font-family:var(--f-ui);font-size:12.5px;color:var(--pale);text-align:right;max-width:26em}
+.dv-lu{display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-items:baseline;margin:16px 0 0;min-height:62px}
+.dv-lu small{grid-column:1/-1;font-family:var(--f-ui);font-size:12.5px;color:var(--pale)}
+.dv-lu b{font-family:var(--f-texte);font-weight:300;font-size:36px;line-height:1.05;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.dv-lu span{font-style:italic;font-size:18px;line-height:1.3;color:var(--voile);text-wrap:pretty}
+.dv-lu b:empty{display:none}
+.dv-lu b:empty+span{grid-column:1/-1}
+.dv-pied{padding:12vh var(--s8) 10vh;font-family:var(--f-ui);font-size:var(--c-petit);color:var(--pale)}
+
+/* ── le graphique : le cadre commun ── */
+.dv{position:relative}
+.dv svg{display:block;width:100%;height:auto;overflow:visible}
+.dv text{font-family:var(--f-ui);font-size:12px;fill:var(--pale);font-variant-numeric:tabular-nums}
+.dv .dv-nomtxt{font-family:var(--f-texte);font-size:15px;fill:var(--voile);transition:fill .15s}
+.dv .dv-nomtxt.it{font-style:italic}
+.dv .dv-nomcap{font-family:var(--f-nom);font-size:13px;letter-spacing:.05em;text-transform:uppercase;fill:var(--ink2)}
+.dv .dv-val{font-family:var(--f-texte);font-size:15px;fill:var(--ink)}
+.dv .dv-grand{font-family:var(--f-texte);font-weight:300;font-size:40px;fill:var(--ink);letter-spacing:-.01em}
+.dv .dv-amb{fill:var(--amb)}
+.dv .dv-encre{fill:var(--ink)}
+.dv text.vif,.dv .dv-nomtxt.vif{fill:var(--ink)}
+.dv .dv-halo{paint-order:stroke;stroke:var(--bg);stroke-width:5px;stroke-linejoin:round}
+.dv text.tenu{fill:var(--or)}
+/* l'axe, la grille */
+.dv-sol{stroke:var(--ink3);stroke-width:1;fill:none}
+.dv-cran{stroke:var(--ink3);stroke-width:1}
+.dv-grille-l{stroke:var(--line);stroke-width:1;fill:none}
+.dv-filet{stroke:var(--line-cy);stroke-width:1;fill:none}
+/* les traits */
+.dv-t{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;transition:stroke .15s,opacity .15s,stroke-width .15s}
+.dv-t.fin{stroke:var(--ink2);stroke-width:1}
+.dv-t.pale{stroke:var(--dv-3);stroke-width:1}
+.dv-t.tirets{stroke:var(--ink2);stroke-width:1.2;stroke-dasharray:5 4}
+.dv-t.ded{stroke:var(--amb);stroke-width:1.6;stroke-dasharray:1 5.5}
+.dv-t.vif,.dv-t.tenu{stroke:var(--or);opacity:1}
+.dv-t.vif{stroke-width:1.8}
+/* les aplats : cinq valeurs d'encre */
+.dv-f1{fill:var(--dv-1)}.dv-f2{fill:var(--dv-2)}.dv-f3{fill:var(--dv-3)}.dv-f4{fill:var(--dv-4)}.dv-f5{fill:var(--dv-5)}
+.dv-f0{fill:var(--bg)}
+.dv-bande{fill:var(--dv-bande)}
+.dv-bande.ded{fill:var(--amb-bg)}
+.dv-joint{stroke:var(--bg);stroke-width:2}
+.dv-f{transition:fill .15s,opacity .15s}
+.dv-f.vif,.dv-f.tenu{fill:var(--or)}
+.dv-creux{fill:var(--bg);stroke:var(--ink2);stroke-width:1.2}
+.dv-creux.vif{stroke:var(--or)}
+.dv-ded-c{fill:none;stroke:var(--amb);stroke-width:1.2;stroke-dasharray:1.5 3}
+.dv-hl{stroke:var(--ink3);stroke-width:1}
+.dv-point{fill:var(--or)}
+.dv-m{outline:none;cursor:default}
+.dv-zone{outline:none;cursor:crosshair}
+.dv-prise{fill:none;stroke:transparent;pointer-events:stroke}
+/* le viseur : une ligne et un point */
+.dv-vl{stroke:var(--ink3);stroke-width:1;opacity:0;transition:opacity .12s}
+.dv.vise .dv-vl{opacity:1}
+.dv-viseur .pts{opacity:0}
+.dv.vise .dv-viseur .pts{opacity:1}
+.dv-zone:focus-visible~.dv-focus,.dv svg:focus-visible{outline:none}
+.dv.estompe .dv-m:not(.vif):not(.lie):not(.ici){opacity:.22}
+.dv.estompe text.dv-e:not(.vif):not(.lie){opacity:.3}
+/* l'infobulle de graphique */
+.dv-bulle{position:absolute;left:0;top:0;z-index:6;pointer-events:none;opacity:0;padding:9px 14px 10px;background:var(--panel3);box-shadow:0 0 0 1px var(--line),0 10px 30px var(--drop);white-space:nowrap;transition:opacity .12s}
+.dv-bulle.la{opacity:1}
+.dv-bulle small{display:block;font-family:var(--f-ui);font-size:12px;color:var(--pale)}
+.dv-bulle b{display:block;font-family:var(--f-texte);font-weight:300;font-size:26px;line-height:1.15;color:var(--ink);font-variant-numeric:tabular-nums}
+.dv-bulle span{display:block;font-style:italic;font-size:15px;line-height:1.3;color:var(--voile)}
+.dv-bulle b:empty,.dv-bulle span:empty,.dv-bulle small:empty{display:none}
+.dv-bulle.pose{position:relative;display:inline-block;opacity:1;transform:none}
+/* les filtres : des mots soulignés */
+.dv-filtres{display:flex;flex-wrap:wrap;gap:4px 22px;margin:0 0 14px}
+.dv-filtres button{font-family:var(--f-texte);font-size:17px;color:var(--pale);padding:1px 0;box-shadow:inset 0 -1px 0 transparent;transition:color .15s,box-shadow .15s}
+.dv-filtres button:hover{color:var(--ink)}
+.dv-filtres button[aria-pressed="true"]{color:var(--ink);font-style:italic;box-shadow:inset 0 -1px 0 var(--or)}
+/* la légende : un mot et sa marque */
+.dv-legende{display:flex;flex-wrap:wrap;gap:8px 26px;margin:14px 0 0;padding:0;list-style:none;font-family:var(--f-ui);font-size:12.5px;color:var(--pale)}
+.dv-legende li{display:flex;align-items:center;gap:9px}
+.dv-legende svg{width:26px;height:12px;flex:none;overflow:visible}
+/* les barres qui se rangent : la transition ne joue que sous un geste (changer de tri) */
+.dv-rang{transition:transform .5s var(--ease)}
+/* la brosse : une plage qu'on tire, deux poignées de 16 px */
+.dv-brosse-plage{fill:var(--dv-bande);cursor:grab}
+.dv-brosse-plage.tenu{cursor:grabbing}
+.dv-poignee{fill:var(--ink);cursor:ew-resize;outline:none;transition:fill .15s,r .15s}
+.dv-poignee:hover,.dv-poignee:focus-visible,.dv-poignee.tenu{fill:var(--or);r:10px}
+/* les états */
+.dv-etat{display:grid;place-items:center;min-height:var(--h,160px);box-shadow:inset 0 -1px 0 var(--ink3)}
+.dv-etat p{margin:0;font-style:italic;font-size:18px;color:var(--pale);text-align:center;max-width:16em}
+.dv-etat.attente{box-shadow:none;background:repeating-linear-gradient(90deg,var(--ink3) 0 6px,transparent 6px 14px) 0 100%/28px 1px repeat-x}
+/* le tableau qui double un graphique */
+.dv-tab{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.dv-tab th{padding:0 18px 10px 0;text-align:left;font-family:var(--f-ui);font-weight:400;font-size:12.5px;color:var(--pale);box-shadow:inset 0 -1px 0 var(--ink3)}
+.dv-tab td{padding:9px 18px 9px 0;font-size:19px;font-weight:360;color:var(--voile);box-shadow:inset 0 -1px 0 var(--line);transition:color .15s}
+.dv-tab td:first-child{color:var(--ink)}
+.dv-tab .n{text-align:right;padding-right:0}
+.dv-tab td small{font-family:var(--f-ui);font-size:12.5px;color:var(--pale)}
+.dv-tab td svg{display:block;width:150px;height:26px;overflow:visible}
+.dv-tab tr{outline:none}
+.dv-tab tbody tr:hover td,.dv-tab tbody tr:focus-visible td{color:var(--ink)}
+.dv-tab tbody tr:hover .dv-t,.dv-tab tbody tr:focus-visible .dv-t{stroke:var(--or)}
+.dv-tab tbody tr:hover td:first-child,.dv-tab tbody tr:focus-visible td:first-child{font-style:italic;color:var(--or)}
+.dv-tab .ded{color:var(--amb)}
+.dv-tab .manque{font-style:italic;color:var(--pale)}
+/* les pièces, posées côte à côte */
+.dv-pieces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 54px}
+.dv-pieces>div>.ke-petit{margin-bottom:14px}
+@media (max-width:1250px){.dv-p{grid-column:span 12}.dv-tete{grid-template-columns:1fr}.dv-pieces{grid-template-columns:1fr}}
+
+/* ── déduit, inconnu : les mêmes marques partout ── */
+.dv-trou{opacity:.85;pointer-events:none}
+.dv-inc-m{stroke:var(--ink3);stroke-width:1}
+.dv-inc-m.vif{stroke:var(--or)}
+.dv text.dv-inc{font-style:italic;fill:var(--pale)}
+.dv-voile-ded{fill:var(--amb-bg);opacity:.75;pointer-events:none}
+.dv-hz{shape-rendering:geometricPrecision}
+/* les accords : au repos un fil pâle par échange, l'arc porte le poids ; le nom visé sort ses rubans, le reste s'efface presque */
+.dv-ruban{fill:var(--dv-4);opacity:0;transition:opacity .18s;pointer-events:none}
+.dv-ruban.ded{fill:var(--amb-bg);stroke:var(--amb);stroke-width:1;stroke-dasharray:1.5 3}
+.dv-ruban.sort{opacity:.82}
+.dv-fils .dv-t{transition:opacity .18s}
+.dv-fils .dv-t.tait{opacity:.06}
+.dv .dv-f.loin{opacity:.3}
+.dv text.lie{fill:var(--ink)}
+
+/* ── la planche des états : six formes, cinq états ── */
+.dv-grille.dv-etats{grid-template-columns:140px repeat(5,minmax(0,1fr));gap:30px 28px;align-items:center}
+.dv-etat-tete{margin:0;padding-top:12px;box-shadow:inset 0 1px 0 var(--line)}
+.dv-etat-nom b{display:block;font-weight:340;font-size:19px;line-height:1.2}
+.dv-etat-nom span{display:block;margin-top:3px;font-family:var(--f-ui);font-size:12px;color:var(--pale)}
+.dv-etat-case{min-width:0}
+.dv-etat-case .dv-etat p{font-size:15px}

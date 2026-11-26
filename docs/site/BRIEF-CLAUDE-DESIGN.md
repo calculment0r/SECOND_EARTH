@@ -45,7 +45,16 @@ Dernière phrase du film : « This is a fictional planet. Earth is the only worl
 - Les espèces : `data/bestiaire.json`, `data/flore.json`, `data/titans.json`.
 - La carte : `carte/carte-kore.html`, `carte/world.png`.
 - Le site actuel par parties : `site-projet/` (dix-sept parties, contenu dans `site-projet/content/site-content.json`). Il est en ligne : `https://calculment0r.github.io/SECOND_EARTH/`.
-- Deux directions graphiques déjà faites, à garder ou à abandonner : le thème sombre « Verdant » (`site/assets/site.css`, `theme/showrunner-ui-kit/`) et le « kit étude » clair (`presentation/kit/`).
+- Deux directions graphiques déjà faites, à garder ou à abandonner : le thème sombre « Verdant » (`site/assets/site.css`, `theme/showrunner-ui-kit/`) et le « kit étude » (ci-dessous).
+- **Le kit étude complet : `theme/kit-etude/`** (notice : `theme/kit-etude/LIRE.md` ; ouvrir les pages `.html` dans un navigateur). C'est la base des outils de données et d'interface, déjà faits et que Cal aime : à reprendre et à habiller, pas à refaire de zéro.
+  - `dataviz.html` : trente formes de visualisation de données en SVG (courbes, crêtes, fleuve, calendrier, spirale, frise, petits multiples, barres fines, haltères, pentes, classement, essaim, radar en fil, nuage, matrice, accords…) ;
+  - `hud.html` : un viseur composé qu'on pilote, et neuf planches de pièces (rubans, arcs, repères, cibles) ;
+  - `carto.html` : une carte fabriquée par le code, du monde au bâtiment, avec son habillage ;
+  - `viz3d.html` : neuf scènes three.js, dont un globe ;
+  - `canevas.html` et `zoom.html` : un canevas infini et huit navigations où le contenu change avec la hauteur de vue ;
+  - `index.html` : les bases (lettres, couleurs, boutons, curseurs, frises, schéma à nœuds, diapositives, scène qui se joue au défilement) ;
+  - `musique.html` : dix instruments de musique, hors sujet pour le site.
+  - Ses règles d'écriture : deux tailles de lettres très éloignées, aucun cadre ni bordure, un seul accent de couleur, rien ne bouge au chargement, la molette n'est jamais détournée, le clavier fait les mêmes gestes que la main. Sombre et clair.
 - L'inventaire des images et des vidéos, avec vignettes : `media/inventaire/` (page : `media/inventaire/index.html`).
 
 **Les images et les vidéos.** Cal t'en donnera d'autres au fil du travail.
@@ -96,7 +105,7 @@ Le site actuel a dix-sept parties : regroupe-les dans ces pages, rien ne se perd
 - boutons, étiquettes, menus, navigation, pied de page ;
 - les façons de poser une vidéo 21:9 et un panoramique : plein cadre, bandeau, carrousel, diaporama, panoramique à faire glisser ;
 - le visualiseur 3D (objet en gaussian splatting) et son habillage ;
-- **les outils de visualisation de données** : comparateur Terre / Korê, horloge de 40 heures, schéma des orbites et des lunes, jauge de marée, échelle de tailles, frise du voyage (jours, kilomètres, étapes), frise du vaisseau (2045 à 2098), palette de couleurs par milieu, compteurs d'espèces, frise du film ;
+- **les outils de visualisation de données**, construits à partir de `theme/kit-etude/` (ses trente formes, son viseur, sa carte, ses scènes 3D) et remis au style de l'axe retenu : comparateur Terre / Korê, horloge de 40 heures, schéma des orbites et des lunes, jauge de marée, échelle de tailles, frise du voyage (jours, kilomètres, étapes), frise du vaisseau (2045 à 2098), palette de couleurs par milieu, compteurs d'espèces, frise du film ;
 - les mouvements : apparitions au défilement, transitions entre pages, survols, micro-animations, lecture des vidéos ; durées et courbes écrites.
 
 **Étape 3 : l'intégration.** Les pages de la partie 5, en vrai, avec les mouvements et les interactions.

@@ -1,0 +1,349 @@
+/* KIT ÉTUDE · LES HUD — viseurs, réticules, rubans, radar, jauges, télémétrie, temps, appels.
+   Dans l'écriture de l'étude : des traits d'un pixel, des nombres en Literata légère, des noms en Norelli, un seul orange
+   (ce qui est verrouillé ou tenu), l'ambre en pointillé (ce qui est prédit), l'italique pâle (le signal perdu).
+   Les jetons de kit-etude.css seulement ; aucune couleur écrite ici. */
+
+/* ── la page ── */
+.hud-page{padding:0 var(--s8) 140px}
+.hud-tete{display:flex;align-items:baseline;gap:34px;padding:18px 0 16px}
+.hud-tete h1{font-size:clamp(34px,2.8vw,46px);font-weight:300;white-space:nowrap}
+.hud-tete .ke-petit{max-width:none}
+.hud-planche{position:relative;margin-top:var(--s9)}
+.hud-titre{display:flex;align-items:baseline;gap:22px;margin:0 0 30px;padding-top:14px;box-shadow:inset 0 1px 0 var(--line)}
+.hud-titre i{font-family:var(--f-ui);font-style:normal;font-size:var(--c-petit);color:var(--or)}
+.hud-titre b{font-family:var(--f-nom);font-weight:400;font-size:24px;letter-spacing:.035em;text-transform:uppercase}
+.hud-titre span{font-family:var(--f-ui);font-size:var(--c-petit);color:var(--pale)}
+.hud-titre .ke-btn{margin-left:auto}
+.hud-grille{display:grid;gap:40px 44px;align-items:start}
+.hud-leg{margin:12px 0 0;font-family:var(--f-ui);font-size:var(--c-petit);line-height:1.4;color:var(--pale)}
+.hud-leg b{font-family:var(--f-nom);font-weight:400;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-right:10px}
+.hud-dit{margin:14px 0 0;min-height:1.5em;font-style:italic;font-weight:350;font-size:19px;line-height:1.35;color:var(--ink)}
+.hud-dit small{font-family:var(--f-ui);font-style:normal;font-size:var(--c-petit);color:var(--pale);margin-right:12px}
+
+/* ── le trait : toutes les pièces sont des SVG dessinés avec ces classes ── */
+svg.hud{display:block;overflow:visible;user-select:none}
+svg.hud *{vector-effect:non-scaling-stroke}
+.hud-t{fill:none;stroke:var(--ink3);stroke-width:1}
+.hud-t2{fill:none;stroke:var(--ink2);stroke-width:1}
+.hud-f{fill:none;stroke:var(--ink);stroke-width:1.5}
+.hud-ff{fill:none;stroke:var(--ink);stroke-width:3}
+.hud-pale{fill:none;stroke:var(--line);stroke-width:1}
+.hud-or{fill:none;stroke:var(--or);stroke-width:1.5}
+.hud-amb{fill:none;stroke:var(--amb);stroke-width:1.5;stroke-dasharray:1 6;stroke-linecap:round}
+.hud-tiret{stroke-dasharray:5 5}
+.hud-plein{fill:var(--ink);stroke:none}
+.hud-plein2{fill:var(--ink2);stroke:none}
+.hud-plein3{fill:var(--ink3);stroke:none}
+.hud-plein-or{fill:var(--or);stroke:none}
+.hud-plein-amb{fill:var(--amb);stroke:none}
+.hud-fond{fill:var(--bg);stroke:none}
+.hud-voile{fill:var(--ink);stroke:none;opacity:.05}
+.hud-prise{fill:transparent;stroke:none;cursor:pointer}
+svg.hud text{stroke:none;font-variant-numeric:tabular-nums}
+text.hud-p{font-family:var(--f-ui);font-size:11.5px;fill:var(--pale)}
+text.hud-p2{font-family:var(--f-ui);font-size:11.5px;fill:var(--ink2)}
+text.hud-n{font-family:var(--f-texte);font-weight:300;fill:var(--ink)}
+text.hud-nom{font-family:var(--f-nom);letter-spacing:.04em;text-transform:uppercase;fill:var(--ink2)}
+text.hud-it{font-family:var(--f-texte);font-style:italic;fill:var(--voile)}
+text.hud-c-or{fill:var(--or)}
+text.hud-c-amb{fill:var(--amb)}
+/* le halo : le texte se détache du relief par un liseré du fond, jamais par un cadre */
+svg.hud text.hud-halo{stroke-opacity:.92;stroke:var(--halo,color-mix(in srgb,var(--panel) 80%,var(--bg)));stroke-width:4px;stroke-linejoin:round;paint-order:stroke}
+
+/* tout ce qui se règle : la main « attraper », un filet orange au clavier */
+.hud-regle{cursor:grab;touch-action:none}
+.hud-regle.tenu{cursor:grabbing}
+.hud-regle:focus-visible,.hud-regle.est-focus{outline:1px solid var(--or);outline-offset:6px}
+.hud-regle.est-focus .hud-main{stroke:var(--ink)}
+.hud-segments:hover .seg i:not(.on):not(.pre),.hud-segments.est-survol .seg i:not(.on):not(.pre),.hud-segments:focus-visible .seg i:not(.on):not(.pre){background:var(--trait-vu)}
+.hud-regle .hud-main{transition:stroke var(--vite),fill var(--vite)}
+.hud-regle:hover .hud-main,.hud-regle:focus-visible .hud-main,.hud-regle.est-survol .hud-main{stroke:var(--ink)}
+.hud-regle.tenu .hud-main,.hud-regle.est-tenu .hud-main{stroke:var(--or)}
+.hud-regle.tenu .hud-main.hud-plein,.hud-regle.est-tenu .hud-main.hud-plein{fill:var(--or);stroke:none}
+/* signal perdu, hors service */
+[data-etat="perdu"] .hud-vif{opacity:0}
+[data-etat="perdu"] text.hud-n{font-style:italic;fill:var(--pale);font-size:26px}
+/* en chargement : la mesure attend son premier relevé ; l'échelle reste, la valeur et la consigne se taisent, trois points */
+[data-etat="chargement"] .hud-vif{opacity:0}
+[data-etat="chargement"] text.hud-n{fill:var(--ink3);letter-spacing:.08em}
+.hud-segments[data-etat="chargement"] .seg i,.hud-segments[data-etat="chargement"] .seg i.on,.hud-segments[data-etat="chargement"] .seg i.pre{background:repeating-linear-gradient(90deg,var(--trait-vu) 0 1px,transparent 1px 4px)}
+.hud-segments[data-etat="chargement"] output{color:var(--ink3);letter-spacing:.08em}
+.hud-tele .chargement .t-ent{color:var(--ink3);letter-spacing:.08em}
+.hud-tele .chargement .t-nom::after{content:' · en cours';color:var(--pale)}
+.hud-tele .chargement .t-fil path{stroke:var(--trait-vu);stroke-dasharray:1 4}
+[data-etat="arret"]{pointer-events:none}
+[data-etat="arret"] .hud-t,[data-etat="arret"] .hud-t2,[data-etat="arret"] .hud-f{stroke:var(--trait-vu);stroke-dasharray:2 5}
+[data-etat="arret"] .hud-vif{opacity:0}
+[data-etat="arret"] text{fill:var(--trait-vu)}
+
+/* ── 01 · les cadres de visée ── */
+.hud-cadres{grid-template-columns:repeat(5,minmax(0,1fr));gap:30px 26px}
+.hud-cadre{display:block;width:100%;text-align:left}
+.hud-cadre svg{background:var(--scene)}
+.hud-cadre>span{display:flex;justify-content:space-between;margin-top:10px;font-family:var(--f-nom);font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);transition:color var(--vite)}
+.hud-cadre>span i{font-family:var(--f-ui);font-style:normal;font-size:12px;letter-spacing:0;text-transform:none;color:var(--pale)}
+.hud-cle{transition:stroke var(--vite),fill var(--vite)}
+.hud-cadre:hover .hud-cle,.hud-cadre:focus-visible .hud-cle,.hud-cadre.est-survol .hud-cle{stroke:var(--ink)}
+.hud-cadre:hover>span,.hud-cadre:focus-visible>span{color:var(--ink)}
+.hud-cadre[aria-pressed="true"] .hud-cle{stroke:var(--or)}
+.hud-cadre[aria-pressed="true"] .hud-cle.hud-plein3{fill:var(--or);stroke:none}
+.hud-cadre[aria-pressed="true"]>span{color:var(--ink)}
+.hud-cadre[aria-pressed="true"]>span i{color:var(--or)}
+.hud-cadre:focus-visible{outline-offset:6px}
+
+/* ── 02 · les réticules ── */
+.hud-reticules{grid-template-columns:repeat(8,minmax(0,1fr));gap:30px 20px}
+.hud-reticule{display:grid;justify-items:center;width:100%;padding:8px 0 0}
+.hud-reticule svg{width:100%;max-width:170px;height:auto}
+.hud-reticule .hud-serre{transform-box:view-box;transform-origin:0 0;transition:transform .28s var(--ease)}
+.hud-reticule .hud-coeur{opacity:0;transition:opacity .2s}
+.hud-reticule>span{margin-top:8px;font-family:var(--f-nom);font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2)}
+.hud-reticule>em{font-size:15px;color:var(--pale);min-height:1.4em}
+.hud-reticule .hud-cle{stroke:var(--ink2)}
+.hud-reticule:hover .hud-cle,.hud-reticule:focus-visible .hud-cle,.hud-reticule.est-survol .hud-cle{stroke:var(--ink)}
+.hud-reticule:hover .hud-serre,.hud-reticule:focus-visible .hud-serre,.hud-reticule.est-survol .hud-serre{transform:scale(.9)}
+.hud-reticule[aria-pressed="true"] .hud-cle{stroke:var(--or)}
+.hud-reticule[aria-pressed="true"] .hud-cle.hud-plein2{fill:var(--or);stroke:none}
+.hud-reticule[aria-pressed="true"] .hud-serre{transform:scale(.66) rotate(45deg)}
+.hud-reticule[aria-pressed="true"] .hud-serre.droit{transform:scale(.66)}
+.hud-reticule[aria-pressed="true"] .hud-coeur{opacity:1}
+.hud-reticule[aria-pressed="true"]>em{color:var(--or);font-style:normal}
+
+/* ── 03 · la cible suivie ── */
+.hud-suivi{background:var(--scene)}
+.hud-suivi svg{width:100%;height:auto;max-height:460px}
+
+/* ── 04 · l'attitude ── */
+.hud-attitude{grid-template-columns:minmax(0,340px) minmax(0,1fr) auto auto;gap:44px 64px;align-items:center}
+.hud-horizon svg,.hud-boussole svg,.hud-radar svg,.hud-niveau svg{width:100%;height:auto}
+.hud-cap svg{width:100%;height:auto}
+.hud-ruban svg{height:340px;width:auto}
+
+/* ── 05 · le radar ── */
+.hud-radar-zone{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:64px;align-items:center}
+.hud-echo{cursor:pointer}
+.hud-echo .hud-e-pt{fill:var(--ink);transition:fill var(--vite)}
+.hud-echo .hud-e-an{fill:none;stroke:var(--ink2);stroke-width:1;opacity:0;transition:opacity var(--vite)}
+.hud-echo:hover .hud-e-an,.hud-echo:focus-visible .hud-e-an{opacity:1}
+.hud-echo:focus-visible{outline:none}
+.hud-echo.tenu .hud-e-pt{fill:var(--or)}
+.hud-echo.tenu .hud-e-an{opacity:1;stroke:var(--or);stroke-width:1.5}
+.hud-echo text{opacity:0;transition:opacity var(--vite)}
+.hud-echo:hover text,.hud-echo:focus-visible text,.hud-echo.tenu text{opacity:1}
+.hud-portees{display:flex;gap:26px;margin-top:22px}
+.hud-fiche{display:grid;grid-template-columns:auto 1fr;gap:0 34px;max-width:520px}
+.hud-fiche>*{padding:11px 0;box-shadow:inset 0 -1px 0 var(--line)}
+.hud-fiche dt{font-family:var(--f-ui);font-size:var(--c-petit);color:var(--pale);align-self:end}
+.hud-fiche dd{margin:0;font-weight:330;font-size:24px;line-height:1.2;color:var(--ink);font-variant-numeric:tabular-nums}
+.hud-fiche dd small{font-family:var(--f-ui);font-size:12px;color:var(--pale);margin-left:6px}
+.hud-fiche dd.or{color:var(--or);font-style:italic}
+.hud-fiche dd.amb{color:var(--amb)}
+.hud-fiche-nom{margin:0 0 6px;font-family:var(--f-nom);font-size:30px;letter-spacing:.035em;text-transform:uppercase;color:var(--ink)}
+
+/* ── 06 · les jauges ── */
+.hud-jauges{grid-template-columns:repeat(7,minmax(0,1fr));align-items:end}
+.hud-arc svg{width:100%;max-width:230px;height:auto}
+.hud-arc{display:grid;justify-items:center}
+.hud-segments{display:flex;align-items:center;gap:18px}
+.hud-segments .seg{display:flex;gap:3px;flex:1}
+.hud-segments .seg i{flex:1;height:20px;background:var(--trait);transition:background-color .1s}
+.hud-segments .seg i.on{background:var(--ink)}
+.hud-segments .seg i.cons{box-shadow:0 -6px 0 -2px var(--or),0 6px 0 -2px var(--or)}
+.hud-segments .seg i.pre{background:repeating-linear-gradient(90deg,var(--amb) 0 1px,transparent 1px 3px)}
+.hud-segments output{min-width:3.4em;text-align:right;font-weight:320;font-size:26px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.hud-segments output small{font-family:var(--f-ui);font-size:12px;color:var(--pale);margin-left:4px}
+.hud-segments.tenu .seg i.on,.hud-segments.est-tenu .seg i.on{background:var(--or)}
+.hud-segments[data-etat="perdu"] .seg i{background:var(--trait)}
+.hud-segments[data-etat="perdu"] output{font-style:italic;color:var(--pale)}
+.hud-segments[data-etat="arret"] .seg i{background:none;box-shadow:inset 0 0 0 1px var(--trait-vu)}
+.hud-segments[data-etat="arret"] output{color:var(--trait-vu)}
+.hud-pile{display:grid;gap:26px}
+.hud-crans svg{height:230px;width:auto}
+.hud-regleh svg{width:100%;height:auto}
+
+/* ── 07 · la télémétrie ── */
+.hud-tele-zone{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:64px;align-items:start}
+.hud-tele{display:grid;grid-template-columns:minmax(120px,1fr) auto auto auto minmax(60px,auto) minmax(60px,auto) 132px;align-items:end}
+.hud-tele>div{display:contents}
+.hud-tele>div>*{display:flex;align-items:flex-end;height:50px;padding:0 0 9px;box-shadow:inset 0 -1px 0 var(--line);font-variant-numeric:tabular-nums}
+.hud-tele .t-nom,.hud-tele .t-uni,.hud-tele .t-min,.hud-tele .t-max{padding-bottom:13px}
+.hud-tele .t-ent,.hud-tele .t-min,.hud-tele .t-max{justify-content:flex-end}
+.hud-tele .t-fil{padding-bottom:12px}
+.hud-tele .t-tete>*{height:28px;padding:0 0 10px;font-family:var(--f-ui);font-size:12px;color:var(--pale);box-shadow:inset 0 -1px 0 var(--ink3)}
+.hud-tele .t-nom{font-family:var(--f-ui);font-size:var(--c-petit);color:var(--ink2)}
+.hud-tele .t-ent{text-align:right;font-weight:320;font-size:26px;line-height:1.1;color:var(--ink);padding-left:20px}
+.hud-tele .t-dec{font-weight:320;font-size:26px;line-height:1.1;color:var(--voile)}
+.hud-tele .t-uni{font-family:var(--f-ui);font-size:12px;color:var(--pale);padding-left:8px;padding-right:24px}
+.hud-tele .t-min,.hud-tele .t-max{text-align:right;font-family:var(--f-ui);font-size:12.5px;color:var(--pale);padding-right:20px}
+.hud-tele .t-fil svg{display:block;width:132px;height:26px;overflow:visible}
+.hud-tele .t-fil path{fill:none;stroke:var(--ink2);stroke-width:1}
+.hud-tele .t-fil circle{fill:var(--ink)}
+.hud-tele>div:hover .t-nom,.hud-tele>div:focus-visible .t-nom{color:var(--ink)}
+.hud-tele>div:hover .t-fil path,.hud-tele>div:focus-visible .t-fil path{stroke:var(--ink)}
+.hud-tele .tenu .t-ent,.hud-tele .tenu .t-dec{color:var(--or)}
+.hud-tele .tenu .t-nom{color:var(--ink);font-style:italic}
+.hud-tele .tenu .t-fil path{stroke:var(--or)}.hud-tele .tenu .t-fil circle{fill:var(--or)}
+.hud-tele .predit .t-ent,.hud-tele .predit .t-dec{color:var(--amb)}
+.hud-tele .predit .t-fil path{stroke:var(--amb);stroke-dasharray:1 5;stroke-linecap:round;stroke-width:1.5}
+.hud-tele .predit .t-fil circle{fill:var(--amb)}
+.hud-tele .predit .t-nom::after{content:' · prédit';color:var(--amb)}
+.hud-tele .perdu .t-ent,.hud-tele .perdu .t-dec{font-style:italic;color:var(--pale)}
+.hud-tele .perdu .t-nom::after{content:' · signal perdu';font-style:italic;color:var(--pale)}
+.hud-tele .perdu .t-fil path{stroke:var(--trait-vu);stroke-dasharray:2 5}
+.hud-tele .perdu .t-fil circle{fill:none}
+.hud-oscillo svg{width:100%;height:auto;background:var(--scene)}
+.hud-reglages{display:grid;grid-template-columns:1fr 1fr;gap:10px 44px;margin-top:18px}
+.hud-spectre{position:relative;display:flex;align-items:flex-end;gap:3px;height:120px;margin-top:34px}
+.hud-spectre i{position:relative;flex:1;height:calc(var(--h) * 100%);min-height:2px;background:var(--trait-vu)}
+.hud-spectre i::after{content:'';position:absolute;left:0;right:0;bottom:calc(var(--c) * 120px);height:1px;background:var(--ink2)}
+.hud-spectre i{background:linear-gradient(var(--ink),var(--ink)) 0 100%/100% 100% no-repeat}
+.hud-spectre i.haut{background:var(--or)}
+.hud-spectre-pied{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--f-ui);font-size:12px;color:var(--pale)}
+.hud-spectre-pied b{font-family:var(--f-texte);font-weight:330;font-size:19px;color:var(--ink)}
+
+/* ── 08 · le temps ── */
+.hud-temps{display:flex;flex-wrap:wrap;gap:44px 54px;align-items:center}
+.hud-temps .hud-anneau{width:210px}
+.hud-temps .hud-anneau.petit{width:124px}
+.hud-code{display:flex;align-items:flex-start;font-weight:250;font-size:clamp(50px,4.2vw,84px);line-height:1;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.hud-code span{display:grid;justify-items:center}
+.hud-code span small{margin-top:10px;font-family:var(--f-ui);font-size:12px;letter-spacing:0;color:var(--pale)}
+.hud-code>i{font-style:normal;color:var(--ink3);margin:0 .06em}
+.hud-code span.vif{color:var(--or)}
+.hud-code.signe::before{content:'T −';font-family:var(--f-ui);font-size:15px;letter-spacing:0;color:var(--pale);margin:.5em 14px 0 0;white-space:nowrap}
+.hud-code.signe.passe::before{content:'T +'}
+.hud-code.signe.passe span{color:var(--or)}
+.hud-code:focus-visible{outline-offset:10px}
+.hud-anneau svg{width:100%;height:auto}
+.hud-chrono{margin-top:54px}
+.hud-chrono svg{width:100%;height:auto}
+
+/* ── 09 · les appels ── */
+.hud-appels{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:64px;align-items:start}
+.hud-figure svg{width:100%;height:auto;background:var(--scene)}
+.hud-appel{cursor:pointer}
+.hud-appel:focus-visible{outline:none}
+.hud-appel .a-fil{fill:none;stroke:var(--ink3);stroke-width:1;transition:stroke var(--vite)}
+.hud-appel .a-anc{fill:var(--bg);stroke:var(--ink2);stroke-width:1.5;transition:stroke var(--vite),fill var(--vite)}
+.hud-appel text.a-t{font-family:var(--f-nom);font-size:14px;letter-spacing:.04em;text-transform:uppercase;fill:var(--ink2);transition:fill var(--vite)}
+.hud-appel text.a-v{font-family:var(--f-texte);font-weight:320;font-size:22px;fill:var(--ink)}
+.hud-appel text.a-s{font-family:var(--f-ui);font-size:11.5px;fill:var(--pale)}
+.hud-appel:hover .a-fil,.hud-appel:focus-visible .a-fil,.hud-appel.est-survol .a-fil{stroke:var(--ink)}
+.hud-appel:hover .a-anc,.hud-appel:focus-visible .a-anc,.hud-appel.est-survol .a-anc{stroke:var(--ink);fill:var(--ink)}
+.hud-appel:hover text.a-t,.hud-appel:focus-visible text.a-t,.hud-appel.est-survol text.a-t{fill:var(--ink)}
+.hud-appel.tenu .a-fil,.hud-appel.tenu .a-anc{stroke:var(--or)}
+.hud-appel.tenu .a-anc{fill:var(--or)}
+.hud-appel.tenu text.a-t,.hud-appel.tenu text.a-v{fill:var(--or)}
+.hud-appel.predit .a-fil{stroke:var(--amb);stroke-dasharray:1 6;stroke-linecap:round;stroke-width:1.5}
+.hud-appel.predit .a-anc{stroke:var(--amb);stroke-dasharray:2 3}
+.hud-appel.predit text.a-v{fill:var(--amb)}
+.hud-appel.perdu text.a-v{font-style:italic;fill:var(--pale)}
+.hud-appel.perdu .a-anc{stroke:var(--ink3);stroke-dasharray:2 3}
+.hud-cartouche{display:grid;grid-template-columns:auto 1fr;gap:0 24px;padding:14px 0 0;box-shadow:inset 0 1px 0 var(--ink3);max-width:420px}
+.hud-cartouche>b{grid-column:1/-1;font-family:var(--f-nom);font-weight:400;font-size:22px;letter-spacing:.035em;text-transform:uppercase;color:var(--ink)}
+.hud-cartouche>em{grid-column:1/-1;margin:0 0 12px;font-size:16px;color:var(--pale)}
+.hud-cartouche>span{padding:7px 0;font-family:var(--f-ui);font-size:12.5px;color:var(--pale);box-shadow:inset 0 1px 0 var(--line)}
+.hud-cartouche>strong{padding:5px 0;font-weight:340;font-size:19px;text-align:right;color:var(--ink);box-shadow:inset 0 1px 0 var(--line);font-variant-numeric:tabular-nums}
+.hud-cartouche.tenu{box-shadow:inset 0 2px 0 var(--or)}
+.hud-cartouche.tenu>b{color:var(--or)}
+.hud-bandeaux{display:grid;gap:14px;margin-top:34px}
+.hud-bandeau{display:flex;align-items:baseline;gap:16px;font-size:19px;line-height:1.3;color:var(--ink)}
+.hud-bandeau::before{content:'';flex:none;align-self:center;width:9px;height:9px;background:var(--ink2)}
+.hud-bandeau small{font-family:var(--f-ui);font-size:12.5px;color:var(--pale);min-width:5.5em}
+.hud-bandeau.tenu::before{background:var(--or)}
+.hud-bandeau.tenu{color:var(--or);font-style:italic}
+.hud-bandeau.predit::before{background:none;box-shadow:inset 0 0 0 1.5px var(--amb);border-radius:50%}
+.hud-bandeau.predit{color:var(--amb)}
+.hud-bandeau.perdu::before{background:none;box-shadow:inset 0 0 0 1px var(--ink3)}
+.hud-bandeau.perdu{font-style:italic;color:var(--pale)}
+.hud-radial{width:300px}
+.hud-radial svg{width:100%;height:auto}
+.hud-radial:focus-visible{outline-offset:8px}
+.hud-secteur{cursor:pointer}
+.hud-secteur:focus-visible{outline:none}
+.hud-secteur .s-arc{fill:none;stroke:var(--ink3);stroke-width:1;transition:stroke var(--vite),stroke-width var(--vite)}
+.hud-secteur text{font-family:var(--f-ui);font-size:12.5px;fill:var(--pale);transition:fill var(--vite)}
+.hud-secteur:hover .s-arc,.hud-secteur.vise .s-arc{stroke:var(--ink);stroke-width:3}
+.hud-secteur:hover text,.hud-secteur.vise text{fill:var(--ink)}
+.hud-secteur.choisi .s-arc{stroke:var(--or);stroke-width:3}
+.hud-secteur.choisi text{fill:var(--or)}
+.hud-secteur.inerte{cursor:default}
+.hud-secteur.inerte .s-arc{stroke:var(--trait-vu);stroke-dasharray:2 5;stroke-width:1}
+.hud-secteur.inerte text{fill:var(--trait-vu);font-style:italic}
+
+/* ── 10 · le viseur ── */
+.hud-viseur{position:relative;height:min(calc((100vw - 108px) * 9 / 16),calc(100vh - var(--barre-h) - 96px));min-height:520px;overflow:hidden;background:var(--scene);cursor:crosshair;touch-action:none;user-select:none}
+.hud-viseur.glisse{cursor:grabbing}
+.hud-viseur:focus-visible{outline:1px solid var(--line-or);outline-offset:-1px}
+.hud-viseur>svg{position:absolute;inset:0;width:100%;height:100%}
+.hud-viseur .v-relief{stroke-width:1;stroke-linejoin:round}
+/* la perspective atmosphérique : du plus lointain (fondu dans le ciel) au plus proche (sombre, trait net) */
+.hud-viseur .v-plan0{fill:color-mix(in srgb,var(--panel3) 70%,var(--panel2));stroke:color-mix(in srgb,var(--ink3) 34%,var(--panel2))}
+.hud-viseur .v-plan1{fill:color-mix(in srgb,var(--panel3) 52%,var(--panel));stroke:color-mix(in srgb,var(--ink3) 50%,var(--panel2))}
+.hud-viseur .v-plan2{fill:color-mix(in srgb,var(--panel2) 70%,var(--bg));stroke:color-mix(in srgb,var(--ink3) 68%,var(--panel))}
+.hud-viseur .v-plan3{fill:color-mix(in srgb,var(--panel) 60%,var(--bg));stroke:color-mix(in srgb,var(--ink2) 70%,var(--panel))}
+.hud-viseur{--halo:var(--bg)}
+.hud-viseur .v-plan4{fill:var(--bg);stroke:var(--ink2)}
+[data-theme="light"] .hud-viseur .v-plan0{fill:color-mix(in srgb,var(--panel3) 40%,var(--panel))}
+[data-theme="light"] .hud-viseur .v-plan1{fill:color-mix(in srgb,var(--panel3) 62%,var(--panel))}
+[data-theme="light"] .hud-viseur .v-plan2{fill:color-mix(in srgb,var(--panel3) 85%,var(--panel2))}
+[data-theme="light"] .hud-viseur .v-plan3{fill:color-mix(in srgb,var(--ink3) 10%,var(--panel3))}
+[data-theme="light"] .hud-viseur{--halo:color-mix(in srgb,var(--ink3) 17%,var(--panel3))}
+[data-theme="light"] .hud-viseur .v-plan4{fill:var(--halo)}
+.hud-viseur .v-ciel{fill:none;stroke:var(--line);stroke-width:1}
+.hud-viseur .v-etoile{fill:var(--ink3);stroke:none}
+.hud-viseur .v-ret{pointer-events:none}
+.hud-viseur .v-cible{cursor:pointer}
+.hud-viseur .v-cible:focus-visible{outline:none}
+.hud-viseur .v-cible .c-marque{fill:none;stroke:var(--ink2);stroke-width:1.5;transition:stroke var(--vite)}
+.hud-viseur .v-cible .c-crochets{fill:none;stroke:var(--ink);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:50% 50%;transform:scale(1.5);transition:opacity .18s,transform .28s var(--ease),stroke .18s}
+.hud-viseur .v-cible text{opacity:0;transition:opacity .18s}
+.hud-viseur .v-cible text.c-nom{opacity:.7}
+.hud-viseur .v-cible.visee text.c-nom,.hud-viseur .v-cible:focus-visible text.c-nom{opacity:0}
+.hud-viseur .v-cible.verrou text.c-nom{opacity:0}
+.hud-viseur .v-cible.visee .c-crochets,.hud-viseur .v-cible:focus-visible .c-crochets{opacity:1;transform:none}
+.hud-viseur .v-cible.visee text,.hud-viseur .v-cible:focus-visible text{opacity:1}
+.hud-viseur .v-cible.verrou .c-marque{stroke:var(--or)}
+.hud-viseur .v-cible.verrou .c-crochets{opacity:1;stroke:var(--or);transform:scale(.8)}
+.hud-viseur .v-cible .c-anneau{fill:none;stroke:var(--or);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:50% 50%;transform:scale(1.7) rotate(-40deg);transition:opacity .2s,transform .34s var(--ease)}
+.hud-viseur .v-cible.verrou .c-anneau{opacity:1;transform:none}
+.hud-viseur .v-cible.verrou text{opacity:0}
+.hud-viseur .v-bas{position:absolute;left:50%;bottom:3.4%;transform:translateX(-50%);display:flex;align-items:baseline;gap:26px;white-space:nowrap}
+.hud-viseur .v-bas .hud-bandeau{font-size:clamp(17px,1.35vw,24px)}
+.hud-viseur .v-outils{position:absolute;left:4%;top:15.2%;display:flex;flex-direction:row;align-items:baseline;gap:22px}
+.hud-viseur .v-outils .ke-btn{font-family:var(--f-ui);font-size:13.5px;box-shadow:none;color:var(--ink2)}
+.hud-viseur .v-outils .ke-btn:hover{color:var(--ink)}
+.hud-viseur .v-outils .ke-btn[aria-pressed="true"]{font-style:normal;color:var(--ink);box-shadow:inset 0 -1px 0 var(--or)}
+
+@media (max-width:1500px){.hud-reticules{grid-template-columns:repeat(4,minmax(0,1fr))}.hud-jauges{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1100px){.hud-cadres{grid-template-columns:repeat(2,1fr)}.hud-attitude,.hud-radar-zone,.hud-tele-zone,.hud-temps,.hud-appels{grid-template-columns:1fr}}
+
+/* la bande des cibles, au bas du viseur */
+.hud-viseur .v-bande-c{cursor:pointer}
+.hud-viseur .v-bande-c .b-fil{stroke:var(--ink3);stroke-width:1}
+.hud-viseur .v-bande-c .b-pt{fill:var(--ink2);stroke:none}
+.hud-viseur .v-bande-c text.b-nom{fill:var(--ink2)}
+.hud-viseur .v-bande-c.hors .b-pt{fill:none;stroke:var(--ink3);stroke-width:1}
+.hud-viseur .v-bande-c.hors text.b-nom{fill:var(--pale)}
+.hud-viseur .v-bande-c:hover text.b-nom,.hud-viseur .v-bande-c.visee text.b-nom{fill:var(--ink)}
+.hud-viseur .v-bande-c:hover .b-pt,.hud-viseur .v-bande-c.visee .b-pt{fill:var(--ink)}
+.hud-viseur .v-bande-c.verrou .b-pt{fill:var(--or)}
+.hud-viseur .v-bande-c.verrou .b-fil{stroke:var(--or)}
+.hud-viseur .v-bande-c.verrou text.b-nom{fill:var(--or)}
+.hud-viseur .v-ret{transition:opacity .12s}
+/* la planche des états : une famille par rangée, un état par colonne */
+.hud-etats{display:grid;grid-template-columns:150px repeat(8,minmax(0,1fr));gap:0 18px;align-items:center}
+.hud-etats>.e-tete{padding:0 0 12px;font-family:var(--f-ui);font-size:12.5px;color:var(--pale);text-align:center;box-shadow:inset 0 -1px 0 var(--ink3);align-self:end}
+.hud-etats>.e-tete:first-child{text-align:left}
+.hud-etats>.e-nom{padding:22px 0;font-family:var(--f-nom);font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);box-shadow:inset 0 -1px 0 var(--line);align-self:stretch;display:flex;align-items:center}
+.hud-etats>.e-cel{display:grid;place-items:center;align-self:stretch;padding:18px 0;box-shadow:inset 0 -1px 0 var(--line);min-width:0}
+.hud-etats .e-cel>*{width:100%;max-width:170px}
+.hud-etats .hud-ruban svg{height:190px;width:auto;margin:0 auto}
+.hud-etats .hud-crans svg{height:170px;width:auto;margin:0 auto}
+.hud-etats .hud-segments{gap:8px}
+.hud-etats .hud-segments output{font-size:18px;min-width:2.6em;white-space:nowrap}
+.hud-etats .hud-segments .seg{gap:2px}
+.hud-etats .hud-segments[data-etat="chargement"] output small{display:none}
+.hud-etats .hud-segments .seg i{height:16px}
+.hud-etats .hud-anneau{max-width:130px}
+.hud-etats .hud-boussole{max-width:150px}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit étude · la dataviz en trois dimensions</title>
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="kit-etude.css">
+<link rel="stylesheet" href="viz3d.css">
+<script src="nav.js" defer></script>
+<script src="kit-etude.js" defer></script>
+<script type="module" src="viz3d.js"></script>
+<script type="module" src="viz3d-page.js"></script>
+</head>
+<body>
+<header class="ke-barre" data-page="viz3d"></header>
+<nav class="ke-rail v3-rail" aria-label="Les scènes">
+  <a href="#cretes">les crêtes<i></i></a><a href="#nappe">la nappe<i></i></a><a href="#constellation">la constellation<i></i></a><a href="#globe">le globe<i></i></a><a href="#ville">la ville<i></i></a><a href="#spirale">la spirale<i></i></a><a href="#delta">le delta<i></i></a><a href="#couches">les couches<i></i></a><a href="#particules">le nuage<i></i></a>
+</nav>
+<main>
+  <figure id="cretes"></figure>
+  <figure id="nappe"></figure>
+  <figure id="constellation"></figure>
+  <figure id="globe"></figure>
+  <figure id="ville"></figure>
+  <figure id="spirale"></figure>
+  <figure id="delta"></figure>
+  <figure id="couches"></figure>
+  <figure id="particules"></figure>
+</main>
+</body>
+</html>

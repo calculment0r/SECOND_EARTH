@@ -1,0 +1,33 @@
+/* KIT ÉTUDE · la surface et l'écho : une surface qu'on touche (la note en travers, l'éclat en hauteur) et un écho à bande à trois têtes. */
+.mu-surface-zone{position:relative;width:min(100%,560px);aspect-ratio:1.28;background:var(--mu-creux);cursor:crosshair;touch-action:none;user-select:none;overflow:hidden}
+.mu-surface-zone svg{position:absolute;inset:0;width:100%;height:100%}
+.mu-surface-zone .degre{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.mu-surface-zone .degre.tonique{stroke:var(--ink3)}
+.mu-surface-zone .niveau{stroke:var(--line);stroke-width:1;stroke-dasharray:1 7;vector-effect:non-scaling-stroke}
+.mu-surface-zone .sillage{fill:none;stroke:var(--ink2);stroke-width:1.2;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.7}
+.mu-surface-zone .visee{stroke:var(--line-or);stroke-width:1;vector-effect:non-scaling-stroke;opacity:0}
+.mu-surface-zone.tenue .visee{opacity:1}
+.mu-surface-point{position:absolute;left:calc(var(--x,.5) * 100%);top:calc((1 - var(--y,.5)) * 100%);width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--ink3);pointer-events:none;transition:transform var(--vite) var(--ease),background-color var(--vite)}
+.mu-surface-zone:hover .mu-surface-point,.mu-surface-zone:focus-visible .mu-surface-point{background:var(--ink)}
+.mu-surface-zone.tenue .mu-surface-point{background:var(--or);transform:scale(1.5)}
+.mu-surface-lu{position:absolute;left:18px;top:14px;pointer-events:none}
+.mu-surface-lu b{display:block;font-weight:300;font-size:46px;line-height:1;color:var(--ink)}
+.mu-surface-zone.tenue .mu-surface-lu b{color:var(--or);font-style:italic}
+.mu-surface-lu span{display:block;margin-top:8px;font-family:var(--f-ui);font-size:12.5px;color:var(--pale)}
+.mu-surface-noms{position:absolute;left:0;right:0;bottom:6px;height:14px;pointer-events:none}
+.mu-surface-noms span{position:absolute;transform:translateX(-50%);font-family:var(--f-ui);font-size:11px;color:var(--pale);white-space:nowrap}
+.mu-surface-zone:focus-visible{outline-offset:4px}
+/* la bande : un trait, la tête qui écrit, trois têtes qui lisent, les échos qui passent */
+.mu-bande{position:relative;height:74px;margin:6px 0 22px}
+.mu-bande::before{content:'';position:absolute;left:0;right:0;top:34px;height:1px;background:var(--ink3)}
+.mu-bande .ecrit{position:absolute;left:0;top:27px;width:14px;height:14px;background:var(--ink)}
+.mu-bande .lit{position:absolute;top:22px;left:calc(var(--t) * 100%);width:1px;height:25px;background:var(--trait-vu)}
+.mu-bande .lit b{position:absolute;left:50%;top:32px;transform:translateX(-50%);font-family:var(--f-ui);font-weight:400;font-size:11.5px;color:var(--pale);white-space:nowrap}
+.mu-bande .lit.on{background:var(--ink)}
+.mu-bande .lit.on b{color:var(--ink)}
+.mu-bande .echo{position:absolute;top:30px;width:9px;height:9px;margin-left:-4px;border-radius:50%;background:var(--or);pointer-events:none}
+.mu-bande .mu-etiq{position:absolute;left:0;top:0;text-align:left}
+.mu-tetes{display:flex;gap:8px}
+.mu-tetes .mu-pad{width:54px}
+.mu-surface-reglages{display:grid;grid-template-columns:auto auto;gap:26px 34px;align-items:start}
+.mu-surface-reglages>:first-child{grid-column:1/-1}

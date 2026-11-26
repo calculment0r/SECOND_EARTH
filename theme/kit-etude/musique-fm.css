@@ -1,0 +1,67 @@
+/* KIT ÉTUDE · le six opérateurs. Jetons seulement. Sa silhouette : un grand schéma, six colonnes d'enveloppes, un long clavier. */
+.mu-fm .mu-fm-btimbre{width:392px}
+.mu-fm .mu-ecran{min-height:150px}
+.mu-fm .mu-ecran .grand{margin-top:6px;font-style:italic;font-size:34px;line-height:1.05}
+.mu-fm .mu-ecran svg{margin-top:12px;height:46px}
+.mu-fm-timbres{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;margin-top:16px}
+.mu-fm-timbres button{display:flex;align-items:baseline;gap:10px;padding:7px 0;font-size:16px;line-height:1.2;white-space:nowrap;color:var(--voile);box-shadow:inset 0 -1px 0 var(--line);transition:color var(--vite),box-shadow var(--vite)}
+.mu-fm-timbres button b{font-family:var(--f-ui);font-weight:400;font-size:12px;color:var(--pale);min-width:10px}
+.mu-fm-timbres button:hover{color:var(--ink)}
+.mu-fm-timbres button[aria-checked="true"]{color:var(--ink);font-style:italic;box-shadow:inset 0 -1px 0 var(--or)}
+.mu-fm-timbres button[aria-checked="true"] b{color:var(--or);font-style:normal}
+/* le schéma */
+.mu-fm-algo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:44px;align-items:center}
+.mu-fm-schema{display:block;width:100%;height:340px;overflow:visible}
+.mu-fm svg .sortie{stroke:var(--ink2);stroke-width:1;vector-effect:non-scaling-stroke}
+.mu-fm svg .lien{fill:none;stroke:var(--ink3);stroke-width:1;vector-effect:non-scaling-stroke;transition:stroke var(--vite)}
+.mu-fm svg .lien.vif{stroke:var(--or);stroke-width:1.5}
+.mu-fm svg .lien.boucle{stroke-dasharray:2 4}
+.mu-fm svg .op rect{fill:var(--panel2);stroke:var(--ink3);stroke-width:1;vector-effect:non-scaling-stroke;transition:fill var(--vite),stroke var(--vite)}
+.mu-fm svg .op.porteur rect{fill:var(--ink);stroke:var(--ink)}
+.mu-fm svg .op text{font-family:var(--f-texte);font-weight:300;font-size:22px;fill:var(--ink);pointer-events:none}
+.mu-fm svg .op.porteur text{fill:var(--bg)}
+.mu-fm svg .op[role="button"]{cursor:pointer}
+.mu-fm svg .op[role="button"]:hover rect{stroke:var(--ink)}
+.mu-fm svg .op.regle rect{stroke:var(--or);stroke-width:2}
+.mu-fm svg .op.porteur.regle rect{fill:var(--or)}
+.mu-fm svg .op.porteur.regle text{fill:var(--on-or)}
+.mu-fm svg .op:focus-visible{outline:none}
+.mu-fm svg .op:focus-visible rect{stroke:var(--or);stroke-width:2.5}
+.mu-fm-nomalgo{margin:0 0 14px;font-style:italic;font-weight:320;font-size:26px;line-height:1.1;color:var(--ink)}
+.mu-fm-minis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.mu-fm-minis button{position:relative;padding:10px 8px 6px;background:var(--mu-creux);transition:background-color var(--vite),box-shadow var(--vite)}
+.mu-fm-minis button svg{display:block;width:100%;height:62px;overflow:visible}
+.mu-fm-minis button b{position:absolute;left:7px;top:4px;font-family:var(--f-ui);font-weight:400;font-size:11.5px;color:var(--pale)}
+.mu-fm-minis button:hover{background:var(--trait)}
+.mu-fm-minis button[aria-checked="true"]{box-shadow:inset 0 2px 0 var(--or)}
+.mu-fm-minis button[aria-checked="true"] b{color:var(--or)}
+.mu-fm-minis button:focus-visible{outline-offset:2px}
+/* les six opérateurs */
+.mu-fm-ops{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0 -18px}
+.mu-fm-op{padding:12px 18px 2px;box-shadow:inset 1px 0 0 var(--line),inset 0 1px 0 transparent;transition:box-shadow var(--vite)}
+.mu-fm-op:first-child{box-shadow:inset 0 1px 0 transparent}
+.mu-fm-op.regle{box-shadow:inset 1px 0 0 var(--line),inset 0 2px 0 var(--or)}
+.mu-fm-op.regle:first-child{box-shadow:inset 0 2px 0 var(--or)}
+.mu-fm-optete{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.mu-fm-optete .num{font-weight:300;font-size:44px;line-height:.9;color:var(--pale);transition:color var(--vite)}
+.mu-fm-op.porteur .num{color:var(--ink)}
+.mu-fm-op.regle .num{color:var(--or)}
+.mu-fm-optete .role{font-style:italic;font-size:16px;color:var(--voile)}
+.mu-fm-optete .temps{margin-left:auto;font-family:var(--f-ui);font-size:11.5px;color:var(--pale);white-space:nowrap}
+.mu-fm-env{display:block;width:100%;height:auto;overflow:visible;touch-action:none}
+.mu-fm-env .sol{stroke:var(--line-cy);stroke-width:1;vector-effect:non-scaling-stroke}
+.mu-fm-env .trait{fill:none;stroke:var(--ink);stroke-width:1.3;vector-effect:non-scaling-stroke}
+.mu-fm-env .aire{fill:var(--trait);stroke:none;opacity:.6}
+.mu-fm-op.muet .mu-fm-env .trait{stroke:var(--ink3);stroke-dasharray:2 4}
+.mu-fm-op.regle .mu-fm-env .trait{stroke:var(--or)}
+.mu-fm-env .prise{fill:var(--ink);cursor:grab;transition:fill var(--vite),r var(--vite);stroke:transparent;stroke-width:14;pointer-events:all}
+.mu-fm-env .prise:hover,.mu-fm-env .prise:focus-visible,.mu-fm-env .prise.tenu{fill:var(--or);r:7;outline:none}
+.mu-fm-potards{display:flex;justify-content:space-between;gap:8px;margin-top:14px}
+.mu-fm .mu-fm-potards .ke-potard.petit{--d:52px}
+.mu-fm .mu-fm-potards .ke-potard.petit output{font-size:17px}
+/* le bas : molettes et clavier */
+.mu-fm-molettes{display:flex;gap:16px}
+.mu-fm-molettes .mu-molette{height:168px}
+.mu-fm-molettes .mu-etiq{margin-top:8px}
+.mu-fm-bas .mu-titre{display:none}
+@media (max-width:1700px){.mu-fm .mu-fm-btimbre{width:350px}.mu-fm-timbres button{font-size:15px}.mu-fm-schema{height:300px}.mu-fm-optete .temps{display:none}}

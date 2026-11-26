@@ -1,0 +1,42 @@
+/* KIT ÉTUDE · l'orgue à tirettes. Jetons seulement. Sa silhouette : neuf tirettes, un accord écrit en grand, un clavier de soixante et une touches. */
+.mu-orgue-tirettes{display:flex;gap:9px;align-items:flex-start}
+.mu-orgue-t{display:grid;justify-items:center;gap:8px}
+.mu-orgue-t .pied{font-family:var(--f-ui);font-size:12px;color:var(--pale);white-space:nowrap}
+.mu-orgue .mu-tirette{width:32px;height:178px;box-shadow:inset 0 1px 0 var(--ink3)}
+.mu-orgue .mu-tirette::before{left:50%;width:8px;margin-left:-4px;top:0;height:calc(var(--p,0) * (100% - 24px));background:repeating-linear-gradient(180deg,var(--trait-vu) 0 calc(100% / 8 - 1px),var(--bg) calc(100% / 8 - 1px) calc(100% / 8));background-size:100% 154px}
+.mu-orgue .mu-tirette i{height:24px;top:calc(var(--p,0) * (100% - 24px));font-family:var(--f-texte);font-size:15px;font-weight:400}
+.mu-orgue .mu-tirette.sombre i{background:var(--mu-pose);color:var(--bg)}
+.mu-orgue .mu-tirette.claire i{background:var(--mu-ivoire);color:var(--mu-ebene)}
+.mu-orgue .mu-tirette.noire i{background:var(--mu-ebene);color:var(--mu-ivoire);box-shadow:inset 0 0 0 1px var(--ink3)}
+.mu-orgue .mu-tirette:hover i,.mu-orgue .mu-tirette:focus-visible i,.mu-orgue .mu-tirette.tenu i{background:var(--or);color:var(--on-or);box-shadow:none}
+.mu-orgue-regs{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:18px;max-width:370px}
+.mu-orgue-regs .ke-btn{font-size:13px;box-shadow:none;color:var(--pale)}
+.mu-orgue-regs .ke-btn:hover{color:var(--ink);box-shadow:inset 0 -1px 0 var(--ink)}
+/* l'écran : l'accord en très grand */
+.mu-orgue .mu-bloc.large{display:flex;flex-direction:column}
+.mu-orgue .mu-ecran{flex:1;min-height:236px;display:flex;flex-direction:column;padding:18px 24px 16px}
+.mu-orgue .mu-ecran .grand{margin-top:14px;font-style:italic;font-weight:300;font-size:clamp(34px,3.2vw,60px);line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+.mu-orgue .mu-ecran .grand.vide{color:var(--pale)}
+.mu-orgue .mu-ecran .ligne{font-style:normal;font-family:var(--f-ui);font-size:14px;color:var(--pale);margin-top:12px}
+.mu-orgue-registre{margin-top:auto;max-width:520px}
+.mu-orgue-registre .barre{fill:var(--ink)}
+.mu-orgue-registre .onde{fill:none;stroke:var(--ink);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.mu-orgue-pile{display:flex;flex-direction:column;gap:20px}
+.mu-orgue-org .mu-etiq{text-align:left;margin-top:7px}
+.mu-orgue-rotor{display:block;width:74px;height:74px;margin:0 0 18px;overflow:visible}
+.mu-orgue-rotor .voie{fill:none;stroke:var(--line-cy);stroke-width:1;vector-effect:non-scaling-stroke}
+.mu-orgue-rotor .aig{stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke}
+.mu-orgue-rotor .axe{fill:var(--ink)}
+.mu-orgue-gamme{display:flex;gap:26px}
+.mu-orgue-gamme .mu-selecteur{--d:112px}
+.mu-orgue-gamme .mu-etiq{margin-top:10px}
+/* le bas */
+.mu-orgue-bas .mu-titre{display:none}
+.mu-orgue-gauche{display:flex;gap:22px;align-items:flex-start}
+.mu-orgue-molettes{display:flex;gap:16px}
+.mu-orgue-molettes .mu-molette{height:180px}
+.mu-orgue-molettes .mu-etiq{margin-top:6px}
+.mu-orgue-mots{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.mu-orgue-mots .ke-btn{font-size:13px}
+.mu-orgue .mu-clavier{height:208px}
+@media (max-width:1700px){.mu-orgue-gamme{flex-direction:column;gap:14px}.mu-orgue-gamme .mu-selecteur{--d:92px}.mu-orgue .mu-tirette{width:28px}.mu-orgue-tirettes{gap:7px}}

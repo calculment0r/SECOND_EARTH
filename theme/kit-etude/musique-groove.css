@@ -1,0 +1,60 @@
+/* KIT ÉTUDE · la boîte à boucles. Les jetons du kit et de musique.css, aucune couleur écrite.
+   Sa silhouette : seize gros pads à côté d'un écran. Le pad tenu porte un filet orange ; un pad qui a des pas est d'encre. */
+.mu-groove-pads{width:clamp(380px,29vw,520px)}
+.mu-groove-pads .mu-pad.choisi{box-shadow:inset 0 3px 0 var(--or)}
+.mu-groove-pads .mu-pad i{white-space:normal;font-size:15px;line-height:1.12}
+.mu-groove-pads .mu-pad b{font-family:var(--f-texte);font-weight:300;font-size:22px;line-height:1;top:8px;left:10px}
+.mu-groove-ecran{display:grid;grid-template-columns:auto minmax(0,1fr);gap:30px;align-items:end;min-height:200px;padding:22px 26px 20px;margin-bottom:30px}
+.mu-groove-centre{display:flex;flex-direction:column}
+.mu-groove-centre .mu-groove-ecran{flex:1}
+.mu-groove-droite{display:grid;grid-template-rows:auto 1fr;gap:10px;min-width:0;align-self:stretch}
+.mu-groove-qui{display:flex;align-items:flex-end;justify-content:space-between;gap:18px}
+.mu-groove-qui>.petit{text-align:right;white-space:nowrap;padding-bottom:6px}
+.mu-groove-ecran+.mu-organes{justify-content:space-between;padding:0 10px}
+.mu-groove-num{font-weight:250;font-size:clamp(96px,8vw,150px);line-height:.78;letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums}
+.mu-groove-nom{display:block;margin:4px 0 0;white-space:nowrap;font-style:italic;font-weight:340;font-size:26px;line-height:1.08;color:var(--ink)}
+.mu-groove-onde{position:relative;display:flex;align-items:stretch;min-height:112px}
+.mu-groove-onde svg{position:absolute;inset:0;width:100%;height:100%}
+.mu-groove-onde svg path{stroke-width:2}
+.mu-groove-onde svg .pale{stroke-width:1}
+.mu-groove-duree{position:absolute;right:0;bottom:0}
+.mu-groove-jeu{display:grid;grid-template-columns:auto auto;gap:26px 30px;align-items:start}
+.mu-groove-jeu .mu-etiq{margin-top:10px;text-align:left}
+.mu-groove-mots{grid-column:1/3;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-top:20px;box-shadow:inset 0 1px 0 var(--line)}
+.mu-groove-mots .mu-voyant{margin-right:8px}
+.mu-groove-mots .ke-btn[aria-pressed="true"]{font-style:normal}
+
+.mu-groove-pistes{margin-top:16px}
+.mu-groove-rang{grid-template-columns:230px minmax(0,1fr);margin-bottom:5px}
+.mu-groove-rang.entete{align-items:end;margin-bottom:2px}
+.mu-groove-rang.entete>span{display:flex;align-items:baseline;gap:14px}
+.mu-groove-rang.entete>span small{display:inline}
+.mu-groove-rang.entete .mu-pas-nums{margin:0 0 4px;text-align:center}
+.mu-groove-mesures{display:flex;gap:14px}
+.mu-groove-mesures .ke-btn{font-family:var(--f-texte);font-size:19px;box-shadow:none;color:var(--pale);padding:0 2px}
+.mu-groove-mesures .ke-btn[aria-pressed="true"]{color:var(--ink);font-style:italic;box-shadow:inset 0 -1px 0 var(--or)}
+.mu-groove-piste{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;font-family:var(--f-nom);font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);white-space:nowrap;transition:color var(--vite)}
+.mu-groove-piste b{font-family:var(--f-texte);font-weight:300;font-size:19px;letter-spacing:0;color:var(--pale)}
+.mu-groove-piste:hover{color:var(--ink)}
+.mu-groove-rang.tenue .mu-groove-piste{color:var(--ink)}
+.mu-groove-rang.tenue .mu-groove-piste b{color:var(--or)}
+/* seize pas en quatre temps, tous de la même largeur */
+.mu-groove-pas{--g4:repeat(4,minmax(0,1fr));grid-template-columns:var(--g4) 6px var(--g4) 6px var(--g4) 6px var(--g4)}
+.mu-groove-pas>button{height:28px;background:var(--mu-creux)}
+.mu-groove-pas>button:hover{background:var(--trait-vu)}
+.mu-groove-pas>button[aria-pressed="true"]{background:var(--mu-pose);box-shadow:none}
+.mu-groove-pas>button.fort[aria-pressed="true"]{background:var(--ink);box-shadow:0 -4px 0 var(--ink)}
+.mu-groove-pas>button.ici{background:var(--trait-vu);box-shadow:none}
+.mu-groove-pas>button.ici[aria-pressed="true"]{background:var(--or);box-shadow:none}
+
+
+/* le jeu : la colonne tient la hauteur des pads ; les réglages en haut, l'enregistrement comme un grand pad en bas */
+.mu-groove-jeubloc{display:flex;flex-direction:column;width:280px}
+.mu-groove-jeubloc .mu-groove-jeu{flex:1;grid-template-rows:auto minmax(0,1fr)}
+.mu-groove-jeu .mu-bascule{white-space:nowrap}
+.mu-groove-mots{align-self:stretch;align-items:stretch!important}
+.mu-groove-mots .ke-btn:not(:first-child){align-self:flex-start}
+.mu-groove-mots .ke-btn:first-child{flex:1;width:100%;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:14px 16px;font-size:18px;background:var(--panel2);box-shadow:inset 0 0 0 1px var(--line)}
+.mu-groove-mots .ke-btn:first-child .mu-voyant{width:12px;height:12px;margin:0}
+.mu-groove-mots .ke-btn:first-child[aria-pressed="true"]{box-shadow:inset 0 0 0 1px var(--or),inset 0 3px 0 var(--or)}
+.mu-groove-mots .ke-btn:not(:first-child){font-size:14px}

@@ -1,0 +1,44 @@
+/* KIT ÉTUDE · LA LIGNE DE BASSE. Sa silhouette : six grands potards, et dessous une portée de seize colonnes où chaque note est une marque d'encre. Jetons seulement. */
+.mu-acide-son{display:flex;gap:26px;align-items:flex-end}
+.mu-acide-ecran{width:250px;min-width:0}
+.mu-acide-ecran .grand{margin-top:2px;font-size:46px;font-style:italic}
+.mu-acide-ecran .ligne{margin:4px 0 8px;font-family:var(--f-ui);font-style:normal;font-size:12px;color:var(--pale)}
+.mu-acide-forme{display:grid;gap:8px;justify-items:start}
+.mu-acide-pots{display:flex;justify-content:space-between;gap:18px;align-items:flex-end}
+.mu-acide .ke-potard>.ke-petit{font-size:12.5px}
+/* la portée : treize demi-tons, du do au do ; les rangs des touches noires sont un ton plus sombres */
+.mu-acide-portee{align-items:stretch;margin-bottom:10px}
+.mu-acide-echelle{display:grid;grid-template-rows:repeat(13,1fr);height:234px}
+.mu-acide-echelle span{display:flex;align-items:center;justify-content:flex-end;padding-right:4px;font-family:var(--f-ui);font-size:11px;line-height:1;color:var(--pale)}
+.mu-acide-grille{position:relative;display:grid;--g4:repeat(4,minmax(0,1fr));grid-template-columns:repeat(16,minmax(0,1fr));gap:4px;height:234px}
+.mu-acide-col{--n:0;--vers:0;position:relative;cursor:ns-resize;touch-action:none;user-select:none;
+  background:
+    linear-gradient(var(--mu-creux),var(--mu-creux)) 0 calc(100% / 13 * 2)/100% calc(100% / 13) no-repeat,
+    linear-gradient(var(--mu-creux),var(--mu-creux)) 0 calc(100% / 13 * 4)/100% calc(100% / 13) no-repeat,
+    linear-gradient(var(--mu-creux),var(--mu-creux)) 0 calc(100% / 13 * 6)/100% calc(100% / 13) no-repeat,
+    linear-gradient(var(--mu-creux),var(--mu-creux)) 0 calc(100% / 13 * 9)/100% calc(100% / 13) no-repeat,
+    linear-gradient(var(--mu-creux),var(--mu-creux)) 0 calc(100% / 13 * 11)/100% calc(100% / 13) no-repeat,
+    var(--trait)}
+.mu-acide-col:nth-child(4n+1){box-shadow:inset 1px 0 0 var(--ink3)}
+.mu-acide-col>i{position:absolute;left:0;right:0;bottom:calc(var(--n) * 100% / 13);height:calc(100% / 13);background:var(--ink);transition:bottom .08s var(--ease),background-color .08s}
+.mu-acide-col.fort i{left:-2px;right:-2px;box-shadow:0 -3px 0 var(--ink)}
+.mu-acide-col.muet i{background:none;box-shadow:inset 0 0 0 1px var(--ink3)}
+.mu-acide-col:hover i{background:var(--ink2)}
+.mu-acide-col.muet:hover i{background:none;box-shadow:inset 0 0 0 1px var(--ink)}
+.mu-acide-col.ici i{background:var(--or)}
+.mu-acide-col.ici.fort i{box-shadow:0 -3px 0 var(--or)}
+.mu-acide-col.ici.muet i{background:none;box-shadow:inset 0 0 0 1px var(--or)}
+.mu-acide-col.ici{box-shadow:inset 0 2px 0 var(--or)}
+/* le glissé : un trait qui part de la note vers la suivante */
+.mu-acide-fils{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
+.mu-acide-fils path{fill:none;stroke:var(--ink2);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.mu-acide-col b{position:absolute;left:0;right:0;bottom:calc((var(--n) + 1) * 100% / 13 + 3px);text-align:center;font-family:var(--f-texte);font-style:italic;font-weight:400;font-size:13px;line-height:1;color:var(--voile);pointer-events:none;opacity:0;transition:opacity var(--vite)}
+.mu-acide-col:hover b,.mu-acide-col:focus-visible b,.mu-acide-col.ici b{opacity:1}
+.mu-acide-col:focus-visible{outline-offset:1px;z-index:3}
+.mu-acide-octs{display:grid;--g4:repeat(4,minmax(0,1fr));grid-template-columns:repeat(16,minmax(0,1fr));gap:4px}
+.mu-acide-oct{height:26px;font-family:var(--f-ui);font-size:11.5px;text-align:center;color:var(--pale);background:var(--trait);transition:color var(--vite),background-color var(--vite)}
+.mu-acide-oct:hover{color:var(--ink);background:var(--trait-vu)}
+.mu-acide-oct.pose{color:var(--bg);background:var(--mu-pose)}
+.mu-acide-oct:focus-visible{outline-offset:2px}
+.mu-acide .mu-pas>button{height:26px}
+.mu-acide-mots{display:flex;gap:26px;margin:18px 0 0 138px}

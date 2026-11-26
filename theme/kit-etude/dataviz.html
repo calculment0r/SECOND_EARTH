@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit étude · Dataviz</title>
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t==='clair'||(!t&&localStorage.getItem('kit-etude.theme')==='light'))document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="stylesheet" href="kit-etude.css">
+<link rel="stylesheet" href="dataviz.css">
+<script src="nav.js" defer></script>
+<script src="kit-etude.js" defer></script>
+<script src="dataviz.js" defer></script>
+<script src="dataviz-2.js" defer></script>
+<script src="dataviz-page.js" defer></script>
+</head>
+<body>
+<header class="ke-barre" data-page="dataviz"></header>
+<main>
+<section class="dv-tete" data-mot="Encre">
+  <div>
+    <p class="ke-sur">Trente formes, deux dimensions, une seule encre</p>
+    <h1>Voir <em>juste.</em></h1>
+  </div>
+  <ul class="dv-gram" id="grammaire" aria-label="La grammaire des marques"></ul>
+</section>
+
+<section class="dv-famille" id="temps" data-mot="Temps"><header><h2>Le temps</h2><p>huit formes</p></header><div class="dv-grille" data-famille="temps"></div></section>
+<section class="dv-famille" id="comparer" data-mot="Comparer"><header><h2>La comparaison</h2><p>huit formes</p></header><div class="dv-grille" data-famille="comparer"></div></section>
+<section class="dv-famille" id="parts" data-mot="Parts"><header><h2>Le tout et ses parts</h2><p>quatre formes</p></header><div class="dv-grille" data-famille="parts"></div></section>
+<section class="dv-famille" id="liens" data-mot="Liens"><header><h2>Les liens</h2><p>six formes</p></header><div class="dv-grille" data-famille="liens"></div></section>
+<section class="dv-famille" id="distribution" data-mot="Forme"><header><h2>La distribution</h2><p>quatre formes</p></header><div class="dv-grille" data-famille="distribution"></div></section>
+<section class="dv-famille" id="etats" data-mot="États"><header><h2>Les états</h2><p>six formes, cinq états</p></header><div class="dv-grille" data-famille="etats"></div></section>
+<section class="dv-famille" id="pieces" data-mot="Pièces"><header><h2>Les pièces communes</h2><p>ce dont toute planche est faite</p></header><div class="dv-grille" data-famille="pieces"></div></section>
+</main>
+<footer class="dv-pied"><p>Chaque forme est un appel : KitEtude.viz.nom(élément, données, options). Du SVG, aucune bibliothèque.</p></footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* KIT ÉTUDE · le modulaire. Jetons seulement. Sa silhouette : une rangée de modules de largeurs inégales, leurs prises en bas,
+   et les câbles qui pendent dans la fosse laissée dessous. */
+.mu-mod-rack{position:relative;display:flex;align-items:stretch;margin:0 -14px;padding-bottom:128px;background:linear-gradient(var(--mu-creux),var(--mu-creux)) 0 100%/100% 112px no-repeat}
+.mu-mod{position:relative;min-width:0;display:flex;flex-direction:column;padding:16px 14px 0;box-shadow:inset 1px 0 0 var(--line),inset 0 1px 0 var(--ink3)}
+.mu-mod:first-child{box-shadow:inset 0 1px 0 var(--ink3)}
+.mu-mod-nom{margin:0;font-family:var(--f-nom);font-size:14px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.mu-mod-sous{margin:1px 0 16px;font-style:italic;font-size:14px;line-height:1.2;color:var(--pale);white-space:nowrap}
+.mu-mod-corps{flex:1;display:flex;flex-direction:column;gap:16px}
+.mu-mod-pots{display:flex;flex-wrap:wrap;gap:14px 10px;justify-content:space-around}
+.mu-modulaire .ke-potard.petit{--d:52px}
+.mu-modulaire .ke-potard.petit output{font-size:16px}
+.mu-modulaire .ke-potard>.ke-petit{font-size:12px}
+.mu-mod-forme{display:flex;justify-content:center;min-height:86px}
+.mu-mod .mu-ecran{min-width:0;min-height:0;padding:8px 8px}
+.mu-mod-scope{display:block;width:100%;height:54px}
+/* le séquenceur : huit hauteurs qu'on tire, huit pas qu'on pose */
+.mu-mod-pas{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:2px}
+.mu-mod-col{display:grid;justify-items:center;gap:6px}
+.mu-mod-col .note{font-family:var(--f-ui);font-size:11.5px;color:var(--pale);white-space:nowrap}
+.mu-mod-col .ke-curseur{width:26px}
+.mu-mod-col .ke-curseur .ke-c-main{width:14px;height:14px;margin:0 0 -7px -7px}
+.mu-mod-col .ke-curseur.ici .ke-c-main{background:var(--or)}
+.mu-mod-col .ke-curseur.ici .ke-c-plein{background:var(--or)}
+.mu-mod-seqbas{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.mu-modulaire .mu-pas>button{height:22px}
+/* les prises : en bas du module ; les entrées d'abord, les sorties sous un filet d'encre */
+.mu-mod-bas{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin:18px -14px 0;padding:12px 14px 16px;box-shadow:inset 0 1px 0 var(--line)}
+.mu-mod-prises{display:flex;gap:12px}
+.mu-mod-prises.sortie{margin-left:auto;padding-top:0}
+.mu-mod-prise{display:grid;justify-items:center;gap:7px}
+.mu-mod-prise span{font-family:var(--f-ui);font-size:11.5px;color:var(--pale);white-space:nowrap}
+.mu-mod-prises.sortie .mu-mod-prise span{color:var(--ink);box-shadow:inset 0 -1px 0 var(--ink2);padding-bottom:1px}
+.mu-mod-prise.porte .mu-prise{border-radius:0}
+.mu-mod-prise.porte .mu-prise::after{border-radius:0}
+.mu-mod-rack.tire .mu-prise:not(.cible):not(.depart){opacity:.28}
+/* les câbles */
+.mu-mod-cables{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:3}
+.mu-modulaire .mu-cable{stroke-width:2;opacity:.62;transition:opacity var(--vite),stroke var(--vite)}
+.mu-modulaire .mu-cable.cv{stroke:var(--ink3);opacity:.8}
+.mu-modulaire .mu-cable.porte{stroke-dasharray:1 5;stroke:var(--ink)}
+.mu-modulaire .mu-cable.vif{stroke:var(--ink);opacity:1}
+.mu-modulaire .mu-cable.choisi{stroke:var(--or);opacity:1;stroke-dasharray:none}
+.mu-modulaire .mu-cable.fantome{stroke:var(--amb);stroke-dasharray:2 7;opacity:1}
+.mu-modulaire .mu-cable.fantome.pret{stroke:var(--or);stroke-dasharray:none}
+.mu-mod-touche{fill:none;stroke:transparent;stroke-width:14;pointer-events:stroke;cursor:pointer}
+.mu-mod-touche:focus-visible{outline:none}
+.mu-mod-pied{display:flex;justify-content:space-between;align-items:flex-end;gap:34px;margin-top:22px}
+.mu-mod-dit small{display:block;margin-bottom:4px;font-family:var(--f-ui);font-size:13px;color:var(--ink3)}
+.mu-mod-dit p{margin:0;font-style:italic;font-weight:350;font-size:21px;line-height:1.3;color:var(--ink)}
+.mu-mod-mots{display:flex;gap:26px;white-space:nowrap}
+
+/* les modules courts tiennent la hauteur du rack : la sortie montre son onde sur toute la hauteur, les potards seuls grandissent */
+.mu-mod-sortie{flex:1;display:flex;padding:10px 8px}
+.mu-mod-sortie .mu-mod-scope{height:auto;flex:1;min-height:90px}
+.mu-mod-sortie .mu-mod-scope path{vector-effect:non-scaling-stroke}
+.mu-mod[data-module="bruit"] .ke-potard.petit,.mu-mod[data-module="lent"] .ke-potard.petit,.mu-mod[data-module="ampli"] .ke-potard.petit,.mu-mod[data-module="sortie"] .ke-potard.petit{--d:66px}
+.mu-mod[data-module="bruit"] .mu-mod-corps,.mu-mod[data-module="ampli"] .mu-mod-corps{justify-content:center}

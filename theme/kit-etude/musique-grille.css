@@ -1,0 +1,49 @@
+/* KIT ÉTUDE · la grille. Les jetons du kit et de musique.css, aucune couleur écrite.
+   Sa silhouette : soixante-quatre pads, huit par huit. Une boucle se lit dans son pad : son nom, et ses notes en petits traits.
+   L'encre : il y a une boucle. Les hachures d'ambre : elle attend la mesure. L'orange : elle joue, et un trait dit où elle en est. */
+.mu-grille-haut{display:flex;align-items:baseline;gap:26px;margin:0 0 18px}
+.mu-grille-dit{margin:0;font-style:italic;font-size:21px;line-height:1.2;color:var(--ink)}
+.mu-grille-haut .mu-etiq{margin-left:auto}
+.mu-grille-mesure{align-self:center}
+.mu-grille-rang{display:grid;grid-template-columns:repeat(8,minmax(0,1fr)) 22px minmax(96px,.62fr);gap:7px;margin-bottom:7px}
+.mu-grille-rang>:nth-child(9){grid-column:10}
+.mu-grille-rang.entete{margin-bottom:12px;align-items:end}
+.mu-grille-piste{display:flex;align-items:baseline;gap:10px;font-family:var(--f-nom);font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);padding-top:12px;box-shadow:inset 0 1px 0 var(--ink3);white-space:nowrap;overflow:hidden}
+.mu-grille-piste b{font-family:var(--f-texte);font-weight:300;font-size:20px;letter-spacing:0;color:var(--pale)}
+.mu-grille-piste.scene{color:var(--pale)}
+.mu-grille-pad{aspect-ratio:auto;height:clamp(54px,6.2vh,72px);text-align:left;overflow:hidden}
+.mu-grille-pad.vide{background:none;box-shadow:inset 0 0 0 1px var(--line)}
+.mu-grille-pad.vide:hover{background:none;box-shadow:inset 0 0 0 1px var(--ink3)}
+.mu-grille-pad.pleine{background:var(--trait-vu)}
+.mu-grille-pad.pleine:not(.joue):not(.attente):hover{background:var(--ink3)}
+.mu-grille-pad i{left:10px;right:8px;top:7px;bottom:auto;font-size:15px;color:var(--ink)}
+.mu-grille-pad svg{position:absolute;left:10px;right:10px;bottom:9px;width:calc(100% - 20px);height:18px;overflow:visible;pointer-events:none}
+.mu-grille-pad svg path{fill:var(--ink2)}
+.mu-grille-pad.pleine:not(.joue):not(.attente):hover svg path{fill:var(--bg)}
+.mu-grille-pad.pleine:not(.joue):not(.attente):hover i{color:var(--bg)}
+.mu-grille-pad u{position:absolute;left:0;bottom:0;height:3px;width:calc(var(--av,0) * 100%);background:var(--on-or);opacity:0}
+.mu-grille-pad.attente,.mu-grille-pad.attente:hover{background:repeating-linear-gradient(135deg,var(--line-amb) 0 1.5px,transparent 1.5px 9px),var(--trait);box-shadow:inset 0 2px 0 var(--amb)}
+.mu-grille-pad.attente i{color:var(--ink)}
+.mu-grille-pad.attente svg path{fill:var(--ink)}
+.mu-grille-pad.joue,.mu-grille-pad.joue:hover{background:var(--or)}
+.mu-grille-pad.joue i{color:var(--on-or);font-style:normal}
+.mu-grille-pad.joue svg path{fill:var(--on-or)}
+.mu-grille-pad.joue u{opacity:1}
+.mu-grille-pad.joue.attente{background:repeating-linear-gradient(135deg,var(--on-or) 0 2px,transparent 2px 9px),var(--or)}
+/* lancer une rangée ; arrêter une colonne */
+.mu-grille-scene{display:flex;align-items:baseline;gap:10px;padding:0 0 0 14px;box-shadow:inset 1px 0 0 var(--ink3);color:var(--pale);transition:color var(--vite),box-shadow var(--vite)}
+.mu-grille-scene b{font-family:var(--f-texte);font-weight:300;font-size:34px;line-height:1;color:var(--voile);transition:color var(--vite)}
+.mu-grille-scene span{font-family:var(--f-ui);font-size:13px}
+.mu-grille-scene:hover,.mu-grille-scene:focus-visible{color:var(--ink);box-shadow:inset 2px 0 0 var(--ink)}
+.mu-grille-scene:hover b{color:var(--ink)}
+.mu-grille-scene.joue{box-shadow:inset 2px 0 0 var(--or)}
+.mu-grille-scene.joue b{color:var(--or);font-style:italic}
+.mu-grille-rang.pied{margin-top:12px}
+.mu-grille-arret{height:30px;padding:0 10px;text-align:left;font-family:var(--f-ui);font-size:13px;color:var(--ink2);box-shadow:inset 0 1px 0 var(--ink3);transition:color var(--vite),box-shadow var(--vite)}
+.mu-grille-arret:hover{color:var(--ink);box-shadow:inset 0 1px 0 var(--ink)}
+.mu-grille-arret:disabled{color:var(--pale);opacity:.5;box-shadow:inset 0 1px 0 var(--line);cursor:default}
+.mu-grille-arret.attente{color:var(--amb);box-shadow:none;background:repeating-linear-gradient(90deg,var(--amb) 0 2px,transparent 2px 7px) 0 0/100% 1.5px no-repeat}
+.mu-grille-arret.tout{padding-left:14px}
+.mu-grille-rang.niveaux{align-items:center;margin:4px 0 0}
+.mu-grille-rang.niveaux .ke-curseur{height:26px}
+.mu-grille-rang.niveaux .mu-etiq{text-align:left;padding-left:14px}
