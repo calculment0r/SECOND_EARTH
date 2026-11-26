@@ -8,7 +8,7 @@ Le site est un lieu qu'on visite : la planète en est le centre, on s'en approch
 
 ## Ce qu'on ressent
 
-On est chef de mission, comme dans la salle immersive. On explore à son rythme, on touche, on tourne les choses. C'est l'axe le plus proche de la maquette CONTINUUM du site NirvaLab, qui sert de référence.
+On est chef de mission, comme dans la salle immersive. On explore à son rythme, on touche, on tourne les choses. C'est l'axe le plus proche de la maquette CONTINUUM du site NirvaLab (`https://calculment0r.github.io/NirvaLabWeb/work/continuum/`) : la planète en points, la frise du temps, la caméra qui cadre toute seule chaque temps fort, les étiquettes fines posées sur le relief. Ici, cette mécanique devient le site entier.
 
 ## Mise en page
 

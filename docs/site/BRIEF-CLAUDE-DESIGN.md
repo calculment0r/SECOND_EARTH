@@ -56,7 +56,14 @@ Dernière phrase du film : « This is a fictional planet. Earth is the only worl
 
 **Les objets en 3D.** Les personnages seront faits en « gaussian splatting » (un objet 3D photoréaliste qu'on fait tourner dans la page) : **Seed, Rob1, Rob2, Rob3**, quelques **animaux**, les vaisseaux **MOTHER** et **PERSEPHORA**, la capsule. Ils ne sont pas encore faits : dessiner le visualiseur et son emplacement, avec une image d'attente.
 
-**La planète interactive.** Elle existe : c'est le globe 3D de la maquette CONTINUUM du site NirvaLab (dépôt NirvaLabWeb, `assets/js/vendor/continuum-globe.js`, three.js). Cette maquette est la référence de Cal pour le niveau d'interaction attendu. Si tu n'as pas accès au dépôt NirvaLabWeb, demande-lui l'accès ou des captures.
+**La planète interactive : la maquette CONTINUUM.** C'est la référence de Cal pour le niveau d'interaction attendu. Elle est en ligne, à ouvrir et à manipuler avant de dessiner : `https://calculment0r.github.io/NirvaLabWeb/work/continuum/` (le site NirvaLab entier : `https://calculment0r.github.io/NirvaLabWeb/`). Ce qu'elle fait :
+- une planète en 3D dessinée en 42 000 points, avec son relief, ses massifs, ses failles et des courbes de niveau ; une mise au point comme sur un objectif photo (le lointain est flou) ;
+- une frise du temps : l'histoire se joue dessus, avec ses temps forts, et on la parcourt à la main ;
+- une caméra qui se déplace toute seule à chaque temps fort, avec de vrais cadrages : depuis l'orbite avec la planète énorme d'un côté, au ras du sol avec l'horizon, derrière une équipe qui marche, derrière le vaisseau, vue d'ensemble décentrée. Jamais la planète simplement au centre ;
+- des étiquettes fines posées sur la planète : équipes, sites, vaisseau, distances, petites fiches de suivi ; des tracés au sol qui avancent avec l'histoire ; des capsules qui descendent du vaisseau ;
+- la main du visiteur reprend la caméra à tout moment (tourner, déplacer, zoomer) ; un double-clic revient à la vue d'ensemble.
+
+Elle raconte aujourd'hui une autre histoire (CONTINUUM). Pour Second Earth, la même mécanique doit raconter Korê : ses quatre continents, le trajet de Seed en douze étapes, les sites des quatre Robs, la descente des capsules depuis PERSEPHORA. Le code est un seul fichier (`assets/js/vendor/continuum-globe.js`, three.js) dans le dépôt NirvaLabWeb, qui est privé : Cal donne l'accès si besoin ; la note de reprise y est `GLOBE-ENGINE.md`. Ton travail ici : son habillage et sa place dans la page (étiquettes, fiches, frise, contrôles).
 
 **Les références de Cal.** Il rassemble des sites de référence et te les donnera. Elles guident le niveau et l'esprit ; ne reproduire aucun site, aucun film, aucune marque.
 
@@ -97,7 +104,7 @@ Le site actuel a dix-sept parties : regroupe-les dans ces pages, rien ne se perd
 ## 7. Contraintes
 
 - HTML, CSS et JavaScript simples, sans étape de fabrication, hébergés en pages statiques. three.js est permis, ainsi qu'un visualiseur de gaussian splatting.
-- Cal doit pouvoir modifier lui-même textes et images en ligne, comme sur son site NirvaLab : penser chaque page comme une pile de bandes horizontales, chacune avec ses textes et ses images (voir `site-projet/LIRE.md`).
+- Cal doit pouvoir modifier lui-même textes et images en ligne, comme sur son site NirvaLab : penser chaque page comme une pile de bandes horizontales qui montent ou descendent dans la pile et changent de hauteur (voir `site-projet/LIRE.md`). Sur le site NirvaLab il y a trois sortes de bandes : une bande de composition (une grille de 12 colonnes où l'on pose librement textes, images, vidéos, diaporamas en fondu et carrousels), une bande pour un composant 3D en pleine largeur (la planète, un visualiseur), et un carrousel pleine largeur. Sur téléphone, les éléments d'une bande de composition passent l'un sous l'autre, de haut en bas puis de gauche à droite : dessiner des bandes qui gardent leur sens dans cet ordre.
 - Les vidéos viennent de Cloudflare, pas du dépôt. Sans son au départ, lecture automatique, image d'attente, chargement seulement quand la bande arrive à l'écran.
 - La 3D ne doit jamais bloquer la page : image d'attente, chargement à la demande, version simple sur téléphone.
 - Respecter le réglage « moins de mouvement » du visiteur.
