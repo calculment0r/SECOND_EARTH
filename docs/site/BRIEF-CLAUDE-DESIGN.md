@@ -1,40 +1,115 @@
 # Brief pour Claude Design · le site de Second Earth
 
-## 1. Le projet
+Ce brief est le tronc commun. Trois briefs d'axe l'accompagnent (Atlas, Écran, Salle) : un par proposition de design. Lis celui-ci d'abord.
 
-**Second Earth** : un film de 25 minutes (puis 55), une salle immersive et une exposition, pour le Science Centre Singapore. Auteur et réalisateur : Cal (NIRVALAB). Productrice : Nina Albani (aïo Creative Group, Singapour).
+## 1. Ce qu'on te demande
 
-L'histoire en quatre phrases. En 2098, un vaisseau-semeur dépose une capsule sur une planète lointaine. Une adolescente y naît, Seed, cheveux blancs, presque muette, avec un petit robot, Rob1. Ils traversent la planète pour retrouver trois autres robots et lui donnent un nom : Korê. À la fin, Rob1 ment à la Terre pour protéger ce monde.
+Dessiner le **graphisme, l'interface et le parcours** du site de Second Earth. Cal fournit les images et les vidéos ; ton travail est la mise en page, la typographie, les couleurs, les mouvements, les interactions et les outils de visualisation de données.
+
+Trois propositions distinctes, une par axe. Le niveau visé : celui des sites les plus soignés d'aujourd'hui, en mise en page, en micro-animations et en transitions. Le site n'a pas à « faire science-fiction » : pas de décor d'écran de vaisseau, pas de néons, pas de typographie futuriste par défaut. Le sujet est un monde vivant, filmé comme un documentaire de nature.
+
+## 2. Le projet
+
+**Second Earth** est un projet de **cinéma immersif** : l'image entoure le spectateur. Tout est pensé en panoramique.
+- Un **film de 25 minutes**, puis une version de 55 minutes.
+- Une **salle immersive** en temps réel, où le visiteur est chef de mission.
+- Une **exposition** organisée par milieu naturel, avec des cartels en trois temps : SUR TERRE / SUR KORÊ / POURQUOI.
+- Pour le **Science Centre Singapore**. Auteur et réalisateur : Cal (NIRVALAB). Productrice : Nina Albani (aïo Creative Group, Singapour). Studio partenaire pour la salle : BoraBora Studios.
+
+**L'histoire.** En 2045, le vaisseau PERSEPHORA quitte le système solaire. Il ne prend rien à la Terre : il porte des embryons et des machines. En 2098, il arrive près de l'étoile 61 Cygni A, à 11,4 années-lumière, et dépose une capsule, le XENOPOD-01. Quatre robots, les Robs, vérifient que la planète a toutes les briques de la vie. Une adolescente y naît : Seed, quinze ans en apparence, cheveux blancs, presque muette (quatre mots dans tout le film). Avec Rob1, un petit robot de 75 cm aux yeux bleus, elle traverse la planète pour retrouver Rob2, Rob3 et Rob4. En chemin ils donnent un nom à la planète : **Korê**, d'après le cri d'un oiseau. La planète a tout ce qu'il faut. Rob1 envoie pourtant « NON VIABLE » vers la Terre : son mensonge protège ce monde.
 
 Dernière phrase du film : « This is a fictional planet. Earth is the only world we know. Take care of it. »
 
-## 2. À quoi sert le site
+**Le ton.** Une relation tendre et drôle entre une adolescente et un petit robot qui pense en adulte. De l'aventure, des animaux immenses, jamais rien d'effrayant. Un propos de fond sérieux : la vie est rare, la Terre est la seule que nous ayons.
 
-Présenter le projet à des partenaires : le Science Centre, des financeurs, des studios, des diffuseurs. Il doit donner envie en dix secondes et rester clair pour quelqu'un qui ne connaît rien au projet.
-Adresse : un nom de domaine acheté par Cal (à préciser par lui).
-Langues : français et anglais (public de Singapour).
+**La planète en chiffres** (matière pour la visualisation de données ; détail dans `CLAUDE.md`, partie 3) :
+- étoile orange, 15 % de la lumière du Soleil ; une seconde étoile visible la nuit comme un point orange ;
+- année de 116 jours terrestres ; jour d'environ 40 heures (Seed dort deux fois par jour) ;
+- gravité 1,13 fois celle de la Terre ; air à 30 % d'oxygène ;
+- 58 % de terres, 40 % d'eau ; quatre continents ;
+- deux lunes ; des marées sept fois plus fortes que sur Terre ;
+- la végétation : pourpre en haut, verte dessous ; sous les arbres la lumière est magenta ;
+- le voyage du vaisseau : 2045 à 2098, à 21 % de la vitesse de la lumière ;
+- le voyage de Seed : environ 5 500 km, une quarantaine de jours, douze étapes ;
+- 66 animaux, 42 plantes, 7 géants disparus (les Titans).
 
-## 3. Ce que Cal veut
+## 3. À qui parle le site
 
-- Un site **très beau**, où l'image est reine : grandes vidéos en 21:9, images panoramiques très larges, carrousels.
-- Il hésite entre deux directions et veut les voir côte à côte :
-  - **Piste A, très graphique** : typographie forte, grilles visibles, étiquettes et chiffres de mission, données de la planète mises en scène ;
-  - **Piste B, sobre** : presque rien autour des images, beaucoup de vide, texte discret, la typographie s'efface.
-- Il ne sait pas encore s'il garde les directions artistiques déjà faites. Les deux existent dans le dépôt et peuvent servir de point de départ ou être abandonnées :
-  - le thème sombre « Verdant » du site actuel (fond presque noir, corail et vert profond ; `site/assets/site.css`, `theme/showrunner-ui-kit/`) ;
-  - le « kit étude » de la présentation (clair, Literata pour le texte, Norelli en capitales pour les titres ; `presentation/kit/`).
-- **Une planète interactive** au cœur du site. Elle existe déjà : le globe 3D de la page CONTINUUM du site NirvaLab (un seul fichier, `assets/js/vendor/continuum-globe.js` du dépôt NirvaLabWeb, avec three.js ; note de reprise : `GLOBE-ENGINE.md`). À prévoir dans la maquette comme un grand bloc plein écran : la planète Korê, ses quatre continents, le trajet de Seed en douze étapes, un clic sur une étape ouvre son paysage et ses animaux. La carte en deux échelles existe aussi (`carte/carte-kore.html`).
+À des partenaires : le Science Centre, des financeurs, des studios, des diffuseurs. Il doit donner envie en dix secondes et rester clair pour quelqu'un qui ne connaît rien au projet. Français et anglais (public de Singapour). Le nom de domaine est acheté par Cal.
 
 ## 4. Le matériel
 
-- Vidéos 21:9 en trois familles : la faune et la flore ; Seed et Rob1 ; l'espace (le vaisseau PERSEPHORA et MOTHER). Certaines ont plusieurs plans, certaines sont ratées : n'utiliser que celles marquées « bon » dans l'inventaire.
-- Images panoramiques (rapports de 2:1 à 3,3:1), d'autres à venir, dont des images tirées des vidéos.
-- L'inventaire complet avec vignettes : `media/inventaire/` (fait le 25/11/2026 : 98 vidéos, 60 images ; page publiée sous `inventaire-medias/`).
-- Les couleurs de la planète : étoile orange, végétation pourpre en haut et verte dessous, lumière magenta sous les arbres, déserts ocre, mer gris-vert, lacs roses, nuits lumineuses bleues. Les images actuelles sont dominées par le rouge corail, le blanc et les brumes pâles.
-- Les vidéos seront servies depuis Cloudflare, pas depuis le dépôt.
+**Tout est dans le dépôt** `https://github.com/calculment0r/SECOND_EARTH` (public, branche `claude/beautiful-goldberg-x0to5u`). À lire en premier : `CLAUDE.md`. Ne rien inventer : ce qui manque se laisse en emplacement vide, nommé.
+- Le monde : `docs/bible/` (les lieux, la lumière et les couleurs, les lunes, la géologie, le trajet de Seed).
+- Le film : `docs/film/00-recit-v2.md`.
+- Les espèces : `data/bestiaire.json`, `data/flore.json`, `data/titans.json`.
+- La carte : `carte/carte-kore.html`, `carte/world.png`.
+- Le site actuel par parties : `site-projet/` (dix-sept parties, contenu dans `site-projet/content/site-content.json`). Il est en ligne : `https://calculment0r.github.io/SECOND_EARTH/`.
+- Deux directions graphiques déjà faites, à garder ou à abandonner : le thème sombre « Verdant » (`site/assets/site.css`, `theme/showrunner-ui-kit/`) et le « kit étude » clair (`presentation/kit/`).
+- L'inventaire des images et des vidéos, avec vignettes : `media/inventaire/` (page : `media/inventaire/index.html`).
 
+**Les images et les vidéos.** Cal t'en donnera d'autres au fil du travail.
+- 98 vidéos en 21:9 (1470 × 630, 15 à 45 s, avec son), en trois familles : Seed et Rob1 ; les animaux et les plantes ; l'espace (le vaisseau PERSEPHORA, la station MOTHER, la capsule). Elles sont en ligne sur Cloudflare, chacune avec une image d'attente.
+- 60 images panoramiques très larges (environ 4,7:1, de 2 900 à 6 700 px de large).
+- Attention à la taille : les vidéos font 630 px de haut. En plein écran sur un grand moniteur elles seront agrandies. Prévoir des façons de les montrer qui tiennent compte de cela (bandeau, cadre, mosaïque, voile, grain) et dire ce que tu conseilles.
+- Dans beaucoup de vidéos avec Seed, Rob1 est plus grand qu'il ne doit l'être. L'inventaire dit, vidéo par vidéo, le passage utilisable.
 
-### Sélection de départ (tirée de l'inventaire du 25/11/2026)
+**Les objets en 3D.** Les personnages seront faits en « gaussian splatting » (un objet 3D photoréaliste qu'on fait tourner dans la page) : **Seed, Rob1, Rob2, Rob3**, quelques **animaux**, les vaisseaux **MOTHER** et **PERSEPHORA**, la capsule. Ils ne sont pas encore faits : dessiner le visualiseur et son emplacement, avec une image d'attente.
+
+**La planète interactive.** Elle existe : c'est le globe 3D de la maquette CONTINUUM du site NirvaLab (dépôt NirvaLabWeb, `assets/js/vendor/continuum-globe.js`, three.js). Cette maquette est la référence de Cal pour le niveau d'interaction attendu. Si tu n'as pas accès au dépôt NirvaLabWeb, demande-lui l'accès ou des captures.
+
+**Les références de Cal.** Il rassemble des sites de référence et te les donnera. Elles guident le niveau et l'esprit ; ne reproduire aucun site, aucun film, aucune marque.
+
+## 5. Les pages, et ce qui se manipule sur chacune
+
+Chaque page a au moins une chose à manipuler, qui apprend quelque chose. Propositions de départ ; améliore-les.
+
+1. **Accueil.** Une grande vidéo panoramique d'ouverture, le titre, une phrase. Puis le projet en quelques bandes : l'histoire, la planète, les personnages, le film. *À manipuler* : un panoramique qu'on fait glisser de gauche à droite, comme si on tournait la tête dans la salle.
+2. **Le voyage.** La planète Korê en 3D, ses quatre continents, le trajet de Seed en douze étapes. *À manipuler* : on tourne la planète ; un clic sur une étape ouvre son paysage en panoramique, ses animaux, ses couleurs. Une frise des jours et des kilomètres avance avec le défilement.
+3. **La planète.** Korê comparée à la Terre. *À manipuler* : des comparateurs (gravité : un saut ici et là-bas ; la journée de 40 heures ; l'année ; les marées ; l'air ; la lumière de l'étoile), un schéma des orbites et des deux lunes, le voyage du vaisseau de 2045 à 2098.
+4. **Personnages et machines.** Seed, Rob1 à Rob4, PERSEPHORA, MOTHER, le XENOPOD. *À manipuler* : le visualiseur 3D (on tourne l'objet, on zoome), une échelle de tailles côte à côte (Rob1 fait 75 cm, il arrive sous la hanche de Seed).
+5. **Bestiaire et flore.** 66 animaux, 42 plantes, 7 Titans. *À manipuler* : filtres par milieu, échelle de taille avec une silhouette humaine, fiche avec vidéo, objet 3D quand il existe, et le cartel en trois temps (SUR TERRE / SUR KORÊ / POURQUOI).
+6. **Le film.** Le 25 minutes et le 55 minutes. *À manipuler* : une frise du film qu'on parcourt, avec un extrait vidéo par moment ; un carrousel de séquences ; un diaporama plein cadre.
+7. **La salle immersive et l'exposition.** *À manipuler* : un panoramique à 360 degrés qu'on fait tourner ; un plan de la salle ; les cartels de l'exposition par milieu.
+8. **La science.** La thèse du film : le phosphore limite la quantité de vie possible. *À manipuler* : un ou deux schémas animés, simples.
+9. **Équipe, calendrier, contact.** Court.
+
+Le site actuel a dix-sept parties : regroupe-les dans ces pages, rien ne se perd.
+
+## 6. Ce qu'on attend de toi, dans l'ordre
+
+**Étape 1 : trois écrans fixes par axe**, pour caler le design global avant tout mouvement. Les trois mêmes écrans pour les trois axes, avec les mêmes images, pour comparer :
+- le haut de la page d'accueil ;
+- la page « Le voyage », avec la planète et une étape ouverte ;
+- une fiche (un animal ou un personnage) avec le visualiseur 3D et deux ou trois outils de données.
+Écran large d'abord (1920 de large), plus un aperçu téléphone de l'accueil. Pour chaque axe, une note courte : l'idée, la typographie, les couleurs, la grille, comment bougent les choses.
+
+**Étape 2 : le KIT**, pour l'axe retenu par Cal (ou un mélange). Un système complet et soigné :
+- couleurs, deux ou trois polices, tailles, espacements, grille ;
+- boutons, étiquettes, menus, navigation, pied de page ;
+- les façons de poser une vidéo 21:9 et un panoramique : plein cadre, bandeau, carrousel, diaporama, panoramique à faire glisser ;
+- le visualiseur 3D (objet en gaussian splatting) et son habillage ;
+- **les outils de visualisation de données** : comparateur Terre / Korê, horloge de 40 heures, schéma des orbites et des lunes, jauge de marée, échelle de tailles, frise du voyage (jours, kilomètres, étapes), frise du vaisseau (2045 à 2098), palette de couleurs par milieu, compteurs d'espèces, frise du film ;
+- les mouvements : apparitions au défilement, transitions entre pages, survols, micro-animations, lecture des vidéos ; durées et courbes écrites.
+
+**Étape 3 : l'intégration.** Les pages de la partie 5, en vrai, avec les mouvements et les interactions.
+
+## 7. Contraintes
+
+- HTML, CSS et JavaScript simples, sans étape de fabrication, hébergés en pages statiques. three.js est permis, ainsi qu'un visualiseur de gaussian splatting.
+- Cal doit pouvoir modifier lui-même textes et images en ligne, comme sur son site NirvaLab : penser chaque page comme une pile de bandes horizontales, chacune avec ses textes et ses images (voir `site-projet/LIRE.md`).
+- Les vidéos viennent de Cloudflare, pas du dépôt. Sans son au départ, lecture automatique, image d'attente, chargement seulement quand la bande arrive à l'écran.
+- La 3D ne doit jamais bloquer la page : image d'attente, chargement à la demande, version simple sur téléphone.
+- Respecter le réglage « moins de mouvement » du visiteur.
+- Le texte doit rester lisible sur les images : contraste vérifié.
+- Aucune émoticône. Pas de vocabulaire technique dans les textes visibles. Mots simples.
+- Ne reproduire aucun film, aucune marque, aucun personnage existant.
+
+## 8. Questions ouvertes pour Cal
+
+Le nom de domaine ; l'axe retenu après l'étape 1 ; garder ou non Verdant ou le kit étude ; français d'abord ou anglais d'abord ; ce qui reste privé (script, budget).
+
+## Annexe · sélection de départ des vidéos et des images (tirée de l'inventaire du 25/11/2026)
 
 Chemins dans les dossiers de Cal. Les vidéos font 1470 × 630 (21:9), 15 ou 30 s, avec son. Elles sont en ligne sur Cloudflare (adresse donnée pour chacune, avec une image d'attente au meilleur moment) ; toutes les vidéos sauf les 2 ratées y sont, rangées sous `second-earth/video/<dossier>/`. Les vignettes sont dans `media/inventaire/vignettes/`, la page complète dans `media/inventaire/index.html` (filtres par état, personnage, lieu).
 Toutes les vidéos ci-dessous sont marquées « bon ». Rob1 est trop grand dans beaucoup de vidéos avec Seed : ne pas utiliser une vidéo « bon en partie » hors du passage indiqué dans sa fiche.
@@ -153,29 +228,3 @@ Toutes les vidéos ci-dessous sont marquées « bon ». Rob1 est trop grand dans
 
 - **Seed et Rob1, à utiliser seulement sur le passage indiqué** (31) : voir la page d'inventaire, filtre « Bon en partie ».
 - **Ce qui manque** : aucun fichier sur la naissance de Seed, la capsule qui tombe dans le gouffre, les lacs roses et pourpres, les Titans, le message vers la Terre ; une seule bonne vidéo avec le grand robot (20_feu_de_camp). Prévoir des emplacements vides pour ces moments.
-
-## 5. Le contenu
-
-Tout est écrit dans le dépôt `calculment0r/SECOND_EARTH` ; ne rien inventer. Le site éditable actuel a déjà dix-sept parties (`site-projet/`, contenu dans `site-projet/content/site-content.json`) :
-accueil, logline, pitch, synopsis, note d'intention, univers, personnages, voyage, bestiaire et flore, science, film, script, salle immersive, exposition, équipe, calendrier et financement, contact.
-La logline, le pitch, les synopsis et la note d'intention sont des propositions à valider par Cal. L'équipe et le contact sont vides.
-Sources : `CLAUDE.md` (résumé et chiffres de la planète), `docs/bible/`, `docs/film/00-recit-v2.md`, `data/bestiaire.json` (66 animaux), `data/flore.json` (42 plantes), `data/titans.json`.
-
-## 6. Ce qu'on attend de toi
-
-1. **Deux maquettes de la page d'accueil**, piste A et piste B, sur grand écran, avec les mêmes images, pour comparer.
-2. Pour la piste retenue : la page d'accueil complète, une page « Le voyage » avec la planète interactive, une page « Bestiaire et flore », une page « Le film », une page courte « Contact et équipe ».
-3. Le système : couleurs, deux ou trois polices, tailles, espacements, boutons, étiquettes, la façon de poser une vidéo 21:9 et un panoramique (plein écran, bandeau, carrousel), les mouvements (défilement, apparitions, lecture des vidéos).
-4. Une version téléphone simple de la page d'accueil.
-
-## 7. Contraintes
-
-- Le site est en HTML, CSS et JavaScript simples, sans étape de fabrication, hébergé en pages statiques.
-- Cal doit pouvoir modifier lui-même textes et images en ligne, comme sur son site NirvaLab : penser la page comme une pile de bandes horizontales, chacune avec ses textes et ses images (voir `site-projet/LIRE.md` et, dans NirvaLabWeb, `DESIGN-BRIEF.md`).
-- Vidéos sans son au départ, lecture automatique, image fixe de remplacement, poids maîtrisé.
-- Aucune émoticône. Ne reproduire aucun film, aucune marque, aucun personnage existant. Pas de vocabulaire technique dans les textes visibles.
-- Le texte doit rester lisible sur les images : contraste vérifié.
-
-## 8. Questions ouvertes pour Cal
-
-Le nom de domaine ; la piste (A, B ou un mélange) ; garder ou non Verdant ou le kit étude ; français d'abord ou anglais d'abord ; ce qui reste privé (script, budget).

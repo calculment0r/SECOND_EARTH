@@ -4,97 +4,119 @@ h1{font-size:34px;margin:0 0 8px}h2{font-size:22px;margin:40px 0 6px}p{color:#b9
 button{background:#e0674a;color:#0a0d0b;border:0;border-radius:6px;padding:12px 18px;font:600 15px system-ui;cursor:pointer;margin:6px 0 12px}
 textarea{width:100%;height:320px;box-sizing:border-box;background:#111614;color:#e8ece9;border:1px solid #2a332e;border-radius:6px;padding:14px;font:13px/1.5 ui-monospace,monospace}
 a{color:#f0b49b}.ok{color:#7fd6a4;margin-left:10px}</style><main>
-<h1>Les deux briefs du site</h1><p>Un bouton copie le texte. Tu le colles dans la session concernée.</p>
-<h2>1. Pour ta session locale : faire la liste des images et des vidéos</h2><p>À coller dans la session lancée sur ton ordinateur, là où sont tes dossiers.</p>
-<button data-c="t1">Copier ce brief</button><span class="ok"></span><textarea id="t1" readonly># Brief · inventaire des images et des vidéos de Second Earth (session locale, sur l&#x27;ordinateur de Cal)
+<h1>Les briefs pour Claude Design</h1><p>Un brief général et trois axes de design. Un bouton copie le texte ; tu le colles dans Claude Design. Le premier bouton copie les quatre d'un coup.</p>
+<button data-c="t0">Copier les quatre briefs d'un coup</button><span class="ok"></span><textarea id="t0" readonly style="height:90px"># Brief pour Claude Design · le site de Second Earth
 
-Pour une session Claude lancée sur l&#x27;ordinateur de Cal, là où sont les fichiers. La session cloud ne peut pas les voir.
-Lire d&#x27;abord `CLAUDE.md` (règles 2, 3, 5, 16 : français, pas d&#x27;émoticône, pas de jugement de valeur dans les réponses à Cal, pages HTML pour lui, mots simples).
+Ce brief est le tronc commun. Trois briefs d&#x27;axe l&#x27;accompagnent (Atlas, Écran, Salle) : un par proposition de design. Lis celui-ci d&#x27;abord.
 
-## But
+## 1. Ce qu&#x27;on te demande
 
-Une liste complète de tout le matériel image et vidéo, pour construire le site de Second Earth. Cal doit pouvoir la parcourir d&#x27;un coup d&#x27;œil, et Claude Design doit savoir ce qui est utilisable.
+Dessiner le **graphisme, l&#x27;interface et le parcours** du site de Second Earth. Cal fournit les images et les vidéos ; ton travail est la mise en page, la typographie, les couleurs, les mouvements, les interactions et les outils de visualisation de données.
 
-## Où chercher
+Trois propositions distinctes, une par axe. Le niveau visé : celui des sites les plus soignés d&#x27;aujourd&#x27;hui, en mise en page, en micro-animations et en transitions. Le site n&#x27;a pas à « faire science-fiction » : pas de décor d&#x27;écran de vaisseau, pas de néons, pas de typographie futuriste par défaut. Le sujet est un monde vivant, filmé comme un documentaire de nature.
 
-Demander à Cal les chemins s&#x27;ils ne sont pas donnés au lancement. Il y a :
-- trois dossiers de vidéos en 21:9 : **faune / flore**, **Seed**, **SPACE** (PERSEPHORA et MOTHER) ;
-- des images panoramiques (Midjourney, très larges), et d&#x27;autres à venir ; Cal extraira aussi des panoramiques des vidéos ;
-- les 100 images du dossier « seedance input » ;
-- les 5 planches de personnages (Seed, Rob1, grand robot, planche d&#x27;échelle, XENOPOD-01).
+## 2. Le projet
 
-Déjà connu côté cloud : 12 images dans le dépôt NirvaLabWeb (`assets/images/projects/second-earth/`, `assets/uploads/second-earth/`) et 3 vidéos sur le stockage Cloudflare de Cal (`VIDEO_HERO/Second_Earth.mp4` et deux fichiers `assets/uploads/second-earth/b-*.mp4`).
+**Second Earth** est un projet de **cinéma immersif** : l&#x27;image entoure le spectateur. Tout est pensé en panoramique.
+- Un **film de 25 minutes**, puis une version de 55 minutes.
+- Une **salle immersive** en temps réel, où le visiteur est chef de mission.
+- Une **exposition** organisée par milieu naturel, avec des cartels en trois temps : SUR TERRE / SUR KORÊ / POURQUOI.
+- Pour le **Science Centre Singapore**. Auteur et réalisateur : Cal (NIRVALAB). Productrice : Nina Albani (aïo Creative Group, Singapour). Studio partenaire pour la salle : BoraBora Studios.
 
-## Ce qu&#x27;il faut relever
-
-Pour **chaque vidéo** (avec `ffprobe`) : dossier, nom du fichier, durée, largeur × hauteur, format (21:9, 16:9…), images par seconde, poids, son ou pas.
-Puis la regarder (extraire une image toutes les 2 secondes avec `ffmpeg`, les lire) et noter :
-- ce qu&#x27;on voit, en une phrase simple ;
-- **un seul plan ou plusieurs plans** (multi-shot) ; si plusieurs : le minutage de chaque plan ;
-- qui est à l&#x27;écran : Seed, Rob1, grand robot, XENOPOD, PERSEPHORA, MOTHER, animal, plante, paysage seul ;
-- le lieu, rattaché à un biome de la Bible si c&#x27;est clair (`docs/bible/`) ;
-- les couleurs dominantes ;
-- **l&#x27;état : bon / bon en partie (dire de quelle seconde à quelle seconde) / raté** et pourquoi (Rob1 qui change de taille, visage déformé, mouvement cassé, texte parasite, objet en trop…) ;
-- les meilleurs moments pour en tirer une image fixe panoramique (minutage) ;
-- usage possible sur le site : grande vidéo d&#x27;ouverture, fond de section, carrousel, vignette.
-
-Pour **chaque image** : dossier, nom, largeur × hauteur, format, poids, ce qu&#x27;on voit, biome, couleurs, état, usage possible (bandeau très large, carrousel, fiche).
-
-Ne rien inventer : si un plan n&#x27;est pas clair, l&#x27;écrire.
-
-## Ce qu&#x27;il faut livrer
-
-1. `media/inventaire/inventaire.json` : une entrée par fichier, avec tous les champs ci-dessus.
-2. `media/inventaire/vignettes/` : une vignette légère par fichier (JPEG, 640 px de large, moins de 80 Ko) ; pour une vidéo, une planche de 6 à 8 images.
-3. `media/inventaire/index.html` : la page pour Cal. Vignettes, filtres (dossier, état, personnage, biome, un plan / plusieurs plans), compteur par état, mots simples. Thème du site (voir `site/assets/site.css`).
-4. Un résumé en tête de page : combien de vidéos et d&#x27;images, combien de bonnes, ce qui manque pour le site (par exemple : aucune bonne vidéo de tel moment de l&#x27;histoire).
-
-**Ne pas mettre les vidéos ni les grandes images dans git** (trop lourd) : seulement le JSON, les vignettes et la page. Les vidéos iront sur Cloudflare.
-Pousser sur la branche `claude/beautiful-goldberg-x0to5u` du dépôt `calculment0r/SECOND_EARTH`, puis donner le lien à Cal. La session cloud ajoutera la page au site et s&#x27;en servira pour le brief de Claude Design.
-
-## Organisation
-
-Trois sous-agents en parallèle, un par dossier de vidéos, plus un pour les images. Même grille pour tous. Un seul fichier JSON à la fin.
-Aucune génération payante, aucun envoi vers un service extérieur.
-</textarea>
-<h2>2. Pour Claude Design : dessiner le site</h2><p>À coller dans Claude Design. Il reste cinq choix pour toi à la fin (partie 8).</p>
-<button data-c="t2">Copier ce brief</button><span class="ok"></span><textarea id="t2" readonly># Brief pour Claude Design · le site de Second Earth
-
-## 1. Le projet
-
-**Second Earth** : un film de 25 minutes (puis 55), une salle immersive et une exposition, pour le Science Centre Singapore. Auteur et réalisateur : Cal (NIRVALAB). Productrice : Nina Albani (aïo Creative Group, Singapour).
-
-L&#x27;histoire en quatre phrases. En 2098, un vaisseau-semeur dépose une capsule sur une planète lointaine. Une adolescente y naît, Seed, cheveux blancs, presque muette, avec un petit robot, Rob1. Ils traversent la planète pour retrouver trois autres robots et lui donnent un nom : Korê. À la fin, Rob1 ment à la Terre pour protéger ce monde.
+**L&#x27;histoire.** En 2045, le vaisseau PERSEPHORA quitte le système solaire. Il ne prend rien à la Terre : il porte des embryons et des machines. En 2098, il arrive près de l&#x27;étoile 61 Cygni A, à 11,4 années-lumière, et dépose une capsule, le XENOPOD-01. Quatre robots, les Robs, vérifient que la planète a toutes les briques de la vie. Une adolescente y naît : Seed, quinze ans en apparence, cheveux blancs, presque muette (quatre mots dans tout le film). Avec Rob1, un petit robot de 75 cm aux yeux bleus, elle traverse la planète pour retrouver Rob2, Rob3 et Rob4. En chemin ils donnent un nom à la planète : **Korê**, d&#x27;après le cri d&#x27;un oiseau. La planète a tout ce qu&#x27;il faut. Rob1 envoie pourtant « NON VIABLE » vers la Terre : son mensonge protège ce monde.
 
 Dernière phrase du film : « This is a fictional planet. Earth is the only world we know. Take care of it. »
 
-## 2. À quoi sert le site
+**Le ton.** Une relation tendre et drôle entre une adolescente et un petit robot qui pense en adulte. De l&#x27;aventure, des animaux immenses, jamais rien d&#x27;effrayant. Un propos de fond sérieux : la vie est rare, la Terre est la seule que nous ayons.
 
-Présenter le projet à des partenaires : le Science Centre, des financeurs, des studios, des diffuseurs. Il doit donner envie en dix secondes et rester clair pour quelqu&#x27;un qui ne connaît rien au projet.
-Adresse : un nom de domaine acheté par Cal (à préciser par lui).
-Langues : français et anglais (public de Singapour).
+**La planète en chiffres** (matière pour la visualisation de données ; détail dans `CLAUDE.md`, partie 3) :
+- étoile orange, 15 % de la lumière du Soleil ; une seconde étoile visible la nuit comme un point orange ;
+- année de 116 jours terrestres ; jour d&#x27;environ 40 heures (Seed dort deux fois par jour) ;
+- gravité 1,13 fois celle de la Terre ; air à 30 % d&#x27;oxygène ;
+- 58 % de terres, 40 % d&#x27;eau ; quatre continents ;
+- deux lunes ; des marées sept fois plus fortes que sur Terre ;
+- la végétation : pourpre en haut, verte dessous ; sous les arbres la lumière est magenta ;
+- le voyage du vaisseau : 2045 à 2098, à 21 % de la vitesse de la lumière ;
+- le voyage de Seed : environ 5 500 km, une quarantaine de jours, douze étapes ;
+- 66 animaux, 42 plantes, 7 géants disparus (les Titans).
 
-## 3. Ce que Cal veut
+## 3. À qui parle le site
 
-- Un site **très beau**, où l&#x27;image est reine : grandes vidéos en 21:9, images panoramiques très larges, carrousels.
-- Il hésite entre deux directions et veut les voir côte à côte :
-  - **Piste A, très graphique** : typographie forte, grilles visibles, étiquettes et chiffres de mission, données de la planète mises en scène ;
-  - **Piste B, sobre** : presque rien autour des images, beaucoup de vide, texte discret, la typographie s&#x27;efface.
-- Il ne sait pas encore s&#x27;il garde les directions artistiques déjà faites. Les deux existent dans le dépôt et peuvent servir de point de départ ou être abandonnées :
-  - le thème sombre « Verdant » du site actuel (fond presque noir, corail et vert profond ; `site/assets/site.css`, `theme/showrunner-ui-kit/`) ;
-  - le « kit étude » de la présentation (clair, Literata pour le texte, Norelli en capitales pour les titres ; `presentation/kit/`).
-- **Une planète interactive** au cœur du site. Elle existe déjà : le globe 3D de la page CONTINUUM du site NirvaLab (un seul fichier, `assets/js/vendor/continuum-globe.js` du dépôt NirvaLabWeb, avec three.js ; note de reprise : `GLOBE-ENGINE.md`). À prévoir dans la maquette comme un grand bloc plein écran : la planète Korê, ses quatre continents, le trajet de Seed en douze étapes, un clic sur une étape ouvre son paysage et ses animaux. La carte en deux échelles existe aussi (`carte/carte-kore.html`).
+À des partenaires : le Science Centre, des financeurs, des studios, des diffuseurs. Il doit donner envie en dix secondes et rester clair pour quelqu&#x27;un qui ne connaît rien au projet. Français et anglais (public de Singapour). Le nom de domaine est acheté par Cal.
 
 ## 4. Le matériel
 
-- Vidéos 21:9 en trois familles : la faune et la flore ; Seed et Rob1 ; l&#x27;espace (le vaisseau PERSEPHORA et MOTHER). Certaines ont plusieurs plans, certaines sont ratées : n&#x27;utiliser que celles marquées « bon » dans l&#x27;inventaire.
-- Images panoramiques (rapports de 2:1 à 3,3:1), d&#x27;autres à venir, dont des images tirées des vidéos.
-- L&#x27;inventaire complet avec vignettes : `media/inventaire/` (fait le 25/11/2026 : 98 vidéos, 60 images ; page publiée sous `inventaire-medias/`).
-- Les couleurs de la planète : étoile orange, végétation pourpre en haut et verte dessous, lumière magenta sous les arbres, déserts ocre, mer gris-vert, lacs roses, nuits lumineuses bleues. Les images actuelles sont dominées par le rouge corail, le blanc et les brumes pâles.
-- Les vidéos seront servies depuis Cloudflare, pas depuis le dépôt.
+**Tout est dans le dépôt** `https://github.com/calculment0r/SECOND_EARTH` (public, branche `claude/beautiful-goldberg-x0to5u`). À lire en premier : `CLAUDE.md`. Ne rien inventer : ce qui manque se laisse en emplacement vide, nommé.
+- Le monde : `docs/bible/` (les lieux, la lumière et les couleurs, les lunes, la géologie, le trajet de Seed).
+- Le film : `docs/film/00-recit-v2.md`.
+- Les espèces : `data/bestiaire.json`, `data/flore.json`, `data/titans.json`.
+- La carte : `carte/carte-kore.html`, `carte/world.png`.
+- Le site actuel par parties : `site-projet/` (dix-sept parties, contenu dans `site-projet/content/site-content.json`). Il est en ligne : `https://calculment0r.github.io/SECOND_EARTH/`.
+- Deux directions graphiques déjà faites, à garder ou à abandonner : le thème sombre « Verdant » (`site/assets/site.css`, `theme/showrunner-ui-kit/`) et le « kit étude » clair (`presentation/kit/`).
+- L&#x27;inventaire des images et des vidéos, avec vignettes : `media/inventaire/` (page : `media/inventaire/index.html`).
 
+**Les images et les vidéos.** Cal t&#x27;en donnera d&#x27;autres au fil du travail.
+- 98 vidéos en 21:9 (1470 × 630, 15 à 45 s, avec son), en trois familles : Seed et Rob1 ; les animaux et les plantes ; l&#x27;espace (le vaisseau PERSEPHORA, la station MOTHER, la capsule). Elles sont en ligne sur Cloudflare, chacune avec une image d&#x27;attente.
+- 60 images panoramiques très larges (environ 4,7:1, de 2 900 à 6 700 px de large).
+- Attention à la taille : les vidéos font 630 px de haut. En plein écran sur un grand moniteur elles seront agrandies. Prévoir des façons de les montrer qui tiennent compte de cela (bandeau, cadre, mosaïque, voile, grain) et dire ce que tu conseilles.
+- Dans beaucoup de vidéos avec Seed, Rob1 est plus grand qu&#x27;il ne doit l&#x27;être. L&#x27;inventaire dit, vidéo par vidéo, le passage utilisable.
 
-### Sélection de départ (tirée de l&#x27;inventaire du 25/11/2026)
+**Les objets en 3D.** Les personnages seront faits en « gaussian splatting » (un objet 3D photoréaliste qu&#x27;on fait tourner dans la page) : **Seed, Rob1, Rob2, Rob3**, quelques **animaux**, les vaisseaux **MOTHER** et **PERSEPHORA**, la capsule. Ils ne sont pas encore faits : dessiner le visualiseur et son emplacement, avec une image d&#x27;attente.
+
+**La planète interactive.** Elle existe : c&#x27;est le globe 3D de la maquette CONTINUUM du site NirvaLab (dépôt NirvaLabWeb, `assets/js/vendor/continuum-globe.js`, three.js). Cette maquette est la référence de Cal pour le niveau d&#x27;interaction attendu. Si tu n&#x27;as pas accès au dépôt NirvaLabWeb, demande-lui l&#x27;accès ou des captures.
+
+**Les références de Cal.** Il rassemble des sites de référence et te les donnera. Elles guident le niveau et l&#x27;esprit ; ne reproduire aucun site, aucun film, aucune marque.
+
+## 5. Les pages, et ce qui se manipule sur chacune
+
+Chaque page a au moins une chose à manipuler, qui apprend quelque chose. Propositions de départ ; améliore-les.
+
+1. **Accueil.** Une grande vidéo panoramique d&#x27;ouverture, le titre, une phrase. Puis le projet en quelques bandes : l&#x27;histoire, la planète, les personnages, le film. *À manipuler* : un panoramique qu&#x27;on fait glisser de gauche à droite, comme si on tournait la tête dans la salle.
+2. **Le voyage.** La planète Korê en 3D, ses quatre continents, le trajet de Seed en douze étapes. *À manipuler* : on tourne la planète ; un clic sur une étape ouvre son paysage en panoramique, ses animaux, ses couleurs. Une frise des jours et des kilomètres avance avec le défilement.
+3. **La planète.** Korê comparée à la Terre. *À manipuler* : des comparateurs (gravité : un saut ici et là-bas ; la journée de 40 heures ; l&#x27;année ; les marées ; l&#x27;air ; la lumière de l&#x27;étoile), un schéma des orbites et des deux lunes, le voyage du vaisseau de 2045 à 2098.
+4. **Personnages et machines.** Seed, Rob1 à Rob4, PERSEPHORA, MOTHER, le XENOPOD. *À manipuler* : le visualiseur 3D (on tourne l&#x27;objet, on zoome), une échelle de tailles côte à côte (Rob1 fait 75 cm, il arrive sous la hanche de Seed).
+5. **Bestiaire et flore.** 66 animaux, 42 plantes, 7 Titans. *À manipuler* : filtres par milieu, échelle de taille avec une silhouette humaine, fiche avec vidéo, objet 3D quand il existe, et le cartel en trois temps (SUR TERRE / SUR KORÊ / POURQUOI).
+6. **Le film.** Le 25 minutes et le 55 minutes. *À manipuler* : une frise du film qu&#x27;on parcourt, avec un extrait vidéo par moment ; un carrousel de séquences ; un diaporama plein cadre.
+7. **La salle immersive et l&#x27;exposition.** *À manipuler* : un panoramique à 360 degrés qu&#x27;on fait tourner ; un plan de la salle ; les cartels de l&#x27;exposition par milieu.
+8. **La science.** La thèse du film : le phosphore limite la quantité de vie possible. *À manipuler* : un ou deux schémas animés, simples.
+9. **Équipe, calendrier, contact.** Court.
+
+Le site actuel a dix-sept parties : regroupe-les dans ces pages, rien ne se perd.
+
+## 6. Ce qu&#x27;on attend de toi, dans l&#x27;ordre
+
+**Étape 1 : trois écrans fixes par axe**, pour caler le design global avant tout mouvement. Les trois mêmes écrans pour les trois axes, avec les mêmes images, pour comparer :
+- le haut de la page d&#x27;accueil ;
+- la page « Le voyage », avec la planète et une étape ouverte ;
+- une fiche (un animal ou un personnage) avec le visualiseur 3D et deux ou trois outils de données.
+Écran large d&#x27;abord (1920 de large), plus un aperçu téléphone de l&#x27;accueil. Pour chaque axe, une note courte : l&#x27;idée, la typographie, les couleurs, la grille, comment bougent les choses.
+
+**Étape 2 : le KIT**, pour l&#x27;axe retenu par Cal (ou un mélange). Un système complet et soigné :
+- couleurs, deux ou trois polices, tailles, espacements, grille ;
+- boutons, étiquettes, menus, navigation, pied de page ;
+- les façons de poser une vidéo 21:9 et un panoramique : plein cadre, bandeau, carrousel, diaporama, panoramique à faire glisser ;
+- le visualiseur 3D (objet en gaussian splatting) et son habillage ;
+- **les outils de visualisation de données** : comparateur Terre / Korê, horloge de 40 heures, schéma des orbites et des lunes, jauge de marée, échelle de tailles, frise du voyage (jours, kilomètres, étapes), frise du vaisseau (2045 à 2098), palette de couleurs par milieu, compteurs d&#x27;espèces, frise du film ;
+- les mouvements : apparitions au défilement, transitions entre pages, survols, micro-animations, lecture des vidéos ; durées et courbes écrites.
+
+**Étape 3 : l&#x27;intégration.** Les pages de la partie 5, en vrai, avec les mouvements et les interactions.
+
+## 7. Contraintes
+
+- HTML, CSS et JavaScript simples, sans étape de fabrication, hébergés en pages statiques. three.js est permis, ainsi qu&#x27;un visualiseur de gaussian splatting.
+- Cal doit pouvoir modifier lui-même textes et images en ligne, comme sur son site NirvaLab : penser chaque page comme une pile de bandes horizontales, chacune avec ses textes et ses images (voir `site-projet/LIRE.md`).
+- Les vidéos viennent de Cloudflare, pas du dépôt. Sans son au départ, lecture automatique, image d&#x27;attente, chargement seulement quand la bande arrive à l&#x27;écran.
+- La 3D ne doit jamais bloquer la page : image d&#x27;attente, chargement à la demande, version simple sur téléphone.
+- Respecter le réglage « moins de mouvement » du visiteur.
+- Le texte doit rester lisible sur les images : contraste vérifié.
+- Aucune émoticône. Pas de vocabulaire technique dans les textes visibles. Mots simples.
+- Ne reproduire aucun film, aucune marque, aucun personnage existant.
+
+## 8. Questions ouvertes pour Cal
+
+Le nom de domaine ; l&#x27;axe retenu après l&#x27;étape 1 ; garder ou non Verdant ou le kit étude ; français d&#x27;abord ou anglais d&#x27;abord ; ce qui reste privé (script, budget).
+
+## Annexe · sélection de départ des vidéos et des images (tirée de l&#x27;inventaire du 25/11/2026)
 
 Chemins dans les dossiers de Cal. Les vidéos font 1470 × 630 (21:9), 15 ou 30 s, avec son. Elles sont en ligne sur Cloudflare (adresse donnée pour chacune, avec une image d&#x27;attente au meilleur moment) ; toutes les vidéos sauf les 2 ratées y sont, rangées sous `second-earth/video/&lt;dossier&gt;/`. Les vignettes sont dans `media/inventaire/vignettes/`, la page complète dans `media/inventaire/index.html` (filtres par état, personnage, lieu).
 Toutes les vidéos ci-dessous sont marquées « bon ». Rob1 est trop grand dans beaucoup de vidéos avec Seed : ne pas utiliser une vidéo « bon en partie » hors du passage indiqué dans sa fiche.
@@ -214,33 +236,577 @@ Toutes les vidéos ci-dessous sont marquées « bon ». Rob1 est trop grand dans
 - **Seed et Rob1, à utiliser seulement sur le passage indiqué** (31) : voir la page d&#x27;inventaire, filtre « Bon en partie ».
 - **Ce qui manque** : aucun fichier sur la naissance de Seed, la capsule qui tombe dans le gouffre, les lacs roses et pourpres, les Titans, le message vers la Terre ; une seule bonne vidéo avec le grand robot (20_feu_de_camp). Prévoir des emplacements vides pour ces moments.
 
-## 5. Le contenu
 
-Tout est écrit dans le dépôt `calculment0r/SECOND_EARTH` ; ne rien inventer. Le site éditable actuel a déjà dix-sept parties (`site-projet/`, contenu dans `site-projet/content/site-content.json`) :
-accueil, logline, pitch, synopsis, note d&#x27;intention, univers, personnages, voyage, bestiaire et flore, science, film, script, salle immersive, exposition, équipe, calendrier et financement, contact.
-La logline, le pitch, les synopsis et la note d&#x27;intention sont des propositions à valider par Cal. L&#x27;équipe et le contact sont vides.
-Sources : `CLAUDE.md` (résumé et chiffres de la planète), `docs/bible/`, `docs/film/00-recit-v2.md`, `data/bestiaire.json` (66 animaux), `data/flore.json` (42 plantes), `data/titans.json`.
+# Axe 1 · L&#x27;ATLAS
 
-## 6. Ce qu&#x27;on attend de toi
+À lire après le brief général. Cet axe est l&#x27;une des trois propositions de l&#x27;étape 1 (trois écrans fixes).
 
-1. **Deux maquettes de la page d&#x27;accueil**, piste A et piste B, sur grand écran, avec les mêmes images, pour comparer.
-2. Pour la piste retenue : la page d&#x27;accueil complète, une page « Le voyage » avec la planète interactive, une page « Bestiaire et flore », une page « Le film », une page courte « Contact et équipe ».
-3. Le système : couleurs, deux ou trois polices, tailles, espacements, boutons, étiquettes, la façon de poser une vidéo 21:9 et un panoramique (plein écran, bandeau, carrousel), les mouvements (défilement, apparitions, lecture des vidéos).
-4. Une version téléphone simple de la page d&#x27;accueil.
+## L&#x27;idée en une phrase
+
+Le site est le grand atlas illustré d&#x27;une planète qu&#x27;on vient de découvrir : une édition soignée, où l&#x27;image et la donnée se répondent sur la même page.
+
+## Ce qu&#x27;on ressent
+
+On feuillette un très bel ouvrage de naturaliste, fait aujourd&#x27;hui. On apprend en regardant. Chaque page donne envie de lire la suivante. Le sérieux du Science Centre y est chez lui.
+
+## Mise en page
+
+- Une grille visible et assumée : colonnes, filets fins, marges larges, numéros de planche, légendes.
+- Fond clair (papier, ivoire, gris très pâle). Les images apportent la couleur.
+- Le panoramique est traité comme une planche dépliante : une bande très large qui traverse la page, avec sa légende, ses repères, ses annotations fines posées dessus (un nom d&#x27;animal, une taille, une couleur relevée).
+- Les chiffres sont des éléments graphiques à part entière : grands, composés avec soin, toujours accompagnés d&#x27;une comparaison avec la Terre.
+
+## Typographie et couleurs
+
+- Une police de texte à empattements, de lecture longue, et une police de titrage à fort caractère. Une police à chasse fixe, discrète, pour les mesures et les légendes.
+- Encre presque noire, un seul accent chaud tiré de la planète (corail ou orange de l&#x27;étoile). Les couleurs de chaque milieu naturel apparaissent en petites touches : nuanciers, pastilles, filets.
+- Point de départ possible dans le dépôt : le « kit étude » (`presentation/kit/`).
+
+## Mouvement
+
+Calme et précis, comme une main qui tourne une page.
+- Les planches se déplient à l&#x27;arrivée ; les annotations se tracent trait par trait.
+- Les chiffres comptent jusqu&#x27;à leur valeur ; les schémas se dessinent.
+- Les transitions entre pages glissent comme des feuillets.
+- Survols : un filet qui s&#x27;allonge, une légende qui se révèle.
+
+## L&#x27;interaction signature
+
+**La planche annotée.** Sur un panoramique, le visiteur promène une loupe : les annotations apparaissent là où il passe (espèce, taille, couleur, lien avec la Terre). Un clic sur une annotation ouvre la fiche.
+
+## Les outils de données, dans cet axe
+
+Ce sont les vedettes. Schémas au trait, précis, élégants : coupes, échelles, frises, cadrans. La comparaison Terre / Korê se lit d&#x27;un coup d&#x27;œil, côte à côte, comme deux colonnes d&#x27;un tableau.
+
+## Les objets 3D
+
+Présentés comme des spécimens sur fond clair, avec leurs cotes, une règle, des vues de face et de profil qu&#x27;on atteint d&#x27;un clic.
+
+## Les trois écrans de l&#x27;étape 1
+
+- **Accueil** : le titre composé comme une couverture, une planche panoramique dépliée dessous, trois chiffres de la planète.
+- **Le voyage** : la planète traitée comme une carte, le trajet tracé, l&#x27;étape ouverte en planche avec son nuancier et ses espèces.
+- **La fiche** : le spécimen en 3D au centre, ses cotes, l&#x27;échelle de tailles, le cartel SUR TERRE / SUR KORÊ / POURQUOI.
+
+## À éviter
+
+Le manuel scolaire, le carnet « vieilli » avec taches et papier jauni, la surcharge d&#x27;annotations, les schémas décoratifs qui n&#x27;apprennent rien.
+
+
+# Axe 2 · L&#x27;ÉCRAN
+
+À lire après le brief général. Cet axe est l&#x27;une des trois propositions de l&#x27;étape 1 (trois écrans fixes).
+
+## L&#x27;idée en une phrase
+
+Le site est une séance : l&#x27;image panoramique occupe tout, l&#x27;interface se fait oublier, on avance dans le film comme dans la salle immersive.
+
+## Ce qu&#x27;on ressent
+
+On est assis dans le noir, l&#x27;image nous entoure. Peu de mots, bien choisis. Le visiteur comprend ce qu&#x27;est le cinéma immersif sans qu&#x27;on le lui explique.
+
+## Mise en page
+
+- Fond noir. L&#x27;image va d&#x27;un bord à l&#x27;autre de l&#x27;écran, toujours en très large.
+- Une page est une suite de plans : chaque bande est un panoramique ou une vidéo, avec un titre court et une ou deux lignes.
+- Les vidéos font 630 px de haut : les montrer en bandeau très large sur fond noir, comme un écran de salle, et non étirées sur toute la hauteur. Dire ce que tu conseilles pour les très grands moniteurs.
+- La navigation est presque invisible : un repère discret de l&#x27;endroit où l&#x27;on est, un menu qui n&#x27;apparaît qu&#x27;à la demande.
+
+## Typographie et couleurs
+
+- Une seule famille de caractères, fine et élégante, en petites tailles avec beaucoup d&#x27;air ; quelques très grands titres, rares.
+- Noir, blanc cassé, un gris. Aucune couleur d&#x27;interface : toute la couleur vient des images.
+- Les textes se posent sur l&#x27;image avec un voile léger là où il le faut pour rester lisibles.
+
+## Mouvement
+
+C&#x27;est du montage.
+- Passer d&#x27;une bande à l&#x27;autre est un raccord : fondu, glissement latéral, ouverture du cadre du 16:9 vers le très large.
+- Le défilement vertical déplace l&#x27;image à l&#x27;horizontale : on balaie le paysage comme on tourne la tête.
+- Les vidéos démarrent quand elles arrivent à l&#x27;écran et s&#x27;effacent en douceur.
+- Les titres entrent ligne par ligne, lentement, puis se taisent.
+
+## L&#x27;interaction signature
+
+**Tourner la tête.** Chaque panoramique se fait glisser à la main ou suit la souris ; sur téléphone, il suit le mouvement de l&#x27;appareil. Des points lumineux discrets sur l&#x27;image ouvrent une espèce, un personnage, un fait sur la planète.
+
+## Les outils de données, dans cet axe
+
+Très sobres, posés sur l&#x27;image comme des sous-titres : un chiffre, une ligne fine, une comparaison. Ils apparaissent quand on s&#x27;arrête, disparaissent quand on repart. Le comparateur Terre / Korê devient deux images côte à côte dans le même cadre.
+
+## Les objets 3D
+
+Sur fond noir, éclairés comme en studio, en très grand. On les fait tourner ; une lumière suit le geste. Très peu d&#x27;habillage autour.
+
+## Les trois écrans de l&#x27;étape 1
+
+- **Accueil** : la vidéo d&#x27;ouverture en très large, le titre, une phrase, rien d&#x27;autre.
+- **Le voyage** : la planète dans le noir, le trajet en trait lumineux, l&#x27;étape ouverte en panoramique plein cadre avec trois lignes de texte.
+- **La fiche** : l&#x27;objet 3D en grand, son nom, deux chiffres, un extrait vidéo en bandeau dessous.
+
+## À éviter
+
+L&#x27;affiche de film, le site de bande-annonce, les textes illisibles sur l&#x27;image, la navigation qu&#x27;on ne trouve plus, les effets qui retardent l&#x27;accès au contenu.
+
+
+# Axe 3 · LA SALLE
+
+À lire après le brief général. Cet axe est l&#x27;une des trois propositions de l&#x27;étape 1 (trois écrans fixes).
+
+## L&#x27;idée en une phrase
+
+Le site est un lieu qu&#x27;on visite : la planète en est le centre, on s&#x27;en approche, on y entre, et chaque page est une salle où des objets en 3D se manipulent.
+
+## Ce qu&#x27;on ressent
+
+On est chef de mission, comme dans la salle immersive. On explore à son rythme, on touche, on tourne les choses. C&#x27;est l&#x27;axe le plus proche de la maquette CONTINUUM du site NirvaLab, qui sert de référence.
+
+## Mise en page
+
+- Une scène en profondeur derrière la page : la planète, puis les lieux, puis les objets. L&#x27;interface est une couche fine et nette posée devant.
+- Les contenus sont des panneaux légers qui s&#x27;ouvrent près de l&#x27;objet concerné : une étape du voyage, un animal, un vaisseau.
+- Les panoramiques sont des fenêtres sur le lieu : courbés autour du visiteur, ou ouverts en grand quand on entre dans une étape.
+- Toujours un chemin simple pour qui veut seulement lire : un sommaire clair, et une version à plat de chaque page.
+
+## Typographie et couleurs
+
+- Une police sans empattement, contemporaine, très lisible en petit ; des chiffres soignés.
+- Fond sombre profond, mais pas noir : un bleu-nuit ou un vert très sombre tiré de la planète. Deux accents : l&#x27;orange de l&#x27;étoile et le pourpre de la végétation.
+- Des panneaux à peine teintés, des traits fins, des coins doux. Pas de décor de tableau de bord.
+- Point de départ possible dans le dépôt : le thème « Verdant » (`site/assets/site.css`).
+
+## Mouvement
+
+Tout a un poids et une distance.
+- On passe d&#x27;une page à l&#x27;autre par un déplacement : on recule vers la planète, on plonge vers une étape, on s&#x27;approche d&#x27;un objet.
+- La planète tourne avec de l&#x27;inertie ; les objets répondent au geste avec un léger retard, puis se posent.
+- Les panneaux s&#x27;ouvrent depuis l&#x27;objet auquel ils appartiennent.
+- Micro-animations sur tout ce qui se touche : un point qui respire, un trait qui se tend, un chiffre qui s&#x27;ajuste.
+
+## L&#x27;interaction signature
+
+**La planète comme sommaire.** Le visiteur fait tourner Korê ; le trajet de Seed s&#x27;y dessine en douze étapes. Un clic sur une étape : on descend vers le sol, le panoramique du lieu s&#x27;ouvre autour de soi, avec ses animaux à faire tourner en 3D.
+
+## Les outils de données, dans cet axe
+
+Ils sont dans l&#x27;espace et se manipulent : on fait glisser un curseur pour passer de la Terre à Korê et la scène change (la longueur du jour, la hauteur d&#x27;un saut, la marée qui monte) ; les orbites et les deux lunes tournent en vrai ; l&#x27;échelle de tailles aligne les objets 3D côte à côte.
+
+## Les objets 3D
+
+Ils sont le cœur de cet axe : Seed, Rob1, Rob2, Rob3, les animaux, MOTHER, PERSEPHORA, la capsule. Chacun a sa place dans la scène, se saisit, se tourne, se compare aux autres.
+
+## Les trois écrans de l&#x27;étape 1
+
+- **Accueil** : la planète en grand, le titre devant, le début du trajet visible, une vidéo panoramique qui s&#x27;ouvre en bandeau.
+- **Le voyage** : la planète tournée sur une étape, le panneau de l&#x27;étape ouvert, le panoramique du lieu derrière.
+- **La fiche** : l&#x27;objet 3D au centre, le curseur Terre / Korê, l&#x27;échelle de tailles avec les autres objets.
+
+## À éviter
+
+Le jeu vidéo, le tableau de bord de vaisseau, la 3D qui ralentit tout, le visiteur perdu sans savoir où cliquer, le contenu inaccessible sans la 3D.
+</textarea>
+<h2>1. Le brief général</h2><p>À coller en premier dans Claude Design : le projet, le matériel, les pages, ce qu&#x27;on attend, dans l&#x27;ordre.</p>
+<button data-c="t1">Copier ce brief</button><span class="ok"></span><textarea id="t1" readonly># Brief pour Claude Design · le site de Second Earth
+
+Ce brief est le tronc commun. Trois briefs d&#x27;axe l&#x27;accompagnent (Atlas, Écran, Salle) : un par proposition de design. Lis celui-ci d&#x27;abord.
+
+## 1. Ce qu&#x27;on te demande
+
+Dessiner le **graphisme, l&#x27;interface et le parcours** du site de Second Earth. Cal fournit les images et les vidéos ; ton travail est la mise en page, la typographie, les couleurs, les mouvements, les interactions et les outils de visualisation de données.
+
+Trois propositions distinctes, une par axe. Le niveau visé : celui des sites les plus soignés d&#x27;aujourd&#x27;hui, en mise en page, en micro-animations et en transitions. Le site n&#x27;a pas à « faire science-fiction » : pas de décor d&#x27;écran de vaisseau, pas de néons, pas de typographie futuriste par défaut. Le sujet est un monde vivant, filmé comme un documentaire de nature.
+
+## 2. Le projet
+
+**Second Earth** est un projet de **cinéma immersif** : l&#x27;image entoure le spectateur. Tout est pensé en panoramique.
+- Un **film de 25 minutes**, puis une version de 55 minutes.
+- Une **salle immersive** en temps réel, où le visiteur est chef de mission.
+- Une **exposition** organisée par milieu naturel, avec des cartels en trois temps : SUR TERRE / SUR KORÊ / POURQUOI.
+- Pour le **Science Centre Singapore**. Auteur et réalisateur : Cal (NIRVALAB). Productrice : Nina Albani (aïo Creative Group, Singapour). Studio partenaire pour la salle : BoraBora Studios.
+
+**L&#x27;histoire.** En 2045, le vaisseau PERSEPHORA quitte le système solaire. Il ne prend rien à la Terre : il porte des embryons et des machines. En 2098, il arrive près de l&#x27;étoile 61 Cygni A, à 11,4 années-lumière, et dépose une capsule, le XENOPOD-01. Quatre robots, les Robs, vérifient que la planète a toutes les briques de la vie. Une adolescente y naît : Seed, quinze ans en apparence, cheveux blancs, presque muette (quatre mots dans tout le film). Avec Rob1, un petit robot de 75 cm aux yeux bleus, elle traverse la planète pour retrouver Rob2, Rob3 et Rob4. En chemin ils donnent un nom à la planète : **Korê**, d&#x27;après le cri d&#x27;un oiseau. La planète a tout ce qu&#x27;il faut. Rob1 envoie pourtant « NON VIABLE » vers la Terre : son mensonge protège ce monde.
+
+Dernière phrase du film : « This is a fictional planet. Earth is the only world we know. Take care of it. »
+
+**Le ton.** Une relation tendre et drôle entre une adolescente et un petit robot qui pense en adulte. De l&#x27;aventure, des animaux immenses, jamais rien d&#x27;effrayant. Un propos de fond sérieux : la vie est rare, la Terre est la seule que nous ayons.
+
+**La planète en chiffres** (matière pour la visualisation de données ; détail dans `CLAUDE.md`, partie 3) :
+- étoile orange, 15 % de la lumière du Soleil ; une seconde étoile visible la nuit comme un point orange ;
+- année de 116 jours terrestres ; jour d&#x27;environ 40 heures (Seed dort deux fois par jour) ;
+- gravité 1,13 fois celle de la Terre ; air à 30 % d&#x27;oxygène ;
+- 58 % de terres, 40 % d&#x27;eau ; quatre continents ;
+- deux lunes ; des marées sept fois plus fortes que sur Terre ;
+- la végétation : pourpre en haut, verte dessous ; sous les arbres la lumière est magenta ;
+- le voyage du vaisseau : 2045 à 2098, à 21 % de la vitesse de la lumière ;
+- le voyage de Seed : environ 5 500 km, une quarantaine de jours, douze étapes ;
+- 66 animaux, 42 plantes, 7 géants disparus (les Titans).
+
+## 3. À qui parle le site
+
+À des partenaires : le Science Centre, des financeurs, des studios, des diffuseurs. Il doit donner envie en dix secondes et rester clair pour quelqu&#x27;un qui ne connaît rien au projet. Français et anglais (public de Singapour). Le nom de domaine est acheté par Cal.
+
+## 4. Le matériel
+
+**Tout est dans le dépôt** `https://github.com/calculment0r/SECOND_EARTH` (public, branche `claude/beautiful-goldberg-x0to5u`). À lire en premier : `CLAUDE.md`. Ne rien inventer : ce qui manque se laisse en emplacement vide, nommé.
+- Le monde : `docs/bible/` (les lieux, la lumière et les couleurs, les lunes, la géologie, le trajet de Seed).
+- Le film : `docs/film/00-recit-v2.md`.
+- Les espèces : `data/bestiaire.json`, `data/flore.json`, `data/titans.json`.
+- La carte : `carte/carte-kore.html`, `carte/world.png`.
+- Le site actuel par parties : `site-projet/` (dix-sept parties, contenu dans `site-projet/content/site-content.json`). Il est en ligne : `https://calculment0r.github.io/SECOND_EARTH/`.
+- Deux directions graphiques déjà faites, à garder ou à abandonner : le thème sombre « Verdant » (`site/assets/site.css`, `theme/showrunner-ui-kit/`) et le « kit étude » clair (`presentation/kit/`).
+- L&#x27;inventaire des images et des vidéos, avec vignettes : `media/inventaire/` (page : `media/inventaire/index.html`).
+
+**Les images et les vidéos.** Cal t&#x27;en donnera d&#x27;autres au fil du travail.
+- 98 vidéos en 21:9 (1470 × 630, 15 à 45 s, avec son), en trois familles : Seed et Rob1 ; les animaux et les plantes ; l&#x27;espace (le vaisseau PERSEPHORA, la station MOTHER, la capsule). Elles sont en ligne sur Cloudflare, chacune avec une image d&#x27;attente.
+- 60 images panoramiques très larges (environ 4,7:1, de 2 900 à 6 700 px de large).
+- Attention à la taille : les vidéos font 630 px de haut. En plein écran sur un grand moniteur elles seront agrandies. Prévoir des façons de les montrer qui tiennent compte de cela (bandeau, cadre, mosaïque, voile, grain) et dire ce que tu conseilles.
+- Dans beaucoup de vidéos avec Seed, Rob1 est plus grand qu&#x27;il ne doit l&#x27;être. L&#x27;inventaire dit, vidéo par vidéo, le passage utilisable.
+
+**Les objets en 3D.** Les personnages seront faits en « gaussian splatting » (un objet 3D photoréaliste qu&#x27;on fait tourner dans la page) : **Seed, Rob1, Rob2, Rob3**, quelques **animaux**, les vaisseaux **MOTHER** et **PERSEPHORA**, la capsule. Ils ne sont pas encore faits : dessiner le visualiseur et son emplacement, avec une image d&#x27;attente.
+
+**La planète interactive.** Elle existe : c&#x27;est le globe 3D de la maquette CONTINUUM du site NirvaLab (dépôt NirvaLabWeb, `assets/js/vendor/continuum-globe.js`, three.js). Cette maquette est la référence de Cal pour le niveau d&#x27;interaction attendu. Si tu n&#x27;as pas accès au dépôt NirvaLabWeb, demande-lui l&#x27;accès ou des captures.
+
+**Les références de Cal.** Il rassemble des sites de référence et te les donnera. Elles guident le niveau et l&#x27;esprit ; ne reproduire aucun site, aucun film, aucune marque.
+
+## 5. Les pages, et ce qui se manipule sur chacune
+
+Chaque page a au moins une chose à manipuler, qui apprend quelque chose. Propositions de départ ; améliore-les.
+
+1. **Accueil.** Une grande vidéo panoramique d&#x27;ouverture, le titre, une phrase. Puis le projet en quelques bandes : l&#x27;histoire, la planète, les personnages, le film. *À manipuler* : un panoramique qu&#x27;on fait glisser de gauche à droite, comme si on tournait la tête dans la salle.
+2. **Le voyage.** La planète Korê en 3D, ses quatre continents, le trajet de Seed en douze étapes. *À manipuler* : on tourne la planète ; un clic sur une étape ouvre son paysage en panoramique, ses animaux, ses couleurs. Une frise des jours et des kilomètres avance avec le défilement.
+3. **La planète.** Korê comparée à la Terre. *À manipuler* : des comparateurs (gravité : un saut ici et là-bas ; la journée de 40 heures ; l&#x27;année ; les marées ; l&#x27;air ; la lumière de l&#x27;étoile), un schéma des orbites et des deux lunes, le voyage du vaisseau de 2045 à 2098.
+4. **Personnages et machines.** Seed, Rob1 à Rob4, PERSEPHORA, MOTHER, le XENOPOD. *À manipuler* : le visualiseur 3D (on tourne l&#x27;objet, on zoome), une échelle de tailles côte à côte (Rob1 fait 75 cm, il arrive sous la hanche de Seed).
+5. **Bestiaire et flore.** 66 animaux, 42 plantes, 7 Titans. *À manipuler* : filtres par milieu, échelle de taille avec une silhouette humaine, fiche avec vidéo, objet 3D quand il existe, et le cartel en trois temps (SUR TERRE / SUR KORÊ / POURQUOI).
+6. **Le film.** Le 25 minutes et le 55 minutes. *À manipuler* : une frise du film qu&#x27;on parcourt, avec un extrait vidéo par moment ; un carrousel de séquences ; un diaporama plein cadre.
+7. **La salle immersive et l&#x27;exposition.** *À manipuler* : un panoramique à 360 degrés qu&#x27;on fait tourner ; un plan de la salle ; les cartels de l&#x27;exposition par milieu.
+8. **La science.** La thèse du film : le phosphore limite la quantité de vie possible. *À manipuler* : un ou deux schémas animés, simples.
+9. **Équipe, calendrier, contact.** Court.
+
+Le site actuel a dix-sept parties : regroupe-les dans ces pages, rien ne se perd.
+
+## 6. Ce qu&#x27;on attend de toi, dans l&#x27;ordre
+
+**Étape 1 : trois écrans fixes par axe**, pour caler le design global avant tout mouvement. Les trois mêmes écrans pour les trois axes, avec les mêmes images, pour comparer :
+- le haut de la page d&#x27;accueil ;
+- la page « Le voyage », avec la planète et une étape ouverte ;
+- une fiche (un animal ou un personnage) avec le visualiseur 3D et deux ou trois outils de données.
+Écran large d&#x27;abord (1920 de large), plus un aperçu téléphone de l&#x27;accueil. Pour chaque axe, une note courte : l&#x27;idée, la typographie, les couleurs, la grille, comment bougent les choses.
+
+**Étape 2 : le KIT**, pour l&#x27;axe retenu par Cal (ou un mélange). Un système complet et soigné :
+- couleurs, deux ou trois polices, tailles, espacements, grille ;
+- boutons, étiquettes, menus, navigation, pied de page ;
+- les façons de poser une vidéo 21:9 et un panoramique : plein cadre, bandeau, carrousel, diaporama, panoramique à faire glisser ;
+- le visualiseur 3D (objet en gaussian splatting) et son habillage ;
+- **les outils de visualisation de données** : comparateur Terre / Korê, horloge de 40 heures, schéma des orbites et des lunes, jauge de marée, échelle de tailles, frise du voyage (jours, kilomètres, étapes), frise du vaisseau (2045 à 2098), palette de couleurs par milieu, compteurs d&#x27;espèces, frise du film ;
+- les mouvements : apparitions au défilement, transitions entre pages, survols, micro-animations, lecture des vidéos ; durées et courbes écrites.
+
+**Étape 3 : l&#x27;intégration.** Les pages de la partie 5, en vrai, avec les mouvements et les interactions.
 
 ## 7. Contraintes
 
-- Le site est en HTML, CSS et JavaScript simples, sans étape de fabrication, hébergé en pages statiques.
-- Cal doit pouvoir modifier lui-même textes et images en ligne, comme sur son site NirvaLab : penser la page comme une pile de bandes horizontales, chacune avec ses textes et ses images (voir `site-projet/LIRE.md` et, dans NirvaLabWeb, `DESIGN-BRIEF.md`).
-- Vidéos sans son au départ, lecture automatique, image fixe de remplacement, poids maîtrisé.
-- Aucune émoticône. Ne reproduire aucun film, aucune marque, aucun personnage existant. Pas de vocabulaire technique dans les textes visibles.
+- HTML, CSS et JavaScript simples, sans étape de fabrication, hébergés en pages statiques. three.js est permis, ainsi qu&#x27;un visualiseur de gaussian splatting.
+- Cal doit pouvoir modifier lui-même textes et images en ligne, comme sur son site NirvaLab : penser chaque page comme une pile de bandes horizontales, chacune avec ses textes et ses images (voir `site-projet/LIRE.md`).
+- Les vidéos viennent de Cloudflare, pas du dépôt. Sans son au départ, lecture automatique, image d&#x27;attente, chargement seulement quand la bande arrive à l&#x27;écran.
+- La 3D ne doit jamais bloquer la page : image d&#x27;attente, chargement à la demande, version simple sur téléphone.
+- Respecter le réglage « moins de mouvement » du visiteur.
 - Le texte doit rester lisible sur les images : contraste vérifié.
+- Aucune émoticône. Pas de vocabulaire technique dans les textes visibles. Mots simples.
+- Ne reproduire aucun film, aucune marque, aucun personnage existant.
 
 ## 8. Questions ouvertes pour Cal
 
-Le nom de domaine ; la piste (A, B ou un mélange) ; garder ou non Verdant ou le kit étude ; français d&#x27;abord ou anglais d&#x27;abord ; ce qui reste privé (script, budget).
+Le nom de domaine ; l&#x27;axe retenu après l&#x27;étape 1 ; garder ou non Verdant ou le kit étude ; français d&#x27;abord ou anglais d&#x27;abord ; ce qui reste privé (script, budget).
+
+## Annexe · sélection de départ des vidéos et des images (tirée de l&#x27;inventaire du 25/11/2026)
+
+Chemins dans les dossiers de Cal. Les vidéos font 1470 × 630 (21:9), 15 ou 30 s, avec son. Elles sont en ligne sur Cloudflare (adresse donnée pour chacune, avec une image d&#x27;attente au meilleur moment) ; toutes les vidéos sauf les 2 ratées y sont, rangées sous `second-earth/video/&lt;dossier&gt;/`. Les vignettes sont dans `media/inventaire/vignettes/`, la page complète dans `media/inventaire/index.html` (filtres par état, personnage, lieu).
+Toutes les vidéos ci-dessous sont marquées « bon ». Rob1 est trop grand dans beaucoup de vidéos avec Seed : ne pas utiliser une vidéo « bon en partie » hors du passage indiqué dans sa fiche.
+
+- **Grande vidéo d&#x27;ouverture** (21 possibles) :
+  - `FAUNE_FLORE/escargot_verre.mp4` : Un escargot transparent à chair rose et coquille pointue en verre avance dans des collines vertes plantées d&#x27;arbres ronds vert clair à tronc jaune. Images fixes : 1 s, 4.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/escargot-verre.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/escargot-verre.jpg).
+  - `FAUNE_FLORE/geant_plumes_serie1.mp4` : Un grand animal à quatre pattes, à longs poils blancs, crête de plumes, tête bleue et deux longues cornes de côté, marche sur une plaine de buissons rouges. Images fixes : 4 s, 1 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/geant-plumes-serie1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/geant-plumes-serie1.jpg).
+  - `FAUNE_FLORE/oiseau_pois.mp4` : Des oiseaux coureurs à plumes blanches à pois noirs, orange et bleu sombre, à grande crête, marchent dans une lande rouge avec des arbres jaunes en forme de toupie. Images fixes : 2 s, 3.2 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/oiseau-pois.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/oiseau-pois.jpg).
+  - `FAUNE_FLORE/oreilles_ailes.mp4` : Un animal blanc et mince, à longue queue et à deux très grandes oreilles tendues comme des ailes, court sur une plaine rouge sous un ciel d&#x27;orage. Images fixes : 1.5 s, 5.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/oreilles-ailes.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/oreilles-ailes.jpg).
+  - `FAUNE_FLORE/ours_rouge_blanc.mp4` : Un très gros animal proche d&#x27;un ours, à poils rouges et blancs, avec deux crocs en bas, marche dans un vallon d&#x27;herbe bleue sous des arches de roche rouge. Images fixes : 2.5 s, 11 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/ours-rouge-blanc.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/ours-rouge-blanc.jpg).
+  - `FAUNE_FLORE/reptile_volant.mp4` : Un reptile volant à long bec et ailes orangées vole et se pose dans un désert de sable blanc avec de gros dômes roses et des champignons roses géants. Images fixes : 1 s, 4 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/reptile-volant.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/reptile-volant.jpg).
+  - `FAUNE_FLORE/rhino.mp4` : Un gros animal à peau blanche tachée, dos couvert d&#x27;écailles ou de plumes rouges, avec une très grande corne courbée vers l&#x27;arrière, marche dans une eau peu profonde. Images fixes : 2 s, 6 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/rhino.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/rhino.jpg).
+  - `FAUNE_FLORE/rouge_noir_cornes.mp4` : Un gros animal à longs poils rouges et noirs, pattes blanches, deux petites cornes et longue queue, traverse une plaine d&#x27;herbe rose avec des pics de roche sombre. Images fixes : 3.5 s, 13 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/rouge-noir-cornes.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/rouge-noir-cornes.jpg).
+  - `SEED/04_lagon_de_nacre.mp4` : Seed et Rob1, accroupis sur un rocher au milieu d&#x27;une eau calme, touchent l&#x27;eau ; autour, de grandes arches blanches et nacrées. Images fixes : 1.5 s, 13 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/04-lagon-de-nacre.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/04-lagon-de-nacre.jpg).
+  - `SEED/09_entre_les_geants.mp4` : Seed et Rob1, tout petits, avancent courbés entre les pattes d&#x27;un troupeau d&#x27;animaux géants rouges à défenses, dans la poussière. Images fixes : 2 s, 7 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/09-entre-les-geants.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/09-entre-les-geants.jpg).
+  - `SEED/14_escalade.mp4` : Seed grimpe une haute paroi jaune avec Rob1 accroché dans son dos, puis on voit ses jambes posées au sommet, face au vide. Images fixes : 2 s, 8 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/14-escalade.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/14-escalade.jpg).
+  - `SEED/C12_colonne_de_lave_meduses.mp4` : Une colonne de lave tombe sur un sol percé de bassins ronds ; Seed court sur les rebords de lave en portant Rob1 dans ses bras, puis tombe à genoux sur la roche noire. Images fixes : 3 s, 24 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c12-colonne-de-lave-meduses.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c12-colonne-de-lave-meduses.jpg).
+  - `SEED/C20_foret_arbres_rouges_champignons_blancs.mp4` : Seed et Rob1 jouent à cache-cache autour d&#x27;un tronc rouge dans une forêt d&#x27;arbres rouges au sol couvert de champignons blancs, puis partent en courant main dans la main. Images fixes : 4 s, 14 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c20-foret-arbres-rouges-champignons-blancs.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c20-foret-arbres-rouges-champignons-blancs.jpg).
+  - `SEED/X1_entree_vue_de_derriere.mp4` : Une capsule conique claire entre en feu dans l&#x27;atmosphère au-dessus d&#x27;une planète aux terres rouges, roses et turquoise. Images fixes : 1 s, 6.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/x1-entree-vue-de-derriere.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/x1-entree-vue-de-derriere.jpg).
+  - `SPACE/D.mp4` : Une capsule conique blanche entre dans l&#x27;atmosphère en feu, descend sous trois ballons blancs et se pose sur un sol blanc entre des dômes roses. Images fixes : 3.5 s, 6.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d.jpg).
+  - `SPACE/O.mp4` : La station de modules hexagonaux vue de haut au-dessus de la Terre, puis un gros plan qui longe la coque jusqu&#x27;au mot MOTHER. Images fixes : 4 s, 14 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/o.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/o.jpg).
+  - `SPACE/P.mp4` : Le vaisseau à voile ronde vu de face, puis vu de loin au-dessus d&#x27;une planète aux taches roses, rouges, jaunes et blanches, près d&#x27;une étoile rouge. Images fixes : 3 s, 12 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/p.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/p.jpg).
+  - `SPACE/V3.mp4` : Vu de loin au-dessus d&#x27;une planète bleue, le vaisseau ouvre sa voile dorée en pétales pendant que la vue s&#x27;approche, puis il est vu de côté voile ouverte. Images fixes : 1 s, 8 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/v3.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/v3.jpg).
+  - `SPACE/a1.mp4` : Le vaisseau à voile dorée, sa coque couverte de givre, une capsule conique dans une soute, puis la capsule lâchée qui s&#x27;enflamme. Images fixes : 4 s, 7.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/a1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/a1.jpg).
+  - `SPACE/d1.mp4` : La station et le vaisseau au-dessus d&#x27;une planète bleue, un gros plan sur la station, le vaisseau qui s&#x27;en détache, puis sa voile dorée qui s&#x27;ouvre. Images fixes : 1.5 s, 7.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d1.jpg).
+  - `SPACE/d2.mp4` : Le vaisseau à voile dorée vu de face et de côté, la station au-dessus d&#x27;une planète, le mot PERSEPHORA sur la coque, puis le vaisseau qui disparaît en un point de lumière. Images fixes : 1 s, 7.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d2.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d2.jpg).
+
+- **L&#x27;espace, le vaisseau, l&#x27;arrivée** (10) :
+  - `SEED/X1_entree_vue_de_derriere.mp4` : Une capsule conique claire entre en feu dans l&#x27;atmosphère au-dessus d&#x27;une planète aux terres rouges, roses et turquoise. Images fixes : 1 s, 6.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/x1-entree-vue-de-derriere.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/x1-entree-vue-de-derriere.jpg).
+  - `SEED/X2c_interieur_rob1_calme.mp4` : Rob1 est assis, sanglé, dans une cabine sombre aux deux hublots orange, puis sa tête en gros plan se tourne vers la caméra. Images fixes : 2 s, 8.6 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/x2c-interieur-rob1-calme.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/x2c-interieur-rob1-calme.jpg).
+  - `SPACE/D.mp4` : Une capsule conique blanche entre dans l&#x27;atmosphère en feu, descend sous trois ballons blancs et se pose sur un sol blanc entre des dômes roses. Images fixes : 3.5 s, 6.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d.jpg).
+  - `SPACE/O.mp4` : La station de modules hexagonaux vue de haut au-dessus de la Terre, puis un gros plan qui longe la coque jusqu&#x27;au mot MOTHER. Images fixes : 4 s, 14 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/o.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/o.jpg).
+  - `SPACE/P.mp4` : Le vaisseau à voile ronde vu de face, puis vu de loin au-dessus d&#x27;une planète aux taches roses, rouges, jaunes et blanches, près d&#x27;une étoile rouge. Images fixes : 3 s, 12 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/p.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/p.jpg).
+  - `SPACE/V1.mp4` : Le vaisseau à voile dorée vu de côté sur fond noir, puis vu de dos au-dessus d&#x27;une planète bleue avec le soleil. Images fixes : 6 s, 12 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/v1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/v1.jpg).
+  - `SPACE/V3.mp4` : Vu de loin au-dessus d&#x27;une planète bleue, le vaisseau ouvre sa voile dorée en pétales pendant que la vue s&#x27;approche, puis il est vu de côté voile ouverte. Images fixes : 1 s, 8 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/v3.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/v3.jpg).
+  - `SPACE/a1.mp4` : Le vaisseau à voile dorée, sa coque couverte de givre, une capsule conique dans une soute, puis la capsule lâchée qui s&#x27;enflamme. Images fixes : 4 s, 7.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/a1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/a1.jpg).
+  - `SPACE/d1.mp4` : La station et le vaisseau au-dessus d&#x27;une planète bleue, un gros plan sur la station, le vaisseau qui s&#x27;en détache, puis sa voile dorée qui s&#x27;ouvre. Images fixes : 1.5 s, 7.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d1.jpg).
+  - `SPACE/d2.mp4` : Le vaisseau à voile dorée vu de face et de côté, la station au-dessus d&#x27;une planète, le mot PERSEPHORA sur la coque, puis le vaisseau qui disparaît en un point de lumière. Images fixes : 1 s, 7.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/space/d2.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/space/d2.jpg).
+
+- **Seed et Rob1** (14) :
+  - `SEED/04_lagon_de_nacre.mp4` : Seed et Rob1, accroupis sur un rocher au milieu d&#x27;une eau calme, touchent l&#x27;eau ; autour, de grandes arches blanches et nacrées. Images fixes : 1.5 s, 13 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/04-lagon-de-nacre.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/04-lagon-de-nacre.jpg).
+  - `SEED/09_entre_les_geants.mp4` : Seed et Rob1, tout petits, avancent courbés entre les pattes d&#x27;un troupeau d&#x27;animaux géants rouges à défenses, dans la poussière. Images fixes : 2 s, 7 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/09-entre-les-geants.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/09-entre-les-geants.jpg).
+  - `SEED/13_nuit_dans_l_arbre.mp4` : De nuit, Seed dort allongée dans la fourche d&#x27;un gros arbre rouge avec Rob1 contre elle ; des animaux aux oreilles à pointes lumineuses passent au pied des arbres ; Seed ouvre les yeux. Images fixes : 9.5 s, 5.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/13-nuit-dans-l-arbre.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/13-nuit-dans-l-arbre.jpg).
+  - `SEED/14_escalade.mp4` : Seed grimpe une haute paroi jaune avec Rob1 accroché dans son dos, puis on voit ses jambes posées au sommet, face au vide. Images fixes : 2 s, 8 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/14-escalade.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/14-escalade.jpg).
+  - `SEED/16b_neige_et_rochers_bleus.mp4` : Une petite silhouette avance dans une tempête de neige devant de grands cristaux de glace bleus, puis on voit de près le visage de Seed dans une capuche de fourrure. Images fixes : 1 s, 8.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/16b-neige-et-rochers-bleus.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/16b-neige-et-rochers-bleus.jpg).
+  - `SEED/17_glissade_neige.mp4` : Seed glisse sur le dos en riant sur une pente blanche, Rob1 roule à côté d&#x27;elle ; ils s&#x27;arrêtent, Rob1 s&#x27;assoit et de la neige lui tombe sur la tête. Images fixes : 2 s, 11 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/17-glissade-neige.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/17-glissade-neige.jpg).
+  - `SEED/20_feu_de_camp.mp4` : Seed dort près d&#x27;un petit feu dans une forêt de nuit, Rob1 assis contre elle, le grand robot debout derrière ; puis deux petits animaux à grandes oreilles assis près du feu. Images fixes : 5 s, 13 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/20-feu-de-camp.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/20-feu-de-camp.jpg).
+  - `SEED/21_le_grand_timide.mp4` : Seed tend la main vers un très gros animal couvert de mousse et de poils verts, à bec rouge et longues griffes, puis pose la main sur sa patte ; Rob1 regarde à distance. Images fixes : 1 s, 13.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/21-le-grand-timide.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/21-le-grand-timide.jpg).
+  - `SEED/22_la_flore.mp4` : Une main touche une plante à longues pointes bleu sombre à points blancs ; puis le visage de Seed de face derrière la plante, Rob1 flou à côté d&#x27;elle. Images fixes : 2 s, 10 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/22-la-flore.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/22-la-flore.jpg).
+  - `SEED/23_rob1_refuse_qu_on_le_porte.mp4` : Au bord d&#x27;une rivière entre des rochers rouges, Rob1 grimpe sur un rocher et croise les bras ; Seed le soulève puis traverse l&#x27;eau en le portant. Images fixes : 5 s, 12 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/23-rob1-refuse-qu-on-le-porte.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/23-rob1-refuse-qu-on-le-porte.jpg).
+  - `SEED/C12_colonne_de_lave_meduses.mp4` : Une colonne de lave tombe sur un sol percé de bassins ronds ; Seed court sur les rebords de lave en portant Rob1 dans ses bras, puis tombe à genoux sur la roche noire. Images fixes : 3 s, 24 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c12-colonne-de-lave-meduses.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c12-colonne-de-lave-meduses.jpg).
+  - `SEED/C20_foret_arbres_rouges_champignons_blancs.mp4` : Seed et Rob1 jouent à cache-cache autour d&#x27;un tronc rouge dans une forêt d&#x27;arbres rouges au sol couvert de champignons blancs, puis partent en courant main dans la main. Images fixes : 4 s, 14 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/c20-foret-arbres-rouges-champignons-blancs.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/c20-foret-arbres-rouges-champignons-blancs.jpg).
+  - `SEED/M2_attaques_2.mp4` : Seed, à quatre pattes sur un sol rouge avec Rob1, regarde des cailloux ; un troupeau d&#x27;animaux rouges à cornes arrive sous un ciel d&#x27;orage ; elle se couche sur Rob1 pendant que le troupeau passe. Images fixes : 0.2 s, 8 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/seed/m2-attaques-2.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/seed/m2-attaques-2.jpg).
+  - `SECOND EARTH PANO/VIDEO/outpaint_00003.mp4` : Un paysage de roche sombre couvert de coussins rouges et de plantes à boules jaunes, puis Seed de face qui regarde autour d&#x27;elle, puis Seed de dos face au soleil. Images fixes : 1.5 s, 11.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/pano-video/outpaint-00003.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/pano-video/outpaint-00003.jpg).
+
+- **Bestiaire** (22 vidéos d&#x27;animaux) :
+  - `FAUNE_FLORE/bete_mousse.mp4` : Un gros animal couvert de poils verts comme de la mousse, à face rouge et longues griffes, sur une pente de roche sombre devant un volcan. Images fixes : 2 s, 6.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/bete-mousse.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/bete-mousse.jpg).
+  - `FAUNE_FLORE/bleue_pois.mp4` : Un gros animal bleu-vert à ronds clairs sur le dos et les épaules, qui marche parmi de grands champignons bleus et des rochers rouges. Images fixes : 2.5 s, 7.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/bleue-pois.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/bleue-pois.jpg).
+  - `FAUNE_FLORE/canide_oreilles_serie2.mp4` : Un animal proche d&#x27;un chien, à fourrure blanche et grise et à longues oreilles droites dont le bout brille, dans un paysage de volcans. Images fixes : 1.5 s, 4.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/canide-oreilles-serie2.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/canide-oreilles-serie2.jpg).
+  - `FAUNE_FLORE/canide_oreilles_serie3.mp4` : Un animal proche d&#x27;un chien, à fourrure blanche et grise et à longues oreilles au bout lumineux, devant une montagne en cône couverte de masses rondes, sous un ciel rose. Images fixes : 1.5 s, 9 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/canide-oreilles-serie3.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/canide-oreilles-serie3.jpg).
+  - `FAUNE_FLORE/carapace_noire_serie2.mp4` : Un petit animal à carapace noire bombée et pattes orange, de nuit, parmi de grands champignons plats blancs qui luisent en orange par-dessous. Images fixes : 1.5 s, 7.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/carapace-noire-serie2.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/carapace-noire-serie2.jpg).
+  - `FAUNE_FLORE/colosse_blanc_rouge_serie1.mp4` : Un très gros animal à quatre pattes, couvert de plaques blanches et rouges, avec des défenses, qui marche sous de grandes arches blanches. Images fixes : 1.5 s, 5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/colosse-blanc-rouge-serie1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/colosse-blanc-rouge-serie1.jpg).
+  - `FAUNE_FLORE/cornes_v_blanc_serie1.mp4` : Un animal à longue fourrure blanche et à deux cornes sombres en V, sur une plaine pâle et brumeuse avec de grands champignons rouges plats. Images fixes : 1.5 s, 5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/cornes-v-blanc-serie1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/cornes-v-blanc-serie1.jpg).
+  - `FAUNE_FLORE/cou_rouge.mp4` : Un animal haut sur pattes, à long cou et à fourrure rouge, avec une tête noire en bec et une crête de pointes, sur un sol clair devant des champignons rouges. Images fixes : 3 s, 10 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/cou-rouge.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/cou-rouge.jpg).
+  - `FAUNE_FLORE/crabe_nacre.mp4` : Un crabe à carapace blanc nacré et dessus rouge, sur une plage de sable clair au bord d&#x27;une eau calme, entre de grandes arches blanches translucides. Images fixes : 1.5 s, 4.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/crabe-nacre.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/crabe-nacre.jpg).
+  - `FAUNE_FLORE/dos_bleu_perle.mp4` : Un animal à corps bleu-noir bombé et à longues pattes orange courbées, de nuit, parmi des coupes blanches posées au sol qui luisent en orange. Images fixes : 1.5 s, 4.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/dos-bleu-perle.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/dos-bleu-perle.jpg).
+  - `FAUNE_FLORE/echassier_crete_serie1.mp4` : Un oiseau haut sur pattes, à long bec fin, plumage crème tacheté de noir et d&#x27;orange et crête de plumes, au bord d&#x27;une eau calme sous d&#x27;énormes formes blanches et roses. Images fixes : 3 s, 9 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/echassier-crete-serie1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/echassier-crete-serie1.jpg).
+  - `FAUNE_FLORE/epines_turquoise_variee.mp4` : De gros reptiles turquoise au dos couvert d&#x27;épines orange marchent dans un canyon semé de boules roses. Images fixes : 2.5 s, 11.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/epines-turquoise-variee.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/epines-turquoise-variee.jpg).
+  - `FAUNE_FLORE/escargot_verre.mp4` : Un escargot transparent à chair rose et coquille pointue en verre avance dans des collines vertes plantées d&#x27;arbres ronds vert clair à tronc jaune. Images fixes : 1 s, 4.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/escargot-verre.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/escargot-verre.jpg).
+  - `FAUNE_FLORE/geant_plumes_serie1.mp4` : Un grand animal à quatre pattes, à longs poils blancs, crête de plumes, tête bleue et deux longues cornes de côté, marche sur une plaine de buissons rouges. Images fixes : 4 s, 1 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/geant-plumes-serie1.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/geant-plumes-serie1.jpg).
+  - `FAUNE_FLORE/geant_zebre_variee.mp4` : De gros animaux rayés noir et beige, au dos à pointes et à grande corne droite sur le nez, vivent dans un désert blanc sous de grandes arches blanches et orange. Images fixes : 1.5 s, 5.3 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/geant-zebre-variee.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/geant-zebre-variee.jpg).
+  - `FAUNE_FLORE/mammouth.mp4` : Gros plan fixe sur la tête d&#x27;un gros animal à poils blancs et roux, nez bleu-gris, petites cornes sur le front ; il cligne des yeux. Images fixes : 1 s, 13.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/mammouth.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/mammouth.jpg).
+  - `FAUNE_FLORE/oiseau_pois.mp4` : Des oiseaux coureurs à plumes blanches à pois noirs, orange et bleu sombre, à grande crête, marchent dans une lande rouge avec des arbres jaunes en forme de toupie. Images fixes : 2 s, 3.2 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/oiseau-pois.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/oiseau-pois.jpg).
+  - `FAUNE_FLORE/oreilles_ailes.mp4` : Un animal blanc et mince, à longue queue et à deux très grandes oreilles tendues comme des ailes, court sur une plaine rouge sous un ciel d&#x27;orage. Images fixes : 1.5 s, 5.5 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/oreilles-ailes.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/oreilles-ailes.jpg).
+  - `FAUNE_FLORE/ours_rouge_blanc.mp4` : Un très gros animal proche d&#x27;un ours, à poils rouges et blancs, avec deux crocs en bas, marche dans un vallon d&#x27;herbe bleue sous des arches de roche rouge. Images fixes : 2.5 s, 11 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/ours-rouge-blanc.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/ours-rouge-blanc.jpg).
+  - `FAUNE_FLORE/reptile_volant.mp4` : Un reptile volant à long bec et ailes orangées vole et se pose dans un désert de sable blanc avec de gros dômes roses et des champignons roses géants. Images fixes : 1 s, 4 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/reptile-volant.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/reptile-volant.jpg).
+  - `FAUNE_FLORE/rhino.mp4` : Un gros animal à peau blanche tachée, dos couvert d&#x27;écailles ou de plumes rouges, avec une très grande corne courbée vers l&#x27;arrière, marche dans une eau peu profonde. Images fixes : 2 s, 6 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/rhino.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/rhino.jpg).
+  - `FAUNE_FLORE/rouge_noir_cornes.mp4` : Un gros animal à longs poils rouges et noirs, pattes blanches, deux petites cornes et longue queue, traverse une plaine d&#x27;herbe rose avec des pics de roche sombre. Images fixes : 3.5 s, 13 s. En ligne : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/video/faune-flore/rouge-noir-cornes.mp4 (image d&#x27;attente : https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/affiche/faune-flore/rouge-noir-cornes.jpg).
+
+- **Bandeaux très larges** (35 images, rapport d&#x27;environ 4,7:1, 2900 à 6700 px de large) :
+  - `SECOND EARTH PANO/STILLS/01 (1) · étendre.png` : Une plaine blanche avec un petit cours d&#x27;eau, des plantes rouges en forme de corail au premier plan, des dômes blancs et des formes blanches en champignon sur des collines sombres.
+  - `SECOND EARTH PANO/STILLS/01_decor_D07_bassins_verts_soufre · étendre.png` : Des bassins d&#x27;eau verte bordés de croûtes blanches, avec des anneaux jaunes, sur une plaine brune ; au fond, des amas blancs et jaunes.
+  - `SECOND EARTH PANO/STILLS/04_board_2_deploiement_4 · recadrée 1619… · étendre.png` : Une planète bleue couverte de nuages blancs, vue d&#x27;orbite, avec au centre un petit vaisseau à voile dorée ronde et quelques petits engins autour.
+  - `SECOND EARTH PANO/STILLS/06_decor_C13_spheres_et_bassins_rouille · étendre.png` : Au ras du sol, un amas de boules sombres granuleuses, des bassins ronds couleur rouille, des filaments orange et des flaques sombres ; au fond, une colonne de vapeur et des collines floues.
+  - `SECOND EARTH PANO/STILLS/07_decor_190_decor · étendre.png` : Une étendue blanche couverte d&#x27;une fine couche d&#x27;eau, des buissons rouges, et des formes rouges en boule percée posées sur un pied ; le soleil est bas derrière les nuages.
+  - `SECOND EARTH PANO/STILLS/197_4_85mm · étendre.png` : Seed, vue de près, met la main en visière au-dessus de ses yeux ; derrière elle, un sol rouge, une pente sombre et des formes blanches en colonnes, floues.
+  - `SECOND EARTH PANO/STILLS/198_4_85mm · étendre.png` : Seed rit, les yeux fermés, sous des gouttes d&#x27;eau près d&#x27;une cascade ; autour, des rochers couverts de mousse et deux formes à chapeau rouge sur des tiges bleues.
+  - `SECOND EARTH PANO/STILLS/bleue_pois_case2 · recadrée 1613×689 · étendre.png` : Un gros animal à quatre pattes, bleu-gris avec de grands pois crème, marche dans une herbe bleutée, parmi de grands arbres en forme de champignons bleus et des rochers rouges.
+  - `SECOND EARTH PANO/STILLS/collé-20261122-201515 · étendre.png` : Le visage de Seed en très gros plan, une larme sur la joue, devant un fond rouge sombre rempli de sphères orange floues.
+  - `SECOND EARTH PANO/STILLS/collé-20261122-204213 · étendre.png` : Un animal trapu à longs poils verts et blancs, face rouge et longues griffes, sur un sol de roche grise couvert de fibres cuivrées ; derrière lui, un volcan qui fume avec des coulées rouges.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-141136 · étendre.png` : Seed, enveloppée dans une grosse fourrure brune, serre Rob1 contre elle ; elle regarde droit vers nous, le sol derrière est blanc de neige ou de givre.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-142136 · étendre.png` : Seed marche dans une eau turquoise peu profonde, parmi des coussins blanc-bleu à base orange ; derrière elle, un grand robot sombre courbé porte Rob1 sur son dos.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-142938 · étendre.png` : Seed debout, Rob1 assis à sa droite et un grand robot à sa gauche, sur un rebord de roche jaune, entre de hautes parois jaunes à couches ; ciel bleu.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-143218 · étendre.png` : Très gros plan sur la tête d&#x27;un animal à poils gris et blancs, avec un œil ambre et de grosses cornes courbes et striées.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-143305 · étendre.png` : Des animaux à longs poils blancs, avec deux grandes cornes en V, avancent vers nous dans la poussière, devant de grandes formes brun-rouge en champignon.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-143403 · étendre.png` : Gros plan sur la tête d&#x27;un animal à long bec noir, œil rouge, deux cornes noires et plumes ou poils rouges et noirs, devant des rochers gris flous et un ciel bleu.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-151948 · étendre.png` : Gros plan sur la tête d&#x27;un oiseau à plumes blanches, orange et noires, bec sombre crochu, placé à droite ; les deux tiers gauches sont un fond flou clair.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-152036 · étendre.png` : Un oiseau blanc tacheté à longue queue noire marche sur du sable blanc au bord d&#x27;un bassin d&#x27;eau calme, entouré de formations blanches en forme de corail et d&#x27;arches translucides.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-152132 · étendre.png` : Un grand animal blanc à taches bleues, avec une trompe, deux longues défenses et deux cornes, vu de face sur un sol rouge avec des buissons morts ; derrière lui une colonne de nuage sombre.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-152257 · étendre.png` : Le même grand animal blanc à taches bleues, avec trompe, défenses et cornes, sous la pluie, de trois quarts ; derrière lui une colonne de nuage sombre.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-152717 · étendre.png` : Quatre oiseaux à plumes orange, blanches et tachetées de noir sur un chemin de terre, au milieu de buissons rouges et de gros buissons jaunes en boule ; celui de devant baisse la tête, plumes dressées.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-152817 · étendre.png` : Un animal clair à long cou et à très grandes oreilles tendues à l&#x27;horizontale, mouillé, debout sous la pluie derrière des rochers noirs.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-152937 · étendre.png` : Deux grands singes à long poil crème et brun, un grand et un plus petit serré contre lui, dans une pente d&#x27;herbe bleue ; au fond des rochers dans la brume.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-153149 · étendre.png` : Un gros animal couvert de longs poils blancs et de mousse verte, à face rouge et griffes violettes, avance sur un sol de lave refroidie parcouru de filaments cuivrés ; au fond des volcans avec des coulées et de la fumée.
+  - `SECOND EARTH PANO/STILLS/collé-20261123-153352 · étendre.png` : Un animal à quatre pattes, gris et blanc, à très longues oreilles noires dont les pointes brillent, gueule ouverte montrant les dents, devant un grand monticule éclairé d&#x27;orange au coucher du jour.
+  - `SECOND EARTH PANO/STILLS/dos_bleu_perle_2_seul · recadrée 3106×1344 · étendre.png` : Un petit animal à carapace bleu sombre avec des perles rouges et de longues pattes orange courbes, sur un sol noir couvert de formes blanches en corolle dont le centre brille en orange.
+  - `SECOND EARTH PANO/STILLS/hf_20261123_090404_ed1741a2-78aa-46b6-8546-4c1abb0ead8c.fb28afe923bd86dac4486d94982517616f1baecf946d30deae3712bb886ff86e.png` : Une capsule conique blanche descend sous trois grands ballons blancs au-dessus d&#x27;une forêt rouge couverte de nuages.
+  - `SECOND EARTH PANO/STILLS/image · étendre (2).png` : Dans une immense caverne sombre, une petite silhouette en bas jaune descend le long d&#x27;une corde, entre de grandes masses en forme de nuage portées par des faisceaux de filaments.
+  - `SECOND EARTH PANO/STILLS/images_196_2_35mm · étendre.png` : Seed, à genoux sur une plage de sable noir, souffle sur une poudre blanche dans sa main devant un buisson bleu couvert de givre ; mer agitée et ciel sombre percé par l&#x27;étoile.
+  - `SECOND EARTH PANO/STILLS/mother_dessus · étendre.png` : Une station faite de modules hexagonaux blancs et dorés, avec des panneaux solaires aux deux bouts, vue de dessus au-dessus de la Terre ; à gauche le bord de la planète et le noir de l&#x27;espace.
+  - `SECOND EARTH PANO/STILLS/nic007_alien_planet_red_and_yellow_and_b… · étendre.png` : Vue de très haut d&#x27;un grand cratère dans lequel coule un filet de lave, entouré de végétation rouge sombre et de neige ; l&#x27;horizon est courbe et une fumée noire monte au fond.
+  - `SECOND EARTH PANO/STILLS/nic007_httpss.mj.run-t-eKAoG3yU_cinemati… · étendre.png` : Une vallée d&#x27;herbe verte entre de hautes falaises, avec un grand rocher en forme d&#x27;œuf au centre, des arbres à cime plate et des souches ou pierres ocre au sol.
+  - `SECOND EARTH PANO/STILLS/rapace_case4 · recadrée 1620×688 · étendre.png` : Gros plan sur un animal volant à tête de rapace, écailles ou plumes bleues, touffes rouges et bec gris, ailes ouvertes ; la moitié gauche est un fond flou gris et rouge.
+  - `SECOND EARTH PANO/STILLS/rapace_case4 · recadrée 1621×687 · étendre.png` : Un animal volant bleu et blanc à tête de rapace et longue queue vole au ras d&#x27;une eau calme où il se reflète, entre des rives de roche claire et des arbres rouges.
+  - `SECOND EARTH PANO/STILLS/rouge_noir_cornes_case2 · recadrée 1617×… · étendre.png` : Un animal à long poil rouge et noir, pattes blanches, petites cornes et longue queue, debout au bord d&#x27;une mare où il se reflète, dans des collines d&#x27;herbe rose avec des pics de roche sombre.
+
+- **Seed et Rob1, à utiliser seulement sur le passage indiqué** (31) : voir la page d&#x27;inventaire, filtre « Bon en partie ».
+- **Ce qui manque** : aucun fichier sur la naissance de Seed, la capsule qui tombe dans le gouffre, les lacs roses et pourpres, les Titans, le message vers la Terre ; une seule bonne vidéo avec le grand robot (20_feu_de_camp). Prévoir des emplacements vides pour ces moments.
 </textarea>
-<p><a href="index.html">Retour au site</a></p></main>
+<h2>2. Axe 1 · L&#x27;Atlas</h2><p>Clair, éditorial : un grand atlas illustré, l&#x27;image et la donnée sur la même page.</p>
+<button data-c="t2">Copier ce brief</button><span class="ok"></span><textarea id="t2" readonly># Axe 1 · L&#x27;ATLAS
+
+À lire après le brief général. Cet axe est l&#x27;une des trois propositions de l&#x27;étape 1 (trois écrans fixes).
+
+## L&#x27;idée en une phrase
+
+Le site est le grand atlas illustré d&#x27;une planète qu&#x27;on vient de découvrir : une édition soignée, où l&#x27;image et la donnée se répondent sur la même page.
+
+## Ce qu&#x27;on ressent
+
+On feuillette un très bel ouvrage de naturaliste, fait aujourd&#x27;hui. On apprend en regardant. Chaque page donne envie de lire la suivante. Le sérieux du Science Centre y est chez lui.
+
+## Mise en page
+
+- Une grille visible et assumée : colonnes, filets fins, marges larges, numéros de planche, légendes.
+- Fond clair (papier, ivoire, gris très pâle). Les images apportent la couleur.
+- Le panoramique est traité comme une planche dépliante : une bande très large qui traverse la page, avec sa légende, ses repères, ses annotations fines posées dessus (un nom d&#x27;animal, une taille, une couleur relevée).
+- Les chiffres sont des éléments graphiques à part entière : grands, composés avec soin, toujours accompagnés d&#x27;une comparaison avec la Terre.
+
+## Typographie et couleurs
+
+- Une police de texte à empattements, de lecture longue, et une police de titrage à fort caractère. Une police à chasse fixe, discrète, pour les mesures et les légendes.
+- Encre presque noire, un seul accent chaud tiré de la planète (corail ou orange de l&#x27;étoile). Les couleurs de chaque milieu naturel apparaissent en petites touches : nuanciers, pastilles, filets.
+- Point de départ possible dans le dépôt : le « kit étude » (`presentation/kit/`).
+
+## Mouvement
+
+Calme et précis, comme une main qui tourne une page.
+- Les planches se déplient à l&#x27;arrivée ; les annotations se tracent trait par trait.
+- Les chiffres comptent jusqu&#x27;à leur valeur ; les schémas se dessinent.
+- Les transitions entre pages glissent comme des feuillets.
+- Survols : un filet qui s&#x27;allonge, une légende qui se révèle.
+
+## L&#x27;interaction signature
+
+**La planche annotée.** Sur un panoramique, le visiteur promène une loupe : les annotations apparaissent là où il passe (espèce, taille, couleur, lien avec la Terre). Un clic sur une annotation ouvre la fiche.
+
+## Les outils de données, dans cet axe
+
+Ce sont les vedettes. Schémas au trait, précis, élégants : coupes, échelles, frises, cadrans. La comparaison Terre / Korê se lit d&#x27;un coup d&#x27;œil, côte à côte, comme deux colonnes d&#x27;un tableau.
+
+## Les objets 3D
+
+Présentés comme des spécimens sur fond clair, avec leurs cotes, une règle, des vues de face et de profil qu&#x27;on atteint d&#x27;un clic.
+
+## Les trois écrans de l&#x27;étape 1
+
+- **Accueil** : le titre composé comme une couverture, une planche panoramique dépliée dessous, trois chiffres de la planète.
+- **Le voyage** : la planète traitée comme une carte, le trajet tracé, l&#x27;étape ouverte en planche avec son nuancier et ses espèces.
+- **La fiche** : le spécimen en 3D au centre, ses cotes, l&#x27;échelle de tailles, le cartel SUR TERRE / SUR KORÊ / POURQUOI.
+
+## À éviter
+
+Le manuel scolaire, le carnet « vieilli » avec taches et papier jauni, la surcharge d&#x27;annotations, les schémas décoratifs qui n&#x27;apprennent rien.
+</textarea>
+<h2>3. Axe 2 · L&#x27;Écran</h2><p>Noir, cinéma : l&#x27;image panoramique occupe tout, l&#x27;interface se fait oublier.</p>
+<button data-c="t3">Copier ce brief</button><span class="ok"></span><textarea id="t3" readonly># Axe 2 · L&#x27;ÉCRAN
+
+À lire après le brief général. Cet axe est l&#x27;une des trois propositions de l&#x27;étape 1 (trois écrans fixes).
+
+## L&#x27;idée en une phrase
+
+Le site est une séance : l&#x27;image panoramique occupe tout, l&#x27;interface se fait oublier, on avance dans le film comme dans la salle immersive.
+
+## Ce qu&#x27;on ressent
+
+On est assis dans le noir, l&#x27;image nous entoure. Peu de mots, bien choisis. Le visiteur comprend ce qu&#x27;est le cinéma immersif sans qu&#x27;on le lui explique.
+
+## Mise en page
+
+- Fond noir. L&#x27;image va d&#x27;un bord à l&#x27;autre de l&#x27;écran, toujours en très large.
+- Une page est une suite de plans : chaque bande est un panoramique ou une vidéo, avec un titre court et une ou deux lignes.
+- Les vidéos font 630 px de haut : les montrer en bandeau très large sur fond noir, comme un écran de salle, et non étirées sur toute la hauteur. Dire ce que tu conseilles pour les très grands moniteurs.
+- La navigation est presque invisible : un repère discret de l&#x27;endroit où l&#x27;on est, un menu qui n&#x27;apparaît qu&#x27;à la demande.
+
+## Typographie et couleurs
+
+- Une seule famille de caractères, fine et élégante, en petites tailles avec beaucoup d&#x27;air ; quelques très grands titres, rares.
+- Noir, blanc cassé, un gris. Aucune couleur d&#x27;interface : toute la couleur vient des images.
+- Les textes se posent sur l&#x27;image avec un voile léger là où il le faut pour rester lisibles.
+
+## Mouvement
+
+C&#x27;est du montage.
+- Passer d&#x27;une bande à l&#x27;autre est un raccord : fondu, glissement latéral, ouverture du cadre du 16:9 vers le très large.
+- Le défilement vertical déplace l&#x27;image à l&#x27;horizontale : on balaie le paysage comme on tourne la tête.
+- Les vidéos démarrent quand elles arrivent à l&#x27;écran et s&#x27;effacent en douceur.
+- Les titres entrent ligne par ligne, lentement, puis se taisent.
+
+## L&#x27;interaction signature
+
+**Tourner la tête.** Chaque panoramique se fait glisser à la main ou suit la souris ; sur téléphone, il suit le mouvement de l&#x27;appareil. Des points lumineux discrets sur l&#x27;image ouvrent une espèce, un personnage, un fait sur la planète.
+
+## Les outils de données, dans cet axe
+
+Très sobres, posés sur l&#x27;image comme des sous-titres : un chiffre, une ligne fine, une comparaison. Ils apparaissent quand on s&#x27;arrête, disparaissent quand on repart. Le comparateur Terre / Korê devient deux images côte à côte dans le même cadre.
+
+## Les objets 3D
+
+Sur fond noir, éclairés comme en studio, en très grand. On les fait tourner ; une lumière suit le geste. Très peu d&#x27;habillage autour.
+
+## Les trois écrans de l&#x27;étape 1
+
+- **Accueil** : la vidéo d&#x27;ouverture en très large, le titre, une phrase, rien d&#x27;autre.
+- **Le voyage** : la planète dans le noir, le trajet en trait lumineux, l&#x27;étape ouverte en panoramique plein cadre avec trois lignes de texte.
+- **La fiche** : l&#x27;objet 3D en grand, son nom, deux chiffres, un extrait vidéo en bandeau dessous.
+
+## À éviter
+
+L&#x27;affiche de film, le site de bande-annonce, les textes illisibles sur l&#x27;image, la navigation qu&#x27;on ne trouve plus, les effets qui retardent l&#x27;accès au contenu.
+</textarea>
+<h2>4. Axe 3 · La Salle</h2><p>Un lieu en 3D qu&#x27;on visite : la planète au centre, des objets à manipuler.</p>
+<button data-c="t4">Copier ce brief</button><span class="ok"></span><textarea id="t4" readonly># Axe 3 · LA SALLE
+
+À lire après le brief général. Cet axe est l&#x27;une des trois propositions de l&#x27;étape 1 (trois écrans fixes).
+
+## L&#x27;idée en une phrase
+
+Le site est un lieu qu&#x27;on visite : la planète en est le centre, on s&#x27;en approche, on y entre, et chaque page est une salle où des objets en 3D se manipulent.
+
+## Ce qu&#x27;on ressent
+
+On est chef de mission, comme dans la salle immersive. On explore à son rythme, on touche, on tourne les choses. C&#x27;est l&#x27;axe le plus proche de la maquette CONTINUUM du site NirvaLab, qui sert de référence.
+
+## Mise en page
+
+- Une scène en profondeur derrière la page : la planète, puis les lieux, puis les objets. L&#x27;interface est une couche fine et nette posée devant.
+- Les contenus sont des panneaux légers qui s&#x27;ouvrent près de l&#x27;objet concerné : une étape du voyage, un animal, un vaisseau.
+- Les panoramiques sont des fenêtres sur le lieu : courbés autour du visiteur, ou ouverts en grand quand on entre dans une étape.
+- Toujours un chemin simple pour qui veut seulement lire : un sommaire clair, et une version à plat de chaque page.
+
+## Typographie et couleurs
+
+- Une police sans empattement, contemporaine, très lisible en petit ; des chiffres soignés.
+- Fond sombre profond, mais pas noir : un bleu-nuit ou un vert très sombre tiré de la planète. Deux accents : l&#x27;orange de l&#x27;étoile et le pourpre de la végétation.
+- Des panneaux à peine teintés, des traits fins, des coins doux. Pas de décor de tableau de bord.
+- Point de départ possible dans le dépôt : le thème « Verdant » (`site/assets/site.css`).
+
+## Mouvement
+
+Tout a un poids et une distance.
+- On passe d&#x27;une page à l&#x27;autre par un déplacement : on recule vers la planète, on plonge vers une étape, on s&#x27;approche d&#x27;un objet.
+- La planète tourne avec de l&#x27;inertie ; les objets répondent au geste avec un léger retard, puis se posent.
+- Les panneaux s&#x27;ouvrent depuis l&#x27;objet auquel ils appartiennent.
+- Micro-animations sur tout ce qui se touche : un point qui respire, un trait qui se tend, un chiffre qui s&#x27;ajuste.
+
+## L&#x27;interaction signature
+
+**La planète comme sommaire.** Le visiteur fait tourner Korê ; le trajet de Seed s&#x27;y dessine en douze étapes. Un clic sur une étape : on descend vers le sol, le panoramique du lieu s&#x27;ouvre autour de soi, avec ses animaux à faire tourner en 3D.
+
+## Les outils de données, dans cet axe
+
+Ils sont dans l&#x27;espace et se manipulent : on fait glisser un curseur pour passer de la Terre à Korê et la scène change (la longueur du jour, la hauteur d&#x27;un saut, la marée qui monte) ; les orbites et les deux lunes tournent en vrai ; l&#x27;échelle de tailles aligne les objets 3D côte à côte.
+
+## Les objets 3D
+
+Ils sont le cœur de cet axe : Seed, Rob1, Rob2, Rob3, les animaux, MOTHER, PERSEPHORA, la capsule. Chacun a sa place dans la scène, se saisit, se tourne, se compare aux autres.
+
+## Les trois écrans de l&#x27;étape 1
+
+- **Accueil** : la planète en grand, le titre devant, le début du trajet visible, une vidéo panoramique qui s&#x27;ouvre en bandeau.
+- **Le voyage** : la planète tournée sur une étape, le panneau de l&#x27;étape ouvert, le panoramique du lieu derrière.
+- **La fiche** : l&#x27;objet 3D au centre, le curseur Terre / Korê, l&#x27;échelle de tailles avec les autres objets.
+
+## À éviter
+
+Le jeu vidéo, le tableau de bord de vaisseau, la 3D qui ralentit tout, le visiteur perdu sans savoir où cliquer, le contenu inaccessible sans la 3D.
+</textarea>
+<p><a href="inventaire-medias/index.html">L'inventaire des images et des vidéos</a> · <a href="index.html">Retour au site</a></p></main>
 <script>document.querySelectorAll('button').forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c);t.select();
 (navigator.clipboard?navigator.clipboard.writeText(t.value):Promise.reject()).catch(function(){document.execCommand('copy')});
 b.nextElementSibling.textContent='Copié';}});</script></html>
