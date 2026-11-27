@@ -36,7 +36,13 @@ Dans le chantier spatial qui flotte au-dessus de l'atmosphère, la station MOTHE
 
 PERSEPHORA est une semeuse stellaire entièrement autonome : elle trace sa route, calcule ses manœuvres, largue ses XENOPOD sur les mondes prometteurs, puis repart chercher le prochain sol où déposer une graine. Elle en porte de deux sortes : des collecteurs, qui prennent la matière et les données d'un monde, et un seul qui porte un enfant, le XENOPOD-01. Deux collecteurs ont été déposés en quittant le système solaire, sur Mars et sur Titan ; deux fois la réponse est revenue : NON VIABLE. Pas d'azote, pas d'air, pas d'eau qui coule. Le XENOPOD-01 est le premier à quitter le système, avec trois collecteurs dans ses flancs.
 
-Un dernier regard humain dans le dock. PERSEPHORA s'arrache sur rails magnétiques, file hors de l'orbite terrestre. Loin de tout, le moteur à fusion s'allume ; l'espace se plisse autour de la coque, et la traversée se condense en jalons. Carton : 2045 → 2098 · 11,4 années-lumière · 53 ans.
+Un dernier regard humain dans le dock. PERSEPHORA s'arrache sur rails magnétiques, file hors de l'orbite terrestre. 
+
+Le système solaire défile. Mars, rouge et sèche : un premier collecteur se détache et descend. Jupiter, ses bandes et sa grande tache, qui remplit tout le cadre ; PERSEPHORA n'est qu'un trait devant elle. Puis Saturne. Le vaisseau passe au ras des anneaux, minuscule contre la glace qui brille, et lâche le second collecteur vers Titan, la lune orange. **[ajout du 27/11]**
+
+À l'intérieur, tout dort. Les quatre Robs sont en veille, chacun replié dans son module, visière éteinte. Rob1, le plus petit, est sanglé près de la cuve vide. Les anneaux passent dans les hublots. Personne ne regarde. **[ajout du 27/11]**
+
+Loin de tout, le moteur à fusion s'allume ; l'espace se plisse autour de la coque. Derrière, le Soleil devient une étoile parmi les autres. La traversée se condense en jalons : une planète sans étoile, noire, qui glisse au loin, à peine dessinée par la lumière du vaisseau ; des années de nuit ; les Robs immobiles, une fine couche de givre sur leurs coques ; puis, devant, un point orange qui grossit. **[ajout du 27/11]** Carton : 2045 → 2098 · 11,4 années-lumière · 53 ans.
 
 *2098 – Système de 61 Cygni*
 
@@ -44,7 +50,7 @@ Freinage. Une étoile orange, plus petite que le Soleil ; loin derrière elle, s
 
 En trois orbites, PERSEPHORA a lu la planète. Quatre continents. Sur le bord ouest du plus grand, quatre signatures côte à côte : un karst à guano, un massif, un arc de volcans, une remontée marine. Tout ce qu'il faut pour un corps, dans un rayon de trois mille kilomètres. Sélection de la zone primaire : une plaine calcaire stable, au bord d'un fleuve, avec accès à des biomes contrastés.
 
-Dans la baie, le XENOPOD-01 est sanglé sur rail. Check express : bouclier ablatif, aérofreins, rétro-poussée, télémétrie, trois robopods, casiers d'échantillonnage, module Incubateur intégré. Tout passe au vert.
+Dans le noir d'un module, une visière s'allume : deux yeux bleus. Rob1 se réveille le premier, après cinquante-trois ans de veille. **[ajout du 27/11]** Dans la baie, le XENOPOD-01 est sanglé sur rail. Check express : bouclier ablatif, aérofreins, rétro-poussée, télémétrie, trois robopods, casiers d'échantillonnage, module Incubateur intégré. Tout passe au vert.
 
 Compte à rebours silencieux. PERSEPHORA ouvre la baie ventrale et libère XENOPOD-01 sur le corridor d'entrée.
 
