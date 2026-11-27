@@ -248,6 +248,44 @@ Toutes tranchées par Cal dans le QCM ; les fiches des onglets sont marquées «
 
 27/09 : le découpage plan par plan du 25 min est écrit (proposé, 16:9 par défaut) : Découpage 25 min.
 
+## Round 18 (27/11/2026) : personnages, monde, site
+
+Tranché par Cal le 27/11/2026 sur la page `data/chantiers-2026-11-27.html`. **À écrire dans le Récit v2** (pas encore fait le 27/11).
+
+### Les personnages, la quête, la fin
+- **P01 (Seed)** : elle sait sans avoir senti, puis elle sent. Les 23 % d'Elena lui donnent des images sans sensation ; chaque lieu lui donne la sensation qui manquait, parfois trop fort, parfois à tort (le fruit). Se voit au réveil, à la musique, aux rongeurs, au fruit et à la fièvre, à « Je suis Seed ».
+- **P02 (Rob1)** : celui qui doit inventer. Au début il sort du protocole (l'alarme, la cuve) ; au milieu ses calculs ne suffisent plus ; à la fin il invente un mensonge et un enfant.
+- **P03 (L'alarme)** : au réveil dans la cuve, l'alarme de fin d'incubation fait mal à Seed, qui se bouche les oreilles ; Rob1 la coupe, et une ligne de protocole est barrée sur son écran.
+- **P04 (Le séisme)** : la machine s'affole, aucune règle ne prévoit le cas ; Rob1 décide d'arrêter et d'ouvrir la cuve. Son premier acte inventé ; CAIN en est l'écho à la fin. (Il ne tombe pas avec le XENOPOD : D18 reste.)
+- **P05 (Seed porte Rob1)** : il refuse, marche seul, tombe, boude, puis accepte et grimpe sur son dos.
+- **P06 (La musique du vent)** : dans la marche vers Rob2, avant la caverne : le vent dans les fleurs, Seed se fige et fredonne sans voix ; Rob1 cherche la source dans ses données et ne trouve rien.
+- **P07 (La danse de Rob1)** : aux lacs salés, avec le cri « Korê » ; quelques secondes.
+- **P08 (Seed et les animaux)** : un fil continu, avec une limite : elle sent, comprend, puis suit un animal vers le fruit et se trompe. L'alarme qui faisait mal au début devient un son qu'elle comprend.
+- **P09 (Les trois rencontres)** : le piège, la maison, le don. Rob2 : le monde du dessous, la nature a ses règles ; Rob1 lui prend son énergie. Rob3 : Seed trouve des amis et perd leur abri ; Rob1 cache les rations et le réveil, et perd le chargeur. Rob4 : Seed trouve son nom et garde des cicatrices ; Rob1 doit la confier à un autre.
+- **P10 (La fin)** : montrer tôt ce que « VIABLE » amènerait : une ligne sur la tablette de l'Acte I, « Phase 3 : colonie · terraformation ».
+- **P11 (Cobaye)** : au feu chez Rob3, quand le journal écrit son nom, la ligne « rôle : cobaye » s'efface à l'écran.
+- **P12 (Les 23 %)** : des images et des sons, sans savoir.
+- **P13 (Rob4)** : Rob1 doit lâcher Seed, la confier et attendre toute une nuit ; son premier « je » du journal tombe là.
+
+### Le monde
+- **W06 (Rob1)** : l'apparence des vidéos (petit robot sombre, deux yeux bleus sur la visière), **taille 1 m**. La planche de la Bible (écran noir à signes orange, sans yeux) est à corriger ; la règle vidéo « 75 cm » aussi.
+- **W07 (Seed)** : cheveux blancs **courts** (elle est incubée en accéléré), tenue blanche, bas jaune, comme dans les vidéos. Cal : « on n'a jamais dit que Seed a les cheveux mi-longs ». La planche de la Bible, qui écrit « mi-longs » et « combinaison grise », est à corriger.
+- **W08 (MOTHER)** : la station de départ, au-dessus de la Terre ; PERSEPHORA reste le vaisseau. À ajouter au Glossaire.
+- **S06 (Les jours)** : le site compte en jours de Korê (25 jours) ; un comparatif du temps de la Terre et de Korê est montré à cet endroit.
+- **S07 (La horde)** : dans les Hautes Plaines, comme la Chronologie ; le Récit v2 ajoute le trajet entre le campement et la plaine.
+- **S01** : les autres écarts relevés passent en QCM à part ; le site sort avec le contenu actuel.
+- **Proposé par Cal le 27/11, non tranché** : une anomalie magnétique sur Korê, due à un second noyau (le reste de fer d'un astre entré en collision avec la planète), décentré.
+
+### Le site
+- **W01** : un seul site, deux étages : l'étage ouvert raconte l'histoire ; l'étage réservé contient les decks. Nom de domaine : **secondearth.net** (acheté par Cal chez Cloudflare).
+- **W02** : un simple code sur la page pour l'étage réservé ; plus un accès invité, pour consulter seulement.
+- **W03** : un seul deck pour commencer : celui pour les lieux (distribution).
+- **W04** : le deck porte la proposition de Cal : un monde de fiction dont on a changé les règles (gravité, lumière de l'étoile, magnétisme) pour y laisser un écosystème se développer de lui-même.
+- **W05** : anglais d'abord, bouton français.
+- **W09** : pour lundi 30/11 : une première version du site ouvert.
+- **S05** : le site ne « compare » pas la Terre et Korê : il amène à se questionner sur leurs différences, parce qu'elles se ressemblent beaucoup, pour réfléchir à ce qu'est vraiment la Terre.
+- **S03, S04, S08** : le kit étude seul comme base des outils de données avant lundi ; molette seule en plein écran, Ctrl + molette dans les pages qui défilent ; la bible au format du kit SOLARIS après lundi.
+
 ## Questions ouvertes
 
 - [ ] Épigraphe du 55 : la phrase du docx est gardée pour l'instant (round 14) ; à revoir plus tard, à la demande de Cal.
