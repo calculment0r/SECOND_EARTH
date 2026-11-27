@@ -1,6 +1,6 @@
 {
  "resume": {
-  "date": "2026-11-25",
+  "date": "2026-11-27",
   "videos": 98,
   "images": 60,
   "videos_par_etat": {
@@ -9214,7 +9214,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "On ne sait pas si les dômes et les formes en champignon sont des plantes, des roches ou des constructions."
+   "incertitudes": "On ne sait pas si les dômes et les formes en champignon sont des plantes, des roches ou des constructions.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/01-1-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/01-1-etendre.png"
   },
   {
    "id": "pano-images--01-cle-2-depliage-etendre",
@@ -9249,7 +9251,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Les noms PERSEPHORA (voile dorée) et MOTHER (station à modules) sont déduits des noms de fichiers, pas de la Bible. La planète semble être la Terre, non vérifié. Les taches claires peuvent être des reflets voulus."
+   "incertitudes": "Les noms PERSEPHORA (voile dorée) et MOTHER (station à modules) sont déduits des noms de fichiers, pas de la Bible. La planète semble être la Terre, non vérifié. Les taches claires peuvent être des reflets voulus.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/01-cle-2-depliage-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/01-cle-2-depliage-etendre.png"
   },
   {
    "id": "pano-images--01-decor-d07-bassins-verts-soufre-etendre",
@@ -9283,7 +9287,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome déduit des dépôts de soufre jaune cités pour l'arc volcanique ; pas de volcan visible sur l'image."
+   "incertitudes": "Biome déduit des dépôts de soufre jaune cités pour l'arc volcanique ; pas de volcan visible sur l'image.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/01-decor-d07-bassins-verts-soufre-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/01-decor-d07-bassins-verts-soufre-etendre.png"
   },
   {
    "id": "pano-images--01-decor-d19-orbite-cyclone-volcan-etendre",
@@ -9317,7 +9323,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "On ne sait pas s'il s'agit de la Terre ou de Korê. Les lignes rouges au sol peuvent être de la lave ou des lumières."
+   "incertitudes": "On ne sait pas s'il s'agit de la Terre ou de Korê. Les lignes rouges au sol peuvent être de la lave ou des lumières.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/01-decor-d19-orbite-cyclone-volcan-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/01-decor-d19-orbite-cyclone-volcan-etendre.png"
   },
   {
    "id": "pano-images--03-board-2-deploiement-3-etendre",
@@ -9349,7 +9357,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le nom PERSEPHORA est déduit des noms de fichiers. La voile est coupée en haut et en bas."
+   "incertitudes": "Le nom PERSEPHORA est déduit des noms de fichiers. La voile est coupée en haut et en bas.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/03-board-2-deploiement-3-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/03-board-2-deploiement-3-etendre.png"
   },
   {
    "id": "pano-images--04-board-2-deploiement-4-recadree-1619-etendre",
@@ -9383,7 +9393,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le nom PERSEPHORA est déduit des noms de fichiers. La planète semble être la Terre, non vérifié. Le vaisseau est très petit dans l'image."
+   "incertitudes": "Le nom PERSEPHORA est déduit des noms de fichiers. La planète semble être la Terre, non vérifié. Le vaisseau est très petit dans l'image.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/04-board-2-deploiement-4-recadree-1619-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/04-board-2-deploiement-4-recadree-1619-etendre.png"
   },
   {
    "id": "pano-images--06-decor-c13-spheres-et-bassins-rouille-etendre",
@@ -9417,7 +9429,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "On ne sait pas si les boules et les filaments sont des plantes, des champignons ou des minéraux. Le lieu peut être une zone de sources chaudes, sans certitude."
+   "incertitudes": "On ne sait pas si les boules et les filaments sont des plantes, des champignons ou des minéraux. Le lieu peut être une zone de sources chaudes, sans certitude.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/06-decor-c13-spheres-et-bassins-rouille-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/06-decor-c13-spheres-et-bassins-rouille-etendre.png"
   },
   {
    "id": "pano-images--07-decor-190-decor-etendre",
@@ -9450,7 +9464,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome choisi pour la croûte blanche et l'eau qui fait miroir ; l'eau n'est pas pourpre ici. On ne sait pas si les formes en boule sont des roches ou des êtres vivants."
+   "incertitudes": "Biome choisi pour la croûte blanche et l'eau qui fait miroir ; l'eau n'est pas pourpre ici. On ne sait pas si les formes en boule sont des roches ou des êtres vivants.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/07-decor-190-decor-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/07-decor-190-decor-etendre.png"
   },
   {
    "id": "pano-images--11-la-charge-2550x640-milieu",
@@ -9485,7 +9501,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome choisi pour le sol blanc et l'eau qui fait miroir, sans eau pourpre visible. L'image ne porte pas la mention « étendre » : pas sûr qu'elle ait été élargie."
+   "incertitudes": "Biome choisi pour le sol blanc et l'eau qui fait miroir, sans eau pourpre visible. L'image ne porte pas la mention « étendre » : pas sûr qu'elle ait été élargie.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/11-la-charge-2550x640-milieu.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/11-la-charge-2550x640-milieu.png"
   },
   {
    "id": "pano-images--197-4-85mm-etendre",
@@ -9519,7 +9537,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "La trame en grille à gauche peut venir de la planche de lecture et non de l'image d'origine. La manche de Seed est coupée par le bord droit."
+   "incertitudes": "La trame en grille à gauche peut venir de la planche de lecture et non de l'image d'origine. La manche de Seed est coupée par le bord droit.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/197-4-85mm-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/197-4-85mm-etendre.png"
   },
   {
    "id": "pano-images--198-4-85mm-etendre",
@@ -9553,7 +9573,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Les formes à chapeau rouge et tiges bleues peuvent être des champignons ou des animaux. La cascade peut renvoyer à la forêt ancienne, sans certitude."
+   "incertitudes": "Les formes à chapeau rouge et tiges bleues peuvent être des champignons ou des animaux. La cascade peut renvoyer à la forêt ancienne, sans certitude.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/198-4-85mm-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/198-4-85mm-etendre.png"
   },
   {
    "id": "pano-images--bleue-pois-case2-recadree-1613689-etendre",
@@ -9587,7 +9609,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "L'herbe bleu-gris peut rappeler les Hautes Plaines, mais les arbres en champignon ne sont pas décrits dans ce que j'ai lu de la Bible."
+   "incertitudes": "L'herbe bleu-gris peut rappeler les Hautes Plaines, mais les arbres en champignon ne sont pas décrits dans ce que j'ai lu de la Bible.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/bleue-pois-case2-recadree-1613689-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/bleue-pois-case2-recadree-1613689-etendre.png"
   },
   {
    "id": "pano-images--board-2-deploiement-2-etendre",
@@ -9621,7 +9645,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le nom PERSEPHORA est déduit des noms de fichiers. Les deux engins au loin peuvent être la station MOTHER ou d'autres vaisseaux : pas clair."
+   "incertitudes": "Le nom PERSEPHORA est déduit des noms de fichiers. Les deux engins au loin peuvent être la station MOTHER ou d'autres vaisseaux : pas clair.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/board-2-deploiement-2-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/board-2-deploiement-2-etendre.png"
   },
   {
    "id": "pano-images--colle-20261106-150218-etendre",
@@ -9656,7 +9682,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Taille de Rob1 difficile à juger : Seed est penchée et il arrive à sa taille. Les animaux semblent être les buffles albinos, non confirmé."
+   "incertitudes": "Taille de Rob1 difficile à juger : Seed est penchée et il arrive à sa taille. Les animaux semblent être les buffles albinos, non confirmé.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261106-150218-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261106-150218-etendre.png"
   },
   {
    "id": "pano-images--colle-20261122-201515-etendre",
@@ -9689,7 +9717,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "On ne sait pas ce que sont les sphères orange."
+   "incertitudes": "On ne sait pas ce que sont les sphères orange.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261122-201515-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261122-201515-etendre.png"
   },
   {
    "id": "pano-images--colle-20261122-201850-etendre",
@@ -9722,7 +9752,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Les personnages sont très petits : la taille de Rob1 est jugée sur quelques points d'image. On ne sait pas si l'étendue dorée est de l'eau ou des nuages, ni ce que sont les colonnes dorées."
+   "incertitudes": "Les personnages sont très petits : la taille de Rob1 est jugée sur quelques points d'image. On ne sait pas si l'étendue dorée est de l'eau ou des nuages, ni ce que sont les colonnes dorées.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261122-201850-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261122-201850-etendre.png"
   },
   {
    "id": "pano-images--colle-20261122-204213-etendre",
@@ -9756,7 +9788,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "On ne sait pas ce que sont les fibres cuivrées au sol."
+   "incertitudes": "On ne sait pas ce que sont les fibres cuivrées au sol.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261122-204213-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261122-204213-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-131140-etendre",
@@ -9791,7 +9825,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Rob1 est peut-être vu de dos, ce qui expliquerait l'absence d'yeux : pas clair. Image moins large que les autres."
+   "incertitudes": "Rob1 est peut-être vu de dos, ce qui expliquerait l'absence d'yeux : pas clair. Image moins large que les autres.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-131140-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-131140-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-141136-etendre",
@@ -9825,7 +9861,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le froid peut renvoyer aux massifs et glaciers, mais on ne voit ni montagne ni glacier. La trame en grille peut venir de la planche de lecture. Taille de Rob1 non jugeable : on ne voit que sa tête."
+   "incertitudes": "Le froid peut renvoyer aux massifs et glaciers, mais on ne voit ni montagne ni glacier. La trame en grille peut venir de la planche de lecture. Taille de Rob1 non jugeable : on ne voit que sa tête.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-141136-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-141136-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-141359-etendre",
@@ -9857,7 +9895,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "La silhouette est très petite : on reconnaît le bas jaune de Seed et une masse sombre sur son dos, peut-être une fourrure ou Rob1 porté. Pas clair."
+   "incertitudes": "La silhouette est très petite : on reconnaît le bas jaune de Seed et une masse sombre sur son dos, peut-être une fourrure ou Rob1 porté. Pas clair.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-141359-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-141359-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-141806-etendre",
@@ -9892,7 +9932,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "On ne sait pas si le sol est de la neige ou du sel. La forme sombre en haut à droite n'est pas identifiable. L'image est penchée."
+   "incertitudes": "On ne sait pas si le sol est de la neige ou du sel. La forme sombre en haut à droite n'est pas identifiable. L'image est penchée.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-141806-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-141806-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-141836-etendre",
@@ -9926,7 +9968,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Deux points minuscules sur la plage, un sombre et un clair, peuvent être Seed et Rob1 : trop petits pour le dire, je ne les ai pas comptés. Le rivage peut être la mer d'arsenic, mais la plage n'est pas de sable noir."
+   "incertitudes": "Deux points minuscules sur la plage, un sombre et un clair, peuvent être Seed et Rob1 : trop petits pour le dire, je ne les ai pas comptés. Le rivage peut être la mer d'arsenic, mais la plage n'est pas de sable noir.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-141836-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-141836-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-142136-etendre",
@@ -9963,7 +10007,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "On ne sait pas si les coussins sont des plantes ou des dépôts minéraux. Taille de Rob1 difficile à juger : il est accroché au dos du grand robot. Le grand robot a une carapace ronde ; pas sûr que ce soit le même modèle que sur les autres images."
+   "incertitudes": "On ne sait pas si les coussins sont des plantes ou des dépôts minéraux. Taille de Rob1 difficile à juger : il est accroché au dos du grand robot. Le grand robot a une carapace ronde ; pas sûr que ce soit le même modèle que sur les autres images.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-142136-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-142136-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-142406-etendre",
@@ -9999,7 +10045,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le robot porté a un casque clair et des yeux bleus comme Rob1 : je l'ai noté Rob1, sans certitude. Biome choisi pour la rivière rouge. Les éclaboussures aux pieds de Seed sont orange vif."
+   "incertitudes": "Le robot porté a un casque clair et des yeux bleus comme Rob1 : je l'ai noté Rob1, sans certitude. Biome choisi pour la rivière rouge. Les éclaboussures aux pieds de Seed sont orange vif.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-142406-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-142406-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-142640-etendre",
@@ -10033,7 +10081,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Le quadrillage peut être la surface voulue de ces formes ou un défaut : pas clair. L'animal volant tient un objet rond sombre, non identifié. On ne sait pas si les grandes formes sont des plantes ou des roches."
+   "incertitudes": "Le quadrillage peut être la surface voulue de ces formes ou un défaut : pas clair. L'animal volant tient un objet rond sombre, non identifié. On ne sait pas si les grandes formes sont des plantes ou des roches.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-142640-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-142640-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-142750-etendre",
@@ -10066,7 +10116,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Ces animaux rappellent une horde de buffles, mais ils sont rouges et non albinos : je n'ai pas rattaché l'image aux Hautes Plaines. On ne sait pas si la forme sombre est un arbre ou un nuage. Les traînées du ciel peuvent être voulues."
+   "incertitudes": "Ces animaux rappellent une horde de buffles, mais ils sont rouges et non albinos : je n'ai pas rattaché l'image aux Hautes Plaines. On ne sait pas si la forme sombre est un arbre ou un nuage. Les traînées du ciel peuvent être voulues.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-142750-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-142750-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-142938-etendre",
@@ -10102,7 +10154,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "La roche jaune peut renvoyer au canyon ou au soufre de la course volcanique, sans certitude. Taille de Rob1 jugée assis, donc approximative. Les personnages sont regroupés à droite du centre."
+   "incertitudes": "La roche jaune peut renvoyer au canyon ou au soufre de la course volcanique, sans certitude. Taille de Rob1 jugée assis, donc approximative. Les personnages sont regroupés à droite du centre.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-142938-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-142938-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-143218-etendre",
@@ -10135,7 +10189,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Espèce non identifiée."
+   "incertitudes": "Espèce non identifiée.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-143218-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-143218-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-143305-etendre",
@@ -10169,7 +10225,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "La petite silhouette en bas à gauche n'est pas identifiable (rocher, plante ou personnage). Les animaux sont coupés par le bord du bas."
+   "incertitudes": "La petite silhouette en bas à gauche n'est pas identifiable (rocher, plante ou personnage). Les animaux sont coupés par le bord du bas.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-143305-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-143305-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-143403-etendre",
@@ -10203,7 +10261,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Espèce non identifiée. L'image est penchée."
+   "incertitudes": "Espèce non identifiée. L'image est penchée.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-143403-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-143403-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-144426-etendre",
@@ -10237,7 +10297,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Les personnages sont très petits : visages et mains non vérifiables. Le lieu pourrait être les forêts cristallines de la Course volcanique, mais ce sont des cristaux et non des arbres : biome non tranché."
+   "incertitudes": "Les personnages sont très petits : visages et mains non vérifiables. Le lieu pourrait être les forêts cristallines de la Course volcanique, mais ce sont des cristaux et non des arbres : biome non tranché.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-144426-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-144426-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-151948-etendre",
@@ -10271,7 +10333,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le décor est trop flou pour dire où l'on est."
+   "incertitudes": "Le décor est trop flou pour dire où l'on est.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-151948-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-151948-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-152036-etendre",
@@ -10305,7 +10369,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome non tranché : peut rappeler les croûtes blanches des lacs salés ou les récifs de silice hors trajet, mais l'eau n'est pas pourpre et rien ne le confirme."
+   "incertitudes": "Biome non tranché : peut rappeler les croûtes blanches des lacs salés ou les récifs de silice hors trajet, mais l'eau n'est pas pourpre et rien ne le confirme.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-152036-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-152036-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-152132-etendre",
@@ -10339,7 +10405,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "L'animal pourrait être un buffle albinos des Hautes Plaines, mais le sol rouge nu ne ressemble pas à la prairie décrite : biome non tranché. La colonne sombre peut être une fumée de volcan ou une tornade."
+   "incertitudes": "L'animal pourrait être un buffle albinos des Hautes Plaines, mais le sol rouge nu ne ressemble pas à la prairie décrite : biome non tranché. La colonne sombre peut être une fumée de volcan ou une tornade.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-152132-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-152132-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-152257-etendre",
@@ -10372,7 +10440,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Même doute que pour l'image précédente sur le biome (peut-être Hautes Plaines). La différence de longueur des défenses peut venir de l'angle de vue."
+   "incertitudes": "Même doute que pour l'image précédente sur le biome (peut-être Hautes Plaines). La différence de longueur des défenses peut venir de l'angle de vue.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-152257-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-152257-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-152606-etendre",
@@ -10405,7 +10475,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "L'eau orange peut évoquer la rivière rouge de la Forêt ancienne, mais il n'y a aucun arbre : biome non tranché. La forme de fraise est peut-être voulue (parasite ou plante sur la peau), non vérifié."
+   "incertitudes": "L'eau orange peut évoquer la rivière rouge de la Forêt ancienne, mais il n'y a aucun arbre : biome non tranché. La forme de fraise est peut-être voulue (parasite ou plante sur la peau), non vérifié.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-152606-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-152606-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-152717-etendre",
@@ -10440,7 +10512,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Même scène que oiseau_pois_case2. Biome non reconnu dans la Bible."
+   "incertitudes": "Même scène que oiseau_pois_case2. Biome non reconnu dans la Bible.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-152717-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-152717-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-152817-etendre",
@@ -10474,7 +10548,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Une petite forme sombre en bas à gauche n'est pas lisible. Lieu trop sombre pour reconnaître un biome."
+   "incertitudes": "Une petite forme sombre en bas à gauche n'est pas lisible. Lieu trop sombre pour reconnaître un biome.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-152817-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-152817-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-152937-etendre",
@@ -10508,7 +10584,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome choisi à cause de l'herbe bleu-gris ; le relief en pente avec des pics au fond n'est pas une plaine, donc pas certain. On ne voit pas bien où finit le corps du petit singe."
+   "incertitudes": "Biome choisi à cause de l'herbe bleu-gris ; le relief en pente avec des pics au fond n'est pas une plaine, donc pas certain. On ne voit pas bien où finit le corps du petit singe.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-152937-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-152937-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-153149-etendre",
@@ -10542,7 +10620,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le quadrillage dans les nuages peut venir de la planche de lecture et non du fichier d'origine : non vérifié. La nature des filaments cuivrés au sol n'est pas claire."
+   "incertitudes": "Le quadrillage dans les nuages peut venir de la planche de lecture et non du fichier d'origine : non vérifié. La nature des filaments cuivrés au sol n'est pas claire.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-153149-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-153149-etendre.png"
   },
   {
    "id": "pano-images--colle-20261123-153352-etendre",
@@ -10576,7 +10656,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le monticule derrière l'animal peut être un arbre massif ou une formation rocheuse avec du feu ou de la lumière à l'intérieur : pas clair."
+   "incertitudes": "Le monticule derrière l'animal peut être un arbre massif ou une formation rocheuse avec du feu ou de la lumière à l'intérieur : pas clair.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/colle-20261123-153352-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/colle-20261123-153352-etendre.png"
   },
   {
    "id": "pano-images--dos-bleu-perle-2-seul-recadree-31061344-etendre",
@@ -10610,7 +10692,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le lieu peut être une caverne ou un fond marin (sources chaudes de la fosse) : rien ne permet de trancher. On ne sait pas si les corolles sont des plantes, des animaux ou des dépôts minéraux."
+   "incertitudes": "Le lieu peut être une caverne ou un fond marin (sources chaudes de la fosse) : rien ne permet de trancher. On ne sait pas si les corolles sont des plantes, des animaux ou des dépôts minéraux.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/dos-bleu-perle-2-seul-recadree-31061344-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/dos-bleu-perle-2-seul-recadree-31061344-etendre.png"
   },
   {
    "id": "pano-images--epines-turquoise-3-decor-etendre",
@@ -10643,7 +10727,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Le nom du fichier parle d'épines turquoise, on n'en voit aucune. On ne sait pas si les sphères roses sont des plantes ; si oui, il faudrait noter « plante ». Le lieu peut être le canyon ocre de la Course volcanique ou le fleuve entre les Pitons karstiques : non tranché."
+   "incertitudes": "Le nom du fichier parle d'épines turquoise, on n'en voit aucune. On ne sait pas si les sphères roses sont des plantes ; si oui, il faudrait noter « plante ». Le lieu peut être le canyon ocre de la Course volcanique ou le fleuve entre les Pitons karstiques : non tranché.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/epines-turquoise-3-decor-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/epines-turquoise-3-decor-etendre.png"
   },
   {
    "id": "pano-images--geant-plumes-case3-recadree-1619696-etendre",
@@ -10677,7 +10763,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Les formes pâles au fond peuvent être des arbres ou des colonnes de fumée. Biome non reconnu dans la Bible."
+   "incertitudes": "Les formes pâles au fond peuvent être des arbres ou des colonnes de fumée. Biome non reconnu dans la Bible.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/geant-plumes-case3-recadree-1619696-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/geant-plumes-case3-recadree-1619696-etendre.png"
   },
   {
    "id": "pano-images--hf-20261123-090404-ed1741a2-78aa-46b6-8546-4c1abb0ead8c-fb28",
@@ -10710,7 +10798,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Que la capsule soit le XENOPOD est déduit de la scène (descente sur la forêt), ce n'est écrit nulle part sur l'image. Le biome Jungle est déduit de la canopée rouge et du lieu d'atterrissage décrit dans la Bible."
+   "incertitudes": "Que la capsule soit le XENOPOD est déduit de la scène (descente sur la forêt), ce n'est écrit nulle part sur l'image. Le biome Jungle est déduit de la canopée rouge et du lieu d'atterrissage décrit dans la Bible.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/hf-20261123-090404-ed1741a2-78aa-46b6-8546-4c1abb0ead8c-fb28.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/hf-20261123-090404-ed1741a2-78aa-46b6-8546-4c1abb0ead8c-fb28.png"
   },
   {
    "id": "pano-images--image-etendre-2",
@@ -10744,7 +10834,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "La silhouette est minuscule : on reconnaît le bas jaune de Seed, et une forme sombre accrochée à elle semble être Rob1, sans certitude. Taille de Rob1, visage et mains non vérifiables. La nature des grandes masses (champignons, roche, animaux) n'est pas claire."
+   "incertitudes": "La silhouette est minuscule : on reconnaît le bas jaune de Seed, et une forme sombre accrochée à elle semble être Rob1, sans certitude. Taille de Rob1, visage et mains non vérifiables. La nature des grandes masses (champignons, roche, animaux) n'est pas claire.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/image-etendre-2.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/image-etendre-2.png"
   },
   {
    "id": "pano-images--image-etendre-3",
@@ -10777,7 +10869,9 @@
    "usages": [
     "carrousel"
    ],
-   "incertitudes": "Le puits peut être le sinkhole de la Jungle ou une entrée des Cavernes : non tranché. Taille de Rob1 non vérifiable sous cet angle."
+   "incertitudes": "Le puits peut être le sinkhole de la Jungle ou une entrée des Cavernes : non tranché. Taille de Rob1 non vérifiable sous cet angle.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/image-etendre-3.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/image-etendre-3.png"
   },
   {
    "id": "pano-images--image-etendre",
@@ -10812,7 +10906,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Rob1 est plus près que Seed, sa taille ne peut pas être jugée ici. Le biome Cavernes est déduit du décor (mêmes filaments que l'image de la grande caverne) : pas certain."
+   "incertitudes": "Rob1 est plus près que Seed, sa taille ne peut pas être jugée ici. Le biome Cavernes est déduit du décor (mêmes filaments que l'image de la grande caverne) : pas certain.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/image-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/image-etendre.png"
   },
   {
    "id": "pano-images--images-196-2-35mm-etendre",
@@ -10847,7 +10943,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome déduit du sable noir et de la mer. La poudre blanche peut être du sel ou du givre : pas clair."
+   "incertitudes": "Biome déduit du sable noir et de la mer. La poudre blanche peut être du sel ou du givre : pas clair.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/images-196-2-35mm-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/images-196-2-35mm-etendre.png"
   },
   {
    "id": "pano-images--mother-dessus-etendre",
@@ -10881,7 +10979,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Le nom MOTHER est déduit du nom du fichier et de la forme de la station, ce n'est pas écrit dans la Bible. La nature des petits objets autour (débris ou navettes) n'est pas claire."
+   "incertitudes": "Le nom MOTHER est déduit du nom du fichier et de la forme de la station, ce n'est pas écrit dans la Bible. La nature des petits objets autour (débris ou navettes) n'est pas claire.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/mother-dessus-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/mother-dessus-etendre.png"
   },
   {
    "id": "pano-images--nic007-alien-planet-red-and-yellow-and-b-etendre",
@@ -10914,7 +11014,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Peut correspondre à l'arc volcanique de la Course volcanique, mais la neige et la vue d'altitude ne permettent pas de trancher."
+   "incertitudes": "Peut correspondre à l'arc volcanique de la Course volcanique, mais la neige et la vue d'altitude ne permettent pas de trancher.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/nic007-alien-planet-red-and-yellow-and-b-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/nic007-alien-planet-red-and-yellow-and-b-etendre.png"
   },
   {
    "id": "pano-images--nic007-httpss-mj-run-t-ekaog3yu-cinemati-etendre",
@@ -10947,7 +11049,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Les tours de roche font penser aux Pitons karstiques, mais on ne voit pas de fleuve et la végétation est verte alors que la Bible décrit une canopée pourpre : biome non tranché. Il n'y a que des plantes et du relief, d'où « paysage seul »."
+   "incertitudes": "Les tours de roche font penser aux Pitons karstiques, mais on ne voit pas de fleuve et la végétation est verte alors que la Bible décrit une canopée pourpre : biome non tranché. Il n'y a que des plantes et du relief, d'où « paysage seul ».",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/nic007-httpss-mj-run-t-ekaog3yu-cinemati-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/nic007-httpss-mj-run-t-ekaog3yu-cinemati-etendre.png"
   },
   {
    "id": "pano-images--oiseau-pois-case2-recadree-1625688-etendre",
@@ -10982,7 +11086,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Même scène que collé-20261123-152717. Biome non reconnu dans la Bible."
+   "incertitudes": "Même scène que collé-20261123-152717. Biome non reconnu dans la Bible.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/oiseau-pois-case2-recadree-1625688-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/oiseau-pois-case2-recadree-1625688-etendre.png"
   },
   {
    "id": "pano-images--rapace-case4-recadree-1620688-etendre",
@@ -11016,7 +11122,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "La trame fine peut venir de la planche de lecture et non du fichier d'origine : non vérifié."
+   "incertitudes": "La trame fine peut venir de la planche de lecture et non du fichier d'origine : non vérifié.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/rapace-case4-recadree-1620688-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/rapace-case4-recadree-1620688-etendre.png"
   },
   {
    "id": "pano-images--rapace-case4-recadree-1621687-etendre",
@@ -11051,7 +11159,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome non reconnu dans la Bible : arbres rouges et roche claire, sans autre indice."
+   "incertitudes": "Biome non reconnu dans la Bible : arbres rouges et roche claire, sans autre indice.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/rapace-case4-recadree-1621687-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/rapace-case4-recadree-1621687-etendre.png"
   },
   {
    "id": "pano-images--rouge-noir-cornes-case2-recadree-1617-etendre",
@@ -11085,7 +11195,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome non reconnu dans la Bible. Le bleu profond du ciel diffère du ciel pâle décrit dans la Bible."
+   "incertitudes": "Biome non reconnu dans la Bible. Le bleu profond du ciel diffère du ciel pâle décrit dans la Bible.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/rouge-noir-cornes-case2-recadree-1617-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/rouge-noir-cornes-case2-recadree-1617-etendre.png"
   },
   {
    "id": "pano-images--sb3-atterrissage-case1-recadree-1602689-etendre",
@@ -11119,7 +11231,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Que la capsule soit le XENOPOD est déduit : ce peut être une autre capsule (le nom du fichier dit seulement « atterrissage »). Le sol blanc peut être du sel (Lacs salés pourpres) ou du sable : biome non tranché. La nature des deux dômes blancs n'est pas claire."
+   "incertitudes": "Que la capsule soit le XENOPOD est déduit : ce peut être une autre capsule (le nom du fichier dit seulement « atterrissage »). Le sol blanc peut être du sel (Lacs salés pourpres) ou du sable : biome non tranché. La nature des deux dômes blancs n'est pas claire.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/sb3-atterrissage-case1-recadree-1602689-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/sb3-atterrissage-case1-recadree-1602689-etendre.png"
   },
   {
    "id": "pano-images--sb-chantier-1-etendre-2",
@@ -11152,7 +11266,9 @@
     "bandeau très large",
     "carrousel"
    ],
-   "incertitudes": "Le nom MOTHER est déduit des modules hexagonaux et n'est pas écrit dans la Bible. L'engin fait de sphères n'est pas identifié. Les zones sombres n'ont pas pu être vérifiées en détail."
+   "incertitudes": "Le nom MOTHER est déduit des modules hexagonaux et n'est pas écrit dans la Bible. L'engin fait de sphères n'est pas identifié. Les zones sombres n'ont pas pu être vérifiées en détail.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/sb-chantier-1-etendre-2.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/sb-chantier-1-etendre-2.png"
   },
   {
    "id": "pano-images--singe-yack-case3-recadree-1616695-etendre",
@@ -11186,7 +11302,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome choisi à cause de l'herbe bleu-gris ; le relief de ravins n'est pas une plaine, donc pas certain."
+   "incertitudes": "Biome choisi à cause de l'herbe bleu-gris ; le relief de ravins n'est pas une plaine, donc pas certain.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/singe-yack-case3-recadree-1616695-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/singe-yack-case3-recadree-1616695-etendre.png"
   },
   {
    "id": "pano-images--singe-yack-case3-recadree-1618694-etendre",
@@ -11220,7 +11338,9 @@
     "carrousel",
     "fiche"
    ],
-   "incertitudes": "Biome choisi à cause de l'herbe bleu-gris, pas certain. Les formes brunes sur les épaules peuvent être des plumes ou des feuilles : pas clair."
+   "incertitudes": "Biome choisi à cause de l'herbe bleu-gris, pas certain. Les formes brunes sur les épaules peuvent être des plumes ou des feuilles : pas clair.",
+   "image_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/singe-yack-case3-recadree-1618694-etendre.jpg",
+   "original_url": "https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/second-earth/pano/original/singe-yack-case3-recadree-1618694-etendre.png"
   }
  ]
 }
