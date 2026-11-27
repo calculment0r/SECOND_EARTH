@@ -17,6 +17,7 @@ Le récit du docx SECOND_EARTH_STORY, réécrit avec le monde de la Bible : mêm
 8. Un **Acte VIII** : le retour par les lacs salés et le nom.
 9. **Quatre mots** parlés : Rob, Seed, Korê, Je suis Seed (« Seed » dit réveillée, guérie, sur la plage de Rob4 : round 17). Des **cartons de jour** ponctuent.
 11. **Les 25 décisions de Cal du 20/11/2026 après le rapport de script-doctor** (Registre, round 17) sont écrites dans le texte : marquées **[ajout du 20/11]**.
+12. **Les décisions de Cal du 27/11/2026** (Registre, round 18 : ce qui change chez Seed et chez Rob1, l'alarme, la cuve ouverte par Rob1, la musique du vent, la danse, la horde dans les Hautes Plaines, MOTHER) sont écrites dans le texte : marquées **[ajout du 27/11]**.
 10. Trois crochets payés : le sourire de Seed quand Rob1 lit TERRAFORMATION (A07), le **caillou blanc** dans l'alvéole de Seed (A08), la ligne « Terre : réception dans 11,4 ans » (A09) ; le carton final en trois lignes.
 
 Les emplacements du 55 sont marqués **[E1]** à **[E9]** dans le texte.
@@ -31,7 +32,7 @@ Voix d'une femme sur des images de la Terre. Les giga-feux ravagent trois contin
 
 Sur les pentes du mont Fuji, un lanceur cinétique catapulte une capsule vers l'orbite. Le rail vibre, le ciel laiteux tremble.
 
-Dans le chantier spatial qui flotte au-dessus de l'atmosphère, des bras robotisés accrochent la capsule. Au cœur du dock, l'assemblage de la sonde-mère touche à sa fin. Architecture modulaire, baies ventrales, antennes longue base, et à l'arrière l'anneau du moteur.
+Dans le chantier spatial qui flotte au-dessus de l'atmosphère, la station MOTHER, **[ajout du 27/11]** des bras robotisés accrochent la capsule. Au cœur du dock, l'assemblage de la sonde-mère touche à sa fin. Architecture modulaire, baies ventrales, antennes longue base, et à l'arrière l'anneau du moteur.
 
 PERSEPHORA est une semeuse stellaire entièrement autonome : elle trace sa route, calcule ses manœuvres, largue ses XENOPOD sur les mondes prometteurs, puis repart chercher le prochain sol où déposer une graine. Elle en porte de deux sortes : des collecteurs, qui prennent la matière et les données d'un monde, et un seul qui porte un enfant, le XENOPOD-01. Deux collecteurs ont été déposés en quittant le système solaire, sur Mars et sur Titan ; deux fois la réponse est revenue : NON VIABLE. Pas d'azote, pas d'air, pas d'eau qui coule. Le XENOPOD-01 est le premier à quitter le système, avec trois collecteurs dans ses flancs.
 
@@ -63,7 +64,7 @@ Rob2, dans le karst à deux cent cinquante kilomètres, fore une grotte où le g
 
 Cette phase de collecte était nécessaire pour savoir si les briques de la vie étaient bien présentes sur la planète. Elles le sont. Rien ne viendra de la Terre.
 
-Rob1 est le cerveau de toute la mission. Le plus évolué des Robs. C'est lui qui gère et centralise tout depuis le XENOPOD. Il ressemble à un petit enfant de métal. À peine un mètre de haut, silhouette compacte, blocs arrondis gris foncé. Un gros sac à dos cylindrique intégré dans son corps : son unité de calcul. Ses bras articulés bougent avec précision. Ses petites jambes ne sont pas faites pour les longues marches. Il a quand même participé à la Phase 1 en collectant, dans un rayon proche du XENOPOD, ce qui pèse le plus : l'eau du fleuve, filtrée, et le carbone des plantes.
+Rob1 est le cerveau de toute la mission. Le plus évolué des Robs. C'est lui qui gère et centralise tout depuis le XENOPOD. Il ressemble à un petit enfant de métal. À peine un mètre de haut, silhouette compacte, blocs arrondis gris foncé. Sur sa visière sombre, deux yeux bleus, lumineux, qui changent de forme avec ce qu'il pense. **[ajout du 27/11]** Un gros sac à dos cylindrique intégré dans son corps : son unité de calcul. Ses bras articulés bougent avec précision. Ses petites jambes ne sont pas faites pour les longues marches. Il a quand même participé à la Phase 1 en collectant, dans un rayon proche du XENOPOD, ce qui pèse le plus : l'eau du fleuve, filtrée, et le carbone des plantes.
 
 Rob1 collecte les containers arrivés par drones. Ses bras manipulent chaque échantillon, chaque donnée. Analyses chimiques. Tout passe au vert. Les trois drones restent dockés dans la soute.
 
@@ -79,7 +80,7 @@ En même temps que cet être grandit en accéléré, six à sept semaines, on lu
 
 C'est la nuit. Une des dernières nuits ambrées : la seconde étoile se couche tôt, et la fin de la nuit est noire.
 
-Un tremblement de terre. Des crevasses s'ouvrent dans la clairière, et il en sort des lumières, bleu, violet, rose, comme des arches qui montent de la roche sous contrainte. Tout cela provoque une erreur dans le processus de croissance.
+Un tremblement de terre. Des crevasses s'ouvrent dans la clairière, et il en sort des lumières, bleu, violet, rose, comme des arches qui montent de la roche sous contrainte. La machine s'affole : le fluide tangue dans la cuve, les courbes de croissance se brisent, les alertes se contredisent. Aucune règle ne prévoit ce cas. Rob1 calcule. CONTINUER : RISQUE INCONNU. ARRÊTER : SUJET INCOMPLET. Il n'a pas d'ordre. Il choisit : il arrête l'incubation. **[ajout du 27/11]**
 
 L'incubation s'arrête.
 
@@ -87,7 +88,9 @@ L'être humain se retrouve avec quinze ans et n'a pas la mémoire entière.
 
 Rob1 envoie un signal d'échec à PERSEPHORA. Les conditions matérielles sont réunies (Phase 1 : OK). La Phase 2 a échoué. Bug d'incubation. Sujet incomplet. Le signal part vers l'espace. PERSEPHORA est déjà loin, en route vers la prochaine étoile. Elle recevra le message dans quelques semaines. La Terre, elle, ne l'entendra pas avant onze ans.
 
-Rob1 observe l'adolescente flottant dans l'incubateur. Elle ouvre les yeux. Elle ne peut pas parler : ses cordes vocales n'ont jamais bougé. Par contre, elle semble comprendre ce que Rob1 lui montre. Rob1 ne parle jamais : il écrit sur son écran-visage et fait des gestes ; Seed lit, et répond par gestes. **[ajout du 20/11]**
+Rob1 observe l'adolescente flottant dans l'incubateur. Elle ouvre les yeux. Elle ne peut pas parler : ses cordes vocales n'ont jamais bougé. Par contre, elle semble comprendre ce que Rob1 lui montre. Rob1 ne parle jamais : il écrit sur sa visière et fait des gestes ; Seed lit, et répond par gestes. **[ajout du 20/11]**
+
+Rob1 ouvre la cuve. Le fluide s'écoule. Elle a les cheveux blancs, très courts : elle a grandi trop vite pour qu'ils poussent. L'alarme de fin d'incubation se déclenche, une simple sonnerie. Pour elle, c'est une douleur. Aucun de ses sens n'a encore servi : la lumière, le froid, l'air sur sa peau, le bruit, tout arrive trop fort et dans le désordre. Elle se recroqueville, les mains sur les oreilles. Rob1 coupe l'alarme. Sur sa visière, une ligne : PROTOCOLE : ALARME DE SORTIE, 60 SECONDES. Il la barre. C'est la première chose qu'elle apprend de lui : il la protège du bruit. **[ajout du 27/11]**
 
 Avec l'aide de Rob1, une petite phase d'adaptation : se tenir debout, marcher. Ses chutes sont un peu plus rapides que celles d'une Terrienne ; elle ne le saura jamais, elle est née ici.
 
@@ -97,15 +100,15 @@ Seed touche l'écran. Se retourne vers Rob1. Rob1 comprend. Il affiche : diplôm
 
 SUJET : SEED-03. SOURCE ADN : ELENA VASQUEZ (CLONE PARTIEL). TRANSFERT MÉMOIRE : 23 % (INCOMPLET). STATUT : ADOLESCENTE — 15 ANS APPARENTS.
 
-Seed recule d'un pas. Elle est Elena. Mais elle ne l'est pas. Elle a ses gènes, des fragments de ses souvenirs, des flashs incompréhensibles. Pas sa voix. Pas ses connaissances. Pas ses trente-quatre années. Elle essaie de parler. Rien ne sort. Un souffle rauque. Seed ne sait rien, même pas qui lui a donné son nom.
+Seed recule d'un pas. Elle est Elena. Mais elle ne l'est pas. Elle a ses gènes, des fragments de ses souvenirs, des flashs incompréhensibles : des images et des sons, sans le savoir qui va avec. Une forêt, une musique, un geste. Elle sait à quoi ressemble la pluie ; elle n'a jamais été mouillée. **[ajout du 27/11]** Pas sa voix. Pas ses connaissances. Pas ses trente-quatre années. Elle essaie de parler. Rien ne sort. Un souffle rauque. Seed ne sait rien, même pas qui lui a donné son nom.
 
 (Période d'adaptation en time-lapse ; cartons Jour 1, Jour 2 ; une relation se noue avec Rob1.)
 
-Seed sort du XENOPOD. La jungle au lever de l'étoile : des voûtes pourpres à cent mètres, une lumière magenta sous la canopée, et sur les arbustes, des fleurs par milliers. Elle explore avec Rob1.
+Seed sort du XENOPOD. La jungle au lever de l'étoile : des voûtes pourpres à cent mètres, une lumière magenta sous la canopée, et sur les arbustes, des fleurs par milliers. Ce qu'elle connaissait en image, elle le sent pour la première fois : l'odeur de la terre, la mousse sous ses pieds, la chaleur de l'étoile sur son visage. Elle reste longtemps immobile. **[ajout du 27/11]** Elle explore avec Rob1.
 
 (Gros plan sur le pied du XENOPOD qui s'enfonce légèrement dans le sol quand Rob1 bouge à l'intérieur. La plaine est un tapis de mousse sur du calcaire creux.)
 
-Rob1 lui montre sur une tablette les données de mission : Phase 1, complète. Phase 2, en cours. Sujet : Elena Vasquez, clone partiel, transfert incomplet. Rôle : preuve de concept. Cobaye.
+Rob1 lui montre sur une tablette les données de mission : Phase 1, complète. Phase 2, en cours. Phase 3, si la planète est viable : colonie, terraformation. **[ajout du 27/11]** Sujet : Elena Vasquez, clone partiel, transfert incomplet. Rôle : preuve de concept. Cobaye.
 
 Seed réalise à ce moment qu'elle est un outil. Elle regarde Rob1. Elle regarde le ciel. Elle ne dit rien. Elle ne peut rien dire. Une larme coule sur sa joue.
 
@@ -139,21 +142,21 @@ Rob1 a été conçu comme robot d'accompagnement pour Seed. Il excelle dans les 
 
 Rob2, lui, est conçu avec des jambes puissantes, un châssis robuste. Beaucoup plus gros et fort que Rob1. Un robot de terrain, taillé pour les environnements extrêmes. La stratégie est claire : une fois rassemblés avec Rob2, ils pourront se déplacer vite pour aller chercher Rob3, puis ensemble extraire le XENOPOD.
 
-(Rob1 n'est pas fait pour l'expédition à pied. Relation inversée : c'est Seed qui doit l'aider, le porter, lui tenir la main pour rejoindre Rob2.) La première fois qu'elle le prend sur son dos, son écran affiche : PROTOCOLE : LE SUJET NE PORTE PAS DE CHARGE. Il regarde la ligne. Il l'efface. **[ajout du 20/11]**
+(Rob1 n'est pas fait pour l'expédition à pied. Relation inversée : c'est Seed qui doit l'aider, le porter, lui tenir la main pour rejoindre Rob2.) Il refuse d'abord. Il marche seul, tombe, se relève, tombe encore. Quand elle tend les bras, il se détourne et croise les siens : il boude. Elle attend. Il finit par grimper sur son dos. **[ajout du 27/11]** Son écran affiche : PROTOCOLE : LE SUJET NE PORTE PAS DE CHARGE. Il regarde la ligne. Il l'efface. **[ajout du 20/11]**
 
-Ils remontent le fleuve. **[E3 : dans le 55, la marche est un module : dix jours, les tours, la première nuit noire.]** Le fleuve entre dans un pays de tours de calcaire, chacune couverte de ses propres plantes, comme des îles ; des rideaux verts pendent aux parois et boivent la brume. Seed boit au fleuve, à genoux ; Rob1 confirme : l'eau est bonne, le calcaire a neutralisé la pluie. Au crépuscule, les tours en silhouette, et la nuit tombe entièrement noire : la seconde étoile est passée du côté du jour, pour un mois. Carton : Jour 12 · 250 km. Plus loin, le fleuve disparaît sous une arche et se perd dans les tours.
+Ils remontent le fleuve. **[E3 : dans le 55, la marche est un module : dix jours, les tours, la première nuit noire.]** Le fleuve entre dans un pays de tours de calcaire, chacune couverte de ses propres plantes, comme des îles ; des rideaux verts pendent aux parois et boivent la brume. Au pied d'une tour, le vent passe dans un massif de fleurs, et les fleurs sonnent : une musique. Seed se fige. Elle fredonne, sans voix, comme si elle connaissait l'air. Rob1 cherche la source dans ses données. Rien. **[ajout du 27/11]** Seed boit au fleuve, à genoux ; Rob1 confirme : l'eau est bonne, le calcaire a neutralisé la pluie. Au crépuscule, les tours en silhouette, et la nuit tombe entièrement noire : la seconde étoile est passée du côté du jour, pour un mois. Carton : Jour 12 · 250 km. Plus loin, le fleuve disparaît sous une arche et se perd dans les tours.
 
 Ils arrivent là où la balise de Rob2 indique qu'il devrait se trouver. Problème : il n'y est pas.
 
 Rob2 étant le robot le plus proche du lieu d'atterrissage, il a peut-être, lui aussi, eu un problème lié au tremblement de terre. C'est en explorant la zone que Rob1 et Seed le retrouvent dans une caverne en contrebas d'une crevasse ouverte par le séisme. Son robopod est lui aussi tombé dans la crevasse : impossible de se recharger, pas de soleil dans les profondeurs.
 
-Rob2 tourne en rond, suivant son protocole à la lettre sans trouver de solution. Il épuise ses batteries depuis des jours. Robuste et lourd, avec de petits bras atrophiés équipés d'instruments de forage, conçu pour récolter des minéraux, pas pour escalader : dans cette caverne, impossible de remonter avec son design.
+Rob2 tourne en rond, suivant son protocole à la lettre sans trouver de solution. Il épuise ses batteries depuis des jours. Rob1 le regarde tourner un long moment : un robot qui suit sa règle jusqu'à l'épuisement. Ce qu'il serait sans elle. **[ajout du 27/11]** Robuste et lourd, avec de petits bras atrophiés équipés d'instruments de forage, conçu pour récolter des minéraux, pas pour escalader : dans cette caverne, impossible de remonter avec son design.
 
 Nos deux amis font un pari : ils descendent, avec l'espoir de remonter tous les trois en s'entraidant.
 
 ## Acte III : sous la surface
 
-Cette caverne est très grande et sa flore est bioluminescente. Des touffes de tiges translucides, gorgées d'un gel bleu-vert, vibrent au moindre courant d'air et font une musique envoûtante, comme des fées. Elles ne vivent pas de lumière ; elles vivent de la roche. Un moment de grâce. Dans la voûte, en relief, un squelette immense aux ailes de quinze mètres : un géant d'avant. **[Crochet de M9.]**
+Cette caverne est très grande et sa flore est bioluminescente. Des touffes de tiges translucides, gorgées d'un gel bleu-vert, vibrent au moindre courant d'air et font une musique envoûtante, comme des fées. Seed la reconnaît : celle des fleurs, en plus grave. **[ajout du 27/11]** Elles ne vivent pas de lumière ; elles vivent de la roche. Un moment de grâce. Dans la voûte, en relief, un squelette immense aux ailes de quinze mètres : un géant d'avant. **[Crochet de M9.]**
 
 Seed observe Rob1 qui s'approche lentement de Rob2. Elle ne comprend pas ce qu'il fait.
 
@@ -165,7 +168,7 @@ Maintenant Seed comprend pourquoi Rob1 insistait tant pour sauver Rob2 : ils ét
 
 Sur l'écran, pendant l'assemblage : PRIORITÉ ÉNERGIE : ROB-1. La jauge de Rob2 baisse d'un cran. C'est le prix de la fusion. **[ajout du 20/11]**
 
-Rob1/2 se tourne vers elle. Sur son écran-visage, une animation : quelque chose qui ressemble à de la détermination, peut-être même de la fierté. Ils peuvent maintenant remonter.
+Rob1/2 se tourne vers elle. Sur sa visière, une animation : quelque chose qui ressemble à de la détermination, peut-être même de la fierté. Ils peuvent maintenant remonter.
 
 Seed s'éloigne un peu pour observer les plantes. Elle en prélève une grosse touffe qu'elle met dans un container récupéré dans le robopod de Rob2.
 
@@ -253,7 +256,7 @@ Le petit animal lui amène un caillou blanc et rond, de la même couleur que ses
 
 Un peu à l'écart, Rob1 observe la scène. Sur son écran interne : OBSERVATION COMPORTEMENTALE. Interaction inter-espèces : positive. Mammifère local : reconnaissance, offrande symbolique. Sujet : réponse empathique adaptée. Conclusion : compatibilité vie humaine / faune locale confirmée.
 
-Rob1 pourrait classer cette donnée comme mineure. Mais quelque chose dans son algorithme hésite. Il zoome sur le visage de Seed, son sourire, le premier vrai sourire depuis sa naissance. Il archive la séquence avec une nouvelle étiquette : IMPORTANT. Et pour la première fois, le journal écrit son nom à la place de « sujet ».
+Rob1 pourrait classer cette donnée comme mineure. Mais quelque chose dans son algorithme hésite. Il zoome sur le visage de Seed, son sourire, le premier vrai sourire depuis sa naissance. Il archive la séquence avec une nouvelle étiquette : IMPORTANT. Et pour la première fois, le journal écrit son nom à la place de « sujet ». À l'écran, l'ancienne ligne RÔLE : COBAYE s'efface. **[ajout du 27/11]**
 
 Rob1 examine le sac. Eau : 1,2 L. Nourriture : 3 à 4 jours. Statut : critique. Rob1 regarde Seed qui joue, insouciante. Il ne dit rien. Pas maintenant.
 
@@ -267,13 +270,15 @@ Tard dans la nuit, les voyants de Rob3 s'allument un à un. Il est réveillé. I
 
 ## Acte VI : la horde
 
-(Un tremblement sourd monte en volume. Gros plan sur le visage de Seed qui s'éveille, un ou deux petits rongeurs qui lui mordillent la main comme pour la sortir du sommeil.)
+Au matin, Seed découvre Rob3 debout. Ils repartent le jour même, sans s'assembler : s'assembler, c'est laisser le chargeur solaire, et ils en ont besoin. Rob3 roule devant et tire son robopod ; Rob1/2 court à côté. La famille de rongeurs est restée dedans. La forêt s'éclaircit, puis s'arrête : les Hautes Plaines, de l'herbe jusqu'à l'horizon, et des feux très loin dans la nuit. Carton : Jour 23 · 1 700 km. Ils campent au milieu de l'herbe. **[ajout du 27/11]**
+
+(Un tremblement sourd monte en volume. Gros plan sur le visage de Seed qui s'éveille, un ou deux petits rongeurs qui lui mordillent la main comme pour la sortir du sommeil. Leur sifflement d'alarme, aigu, répété : elle le comprend tout de suite. Le bruit qui lui faisait mal au premier jour est devenu un son qu'elle sait lire. **[ajout du 27/11]**)
 
 Seed réalise que ce bruit n'est pas bon signe. Une autre secousse ? (Depuis un plan aérien, un gros nuage de poussière au loin se dirige vers le campement.)
 
 Une méga-horde de plusieurs milliers d'animaux comme des taureaux préhistoriques blancs lancés à pleine vitesse. Laine épaisse, yeux bleus presque électriques, cinq fois plus gros que ceux qu'on a sur Terre. Derrière eux, à l'horizon, une ligne de feu dans les herbes : c'est elle qui les pousse. Ils sont en quelques instants tout proches.
 
-Tout le monde se met en mouvement dans la panique : Rob2 s'assemble à Rob3, réveillé dans la nuit. Rob1 attrape le sac qui contient eau et nourriture et essaie de décrocher le dispositif de recharge solaire pour l'emmener.
+Tout le monde se met en mouvement dans la panique : Rob2 s'assemble à Rob3. Rob1 attrape le sac qui contient eau et nourriture et essaie de décrocher le dispositif de recharge solaire pour l'emmener.
 
 Les petits rongeurs rentrent en quatrième vitesse dans le robopod, en métal, qui les protégera. C'est pour cela qu'ils y avaient élu domicile.
 
@@ -313,7 +318,7 @@ Elle regarde autour d'elle. À gauche, la cascade. À droite, la rivière qui s'
 
 Un bruissement sur la surface attire son attention. L'eau se met à bouillonner à la confluence. Un cri perçant déchire l'air. Une ombre immense passe au-dessus d'elle. Un énorme animal ailé surgit du ciel, dix mètres d'envergure, membranes translucides, bec denté. Il plonge dans la bande claire, dans un splash gigantesque, et remonte avec un poisson. Seed recule, le souffle coupé.
 
-Un petit animal qui grignote quelque chose dans un arbre proche attire son attention. Un fruit. Forme de poire, violet-rouge, brillant. L'animal le mange tranquillement, sans danger apparent. Elle a faim. Désespérée. Elle s'approche, en cueille un. Hésite. Le mord. La chair est sucrée, presque électrique sur sa langue. Elle le dévore.
+Un petit animal qui grignote quelque chose dans un arbre proche attire son attention. Un fruit. Forme de poire, violet-rouge, brillant. L'animal le mange tranquillement, sans danger apparent. Elle lui fait confiance, comme aux autres. Cette fois elle se trompe : ce qui le nourrit n'est pas fait pour elle. **[ajout du 27/11]** Elle a faim. Désespérée. Elle s'approche, en cueille un. Hésite. Le mord. La chair est sucrée, presque électrique sur sa langue. Elle le dévore.
 
 Quelques minutes plus tard, Seed s'effondre. La fièvre monte d'un coup. Son corps se cabre, convulse. Des plaques rouges apparaissent sur sa peau, des veinules noires se dessinent comme des racines.
 
@@ -359,7 +364,7 @@ Seed est immergée. Les filaments s'approchent, s'enroulent autour d'elle avec u
 
 Les filaments se mettent au travail. Ils scannent la toxine, s'enroulent autour des zones infectées, filtrent, neutralisent, patiemment. Le liquide pulse au rythme de son cœur ralenti. Rob4 et Seed ne font plus qu'un.
 
-Rob1 recule sur la plage. Les heures passent. Rob2+Rob3 en veille. La nuit tombe, noire, et la mer brille : Rob4 pulse dans les vagues, cocon de lumière au milieu de l'eau toxique.
+Rob1 recule sur la plage. Il n'a plus de solution à lui. Il l'a confiée à un autre, et il attend. Dans son journal, cette nuit-là, une ligne commence pour la première fois par « je » : J'ATTENDS. **[ajout du 27/11]** Les heures passent. Rob2+Rob3 en veille. La nuit tombe, noire, et la mer brille : Rob4 pulse dans les vagues, cocon de lumière au milieu de l'eau toxique.
 
 À l'intérieur, lentement, les plaques s'estompent. Les veinules reculent. Mais elles ne disparaissent pas complètement. Elles laissent des traces, des motifs organiques, des cicatrices lumineuses qui dessinent des veines sur sa peau. Elle est transformée. Marquée. Hybride.
 
@@ -379,7 +384,7 @@ Les lacs sont roses, puis pourpres, bordés d'une croûte de sel blanc : des bas
 
 Quand le tank approche, la colonie décolle d'un seul mouvement, et tous crient la même chose, un cri à deux notes, la première rauque, la seconde claire : Ko-rê. Ko-rê.
 
-Rob1 s'arrête. Sur son écran-visage, il affiche le cri tel qu'il l'entend : KORÊ ? Puis quelque chose qui ressemble à un rire, une animation qu'on ne lui a jamais vue.
+Rob1 s'arrête. Sur sa visière, il affiche le cri tel qu'il l'entend : KORÊ ? Puis quelque chose qui ressemble à un rire, une animation qu'on ne lui a jamais vue. Puis il bouge. Un pas, un autre, au rythme du cri : il danse, quelques secondes. Seed rit, sans son. **[ajout du 27/11]**
 
 Seed regarde les oiseaux tourner au-dessus du lac. Elle ouvre la bouche, et le mot sort, presque comme le cri : « Korê. »
 
@@ -429,7 +434,7 @@ Puis Rob1 ouvre un panneau de maintenance. Sort des outils. Et méthodiquement, 
 
 Rob1 ressort du XENOPOD. La lumière orange de l'étoile l'éclaire par derrière, silhouette sombre. Seed est là, assise sur un rocher. Elle s'est levée en le voyant sortir. Elle l'attendait. Elle pointe le XENOPOD. Un geste de la main : ça marche ?
 
-Rob1 s'arrête. Reste immobile un instant trop long. Sur son écran-visage, des lignes de code défilent, s'effacent. Puis : Communicateur défectueux. Réparation impossible.
+Rob1 s'arrête. Reste immobile un instant trop long. Sur sa visière, des lignes de code défilent, s'effacent. Puis : Communicateur défectueux. Réparation impossible.
 
 Seed lit. Baisse légèrement les yeux. Elle regarde Rob1. Puis le XENOPOD. Puis revient sur Rob1. Quelque chose ne colle pas. Elle le sent. Elle s'approche lentement. Se tient devant lui, à hauteur de son écran.
 
