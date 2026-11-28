@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Second Earth · Compte rendu ORCHESTRE (session du fil 44, 16 au 28/11/2026)</title>
+<style>
+:root{color-scheme:dark;--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--ink:#e6eae7;--body:#c9d2cd;--ink2:#9ca8a2;--ink3:#7c8884;--or:#e0674a;--c1:#f0b49b;--c2:#e59578;--g1:#2f6b4a;--g3:#1a3f2c;--r1:#8a3b2c;--r3:#2a1512;--line:#26302b;--text:'Avenir Next','Segoe UI',system-ui,sans-serif;--mono:ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--body);font-family:var(--text);font-size:16px;line-height:1.55}
+.wrap{max-width:980px;margin:0 auto;padding:28px 20px 90px}
+.lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+h1{font-weight:600;font-size:28px;line-height:1.15;color:var(--ink);margin:8px 0 10px}
+h2{font-weight:600;font-size:21px;color:var(--ink);margin:38px 0 10px;padding-top:18px;border-top:1px solid var(--line)}
+h3{font-weight:600;font-size:16.5px;color:var(--ink);margin:18px 0 6px}
+p{margin:0 0 10px}
+ul{margin:4px 0 12px;padding-left:22px}
+li{margin:4px 0}
+.lead{color:var(--ink2);max-width:82ch}
+.bloc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0}
+.alerte{border-left:3px solid var(--or);background:var(--r3);border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0}
+.note{border-left:3px solid var(--g1);background:var(--g3);border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0 14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);font-weight:400}
+td.n{font-family:var(--mono);color:var(--c2);white-space:nowrap}
+code{font-family:var(--mono);font-size:13px;color:var(--c1)}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:5px;margin-right:6px}
+.fait{background:var(--g3);color:#9fd3b4}
+.afaire{background:var(--r3);color:var(--c1)}
+.nonvu{background:var(--panel2);color:var(--ink2);border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="lbl">Second Earth · compte rendu ORCHESTRE · session du fil 44 · du 16 au 28/11/2026</div>
+<h1>Compte rendu ORCHESTRE : ce qui est fait, ce qui reste, et ce qui se contredit</h1>
+<p class="lead">Ce compte rendu couvre une seule des sessions qui ont travaillé sur Second Earth : celle menée depuis ORCHESTRE (fil 44). Il sert à l'audit croisé avec les autres sessions. Son travail est sur GitHub dans sa propre branche, <code>claude/orchestre-fil-44</code>, sans être mélangé à la branche principale : rien n'est fusionné et rien n'est publié sur le site.</p>
+
+<div class="alerte"><strong>À savoir avant tout.</strong> Cette session est partie de l'état du dépôt du 28/09 (dernier enregistrement commun : « Séquences vidéo Seedance », <code>0a02a57</code>). Pendant ce temps, une autre session a travaillé sur la branche principale (rapport de script-doctor du 20/11, chantiers du 27/11, site, voyage de PERSEPHORA). <strong>Les deux sessions ne se sont pas vues.</strong> Elles ont chacune un « round 17 » différent dans le Registre, et elles touchent au même texte de référence, le Récit v2. Le détail est dans la section 4.</div>
+
+<h2>1. Ce que Cal a demandé à cette session</h2>
+<ul>
+<li>Reprendre Second Earth à partir de <code>BRIEF.html</code>, la note de reprise.</li>
+<li>Appliquer au film les essais de lecture faits pour SOLARIS (la grammaire de l'interaction), puisque la session avait le script.</li>
+<li>Passer ses corrections de relecture sur le monde et le récit avec un outil clair, qui montre ce que chaque choix change dans l'histoire.</li>
+<li>Trancher au mieux deux points laissés ouverts (le totem au retour, la phrase de Rob4), puis mettre la Bible à jour.</li>
+<li>Afficher le récit complet dans le fil pour que Queen le lise à voix haute.</li>
+</ul>
+
+<h2>2. Ce qui est fait</h2>
+
+<h3><span class="tag fait">fait</span>Le script en données</h3>
+<p><code>data/film.json</code> : le film de 25 min en données, généré par <code>tools/build_film.mjs</code> depuis le découpage. On y trouve 11 actes, 150 plans, 9 charnières, 9 modules du 55, les quatre mots et les cartons. Mis à jour au round 17 de cette session.</p>
+
+<h3><span class="tag fait">fait</span><span class="tag nonvu">jamais vu à l'écran</span>Trois essais de lecture du film</h3>
+<p>Choisis par Cal parmi les essais SOLARIS. Ils vivent dans le site de Second Earth, dans le dossier <code>site/essais/</code> :</p>
+<ul>
+<li><code>promesses.html</code>, « Le livre des promesses » : ce que le film promet et où il le tient. 32 promesses au départ, 30 après le round 17.</li>
+<li><code>savoir.html</code>, « La partition du savoir » : qui sait quoi, et quand. 16 faits, 4 portées.</li>
+<li><code>toile.html</code>, « La toile des personnages » : 11 personnages, 52 relations, et un curseur qui parcourt les 150 plans.</li>
+<li><code>index.html</code> : l'accueil, avec la liste de ce qui a été déduit et non écrit par Cal.</li>
+</ul>
+<p>Limites : les essais ont été refaits d'après les fiches des protos SOLARIS retrouvées dans d'anciens fils, sans accès au code SOLARIS. Ce ne sont donc pas des copies exactes. On s'y déplace au clic et au clavier, sans glisser. Leurs données viennent de <code>data/essais.json</code> (outil <code>tools/build_essais.mjs</code>). Leurs citations sont prises dans le Récit v2 de cette session : 69 mot pour mot, 48 reformulées.</p>
+
+<h3><span class="tag fait">fait</span>L'outil de relecture et le round 17 de cette session (16/11)</h3>
+<p><code>relecture/choix-de-relecture.html</code> : 23 choix, chacun avec ses options, ce qu'il change dans l'histoire, un champ libre et un bouton pour copier les réponses. Cal y a répondu le 16/11, et ses 23 décisions sont écrites dans le Registre sous le nom « Round 17 (16/11/2026) ». L'outil est maintenant marqué comme archive. Les décisions, en bref :</p>
+<ul>
+<li><strong>R1</strong> : le Récit v2 fait foi ; le docx d'origine devient une archive.</li>
+<li><strong>R2</strong> : les balises sont validées. Rob1 reçoit une position par jour de chaque robot, sans pouvoir leur donner d'ordre ni leur parler.</li>
+<li><strong>R3</strong> : les cartons gardent les six distances (250, 680, 1 200, 3 300, 4 800, 5 500 km) et <strong>perdent les numéros de jour</strong>. Les cartons sans distance disparaissent.</li>
+<li><strong>R4</strong> : la phrase de Rob4, « Je suis d'ici maintenant », n'apparaît que dans le souvenir de Rob1, au plan 9-11. Elle est écrite sur son écran, en anglais : I AM FROM HERE NOW. <strong>Aucun plan n'est ajouté à l'Acte VII.</strong></li>
+<li><strong>F1 à F5</strong> : la voix de Seed et trois motifs sonores (plantes-chant, cri « Ko-rê », sifflement) ; la lumière comme langue, avec un seul code de pulsations ; le totem revu dans le 55 ; les visions d'Elena limitées à des souvenirs d'avant 2045 ; le gouffre dans la mémoire de Rob1 avant le mensonge.</li>
+<li><strong>C1</strong> : le module des Titans passe après le col, juste après M4. L'Acte IV du 55 dure 7:00, l'Acte X 1:00, et le total reste 52:00.</li>
+<li><strong>C2 à C4</strong> : cinq crochets du 25 arrivent après leur module dans le 55 et deviennent des échos ; le drone cassé n'est qu'une image ; le regard vers la mer reste sans suite.</li>
+<li><strong>V1 à V4</strong> : « Lumière et couleurs » est validé. La neige du col est blanche, rosée par endroits. Les arbres-cathédrales mesurent 100 à 115 m, l'Arbre-voûte de la jungle 90 à 110 m.</li>
+<li><strong>D1 à D5</strong> : Seed garde le caillou jusqu'à l'alvéole H-01. L'ombre du col est un oiseau-prédateur vivant. Le module M8 s'arrête avant le cri « Korê ». Quatre corrections d'écriture sont faites. Le coureur vient d'abord, puis le tank, qui s'assemble pendant la horde.</li>
+<li><strong>G1</strong> : le gel du monde et du script (round 16) est levé.</li>
+</ul>
+
+<h3><span class="tag fait">fait</span>Les deux points tranchés à la demande de Cal (17/11)</h3>
+<ul>
+<li><strong>Le totem au retour.</strong> D'après la carte v3, le retour ne peut pas passer devant le totem. Le totem est sur le versant nord du massif, et le retour contourne l'arc volcanique par le sud. Il reste au moins 680 km entre les deux ; un crochet ajouterait 1 350 km au minimum, soit quatre à cinq jours. Choix retenu : le tank n'y retourne pas. Pendant la semaine du retour, le 55 (module M8) revient seul sur la pente, où l'organisme est devenu une tache de lumière. Seed ne le saura pas. Le calcul est gardé dans <code>tests/carte-trajet.test.mjs</code>.</li>
+<li><strong>La phrase de Rob4.</strong> I AM FROM HERE NOW est gardée. Elle prépare le « D'ici » que Rob1 pense de Seed à l'Acte X.</li>
+</ul>
+
+<h3><span class="tag fait">fait</span>La Bible et les documents du film mis à jour</h3>
+<p>Quatorze pages de la Bible : le Registre, le Trajet de Seed, la Chronologie, huit fiches de biome (jungle, cavernes, massifs, forêt bioluminescente, Hautes Plaines, forêt ancienne, mer d'arsenic, lacs salés), les Titans, Lumière et couleurs, le Glossaire (sept entrées nouvelles, cinq complétées). Côté film : le Récit v2, le docx (marqué archive), l'architecture 25 / 55, le séquencier, les modules du 55, les propositions, les écarts, le découpage, le journal de Rob1. S'y ajoutent la flore, les paysages et le prompt de la neige rose, réécrit en entier.</p>
+<p>Correction faite sans la demander : la page Trajet plaçait le sanctuaire à l'Acte V. Le Récit, qui fait foi, le met à la fin de l'Acte IV ; la page a été alignée.</p>
+
+<h3><span class="tag fait">fait</span>Vérifications automatiques</h3>
+<p>Des vérifications contrôlent le script en données, les essais, leurs données, l'outil de relecture, les paysages et le tracé de la carte (<code>tests/*.test.mjs</code>). Le 28/11, juste avant l'envoi : 41 sur 41 passent.</p>
+
+<h3><span class="tag fait">fait</span>Le récit lu par Queen</h3>
+<p>Le récit complet a été affiché dans le fil le 28/11, pour que Queen le lise à voix haute. <strong>Attention : c'est la version de cette session.</strong> Elle ne contient pas les ajouts du 20/11 et du 27/11 faits par l'autre session (voir section 4). Ce n'est donc pas le texte le plus récent du projet.</p>
+
+<h2>3. Ce qui reste à faire</h2>
+<h3>Points ouverts propres à cette session</h3>
+<table>
+<tr><th>Point</th><th>Où on en est</th></tr>
+<tr><td>Voix de Rob1 qui compte les jours</td><td>Dans le 55 et dans la salle immersive, sa voix dit encore « Jour douze », « Jour dix-sept ». Le round 17 de cette session n'a retiré les jours que de l'image.</td></tr>
+<tr><td>Durée du voyage</td><td>Cinq semaines dans le Registre, six (41 jours) dans la Chronologie. Pas tranché.</td></tr>
+<tr><td>Rob1 sait-il que le totem luit ?</td><td>Dans le texte de sa voix pour la nuit noire, il mesure la lueur à 490 km et le cache à Seed. Le Récit écrit « Nos amis ne le savent pas ». Pas tranché.</td></tr>
+<tr><td>Documents Claude Docs et Word du Récit v2</td><td>Ils ne portent aucun changement de cette session. Un nouvel export depuis Claude Docs effacerait le travail intégré. Pour les mettre à jour, il faut le lien du document et l'accord de Cal.</td></tr>
+<tr><td>Deux écarts de découpage</td><td>Les quatre mots (en-tête 6-14, 7-15, 8-03, 9-14 contre table 6-14, 7-13, 8-02, 9-15) et les plans « dôme » (22 annoncés, 19 marqués). Les données suivent la table ; l'en-tête est corrigé.</td></tr>
+<tr><td>Glossaire</td><td>« Les quatre mots » y sont encore notés comme proposés, alors qu'ils sont validés.</td></tr>
+<tr><td>Note de reprise</td><td><code>BRIEF.html</code> n'est pas régénéré, et la page des arbitrages archive les rounds 1 à 16 sans le 17.</td></tr>
+<tr><td>Recomptage</td><td>Le Récit v2 n'a pas été recompté scène par scène contre le docx.</td></tr>
+<tr><td>Pages jamais vues</td><td>Les trois essais, l'outil de relecture et les pages de synthèse n'ont été vus à l'écran par personne. Leur mise en page peut avoir des défauts.</td></tr>
+</table>
+
+<h3>Chantiers de la reprise, pas avancés par cette session</h3>
+<ul>
+<li><strong>Vidéo Seedance</strong> : 10 séquences et 4 plans prêts. Il manque la planche d'échelle, des crédits (solde de 4,5 au 16/11 ; un test de 30 s en coûte 210) et l'accord de Cal. Le test conseillé porte sur S01.</li>
+<li><strong>Prompts Midjourney</strong> : 144 prompts proposés, pas encore relus par Cal.</li>
+<li><strong>Écarts entre documents</strong> : environ 25, non tranchés.</li>
+<li><strong>Site</strong> : la langue et l'adresse. L'autre session a tranché ces deux points au round 18 (anglais d'abord, secondearth.net).</li>
+</ul>
+
+<h2>4. Contradictions déjà repérées avec la branche principale</h2>
+<p class="lead">Repérées le 28/11 en comparant les deux branches telles qu'elles sont sur GitHub. Ce relevé n'est pas un audit complet : il couvre le Registre, le Récit v2 et la passation du 20/11. Les autres branches (<code>claude/editeur-nirva</code>, <code>claude/presentation-etude</code>, <code>claude/site-editable</code>) n'ont pas été lues.</p>
+
+<table>
+<tr><th>#</th><th>Sujet</th><th>Cette session (fil 44)</th><th>Branche principale (autre session)</th></tr>
+<tr><td class="n">1</td><td>Numéro des rounds</td><td>« Round 17 » = la relecture de Cal du 16/11 (23 décisions R1 à G1).</td><td>« Round 17 » = la révision après le rapport de script-doctor du 20/11 (25 décisions D01 à D25), puis « Round 18 » le 27/11. Deux rounds différents portent le même numéro.</td></tr>
+<tr><td class="n">2</td><td>Le gel et la relecture</td><td>Relecture faite le 16/11, gel levé.</td><td>Toujours noté « Relecture de Cal (round 16) : en attente », alors que le round 17 du 20/11 dit que Cal n'a plus de corrections en attente.</td></tr>
+<tr><td class="n">3</td><td>Les numéros de jour</td><td>Retirés de l'image (R3). Il reste six cartons de distance.</td><td>D02 : « les longues marches deviennent des cartons de jour ». Le texte porte « Jour 23 · 1 700 km », « Jour 28 », « Jour 32 · 3 300 km ». Au round 18, S06 fait compter le site en jours de Korê.</td></tr>
+<tr><td class="n">4</td><td>Le totem au retour</td><td>Le retour n'y repasse pas (impossible d'après la carte) ; le 55 y revient sans Seed.</td><td>D15 : « le retour repasse devant dans le 55 min ». C'est contredit par le calcul sur la carte v3.</td></tr>
+<tr><td class="n">5</td><td>La phrase de Rob4</td><td>Seulement dans le souvenir de Rob1 (plan 9-11), en anglais ; aucun plan ajouté à l'Acte VII.</td><td>Ajoutée à l'Acte VII : Rob4 pulse « Je suis d'ici maintenant », et Rob1 s'y arrête.</td></tr>
+<tr><td class="n">6</td><td>Le mot « Seed »</td><td>Texte d'origine : Seed le dit faiblement pendant la fièvre.</td><td>D04 : pendant la fièvre, ses lèvres bougent sans son ; elle dit « Seed » guérie, sur la plage de Rob4.</td></tr>
+<tr><td class="n">7</td><td>Les distances et la horde</td><td>Six distances validées ; la horde a lieu au camp de Rob3 (1 200 km).</td><td>S07 : la horde a lieu dans les Hautes Plaines, avec un trajet ajouté depuis le camp et un nouveau carton à 1 700 km.</td></tr>
+<tr><td class="n">8</td><td>Le réveil de Rob3</td><td>Texte d'origine : il se réveille pendant la horde, après son nettoyage.</td><td>D21 : il s'allume le soir après le nettoyage. Au matin, ils repartent sans s'assembler pour garder le chargeur.</td></tr>
+<tr><td class="n">9</td><td>L'arrêt de l'incubation</td><td>Texte d'origine : le séisme provoque une erreur et l'incubation s'arrête.</td><td>P03 et P04 : une alarme fait mal à Seed, et Rob1 décide lui-même d'arrêter et d'ouvrir la cuve.</td></tr>
+<tr><td class="n">10</td><td>Le trou du sinkhole</td><td>Texte d'origine : le flare « descend, descend, et disparaît ».</td><td>D18 : la lumière touche le fond, un petit point rouge à environ 80 m. Le texte de l'autre branche n'a pas été relu ici, il reste à vérifier.</td></tr>
+<tr><td class="n">11</td><td>Rob1 et Seed à l'image</td><td>Bible inchangée sur ces points : « écran-visage », planche de Rob1 sans yeux, Seed aux cheveux mi-longs.</td><td>W06 : visière avec deux yeux bleus, 1 m. W07 : cheveux blancs courts. Les planches de la Bible sont à corriger.</td></tr>
+<tr><td class="n">12</td><td>Le prologue</td><td>Texte d'origine.</td><td>Ajouts du 27/11 : la station MOTHER, le passage par Mars, Jupiter et Saturne, les Robs en veille, la planète sans étoile.</td></tr>
+</table>
+
+<div class="note"><strong>Conséquence pratique.</strong> Quatre fichiers se contredisent ligne à ligne entre les deux branches et ne peuvent pas être réunis automatiquement : <code>docs/film/00-recit-v2.md</code>, <code>docs/bible/00-registre-des-decisions.md</code>, <code>CLAUDE.md</code> et <code>tools/build_site.py</code>. Une fois le récit réuni, le script en données, les essais et le découpage de cette session devront être régénérés à partir du texte réuni : leurs citations et leurs plans suivent aujourd'hui l'ancien texte.</div>
+
+<p>Décisions à prendre par Cal pendant l'audit, au minimum : la renumérotation des rounds (par exemple 17 pour le 16/11, 18 pour le 20/11, 19 pour le 27/11) ; les jours à l'image ou non ; le totem (repasser ou pas, sachant ce que dit la carte) ; la phrase de Rob4 à l'Acte VII ou seulement dans le souvenir.</p>
+
+<h2>5. Pour l'audit : où trouver le travail de cette session</h2>
+<ul>
+<li><strong>Branche</strong> : <code>claude/orchestre-fil-44</code>, partie de <code>0a02a57</code> (branche principale <code>claude/beautiful-goldberg-x0to5u</code> au 28/09).</li>
+<li><strong>Enregistrements</strong> :
+<ul>
+<li><code>54b3900</code> le script en données ;</li>
+<li><code>c1bd260</code> les trois essais ;</li>
+<li><code>7dc9a53</code> l'outil de relecture ;</li>
+<li><code>9fed1ea</code> le round 17 intégré ;</li>
+<li><code>7e137d4</code> le totem, Rob4 et la Bible alignée ;</li>
+<li>puis ce compte rendu.</li>
+</ul></li>
+<li><strong>Taille</strong> : 50 fichiers touchés. Environ 11 400 lignes ajoutées, dont la plus grande part dans <code>data/film.json</code>, les essais et les vérifications.</li>
+<li><strong>Rien de « ne pas publier »</strong> : cette session n'a ajouté aucun média vidéo, aucun prompt Seedance, aucun élément du dossier <code>video/</code>. Les séquences Seedance présentes dans le dépôt (<code>0a02a57</code>) y étaient déjà avant elle. Le fichier vide <code>seedanceinput</code> est de Cal.</li>
+<li><strong>Artefacts ORCHESTRE de cette session</strong> (lisibles depuis ORCHESTRE) :
+<ul>
+<li><code>cac524dab957f100</code> par où on reprend ;</li>
+<li><code>cbb8c460a6420616</code> quels essais appliquer ;</li>
+<li><code>03fdea50a20b0c2c</code> l'outil de relecture ;</li>
+<li><code>1fbfdebd92b15c86</code> ce qui a changé au round 17 ;</li>
+<li><code>c85072e784058a46</code> le totem, Rob4 et la Bible.</li>
+</ul></li>
+</ul>
+
+<h2>6. Ce qui n'est pas vérifié</h2>
+<ul>
+<li>Aucune page de cette session n'a été ouverte dans un navigateur.</li>
+<li>Les essais ne reprennent pas le code SOLARIS : ce fil n'y avait pas accès.</li>
+<li>Les documents Claude Docs et Word ne sont pas alignés.</li>
+<li>Les trois autres branches présentes sur GitHub n'ont pas été lues.</li>
+<li>Vérifications automatiques le 28/11, juste avant l'envoi : 41 sur 41 passent. Elles vérifient la cohérence interne de cette branche, pas son accord avec la branche principale.</li>
+</ul>
+</div>
+</body>
+</html>
