@@ -40,7 +40,7 @@ SP = [
 def locks(s, refs):
     n = lambda k: refs.index(k) + 1
     L = ["Seed's face, freckles, white buzz-cut hair, white hooded bodysuit and yellow over-trousers stay identical across every cut (Reference image %d)." % n('seed'),
-         "Rob1 keeps the same small body, about 75 cm tall with the top of his helmet just below Seed's hip, clearly much smaller than Seed in every shot where both appear, the same helmet-head, side pods and backpack across every cut (Reference image %d); his visor only ever shows simple cyan or amber shapes, never text or a human face." % n('rob1')]
+         "Rob1 keeps the same small body, about one metre tall with the top of his helmet at Seed's waist, clearly much smaller than Seed in every shot where both appear, the same helmet-head, side pods and backpack across every cut (Reference image %d); his visor only ever shows simple cyan or amber shapes, never text or a human face." % n('rob1')]
     places = [k for k in refs if D.REFS[k].get("img") and D.REFS[k]["desc"].startswith("a location")]
     if len(places) == 2: L.append("LOCATION A always follows Reference image %d and LOCATION B always follows Reference image %d: same shapes, materials and colours as the references." % (n(places[0]), n(places[1])))
     beasts = [k for k in refs if D.REFS[k].get("img") and not D.REFS[k]["desc"].startswith("a location")]

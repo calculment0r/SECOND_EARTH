@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compte rendu Blade15</title>
+<style>
+:root{--bg:#0a0d0b;--panel:#111814;--line:rgba(185,207,216,.16);--ink:#c4d6de;--ink2:#8da4ae;--head:#eef4f1;--accent:#e0674a;--ok:#8fd0a8;--warn:#f0b49b}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,sans-serif;font-size:16px;line-height:1.6;margin:0;padding:32px 16px 64px}
+main{max-width:880px;margin:0 auto}
+h1{color:var(--head);font-size:clamp(26px,5vw,38px);line-height:1.15;margin:0 0 8px}
+h2{color:var(--accent);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:40px 0 12px;font-family:ui-monospace,Menlo,monospace;font-weight:500}
+h3{color:var(--head);font-size:18px;margin:22px 0 6px}
+p{margin:0 0 10px}
+ul{margin:0 0 10px;padding-left:20px}
+li{margin:4px 0}
+.sub{color:var(--ink2)}
+.box{background:var(--panel);border-radius:12px;box-shadow:inset 0 0 0 1px var(--line);padding:14px 18px;margin:10px 0}
+.date{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--accent);margin-right:6px}
+code{font-family:ui-monospace,Menlo,monospace;font-size:13.5px;color:var(--head);overflow-wrap:anywhere}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;margin-right:6px}
+.t-ok{background:rgba(143,208,168,.15);color:var(--ok)}
+.t-todo{background:rgba(240,180,155,.15);color:var(--warn)}
+.t-clash{background:rgba(224,103,74,.18);color:var(--accent)}
+a{color:var(--ok)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--ink2);font-weight:500}
+td{overflow-wrap:anywhere}
+@media (max-width:640px){
+  table,tbody,tr,td{display:block;width:auto}
+  tr:first-child{display:none}
+  tr{border-bottom:1px solid var(--line);padding:10px 0}
+  td{border:0;padding:2px 0}
+  td:first-child{color:var(--head);font-weight:600}
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Compte rendu de la session Blade15</h1>
+<p class="sub">Écrit le 28/11/2026, pour rassembler le travail des sessions qui ont tourné en parallèle et repérer les contradictions entre elles.</p>
+
+<div class="box">
+<p><b>En bref.</b> Cette session a travaillé du 28/09 au 16/11/2026, puis le 28/11 pour ce compte rendu. Elle a fait quatre choses pour Second Earth :</p>
+<ul>
+<li>le premier site sur GitHub Pages (28/09) ;</li>
+<li>l'outil de prompts Midjourney et ses 144 prompts (09/10 au 02/11) ;</li>
+<li>les séquences vidéo Seedance sur Higgsfield (05/11) ;</li>
+<li>la note de reprise pour les sessions suivantes (16/11).</li>
+</ul>
+<p>Tout son travail est sur GitHub, branche <code>claude/beautiful-goldberg-x0to5u</code>. D'autres sessions ont ensuite travaillé sur la même branche (site du projet, récit, nouveau site, chantiers du 27/11).</p>
+</div>
+
+<h2>Ce qui est fait</h2>
+
+<h3><span class="date">28/09</span>Le dossier et le premier site</h3>
+<ul>
+<li>Le dossier du projet a été déposé sur GitHub : le monde, les espèces, le film, la science, la carte, et les données en JSON (<code>data/</code>).</li>
+<li>Le site public, au thème Verdant que tu as fourni : <a href="https://calculment0r.github.io/SECOND_EARTH/">calculment0r.github.io/SECOND_EARTH</a>. Il rassemble la Bible, les biomes, le bestiaire, la flore, les planches, la carte, la science, le film (récits, découpage, notes pour Nina), l'exposition et les arbitrages. Il se reconstruit à chaque envoi sur GitHub (<code>tools/build_site.py</code>).</li>
+<li>La note de reprise <code>CLAUDE.md</code> et sa version lisible <code>BRIEF.html</code>.</li>
+</ul>
+
+<h3><span class="date">09/10 au 02/11</span>L'outil de prompts Midjourney</h3>
+<ul>
+<li>En ligne : <a href="https://calculment0r.github.io/SECOND_EARTH/prompts/">le site, page prompts</a>. On y trouve des onglets (Bestiaire, Paysages, Flore, Personnages et machines, Titans), un bouton Copier par prompt, et la barre de réglages <code>--chaos 15 --ar 2:1 --raw --stylize 400 --hd --v 8.2</code>.</li>
+<li>Il compte 144 prompts : 66 bestiaire, 42 flore, 7 Titans, 11 personnages et machines, 18 paysages. Ils sont refaits sur le modèle de tes propres essais : début « Fantastic mythic », planche à trois vues sur fond blanc, couleurs tirées de l'étude, ni « alien » ni « colorful ». Ils sont dans <code>data/prompts-propose.json</code>, au statut « proposé ».</li>
+<li><span class="date">02/11</span>Relecture finale : chaque fiche porte « Garder », « À corriger » et un commentaire. Le bouton « Copier mes retours » prépare le texte à coller dans le chat.</li>
+</ul>
+
+<h3><span class="date">05/11</span>Les séquences vidéo Seedance (Higgsfield)</h3>
+<ul>
+<li>10 séquences de 30 secondes sur Seed et Rob1, avec deux de tes paysages chacune et de l'action, de l'humour et de l'infiltration. S'y ajoutent 4 plans spectaculaires de 15 secondes.</li>
+<li>Tes 100 images du dossier Drive « seedance input » ont été rangées par couleur, et chaque séquence a reçu ses deux paysages.</li>
+<li>24 vidéos ont été générées avec la CLI Higgsfield, sur ton abonnement : 9 en 16:9, 11 en 21:9, 4 en 1080p. <b>Aucune n'avait ta planche d'échelle</b>, donc Rob1 change de taille. Elles ont coûté environ 5 160 crédits, dont 1 890 perdus sur le 16:9 par ma faute.</li>
+<li>Ce qui est dans le dépôt, sous <code>video/seedance/</code> :
+<ul>
+<li>les prompts ;</li>
+<li>l'ordre des images de chaque séquence, avec les identifiants Higgsfield des images déjà envoyées ;</li>
+<li>la liste des 24 générations ;</li>
+<li>les scripts qui refont la page, le kit et les lancements.</li>
+</ul></li>
+<li>La page de copier-coller est privée, sur ton compte Claude : <a href="https://claude.ai/artifact/MLySip1kEKs3gskcoywUCy">lien</a>.</li>
+</ul>
+
+<h3><span class="date">16/11</span>La note de reprise</h3>
+<ul>
+<li>La règle 15 de <code>CLAUDE.md</code> fixe quatre choses pour la vidéo : le format 21:9 ; ta planche d'échelle toujours jointe ; ton accord et le coût annoncé avant chaque lancement ; une seule séquence en essai avant un lot.</li>
+<li>La section 11 décrit l'état des séquences et comment reconnecter la CLI Higgsfield.</li>
+</ul>
+
+<h3><span class="date">28/11</span>Aujourd'hui</h3>
+<ul>
+<li>Rob1 passe à 1 m dans les prompts vidéo et dans la règle 15, d'après ta décision du 27/11 (round 18, W06). J'avais écrit 75 cm.</li>
+<li>Ce compte rendu.</li>
+</ul>
+
+<h3>Livré dans le chat, hors dépôt</h3>
+<ul>
+<li>L'analyse de l'article sur le récit par l'environnement et la biologie spéculative.</li>
+<li>Ta bio orientée VR, hors Second Earth.</li>
+<li>Les vidéos elles-mêmes : elles sont dans ton historique Higgsfield et ont été envoyées dans le chat.</li>
+</ul>
+
+<h2>Ce qui reste à faire (sur ce que cette session a commencé)</h2>
+<ul>
+<li><span class="tag t-todo">à faire</span>Tes retours sur les 144 prompts Midjourney : je ne les ai jamais reçus. Un prompt ne passe à « validé » qu'après ton retour.</li>
+<li><span class="tag t-todo">à faire</span>Les vidéos Seedance avec ta planche d'échelle : relancer une seule séquence d'abord, avec ton accord et le coût annoncé. Ton solde Higgsfield était de 4,5 crédits le 16/11.</li>
+<li><span class="tag t-todo">à faire</span>Placer les 27 animaux de tes images dans des rencontres.</li>
+<li><span class="tag t-todo">à faire</span>Le document « Planches de dessin » de Claude Docs porte encore l'ancienne phrase « peinture de science-fiction » et l'ancienne ouverture des planches.</li>
+<li><span class="tag t-todo">à faire</span>Les écarts entre documents relevés en septembre et octobre ne t'ont pas encore été soumis (liste dans <code>CLAUDE.md</code>, section 5). Exemples : hauteurs des arbres, couleur de la neige, la Flore à 42 plantes contre 41 dans le Registre.</li>
+<li><span class="tag t-todo">à faire</span>Un défaut connu dans le script des données : les textes des paysages sont coupés à 1 600 caractères.</li>
+</ul>
+
+<h2>Points à vérifier pendant l'audit (contradictions possibles)</h2>
+<table>
+<tr><th>Sujet</th><th>Ce que dit cette session</th><th>Ce qui peut contredire</th></tr>
+<tr><td><span class="tag t-clash">format</span>Format des vidéos</td><td>21:9 pour tout ce qui est immersif (règle 15, ta demande du 05/11).</td><td>Le Registre garde « master 16:9 et adaptation dôme » (décision A04 de septembre) ; le découpage de 25 min est écrit en 16:9. Il faut mettre A04 à jour ou dire où chaque format s'applique.</td></tr>
+<tr><td><span class="tag t-clash">Rob1</span>Taille de Rob1</td><td>Corrigé le 28/11 à 1 m (W06).</td><td>Ta planche d'échelle montre un Rob1 plus petit, environ 75 cm. Les prompts demandent à la fois « les proportions de la planche » et « 1 m » : à mettre d'accord, en refaisant la planche ou en changeant le texte.</td></tr>
+<tr><td><span class="tag t-clash">robots</span>Le grand robot</td><td>Dans les séquences, le grand robot bipède joue Rob2 (S03, S10).</td><td>Sur ta planche, il est étiqueté « ROB 1 » en rouge. La Bible appelle « Rob1/2 » le robot fusionné, un bipède coureur d'environ 2,5 m. Qui est ce grand robot ?</td></tr>
+<tr><td><span class="tag t-clash">prompts</span>Façon de nommer les images</td><td>Prompts Seedance : « Reference image 1 is… ».</td><td>Une autre session écrit ses prompts d'images en <code>@image1</code> et appelle Rob1 <code>@element1</code> (27/11). Il faut une seule façon.</td></tr>
+<tr><td><span class="tag t-clash">prompts</span>Deux familles de prompts d'images</td><td>Midjourney, format « Fantastic mythic » (<code>data/prompts-propose.json</code>).</td><td>Les prompts Seedream 5.5 des images du début (page des chantiers du 27/11). Il faut dire lesquels servent à quoi.</td></tr>
+<tr><td><span class="tag t-clash">site</span>Trois sites</td><td>Le premier site (thème Verdant, 28/09), toujours publié.</td><td>Le site du projet éditable (<code>site-projet/</code>, 19/11, publié sous <code>/projet/</code>), la présentation « L'étude » (<code>presentation/</code>), et le nouveau site Claude Design pour secondearth.net (25 au 27/11). Il faut décider lequel reste et ce qu'on retire.</td></tr>
+<tr><td><span class="tag t-clash">Seed</span>Les mots de Seed</td><td>Les séquences lui font dire « Rob! » (S06) et « Korê » (S09).</td><td>Le Récit v2 a changé depuis (rounds 17 et 18, par exemple le moment où elle dit « Seed ») : vérifier que ces deux moments existent toujours au même endroit.</td></tr>
+<tr><td><span class="tag t-clash">biomes</span>Les lacs salés</td><td>La séquence S09 utilise ton image 38 (lacs vert acide).</td><td>La Bible dit lacs roses et pourpres. Non tranché.</td></tr>
+<tr><td><span class="tag t-clash">horde</span>La horde de buffles</td><td>S05 et S06 placent les géants blancs et le séisme dans une plaine dorée.</td><td>Le Récit v2 met la horde en forêt, la Chronologie dans les Hautes Plaines (écart déjà relevé par une autre session).</td></tr>
+<tr><td><span class="tag t-clash">brief</span>La note de reprise</td><td><code>CLAUDE.md</code>, sections 1 à 11.</td><td>Les sections 1 (« mission ») et 5 (« ouvert au 28/09 ») décrivent encore la situation de septembre ; les sections 12 à 15 viennent d'autres sessions. Une fois l'audit fait, il faudra la réécrire en une seule version.</td></tr>
+<tr><td><span class="tag t-todo">fichier</span>Fichier vide</td><td>—</td><td><code>seedanceinput</code> à la racine du dépôt (ton envoi du 05/11) est vide : à garder ou à retirer.</td></tr>
+</table>
+
+<h2>Où trouver quoi</h2>
+<table>
+<tr><th>Quoi</th><th>Où</th></tr>
+<tr><td>Note de reprise (pour Claude) et sa page lisible</td><td><code>CLAUDE.md</code>, <code>BRIEF.html</code></td></tr>
+<tr><td>Registre des décisions (fait foi)</td><td><code>docs/bible/00-registre-des-decisions.md</code></td></tr>
+<tr><td>Premier site et son générateur</td><td><code>tools/build_site.py</code>, <code>site/assets/</code>, en ligne sur calculment0r.github.io/SECOND_EARTH</td></tr>
+<tr><td>Outil de prompts Midjourney</td><td><code>tools/site/prompts.html</code>, <code>tools/build_prompts.py</code>, <code>data/prompts-propose.json</code></td></tr>
+<tr><td>Séquences vidéo Seedance</td><td><code>video/seedance/</code> (prompts, references.json, jobs-2026-11-05.json, tools)</td></tr>
+<tr><td>Page des séquences (privée)</td><td><a href="https://claude.ai/artifact/MLySip1kEKs3gskcoywUCy">claude.ai/artifact/MLySip1kEKs3gskcoywUCy</a></td></tr>
+<tr><td>Hors dépôt, à redonner à une nouvelle session</td><td>Tes 5 images de référence (Seed, Rob1, grand robot, XENOPOD, planche d'échelle), le lien du dossier Drive « seedance input », la connexion à la CLI Higgsfield</td></tr>
+</table>
+</main>
+</body>
+</html>

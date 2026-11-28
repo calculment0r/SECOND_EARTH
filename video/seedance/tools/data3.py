@@ -23,7 +23,7 @@ REFS = {
         "She is almost mute: she acts with her face, hands and breath, laughs silently or in small breaths, and is curious, stubborn and warm. "
         "Keep her face, hair and outfit exactly as in the reference.")),
     "rob1": dict(name="Rob1", desc=(
-        "Rob1: a small dark-navy humanoid robot the size of a small child, about 75 cm tall, the top of his helmet just below Seed's hip, with a pale grey rounded helmet-head, a black visor, headphone-like side pods, a broad black chest plate with a small white bracket glyph, "
+        "Rob1: a small dark-navy humanoid robot the size of a small child, about one metre tall, the top of his helmet at Seed's waist, with a pale grey rounded helmet-head, a black visor, headphone-like side pods, a broad black chest plate with a small white bracket glyph, "
         "a rounded backpack, dark grey articulated arms, black fingered hands and short sturdy legs. He thinks like an adult, protective, dry-humoured and mischievous, and the girl is his mission. "
         "He never speaks and shows no text: his visor shows simple glowing cyan shapes instead of a face, two soft round eyes by default, changing into curved arcs for a smile, flat bars for deadpan or determination, "
         "wide round discs for surprise, spirals for dizziness, one bar and one arc for a wink, a wavy line for nerves, and a small amber dot for worry. "
@@ -383,9 +383,9 @@ print(len(SEQ), "séquences, durées vérifiées")
 # Planche d'échelle de Cal (image 4) : jointe à toutes les séquences, en dernier
 REFS["board"] = dict(name="Planche d'échelle Seed / Rob1", desc=(
     "the scale board: Seed (orange frame) and the small Rob1 (green frame, four views) shown side by side at their true relative sizes. "
-    "Keep exactly these proportions in every shot: Rob1 stands about 75 cm tall, the top of his helmet just below Seed's hip. Ignore the coloured frames and all text labels."))
+    "Keep exactly these proportions in every shot: Rob1 stands about one metre tall, the top of his helmet at Seed's waist. Ignore the coloured frames and all text labels."))
 REFS["board_full"] = dict(name="Planche d'échelle complète", desc=(
     "the scale board: the big robot (red frame, three views), Seed (orange frame) and the small Rob1 (green frame, four views) shown side by side at their true relative sizes. "
-    "Keep exactly these proportions in every shot: Rob1 stands about 75 cm tall, the top of his helmet just below Seed's hip. Ignore the coloured frames and all text labels."))
+    "Keep exactly these proportions in every shot: Rob1 stands about one metre tall, the top of his helmet at Seed's waist. Ignore the coloured frames and all text labels."))
 for _s in SEQ:
     _s["refs"].append("board_full" if "big" in _s["refs"] else "board")

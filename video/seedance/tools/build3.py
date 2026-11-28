@@ -271,7 +271,7 @@ function locks(s) {
   var L = [];
   var n = function (k) { return s.refs.indexOf(k) + 1; };
   L.push("Seed's face, freckles, white buzz-cut hair, white hooded bodysuit and yellow over-trousers stay identical across every cut (Reference image " + n('seed') + ").");
-  L.push("Rob1 keeps the same small body, about 75 cm tall with the top of his helmet just below Seed's hip, clearly much smaller than Seed in every shot where both appear, the same helmet-head, side pods and backpack across every cut (Reference image " + n('rob1') + "); his visor only ever shows simple cyan or amber shapes, never text or a human face.");
+  L.push("Rob1 keeps the same small body, about one metre tall with the top of his helmet at Seed's waist, clearly much smaller than Seed in every shot where both appear, the same helmet-head, side pods and backpack across every cut (Reference image " + n('rob1') + "); his visor only ever shows simple cyan or amber shapes, never text or a human face.");
   if (s.refs.indexOf('big') >= 0) L.push('The big robot keeps the same design and size, about 2.5 metres tall, across every cut (Reference image ' + n('big') + ').');
   if (s.refs.indexOf('xeno') >= 0) L.push('The XENOPOD-01 capsule keeps its shape (Reference image ' + n('xeno') + '), with no flag and no lettering.');
   var places = s.refs.filter(function (k) { return D.refs[k].img && /^a location/.test(D.refs[k].desc); });
