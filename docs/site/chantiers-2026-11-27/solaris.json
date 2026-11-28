@@ -1,0 +1,467 @@
+{
+ "date": "2026-11-27",
+ "lu": [
+  "C:\\Users\\calcu\\SOLARIS : CLAUDE.md, conception/REPRISE.md, conception/METHODE-PORTABLE.md, conception/etude-lore/ETUDE.md, conception/etude-chemin-de-vie/ETUDE.md (parties 1 et 6), conception/methodes/ (bible-de-monde, world-builder, lore-builder, analyse-amont, storyboard-12-etapes), conception/theorie/ (liste seulement).",
+  "SOLARIS, branche origin/main du 24/11/2026, lue avec git show sans rien changer : conception/CONSIGNES-DATAVIZ-DE-CAL.md, conception/monde-lore/UNIVERS-2026-11-19.md, conception/essais-monde/LE-MONDE.md et essais-lore/LE-LORE.md (titres), scripts/univers-donnees.mjs, scripts/bible.mjs (en-têtes), public/maquettes/univers/, monde-graphique/, lore-graphique/ (en-têtes), public/kit-etude/ (liste).",
+  "C:\\SECOND EARTH\\repo : CLAUDE.md, docs/film/00-recit-v2.md (en entier), docs/bible/01-trajet-de-seed.md, 02-chronologie-du-voyage.md, 34-glossaire.md, docs/especes/planches-de-dessin.md et bestiaire-de-kore.md (recherches ciblées), docs/film/rapport-script-doctor.html (parties 2 à 5), theme/kit-etude/ (LIRE.md, LISEZ-MOI.txt, en-têtes et fonctions des moteurs)."
+ ],
+ "outils_analyse": [
+  {
+   "nom": "La méthode « bible de monde » : les tests d'appartenance",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\conception\\methodes\\bible-de-monde\\METHODE.md, parties 4 et 5",
+   "fait": "Range tout le monde en sept sortes de choses (personnage, lieu, groupe, objet, événement, règle, époque). Donne un test simple pour chaque sorte : un personnage a un désir (« il veut… ») ; un objet change de main au moins une fois ; une règle peut être violée et ce viol coûte ; une époque a d'autres règles. Chaque scène se lit en quatre colonnes : ce qui se passe, qui y est, ce qui change, ce que la scène ne dit pas.",
+   "entree": "Le récit lu en entier, deux fois, scène par scène.",
+   "sortie": "Une liste de choses typées, les manques (personnage sans désir, chose sans « case franche »), les cases que le film laisse libres exprès.",
+   "applicable": "à la main",
+   "avant_lundi": true
+  },
+  {
+   "nom": "La vérification à charge (relecture qui cherche les erreurs)",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\conception\\methodes\\bible-de-monde\\METHODE.md, partie 7",
+   "fait": "Relecture dont la consigne est de trouver des erreurs, pas de valider : faits inventés, contradictions entre documents, dates recalculées, comptes et chiffres refaits au calcul, répliques mal attribuées. Rend un rapport classé par gravité, et la liste des contrôles passés sans erreur.",
+   "entree": "Les documents du monde et le récit.",
+   "sortie": "Un rapport : ce qui est écrit, ce que dit la source, la correction proposée en une phrase.",
+   "applicable": "à la main",
+   "avant_lundi": true
+  },
+  {
+   "nom": "Le kit « bible de monde » (programmes Python)",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\conception\\methodes\\bible-de-monde\\kit\\02-data\\src\\ (projet.py, d_monde.py, d_personnages.py, d_evenements.py, d_relations.py, d_recits.py, build.py, gen_fiches.py, gen_web.py)",
+   "fait": "Assemble un fichier unique du monde (world.json), refuse ce qui est incohérent (un lien vers une chose qui n'existe pas, une date vers une scène qui n'existe pas), puis écrit une fiche par chose et une page web autonome (constellation, frise, fiches).",
+   "entree": "Les cinq fichiers d_*.py remplis à la main avec les données du monde, et projet.py.",
+   "sortie": "world.json, controle.json (les erreurs), des fiches Markdown, une page HTML.",
+   "applicable": "non tel quel : les données de Second Earth sont en Markdown et en JSON d'une autre forme ; il faut d'abord les saisir dans les d_*.py. Python 3.14 est installé sur ce PC (le LIRE.md du kit dit le contraire, il date d'avant).",
+   "avant_lundi": false
+  },
+  {
+   "nom": "La méthode World Builder (maturité par axe)",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\conception\\methodes\\world-builder\\WORLD_BUILDER_methode.md",
+   "fait": "Découpe le monde en axes (géographie et vivant, histoire et temps, institutions, économie, culture, techniques, noms, personnages, lois physiques, cohérence) et dit pour chacun s'il est vide, esquissé, structuré ou verrouillé. Chaque affirmation porte sa provenance : dit par une source, deviné, ou manquant. Rend aussi une liste « si X change, qu'est-ce qui casse ».",
+   "entree": "Toutes les pièces du projet.",
+   "sortie": "Un état par axe, des zones d'ombre, des questions à poser à l'auteur.",
+   "applicable": "à la main (c'est une consigne écrite pour un modèle ; le faire tourner par un modèle coûte, rien n'a été lancé)",
+   "avant_lundi": true
+  },
+  {
+   "nom": "La méthode Lore Builder (la trace, le secret, la révélation)",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\conception\\methodes\\lore-builder\\LORE_BUILDER_methode.md",
+   "fait": "Sépare trois temps qu'il ne faut pas mêler : quand une chose arrive dans le monde, quand l'équipe la fabrique, quand le public l'apprend. Sépare aussi ce que l'équipe sait (lore de production) de ce que le public sait (lore de réception). Tient un registre des secrets et de leurs révélations.",
+   "entree": "La sortie du World Builder, ou le récit et la bible.",
+   "sortie": "Trois chronologies, un plan des révélations, un registre de ce qui fait foi.",
+   "applicable": "à la main",
+   "avant_lundi": true
+  },
+  {
+   "nom": "L'analyse amont ONWARD (six passes)",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\conception\\methodes\\analyse-amont\\ONWARD_methode_analyse.md",
+   "fait": "Six lectures : filtre de contenu, style par auteurs de référence, « régime d'imaginaire » (diurne, nocturne mystique, nocturne synthétique, d'après Gilbert Durand), sept mythes de fond (le retour, l'exode, la quête, la descente, la fondation, la métamorphose, le sacrifice), les flux et rapports de force du monde, les douze archétypes de Jung.",
+   "entree": "Un texte du projet.",
+   "sortie": "Un JSON par passe (schéma dans le fichier).",
+   "applicable": "à la main ; c'est une lecture d'interprétation, pas une vérification",
+   "avant_lundi": false
+  },
+  {
+   "nom": "La chaîne d'analyse du lore et les apports de l'auteur",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\conception\\etude-lore\\ETUDE.md, parties 4 et 6",
+   "fait": "Douze étapes, d'une pièce aux faits et aux règles : couper en phrases courtes ancrées, donner une provenance, dater deux fois (dans le monde, devant le public), séparer le fait de la règle, traiter une contradiction comme un objet, ne pas confondre un vide choisi avec un trou. La partie 6 dit comment une phrase de l'auteur devient une règle, une case protégée, une ligne de savoir ou une facette du personnage.",
+   "entree": "Les phrases de l'auteur et le récit.",
+   "sortie": "Des faits, des règles, des cases protégées, avec leur source.",
+   "applicable": "à la main",
+   "avant_lundi": true
+  },
+  {
+   "nom": "Les dix outils du chemin de vie (toile des personnages, carte du savoir, promesses et paiements, bible vivante…)",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\conception\\etude-chemin-de-vie\\ETUDE.md, partie 6",
+   "fait": "Ce sont des idées d'outils, avec le manque que chacun comble. Deux se font à la main sur Second Earth : « les promesses et leurs paiements » (ce que le film pose et reprend plus tard) et « la carte du savoir » (qui sait quoi, à quel moment).",
+   "entree": "Le récit.",
+   "sortie": "Des listes ; aucune page n'est prête pour Second Earth.",
+   "applicable": "à la main",
+   "avant_lundi": true
+  },
+  {
+   "nom": "Les outils « L'univers » U-01 à U-15 et leur fabrique de données",
+   "ou": "SOLARIS, branche origin/main : public/maquettes/univers/ (u-01-la-carte.js … u-15-les-facettes.js, univers-commun.js) et scripts/univers-donnees.mjs ; conception : conception/monde-lore/UNIVERS-2026-11-19.md",
+   "fait": "Quinze outils qui lisent le monde et le film ensemble : la carte, la frise à deux temps (le monde en haut, le film en bas), les lignes de vie des personnages, la vie des objets de main en main, les règles, qui en sait plus que le spectateur, le monde en coupe. Chaque geste montre ce qui casserait avant qu'on lâche.",
+   "entree": "Une bible au format du kit « bible de monde » (le fichier du Maître : data/solaris/maitre-des-anagrammes/pieces/monde-court-anagrammes.json), le script découpé en lignes (script-maitre.js) et une table de qui sait quoi (lo-d-savoir.js). Node l'assemble en univers-donnees.js.",
+   "sortie": "Une page par outil, nourrie par univers-donnees.js.",
+   "applicable": "non tel quel : tout est écrit pour « Le Maître des anagrammes ». Pour Second Earth il faut d'abord écrire sa bible dans ce format, puis découper le récit en lignes. Ces fichiers ne sont pas dans le dossier de travail local de SOLARIS (branche maquettes/dix-chantiers du 06/11) : seulement dans origin/main.",
+   "avant_lundi": false
+  },
+  {
+   "nom": "La lecture du projet en cinq passes, qui sait quoi, les fils, la cascade",
+   "ou": "C:\\Users\\calcu\\SOLARIS\\src\\lib\\solaris-lecture.ts, solaris-signature.ts, qui-sait-quoi.ts, fils-tireur.ts, solaris-cascade.ts ; scripts/dgx-lecture/",
+   "fait": "Le cœur du logiciel SOLARIS : lecture des pièces par un modèle sur les machines du studio ou par Claude, puis jugement par le code, puis signature de l'auteur.",
+   "entree": "Un projet déposé dans SOLARIS (serveur Cloudflare, base D1).",
+   "sortie": "Des champs avec leur provenance, des questions, des trouvailles citées.",
+   "applicable": "non : demande le serveur, la base, et un modèle (payant ou sur les machines). Exclu par la consigne.",
+   "avant_lundi": false
+  },
+  {
+   "nom": "La grille des consignes de Cal pour toute dataviz",
+   "ou": "SOLARIS, origin/main : conception/CONSIGNES-DATAVIZ-DE-CAL.md (et conception/METHODE-PARAMETRIQUE-ET-PREDICTIVE.md, partie 7, la grille de relecture)",
+   "fait": "Les règles que Cal a données pour toute dataviz : rien de gratuit, chaque marque dit d'où elle vient (dit, deviné, manquant), jamais de score, de courbe d'émotion ni de jauge, la couleur seulement quand elle a un sens, des mots clairs.",
+   "entree": "Une page ou une maquette.",
+   "sortie": "Une relecture point par point.",
+   "applicable": "à la main, sur chaque page du site",
+   "avant_lundi": true
+  }
+ ],
+ "premiere_passe": [
+  {
+   "sujet": "Méthode appliquée",
+   "constat": "Tests d'appartenance et quatre colonnes de la méthode « bible de monde » (personnage = un désir, objet = change de main, règle = violée avec un prix), plus les trois temps du Lore Builder. Lu sur le Récit v2 avec les ajouts du 20/11, la Chronologie, le Trajet, le Glossaire.",
+   "source": "SOLARIS conception/methodes/bible-de-monde/METHODE.md § 4 et 5 ; lore-builder/LORE_BUILDER_methode.md"
+  },
+  {
+   "sujet": "Rob1 : force",
+   "constat": "Rob1 passe le test du personnage : son désir se lit dans ses actes (protéger Seed), et le récit le montre par des lignes d'écran qu'il écrit puis efface (« LE SUJET NE PORTE PAS DE CHARGE », « TEMPS PERDU : 4 MIN », « RAPPORT À ENVOYER : VIABILITÉ », « OUI » remplacé par « NON »). Chaque ligne effacée est une règle de son protocole qu'il viole, et la dernière a un prix : l'antenne détruite.",
+   "source": "docs/film/00-recit-v2.md, Actes II, IV, VIII, IX ; docs/film/21-journal-de-rob1.md, ligne 17 (« tout l'arc de Rob1 en grammaire »)"
+  },
+  {
+   "sujet": "Rob1 : contradiction de taille",
+   "constat": "Le Glossaire et l'échelle des planches donnent Rob1 à 1 m (validé) ; le Récit v2 dit « à peine un mètre » ; la règle vidéo du 05/11 dit environ 75 cm, le haut du casque sous la hanche de Seed (1,60 m). Le site devra choisir un chiffre.",
+   "source": "docs/bible/34-glossaire.md, ligne Rob1 ; docs/especes/planches-de-dessin.md, ligne 14 ; docs/film/00-recit-v2.md, Acte I ; CLAUDE.md, règle 15"
+  },
+  {
+   "sujet": "Seed : manque",
+   "constat": "Aucun document ne donne la phrase de désir de Seed (« elle veut… ») ; la recherche de « désir » ou « elle veut » dans docs/ ne trouve rien sur elle. Le rapport de script-doctor relève qu'elle subit la moitié des tournants. Les ajouts du 20/11 lui donnent des choix (dire « Seed » éveillée et guérie, revenir pour le rongeur), mais pas de désir écrit.",
+   "source": "docs/film/00-recit-v2.md, Actes VI et VII ; docs/film/rapport-script-doctor.html, partie 02"
+  },
+  {
+   "sujet": "Rob2 et Rob3 : manque",
+   "constat": "Au test du personnage, Rob2 et Rob3 sont des figurants : aucune phrase de désir, aucune réplique, une fonction (des jambes, des roues). Rob4 a une phrase à lui (« Je suis d'ici maintenant ») et un changement (devenu hybride). Le site doit-il les présenter comme des personnages ou comme des machines ?",
+   "source": "docs/bible/34-glossaire.md, lignes Rob2 à Rob4 ; docs/film/00-recit-v2.md, Actes III, V, VII ; docs/film/rapport-script-doctor.html, partie 04"
+  },
+  {
+   "sujet": "Les objets qui changent de main : force",
+   "constat": "Le caillou blanc passe du rongeur à Seed, puis à Rob1, puis dans l'alvéole H-01 ; l'organisme-batterie passe de la caverne à Seed, à Rob1, au port de Rob2, puis à la terre où il se recharge sans que les héros le sachent. Le récit garde une case libre exprès : « on ne le saura pas » qui a mis le caillou dans la poche de Rob1. C'est exactement une « case franche » au sens de la méthode (elle a des murs : un objet, un moment, une conséquence).",
+   "source": "docs/film/00-recit-v2.md, Actes III, IV, V, X"
+  },
+  {
+   "sujet": "Les deux temps : force",
+   "constat": "Le film écrit lui-même l'écart entre quand une chose arrive et quand elle est apprise : le signal d'échec part au jour 0, PERSEPHORA répond vers le jour 39, et le mensonge porte « TERRE : RÉCEPTION DANS 11,4 ANS ». Le spectateur sait que la Terre recevra « NON VIABLE » alors que Seed ne le sait pas.",
+   "source": "docs/film/00-recit-v2.md, Actes I et IX"
+  },
+  {
+   "sujet": "Qui sait quoi : force",
+   "constat": "Les ajouts du 20/11 multiplient les moments où Rob1 sait et Seed non : les rations (« Il ne dit rien. Pas maintenant »), Rob3 réveillé dans la nuit, le rapport effacé quand elle se réveille, le message de PERSEPHORA. Ces moments se prêtent à une vue « qui en sait plus » sur le site.",
+   "source": "docs/film/00-recit-v2.md, Actes V, VIII, IX"
+  },
+  {
+   "sujet": "Le début : contradiction entre le Trajet et le Récit",
+   "constat": "Le Trajet dit que deux capsules descendent ensemble vers la jungle et que Rob1 et Rob2 sont posés avec le XENOPOD. Le Récit v2 et le Glossaire disent que les trois collecteurs se détachent pendant la descente et que celui de Rob2 se pose à 250 km. Le Trajet n'a pas été mis à jour.",
+   "source": "docs/bible/01-trajet-de-seed.md, ligne Prologue ; docs/film/00-recit-v2.md, « Ce qui change », point 3 ; docs/bible/34-glossaire.md, ligne XENOPOD-02, -03, -04"
+  },
+  {
+   "sujet": "La horde : contradiction de lieu",
+   "constat": "Dans le Récit v2, la horde frappe le campement du robopod de Rob3, là où dort Seed, dans la forêt (Acte V puis VI, sans voyage entre les deux). La Chronologie place l'Acte VI dans les Hautes Plaines, à environ 1 700 km, soit 500 km plus loin que Rob3 (1 200 km), aux jours 23 à 25.",
+   "source": "docs/film/00-recit-v2.md, Actes V et VI ; docs/bible/02-chronologie-du-voyage.md, tableau « Jour par jour »"
+  },
+  {
+   "sujet": "La première nuit noire : écart",
+   "constat": "La Chronologie fait commencer la saison noire au jour 3. Le Récit v2 montre la première nuit entièrement noire aux tours, au carton « Jour 12 », « pour un mois ». Du jour 12 au jour 32 il y a 20 jours ; du jour 3 au jour 32, 29.",
+   "source": "docs/bible/02-chronologie-du-voyage.md, « Le ciel pendant le voyage » ; docs/film/00-recit-v2.md, Acte II et Acte VII (fin)"
+  },
+  {
+   "sujet": "Les cartons de jour : manque",
+   "constat": "La Chronologie compte en jours terrestres (41 jours, soit environ 25 jours de Korê de 40 h). Le Récit écrit « Jour 41 » sans unité, sur une planète où le jour dure 40 h. Le Glossaire marque les cartons « proposé ». Un visiteur du site ne peut pas savoir de quels jours il s'agit.",
+   "source": "docs/bible/02-chronologie-du-voyage.md, première phrase ; docs/bible/34-glossaire.md, ligne « Les cartons de jour »"
+  },
+  {
+   "sujet": "Les quatre mots : statut contradictoire",
+   "constat": "La même ligne du Glossaire dit « validé au round 13 (A02) » dans sa description et « Proposé (QCM A02) » dans sa colonne de statut.",
+   "source": "docs/bible/34-glossaire.md, ligne « Les quatre mots »"
+  },
+  {
+   "sujet": "L'incubation : question",
+   "constat": "Seed met six à sept semaines à atteindre 15 ans apparents (cartons Jour −42 à Jour 0). L'écran de CAIN annonce « DURÉE INCUBATION : 7 JOURS » pour 35 ans et 100 % de mémoire. Le récit n'explique pas l'écart.",
+   "source": "docs/film/00-recit-v2.md, Acte I et Acte X"
+  },
+  {
+   "sujet": "Elena : à vérifier",
+   "constat": "Dans les visions, les jumeaux d'Elena l'applaudissent à son diplôme, puis elle est dans un parc « avec quelqu'un », « un enfant aussi ». Le round 17 a tranché que les jumeaux sont ses enfants ; « un enfant » au singulier reste à accorder ou à expliquer.",
+   "source": "docs/film/00-recit-v2.md, Acte VII ; CLAUDE.md § 13 (D16)"
+  },
+  {
+   "sujet": "Ce que Rob1 a collecté : petit écart",
+   "constat": "Le Glossaire donne à Rob1 le carbone, l'eau et l'azote ; le Récit v2 ne cite que l'eau du fleuve et le carbone des plantes.",
+   "source": "docs/bible/34-glossaire.md, ligne Rob1 ; docs/film/00-recit-v2.md, Acte I"
+  },
+  {
+   "sujet": "Les buffles : écart de taille",
+   "constat": "Le Récit dit des buffles « cinq fois plus gros que ceux qu'on a sur Terre » ; l'échelle des planches donne 2,5 m au garrot ; la planche HP-01 et le Bestiaire ne disent pas la même taille (écart déjà connu).",
+   "source": "docs/film/00-recit-v2.md, Acte VI ; docs/especes/planches-de-dessin.md, ligne 14 ; CLAUDE.md § 5"
+  },
+  {
+   "sujet": "Les grands volants : force",
+   "constat": "Les tailles se tiennent d'un document à l'autre : le Titan fossile ~15 m d'envergure, l'ombre du col 9 m, l'oiseau de la confluence 10 m, l'échelle des oiseaux-prédateurs 8 à 10 m ; et le Bestiaire en donne la raison physique (air à 1,3 bar et 30 % d'oxygène).",
+   "source": "docs/bible/30-les-titans.md ; docs/film/00-recit-v2.md, Actes III, IV, VII ; docs/especes/planches-de-dessin.md, ligne 14 ; docs/especes/bestiaire-de-kore.md, ligne 14"
+  },
+  {
+   "sujet": "Korê, les chiffres : force",
+   "constat": "Les chiffres se recoupent au calcul : 1,5 masse terrestre / (1,15 rayon)² = 1,13 g ; 116 jours × 24 h / 40 h = 69,6 jours de Korê ; 21 jours de Korê × 40 h = 35 jours terrestres ; sauts 12 % moins hauts (1/1,13) et chutes 6 % plus rapides (racine de 1,13). L'air riche en oxygène rend les feux de savane plausibles, et le récit les utilise (la ligne de feu derrière la horde).",
+   "source": "CLAUDE.md § 3 ; docs/bible/02-chronologie-du-voyage.md ; docs/film/00-recit-v2.md, Acte VI"
+  },
+  {
+   "sujet": "La lumière : manque",
+   "constat": "La lumière de Korê (température de couleur, éclairement, couleur du ciel, crépuscules) est marquée « proposé, jamais validé en round ». La page « planète » du site devra le dire.",
+   "source": "CLAUDE.md § 3, ligne Lumière ; docs/bible/33-lumiere-et-couleurs.md"
+  },
+  {
+   "sujet": "SEED-03 : à vérifier",
+   "constat": "Seed porte le code SEED-03 alors que le porte-enfant est devenu XENOPOD-01 et son alvéole H-01. Le « 03 » vient peut-être de l'ancien XENOPOD-03 du docx ; aucun document ne l'explique.",
+   "source": "docs/bible/34-glossaire.md, lignes Seed et XENOPOD-01 ; docs/film/00-recit-v2.md, Actes I et X"
+  }
+ ],
+ "dataviz": [
+  {
+   "besoin": "Comparer la Terre et Korê (gravité, jour, année, marées, air)",
+   "composant": "Les haltères (deux points par ligne, la Terre et Korê), chaque mesure ramenée à la Terre = 1, la valeur réelle écrite à côté ; et les chiffres en grand pour les valeurs brutes",
+   "ou": "theme/kit-etude/dataviz.js, KitEtude.viz.halteres (forme 10) ; theme/kit-etude/kit-etude.css, classe .ke-chiffres ; autre forme possible : KitEtude.viz.paralleles (forme 15, un axe par mesure avec ses propres bornes)",
+   "remarque": "Les mesures n'ont pas la même unité : il faut les ramener à la Terre (1 ; 1,13 ; 40/24 ; 116/365 ; 7 ; 30/21 ; 1,3) et le dire. Le radar en fil (forme 16) existe mais se lit comme une note : la charte de Cal refuse les scores."
+  },
+  {
+   "besoin": "Le trajet de Seed : jours, kilomètres, douze étapes",
+   "composant": "La frise de travail (une ligne par étape, du jour de début au jour de fin, les jalons) ; et une ligne fine des kilomètres cumulés",
+   "ou": "theme/kit-etude/dataviz.js, KitEtude.viz.gantt (forme 07) ; theme/kit-etude/kit-etude.js, KitEtude.ligne ; pour la carte réelle : C:\\SECOND EARTH\\repo\\carte\\carte-kore.html",
+   "remarque": "Les douze lignes existent déjà : le tableau du Trajet et celui de la Chronologie en ont douze chacun. La carte du kit (KitEtude.carto.carte et KitEtude.carto.profil) dessine un monde inventé à partir d'une graine : elle ne sait pas afficher Korê sans être réécrite."
+  },
+  {
+   "besoin": "Qui voyage avec qui (Seed, Rob1 à Rob4, les fusions)",
+   "composant": "Les lignes de vie : une ligne par personnage sur le temps du voyage, qui se rejoignent quand les Robs s'assemblent",
+   "ou": "SOLARIS origin/main, public/maquettes/univers/u-03-les-personnages.js (le moteur) et univers-commun.js (UC.film, la tête de lecture)",
+   "remarque": "Plus récent que le kit (20/11), mais écrit pour Le Maître et ses données : à adapter. Avant lundi, la frise de travail du kit fait une version simple."
+  },
+  {
+   "besoin": "Les tailles des animaux",
+   "composant": "Les barres fines triables, ou l'essaim (chaque animal est un point, aucun ne cache l'autre) ; et « chacun son échelle » pour poser une silhouette à côté de Seed",
+   "ou": "theme/kit-etude/dataviz.js, KitEtude.viz.barres (forme 09) et KitEtude.viz.essaim (forme 13) ; theme/kit-etude/zoom.js, KitEtude.zoom.chacun",
+   "remarque": "Dans data/bestiaire.json, le champ taille est un texte (« ~1,2 m d'envergure, 6–8 kg ») qui mêle hauteur, longueur, envergure et masse : il faut une table faite à la main, une mesure par animal, et dire laquelle. Les échelles de Seed (1,60 m) et des machines sont dans docs/especes/planches-de-dessin.md, ligne 14."
+  },
+  {
+   "besoin": "Les orbites et les deux lunes",
+   "composant": "Rien de prêt dans le kit ni dans SOLARIS pour dessiner une orbite. Pour l'année et ses quatre phases (nuits ambrées, saison noire…) : la spirale du temps, un tour par année de Korê, un point par jour",
+   "ou": "theme/kit-etude/viz3d.js, KitEtude.viz3d.spirale (scène 6) ; ou en deux dimensions theme/kit-etude/dataviz.js, KitEtude.viz.spirale (forme 06) ; les marées jour par jour : KitEtude.viz.courbe (forme 01) avec les données de docs/bible/35-lunes-marees-et-calendrier.md",
+   "remarque": "Le schéma des orbites (étoile, compagne, planète, deux lunes) est à dessiner en SVG simple. La planète en 3D existe ailleurs : continuum-globe.js dans NirvaLabWeb (CLAUDE.md § 14), non lu ici. Le globe du kit (KitEtude.viz3d.globe) fait une sphère en points avec des arcs entre lieux, pas une planète texturée."
+  },
+  {
+   "besoin": "Le voyage du vaisseau, de 2045 à 2098, et le message qui revient",
+   "composant": "Les arches : des liens entre des crans d'une ligne (un cran par jalon : départ, Mars et Titan, arrivée, naissance, message, réception sur Terre) ; et la télémétrie HUD pour les chiffres du vaisseau",
+   "ou": "theme/kit-etude/kit-etude.js, KitEtude.arches ; theme/kit-etude/hud.js, KitEtude.hud.tele (pièce 07) et KitEtude.hud.code (pièce 08, le compte à rebours)",
+   "remarque": "11,4 années-lumière à environ 21 % de la vitesse de la lumière (CLAUDE.md § 3). La date d'arrivée du « NON VIABLE » sur Terre (vers 2109) n'est écrite nulle part : à calculer et à marquer « déduit »."
+  },
+  {
+   "besoin": "La frise du film (le temps du monde contre l'ordre du film)",
+   "composant": "La frise à deux temps : le monde en haut, le film en bas, une arche relie un moment à la séquence qui le montre ; version simple dans le kit : le montage (des pistes, des blocs, une tête de lecture)",
+   "ou": "SOLARIS origin/main, public/maquettes/univers/u-02-la-frise.js, et lore-graphique/lg-01-les-deux-rives.js ; dans le kit : theme/kit-etude/kit-etude.js, KitEtude.montage",
+   "remarque": "Les durées des onze parties du 25 min sont dans docs/film/11-sequencier-25-min.md. U-02 et LG-01 sont plus récents que le kit (19 et 20/11) mais nourris par les données du Maître."
+  },
+  {
+   "besoin": "Ce que chacun sait (Rob1 cache, Seed ignore, le spectateur voit)",
+   "composant": "« Qui en sait plus » : pour chaque personnage, l'écart avec le spectateur ; version simple dans le kit : « ce que chacun sait » en zoom",
+   "ou": "SOLARIS origin/main, public/maquettes/univers/u-08-qui-en-sait-plus.js et lore-graphique/lg-02-les-marees.js ; dans le kit : theme/kit-etude/zoom.js, KitEtude.zoom.savoir",
+   "remarque": "Demande une table « qui apprend quoi, à quel moment », à écrire à la main d'après le Récit v2 : elle n'existe pas pour Second Earth."
+  },
+  {
+   "besoin": "Les objets de main en main (le caillou blanc, l'organisme-batterie)",
+   "composant": "La vie des objets : une ligne par objet qui passe d'une main à l'autre",
+   "ou": "SOLARIS origin/main, public/maquettes/univers/u-04-les-objets.js et monde-graphique/mg-04-de-main-en-main.js",
+   "remarque": "À adapter ; deux objets suffisent pour Second Earth."
+  },
+  {
+   "besoin": "Les biomes et ce qui y vit (parts du tout)",
+   "composant": "La mosaïque (des rectangles par biome, les espèces dedans) ou la barre découpée",
+   "ou": "theme/kit-etude/dataviz-2.js, KitEtude.viz.mosaique (forme 17) et KitEtude.viz.barreDecoupee (forme 20)",
+   "remarque": "Les comptes par biome se tirent de data/bestiaire.json et data/flore.json (champ biome_id)."
+  }
+ ],
+ "kit_plus_recent": "Pour le kit lui-même, rien de plus récent dans SOLARIS : la copie de Second Earth (theme/kit-etude/, 70 fichiers avec les polices et three.js, refonte du 19/11, venue de la branche claude/kit-ui-etude) est plus complète que celle de SOLARIS origin/main (public/kit-etude/, 7 fichiers, dernier changement le 18/11 : les bases seulement, sans dataviz, HUD, cartes, 3D, canevas ni zoom). La branche claude/kit-ui-etude n'est pas dans les références locales de SOLARIS : impossible de vérifier s'il y a eu des changements après la copie. En revanche SOLARIS origin/main (24/11) a d'autres composants, plus récents que le kit et bâtis sur sa grammaire : public/maquettes/univers/ (U-01 à U-15, 19 et 20/11 : carte, frise à deux temps, lignes de vie, objets, règles, qui en sait plus, monde en coupe), public/maquettes/lore-graphique/ (LG-01 à LG-05, 19/11), public/maquettes/monde-graphique/ (MG-01 à MG-05, 19/11), public/maquettes/banc/ (BM-07 la carte du territoire, BM-08 à BM-11 l'arche board, 20/11). Tous lisent les données du Maître des anagrammes. Un changement de geste y est noté : le 20/11, Cal a demandé le zoom à la molette seule (univers-commun.js, UC.rail), alors que le kit demande Ctrl + molette.",
+ "questions": [
+  {
+   "id": "S01",
+   "titre": "Les écarts trouvés dans le monde, avant lundi",
+   "contexte": "La première passe trouve des écarts entre documents : la taille de Rob1, le lieu de la horde, le début du voyage, l'unité des jours. Le monde est gelé tant que vos corrections de relecture ne sont pas passées (règle 8). Le site présente ce qui existe.",
+   "conseil": "A : le site montre le contenu tel qu'il est, et les écarts vous sont soumis en QCM à part. On ne change rien au monde sans vous, et le site est prêt lundi.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Le site tel quel, les écarts en QCM à part",
+     "d": "Rien ne change dans le monde avant votre réponse ; le site sort lundi avec le contenu actuel.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Trancher les écarts avant de publier",
+     "d": "Le site sort sans contradiction, mais il faut vos réponses avant lundi.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Une page « ce qui reste ouvert » sur le site",
+     "d": "Le visiteur voit les points non tranchés ; montre au client un travail en cours.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "S03",
+   "titre": "La base des outils de données du site",
+   "contexte": "Le kit étude de Second Earth (theme/kit-etude/) a trente formes de graphiques, des HUD, de la 3D, du zoom. SOLARIS a, en plus, des outils plus récents pour lire un monde (la frise à deux temps, les lignes de vie), mais écrits pour Le Maître des anagrammes.",
+   "conseil": "A avant lundi : les fonctions du kit suffisent pour la comparaison Terre-Korê, le trajet, les tailles et le voyage. Les outils de SOLARIS demandent d'abord de réécrire les données de Second Earth dans leur format.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Le kit étude seul, avant lundi",
+     "d": "Faisable à temps ; des graphiques simples, sans le geste « avant de lâcher ».",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Le kit plus la frise et les lignes de vie de SOLARIS",
+     "d": "Plus de liens entre le monde et le film ; ne tient pas avant lundi.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "S04",
+   "titre": "Le zoom à la molette",
+   "contexte": "Le kit étude zoome avec Ctrl + molette, pour ne pas bloquer le défilement de la page. Le 20/11, dans SOLARIS, vous avez demandé le zoom à la molette seule dans les outils.",
+   "conseil": "A : la molette seule dans un outil qui prend tout l'écran (la carte, la planète), Ctrl + molette dans une page qui défile, pour que le visiteur ne reste pas coincé.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Molette seule en plein écran, Ctrl dans les pages qui défilent",
+     "d": "Le zoom direct là où il sert ; la page défile normalement ailleurs.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Molette seule partout",
+     "d": "Le geste que vous avez demandé ; la page peut se bloquer sur un graphique.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Ctrl + molette partout",
+     "d": "Comme le kit ; moins direct.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "S05",
+   "titre": "Comment comparer la Terre et Korê",
+   "contexte": "Gravité, durée du jour, année, marées, oxygène, pression : six mesures qui n'ont pas la même unité. Pour les montrer ensemble, il faut les ramener à la Terre (la Terre = 1).",
+   "conseil": "A : une ligne par mesure, deux points (la Terre, Korê), et le vrai chiffre écrit à côté. On lit l'écart sans le lire comme une note.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Une ligne par mesure, deux points, le chiffre à côté",
+     "d": "Lisible tout de suite ; montre l'écart sans classer.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Un axe par mesure, deux lignes qui les traversent",
+     "d": "Chaque mesure garde son échelle ; plus dur à lire au premier regard.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Seulement les chiffres côte à côte",
+     "d": "Le plus simple ; aucun graphique.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "S06",
+   "titre": "Les jours du voyage sur le site",
+   "contexte": "La Chronologie compte 41 jours terrestres, soit environ 25 jours de Korê de 40 h. Le récit écrit « Jour 41 » sans dire de quels jours il s'agit.",
+   "conseil": "A : les jours terrestres, comme la Chronologie, avec le mot « terrestres » écrit. Le visiteur compare avec sa propre vie, et rien de nouveau n'est ajouté au monde.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Jours terrestres, écrit en clair",
+     "d": "Suit la Chronologie ; un visiteur comprend la durée.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Jours de Korê (25 jours)",
+     "d": "Plus proche de la planète ; tous les cartons changent de chiffre.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Les deux : « Jour 41 (25 jours de Korê) »",
+     "d": "Les deux lectures ; ajoute un chiffre à chaque étape.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "S07",
+   "titre": "Où se passe la horde",
+   "contexte": "Dans le récit, la horde frappe le campement du robot Rob3, dans la forêt, à 1 200 km. La Chronologie et le Trajet la placent dans les Hautes Plaines, vers 1 700 km. Le trajet du site doit placer ce moment quelque part.",
+   "conseil": "C : c'est une question d'histoire, pas de site. En attendant votre réponse, le trajet du site peut montrer l'étape avec la mention « à confirmer ».",
+   "o": [
+    {
+     "k": "A",
+     "l": "Les Hautes Plaines, comme la Chronologie",
+     "d": "Le récit devra ajouter un trajet entre le campement et la plaine.",
+     "r": false
+    },
+    {
+     "k": "B",
+     "l": "Le campement en forêt, comme le récit",
+     "d": "La Chronologie et le Trajet seront à corriger ; les Hautes Plaines perdent leur scène.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Je tranche plus tard ; « à confirmer » sur le site",
+     "d": "Le site sort lundi sans trancher à votre place.",
+     "r": true
+    }
+   ]
+  },
+  {
+   "id": "S08",
+   "titre": "Une analyse plus poussée, après lundi",
+   "contexte": "Les outils de SOLARIS qui lisent un monde demandent une bible au format du kit « bible de monde » : chaque personnage, lieu, objet, règle et moment saisi une fois, avec sa date et sa source. Second Earth n'a pas encore ce fichier.",
+   "conseil": "A : écrire ce fichier une fois ouvre les outils de SOLARIS (frise, lignes de vie, qui sait quoi) et le contrôle automatique des contradictions. À faire après lundi.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Écrire la bible de Second Earth au format du kit, après lundi",
+     "d": "Ouvre les outils de SOLARIS et le contrôle des contradictions ; plusieurs jours de saisie.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Rester aux méthodes appliquées à la main",
+     "d": "Pas de saisie ; chaque contrôle se refait à la main.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Faire lire le monde par un modèle (méthode World Builder)",
+     "d": "Plus rapide ; coûte des appels payants, et tout ce qu'il rend reste « deviné » jusqu'à votre signature.",
+     "r": false
+    }
+   ]
+  }
+ ],
+ "non_trouve": [
+  "Le moteur d'analyse du monde sans modèle d'X-VERSE (analyse-monde.js) : cité par l'étude du lore, absent du dépôt SOLARIS.",
+  "La branche claude/kit-ui-etude d'où vient le kit de Second Earth : absente des références locales de SOLARIS ; pas de comparaison possible au-delà du 18/11 côté SOLARIS.",
+  "Un composant qui dessine des orbites ou des lunes : ni dans le kit étude, ni dans SOLARIS (recherche de « orbite » dans public/ d'origin/main : seulement des caméras et des maquettes du Maître).",
+  "Un outil de SOLARIS qui lit tel quel des documents en Markdown comme ceux de docs/bible/ : aucun ; tous passent par un JSON au format du kit « bible de monde » ou par le serveur.",
+  "La phrase de désir de Seed (« elle veut… ») : absente des documents de Second Earth.",
+  "Une table « qui apprend quoi, à quel moment » pour Second Earth : n'existe pas.",
+  "La date de réception du « NON VIABLE » sur Terre : écrite nulle part (seulement « dans 11,4 ans »).",
+  "Le contenu de conception/theorie/ de SOLARIS : lu en liste seulement ; il porte sur les agents et le registre, pas sur l'analyse d'un monde."
+ ]
+}

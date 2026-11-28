@@ -1,0 +1,162 @@
+<title>Second Earth · chantiers du 27/11</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Azeret+Mono:wght@400;500&display=swap">
+<style>
+/* Une colonne de lecture, des cartes de décision, une barre de réponse collée en bas. Thème Verdant du projet, sombre par choix. */
+:root{color-scheme:dark;--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--ink:#e6eae7;--body:#c9d2cd;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#b9cfd8;--or:#e0674a;--or-ink:#170c08;--c2:#e59578;--g1:#2f6b4a;--g-ink:#8fd1a8;--line:rgba(185,207,216,.12);--line2:rgba(185,207,216,.24);
+--text:'Chakra Petch',system-ui,sans-serif;--mono:'Azeret Mono',ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 140px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:18px}
+.lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+h1{font-size:clamp(26px,4vw,40px);line-height:1.15;margin:6px 0 10px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance}
+h2{font-size:21px;margin:26px 0 2px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cy);text-wrap:balance}
+h3{font-size:17px;margin:0;font-weight:600;color:var(--ink);text-wrap:balance}
+p{margin:0;color:var(--body);max-width:72ch}
+.lede{color:var(--ink2)}
+.box{background:var(--panel);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px}
+nav.toc a{color:var(--cy);text-decoration:none;border:1px solid var(--line2);border-radius:999px;padding:6px 14px;font-size:14px}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--panel3);color:var(--ink)}
+:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.plan{display:grid;grid-template-columns:130px minmax(0,1fr);gap:8px 16px}
+.plan b{color:var(--c2);font-weight:600}
+@media(max-width:560px){.plan{grid-template-columns:1fr}}
+details{background:var(--panel);border-radius:14px;padding:4px 20px}
+summary{cursor:pointer;padding:12px 0;font-weight:600;color:var(--ink)}
+.fact{padding:10px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.fact b{color:var(--ink)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--ink3);overflow-wrap:anywhere}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);text-align:left;padding:8px 10px;font-weight:500}
+td{padding:9px 10px;border-top:1px solid var(--line);vertical-align:top;color:var(--body);min-width:120px}
+td:first-child{color:var(--ink)}
+textarea{width:100%;background:var(--panel2);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:12px;font:13px/1.5 var(--mono);resize:vertical}
+textarea.pr{height:150px}
+textarea.free{height:60px;font:15px/1.5 var(--text)}
+button{font:inherit;cursor:pointer;border-radius:999px;padding:9px 18px;border:1px solid var(--line2);background:var(--panel3);color:var(--ink)}
+button.main{background:var(--or);border-color:var(--or);color:var(--or-ink);font-weight:600}
+button:hover{filter:brightness(1.12)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ok{color:var(--g-ink);font-size:14px}
+.q{scroll-margin-top:20px}
+.q .id{font-family:var(--mono);font-size:11px;color:var(--or);letter-spacing:.12em}
+.advice{background:rgba(47,107,74,.22);box-shadow:inset 0 0 0 1px rgba(47,107,74,.8);border-radius:10px;padding:10px 14px;color:var(--ink)}
+.advice b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--g-ink);font-weight:500}
+label.opt{display:grid;grid-template-columns:22px 26px minmax(0,1fr);gap:8px;align-items:start;padding:11px 12px;border-radius:10px;border:1px solid var(--line);cursor:pointer}
+label.opt:hover{border-color:var(--line2);background:var(--panel2)}
+label.opt:has(input:checked){border-color:var(--or);background:rgba(224,103,74,.1)}
+label.opt input{margin:5px 0 0;accent-color:var(--or);width:16px;height:16px}
+.k{font-family:var(--mono);font-size:12px;color:var(--ink3);padding-top:3px}
+.l{display:block;color:var(--ink);font-weight:600}
+.d{display:block;color:var(--body);font-size:15px}
+.rec{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--g-ink);margin-left:8px;white-space:nowrap}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(10,13,11,.96);border-top:1px solid var(--line2);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:5}
+.bar .in{max-width:980px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bar .count{margin-right:auto;color:var(--ink2);font-size:14.5px}
+#out{height:120px;margin-top:10px}
+.empty{color:var(--ink3);font-style:italic}
+</style>
+<div class="wrap">
+  <header>
+    <div class="lbl">Second Earth · vendredi 27 novembre 2026</div>
+    <h1>Les chantiers, et tes choix</h1>
+    <p class="lede">Tout ce que tu as demandé ce matin, sur une page. Tu coches, tu écris si tu veux, puis « Copier mes réponses » en bas et tu colles dans le chat. Rien n'est écrit dans l'histoire avant ton retour.</p>
+  </header>
+  <nav class="toc" aria-label="Sommaire">
+    <a href="#plan">Le plan jusqu'à lundi</a><a href="#prompts">Les prompts d'images</a><a href="#perso">Les personnages</a><a href="#solaris">Les outils de SOLARIS</a><a href="#site">Le site et les decks</a>
+  </nav>
+
+  <h2 id="plan">Le plan jusqu'à lundi</h2>
+  <div class="box"><div class="plan" id="plan-in"></div></div>
+  <details><summary>Ce que j'ai relevé en préparant cette page</summary><div id="facts-site"></div></details>
+
+  <h2 id="prompts">Les prompts d'images qui manquent</h2>
+  <p class="lede" id="prompts-intro"></p>
+  <div id="prompts-in" style="display:flex;flex-direction:column;gap:14px"></div>
+
+  <h2 id="perso">Les personnages, la quête, la fin</h2>
+  <p class="lede">Ce que dit le récit aujourd'hui, puis les choix. Tout est proposé, rien ne contredit ce que tu as déjà validé.</p>
+  <details><summary>Ce que dit le récit aujourd'hui</summary><div id="facts-perso"></div></details>
+  <div id="q-perso" style="display:flex;flex-direction:column;gap:14px"></div>
+
+  <h2 id="solaris">Les outils de SOLARIS</h2>
+  <p class="lede">Ce qu'on peut reprendre de SOLARIS pour étudier le monde, et pour les outils de données du site.</p>
+  <div id="solaris-in" style="display:flex;flex-direction:column;gap:14px"></div>
+  <div id="q-solaris" style="display:flex;flex-direction:column;gap:14px"></div>
+
+  <h2 id="site">Le site et les decks pour Nina</h2>
+  <div id="q-site" style="display:flex;flex-direction:column;gap:14px"></div>
+
+  <div class="box"><h3>Tes réponses, en texte</h3><p class="lede">Le bouton du bas les copie. Si la copie ne marche pas, sélectionne ce texte à la main.</p><textarea id="out" readonly aria-label="Tes réponses en texte"></textarea></div>
+</div>
+<div class="bar"><div class="in">
+  <span class="count" id="count" aria-live="polite"></span>
+  <button type="button" id="advise">Cocher tous mes conseils</button>
+  <button type="button" class="main" id="copy">Copier mes réponses</button>
+  <span class="ok" id="said" aria-live="polite"></span>
+</div></div>
+<script>
+const D = /*__DATA__*/null;
+const KEY = 'se-chantiers-2026-11-27';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let S = {}; try { S = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+const GROUPS = [['perso', 'Les personnages, la quête, la fin', D.perso.questions || []], ['solaris', 'Les outils de SOLARIS', D.solaris.questions || []], ['site', 'Le site et les decks', D.moi.questions_site || []]];
+const ALL = GROUPS.flatMap(g => g[2]);
+
+$('#plan-in').innerHTML = D.moi.plan.map(p => `<b>${esc(p.quand)}</b><p>${esc(p.quoi)}</p>`).join('');
+const facts = (l, a, b) => (l || []).length ? l.map(f => `<div class="fact"><b>${esc(f[a])}</b><p>${esc(f[b])}</p><span class="src">${esc(f.source || '')}</span></div>`).join('') : '<p class="empty">Rien pour l\'instant.</p>';
+$('#facts-site').innerHTML = facts(D.moi.constats_site, 'sujet', 'fait');
+$('#facts-perso').innerHTML = facts(D.perso.constats, 'sujet', 'fait') + ((D.perso.non_tranche || []).length ? `<div class="fact"><b>Pas trouvé dans le dépôt</b>${D.perso.non_tranche.map(x => `<p>${esc(x)}</p>`).join('')}</div>` : '');
+$('#prompts-intro').textContent = D.moi.prompts_intro;
+$('#prompts-in').innerHTML = D.moi.prompts.map(p => `<div class="box"><div class="lbl">${esc(p.id)}</div><h3>${esc(p.titre)}</h3><p>${esc(p.source)}</p><p><b style="color:var(--ink)">Planches à joindre :</b> ${esc(p.joindre)}</p><textarea class="pr" id="pr-${p.id}" readonly aria-label="Prompt ${esc(p.id)}">${esc(p.prompt)}</textarea><div class="row"><button type="button" data-copy="pr-${p.id}">Copier ce prompt</button><span class="ok"></span></div></div>`).join('');
+
+const so = D.solaris, tb = (h, rows) => `<div class="tbl"><table><tr>${h.map(x => `<th>${x}</th>`).join('')}</tr>${rows.join('')}</table></div>`;
+let sh = '';
+if ((so.outils_analyse || []).length) sh += `<div class="box"><h3>Pour étudier le monde et les personnages</h3>${tb(['Outil', 'Ce qu\'il fait', 'Utilisable', 'Avant lundi'], so.outils_analyse.map(o => `<tr><td>${esc(o.nom)}<br><span class="src">${esc(o.ou)}</span></td><td>${esc(o.fait)}</td><td>${esc(o.applicable)}</td><td>${o.avant_lundi ? 'oui' : 'non'}</td></tr>`))}</div>`;
+if ((so.premiere_passe || []).length) sh += `<details><summary>Ce qu'une première lecture avec ces méthodes fait ressortir</summary>${facts(so.premiere_passe, 'sujet', 'constat')}</details>`;
+if ((so.dataviz || []).length) sh += `<div class="box"><h3>Pour les outils de données du site</h3>${tb(['Besoin', 'Composant', 'Remarque'], so.dataviz.map(o => `<tr><td>${esc(o.besoin)}</td><td>${esc(o.composant)}<br><span class="src">${esc(o.ou)}</span></td><td>${esc(o.remarque)}</td></tr>`))}${so.kit_plus_recent ? `<p><b style="color:var(--ink)">Plus récent que le kit déjà copié :</b> ${esc(so.kit_plus_recent)}</p>` : ''}</div>`;
+$('#solaris-in').innerHTML = sh || '<p class="empty">L\'enquête n\'a pas encore rendu ses résultats.</p>';
+
+GROUPS.forEach(([g, , qs]) => {
+  $('#q-' + g).innerHTML = qs.length ? qs.map(q => {
+    const type = q.multi ? 'checkbox' : 'radio';
+    return `<div class="box q" id="${q.id}"><span class="id">${esc(q.id)}</span><h3>${esc(q.titre)}</h3><p>${esc(q.contexte)}</p>${q.conseil ? `<p class="advice"><b>Mon conseil</b>${esc(q.conseil)}</p>` : ''}
+    ${q.multi ? '<p class="lede">Plusieurs réponses possibles.</p>' : ''}
+    ${q.o.map(o => `<label class="opt" for="${q.id}-${o.k}"><input type="${type}" name="${q.id}" id="${q.id}-${o.k}" value="${o.k}"><span class="k">${o.k}</span><span><span class="l">${esc(o.l)}${o.r ? '<span class="rec">mon conseil</span>' : ''}</span><span class="d">${esc(o.d)}</span></span></label>`).join('')}
+    <textarea class="free" id="${q.id}-libre" placeholder="Autre chose, une nuance, une idée…" aria-label="Remarque libre pour ${esc(q.id)}"></textarea></div>`;
+  }).join('') : '<p class="empty">L\'enquête n\'a pas encore rendu ses résultats.</p>';
+});
+function load() {
+  ALL.forEach(q => { const s = S[q.id] || {}; (s.sel || []).forEach(k => { const e = document.getElementById(q.id + '-' + k); if (e) e.checked = true; }); const t = document.getElementById(q.id + '-libre'); if (t) t.value = s.txt || ''; });
+}
+function read() {
+  ALL.forEach(q => { S[q.id] = { sel: [...document.querySelectorAll(`input[name="${q.id}"]:checked`)].map(e => e.value), txt: (document.getElementById(q.id + '-libre') || {}).value || '' }; });
+  save();
+  const done = ALL.filter(q => S[q.id].sel.length || S[q.id].txt.trim()).length;
+  $('#count').textContent = done + ' réponse' + (done > 1 ? 's' : '') + ' sur ' + ALL.length;
+  let t = 'SECOND EARTH · mes choix du 27/11/2026\n';
+  GROUPS.forEach(([, name, qs]) => { if (!qs.length) return; t += '\n== ' + name + ' ==\n';
+    qs.forEach(q => { const s = S[q.id]; t += '\n' + q.id + ' · ' + q.titre + '\n';
+      if (!s.sel.length && !s.txt.trim()) t += '→ pas de réponse\n';
+      s.sel.forEach(k => { const o = q.o.find(x => x.k === k); t += '→ ' + k + ' · ' + o.l + (o.r ? ' (conseil de Claude)' : '') + '\n'; });
+      if (s.txt.trim()) t += '→ remarque : ' + s.txt.trim() + '\n'; }); });
+  $('#out').value = t;
+}
+function copy(el, sayEl) {
+  el.select();
+  const done = () => { sayEl.textContent = 'Copié'; setTimeout(() => sayEl.textContent = '', 2500); };
+  try { navigator.clipboard.writeText(el.value).then(done).catch(() => { sayEl.textContent = 'Le texte est sélectionné : fais Ctrl + C'; }); } catch (e) { sayEl.textContent = 'Le texte est sélectionné : fais Ctrl + C'; }
+}
+document.addEventListener('input', read);
+document.addEventListener('click', e => { const b = e.target.closest('[data-copy]'); if (b) copy(document.getElementById(b.dataset.copy), b.nextElementSibling); });
+$('#copy').addEventListener('click', () => { read(); copy($('#out'), $('#said')); });
+$('#advise').addEventListener('click', () => {
+  ALL.forEach(q => { if (!document.querySelector(`input[name="${q.id}"]:checked`)) q.o.filter(o => o.r).forEach(o => document.getElementById(q.id + '-' + o.k).checked = true); });
+  read(); $('#said').textContent = 'Mes conseils sont cochés là où tu n\'avais pas répondu.'; setTimeout(() => $('#said').textContent = '', 4000);
+});
+load(); read();
+</script>

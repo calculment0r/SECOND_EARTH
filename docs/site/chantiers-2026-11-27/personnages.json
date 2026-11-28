@@ -1,0 +1,189 @@
+{
+ "date": "27/11/2026",
+ "statut": "proposé : tout ce qui suit est une proposition, rien n'est écrit dans le récit",
+ "constats": [
+  {"sujet": "Seed, au début", "fait": "Seed naît à 15 ans apparents avec 23 % de la mémoire d'Elena. Elle ne peut pas parler parce que ses cordes vocales n'ont jamais bougé. Elle a des fragments de souvenirs, mais pas les connaissances d'Elena.", "source": "docs/film/00-recit-v2.md, Acte I : « Elle ne peut pas parler : ses cordes vocales n'ont jamais bougé » ; « Pas sa voix. Pas ses connaissances. Pas ses trente-quatre années. »"},
+  {"sujet": "Seed, l'idée d'être un outil", "fait": "Seed lit sur la tablette « Rôle : preuve de concept. Cobaye. » et pleure. Cette idée n'est plus jamais reprise pendant le voyage : elle revient seulement avec le message de PERSEPHORA à l'Acte IX.", "source": "docs/film/00-recit-v2.md, Acte I (« Seed réalise à ce moment qu'elle est un outil ») et Acte IX (« SUJET TEST : SEED. INCOMPLET, NON QUALIFIÉ ») ; même lecture dans docs/film/rapport-script-doctor.html, partie 1.2"},
+  {"sujet": "Seed, ce qu'elle fait elle-même", "fait": "Au milieu du film, Seed agit quatre fois : elle garde la plante de la caverne, elle donne l'organisme à Rob1, elle l'enterre avec un petit rituel, elle fait demi-tour pour sauver le rongeur. Le round 17 a décidé de mettre ces quatre choix en avant, sans scène ajoutée.", "source": "docs/bible/00-registre-des-decisions.md, round 17, D01 ; docs/film/00-recit-v2.md, Actes III, IV, VI"},
+  {"sujet": "Seed, ce qui lui arrive sans qu'elle le choisisse", "fait": "Plusieurs grands moments lui arrivent : la naissance, la chute du XENOPOD, la horde qui l'emporte, la guérison dans Rob4 où elle est inconsciente.", "source": "docs/film/rapport-script-doctor.html, partie 02 (« Elle naît (subi), le XENOPOD tombe (subi), la horde l'emporte (subi), le cocon la guérit ») ; docs/film/00-recit-v2.md, Actes I, VI, VII"},
+  {"sujet": "Seed, à la fin", "fait": "Seed a dit ses quatre mots : « Rob ! » face à la horde, « Seed » guérie, « Korê » aux lacs, « Je suis Seed » devant Rob1 après le mensonge. Elle porte des cicatrices lumineuses et parle avec Rob1 par la lumière.", "source": "docs/film/00-recit-v2.md, Actes VI, VII, VIII, IX ; docs/bible/00-registre-des-decisions.md, round 17, D04 et D05"},
+  {"sujet": "Seed et les animaux", "fait": "Le récit a déjà plusieurs moments où Seed sent les animaux avant la machine : elle lève la tête vers l'ombre du col avant Rob1, elle apprivoise les rongeurs, elle réussit leur sifflement seule à la rivière rouge. Mais c'est aussi en suivant un animal qu'elle mange le fruit toxique.", "source": "docs/film/00-recit-v2.md, Acte IV (« Seed a levé la tête avant Rob1 »), Acte V (les rongeurs), Acte VII (le sifflement ; « L'animal le mange tranquillement, sans danger apparent »)"},
+  {"sujet": "Les rongeurs ont un langage d'alarme", "fait": "Dans le monde, les rongeurs de la forêt bioluminescente ont des sifflements d'alarme différents selon le danger, et la fiche du biome dit que Seed apprendra à les imiter.", "source": "docs/bible/14-biome-foret-bioluminescente.md, cartel 5 « Parler en sifflant » ; data/bestiaire.json, rongeurs de Korê"},
+  {"sujet": "Seed et les sons, les sens", "fait": "Le récit ne dit rien sur la façon dont Seed reçoit les sons, la lumière ou le toucher à son réveil. Il n'y a pas d'alarme dans la scène du réveil.", "source": "docs/film/00-recit-v2.md, Acte I, réveil dans l'incubateur"},
+  {"sujet": "La musique des plantes", "fait": "La seule musique de la nature dans le récit est celle des plantes de la caverne : des tiges qui vibrent au moindre courant d'air. Seed ne la reconnaît pas, elle la découvre.", "source": "docs/film/00-recit-v2.md, Acte III (« vibrent au moindre courant d'air et font une musique envoûtante »)"},
+  {"sujet": "Rob1, ce pour quoi il est fait", "fait": "Le récit le dit à la fois « le cerveau de toute la mission, le plus évolué des Robs » et « conçu comme robot d'accompagnement pour Seed ». Le protocole prévoyait une personne adulte complète : à la fin, « Seed n'est pas arrivée à terme. Pas assez pour un adulte complet ». Rob1 se retrouve donc avec quelqu'un pour qui il n'a pas été prévu.", "source": "docs/film/00-recit-v2.md, Acte I, Acte II (premier paragraphe), Acte X"},
+  {"sujet": "Rob1, ce qui change chez lui", "fait": "Le récit pose une suite de petits signes : il efface la ligne « le sujet ne porte pas de charge » (II), il prend l'énergie de Rob2 en premier (III), il efface « temps perdu : 4 min » (IV), il archive le sourire « IMPORTANT » et écrit son nom (V), il cache les rations et le réveil de Rob3 (V), il est « très agité » et revoit la chute (VI), il apprend la lumière de Rob4 (VII), il rit et nomme la planète (VIII), il efface « rapport à envoyer » (VIII), il ment (IX), il change CAIN (X).", "source": "docs/film/00-recit-v2.md, passages marqués [ajout du 20/11] ; docs/bible/00-registre-des-decisions.md, round 17, D07, D08, D10"},
+  {"sujet": "Rob1, la grammaire de son journal", "fait": "Le journal (proposé) fait passer Rob1 de phrases sans sujet à « Seed », puis au premier « je » à la mer, puis au « nous » ; le mensonge est écrit dans la langue sans sujet du début.", "source": "docs/film/21-journal-de-rob1.md, « Le registre de la voix »"},
+  {"sujet": "Rob1, la faute", "fait": "Le XENOPOD bascule à cause des mouvements de Rob1 à l'intérieur, et il « réalise que tout est de sa faute ». Le round 17 a ajouté un rappel de deux secondes pendant la horde et le flash de la chute à la fin.", "source": "docs/film/00-recit-v2.md, Acte I (« Chaque mouvement fait légèrement basculer la structure ») et Acte VI ; docs/bible/00-registre-des-decisions.md, round 17, D09"},
+  {"sujet": "Rob1, porté par Seed", "fait": "L'inversion existe déjà : Seed porte Rob1 vers Rob2, l'écran affiche « PROTOCOLE : LE SUJET NE PORTE PAS DE CHARGE » et il l'efface. Ce portage revient dans les souvenirs de Rob1 au moment du mensonge.", "source": "docs/film/00-recit-v2.md, Acte II et Acte IX (« Seed qui le porte sur son dos pour rejoindre Rob2 »)"},
+  {"sujet": "Rob1 seul avec l'incubateur pendant le séisme", "fait": "Le récit dit que le séisme « provoque une erreur » et que « l'incubation s'arrête », sans dire où est Rob1 ni ce qu'il fait. Le XENOPOD tombe plus tard, au jour 2 environ, pendant que Seed est dehors et Rob1 dedans ; Rob1 saute dehors avec un sac de nourriture.", "source": "docs/film/00-recit-v2.md, Acte I ; docs/bible/02-chronologie-du-voyage.md, jours 0 à 2"},
+  {"sujet": "Rob2", "fait": "Rob2 est trouvé au fond d'une crevasse ouverte par le séisme : il suit son protocole, tourne en rond, vide sa batterie. On le sauve, il s'assemble avec Rob1, et la fusion lui prend de l'énergie. Le round 17 décide qu'il reste une machine.", "source": "docs/film/00-recit-v2.md, Actes II et III ; docs/bible/00-registre-des-decisions.md, round 17, D07, D12, D13"},
+  {"sujet": "Rob3", "fait": "Rob3 est trouvé éteint, couvert de mousse, son robopod habité par des rongeurs. On le nettoie un soir, il se réveille dans la nuit, il s'assemble pendant la horde, et la fusion fait perdre le chargeur solaire. Il reste une machine.", "source": "docs/film/00-recit-v2.md, Actes V et VI ; docs/bible/00-registre-des-decisions.md, round 17, D12, D13, D21"},
+  {"sujet": "Rob4", "fait": "Rob4 n'est pas cherché pour être assemblé : on va vers lui pour sauver Seed. Il est devenu « d'ici », parle par la lumière, guérit Seed. C'est le seul Rob qui change, avec Rob1.", "source": "docs/film/00-recit-v2.md, Acte VII ; docs/bible/00-registre-des-decisions.md, round 17, D07"},
+  {"sujet": "Où la quête se répète", "fait": "Les rencontres de Rob2 et de Rob3 suivent le même déroulé : on arrive à la balise, le Rob est en panne à cause de Korê (séisme, mousse), on le remet en marche, il s'assemble, et l'assemblage coûte quelque chose. Rob4 sort de ce déroulé : pas de panne, pas d'assemblage, c'est lui qui donne.", "source": "docs/film/00-recit-v2.md, Actes II à VII ; docs/bible/00-registre-des-decisions.md, round 17, D12"},
+  {"sujet": "Ce qui ne se répète pas déjà", "fait": "La raison d'avancer change à chaque étape : d'abord rassembler les Robs pour sortir le XENOPOD, puis aller chercher de l'énergie chez Rob3, puis sauver la vie de Seed chez Rob4. Rob4 n'était pas une étape prévue : à l'Acte I, il « ne peut pas venir à eux ».", "source": "docs/film/00-recit-v2.md, Acte I (fin), Acte IV (« La décision est prise d'aller vers Rob3 »), Acte V (« retourner au XENOPOD »), Acte VII (« Il faut y aller. Maintenant. »)"},
+  {"sujet": "Les traversées", "fait": "Le récit de départ décrit la même formule de voyage quatre fois. Dans le film de 25 min, ces traversées deviennent des cartons de jour ; le round 17 refuse tout raccourci de plus.", "source": "docs/film/rapport-script-doctor-verification.html, ligne « La même didascalie de voyage quatre fois » ; docs/bible/00-registre-des-decisions.md, round 17, D02"},
+  {"sujet": "La fin, ce sur quoi elle repose", "fait": "La fin tient sur trois actes de Rob1 : il ment (« NON VIABLE »), il casse le communicateur, il modifie CAIN (14 ans, 21 %). Le Registre dit que le mensonge protège un monde complet, et que Rob1 change CAIN après un flash du sourire de Seed, pas à cause de la charte.", "source": "docs/bible/00-registre-des-decisions.md, « Le sens de la fin » et round 13, A07 ; docs/film/00-recit-v2.md, Actes IX et X"},
+  {"sujet": "La fin, la raison du mensonge dans le texte", "fait": "Dans le récit, la seule raison écrite du mensonge est que les humains jugent Seed incapable (« Mais lui, Rob1, l'a vue »). Ce que la Terre ferait d'une réponse « VIABLE » n'est jamais montré : la Phase 3 (la colonie) n'apparaît qu'une fois, dans le rapport menteur.", "source": "docs/film/00-recit-v2.md, Acte IX (« RECOMMANDATION : PHASE 3 ABANDONNÉE ») ; docs/bible/34-glossaire.md, ligne « Phase 1, 2, 3 : collecte ; viabilité humaine ; colonie »"},
+  {"sujet": "La fin, ce qui la prépare déjà", "fait": "Le round 17 prépare le mensonge : Rob1 cache des choses pendant le voyage, il regarde l'émetteur au retour, il efface « VIVABLE : OUI ». Il prépare CAIN : Rob1 regarde les 23 % de Seed avant de taper 21 %, et le mot « INGÉNIEUR » s'efface. La scène finale ne doit pas s'allonger.", "source": "docs/bible/00-registre-des-decisions.md, round 17, D10, D19, D22, D24"},
+  {"sujet": "La fin, ce que sait Seed", "fait": "Seed ne lit que « Communicateur défectueux. Réparation impossible. » Le récit dit : « Elle sait. Pas les détails. » Puis elle dit « Je suis Seed ».", "source": "docs/film/00-recit-v2.md, Acte IX, fin"},
+  {"sujet": "Les règles qui bornent les propositions", "fait": "Quatre mots parlés et rien d'autre ; Rob1 ne parle jamais ; Rob2 et Rob3 restent des machines ; les assemblages sont prévus et coûtent ; pas de scène ajoutée au milieu ; pas de raccourci de voyage ; la scène finale ne s'allonge pas.", "source": "docs/bible/00-registre-des-decisions.md, round 13 (A02, A07) et round 17 (D01, D02, D05, D07, D10, D12, D13)"}
+ ],
+ "questions": [
+  {
+   "id": "P01",
+   "titre": "Ce qui change chez Seed : quel fil suivre ?",
+   "contexte": "Aujourd'hui, Seed va de « je suis un outil » (la larme) à « Je suis Seed ». Entre les deux, l'idée d'être un outil disparaît, et plusieurs grands moments lui arrivent sans qu'elle les choisisse. Les quatre choix du round 17 restent dans toutes les réponses ci-dessous.",
+   "conseil": "Je conseille C. Il relie tes deux idées (mémoire implantée et sens neufs) en un seul fil : elle sait des choses qu'elle n'a jamais senties, et le voyage les lui fait sentir. Cela donne une raison de vivre chaque biome, et « Je suis Seed » devient la fin de ce fil : elle n'est plus le souvenir d'Elena, elle est celle qui a senti Korê.",
+   "o": [
+    {"k": "A", "l": "Les sens : du bruit qui fait mal à l'écoute", "d": "Au début tout est trop fort (l'alarme, la lumière, le vent). Au milieu elle apprend à trier : le sifflement des rongeurs, l'ombre qu'elle voit avant Rob1. À la fin elle écoute le monde et répète le cri des oiseaux. Se voit dans les Actes I, IV, V, VIII.", "r": false},
+    {"k": "B", "l": "L'outil qui choisit", "d": "Chaque choix du milieu est montré comme un refus discret de son rôle de cobaye (garder, enterrer, sauver). Demande que le mot « cobaye » revienne une fois pendant le voyage (voir P11). Reste proche du récit actuel.", "r": false},
+    {"k": "C", "l": "Elle sait sans avoir senti, puis elle sent", "d": "Les 23 % d'Elena lui donnent des images sans sensation (une forêt, des fourmis, une musique). Chaque biome lui donne la sensation qui manquait, parfois trop fort, parfois à tort (le fruit). Les visions de la fièvre opposent les deux. Se voit au réveil (I), à la musique (II ou III), aux rongeurs (V), au fruit et à la fièvre (VII), à « Je suis Seed » (IX).", "r": true},
+    {"k": "D", "l": "Garder le récit tel qu'il est", "d": "Rien ne change ; les quatre choix du round 17 portent seuls ce qui change chez elle.", "r": false}
+   ]
+  },
+  {
+   "id": "P02",
+   "titre": "Ce qui change chez Rob1 : quel fil suivre ?",
+   "contexte": "Le récit pose déjà une douzaine de petits signes chez Rob1 (lignes effacées, choses cachées, rire, mensonge). Le round 17 dit qu'il devient ce que Seed fait de lui. Tu ajoutes qu'il n'a pas été entraîné pour cette situation, qu'il est très analytique et qu'il doit inventer.",
+   "conseil": "Je conseille A. Le récit dit déjà qu'il était fait pour une adulte complète et qu'il reçoit une enfant qui ne parle pas : c'est la base de ton idée. Faire de chaque signe une invention (et non un simple trouble) prépare le mensonge et CAIN comme ses deux plus grandes inventions, sans allonger la fin.",
+   "o": [
+    {"k": "A", "l": "Celui qui doit inventer", "d": "Au début il improvise hors protocole (il coupe l'alarme, il ouvre la cuve, voir P03 et P04). Au milieu ses calculs ne suffisent plus : la racine qu'il n'a pas vue, la batterie vivante, le feu fait d'un arc électrique. À la fin il invente un mensonge et un enfant. Se voit aux Actes I, III, IV, V, IX, X.", "r": true},
+    {"k": "B", "l": "Celui qui répare sa faute", "d": "Tout part de la chute du XENOPOD qu'il a causée. Chaque protection de Seed rappelle cette faute (deux secondes pendant la horde, déjà validées). À la fin il protège Seed pour ne pas la perdre une deuxième fois. Plus sombre.", "r": false},
+    {"k": "C", "l": "Celui qui mesure, puis cesse de mesurer", "d": "Il chiffre tout (décibels, pourcentages, minutes). Peu à peu il garde des choses qui ne servent à rien : un sourire, une musique, une danse. À la fin il efface « OUI » : il refuse sa propre mesure. S'appuie sur le journal (proposé).", "r": false},
+    {"k": "D", "l": "Garder les signes actuels sans fil nouveau", "d": "Rien ne change ; les signes du round 17 suffisent.", "r": false}
+   ]
+  },
+  {
+   "id": "P03",
+   "titre": "L'alarme qui fait mal à Seed au réveil : où et comment ?",
+   "contexte": "Le récit ne dit rien des sens de Seed au réveil. Tu proposes qu'une simple alarme lui fasse peur ou mal aux oreilles, et que Rob1 la coupe tout de suite. Le round 17 demande des signes du changement de Rob1 au début.",
+   "conseil": "Je conseille A. C'est un geste court, sans mot, qui ouvre à la fois la fragilité de Seed et le premier geste de Rob1 hors protocole. Il ne demande aucune scène nouvelle, seulement un moment dans le réveil.",
+   "o": [
+    {"k": "A", "l": "Au réveil dans la cuve, Rob1 coupe l'alarme", "d": "L'alarme de fin d'incubation sonne ; Seed se recroqueville, les mains sur les oreilles ; Rob1 la coupe et, sur son écran, une ligne de protocole est barrée. C'est le premier signe de son changement, et la première chose que Seed apprend de lui : il la protège du bruit.", "r": true},
+    {"k": "B", "l": "Au réveil, mais Rob1 hésite d'abord", "d": "Il vérifie la règle avant de couper : quelques secondes de douleur pour Seed. Montre qu'au début il est encore la machine du protocole ; le premier vrai geste viendrait plus tard.", "r": false},
+    {"k": "C", "l": "Plus tard, au craquement du sinkhole", "d": "Le réveil reste calme ; c'est le grand bruit de la chute qui la blesse. Le geste de Rob1 se perd dans l'urgence.", "r": false}
+   ]
+  },
+  {
+   "id": "P04",
+   "titre": "Rob1 seul avec la machine pendant le séisme : qu'en fait-on ?",
+   "contexte": "Le récit dit seulement que le séisme cause une erreur et que l'incubation s'arrête. Il ne dit pas où est Rob1. Si ton idée voulait dire que Rob1 tombe dans le trou avec le XENOPOD, cela contredirait la scène validée du lancer de lumière depuis le bord (round 17, D18) et la suite du récit ; les réponses ci-dessous gardent donc la chute telle qu'elle est.",
+   "conseil": "Je conseille A. Rob1 seul face à la cuve, la nuit du séisme, peut faire son premier choix : ouvrir avant la fin plutôt que perdre l'enfant. Cela donne à Rob1 une part dans ce que Seed est (15 ans, 23 %), et prépare sans le dire le moment où il choisira 14 ans et 21 % pour CAIN.",
+   "o": [
+    {"k": "A", "l": "Il choisit d'arrêter et d'ouvrir la cuve", "d": "La machine s'affole ; aucune règle ne prévoit le cas ; Rob1 calcule, puis décide de sortir l'enfant maintenant. Son premier acte inventé. À la fin, ce choix trouve son écho dans CAIN : il refait volontairement ce qu'il a fait par nécessité.", "r": true},
+    {"k": "B", "l": "Il est seul et ne peut que regarder", "d": "La machine s'arrête d'elle-même ; Rob1 assiste, impuissant. Ce qui change chez lui commence plus tard, avec Seed. Reste plus près du récit.", "r": false},
+    {"k": "C", "l": "Cal précise ce qu'il voulait dire", "d": "Si l'idée était autre (par exemple Rob1 piégé avec la machine au fond du trou), il faut d'abord voir ce qu'elle déplace dans le récit et dans les décisions du round 17.", "r": false}
+   ]
+  },
+  {
+   "id": "P05",
+   "titre": "Seed qui porte Rob1 : jusqu'où aller ?",
+   "contexte": "Le récit a déjà la scène : Seed le porte vers Rob2, l'écran affiche que le sujet ne porte pas de charge, il efface la ligne. Tu as tourné en essai une version où il refuse et boude.",
+   "conseil": "Je conseille A. La bouderie donne à Rob1 une première émotion lisible, drôle et sans mot, et rend plus fort le moment où il efface la ligne. Le souvenir de ce portage revient déjà à la fin : il pèsera davantage.",
+   "o": [
+    {"k": "A", "l": "Il refuse, boude, puis accepte", "d": "Il marche seul, tombe, se détourne quand elle tend les bras ; puis il grimpe sur son dos et efface la ligne. Garde la scène du round 17 et la fait durer quelques plans.", "r": true},
+    {"k": "B", "l": "Garder seulement la ligne effacée", "d": "La scène reste comme écrite ; la bouderie va dans la marche du film de 55 min.", "r": false},
+    {"k": "C", "l": "Elle le porte une deuxième fois plus tard", "d": "Ajoute un retour de l'inversion (par exemple quand le tank surchauffe à la mer). Demande un moment de plus dans un acte déjà chargé.", "r": false}
+   ]
+  },
+  {
+   "id": "P06",
+   "titre": "La musique du vent dans les fleurs : où la placer ?",
+   "contexte": "Aujourd'hui la seule musique de la nature est celle des plantes de la caverne, que Seed découvre. Tu as tourné en essai un vent dans des massifs de fleurs qui fait de la musique, que Seed reconnaît sans l'avoir jamais entendue.",
+   "conseil": "Je conseille A. Placée avant la caverne, elle montre que Seed porte des souvenirs qu'elle n'a pas vécus (les 23 %), et la caverne devient un écho : la même musique, sous terre. Cela fait de la caverne un lieu qui lui parle, et pas seulement l'endroit où l'on récupère Rob2.",
+   "o": [
+    {"k": "A", "l": "Dans la marche vers Rob2, avant la caverne", "d": "Au pied des tours, le vent passe dans les fleurs ; Seed se fige, fredonne sans voix, comme si elle connaissait. Rob1 cherche la source dans ses données et ne trouve rien. Puis la caverne reprend la musique.", "r": true},
+    {"k": "B", "l": "La fondre avec les plantes de la caverne", "d": "Pas de nouveau moment : dans la caverne, Seed reconnaît la musique au lieu de la découvrir. Plus court ; perd le contraste entre dehors et dessous.", "r": false},
+    {"k": "C", "l": "Dans la jungle de l'Acte I", "d": "Elle l'entend au premier matin, avant les papillons. Ouvre le film sur ses sens, mais l'Acte I est déjà long.", "r": false}
+   ]
+  },
+  {
+   "id": "P07",
+   "titre": "La danse de Rob1 : à quel moment ?",
+   "contexte": "Le récit n'a pas de danse. Il a deux moments de joie de Rob1 : une animation de rire aux lacs salés quand il entend « Korê », et une animation joyeuse quand le XENOPOD sort du trou. Tu as tourné en essai une danse de Rob1.",
+   "conseil": "Je conseille A. Aux lacs, la danse est le geste le plus inutile possible pour une machine analytique, au moment où il fait une autre chose « pas dans le protocole » : nommer la planète. Elle se place juste avant qu'il cache le rapport, ce qui rend la suite plus lourde.",
+   "o": [
+    {"k": "A", "l": "Aux lacs salés, avec le cri « Korê »", "d": "Les oiseaux décollent, Rob1 rit puis bouge au rythme du cri ; Seed rit sans son. Quelques secondes ; la scène reste courte.", "r": true},
+    {"k": "B", "l": "Au feu, chez Rob3", "d": "Il imite la danse des rongeurs pour faire sourire Seed. Ajoute de la douceur à la veillée, avant la catastrophe de la horde.", "r": false},
+    {"k": "C", "l": "Quand le XENOPOD sort du trou", "d": "Remplace l'animation joyeuse. Rend plus dur le moment, quelques minutes après, où il lit l'abandon de Seed.", "r": false}
+   ]
+  },
+  {
+   "id": "P08",
+   "titre": "L'instinct de Seed avec les animaux : un fil ou des touches ?",
+   "contexte": "Seed ne parle presque pas ; tu veux que cela lui donne un instinct avec les animaux. Le récit a déjà l'ombre qu'elle voit avant Rob1, les rongeurs, le sifflement réussi, et le fruit qu'elle mange en suivant un animal. La fiche du biome dit que les rongeurs ont des sifflements d'alarme et qu'elle apprendra à les imiter.",
+   "conseil": "Je conseille A. Le fil existe presque : il suffit de le rendre visible et de garder le fruit comme sa limite. L'instinct qui la sauve et l'instinct qui la trompe donnent du poids à ce qu'elle apprend, et le sifflement d'alarme répond à l'alarme qui lui faisait mal au début.",
+   "o": [
+    {"k": "A", "l": "Un fil continu, avec une limite", "d": "Elle sent l'ombre avant Rob1 (IV), comprend les rongeurs et leur alarme (V, VI), suit un animal vers le fruit et se trompe (VII), répond aux oiseaux (VIII). L'alarme du début, qui faisait mal, devient un son qu'elle comprend.", "r": true},
+    {"k": "B", "l": "Seulement les rongeurs et les oiseaux", "d": "Deux moments forts, sans relier le fruit à l'instinct. Plus simple ; le fruit reste un acte de faim.", "r": false},
+    {"k": "C", "l": "Garder tel quel", "d": "Les moments existent déjà ; aucun lien n'est souligné.", "r": false}
+   ]
+  },
+  {
+   "id": "P09",
+   "titre": "Comment rendre chaque rencontre de Rob différente ?",
+   "contexte": "Rob2 et Rob3 suivent le même déroulé : en panne à cause de Korê, remis en marche, assemblés, avec un coût. Rob4 en sort déjà. Le round 17 interdit de fondre les voyages, d'ajouter une scène au milieu, et garde Rob2 et Rob3 comme machines.",
+   "conseil": "Je conseille A. On ne change pas ce qui arrive, on change ce que chaque rencontre fait à Seed et à Rob1. Rob2 est le piège (le protocole qui tourne en rond), Rob3 est la maison (la nature qui habite la machine), Rob4 est le don (la machine devenue d'ici). Trois sens différents pour trois rencontres, avec les mêmes scènes.",
+   "o": [
+    {"k": "A", "l": "Le piège, la maison, le don", "d": "Rob2 : Seed découvre le monde du dessous et la Créature (la nature a ses règles) ; Rob1 voit en Rob2 ce qu'il serait sans elle, et lui prend son énergie. Rob3 : Seed trouve des amis et perd leur abri ; Rob1 cache les rations et le réveil, et perd le chargeur. Rob4 : Seed trouve son nom et garde des cicatrices ; Rob1 doit la confier à un autre et dit « je ».", "r": true},
+    {"k": "B", "l": "Ne jouer que sur ce que cela coûte à Rob1", "d": "Énergie de Rob2, chargeur de Rob3, Seed confiée à Rob4 : trois pertes de plus en plus grandes pour lui. Plus simple, mais Seed reste la même d'une rencontre à l'autre.", "r": false},
+    {"k": "C", "l": "Changer la façon d'arriver", "d": "Rob2 absent qu'on cherche, Rob3 présent mais éteint, Rob4 qui vient à eux par la mer. C'est déjà presque le cas ; on le marque à l'image.", "r": false}
+   ]
+  },
+  {
+   "id": "P10",
+   "titre": "Comment faire tenir la fin ?",
+   "contexte": "La fin tient sur le mensonge et sur CAIN. Le round 17 prépare déjà le mensonge (choses cachées, rapport effacé) et CAIN (les 23 % regardés avant 21 %). Mais le récit ne montre jamais ce que la Terre ferait d'une réponse « VIABLE » : la colonie n'est nommée que dans le rapport menteur.",
+   "conseil": "Je conseille A. C'est l'ajout le plus petit et le plus utile : une ligne d'écran à l'Acte I, que Seed lit avec le mot « cobaye ». Le spectateur sait alors ce que « OUI » déclencherait, et le mensonge se lit sans explication. La scène finale ne s'allonge pas.",
+   "o": [
+    {"k": "A", "l": "Montrer tôt ce que « VIABLE » amènerait", "d": "Sur la tablette de l'Acte I : « Phase 3 : colonie · terraformation ». À l'Acte IX, quand Rob1 efface « OUI », on sait ce qu'il empêche. Exige une ligne à l'Acte I ; rien d'autre.", "r": true},
+    {"k": "B", "l": "Faire du premier rapport un miroir du dernier", "d": "Le rapport d'échec de l'Acte I est filmé comme le mensonge : même écran, même mise en page, mais vrai. À la fin on reconnaît la forme. Exige de soigner l'écran de l'Acte I.", "r": false},
+    {"k": "C", "l": "Préparer CAIN par ce qui est incomplet et vit", "d": "Le rongeur à l'oreille abîmée, Seed à 23 %, l'organisme qu'on croit mort : tout ce qui est incomplet et vivant. Rob1 l'archive à chaque fois. Exige un plan de plus sur l'oreille au feu et dans l'abri intact.", "r": false}
+   ]
+  },
+  {
+   "id": "P11",
+   "titre": "Le mot « cobaye » doit-il revenir pendant le voyage ?",
+   "contexte": "Seed lit qu'elle est un cobaye à l'Acte I, puis ce sujet disparaît jusqu'à l'Acte IX. Le round 17 refuse les scènes ajoutées au milieu, donc seul un écran ou un geste dans une scène existante est possible.",
+   "conseil": "Je conseille A. Une ligne qu'elle revoit chez Rob3, au moment où Rob1 l'appelle par son nom pour la première fois, met côte à côte « cobaye » et « Seed ». Le spectateur voit ce qui change chez les deux en un seul plan.",
+   "o": [
+    {"k": "A", "l": "Oui, au feu chez Rob3", "d": "Quand le journal écrit son nom, l'ancienne ligne « rôle : cobaye » s'efface à l'écran. Un plan, dans une scène qui existe.", "r": true},
+    {"k": "B", "l": "Oui, à la mer, guérie", "d": "Elle voit la ligne sur l'écran de Rob1 et la touche ; il l'efface. Rapproche le moment de « Seed ».", "r": false},
+    {"k": "C", "l": "Non", "d": "Le sujet revient seulement avec le message de PERSEPHORA, comme aujourd'hui.", "r": false}
+   ]
+  },
+  {
+   "id": "P12",
+   "titre": "Que contiennent les 23 % de mémoire ?",
+   "contexte": "Le récit dit qu'elle a des fragments et des flashs, mais pas les connaissances d'Elena. Ton idée dit que sa mémoire a été implantée et qu'elle découvre la nature sans l'avoir jamais ressentie. Les deux tiennent ensemble si les 23 % sont des images et des sons, sans savoir.",
+   "conseil": "Je conseille A. Cela garde la phrase du récit (« Pas ses connaissances ») et rend possibles ta musique reconnue et ses souvenirs de forêt. Les visions de la fièvre montrent déjà ce genre de souvenirs : la forêt, les fourmis, le parc.",
+   "o": [
+    {"k": "A", "l": "Des images et des sons, sans savoir", "d": "Elle reconnaît une musique, une forêt, un geste, sans savoir les nommer. Ce qu'elle ressent à Korê remplit ces images vides.", "r": true},
+    {"k": "B", "l": "Des savoirs sans souvenirs", "d": "Elle sait des choses (ce qui se mange, comment marche une plante) sans savoir d'où. Contredit en partie « Pas ses connaissances » : demande de réécrire la phrase.", "r": false},
+    {"k": "C", "l": "Ne pas préciser", "d": "Les 23 % restent un mystère ; la musique reconnue devient moins claire.", "r": false}
+   ]
+  },
+  {
+   "id": "P13",
+   "titre": "Rob4 : que coûte-t-il à Rob1 ?",
+   "contexte": "Rob2 coûte une batterie, Rob3 un chargeur. Rob4 ne coûte rien de matériel : il guérit Seed. Le récit dit que Rob1 hésite avant de la placer dans la membrane et qu'il attend sur la plage pendant des heures.",
+   "conseil": "Je conseille A. Le prix de Rob4 n'est pas une pièce : c'est d'avoir à confier Seed à un autre, et de voir dans Rob4 ce que lui-même devient. Cela prépare le mensonge : Rob1 comprend qu'on peut être « d'ici » et cesser d'obéir.",
+   "o": [
+    {"k": "A", "l": "Il doit lâcher Seed", "d": "Rob1 n'a plus de solution à lui ; il la confie et attend, impuissant, toute une nuit. Son premier « je » du journal tombe là. Aucune scène ajoutée : la nuit d'attente existe.", "r": true},
+    {"k": "B", "l": "Le tank s'abîme pour de bon", "d": "Le moteur poussé trop loin ne revient pas entier : un coût matériel comme les deux autres. Garde le même schéma que Rob2 et Rob3.", "r": false},
+    {"k": "C", "l": "Rien de plus", "d": "Rob4 reste un don, sans coût pour Rob1.", "r": false}
+   ]
+  }
+ ],
+ "non_tranche": [
+  "Les scènes que Cal a tournées en essai (bouderie, danse, vent dans les fleurs) : aucun fichier du dépôt ne les décrit.",
+  "Le contenu des 23 % de mémoire d'Elena : le récit dit « fragments » et « Pas ses connaissances », rien de plus.",
+  "La façon dont Seed reçoit les sons, la lumière et le toucher à la naissance : le récit n'en dit rien.",
+  "Où est Rob1 et ce qu'il fait pendant le séisme de l'Acte I : le récit ne le dit pas.",
+  "Ce que la Terre ou PERSEPHORA feraient d'une réponse « VIABLE » : seule la ligne du glossaire dit que la Phase 3 est la colonie ; le récit ne le montre pas.",
+  "Ce pour quoi Rob1 a été conçu exactement : le récit dit à la fois « le cerveau de toute la mission » et « robot d'accompagnement pour Seed », et le protocole prévoyait une adulte complète.",
+  "Pourquoi PERSEPHORA confie la décision à Rob1 après l'échec : le rapport de script-doctor le note comme fragile, aucun round ne le tranche.",
+  "Si Seed comprend un jour ce qu'a fait Rob1 au-delà de « Elle sait. Pas les détails. »"
+ ]
+}

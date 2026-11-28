@@ -1,0 +1,118 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compte rendu ALLY</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&family=Azeret+Mono&display=swap"><style>:root{color-scheme:dark;--bg:#0a0d0b;--panel:#101413;--ink:#e6eae7;--body:#c9d2cd;--ink3:#7c8884;--cy:#b9cfd8;--or:#e0674a;--line:rgba(185,207,216,.14)}
+body{margin:0;background:var(--bg);color:var(--body);font:16px/1.65 'Chakra Petch',system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:40px max(16px,env(safe-area-inset-left,0px)) 90px}
+h1{font-size:34px;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;margin:0 0 10px}
+h2{font-size:22px;color:var(--cy);text-transform:uppercase;letter-spacing:.06em;margin:40px 0 10px}
+h3{font-size:17px;color:var(--ink);margin:26px 0 6px}
+strong{color:var(--ink)} code{font:13px 'Azeret Mono',ui-monospace,monospace;background:#151a18;padding:1px 6px;border-radius:5px;color:var(--ink);overflow-wrap:anywhere}
+a{color:#f0b49b;overflow-wrap:anywhere} hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+li{margin:4px 0} ol>li::marker{color:var(--or)} ul>li::marker{color:var(--or)}</style><main><h1>Compte rendu ALLY</h1>
+<p>Session Claude sur l'ordinateur de Cal (machine « Ally »), du 25 au 28 novembre 2026. Branche <code>claude/beautiful-goldberg-x0to5u</code> du dépôt <code>calculment0r/SECOND_EARTH</code>. Écrit le 28/11 pour l'audit croisé avec les autres sessions.</p>
+<p>Ce fichier dit : ce qui est fait, où c'est, ce qui reste, et les points où ce travail peut contredire celui d'une autre session.</p>
+<hr>
+<h2>1. Ce qui est fait</h2>
+<h3>1.1 L'inventaire des images et des vidéos (25/11)</h3>
+<ul>
+<li><strong>98 vidéos et 60 images</strong> relevées dans <code>C:\SECOND EARTH\VISUAL</code> (dossiers FAUNE_FLORE, SEED, SPACE, SECOND EARTH PANO). Pour chacune : mesures, description, plans et minutage, personnages, lieu, couleurs, état (bon / bon en partie / raté), meilleurs moments, usages possibles.</li>
+<li>Résultat : vidéos <strong>46 bonnes, 50 bonnes en partie, 2 ratées</strong> (<code>15_grotte_bioluminescente</code>, <code>18_la_musique_de_rob1</code>) ; images <strong>35 bonnes, 25 bonnes en partie</strong>.</li>
+<li>Dans le dépôt : <code>media/inventaire/inventaire.json</code>, <code>media/inventaire/vignettes/</code> (158), <code>media/inventaire/index.html</code> (la page avec filtres), <code>media/inventaire/outils/</code> (les scripts et la grille de visionnage).</li>
+<li>Méthode : images fixes toutes les 2 secondes, lues par 8 sous-agents. Le son n'a pas été écouté. Un défaut de mouvement entre deux images peut avoir échappé.</li>
+<li><strong>Coût</strong> : environ 2 millions de jetons, tout le forfait Fable de Cal en 15 minutes. Règle gardée en mémoire depuis : annoncer le coût et demander avant de lancer plusieurs sous-agents ; jamais de session ni de sous-agent sur Fable.</li>
+</ul>
+<h3>1.2 Les médias en ligne</h3>
+<ul>
+<li><strong>Cloudflare R2</strong>, espace <code>nirvalab</code>, adresse publique <code><a href="https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/">https://pub-34c30250aeb24f53b99da979a52a6c52.r2.dev/</a></code> :</li>
+<ul>
+<li>les <strong>98 vidéos</strong> sous <code>second-earth/video/&lt;dossier&gt;/&lt;nom&gt;.mp4</code> (fichiers d'origine, seulement réorganisés pour démarrer vite sur le web), avec une image d'attente chacune sous <code>second-earth/affiche/&lt;dossier&gt;/&lt;nom&gt;.jpg</code> ;</li>
+<li>les <strong>60 panoramiques</strong> sous <code>second-earth/pano/&lt;nom&gt;.jpg</code> (4 096 px de large au plus) et <code>second-earth/pano/original/&lt;nom&gt;.png</code>.</li>
+<li>Les adresses sont dans l'inventaire (<code>video_url</code>, <code>affiche_url</code>, <code>image_url</code>, <code>original_url</code>). Les 2 vidéos ratées sont en ligne mais n'ont pas d'adresse dans l'inventaire.</li>
+</ul>
+<li><strong>Showrunner</strong> (machine DGX2) : les 98 vidéos sont dans la bibliothèque Asset, Team « SECOND_EARTH_NICO_00 (1) », Workspace « Général », en trois dossiers : « SECOND EARTH · SEED » (avec les 2 panoramiques vidéo), « SECOND EARTH · SPACE », « SECOND EARTH · FAUNE FLORE ». Des copies plus anciennes de certaines vidéos étaient déjà dans ce Workspace hors dossier : doublons acceptés par Cal. Pas vérifié à l'écran dans Showrunner.</li>
+</ul>
+<h3>1.3 Les briefs pour Claude Design (25-26/11)</h3>
+<ul>
+<li><code>docs/site/BRIEF-CLAUDE-DESIGN.md</code> : le tronc commun (le projet, le matériel, neuf pages avec une chose à manipuler sur chacune, l'ordre du travail : trois écrans fixes par axe, puis le kit avec les outils de données, puis l'intégration ; three.js et objets en gaussian splatting). En annexe : la sélection de vidéos et d'images marquées « bon », avec leurs adresses.</li>
+<li>Trois axes, proposés par Claude, <strong>non tranchés</strong> : <code>BRIEF-AXE-1-ATLAS.md</code> (clair, éditorial), <code>BRIEF-AXE-2-ECRAN.md</code> (noir, cinéma), <code>BRIEF-AXE-3-SALLE.md</code> (lieu en 3D, proche de CONTINUUM).</li>
+<li>La maquette CONTINUUM est décrite avec son adresse en ligne (<code><a href="https://calculment0r.github.io/NirvaLabWeb/work/continuum/">https://calculment0r.github.io/NirvaLabWeb/work/continuum/</a></code>).</li>
+<li><code>docs/site/briefs.html</code> : les quatre briefs avec un bouton Copier, refaite par <code>tools/build_briefs_site.py</code>.</li>
+<li><strong>Le kit étude complet</strong> de Cal (dataviz, HUD, cartes, 3D, canevas, zoom, musique) est copié dans <code>theme/kit-etude/</code> et cité comme base des outils de données. Le dépôt est public : le kit l'est donc aussi.</li>
+<li>Pas encore collé dans Claude Design : aucune maquette n'existe.</li>
+</ul>
+<h3>1.4 Le deck de Nina (27/11, lu, rien écrit dans le dépôt)</h3>
+<p>« Second.Earth - Global Distribution deck » (PDF chez Cal, 13 pages, texte lu, images non regardées). Il raconte une version plus ancienne : pas de Seed, robots Patch, Bastion, Ripple, Forge, vaisseau « Mother », Proxima b, la Terre qui s'effondre, une fin sans le mensonge de Rob1 ; ni exposition ni salle immersive. Sa partie commerciale (offre pour les lieux, options éducation et boutique) n'existe pas dans le dépôt.</p>
+<h3>1.5 Les chantiers du 27/11 et les choix de Cal (round 18)</h3>
+<ul>
+<li>Page à choix : <code>data/chantiers-2026-11-27.html</code> (aussi en artefact privé : <a href="https://claude.ai/artifact/RVWUNroABaSTA5SG3Kydyi">https://claude.ai/artifact/RVWUNroABaSTA5SG3Kydyi</a>). Ses sources : <code>docs/site/chantiers-2026-11-27/</code> (<code>personnages.json</code> et <code>solaris.json</code> sont les deux enquêtes Opus ; <code>moi.json</code> les prompts et les questions sur le site).</li>
+<li>Deux enquêtes en Opus : les personnages, la quête et la fin (13 questions) ; les outils de SOLARIS (7 questions). Coût : environ 170 000 et 310 000 jetons.</li>
+<li><strong>Les 29 réponses de Cal sont dans le Registre</strong>, <code>docs/bible/00-registre-des-decisions.md</code>, section « Round 18 (27/11/2026) ». Les principales :</li>
+<ul>
+<li><strong>Seed</strong> : elle sait sans avoir senti, puis elle sent ; ses 23 % de mémoire sont des images et des sons, sans savoir ; cheveux blancs courts, tenue blanche, bas jaune (comme dans les vidéos).</li>
+<li><strong>Rob1</strong> : celui qui doit inventer ; apparence des vidéos (yeux bleus sur la visière), <strong>taille 1 m</strong>.</li>
+<li>Scènes : l'alarme qui fait mal au réveil, coupée par Rob1 ; Rob1 qui choisit d'arrêter l'incubation au séisme ; Rob1 qui refuse d'être porté, boude, puis accepte ; la musique du vent dans les fleurs ; la danse de Rob1 aux lacs salés ; les trois rencontres de Robs rendues différentes ; « Phase 3 : colonie » montrée tôt ; « cobaye » qui s'efface ; Rob1 qui doit lâcher Seed chez Rob4.</li>
+<li>Monde : MOTHER est la station de départ ; la horde est dans les Hautes Plaines ; le site compte en jours de Korê.</li>
+<li>Site : un site, deux étages (ouvert et réservé à Nina) ; un code simple plus un accès invité ; un deck pour les lieux en premier ; anglais d'abord ; nom de domaine <strong>secondearth.net</strong> (acheté par Cal chez Cloudflare).</li>
+</ul>
+<li>Idée de Cal, <strong>non tranchée</strong> : une anomalie magnétique due à un second noyau décentré (le reste de fer d'un astre entré en collision).</li>
+</ul>
+<h3>1.6 Le récit (27/11)</h3>
+<ul>
+<li><code>docs/film/00-recit-v2.md</code> : <strong>21 passages marqués [ajout du 27/11]</strong> : les décisions du round 18, plus le voyage de PERSEPHORA dans le système solaire (Mars, Jupiter, les anneaux de Saturne, Titan, les Robs en veille, une planète sans étoile, le réveil de Rob1), demandé par Cal.</li>
+<li>Inventé par Claude et signalé à Cal : le passage qui relie le campement de Rob3 aux Hautes Plaines (Rob3 tire son robopod avec les rongeurs, ils ne s'assemblent pas pour garder le chargeur) ; Jupiter et la planète sans étoile ; le réveil de Rob1 ; trois lignes d'écran (« CONTINUER / ARRÊTER », l'alarme barrée, « J'ATTENDS »).</li>
+<li>Page de relecture avec une case par passage : <code>data/recit-ajouts-2026-11-27.html</code> (artefact privé : <a href="https://claude.ai/artifact/RSVWNa4wygwtzkioFQZUyw">https://claude.ai/artifact/RSVWNa4wygwtzkioFQZUyw</a>). <strong>Cal relit ; ses remarques ne sont pas encore revenues.</strong></li>
+<li>Décision de Cal (27/11) : fixer le récit en français avant toute traduction.</li>
+</ul>
+<h3>1.7 Le site du projet (27/11)</h3>
+<ul>
+<li>C'est <code>site-projet/</code>, publié sous <code>/projet/</code>, qui a déjà le mode édition repris de NirvaLab et les accès par code. <code>tools/medias_site_projet.py</code> y a posé les vidéos et panoramiques en ligne (cinq ouvertures, quatre carrousels) et un texte « Seed et Rob1 » marqué « proposé » ; les fiches de Seed et de Rob1 sont corrigées. 41 médias en ligne posés.</li>
+<li>Regardé dans un navigateur sur une copie locale : la vidéo d'ouverture joue, les panoramiques s'affichent. La mise en ligne automatique sur GitHub Pages n'a pas été vérifiée.</li>
+<li><code>tools/build_site.py</code> publie aussi l'inventaire sous <code>inventaire-medias/</code>.</li>
+</ul>
+<h3>1.8 Les prompts d'images (27-28/11)</h3>
+<ul>
+<li><code>docs/film/prompts-images-2026-11-28.md</code> : le caisson d'incubation (Midjourney), Rob1 qui regarde le caisson (Seedream, avec l'image du caisson en référence), la tenue d'incubation de Seed (Midjourney), le réveil dans la capsule (Seedream, écrit avec la méthode du prompt d'exemple de Cal).</li>
+<li>Les huit prompts K1 à K8 de la page des chantiers sont <strong>jugés mauvais par Cal</strong> : ils racontent au lieu de décrire l'image. La méthode qui marche est écrite dans le fichier.</li>
+</ul>
+<hr>
+<h2>2. Ce qui reste à faire</h2>
+<p><strong>Pour lundi 30/11</strong></p>
+<ol>
+<li>Recevoir les remarques de Cal sur les 21 passages du récit, et les appliquer.</li>
+<li>La version anglaise du site (anglais d'abord, bouton français), après le récit fixé en français.</li>
+<li>Faire pointer <strong>secondearth.net</strong> vers le site.</li>
+<li>L'étage réservé à Nina : code simple, accès invité, et le deck pour les lieux.</li>
+</ol>
+<p><strong>Ensuite</strong></p>
+<ol>
+<li>Dans Claude Docs (compte de Cal) : corriger la planche de Rob1 (1 m, yeux bleus) et celle de Seed (cheveux courts, tenue blanche), ajouter MOTHER au Glossaire, mettre à jour la descente de Rob2 dans le Trajet, puis réexporter.</li>
+<li>Les cartons de jours du récit en jours de Korê (décision S06), ou dire qu'ils restent en jours terrestres.</li>
+<li>Réécrire les sept autres prompts d'images avec la méthode du 28/11, si Cal la valide ; lui demander s'il lève la règle « aucune marque, aucun nom » pour Seedream.</li>
+<li>Coller les briefs dans Claude Design ; choisir un axe après les trois écrans fixes.</li>
+<li>Un composant qui dessine les orbites et les deux lunes (aucun n'existe dans le kit).</li>
+<li>Écrire la bible de Second Earth au format du kit SOLARIS (décision S08, après lundi).</li>
+<li>Trancher l'anomalie magnétique. Vérifier aussi la remarque de Cal sur une « gravitation plus faible » : la gravité validée de Korê est <strong>plus forte</strong> (1,13 g).</li>
+<li>Revoir les états « Rob1 trop grand » de l'inventaire (voir 3.1).</li>
+<li>Effacer à la main le dossier <code>C:\SECOND EARTH\_nirvalabweb</code> (copie du dépôt NirvaLab, la suppression a été refusée par une sécurité).</li>
+</ol>
+<hr>
+<h2>3. Points à vérifier dans l'audit (contradictions possibles)</h2>
+<ol>
+<li><strong>La taille de Rob1.</strong> Le round 18 fixe 1 m. Mais l'inventaire du 25/11 a jugé les vidéos avec une règle de <strong>75 cm</strong> (« le haut du casque juste sous la hanche de Seed ») : beaucoup de « bon en partie » viennent de « Rob1 trop grand ». À 1 m, une partie de ces jugements tombe. Les prompts Seedance du 05/11 (<code>video/seedance/prompts/</code>) disent aussi 75 cm. La règle 15 de <code>CLAUDE.md</code> est mise à jour à 1 m.</li>
+<li><strong>Seed.</strong> La planche de la Bible (<code>data/planches.json</code>, Claude Docs) dit « cheveux mi-longs », « combinaison grise » ; Cal dit que cela n'a jamais été voulu (cheveux courts, incubée en accéléré). Toute session qui a utilisé la planche de la Bible pour des prompts ou des textes a la mauvaise Seed.</li>
+<li><strong>Le nom et le rôle de MOTHER.</strong> Station de départ (round 18) ; dans le deck de Nina, c'est le vaisseau.</li>
+<li><strong>Le deck de Nina</strong> contre le récit : noms des robots, destination, Seed absente, fin.</li>
+<li><strong>La horde</strong> : déplacée dans les Hautes Plaines dans le récit le 27/11 ; une session qui a travaillé sur la forêt bioluminescente ou l'Acte VI avant cette date a la version d'avant.</li>
+<li><strong>Les jours</strong> : site en jours de Korê, récit en jours terrestres.</li>
+<li><strong>Le kit étude</strong> : deux versions dans le dépôt, <code>presentation/kit/</code> (ancienne, 18/11) et <code>theme/kit-etude/</code> (complète, 19/11). Le site du projet utilise encore l'ancienne.</li>
+<li><strong>Le contenu du site du projet</strong> (<code>site-projet/content/site-content.json</code>) : modifié par un script le 27/11. Si Cal ou une autre session a publié depuis le site entre-temps, l'une des deux versions a écrasé l'autre.</li>
+<li><strong>Les branches</strong> : tout ce travail est sur <code>claude/beautiful-goldberg-x0to5u</code>. Les branches <code>claude/editeur-nirva</code>, <code>claude/site-editable</code> et <code>claude/presentation-etude</code> (19/11) n'ont pas été fusionnées ni regardées dans cette session.</li>
+<li><strong>Les briefs</strong> : les anciennes pistes A et B du brief Claude Design sont remplacées par les trois axes. Une session qui aurait déjà lancé Claude Design avec l'ancien brief a un autre cadre.</li>
+<li><strong>La Team Showrunner</strong> : « SECOND_EARTH_NICO_00 (1) » a été prise parce que c'est la seule dont le nom contient « Second Earth ». Si la Team « secondearth » dont parle Cal est une autre, les vidéos ne sont pas au bon endroit.</li>
+</ol>
+<hr>
+<h2>4. Où sont les choses hors du dépôt</h2>
+<ul>
+<li>Les fichiers originaux : <code>C:\SECOND EARTH\VISUAL</code> (ordinateur de Cal).</li>
+<li>Le dossier de travail de cette session : <code>C:\SECOND EARTH\_travail_inventaire</code> (images extraites, planches de lecture, copies web envoyées sur Cloudflare). Peut être effacé : tout ce qui compte est dans le dépôt ou sur Cloudflare.</li>
+<li>Les artefacts privés (compte de Cal) : la page des chantiers et la page de relecture du récit (adresses plus haut).</li>
+<li>La mémoire de Claude pour ce projet : <code>C:\Users\calcu\.claude\projects\C--SECOND-EARTH\memory\</code> (règle sur le coût des sous-agents).</li>
+</ul></main></html>

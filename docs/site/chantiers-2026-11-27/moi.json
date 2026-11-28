@@ -1,0 +1,360 @@
+{
+ "prompts_intro": "Huit images clés du début du film, dans l'ordre de l'histoire. À coller dans Seedream 5.5. Rob1 est appelé par @element1 dans tous les prompts où il apparaît. Les autres images sont appelées par @image1, @image2… : joins-les dans l'ordre écrit sous le titre. La planche d'échelle est la dernière, et seulement quand Seed est dans l'image : sans Seed, pas de planche d'échelle, sinon le modèle l'ajoute. Quand Seed n'est pas dans l'image, sa planche n'est pas dans la liste : ne la joins pas, sinon le modèle l'ajoute. Format 21:9. Je n'ai pas pu les essayer : je n'ai pas accès à Seedream.",
+ "prompts": [
+  {
+   "id": "K1",
+   "titre": "Rob1 seul devant la machine d'incubation",
+   "source": "Récit : « Un panneau coulisse. Derrière, une cuve cylindrique transparente. Des tubulures. Des écrans. Une lumière bleutée pulse doucement. »",
+   "joindre": "@element1 = Rob1 · @image1 = la planche du XENOPOD. Pas de planche d'échelle : Seed n'est pas dans l'image.",
+   "prompt": "Photoreal live-action feature-film still, ultra-wide 21:9 frame, large-format film look, fine organic grain, natural halation, true-to-life colour.\n\n@element1 is Rob1, the small robot: keep his shape, materials, visor and proportions exactly as in his element. @image1 is the XENOPOD landing capsule: use it for the interior architecture, hull panels and materials.\n\nScene: inside the cramped technical bay of the landing capsule, at night. A wall panel has just slid open. Behind it stands a tall cylindrical transparent tank filled with clear synthetic fluid, wrapped in thin tubes and cables, with small monitoring screens on both sides. A soft blue light pulses inside the tank. In the very centre of the fluid floats a single tiny luminous point, no bigger than a grain of sand. Rob1, about 1 m tall, stands alone in front of the tank, which is three times his height, seen from three-quarter back, very small against it, one hand raised toward the glass. He is the only character in the frame.\n\nLight: the blue glow of the tank is the main light, with a few small warm amber indicator lights in the dark around him. Fine dust floating in the beam. Deep shadows, calm and quiet mood.\n\nCamera: wide shot at Rob1's eye level, 28 mm lens, tank slightly off-centre to the right, a lot of dark empty space on the left. No text, no logo, no flag, no human."
+  },
+  {
+   "id": "K2",
+   "titre": "Seed grandit dans la cuve, Rob1 veille",
+   "source": "Récit : « cet être grandit en accéléré, six à sept semaines ». Cartons Jour −42 à Jour 0.",
+   "joindre": "@element1 = Rob1 · @image1 = la planche de Seed · @image2 = la planche du XENOPOD · @image3 = la planche d'échelle.",
+   "prompt": "Photoreal live-action feature-film still, ultra-wide 21:9 frame, large-format film look, fine organic grain, natural halation, true-to-life colour.\n\n@image1 is Seed: keep her face, her white hair and her age exactly as on her sheet. @element1 is Rob1, the small robot: keep his shape, materials, visor and proportions exactly as in his element. @image2 is the XENOPOD capsule: use it for the interior. @image3 is the scale sheet: keep exactly the size ratio between Seed and Rob1 shown on this sheet; Rob1 is about 1 m tall.\n\nScene: inside the capsule, at night. In the tall cylindrical transparent tank, Seed floats upright in clear fluid, asleep, eyes closed, face calm, her white hair drifting slowly around her head. She wears a plain pale incubation garment that covers her from neck to ankles. Thin soft tubes run from the top of the tank to her shoulders. Outside the tank, Rob1 sits on the floor with his back against the glass, small, keeping watch, his head turned up toward her.\n\nLight: soft pulsing blue light from the tank, small bubbles rising, a few warm amber indicator lights in the dark bay. Peaceful, tender mood, like a night watch.\n\nCamera: medium-wide shot, 35 mm lens, the tank on the right third of the frame, Rob1 at its base, dark machinery filling the left. No text, no logo, no flag."
+  },
+  {
+   "id": "K3",
+   "titre": "Le tremblement de terre, vu de la clairière",
+   "source": "Récit : « Des crevasses s'ouvrent dans la clairière, et il en sort des lumières, bleu, violet, rose, comme des arches qui montent de la roche. »",
+   "joindre": "@image1 = la planche du XENOPOD · @image2 = le décor de la jungle.",
+   "prompt": "Photoreal live-action feature-film still, ultra-wide 21:9 frame, large-format film look, fine organic grain, natural halation, true-to-life colour.\n\n@image1 is the XENOPOD landing capsule: keep its shape, feet, mast and hull exactly as on its sheet. @image2 is the location: a clearing in a primordial forest, giant twisted trunks, a purple and magenta canopy high above, a carpet of moss over pale limestone, low shrubs covered in thousands of small pale flowers.\n\nScene: night, just before dawn. The capsule stands alone in the middle of the clearing on its four feet, a faint blue light glowing through one side panel. The ground is shaking: long cracks are opening in the moss across the clearing, and out of the cracks rise tall arches of soft light, blue, violet and pink, like slow luminous ribbons climbing from the rock into the dark air. Leaves and dust fall from the canopy. The capsule tilts a few degrees, one foot sinking into the moss. No character is visible.\n\nLight: the coloured arches of light are the main source, reflecting on the white hull and on the wet moss; the sky between the trees is almost black with one small dim orange point of light low on the horizon.\n\nCamera: very wide shot from ground level at the edge of the clearing, 24 mm lens, the capsule small in the centre, a crack running from the foreground toward it. Awe, not horror. No text, no logo, no flag, no human, no robot."
+  },
+  {
+   "id": "K4",
+   "titre": "L'incubation s'arrête",
+   "source": "Récit : « Tout cela provoque une erreur dans le processus de croissance. L'incubation s'arrête. »",
+   "joindre": "@element1 = Rob1 · @image1 = la planche de Seed · @image2 = la planche du XENOPOD · @image3 = la planche d'échelle.",
+   "prompt": "Photoreal live-action feature-film still, ultra-wide 21:9 frame, large-format film look, fine organic grain, natural halation, true-to-life colour.\n\n@image1 is Seed: keep her face, her white hair and her age exactly as on her sheet. @element1 is Rob1, the small robot: keep his shape, materials, visor and proportions exactly as in his element. @image2 is the XENOPOD capsule: use it for the interior. @image3 is the scale sheet: keep exactly the size ratio between Seed and Rob1 shown on this sheet; Rob1 is about 1 m tall.\n\nScene: inside the capsule during an earthquake. The whole bay is tilted a few degrees. The fluid in the tall transparent tank sloshes against the glass, full of bubbles. Inside, Seed, still asleep, in a plain pale garment covering her from neck to ankles, is pushed to one side, her white hair swirling. The blue light of the tank is flickering and turning to a pale amber. Loose cables swing from the ceiling, a small container slides across the floor. Rob1 stands braced with both hands flat against the glass, legs apart, holding the tank as if he could steady it.\n\nLight: unstable, half blue and half amber, with pink and violet light coming through a small porthole from outside. Dust falling in the beams.\n\nCamera: medium shot, low angle from the floor behind Rob1, 28 mm lens, slight tilt of the horizon to feel the shake, sharp image with no motion blur on Rob1. Tense but not frightening. No text on the screens, no logo, no flag."
+  },
+  {
+   "id": "K5",
+   "titre": "Seed ouvre les yeux",
+   "source": "Récit : « Rob1 observe l'adolescente flottant dans l'incubateur. Elle ouvre les yeux. »",
+   "joindre": "@element1 = Rob1 · @image1 = la planche de Seed.",
+   "prompt": "Photoreal live-action feature-film still, ultra-wide 21:9 frame, large-format film look, fine organic grain, natural halation, true-to-life colour, real skin texture with no retouching.\n\n@image1 is Seed: keep her face, her eyes, her white hair and her age exactly as on her sheet. @element1 is Rob1, the small robot: keep his shape, materials, visor and proportions exactly as in his element.\n\nScene: extreme close view through the curved glass of a fluid-filled tank. Seed's face fills the left half of the frame, underwater, her white hair floating. Her eyes have just opened for the first time: wide, unfocused, not afraid yet, looking at something she does not understand. Tiny bubbles cling to her eyelashes and rise from her lips. On the right half of the frame, reflected in the glass and slightly out of focus, the small silhouette of Rob1 looking up at her, one hand on the glass.\n\nLight: the tank light has gone still, a soft cold blue on her skin, with a warm amber reflection from the bay on the glass. Very quiet.\n\nCamera: 85 mm lens, shallow depth of field, focus on her nearest eye. No text, no logo."
+  },
+  {
+   "id": "K6",
+   "titre": "Le premier réveil : le son lui fait mal, Rob1 coupe l'alarme",
+   "source": "Idée de Cal du 27/11, pas encore dans le récit (proposé).",
+   "joindre": "@element1 = Rob1 · @image1 = la planche de Seed · @image2 = la planche du XENOPOD · @image3 = la planche d'échelle.",
+   "prompt": "Photoreal live-action feature-film still, ultra-wide 21:9 frame, large-format film look, fine organic grain, natural halation, true-to-life colour.\n\n@image1 is Seed: keep her face, her white hair, her age and her outfit exactly as on her sheet. @element1 is Rob1, the small robot: keep his shape, materials, visor and proportions exactly as in his element. @image2 is the XENOPOD capsule: use it for the interior. @image3 is the scale sheet: keep exactly the size ratio between Seed and Rob1 shown on this sheet; Rob1 is about 1 m tall.\n\nScene: inside the capsule, minutes after she left the tank. Seed sits curled on the floor against the wall, soaking wet, wrapped in a thin silver thermal blanket, knees up, both hands pressed hard over her ears, eyes squeezed shut, shoulders raised: an ordinary alarm tone is unbearable to her, every sound is new and too loud. Above her a small warning light is flashing. Rob1 has climbed onto a storage case and stretches up on tiptoe, one long arm reaching a wall switch to turn the alarm off, his head turned back toward her to check on her.\n\nLight: one flashing amber warning light catching water drops on her hair and blanket, the open tank glowing soft blue in the background, puddles of fluid on the floor.\n\nCamera: wide shot at floor level, 28 mm lens, Seed on the left third, Rob1 on the right third reaching up, empty floor between them. Tender and a little funny, never frightening. No text, no logo, no flag."
+  },
+  {
+   "id": "K7",
+   "titre": "Le XENOPOD bascule dans le gouffre",
+   "source": "Récit : « Le XENOPOD bascule lentement vers le gouffre. Le bruit fait s'envoler une myriade de papillons que Seed avait pris pour les fleurs des arbustes. » Rob1 « bondit hors du module » avec un sac.",
+   "joindre": "@element1 = Rob1 · @image1 = la planche de Seed · @image2 = la planche du XENOPOD · @image3 = le décor de la jungle · @image4 = la planche d'échelle.",
+   "prompt": "Photoreal live-action feature-film still, ultra-wide 21:9 frame, large-format film look, fine organic grain, natural halation, true-to-life colour.\n\n@image1 is Seed: keep her exactly as on her sheet. @element1 is Rob1, the small robot: keep his shape, materials, visor and proportions exactly as in his element. @image2 is the XENOPOD landing capsule: keep its shape, feet, mast and hull exactly. @image3 is the location: a clearing in a primordial forest with a purple and magenta canopy, moss over pale limestone, low shrubs. @image4 is the scale sheet: keep exactly the size ratio between Seed and Rob1 shown on this sheet; Rob1 is about 1 m tall.\n\nScene: early morning in the clearing. The ground has collapsed under the capsule: a wide round hole has opened and the capsule is tipping into it at a steep angle, two feet already in the void, its tall mast leaning, blocks of moss and limestone falling into the dark. Rob1 is in mid-air, jumping out of the open hatch with a big supply bag held against his chest. In the foreground Seed stands frozen, seen from behind, arms slightly open. All around her, the thousands of small pale flowers she thought were growing on the shrubs have taken flight at once: they are small winged creatures with petal-shaped wings, rising in a huge soft cloud that fills the air and catches the light.\n\nLight: warm orange low sun through magenta canopy light, dust rising from the hole, the cloud of pale wings glowing in backlight.\n\nCamera: wide shot from behind Seed at shoulder height, 24 mm lens, the tipping capsule in the centre, Rob1 small and sharp in the air on the right. Spectacular and beautiful, not a disaster picture. No text, no logo, no flag."
+  },
+  {
+   "id": "K8",
+   "titre": "Seuls au bord du gouffre",
+   "source": "Récit (ajout du 20/11) : Rob1 laisse tomber une fusée éclairante ; « la lumière rouge descend, longtemps, puis s'arrête tout en bas ». Quatre-vingts mètres.",
+   "joindre": "@element1 = Rob1 · @image1 = la planche de Seed · @image2 = le décor de la jungle · @image3 = la planche d'échelle.",
+   "prompt": "Photoreal live-action feature-film still, ultra-wide 21:9 frame, large-format film look, fine organic grain, natural halation, true-to-life colour.\n\n@image1 is Seed: keep her exactly as on her sheet. @element1 is Rob1, the small robot: keep his shape, materials, visor and proportions exactly as in his element. @image2 is the location: a clearing in a primordial forest with a purple and magenta canopy and a carpet of moss over pale limestone. @image3 is the scale sheet: keep exactly the size ratio between Seed and Rob1 shown on this sheet; Rob1 is about 1 m tall.\n\nScene: the dust has settled. A wide round hole with broken limestone edges opens in the middle of the clearing, absolutely black inside. Seed and Rob1 stand side by side at the very edge, seen from behind and slightly above, both looking straight down. Rob1 holds a big supply bag by its strap. Very far below in the darkness, one tiny point of red light from a flare lies on a pile of rubble, and next to it a faint dark rounded shape: the capsule, eighty metres down. A few pale winged creatures are still drifting down around them like petals.\n\nLight: soft morning light from the left, magenta tint under the trees, the hole is a pure black disc with its single red point. Silence after the noise.\n\nCamera: high wide shot looking down over their shoulders, 24 mm lens, the two small figures in the lower third, the black hole filling the centre of the frame. They are alone. No text, no logo, no flag."
+  }
+ ],
+ "constats_site": [
+  {
+   "sujet": "Dépôt public",
+   "fait": "Le dépôt Second Earth est public sur GitHub : tout ce qui y est rangé peut être lu par n'importe qui, même derrière un code. Un espace réservé à Nina ne peut donc pas y être vraiment protégé.",
+   "source": "CLAUDE.md, partie 12"
+  },
+  {
+   "sujet": "Deck de Nina",
+   "fait": "Son deck raconte une version plus ancienne : pas de Seed, robots nommés Patch, Bastion, Ripple, Forge, vaisseau « Mother », destination Proxima b, la Terre qui s'effondre, une fin sans le mensonge de Rob1. Ni l'exposition ni la salle immersive n'y sont.",
+   "source": "Second.Earth - Global Distribution deck.pdf, pages 4, 5, 9, 10"
+  },
+  {
+   "sujet": "Rob1 : deux descriptions",
+   "fait": "Le récit et la planche de la Bible disent : 1 m, un écran-visage noir à signes orange, jamais d'yeux. Les planches utilisées pour les vidéos montrent un Rob1 d'environ 75 cm avec deux yeux bleus sur une visière. Les 98 vidéos suivent la seconde.",
+   "source": "data/planches.json (Rob1) ; video/seedance/prompts"
+  },
+  {
+   "sujet": "Seed : deux descriptions",
+   "fait": "La planche de la Bible dit : cheveux blancs mi-longs en désordre, combinaison grise. Les vidéos montrent des cheveux blancs très courts, une tenue blanche et un bas jaune.",
+   "source": "data/planches.json (Seed) ; video/seedance/prompts/S06"
+  },
+  {
+   "sujet": "MOTHER",
+   "fait": "Le nom MOTHER est écrit sur la coque d'une station dans tes vidéos (fichier O) et sert de nom au vaisseau dans le deck de Nina. Il n'est dans aucun document du monde.",
+   "source": "inventaire, fiche space--o ; docs/bible/34-glossaire.md"
+  },
+  {
+   "sujet": "Images en ligne",
+   "fait": "Les 98 vidéos sont sur Cloudflare depuis le 26/11. Les 60 panoramiques y sont depuis le 27/11 (une version web de 4 096 px de large au plus, et l'original).",
+   "source": "media/inventaire/inventaire.json"
+  }
+ ],
+ "questions_site": [
+  {
+   "id": "W01",
+   "titre": "Un site ou deux ?",
+   "contexte": "Tu veux garder le vrai site, qui présente l'histoire à tout le monde, et donner à Nina de quoi montrer le projet selon la personne en face.",
+   "conseil": "Un seul site avec deux étages. Le même design, les mêmes images, une seule chose à tenir à jour.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Un site, deux étages",
+     "d": "L'étage ouvert raconte l'histoire. L'étage réservé à Nina contient les decks. Un seul design, une seule mise à jour.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Deux sites séparés",
+     "d": "Le site public d'un côté, un site de présentation de l'autre. Plus libre, mais tout se fait deux fois.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Le site public, et des PDF pour Nina",
+     "d": "Rien à protéger en ligne. Mais chaque changement oblige à refaire et renvoyer les PDF.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "W02",
+   "titre": "Comment protéger l'étage de Nina ?",
+   "contexte": "Le dépôt GitHub est public : un code posé sur une page n'y cache rien, les fichiers restent lisibles. Tes images et vidéos sont déjà sur Cloudflare.",
+   "conseil": "Cloudflare Access : Nina entre avec son adresse e-mail, toi tu choisis qui a le droit. C'est la seule vraie protection des trois, et ton compte Cloudflare existe déjà.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Cloudflare, entrée par e-mail",
+     "d": "Les pages réservées sont hébergées chez Cloudflare. Chaque personne invitée reçoit un code par e-mail. Vraie protection. Demande une demi-journée de mise en place.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Un simple code sur la page",
+     "d": "Prêt tout de suite. Mais ce n'est qu'un voile : quelqu'un qui cherche trouve les fichiers.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Des liens secrets, sans code",
+     "d": "Une adresse longue que seuls les invités connaissent. Simple, mais un lien transféré ouvre tout.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "W03",
+   "titre": "Quels decks pour Nina, en premier ?",
+   "contexte": "Un deck est ici une suite de pages du site, choisies et ordonnées pour un type d'interlocuteur. Les mêmes contenus servent à plusieurs decks.",
+   "conseil": "Trois pour commencer : le court, le créatif, et celui pour les lieux. Les deux autres se font ensuite avec les mêmes pages.",
+   "multi": true,
+   "o": [
+    {
+     "k": "A",
+     "l": "Le court (5 pages)",
+     "d": "Pour un premier contact ou un financeur : l'idée, une image forte, le format, l'équipe, le contact.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Le créatif",
+     "d": "Pour un studio ou un diffuseur : l'histoire, Seed et Rob1, le monde, les animaux, beaucoup d'images.",
+     "r": true
+    },
+    {
+     "k": "C",
+     "l": "Pour les lieux (distribution)",
+     "d": "Le deck actuel de Nina, remis à jour : formats, durées, options pour les salles et les musées.",
+     "r": true
+    },
+    {
+     "k": "D",
+     "l": "Éducation et exposition",
+     "d": "Pour un centre de science : la science du film, l'exposition par milieu, les cartels, les ateliers.",
+     "r": false
+    },
+    {
+     "k": "E",
+     "l": "La salle immersive",
+     "d": "Pour un partenaire technique : le visiteur chef de mission, le temps réel, BoraBora.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "W04",
+   "titre": "Le deck de Nina ne raconte pas la même histoire que le site",
+   "contexte": "Son deck n'a pas Seed, donne d'autres noms aux robots et au vaisseau, et finit autrement. Un partenaire qui voit les deux verra deux projets.",
+   "conseil": "Demander d'abord à Nina ce que le Science Centre a déjà vu. Puis aligner son deck sur ton histoire, en gardant sa partie commerciale.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Demander à Nina, puis aligner",
+     "d": "On sait ce que le client a en tête avant de changer quoi que ce soit. Ses pages d'histoire sont réécrites, ses pages d'offre restent.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Aligner tout de suite",
+     "d": "Plus rapide. Risque : le client a déjà la version du deck en tête et découvre le changement sans explication.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Garder les deux versions",
+     "d": "Le deck reste tel quel pour la vente, le site montre le développement. Rien à refaire, mais deux histoires circulent.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "W05",
+   "titre": "Quelle langue s'ouvre en premier ?",
+   "contexte": "Le site doit exister en français et en anglais. Tout le contenu est écrit en français ; l'anglais est à traduire. Le public visé est à Singapour.",
+   "conseil": "L'anglais d'abord, avec un bouton pour le français. J'écris en français, je traduis, et tu relis l'anglais des pages qui comptent.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Anglais d'abord, bouton français",
+     "d": "Un partenaire de Singapour arrive directement sur sa langue. Chaque texte existe en deux versions.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Français d'abord, bouton anglais",
+     "d": "Tu vois ton site dans ta langue. Un partenaire étranger doit trouver le bouton.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "La langue du visiteur",
+     "d": "Le site choisit selon le réglage du navigateur. Pratique, mais on ne sait pas d'avance ce que verra chacun.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "W06",
+   "titre": "Rob1 : quelle description est la vraie ?",
+   "contexte": "Le récit dit 1 m et un écran noir à signes orange, sans yeux. Tes planches et tes 98 vidéos montrent environ 75 cm et deux yeux bleus. Le site va montrer les vidéos.",
+   "conseil": "Garder le Rob1 des vidéos et corriger les textes : c'est lui que tout le monde verra.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Le Rob1 des vidéos",
+     "d": "75 cm, yeux bleus. Le récit et la planche de la Bible sont corrigés. Les vidéos restent valables.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Le Rob1 du récit",
+     "d": "1 m, écran à signes orange, pas d'yeux. Les vidéos ne correspondent plus et sont à refaire.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Un mélange",
+     "d": "75 cm et des yeux, mais orange comme l'accent du film. À préciser dans le champ libre.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "W07",
+   "titre": "Seed : quelle description est la vraie ?",
+   "contexte": "La Bible dit cheveux blancs mi-longs et combinaison grise. Tes vidéos montrent des cheveux très courts, une tenue blanche et un bas jaune.",
+   "conseil": "Garder la Seed des vidéos, pour la même raison.",
+   "o": [
+    {
+     "k": "A",
+     "l": "La Seed des vidéos",
+     "d": "Cheveux très courts, tenue blanche, bas jaune. La planche de la Bible est corrigée.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "La Seed de la Bible",
+     "d": "Cheveux mi-longs, combinaison grise. Les vidéos ne correspondent plus.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "W08",
+   "titre": "MOTHER : on l'écrit dans le monde ?",
+   "contexte": "Tes vidéos montrent une station nommée MOTHER au-dessus de la Terre, d'où part PERSEPHORA. Le deck de Nina appelle le vaisseau « Mother ». Aucun document du monde n'en parle.",
+   "conseil": "L'écrire : MOTHER est la station de départ, PERSEPHORA le vaisseau. Cela règle aussi la confusion du deck.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Oui : la station de départ",
+     "d": "MOTHER entre dans le glossaire comme la station au-dessus de la Terre. PERSEPHORA reste le vaisseau.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Non, on retire le nom",
+     "d": "Les vidéos où le mot se lit sur la coque ne servent plus.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Autre chose",
+     "d": "MOTHER est autre chose (une intelligence, un programme). À dire dans le champ libre.",
+     "r": false
+    }
+   ]
+  },
+  {
+   "id": "W09",
+   "titre": "Que rend-on lundi ?",
+   "contexte": "Nous sommes vendredi 27. Claude Design n'a pas encore dessiné le site. Les vidéos et les panoramiques sont en ligne, les textes existent en français.",
+   "conseil": "Une première version du site ouvert, simple mais vraie, en deux langues, avec tes vidéos : c'est ce qui se montre. Le design de Claude Design viendra s'y poser ensuite.",
+   "o": [
+    {
+     "k": "A",
+     "l": "Une première version du site ouvert",
+     "d": "Accueil, histoire, Seed et Rob1, la planète, le film. Tes vidéos panoramiques, français et anglais. Design provisoire.",
+     "r": true
+    },
+    {
+     "k": "B",
+     "l": "Les trois écrans de Claude Design",
+     "d": "On attend ses maquettes et on montre le design visé, sans site qui marche.",
+     "r": false
+    },
+    {
+     "k": "C",
+     "l": "Le deck court pour Nina",
+     "d": "Cinq pages à jour avec la vraie histoire, prêtes à envoyer. Le site attend.",
+     "r": false
+    },
+    {
+     "k": "D",
+     "l": "A et C",
+     "d": "Le site ouvert et le deck court. Faisable si tu réponds à cette page aujourd'hui.",
+     "r": false
+    }
+   ]
+  }
+ ],
+ "plan": [
+  {
+   "quand": "Vendredi 27",
+   "quoi": "Tu réponds à cette page. Je termine l'envoi des panoramiques. Tu essaies les huit prompts d'images et tu colles le brief dans Claude Design."
+  },
+  {
+   "quand": "Samedi 28",
+   "quoi": "J'écris ce que tu as choisi pour les personnages dans le récit (marqué « proposé »). Je monte la première version du site ouvert en français : accueil, histoire, Seed et Rob1, la planète, le film."
+  },
+  {
+   "quand": "Dimanche 29",
+   "quoi": "Traduction en anglais et bouton de langue. Les outils de données choisis sont branchés (Terre et Korê, le trajet). L'étage de Nina : le deck court et le deck créatif."
+  },
+  {
+   "quand": "Lundi 30",
+   "quoi": "Tu relis, je corrige, on met en ligne. Ce qui n'est pas prêt est dit clairement sur la page."
+  }
+ ]
+}

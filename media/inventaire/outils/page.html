@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Second Earth · inventaire des images et des vidéos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Azeret+Mono:wght@400;500&display=swap">
+<style>
+@font-face{font-family:'Venus Rising';src:url('../../site/assets/fonts/venus-rising.otf') format('opentype'),url('../assets/fonts/venus-rising.otf') format('opentype'),url('assets/fonts/venus-rising.otf') format('opentype');font-weight:400;font-display:swap}
+:root{color-scheme:dark;--bg:#0a0d0b;--panel:#101413;--panel2:#151a18;--panel3:#1b211e;--ink:#e6eae7;--body:#c9d2cd;--ink2:#9ca8a2;--ink3:#7c8884;--cy:#b9cfd8;--or:#e0674a;--or-ink:#170c08;--c1:#f0b49b;--c2:#e59578;--c3:#d47a5c;--g1:#2f6b4a;--g-ink:#8fd1a8;--line:rgba(185,207,216,.11);--line2:rgba(185,207,216,.22);--display:'Venus Rising','Chakra Petch',sans-serif;--text:'Chakra Petch',system-ui,sans-serif;--mono:'Azeret Mono',ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink)}
+body{margin:0;font-family:var(--text);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.wrap{max-width:1500px;margin:0 auto;padding:26px 26px 90px}
+.lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.head{background:var(--panel);border-radius:18px;padding:28px 30px;position:relative;overflow:hidden}
+.head::after{content:"";position:absolute;right:0;top:0;bottom:0;width:130px;background-image:radial-gradient(rgba(224,103,74,.35) 1px,transparent 1.1px);background-size:7px 7px;pointer-events:none}
+h1{margin:6px 0 10px;font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,34px);letter-spacing:.05em;text-transform:uppercase;line-height:1.2}
+.lede{margin:0;color:var(--ink2);max-width:80ch}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+.tile{background:var(--panel);border-radius:14px;padding:16px 18px}
+.tile b{display:block;font-family:var(--display);font-weight:400;font-size:28px;letter-spacing:.03em;color:var(--ink);line-height:1.1;margin-top:6px}
+.tile span{color:var(--ink2);font-size:13px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.box{background:var(--panel);border-radius:14px;padding:18px 20px}
+.box h2{margin:0 0 10px;font-family:var(--text);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cy)}
+.box ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.box li{position:relative;padding-left:18px;color:var(--body);font-size:14px}
+.box li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:2px;background:var(--c3)}
+.box table{width:100%;border-collapse:collapse;font-size:13.5px}
+.box td,.box th{padding:5px 8px;border-top:1px solid var(--line);text-align:left}
+.box th{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);border-top:none}
+.box td.n{font-variant-numeric:tabular-nums;text-align:right;color:var(--ink)}
+.box td.z{color:var(--c2)}
+.note{color:var(--ink3);font-size:13px;margin:10px 0 0}
+.bar{position:sticky;top:0;z-index:20;background:rgba(10,13,11,.95);backdrop-filter:blur(10px);padding:12px 0;margin-top:14px;border-bottom:1px solid var(--line)}
+.states{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center}
+.chip{border:1px solid var(--line2);background:transparent;border-radius:999px;padding:7px 14px;cursor:pointer;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);display:inline-flex;gap:8px;align-items:center}
+.chip b{font-family:var(--display);font-weight:400;font-size:14px;color:var(--ink)}
+.chip:hover{color:var(--ink);background:var(--panel2)}
+.chip[aria-pressed=true]{background:var(--or);border-color:var(--or);color:var(--or-ink)}
+.chip[aria-pressed=true] b{color:var(--or-ink)}
+.dot{width:8px;height:8px;border-radius:50%}
+.d-bon{background:#8fd1a8}.d-part{background:#e5b458}.d-rate{background:#e0674a}.d-nc{background:#7c8884}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters label{display:flex;flex-direction:column;gap:3px}
+.filters select,.filters input{background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:7px 10px;font-size:13.5px;min-width:150px}
+.count{margin-left:auto;align-self:flex-end;color:var(--ink2);font-size:13.5px}
+.reset{align-self:flex-end;background:none;border:none;color:var(--cy);cursor:pointer;padding:8px 4px;font-size:13.5px;text-decoration:underline}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px;margin-top:16px}
+.card{background:var(--panel);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;border:1px solid transparent;text-align:left;padding:0}
+.card:hover{border-color:var(--line2)}
+.card .im{background:#000;display:block;width:100%}
+.card img{display:block;width:100%;height:auto}
+.card .tx{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px}
+.card .nm{font-weight:600;color:var(--ink);font-size:14px;overflow-wrap:anywhere}
+.card .ds{color:var(--body);font-size:13.5px}
+.card .sp{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink3)}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.st{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:999px;line-height:1.6;color:var(--ink2);box-shadow:inset 0 0 0 1px var(--line2)}
+.st.bon{background:rgba(47,107,74,.32);color:var(--g-ink);box-shadow:inset 0 0 0 1px rgba(47,107,74,.9)}
+.st.part{color:#e5b458;box-shadow:inset 0 0 0 1px rgba(229,180,88,.6)}
+.st.rate{color:var(--or);box-shadow:inset 0 0 0 1px rgba(224,103,74,.7)}
+.empty{padding:40px;text-align:center;color:var(--ink2)}
+dialog{background:var(--panel);color:var(--ink);border:1px solid var(--line2);border-radius:18px;padding:0;width:min(1100px,94vw);max-height:92vh}
+dialog::backdrop{background:rgba(0,0,0,.72)}
+.dlg{padding:22px 24px 26px;display:flex;flex-direction:column;gap:14px}
+.dlg h3{margin:0;font-family:var(--display);font-weight:400;font-size:18px;letter-spacing:.06em;text-transform:uppercase;overflow-wrap:anywhere}
+.dlg img{width:100%;height:auto;border-radius:10px;background:#000}
+.dlg dl{display:grid;grid-template-columns:190px 1fr;gap:8px 16px;margin:0}
+.dlg dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);padding-top:3px}
+.dlg dd{margin:0;color:var(--body)}
+@media(max-width:700px){.dlg dl{grid-template-columns:1fr}.dlg dt{padding-top:8px}}
+.close{align-self:flex-end;background:var(--panel3);border:1px solid var(--line2);border-radius:999px;padding:6px 16px;cursor:pointer}
+.path{font-family:var(--mono);font-size:12px;color:var(--ink2);overflow-wrap:anywhere}
+a.path{color:var(--cy)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div class="lbl">Second Earth · matériel pour le site</div>
+    <h1>Inventaire des images et des vidéos</h1>
+    <p class="lede" id="lede"></p>
+  </header>
+  <section class="tiles" id="tiles"></section>
+  <section class="two">
+    <div class="box"><h2>Ce qui manque pour le site</h2><ul id="manque"></ul></div>
+    <div class="box"><h2>Fichiers marqués « bon », par lieu de la planète</h2><table id="biomes"></table>
+      <p class="note" id="methode"></p></div>
+  </section>
+  <div class="bar">
+    <div class="states" id="states"></div>
+    <div class="filters">
+      <label><span class="lbl">Type</span><select id="f-type"></select></label>
+      <label><span class="lbl">Dossier</span><select id="f-groupe"></select></label>
+      <label><span class="lbl">Qui est à l'écran</span><select id="f-perso"></select></label>
+      <label><span class="lbl">Lieu de la planète</span><select id="f-biome"></select></label>
+      <label><span class="lbl">Un plan / plusieurs plans</span><select id="f-plans"></select></label>
+      <label><span class="lbl">Usage possible</span><select id="f-usage"></select></label>
+      <label><span class="lbl">Chercher un mot</span><input id="f-q" type="search" placeholder="neige, robot, rouge…"></label>
+      <button class="reset" id="reset" type="button">Tout afficher</button>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+  </div>
+  <main class="grid" id="grid"></main>
+</div>
+<dialog id="dlg"><div class="dlg" id="dlg-in"></div></dialog>
+<script>
+const DATA = /*__DATA__*/null;
+const R = DATA.resume, F = DATA.fichiers;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ETATS = [['bon','bon','d-bon','Bon'],['bon en partie','part','d-part','Bon en partie'],['raté','rate','d-rate','Raté']];
+const etatCls = e => (ETATS.find(x => x[0] === e) || [,'',,])[1];
+const sec = s => { s = Math.round(s); return s >= 60 ? Math.floor(s/60) + ' min ' + String(s%60).padStart(2,'0') + ' s' : s + ' s'; };
+const t1 = n => (Math.round(n*10)/10).toString().replace('.', ',');
+const pl = (n, s, p) => n + ' ' + (n > 1 ? (p || s + 's') : s);
+
+$('#lede').textContent = `Relevé du ${R.date.split('-').reverse().join('/')} sur l'ordinateur de Cal. ${pl(R.videos,'vidéo')} (${sec(R.videos_duree_totale_s)} en tout) et ${pl(R.images,'image')}, ${t1(R.poids_total_go)} Go. Cliquer sur une vignette pour lire toute la fiche.`;
+const ve = R.videos_par_etat, ie = R.images_par_etat;
+$('#tiles').innerHTML = [
+  ['Vidéos', R.videos, `${ve.bon} bonnes · ${ve['bon en partie']} bonnes en partie · ${ve['raté']} ratées`],
+  ['Images', R.images, `${ie.bon} bonnes · ${ie['bon en partie']} bonnes en partie · ${ie['raté']} ratées`],
+  ...Object.entries(R.par_dossier).map(([k,v]) => [k, v.fichiers, pl(v.bons,'marqué « bon »','marqués « bon »')])
+].map(([a,b,c]) => `<div class="tile"><span class="lbl">${esc(a)}</span><b>${b}</b><span>${esc(c)}</span></div>`).join('');
+$('#manque').innerHTML = R.ce_qui_manque.map(m => `<li>${esc(m)}</li>`).join('');
+$('#biomes').innerHTML = '<tr><th>Lieu</th><th style="text-align:right">Vidéos</th><th style="text-align:right">Images</th></tr>' +
+  Object.keys(R.bonnes_videos_par_biome).map(b => { const v = R.bonnes_videos_par_biome[b], i = R.bonnes_images_par_biome[b];
+    return `<tr><td>${esc(b)}</td><td class="n ${v?'':'z'}">${v}</td><td class="n ${i?'':'z'}">${i}</td></tr>`; }).join('');
+$('#methode').textContent = R.methode;
+
+const uniq = a => [...new Set(a)].filter(Boolean);
+function fill(id, tout, vals, lab) { $(id).innerHTML = `<option value="">${tout}</option>` + vals.map(v => `<option value="${esc(v)}">${esc(lab ? lab(v) : v)}</option>`).join(''); }
+fill('#f-type', 'Vidéos et images', ['video','image'], v => v === 'video' ? 'Vidéos' : 'Images');
+fill('#f-groupe', 'Tous les dossiers', uniq(F.map(f => f.groupe_nom)));
+fill('#f-perso', 'Tout le monde', uniq(F.flatMap(f => f.a_l_ecran || [])).sort((a,b) => a.localeCompare(b,'fr')));
+fill('#f-biome', 'Tous les lieux', uniq(F.map(f => f.biome)).sort((a,b) => a.localeCompare(b,'fr')));
+fill('#f-plans', 'Indifférent', ['un','plusieurs'], v => v === 'un' ? 'Un seul plan' : 'Plusieurs plans');
+fill('#f-usage', 'Tous les usages', uniq(F.flatMap(f => f.usages || [])).sort((a,b) => a.localeCompare(b,'fr')));
+
+let etat = '';
+function pass(f, sansEtat) {
+  const v = id => $(id).value;
+  if (v('#f-type') && f.type !== v('#f-type')) return false;
+  if (v('#f-groupe') && f.groupe_nom !== v('#f-groupe')) return false;
+  if (v('#f-perso') && !(f.a_l_ecran || []).includes(v('#f-perso'))) return false;
+  if (v('#f-biome') && f.biome !== v('#f-biome')) return false;
+  if (v('#f-plans') && f.plans !== v('#f-plans')) return false;
+  if (v('#f-usage') && !(f.usages || []).includes(v('#f-usage'))) return false;
+  const q = v('#f-q').trim().toLowerCase();
+  if (q && !JSON.stringify([f.fichier, f.description, f.lieu, f.biome, f.couleurs, f.a_l_ecran, f.etat_raison, f.plans_detail]).toLowerCase().includes(q)) return false;
+  if (!sansEtat && etat && f.etat !== etat) return false;
+  return true;
+}
+function specs(f) {
+  return f.type === 'video'
+    ? `${sec(f.duree_s)} · ${f.largeur} × ${f.hauteur} · ${f.format} · ${t1(f.poids_mo)} Mo · ${f.son ? 'avec son' : 'sans son'}`
+    : `${f.largeur} × ${f.hauteur} · ${f.format} · ${t1(f.poids_mo)} Mo`;
+}
+function render() {
+  const base = F.filter(f => pass(f, true)), shown = base.filter(f => !etat || f.etat === etat);
+  $('#states').innerHTML = `<span class="lbl">État</span><button class="chip" data-e="" aria-pressed="${etat === ''}">Tous <b>${base.length}</b></button>` +
+    ETATS.map(([e,,d,l]) => `<button class="chip" data-e="${e}" aria-pressed="${etat === e}"><span class="dot ${d}"></span>${l} <b>${base.filter(f => f.etat === e).length}</b></button>`).join('');
+  $('#count').textContent = pl(shown.length, 'fichier affiché', 'fichiers affichés') + ' sur ' + F.length;
+  $('#grid').innerHTML = shown.length ? shown.map(f => `<button class="card" data-id="${esc(f.id)}">
+    <span class="im"><img loading="lazy" src="${esc(f.vignette)}" alt=""></span>
+    <span class="tx"><span class="tags"><span class="st ${etatCls(f.etat)}">${esc(f.etat || 'pas regardé')}${f.etat === 'bon en partie' && f.etat_bon_de_s != null ? ' · ' + t1(f.etat_bon_de_s) + ' à ' + t1(f.etat_bon_a_s) + ' s' : ''}</span>
+      <span class="st">${f.type === 'video' ? (f.plans === 'un' ? 'vidéo · un plan' : f.plans === 'plusieurs' ? 'vidéo · ' + (f.plans_detail || []).length + ' plans' : 'vidéo') : 'image'}</span>
+      <span class="st">${esc(f.groupe_nom)}</span></span>
+    <span class="nm">${esc(f.fichier)}</span><span class="ds">${esc(f.description || '')}</span><span class="sp">${esc(specs(f))}</span></span></button>`).join('')
+    : '<p class="empty">Aucun fichier ne correspond à ces filtres.</p>';
+}
+function open(id) {
+  const f = F.find(x => x.id === id); if (!f) return;
+  const row = (k, v) => v ? `<dt>${k}</dt><dd>${v}</dd>` : '';
+  const list = a => (a || []).map(esc).join(', ');
+  $('#dlg-in').innerHTML = `<button class="close" type="button">Fermer</button><h3>${esc(f.fichier)}</h3>
+    ${f.video_url ? `<video src="${esc(f.video_url)}" poster="${esc(f.affiche_url)}" controls muted playsinline preload="none" style="width:100%;border-radius:10px;background:#000"></video>` : ''}
+    <img src="${esc(f.vignette)}" alt="">
+    ${f.type === 'video' ? `<div class="lbl">Images prises à : ${(f.vignette_minutages_s || []).map(s => s + ' s').join(' · ')}</div>` : ''}
+    <dl>
+    ${row('Ce qu\'on voit', esc(f.description))}
+    ${row('État', `<span class="st ${etatCls(f.etat)}">${esc(f.etat || 'pas regardé')}</span>${f.etat === 'bon en partie' && f.etat_bon_de_s != null ? ' Passage utilisable : de ' + t1(f.etat_bon_de_s) + ' s à ' + t1(f.etat_bon_a_s) + ' s.' : ''}`)}
+    ${row('Pourquoi', esc(f.etat_raison))}
+    ${f.type === 'video' ? row('Plans', (f.plans === 'un' ? 'Un seul plan. ' : f.plans === 'plusieurs' ? 'Plusieurs plans. ' : '') + (f.plans_detail || []).map(p => `<br>de ${t1(p.debut_s)} s à ${t1(p.fin_s)} s : ${esc(p.description)}`).join('')) : ''}
+    ${row('Qui est à l\'écran', list(f.a_l_ecran))}
+    ${row('Lieu', esc(f.lieu))}
+    ${row('Lieu de la planète', esc(f.biome))}
+    ${row('Couleurs', list(f.couleurs))}
+    ${f.type === 'video' ? row('Meilleurs moments pour une image fixe', (f.meilleurs_moments || []).map(m => `à ${t1(m.t_s)} s : ${esc(m.pourquoi)}`).join('<br>')) : ''}
+    ${row('Usage possible sur le site', list(f.usages))}
+    ${row('Pas clair ou pas vérifié', esc(f.incertitudes))}
+    ${row('Mesures', esc(specs(f)) + (f.type === 'video' ? ` · ${t1(f.images_par_seconde)} images par seconde` : ''))}
+    ${row('Fichier', `<span class="path">${esc(f.dossier)}/${esc(f.fichier)}</span>`)}
+    ${f.video_url ? row('En ligne', `<a class="path" href="${esc(f.video_url)}" target="_blank" rel="noopener">${esc(f.video_url)}</a><br><a class="path" href="${esc(f.affiche_url)}" target="_blank" rel="noopener">image d'attente</a>`) : (f.image_url ? row('En ligne', `<a class="path" href="${esc(f.image_url)}" target="_blank" rel="noopener">${esc(f.image_url)}</a><br><a class="path" href="${esc(f.original_url)}" target="_blank" rel="noopener">original</a>`) : '')}
+    </dl>`;
+  $('#dlg').showModal();
+}
+$('#states').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) { etat = b.dataset.e; render(); } });
+document.querySelectorAll('.filters select,.filters input').forEach(el => el.addEventListener('input', render));
+$('#reset').addEventListener('click', () => { document.querySelectorAll('.filters select,.filters input').forEach(el => el.value = ''); etat = ''; render(); });
+$('#grid').addEventListener('click', e => { const c = e.target.closest('.card'); if (c) open(c.dataset.id); });
+$('#dlg').addEventListener('click', e => { if (e.target.id === 'dlg' || e.target.closest('.close')) $('#dlg').close(); });
+render();
+</script>
+</body>
+</html>
